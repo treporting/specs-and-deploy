@@ -88,5 +88,5 @@ requirements:
   object_text: check every review result and run the tests of the tools on every pull request; a pull
     request where one of them fails cannot be merged
   target_ids: [PROC-04, PROC-13]
-  status: review
+  status: approved
   verification_method: [test]
