@@ -111,6 +111,10 @@ reviews/
                                  reviewed, per requirement and criterion passed or failed (RR)
 ```
 
+A file of results is named `<date>-<scope>.yaml`: the day of the review, and what it reviewed. A review
+that replaces another takes the name of the old one with `-recreated`, such as
+`2026-10-25-tool-03-10-recreated.yaml`; the old file goes, and the commit message says why. Git keeps it.
+
 A file of results is one review, with one result per requirement reviewed:
 
 ```yaml
