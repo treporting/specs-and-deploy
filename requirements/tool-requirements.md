@@ -27,3 +27,16 @@ works for every document - also for one that holds no requirements, such as devo
 harness.md, where a) and b) would give none.
 
 *Open*: where a document keeps its own status, and which values it takes.
+
+## Reviews
+
+`TOOL-03` to `TOOL-04`: in [tool-requirements.yaml](tool-requirements.yaml).
+
+The tools that create and check a review. Until they are approved and built, a review result is
+checked by hand (see the loop for every review in harness.md).
+
+## CI check
+
+`TOOL-05` to `TOOL-10`: in [tool-requirements.yaml](tool-requirements.yaml).
+
+The checks run on every pull request - one tool requirement per check.
