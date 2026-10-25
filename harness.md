@@ -91,8 +91,9 @@ responsible for its result.
 The criterion *correct* of a user need is always confirmed by the Product Owner, the only one who
 can speak for the roles - also where they are the author. It is the one exception to PROC-15.
 
-**Decision**: the roles are tailored to a small team. Claude Code writes; the Product Owner holds
-every other role. Claude Code is never the reviewer: it prepares a review, and a person decides it.
+**Decision**: the roles are tailored to a small team. Claude Code and the Product Owner write; the
+Product Owner holds every other role. Claude Code is never the reviewer: it prepares a review, and a
+person decides it.
 What the Product Owner writes alone needs a second person as reviewer, or it stays `draft`.
 
 **Why**: a review is a judgement, and a person answers for it. A tailoring is allowed where it is
