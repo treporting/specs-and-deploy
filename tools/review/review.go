@@ -187,32 +187,35 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 	}
 
 	for _, target := range result.TargetIDs {
-		author, err := authorOf(git, result.Revision, target)
+		authors, err := authorsOf(git, result.Revision, target)
 		if err != nil {
 			messages = append(messages, err.Error())
 			continue
 		}
-		if author == r.CreatedBy {
-			messages = append(messages, "the reviewer "+r.CreatedBy+" is the author of "+target)
+		for _, name := range authors {
+			if name == r.CreatedBy {
+				messages = append(messages, "the reviewer "+r.CreatedBy+" is an author of "+target)
+				break
+			}
 		}
 	}
 	return messages
 }
 
-// authorOf answers the author of a requirement or document in a revision: the co-author named
-// Claude of the last commit that changed it, where there is one, else the author of that commit.
+// authorsOf answers the authors of a requirement or document in a revision: the author and the
+// co-authors of the last commit that changed it, whatever names stand there.
 //
 // @implements TOOL-03
-func authorOf(git Git, revision, target string) (string, error) {
+func authorsOf(git Git, revision, target string) ([]string, error) {
 
 	file, key := fileOf(target)
 	if file == "" {
-		return "", fmt.Errorf("no file holds %s", target)
+		return nil, fmt.Errorf("no file holds %s", target)
 	}
 
 	commits, err := git.FileCommits(revision, file)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	for _, commit := range commits {
 		now := objectAt(git, commit, file, key)
@@ -228,16 +231,11 @@ func authorOf(git Git, revision, target string) (string, error) {
 		}
 		author, coAuthors, err := git.Authors(commit)
 		if err != nil {
-			return "", err
+			return nil, err
 		}
-		for _, name := range coAuthors {
-			if strings.HasPrefix(name, "Claude") {
-				return name, nil
-			}
-		}
-		return author, nil
+		return append([]string{author}, coAuthors...), nil
 	}
-	return "", fmt.Errorf("%s is not in %s in %s", target, file, revision)
+	return nil, fmt.Errorf("%s is not in %s in %s", target, file, revision)
 }
 
 // fileOf answers the file that holds a target, and the key to find it there; a document is its

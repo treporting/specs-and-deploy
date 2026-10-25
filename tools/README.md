@@ -101,7 +101,7 @@ breaks the check, so its requirements are reviewed again and the old result is r
 
 Checks every review result in `reviews/` against the rules of formats.md (TOOL-03): every criterion
 of its criteria file once, the verdict passed only when every criterion passed, a note to every
-failed criterion, the revision reviewed exists, and the reviewer is not the author.
+failed criterion, the revision reviewed exists, and the reviewer is none of its authors.
 
 ```bash
 cd tools
