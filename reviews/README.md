@@ -9,4 +9,6 @@ of [harness.md](../harness.md).
 | [criteria-r1.yaml](criteria-r1.yaml) | the criteria of the user needs (r1) |
 | [criteria-r2.yaml](criteria-r2.yaml) | the criteria of the system requirements (r2) |
 
-*Open:* the criteria of the other levels, and the schemas of criteria and result.
+The format of a review and its result is in the section Reviews of [formats.md](../formats.md).
+
+*Open:* the criteria of the other levels.

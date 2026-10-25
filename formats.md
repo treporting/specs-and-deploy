@@ -84,8 +84,34 @@ reviews/
                                  reviewed, per requirement and criterion passed or failed (RR)
 ```
 
-A review counts for the revision it reviewed only (SYS-75). See the loop for every review in
-[harness.md](harness.md).
+A file of results is one review, with one result per requirement reviewed:
+
+```yaml
+# reviews/2026-10-26-r1-pm.yaml
+level: review
+created_by: the reviewer
+created_at: '2026-10-26T14:00:00+01:00'
+criteria: reviews/criteria-r1.yaml
+criteria_revision: 'd5922d1'
+results:
+- object_key: RR-01
+  target_ids: [UN-PM-01]
+  revision: '7215683'
+  criteria: {RC-01: passed, RC-02: passed, RC-03: failed}
+  notes: {RC-03: '"how far" can be read as a share or as a level - say which'}
+  verdict: failed
+```
+
+- the verdict is `passed` only when every criterion passed (PROC-13)
+- every criterion of the criteria file appears once
+- a failed criterion has a note, so that the author knows what to change
+- `revision` is the commit of the requirement reviewed: the review counts for it only (SYS-75)
+- the reviewer is not the author of the requirement (PROC-15)
+- a revision and a time are written in quotes: unquoted, YAML reads `7215683` as a number
+
+The schemas are `schemas/review-criteria.schema.json` and `schemas/review-result.schema.json`;
+what they cannot say - every criterion once, the reviewer not the author - the CI checks. See the
+loop for every review in [harness.md](harness.md).
 
 ## Breakdown
 
