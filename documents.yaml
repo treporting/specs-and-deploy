@@ -19,6 +19,9 @@ documents:
 - name: formats.md
   status: draft
   verification_method: [review]
+- name: tools/README.md
+  status: draft
+  verification_method: [review]
 - name: reviews/README.md
   status: draft
   verification_method: [review]
