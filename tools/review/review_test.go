@@ -90,7 +90,7 @@ func expect(t *testing.T, messages []string, want string) {
 	t.Errorf("no finding %q in %q", want, messages)
 }
 
-// @verifies TOOL-03
+// @verifies SR-01, SR-02, SR-03, SR-04, SR-05
 func TestAGoodResultHasNoFinding(t *testing.T) {
 	got := check(t, `- object_key: RR-01
   target_ids: [TOOL-03]
@@ -103,7 +103,7 @@ func TestAGoodResultHasNoFinding(t *testing.T) {
 	}
 }
 
-// @verifies TOOL-03
+// @verifies SR-01
 func TestEveryCriterionOnce(t *testing.T) {
 	got := check(t, `- object_key: RR-01
   target_ids: [TOOL-03]
@@ -115,7 +115,7 @@ func TestEveryCriterionOnce(t *testing.T) {
 	expect(t, got, "criterion RC-09 is not in")
 }
 
-// @verifies TOOL-03
+// @verifies SR-02
 func TestTheVerdictFollowsTheCriteria(t *testing.T) {
 	got := check(t, `- object_key: RR-01
   target_ids: [TOOL-03]
@@ -132,7 +132,7 @@ func TestTheVerdictFollowsTheCriteria(t *testing.T) {
 	expect(t, got, "the verdict is failed, but every criterion passed")
 }
 
-// @verifies TOOL-03
+// @verifies SR-03
 func TestAFailedCriterionHasANote(t *testing.T) {
 	got := check(t, `- object_key: RR-01
   target_ids: [TOOL-03]
@@ -143,7 +143,7 @@ func TestAFailedCriterionHasANote(t *testing.T) {
 	expect(t, got, "criterion RC-02 failed with no note")
 }
 
-// @verifies TOOL-03
+// @verifies SR-04
 func TestTheRevisionExists(t *testing.T) {
 	got := check(t, `- object_key: RR-01
   target_ids: [TOOL-03]
@@ -154,7 +154,7 @@ func TestTheRevisionExists(t *testing.T) {
 	expect(t, got, "the revision nope is no commit")
 }
 
-// @verifies TOOL-03
+// @verifies SR-05
 func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 	result := `- object_key: RR-01
   target_ids: [TOOL-03]
@@ -174,7 +174,7 @@ func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 	}
 }
 
-// @verifies TOOL-03
+// @verifies SR-05
 func TestASoftwareRequirementOfTheToolsHasAnAuthor(t *testing.T) {
 	git := history("Mathias Fischer")
 	git.files["c1"]["tools/software-requirements.yaml"] = `level: r5

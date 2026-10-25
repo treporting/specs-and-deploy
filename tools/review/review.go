@@ -88,7 +88,7 @@ var lists = []string{"requirements", "elements", "hazards", "controls"}
 
 // Check reads the review result in path, below root, and answers every rule it breaks.
 //
-// @implements TOOL-03
+// @implements SR-01, SR-02, SR-03, SR-04, SR-05
 func Check(root, path string, git Git) ([]Finding, error) {
 
 	data, err := os.ReadFile(filepath.Join(root, path))
@@ -141,7 +141,7 @@ func criteriaKeys(git Git, revision, file string) ([]string, error) {
 
 // checkResult answers the rules one result breaks.
 //
-// @implements TOOL-03
+// @implements SR-01, SR-02, SR-03, SR-04, SR-05
 func checkResult(r Review, result Result, criteria []string, git Git) []string {
 
 	var messages []string
@@ -205,7 +205,7 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 // authorsOf answers the authors of a requirement or document in a revision: the author and the
 // co-authors of the last commit that changed it, whatever names stand there.
 //
-// @implements TOOL-03
+// @implements SR-05
 func authorsOf(git Git, revision, target string) ([]string, error) {
 
 	file, key := fileOf(target)
