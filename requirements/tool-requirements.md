@@ -32,8 +32,9 @@ harness.md, where a) and b) would give none.
 
 `TOOL-03` to `TOOL-04`, and `TOOL-11`: in [tool-requirements.yaml](tool-requirements.yaml).
 
-The tools that create and check a review. Until they are approved and built, a review result is
-checked by hand (see the loop for every review in harness.md).
+The tools that create and check a review. `reviewcheck` checks every review result (TOOL-03,
+TOOL-11) and runs on every pull request (TOOL-12). Until the skeleton of TOOL-04 is built, a review
+result is written by hand.
 
 ## CI check
 
