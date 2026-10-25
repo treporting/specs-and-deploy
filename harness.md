@@ -175,7 +175,6 @@ The CI runs `reviewcheck` on every pull request; a result that breaks a rule blo
 5. report on
    - test coverage
    - structural debt
-   - requirements
 6. create the SBOM and check the licences of the components (PROC-08)
 7. provide feedback
 8. create a signed tag as approval (PROC-06)

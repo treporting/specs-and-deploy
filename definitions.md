@@ -223,7 +223,7 @@ architectural entity is realized by the content of items in a system.
 ## Structural debt
 
 Dependencies in the code that the architecture does not allow - across its layers or packages - and
-code that nothing uses. It is reported on with every release or library.
+code that nothing uses.
 
 ## Baseline
 
