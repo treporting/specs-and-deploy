@@ -76,6 +76,24 @@ The data of treporting itself (the reference edgedb) is measured by this chain:
 
 With one code coverage level each, the chain has 20 steps.
 
+## Roles
+
+| Role | Who | Task |
+|---|---|---|
+| Product Owner | the owner of treporting | stands for all roles of the user needs; confirms that a need is correct; approves |
+| Author | Claude Code or the Product Owner | writes requirements, architecture and code |
+| Reviewer | the Product Owner where Claude Code was the author, and the other way round | checks against the criteria; never the author (PROC-15) |
+| Approver | the Product Owner | sets `approved` (PROC-13) |
+
+Claude Code may prepare a review: go through the criteria and note findings. A person is
+responsible for its result.
+
+The criterion *correct* of a user need is always confirmed by the Product Owner, the only one who
+can speak for the roles - also where they are the author. It is the one exception to PROC-15.
+
+This is a tailoring of the process to a small team. It is allowed where it is reasoned and written
+down, as here.
+
 ## Rules
 
 The ids are `PROC-nn`. They are kept apart from the ids of the requirements, so that keeping
