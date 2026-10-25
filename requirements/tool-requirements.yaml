@@ -28,7 +28,8 @@ requirements:
   feature: Reviews
   object_text: create the skeleton of a review for a set of requirements, with the criteria of their level
     and the revision of each requirement
-  target_ids: [PROC-13]
+  rationale: the automatic support of the review - it gathers the criteria of the level and the revision
+    of each requirement, so that the reviewer does not copy them by hand and makes no mistake there
   status: draft
   verification_method: test
 - object_key: TOOL-05
@@ -48,7 +49,8 @@ requirements:
   feature: CI check
   object_text: count the annotations of a repo a second way, apart from the parser, and fail where the two
     counts differ
-  target_ids: [PROC-05]
+  rationale: tool error detection - a count made by the parser shares every error of the parser and
+    cannot find one, as SYS-23 asks of the product for an import
   status: draft
   verification_method: test
 - object_key: TOOL-08
@@ -67,6 +69,6 @@ requirements:
 - object_key: TOOL-10
   feature: CI check
   object_text: check that every test file belongs to exactly one test level
-  target_ids: [PROC-04]
+  target_ids: [PROC-19]
   status: draft
   verification_method: test
