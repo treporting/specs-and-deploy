@@ -1,6 +1,13 @@
 # System architecture (r3) and the allocation (r4). What explains them is in system-architecture.md.
 # Format: ../formats.md - schema: ../schemas/system-architecture.schema.json
 level: r3
+documents:
+- name: system-architecture.md
+  status: draft
+  verification_method: [review]
+- name: attributes.md
+  status: draft
+  verification_method: [review]
 elements:
 - object_key: ARC-01
   kind: subsystem

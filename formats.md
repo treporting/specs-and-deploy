@@ -79,6 +79,22 @@ requirements:
 One JSON Schema per kind of file, in [schemas/](schemas/). They are drafts until the gel schema
 stands; then they become a part of it, and a CI check in storage-edgedb compares both.
 
+### Documents
+
+The YAML of a level names the documents beside it that explain it, each with a status of its own -
+the same values as a requirement. A document is reviewed like a requirement (`review` as its
+verification method), and an exported document shows its status (TOOL-02):
+
+```yaml
+level: tool
+documents:
+- name: tool-requirements.md
+  status: draft
+  verification_method: [review]
+requirements:
+- ...
+```
+
 ## Reviews
 
 A review checks a requirement against the criteria of its level. Criteria and result are kept

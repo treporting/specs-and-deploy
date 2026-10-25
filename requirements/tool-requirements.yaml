@@ -1,6 +1,10 @@
 # Tool requirements. What explains them is in tool-requirements.md.
 # Format: ../formats.md - schema: ../schemas/tool-requirements.schema.json
 level: tool
+documents:
+- name: tool-requirements.md
+  status: draft
+  verification_method: [review]
 requirements:
 - object_key: TOOL-01
   feature: Documents to PDF

@@ -73,6 +73,48 @@
           }
         }
       }
+    },
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "status",
+          "verification_method"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+\\.md$"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "approved",
+              "obsolete"
+            ]
+          },
+          "verification_method": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "inspection",
+                "analysis",
+                "demonstration",
+                "test",
+                "review"
+              ]
+            }
+          }
+        }
+      },
+      "description": "the documents beside this file that explain it, each with a status of its own"
     }
   }
 }
