@@ -82,7 +82,7 @@ With one code coverage level each, the chain has 20 steps.
 |---|---|---|
 | Product Owner | the owner of treporting | stands for all roles of the user needs; confirms that a need is correct; approves |
 | Author | Claude Code or the Product Owner | writes requirements, architecture and code |
-| Reviewer | the Product Owner where Claude Code was the author, and the other way round | checks against the criteria; never the author (PROC-15) |
+| Reviewer | a person who is not the author: the Product Owner where Claude Code was the author, a second person where the Product Owner was | checks against the criteria; never the author (PROC-15) |
 | Approver | the Product Owner | sets `approved` (PROC-13) |
 
 Claude Code may prepare a review: go through the criteria and note findings. A person is
@@ -91,8 +91,18 @@ responsible for its result.
 The criterion *correct* of a user need is always confirmed by the Product Owner, the only one who
 can speak for the roles - also where they are the author. It is the one exception to PROC-15.
 
-This is a tailoring of the process to a small team. It is allowed where it is reasoned and written
-down, as here.
+**Decision**: the roles are tailored to a small team. Claude Code writes; the Product Owner holds
+every other role. Claude Code is never the reviewer: it prepares a review, and a person decides it.
+What the Product Owner writes alone needs a second person as reviewer, or it stays `draft`.
+
+**Why**: a review is a judgement, and a person answers for it. A tailoring is allowed where it is
+reasoned and written down, as here.
+
+**Rejected**:
+
+- Claude Code as reviewer where the Product Owner wrote - the judgement would come from a tool, and
+  no person would answer for it
+- a person of their own for every role - the team is too small
 
 ## Rules
 
