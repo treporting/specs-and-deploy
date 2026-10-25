@@ -16,6 +16,7 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 | r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy |
 | r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy |
 | r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy |
+| tool | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy |
 | r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem |
 
 A readable Markdown view of the YAML is generated on request only.
@@ -116,6 +117,7 @@ annotation names software requirements of its own repo only.
 | `SR-nn` | software requirements of a subsystem - unique together with their context, the repo of the subsystem (LProject) and the document | r5 |
 | *open* | software architecture (r6) and software design (r7) of a subsystem; their prefixes are still to be set | r6, r7 |
 | `PROC-nn` | rules of our work | - |
+| `TOOL-nn` | requirements on the tools of our work; tools are code (devops.md) | tool |
 
 ### Software requirements
 

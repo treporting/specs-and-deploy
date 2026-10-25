@@ -1,0 +1,19 @@
+# Tool requirements. What explains them is in tool-requirements.md.
+# Format: ../formats.md - schema: ../schemas/tool-requirements.schema.json
+level: tool
+requirements:
+- object_key: TOOL-01
+  feature: Documents to PDF
+  object_text: export every document to PDF with the settings kept in the repo - the title of the document
+    and the name of the repo in the header, the date and the page of the pages in the footer, margins
+    of 2 cm at top and bottom
+  target_ids: [REG-10]
+  status: draft
+  verification_method: inspection
+- object_key: TOOL-02
+  feature: Documents to PDF
+  object_text: show in the header or footer of an exported document the revision of the document and the
+    status of the requirements it holds
+  target_ids: [REG-10]
+  status: draft
+  verification_method: test
