@@ -40,6 +40,8 @@ holds only what the author writes:
   parent into `mfunction` where its own is empty.
 - **feature** is given on r2; r5 takes it from its parent into `mfeature`.
 - **priority** is `later` where a requirement is kept for later; empty otherwise.
+- **rationale** of a system requirement that names no uplink: why it stands - a requirement derived
+  from the view of the system (ISO/IEC/IEEE 29148, 5.2.8).
 - **status** of every requirement: `draft`, `review`, `approved`, `obsolete`; a requirement starts
   as `draft` and is approved only after its review (PROC-13).
 - **verification_method** of every requirement, after ISO/IEC/IEEE 29148: `inspection`,
