@@ -1,0 +1,44 @@
+# Review of SR-09 and SR-10 against the criteria of the software requirements.
+# Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
+level: review
+created_by: Mathias Fischer
+created_at: '2026-10-25T21:20:42+01:00'
+criteria: reviews/criteria-r5.yaml
+criteria_revision: '6095c77'
+results:
+- object_key: RR-01
+  target_ids: [SR-09]
+  revision: '610445b'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04:
+      result: passed
+      note: 'to check, to fail and to block, yet one behaviour - the gate of the review results'
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-02
+  target_ids: [SR-10]
+  revision: '610445b'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04:
+      result: passed
+      note: 'to run the tests, to fail and to block, yet one behaviour - the gate of the tests'
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
