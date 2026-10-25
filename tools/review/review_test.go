@@ -11,6 +11,7 @@ import (
 type fakeGit struct {
 	files     map[string]map[string]string // commit -> path -> content
 	parent    map[string]string
+	changed   map[string][]string // path -> the commits that changed it, the newest first
 	author    string
 	coAuthors []string
 }
@@ -24,7 +25,12 @@ func (f fakeGit) Show(rev, path string) ([]byte, error) {
 	return nil, os.ErrNotExist
 }
 
-func (f fakeGit) FileCommits(rev, path string) ([]string, error) { return []string{rev}, nil }
+func (f fakeGit) FileCommits(rev, path string) ([]string, error) {
+	if commits, ok := f.changed[path]; ok {
+		return commits, nil
+	}
+	return []string{rev}, nil
+}
 
 func (f fakeGit) Parent(commit string) (string, bool) {
 	p, ok := f.parent[commit]
@@ -189,4 +195,55 @@ requirements:
   verdict: passed
 `, git)
 	expect(t, got, "the reviewer Mathias Fischer is an author of SR-01")
+}
+
+// @verifies SR-06
+func TestAValueOtherThanPassedOrFailed(t *testing.T) {
+	got := check(t, `- object_key: RR-01
+  target_ids: [TOOL-03]
+  revision: 'c1'
+  criteria: {RC-01: passed, RC-02: pased}
+  verdict: passed
+- object_key: RR-02
+  target_ids: [TOOL-03]
+  revision: 'c1'
+  criteria: {RC-01: passed, RC-02: passed}
+  verdict: pased
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
+	expect(t, got, "criterion RC-02 is neither passed nor failed")
+	//	counted as not passed
+	expect(t, got, "the verdict is passed, but not every criterion passed")
+	expect(t, got, "the verdict is neither passed nor failed")
+}
+
+// @verifies SR-07
+func TestTheCriteriaRevisionChangedTheCriteria(t *testing.T) {
+	git := history("Claude Opus 5.5", "Claude Opus 5.5")
+	git.changed = map[string][]string{"reviews/criteria-tool.yaml": {"c0"}}
+	got := check(t, `- object_key: RR-01
+  target_ids: [TOOL-03]
+  revision: 'c1'
+  criteria: {RC-01: passed, RC-02: passed}
+  verdict: passed
+`, git)
+	expect(t, got, "the criteria revision c1 did not change reviews/criteria-tool.yaml")
+}
+
+// @verifies SR-08
+func TestTheReviewerIsNotTheAuthorOfADocument(t *testing.T) {
+	result := `- object_key: RR-01
+  target_ids: [formats.md]
+  revision: 'c1'
+  criteria: {RC-01: passed, RC-02: passed}
+  verdict: passed
+`
+	git := history("Mathias Fischer")
+	git.files["c1"]["formats.md"] = "# formats\n"
+	expect(t, check(t, result, git), "the reviewer Mathias Fischer is an author of formats.md")
+
+	git = history("Claude Opus 5.5")
+	git.files["c1"]["formats.md"] = "# formats\n"
+	if got := check(t, result, git); len(got) != 0 {
+		t.Errorf("want no finding, got %q", got)
+	}
 }
