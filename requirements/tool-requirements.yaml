@@ -12,8 +12,7 @@ requirements:
   verification_method: inspection
 - object_key: TOOL-02
   feature: Documents to PDF
-  object_text: show in the header or footer of an exported document the revision of the document and the
-    status of the requirements it holds
+  object_text: show in the header or footer of an exported document its revision and its own status
   target_ids: [REG-10]
   status: draft
   verification_method: test
