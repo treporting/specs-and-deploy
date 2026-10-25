@@ -65,12 +65,12 @@ requirements:
   object_text: on every pull request, check every review result, and fail where a result breaks a rule;
     a pull request whose check failed cannot be merged
   target_ids: [TOOL-12]
-  status: draft
+  status: review
   verification_method: [demonstration]
 - object_key: SR-10
   component: ci
   object_text: on every pull request, run the tests of the tools on the levels MT and SwIT, and fail where
     one fails; a pull request whose tests failed cannot be merged
   target_ids: [TOOL-12]
-  status: draft
+  status: review
   verification_method: [demonstration]
