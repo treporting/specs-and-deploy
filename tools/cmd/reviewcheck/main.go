@@ -16,7 +16,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements TOOL-03
+// @implements SR-01, SR-02, SR-03, SR-04, SR-05
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
