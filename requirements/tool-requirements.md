@@ -37,6 +37,6 @@ checked by hand (see the loop for every review in harness.md).
 
 ## CI check
 
-`TOOL-05` to `TOOL-10`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL-05` to `TOOL-10`, and `TOOL-12`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The checks run on every pull request - one tool requirement per check.
