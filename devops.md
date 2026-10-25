@@ -66,6 +66,28 @@ The documents are exported to PDF with Markdown PDF.
 *Open*: the settings of the export - header, footer, margins - and revision and status in header
 and footer. Each waits for its approved tool requirement.
 
+## Merging
+
+**Decision**: every repo of treporting merges a pull request by a merge commit only; squash and
+rebase are switched off in the settings of the repo. A new repo gets the same settings when it is
+made:
+
+```bash
+gh api -X PATCH repos/treporting/<repo> \
+  -F allow_merge_commit=true -F allow_squash_merge=false -F allow_rebase_merge=false
+```
+
+**Why**: the commits of the pull request reach `main` as they are, with their author. The author of a
+requirement is the author and the co-authors of the last commit that changed it (tools/README.md),
+and the revision a review names stays a commit on `main`.
+
+**Rejected**:
+
+- squash - it makes the one who opened the pull request the author of the one commit on `main`, so
+  the Product Owner would be the author of every requirement, and could review none
+- rebase - it keeps the author, but writes every commit again with a new hash; a revision named
+  before the merge is not on `main`
+
 ## Build and deployment
 
 *Open*: the containers in `deploy/`, built from the parts the subsystems deliver; the demo.
