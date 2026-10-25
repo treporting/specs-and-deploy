@@ -108,7 +108,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "pattern": "^[a-z0-9-]+\\.md$"
+            "pattern": "^([a-z0-9-]+/)*[A-Za-z0-9-]+\\.md$"
           },
           "status": {
             "enum": [
