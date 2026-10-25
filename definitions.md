@@ -188,6 +188,15 @@ procedures.
 
 **Test result** - one run of a test case: its verdict, in a stream.
 
+## Gate
+
+The checks a change of the product has to pass. The quick gate runs before a commit, on the small
+set of synthetic data; the full gate runs before a merge to main, on the medium set. They differ in
+the size of the data, and so in their time - about 5 and 10 minutes.
+
+A repo with no code of the product, such as the tools in specs-and-deploy, has one gate: the
+required checks of its CI.
+
 ## Hazard and measure
 
 **Hazard** - a source of harm the product can cause, found by the hazard analysis. It carries the
