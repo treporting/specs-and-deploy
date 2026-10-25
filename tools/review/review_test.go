@@ -170,3 +170,20 @@ func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 		t.Errorf("want no finding, got %q", got)
 	}
 }
+
+// @verifies TOOL-03
+func TestASoftwareRequirementOfTheToolsHasAnAuthor(t *testing.T) {
+	git := history("Mathias Fischer")
+	git.files["c1"]["tools/software-requirements.yaml"] = `level: r5
+requirements:
+- object_key: SR-01
+  object_text: report a criterion that is missing
+`
+	got := check(t, `- object_key: RR-01
+  target_ids: [SR-01]
+  revision: 'c1'
+  criteria: {RC-01: passed, RC-02: passed}
+  verdict: passed
+`, git)
+	expect(t, got, "the reviewer Mathias Fischer is the author of SR-01")
+}

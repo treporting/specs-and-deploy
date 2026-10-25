@@ -77,6 +77,7 @@ var requirementFiles = []struct{ prefix, file string }{
 	{"REG-", "requirements/regulatory-requirements.yaml"},
 	{"SYS-", "requirements/system-requirements.yaml"},
 	{"TOOL-", "requirements/tool-requirements.yaml"},
+	{"SR-", "tools/software-requirements.yaml"},
 	{"ARC-", "architecture/system-architecture.yaml"},
 	{"HAZC-", "safety/hazards.yaml"},
 	{"HAZ-", "safety/hazards.yaml"},
