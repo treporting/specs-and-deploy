@@ -112,8 +112,9 @@ reviews/
 ```
 
 A file of results is named `<date>-<scope>.yaml`: the day of the review, and what it reviewed. A review
-that replaces another takes the name of the old one with `-recreated`, such as
-`2026-10-25-tool-03-10-recreated.yaml`; the old file goes, and the commit message says why. Git keeps it.
+that replaces another of the same scope takes the name of the old one with `-recreated`, such as
+`2026-10-25-tool-03-10-recreated.yaml`; one of a wider scope takes a name of its own. Either way the
+old file goes, and the commit message says why. Git keeps it.
 
 A file of results is one review, with one result per requirement reviewed:
 
