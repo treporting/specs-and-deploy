@@ -9,7 +9,7 @@ requirements:
     TCL), and qualify it where the confidence level is TCL2 or TCL3
   applies_to: automotive
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-02
   category: Tool qualification
   source: IEC 61508-3, 7.4.4
@@ -17,14 +17,14 @@ requirements:
     for its use
   applies_to: industry, railway (EN 50716)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-03
   category: Tool qualification
   source: DO-330
   object_text: qualify a verification tool whose output is not verified otherwise
   applies_to: airborne
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-04
   category: Tool qualification
   source: ISO 13485, 4.1.6
@@ -32,7 +32,7 @@ requirements:
     changes
   applies_to: medical
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-05
   category: Electronic records
   source: 21 CFR 11.10(e)
@@ -40,28 +40,28 @@ requirements:
     and deletion of a record, without hiding what was there before
   applies_to: medical (FDA)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-06
   category: Electronic records
   source: 21 CFR 11.10(d), (g)
   object_text: let only authorised people use the system, and check their authority for what they do
   applies_to: medical (FDA)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-07
   category: Electronic records
   source: 21 CFR 11.10(b)
   object_text: produce accurate and complete copies of records, readable by people and in electronic form
   applies_to: medical (FDA)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-08
   category: Electronic records
   source: 21 CFR 11.10(c)
   object_text: protect records so that they can be retrieved accurately throughout their retention period
   applies_to: medical (FDA)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-09
   category: Electronic records
   source: 21 CFR 11.50, 11.70
@@ -71,7 +71,7 @@ requirements:
   not_realized: treporting signs nothing; an approval is made where the organization makes it, and can
     name the report it relied on (SYS-43)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-10
   category: Electronic records
   source: FDA, data integrity (ALCOA)
@@ -79,14 +79,14 @@ requirements:
     be followed back to whom and what it comes from
   applies_to: medical (FDA)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-11
   category: Personal data and legal notice
   source: GDPR, Art. 5(1)(b), (e)
   object_text: process personal data only for the purposes stated, and keep it no longer than they need
   applies_to: EU
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-12
   category: Personal data and legal notice
   source: BetrVG, §87(1) no. 6
@@ -94,14 +94,14 @@ requirements:
     consent of the works council
   applies_to: Germany
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-13
   category: Personal data and legal notice
   source: DDG, §5; GDPR, Art. 13
   object_text: a service on the internet names who runs it, and tells users what personal data it processes
   applies_to: Germany, EU
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-19
   category: Safety classes
   source: ISO 26262-9, clause 5; ISO 26262-3, -4, -6
@@ -109,7 +109,7 @@ requirements:
     a lower one only by an ASIL decomposition into independent requirements
   applies_to: automotive
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-20
   category: Safety classes
   source: ARP4754B, development assurance level assignment; DO-178C, 2.3
@@ -118,7 +118,7 @@ requirements:
     the items is shown
   applies_to: airborne
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-21
   category: Safety classes
   source: IEC 61508-2, 7.4.3; IEC 61508-3, 7.4.2.8 to 7.4.2.10
@@ -126,7 +126,7 @@ requirements:
     SIL are all treated as of the highest one, unless their independence is shown
   applies_to: industry, railway (EN 50716)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-22
   category: Safety classes
   source: IEC 62304, 4.3; 5.3.5
@@ -134,7 +134,7 @@ requirements:
     from; a lower class only with a documented rationale, such as a segregation of the items
   applies_to: medical
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-14
   category: Products on the market
   source: CRA (EU) 2024/2847, Annex I Part I
@@ -142,7 +142,7 @@ requirements:
     with a secure configuration by default, and can be secured by updates
   applies_to: EU, commercial
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-15
   category: Products on the market
   source: CRA, Annex I Part II
@@ -150,7 +150,7 @@ requirements:
     of charge, has a policy of coordinated disclosure and a contact for reports'
   applies_to: EU, commercial
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-16
   category: Products on the market
   source: CRA, Art. 14
@@ -159,7 +159,7 @@ requirements:
   applies_to: EU, commercial
   not_realized: a duty of the manufacturer, kept by our work (harness)
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-17
   category: Products on the market
   source: CRA, Art. 13(8)
@@ -167,11 +167,11 @@ requirements:
     five years
   applies_to: EU, commercial
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]
 - object_key: REG-18
   category: Products on the market
   source: licences of the components, e.g. Apache-2.0 §4
   object_text: a release hands on the licence texts and notices of every component it contains
   applies_to: all
   status: draft
-  verification_method: inspection
+  verification_method: [inspection]

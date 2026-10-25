@@ -47,8 +47,10 @@ holds only what the author writes:
   has no uplinks.
 - **status** of every requirement: `draft`, `review`, `approved`, `obsolete`; a requirement starts
   as `draft` and is approved only after its review (PROC-13).
-- **verification_method** of every requirement, after ISO/IEC/IEEE 29148: `inspection`,
-  `analysis`, `demonstration`, `test`.
+- **verification_method** of every requirement, a list - a requirement may be verified in more
+  than one way, `[inspection, test]`. The values of ISO/IEC/IEEE 29148: `inspection`, `analysis`,
+  `demonstration`, `test`; and of our own: `review` - verified by the review against the criteria
+  of its level (PROC-13), for instance a document.
 - **platform_launch** of every user need and system requirement: `treporting = 2_selfhosted,
   1_demo`, or narrower where a requirement holds for one of them only.
 - **the links**: an object writes the ends of its own links in `target_ids` - in our files, the

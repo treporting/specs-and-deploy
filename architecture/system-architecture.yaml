@@ -12,7 +12,7 @@ elements:
     SYS-34, SYS-35, SYS-37, SYS-38, SYS-39, SYS-52, SYS-55, SYS-57, SYS-58, SYS-59, SYS-63, SYS-64, SYS-65,
     SYS-66, SYS-67, SYS-68, SYS-71, SYS-72, SYS-73, SYS-74]
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-02
   kind: subsystem
   repo: reporter-edgedb
@@ -24,7 +24,7 @@ elements:
     SYS-47, SYS-48, SYS-49, SYS-50, SYS-51, SYS-52, SYS-54, SYS-55, SYS-56, SYS-58, SYS-59, SYS-63, SYS-64,
     SYS-65, SYS-66, SYS-67, SYS-68, SYS-70, SYS-71, SYS-72, SYS-73, SYS-74, SYS-75, SYS-76]
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-03
   kind: subsystem
   repo: storage-edgedb
@@ -38,7 +38,7 @@ elements:
     SYS-49, SYS-51, SYS-52, SYS-53, SYS-54, SYS-55, SYS-60, SYS-62, SYS-63, SYS-64, SYS-65, SYS-66, SYS-68,
     SYS-69, SYS-74, SYS-75]
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-04
   kind: subsystem
   repo: converter-edgedb
@@ -48,7 +48,7 @@ elements:
     SYS-28, SYS-35, SYS-38, SYS-53, SYS-55, SYS-60, SYS-61, SYS-62, SYS-63, SYS-64, SYS-65, SYS-66, SYS-72,
     SYS-73, SYS-74]
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-05
   kind: subsystem
   repo: extractor-content
@@ -59,7 +59,7 @@ elements:
   allocated: [SYS-02, SYS-07, SYS-08, SYS-12, SYS-15, SYS-17, SYS-22, SYS-23, SYS-24, SYS-27, SYS-28,
     SYS-35, SYS-38, SYS-53, SYS-55, SYS-63, SYS-64, SYS-65, SYS-66, SYS-72, SYS-74]
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-06
   kind: subsystem
   repo: extractor-SYSTEM
@@ -69,77 +69,77 @@ elements:
   allocated: [SYS-15, SYS-17, SYS-22, SYS-23, SYS-24, SYS-27, SYS-35, SYS-38, SYS-53, SYS-55, SYS-61,
     SYS-63, SYS-64, SYS-65, SYS-66]
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-11
   kind: interface
   object_text: REST API
   between: viewer → reporter
   contract: swagger of reporter-edgedb
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-12
   kind: interface
   object_text: '`Source`'
   between: reporter → storage
   contract: Go interface in storage-edgedb
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-13
   kind: interface
   object_text: import
   between: converter-edgedb, extractor-content → storage
   contract: Go interface in storage-edgedb
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-14
   kind: interface
   object_text: system access
   between: extractor-SYSTEM → system
   contract: 'per system: listing and fetching, and a query of its own for counting'
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-15
   kind: interface
   object_text: files
   between: extractor-SYSTEM → extractor-content
   contract: a file with its kind and its identity in the system
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-16
   kind: interface
   object_text: information
   between: extractor-content → storage
   contract: the information extracted, per kind, over ARC-13; for annotations the format of formats.md
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-17
   kind: interface
   object_text: identity
   between: proxy or identity provider → reporter
   contract: identity and groups of the user, handed on by the proxy or as a token (OIDC)
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-18
   kind: interface
   object_text: audit trail
   between: reporter → storage
   contract: Go interface in storage-edgedb
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-19
   kind: interface
   object_text: items
   between: extractor-SYSTEM → converter-edgedb
   contract: an item with its attributes as the system holds them, and its identity in the system
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-20
   kind: interface
   object_text: configuration
   between: customer → converter-edgedb, storage
   contract: the mapping of attributes and of values, one file per system of a customer
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 - object_key: ARC-21
   kind: model
   object_text: the information model - the common language of converter, storage and reporter; the common
@@ -148,7 +148,7 @@ elements:
   allocated: [SYS-09, SYS-11, SYS-13, SYS-14, SYS-15, SYS-16, SYS-17, SYS-18, SYS-20, SYS-28, SYS-36,
     SYS-41, SYS-43, SYS-45, SYS-49, SYS-68, SYS-69, SYS-70, SYS-72, SYS-73, SYS-74, SYS-75, SYS-76]
   status: draft
-  verification_method: analysis
+  verification_method: [analysis]
 decisions:
 - object_key: ARC-R01
   object_text: Read only
