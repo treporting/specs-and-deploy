@@ -118,6 +118,7 @@ to the process does not count into the maturity of the product.
 | PROC-15 | The reviewer of a requirement is not its author. |
 | PROC-16 | A pull request closes one ticket and changes one concern; a ticket that touches data, rules and explanations at once is split into several pull requests. |
 | PROC-17 | Where a rule of the harness changes, every requirement that names it as uplink goes back to `review`. |
+| PROC-18 | A decision is written down with its reason and the alternatives rejected. |
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
 and passes no review of its own. So a rule can be the uplink of an approved requirement (PROC-13).
