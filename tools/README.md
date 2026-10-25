@@ -79,3 +79,18 @@ to break when the model changes.
 - the reviewer may not appear in `modified_by` at all - every review by the Product Owner would fail,
   as they are the author of every commit
 - the check left to the approver by hand - TOOL-03 asks for it
+
+## reviewcheck
+
+Checks every review result in `reviews/` against the rules of formats.md (TOOL-03): every criterion
+of its criteria file once, the verdict passed only when every criterion passed, a note to every
+failed criterion, the revision reviewed exists, and the reviewer is not the author.
+
+```bash
+cd tools
+go run ./cmd/reviewcheck -root ..        # every result in reviews/
+go test ./...                            # MT
+go test -tags integration ./...          # SwIT, on a history of git made in the test
+```
+
+It exits with 1 where a result breaks a rule. It depends on `gopkg.in/yaml.v3` (MIT and Apache-2.0).
