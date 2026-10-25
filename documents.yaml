@@ -1,0 +1,24 @@
+# The documents that have no YAML of requirements beside them, each with a status of its own.
+# Format: formats.md, section Documents - schema: schemas/documents.schema.json
+documents:
+- name: README.md
+  status: draft
+  verification_method: [review]
+- name: harness.md
+  status: draft
+  verification_method: [review]
+- name: devops.md
+  status: draft
+  verification_method: [review]
+- name: definitions.md
+  status: draft
+  verification_method: [review]
+- name: standards.md
+  status: draft
+  verification_method: [review]
+- name: formats.md
+  status: draft
+  verification_method: [review]
+- name: reviews/README.md
+  status: draft
+  verification_method: [review]

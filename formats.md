@@ -95,6 +95,10 @@ requirements:
 - ...
 ```
 
+The documents without a YAML of requirements beside them - harness.md, devops.md, definitions.md,
+standards.md, formats.md, the READMEs - are named in `documents.yaml` in the root of the repo, in
+the same form, by their path.
+
 ## Reviews
 
 A review checks a requirement against the criteria of its level. Criteria and result are kept

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/treporting/specs-and-deploy/schemas/documents.schema.json",
+  "title": "Documents without a YAML of requirements beside them",
+  "type": "object",
+  "required": [
+    "documents"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "status",
+          "verification_method"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^([a-z0-9-]+/)*[A-Za-z0-9-]+\\.md$",
+            "description": "the path of the document from the root of the repo"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "approved",
+              "obsolete"
+            ]
+          },
+          "verification_method": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "inspection",
+                "analysis",
+                "demonstration",
+                "test",
+                "review"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
