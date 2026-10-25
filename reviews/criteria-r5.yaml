@@ -29,8 +29,10 @@ criteria:
   question: Does it contradict no other requirement?
 - object_key: RC-07
   source: ISO/IEC/IEEE 29148, 5.2.5 - verifiable
-  object_text: verifiable - a test on the levels of the software can show that it is met
-  question: Can a unit, integration or subsystem test show that it is met?
+  object_text: verifiable - a test on the levels of the software can show that it is met, or a
+    demonstration where that is its method
+  question: Can a unit, integration or subsystem test show that it is met - or, where its method is
+    demonstration, a demonstration?
 - object_key: RC-08
   source: ISO/IEC/IEEE 29148, 5.2.5 - feasible
   object_text: feasible - it can be met with a reasonable effort
