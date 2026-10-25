@@ -102,17 +102,23 @@ results:
 - object_key: RR-01
   target_ids: [UN-PM-01]
   revision: '7215683'
-  criteria: {RC-01: passed, RC-02: passed, RC-03: failed}
-  notes: {RC-03: '"how far" can be read as a share or as a level - say which'}
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03:
+      result: failed
+      note: '"how far" can be read as a share or as a level - say which'
   verdict: failed
 ```
 
 - the verdict is `passed` only when every criterion passed (PROC-13)
 - every criterion of the criteria file appears once
-- a failed criterion has a note, so that the author knows what to change
+- a failed criterion is a block of `result` and `note`, so that the author knows what to change; a
+  passed one may have a note as well, else it is just `passed`
 - `revision` is the commit of the requirement reviewed: the review counts for it only (SYS-75)
 - the reviewer is not the author of the requirement (PROC-15)
 - a revision and a time are written in quotes: unquoted, YAML reads `7215683` as a number
+- a note with `: ` in it is written in quotes: unquoted, YAML reads a new key
 
 The schemas are `schemas/review-criteria.schema.json` and `schemas/review-result.schema.json`;
 what they cannot say - every criterion once, the reviewer not the author - TOOL-03 checks. See the

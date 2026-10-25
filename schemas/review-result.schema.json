@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/review-result.schema.json",
   "title": "Review results (RR) of one review",
-  "description": "One file is one review: who, when, against which criteria; one result per requirement reviewed. Checked beyond the schema by the CI: every criterion of the criteria file appears once; the verdict is passed only when every criterion passed; the reviewer is not the author of the requirement (PROC-15).",
+  "description": "One file is one review: who, when, against which criteria; one result per requirement reviewed. Checked beyond the schema by the CI: every criterion of the criteria file appears once; the reviewer is not the author of the requirement (PROC-15).",
   "type": "object",
   "required": [
     "level",
@@ -71,20 +71,31 @@
               "pattern": "^RC-[0-9]{2}$"
             },
             "additionalProperties": {
-              "enum": [
-                "passed",
-                "failed"
+              "oneOf": [
+                {
+                  "const": "passed"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "result",
+                    "note"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "result": {
+                      "enum": [
+                        "passed",
+                        "failed"
+                      ]
+                    },
+                    "note": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
               ]
-            }
-          },
-          "notes": {
-            "type": "object",
-            "propertyNames": {
-              "pattern": "^RC-[0-9]{2}$"
-            },
-            "additionalProperties": {
-              "type": "string",
-              "minLength": 1
             }
           },
           "verdict": {
@@ -105,7 +116,19 @@
           "properties": {
             "criteria": {
               "additionalProperties": {
-                "const": "passed"
+                "oneOf": [
+                  {
+                    "const": "passed"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "const": "passed"
+                      }
+                    }
+                  }
+                ]
               }
             }
           }
