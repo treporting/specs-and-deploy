@@ -1,0 +1,92 @@
+# Review of SR-01 to SR-05 against the criteria of the software requirements.
+# Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
+level: review
+created_by: Mathias Fischer
+created_at: '2026-10-25T19:50:26+01:00'
+criteria: reviews/criteria-r5.yaml
+criteria_revision: 'f836483'
+results:
+- object_key: RR-01
+  target_ids: [SR-01]
+  revision: 'f836483'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04:
+      result: passed
+      note: 'two cases, a criterion missing and one foreign, yet one behaviour - every criterion once'
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-02
+  target_ids: [SR-02]
+  revision: 'f836483'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04:
+      result: passed
+      note: 'two cases, a wrong passed and a wrong failed, yet one behaviour - the verdict follows the criteria'
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-03
+  target_ids: [SR-03]
+  revision: 'f836483'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-04
+  target_ids: [SR-04]
+  revision: 'f836483'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-05
+  target_ids: [SR-05]
+  revision: 'f836483'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
