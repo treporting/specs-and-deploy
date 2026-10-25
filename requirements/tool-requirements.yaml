@@ -26,7 +26,7 @@ requirements:
     only when every criterion passed, a note to every failed criterion, the revision reviewed exists,
     and the reviewer is not the author of the requirement
   target_ids: [PROC-13, PROC-15]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-04
   feature: Reviews
@@ -34,20 +34,20 @@ requirements:
     and the revision of each requirement
   rationale: the automatic support of the review - it gathers the criteria of the level and the revision
     of each requirement, so that the reviewer does not copy them by hand and makes no mistake there
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-05
   feature: CI check
   object_text: check on every pull request that every YAML file matches its schema
   target_ids: [PROC-04]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-06
   feature: CI check
   object_text: check on every pull request that every id named in `@implements` or `@verifies` exists, and
     is approved, in the base commit of the pull request
   target_ids: [PROC-05]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-07
   feature: CI check
@@ -55,24 +55,24 @@ requirements:
     counts differ
   rationale: tool error detection - a count made by the parser shares every error of the parser and
     cannot find one, as SYS-23 asks of the product for an import
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-08
   feature: CI check
   object_text: check that the system requirement a software requirement names as uplink exists in
     specs-and-deploy on main, and is allocated to the subsystem of the software requirement
   target_ids: [PROC-12]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-09
   feature: CI check
   object_text: check that an approved requirement names approved requirements only as its uplinks
   target_ids: [PROC-13]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-10
   feature: CI check
   object_text: check that every test file belongs to exactly one test level
   target_ids: [PROC-19]
-  status: review
+  status: approved
   verification_method: [test]
