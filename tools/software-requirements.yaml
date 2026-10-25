@@ -7,31 +7,31 @@ requirements:
   object_text: report a criterion of the criteria file that a result of a review leaves out, and a
     criterion the result names that the file does not hold
   target_ids: [TOOL-03]
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR-02
   component: review
   object_text: report a verdict passed where a criterion failed, and a verdict failed where every
     criterion passed
   target_ids: [TOOL-03]
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR-03
   component: review
   object_text: report a failed criterion that carries no note
   target_ids: [TOOL-03]
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR-04
   component: review
   object_text: report a revision reviewed that names no commit
   target_ids: [TOOL-03]
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR-05
   component: review
   object_text: report a result whose reviewer is the author or a co-author of the last commit that
     changed the requirement reviewed
   target_ids: [TOOL-03]
-  status: draft
+  status: review
   verification_method: [test]
