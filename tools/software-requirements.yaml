@@ -44,19 +44,19 @@ requirements:
   object_text: where a criterion or the verdict of a result holds a value other than passed or failed,
     report it; count such a criterion as not passed
   target_ids: [TOOL-03]
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR-07
   component: review
   object_text: where the criteria revision of a review names no commit that changed its criteria file,
     report it once for the review, as the criteria the review followed cannot be traced
   target_ids: [TOOL-03]
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR-08
   component: review
   object_text: report a result whose reviewer is the author or a co-author of the last commit that
     changed the document reviewed
   target_ids: [TOOL-11]
-  status: draft
+  status: review
   verification_method: [test]
