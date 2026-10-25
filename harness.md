@@ -98,6 +98,7 @@ to the process does not count into the maturity of the product.
 | PROC-13 | A requirement is approved only when it passed its review against the criteria of its level, and every requirement it names as uplink is approved. |
 | PROC-14 | A change of the text of an approved requirement sets it back to `draft`. |
 | PROC-15 | The reviewer of a requirement is not its author. |
+| PROC-16 | A pull request closes one ticket and changes one concern; a ticket that touches data, rules and explanations at once is split into several pull requests. |
 
 ## Loop for every code change
 
