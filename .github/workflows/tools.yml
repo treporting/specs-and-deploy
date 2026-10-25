@@ -1,0 +1,46 @@
+# The gate of the tools on every pull request (TOOL-12). Each job is a required check of the ruleset
+# of main, so a pull request whose job failed cannot be merged. See devops.md.
+name: tools
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # @implements SR-09
+  reviewcheck:
+    runs-on: ubuntu-latest
+    steps:
+      #	the whole history: a review names the revisions it reviewed
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/go.mod
+          cache-dependency-path: tools/go.sum
+      - name: reviewcheck
+        working-directory: tools
+        run: go run ./cmd/reviewcheck -root ..
+
+  # @implements SR-10
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/go.mod
+          cache-dependency-path: tools/go.sum
+      - name: vet
+        working-directory: tools
+        run: go vet ./... && go vet -tags integration ./...
+      - name: MT
+        working-directory: tools
+        run: go test ./...
+      - name: SwIT
+        working-directory: tools
+        run: go test -tags integration ./...
