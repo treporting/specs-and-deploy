@@ -76,3 +76,10 @@ requirements:
   target_ids: [PROC-19]
   status: approved
   verification_method: [test]
+- object_key: TOOL-11
+  feature: Reviews
+  object_text: check that the reviewer of a document is not its author - the author or a co-author of
+    the last commit that changed it
+  target_ids: [PROC-15]
+  status: draft
+  verification_method: [test]
