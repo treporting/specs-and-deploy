@@ -1,8 +1,9 @@
 # System requirements (r2)
 
-What treporting has to do, seen as one box - viewer, reporter and storage together. Each
-requirement names the user needs (r1) and the regulatory requirements (`regulatory-requirements.md`)
-it comes from - or the decision of the architecture that made it possible (`ARC-Dnn`) -, and every need and
+What treporting has to do, seen as one box - viewer, reporter and storage together. A requirement
+names as uplinks the user needs (r1), the regulatory requirements and the decisions of the
+architecture (`ARC-Dnn`) it comes from. Where none stands above it - a requirement derived from the
+view of the system - it gives its rationale instead (ISO/IEC/IEEE 29148, 5.2.8). Every need and
 every regulatory requirement that treporting realizes has at least one requirement. How the
 system does it is left to the architecture (r3).
 

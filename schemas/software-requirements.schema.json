@@ -21,7 +21,6 @@
           "object_key",
           "object_text",
           "component",
-          "target_ids",
           "status",
           "verification_method"
         ],
@@ -67,8 +66,25 @@
               "demonstration",
               "test"
             ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1,
+            "description": "why it stands, where it names no uplink (ISO/IEC/IEEE 29148, 5.2.8)"
           }
-        }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "target_ids"
+            ]
+          },
+          {
+            "required": [
+              "rationale"
+            ]
+          }
+        ]
       }
     }
   }
