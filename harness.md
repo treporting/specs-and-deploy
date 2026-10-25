@@ -119,18 +119,24 @@ to the process does not count into the maturity of the product.
 | PROC-16 | A pull request closes one ticket and changes one concern; a ticket that touches data, rules and explanations at once is split into several pull requests. |
 | PROC-17 | Where a rule of the harness changes, every requirement that names it as uplink goes back to `review`. |
 
-**A rule of the harness is approved when it is merged into `main`.** It names no criteria and passes
-no review of its own, because
+**Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
+and passes no review of its own. So a rule can be the uplink of an approved requirement (PROC-13).
 
-- the harness is the central safeguard: it sets how everything else is checked - to review its rules
-  by the same criteria as requirements would go round in a circle
-- it is improved iteratively: rules arise and change from the work, and a formal review of every
-  change would slow the very means by which the process gets better
+**Why**:
+
+- the harness is the central safeguard: it sets how everything else is checked
+- it is improved iteratively: rules arise and change from the work
 - the merge is an approval with evidence: a rule reaches `main` only by ticket and pull request
   (PROC-02, PROC-03), one concern each (PROC-16); the Product Owner merges, and git keeps who and
   when
 
-So a rule of the harness can be the uplink of an approved requirement (PROC-13).
+**Rejected**: to review the rules of the harness against criteria, as requirements are. The rules
+that set how a review is made would then need a review made by those rules - they go round in a
+circle; and a formal review of every change would slow the very means by which the process gets
+better.
+
+This overcomes the chicken-and-egg problem: the rules of review stand first, and every requirement
+is reviewed by them.
 
 ## Loop for every code change
 
