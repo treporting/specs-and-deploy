@@ -1,5 +1,9 @@
 # Harness
 
+How treporting is developed: the process, its levels, the roles, the rules of the work and the loops
+for every change. It is written for everyone who works on treporting, and for the auditor who checks
+how it was made.
+
 ## Setup
 
 The settings of Claude Code for all repos of treporting are kept in `~/git/treporting/.claude/`,
