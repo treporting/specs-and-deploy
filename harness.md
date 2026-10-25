@@ -34,7 +34,7 @@ treporting is a pure software project and is developed following the process of 
 | r4 | the system requirements allocated to the subsystems - derived directly from r2 by the allocation in the system architecture, with no ids of their own | 6.4.4 architecture definition |
 | r5 | software requirements (SR) per subsystem | 6.4.3 software requirements definition |
 | r6 | software architecture of a subsystem: its components | 6.4.4 architecture definition |
-| r7 | software design of a subsystem: its modules and units; it names how a requirement is verified (`verification_method`) | 6.4.5 design definition |
+| r7 | software design of a subsystem: its modules and units | 6.4.5 design definition |
 
 In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
 tests SYS, r5 to r7 with the code and the software tests SW. n1 is read by the compliance
