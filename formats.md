@@ -212,8 +212,7 @@ it('shows the hidden filters', () => { ... })
 ```
 
 - one annotation per line, several ids separated by commas; never over two lines
-- `@implements` names software requirements of its own repo only; in `tools/` it names tool
-  requirements (see tools/README.md)
+- `@implements` names software requirements of its own repo only - in `tools/` as well
 - `@verifies` names software requirements of its own repo in a software test, system
   requirements in a system test
 

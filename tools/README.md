@@ -37,14 +37,20 @@ product - a checker with a fault would let faults pass unseen.
 
 ## The chain of a tool
 
-**Decision**: a tool requirement leads straight to code and tests. The code names it in
-`@implements TOOL-nn`, a test in `@verifies TOOL-nn`. The tests are on the levels MT and SwIT.
+**Decision**: a tool requirement leads to software requirements, and those to code and tests - as
+for a subsystem. The software requirements of the tools are in
+[software-requirements.yaml](software-requirements.yaml), each naming its tool requirement as
+uplink. The code names them in `@implements SR-nn`, a test in `@verifies SR-nn`. The tests are on
+the levels MT and SwIT.
 
-**Why**: a tool requirement is as concrete as a software requirement already. A software
-requirement beside it would say the same sentence again.
+**Why**: the first tool showed it. TOOL-03 holds five behaviours that can each be tested on their
+own; by ISO/IEC/IEEE 29148 each is a requirement of its own (singular). Its review noted it, and
+each test of reviewcheck verified one of the five while all named only TOOL-03 - which of them a
+test verifies could not be told. A tool requirement says what a tool does for our work; a
+software requirement says how it behaves.
 
-**Rejected**: tool requirement, software requirement, code - the full chain of the product. It
-would double every tool requirement. A tool that grows large can still get software requirements.
+**Rejected**: a tool requirement leading straight to code and tests - the first decision here. It
+held a tool requirement as concrete as a software requirement, which TOOL-03 proved wrong.
 
 ## Who changed a requirement
 
