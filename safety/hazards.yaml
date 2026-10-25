@@ -1,6 +1,10 @@
 # Hazards (h1) and their controls (h2). What explains them is in hazard-and-risk-analysis.md.
 # Format: ../formats.md - schema: ../schemas/hazards.schema.json
 level: h1
+documents:
+- name: hazard-and-risk-analysis.md
+  status: draft
+  verification_method: [review]
 hazards:
 - object_key: HAZ-01
   object_text: a gap in the trace is shown as covered

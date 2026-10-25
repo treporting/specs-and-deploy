@@ -1,6 +1,10 @@
 # User needs (r1). What explains them is in user-needs.md.
 # Format: ../formats.md - schema: ../schemas/user-needs.schema.json
 level: r1
+documents:
+- name: user-needs.md
+  status: draft
+  verification_method: [review]
 requirements:
 - object_key: UN-PM-01
   function: PM
