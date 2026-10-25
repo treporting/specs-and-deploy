@@ -45,3 +45,37 @@ requirement beside it would say the same sentence again.
 
 **Rejected**: tool requirement, software requirement, code - the full chain of the product. It
 would double every tool requirement. A tool that grows large can still get software requirements.
+
+## Who changed a requirement
+
+**Decision**: `modified_by` holds the original as git records it: the author of the last commit that
+changed the requirement, and its co-authors - `Mathias Fischer, Co-Authored-By: Claude Opus 5.5`.
+Nothing is derived from it and kept beside it; there is no `mmodified_by`.
+
+**Why**: git records author and co-authors by itself; a record made by a computer is the evidence an
+audit trail asks for (REG-05), and the original stays original (ARC-R01, REG-10).
+
+**Rejected**:
+
+- only the one who wrote it, `claude-code` - a value already interpreted would stand in the field of
+  the original, and the author of the commit would be lost
+- a field `created_by` or `modified_by` written by hand in the YAML - visible in the file, but a
+  claim rather than a record, it can drift from git unseen, and it would be a second source of the
+  same truth
+
+## Who the author of a requirement is
+
+**Decision**: the author of a requirement is the co-author of the last commit that changed it whose
+name begins with `Claude`, where there is one; else the author of the commit. The reviewer of a
+requirement is not its author (PROC-15, TOOL-03).
+
+**Why**: the commits are made under the account of the Product Owner, so git names them as author of
+every commit, also where Claude Code wrote the text; the co-author tells who wrote it. The check
+looks at the beginning of the name only - the trailer names the model, `Claude Opus 5.5`, and is not
+to break when the model changes.
+
+**Rejected**:
+
+- the reviewer may not appear in `modified_by` at all - every review by the Product Owner would fail,
+  as they are the author of every commit
+- the check left to the approver by hand - TOOL-03 asks for it
