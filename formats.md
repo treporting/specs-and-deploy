@@ -110,7 +110,7 @@ results:
 - a revision and a time are written in quotes: unquoted, YAML reads `7215683` as a number
 
 The schemas are `schemas/review-criteria.schema.json` and `schemas/review-result.schema.json`;
-what they cannot say - every criterion once, the reviewer not the author - the CI checks. See the
+what they cannot say - every criterion once, the reviewer not the author - TOOL-03 checks. See the
 loop for every review in [harness.md](harness.md).
 
 ## Breakdown
@@ -203,18 +203,19 @@ function name, from the JSON output of `go test` and of vitest.
 
 ## CI check
 
-On every pull request of a code repo:
+On every pull request of a code repo, each check a tool with a requirement of its own
+(`requirements/tool-requirements.yaml`):
 
-1. the YAML of the requirements matches its schema
-2. every id in `@implements` and `@verifies` exists in the YAML of the **base commit** of the
-   pull request - a requirement added in the same pull request does not count (PROC-05); a SYS
-   named by a system test must exist in treporting on `main`
-3. the number of annotations the parser found equals the count of `git grep -c`
-4. the uplink of every SR: the SYS it names exists in treporting on `main` and is allocated to
-   this subsystem in the architecture (r4)
-5. every test file belongs to exactly one test level
+| Check | Tool requirement |
+|---|---|
+| every YAML file matches its schema | TOOL-05 |
+| every id in `@implements` and `@verifies` exists, and is approved, in the YAML of the **base commit** of the pull request - a requirement added in the same pull request does not count (PROC-05); a SYS named by a system test exists in specs-and-deploy on `main` | TOOL-06 |
+| the annotations counted a second way, apart from the parser - `git grep -c` | TOOL-07 |
+| the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to this subsystem in the architecture (r4) | TOOL-08 |
+| an approved requirement names approved uplinks only | TOOL-09 |
+| every test file belongs to exactly one test level | TOOL-10 |
 
-In this repo: the schemas, the references both ways, and every SYS allocated.
+In specs-and-deploy as well: the references both ways, and every SYS allocated.
 
-The checking program lives in extractor-content, beside the parser of the annotations; the
-workflow is a reusable workflow in `treporting/.github`.
+*Open*: the tools are not built yet; each waits for its approved tool requirement. Where they live
+is still to be settled; the workflow is to be a reusable workflow in `treporting/.github`.
