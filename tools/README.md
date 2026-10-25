@@ -54,8 +54,8 @@ held a tool requirement as concrete as a software requirement, which TOOL-03 pro
 
 ## Who changed a requirement
 
-**Decision**: `modified_by` holds the original as git records it: the author of the last commit that
-changed the requirement, and its co-authors - `Claude Opus 5.5`, or `Mathias Fischer`.
+**Decision**: `modified_by` holds the original as git records it: the author of the last commit,
+not a merge, that changed the requirement, and its co-authors - `Claude Opus 5.5`, or `Mathias Fischer`.
 Nothing is derived from it and kept beside it; there is no `mmodified_by`.
 
 **Why**: git records author and co-authors by itself; a record made by a computer is the evidence an
@@ -71,9 +71,9 @@ audit trail asks for (REG-05), and the original stays original (ARC-R01, REG-10)
 
 ## Who the author of a requirement is
 
-**Decision**: the authors of a requirement are the names in its `modified_by` - the author and the
-co-authors of the last commit that changed it, whatever names stand there. The reviewer of a
-requirement is none of them (PROC-15, TOOL-03). Who writes the text is the author of the commit:
+**Decision**: the authors of a requirement or a document are the names in its `modified_by` - the
+author and the co-authors of the last commit, not a merge, that changed it, whatever names stand
+there. The reviewer is none of them (PROC-15; TOOL-03, TOOL-11). Who writes the text is the author of the commit:
 Claude Code commits with `--author="Claude Opus 5.5 <noreply@anthropic.com>"`; the Product Owner
 stays its committer.
 
@@ -86,6 +86,12 @@ no rule about names: it holds for any assistant or person, and needs no change w
 changes. A commit the Product Owner writes alone names them, and they may not review it - as it
 should be.
 
+A merge commit is no authorship: the one who merges approves, and writes nothing. Where two pull
+requests change one file from an older `main`, the merge commit equals neither of its parents, and
+git counts it as a change of the file - with the one who merged as its author. The merge commit
+stays as the record of the approval; it is only not read as authorship. The known limit: a conflict
+resolved by hand in a merge is a change no author is found for.
+
 **Rejected**:
 
 - the co-author whose name begins with `Claude`, else the author of the commit - the first decision;
@@ -93,6 +99,8 @@ should be.
 - the authors without the committer, where none is left the committer - it keeps the history valid,
   but it is a rule about git again, not the record of git
 - the check left to the approver by hand - TOOL-03 asks for it
+- rebase merges, so that `main` has no merge commits - git would no longer record who merged, the
+  evidence of the approval
 
 Every review result made before this decision reviewed commits with the Product Owner as author. It
 breaks the check, so its requirements are reviewed again and the old result is removed.
