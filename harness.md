@@ -171,11 +171,10 @@ The CI runs `reviewcheck` on every pull request; a result that breaks a rule blo
 1. compile
 2. run linter
 3. run unit-testing in local
-4. run spec-testing on test environment
+4. run the tests of the levels SwVal, SysIT, SysQT and Val (see Test levels)
 5. report on
    - test coverage
    - structural debt
-   - requirements
 6. create the SBOM and check the licences of the components (PROC-08)
 7. provide feedback
 8. create a signed tag as approval (PROC-06)
