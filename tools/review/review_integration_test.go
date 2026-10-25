@@ -31,9 +31,9 @@ func write(t *testing.T, root, path, content string) {
 	}
 }
 
-// The check on a real history: the requirement is written with Claude as co-author, then another
+// The check on a real history: the requirements are written by Claude Code as author, then another
 // requirement of the same file is changed by the reviewer alone - which must not make the reviewer
-// the author of the first.
+// an author of the first.
 //
 // @verifies TOOL-03
 func TestTheCheckOnAHistoryOfGit(t *testing.T) {
@@ -45,7 +45,7 @@ func TestTheCheckOnAHistoryOfGit(t *testing.T) {
   object_text: first
 `)
 	gitIn(t, root, "add", "-A")
-	gitIn(t, root, "commit", "-q", "-m", "requirements\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>")
+	gitIn(t, root, "commit", "-q", "--author=Claude Opus 5.5 <noreply@anthropic.com>", "-m", "requirements")
 	first := gitIn(t, root, "rev-parse", "--short", "HEAD")
 
 	write(t, root, "requirements/tool-requirements.yaml", requirements+`- object_key: TOOL-04
@@ -77,7 +77,7 @@ results:
 		t.Fatal(err)
 	}
 	if len(findings) != 1 || findings[0].Result != "RR-02" ||
-		!strings.Contains(findings[0].Message, "is the author of TOOL-04") {
-		t.Errorf("want one finding, that the reviewer is the author of TOOL-04; got %v", findings)
+		!strings.Contains(findings[0].Message, "is an author of TOOL-04") {
+		t.Errorf("want one finding, that the reviewer is an author of TOOL-04; got %v", findings)
 	}
 }

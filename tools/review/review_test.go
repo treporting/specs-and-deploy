@@ -97,7 +97,7 @@ func TestAGoodResultHasNoFinding(t *testing.T) {
   revision: 'c1'
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
-`, history("Mathias Fischer", "Claude Opus 5.5"))
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
 	if len(got) != 0 {
 		t.Errorf("want no finding, got %q", got)
 	}
@@ -110,7 +110,7 @@ func TestEveryCriterionOnce(t *testing.T) {
   revision: 'c1'
   criteria: {RC-01: passed, RC-09: passed}
   verdict: passed
-`, history("Mathias Fischer", "Claude Opus 5.5"))
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
 	expect(t, got, "criterion RC-02 is missing")
 	expect(t, got, "criterion RC-09 is not in")
 }
@@ -127,7 +127,7 @@ func TestTheVerdictFollowsTheCriteria(t *testing.T) {
   revision: 'c1'
   criteria: {RC-01: passed, RC-02: passed}
   verdict: failed
-`, history("Mathias Fischer", "Claude Opus 5.5"))
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
 	expect(t, got, "the verdict is passed, but not every criterion passed")
 	expect(t, got, "the verdict is failed, but every criterion passed")
 }
@@ -139,7 +139,7 @@ func TestAFailedCriterionHasANote(t *testing.T) {
   revision: 'c1'
   criteria: {RC-01: passed, RC-02: failed}
   verdict: failed
-`, history("Mathias Fischer", "Claude Opus 5.5"))
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
 	expect(t, got, "criterion RC-02 failed with no note")
 }
 
@@ -150,7 +150,7 @@ func TestTheRevisionExists(t *testing.T) {
   revision: 'nope'
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
-`, history("Mathias Fischer", "Claude Opus 5.5"))
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
 	expect(t, got, "the revision nope is no commit")
 }
 
@@ -163,10 +163,13 @@ func TestTheReviewerIsNotTheAuthor(t *testing.T) {
   verdict: passed
 `
 	//	written by the reviewer alone
-	expect(t, check(t, result, history("Mathias Fischer")), "the reviewer Mathias Fischer is the author of TOOL-03")
+	expect(t, check(t, result, history("Mathias Fischer")), "the reviewer Mathias Fischer is an author of TOOL-03")
 
-	//	written by Claude Code, committed by the reviewer: the co-author is the author
-	if got := check(t, result, history("Mathias Fischer", "Claude Opus 5.5")); len(got) != 0 {
+	//	written by another, with the reviewer as co-author
+	expect(t, check(t, result, history("Copilot", "Mathias Fischer")), "the reviewer Mathias Fischer is an author of TOOL-03")
+
+	//	written by another, with no co-author: whatever name stands there
+	if got := check(t, result, history("Copilot")); len(got) != 0 {
 		t.Errorf("want no finding, got %q", got)
 	}
 }
@@ -185,5 +188,5 @@ requirements:
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
 `, git)
-	expect(t, got, "the reviewer Mathias Fischer is the author of SR-01")
+	expect(t, got, "the reviewer Mathias Fischer is an author of SR-01")
 }
