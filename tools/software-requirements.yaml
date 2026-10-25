@@ -37,7 +37,7 @@ requirements:
   object_text: report a result whose reviewer is the author or a co-author of the last commit, not a
     merge, that changed the requirement reviewed
   target_ids: [TOOL-03]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR-06
   component: review
@@ -58,7 +58,7 @@ requirements:
   object_text: report a result whose reviewer is the author or a co-author of the last commit, not a
     merge, that changed the document reviewed
   target_ids: [TOOL-11]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR-09
   component: ci
