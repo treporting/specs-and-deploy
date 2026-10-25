@@ -158,12 +158,13 @@ is reviewed by them.
 3. write the result into a file of its own in `reviews/`: who, when, the revision of every
    requirement reviewed, per requirement and criterion passed or failed, and the verdict - one
    result may cover many requirements
-4. pull request for the result - it checks the form of the evidence, not the requirements
+4. pull request for the result - it checks the form of the evidence, not the requirements;
+   `reviewcheck` (TOOL-03, see tools/README.md) shows no finding
 5. pull request that sets the passed requirements to `approved` (PROC-13); the failed ones go
    back to `draft`
 
-Until the tools that check a review (TOOL-03) are approved and built, the approver checks a review
-result by hand against the rules of the section Reviews of formats.md, before setting `approved`.
+Until the CI runs `reviewcheck` on every pull request, the approver runs it before setting
+`approved`.
 
 ## Loop for every release or library
 
