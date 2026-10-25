@@ -55,7 +55,7 @@ held a tool requirement as concrete as a software requirement, which TOOL-03 pro
 ## Who changed a requirement
 
 **Decision**: `modified_by` holds the original as git records it: the author of the last commit that
-changed the requirement, and its co-authors - `Mathias Fischer, Co-Authored-By: Claude Opus 5.5`.
+changed the requirement, and its co-authors - `Claude Opus 5.5`, or `Mathias Fischer`.
 Nothing is derived from it and kept beside it; there is no `mmodified_by`.
 
 **Why**: git records author and co-authors by itself; a record made by a computer is the evidence an
@@ -71,20 +71,31 @@ audit trail asks for (REG-05), and the original stays original (ARC-R01, REG-10)
 
 ## Who the author of a requirement is
 
-**Decision**: the author of a requirement is the co-author of the last commit that changed it whose
-name begins with `Claude`, where there is one; else the author of the commit. The reviewer of a
-requirement is not its author (PROC-15, TOOL-03).
+**Decision**: the authors of a requirement are the names in its `modified_by` - the author and the
+co-authors of the last commit that changed it, whatever names stand there. The reviewer of a
+requirement is none of them (PROC-15, TOOL-03). Who writes the text is the author of the commit:
+Claude Code commits with `--author="Claude Opus 5.5 <noreply@anthropic.com>"`; the Product Owner
+stays its committer.
 
-**Why**: the commits are made under the account of the Product Owner, so git names them as author of
-every commit, also where Claude Code wrote the text; the co-author tells who wrote it. The check
-looks at the beginning of the name only - the trailer names the model, `Claude Opus 5.5`, and is not
-to break when the model changes.
+```bash
+git commit --author="Claude Opus 5.5 <noreply@anthropic.com>" -m "..."
+```
+
+**Why**: git tells author and committer apart by itself. With the writer as author, the check needs
+no rule about names: it holds for any assistant or person, and needs no change when the assistant
+changes. A commit the Product Owner writes alone names them, and they may not review it - as it
+should be.
 
 **Rejected**:
 
-- the reviewer may not appear in `modified_by` at all - every review by the Product Owner would fail,
-  as they are the author of every commit
+- the co-author whose name begins with `Claude`, else the author of the commit - the first decision;
+  it names a product, so another assistant, such as Copilot, would need a change of the rule
+- the authors without the committer, where none is left the committer - it keeps the history valid,
+  but it is a rule about git again, not the record of git
 - the check left to the approver by hand - TOOL-03 asks for it
+
+Every review result made before this decision reviewed commits with the Product Owner as author. It
+breaks the check, so its requirements are reviewed again and the old result is removed.
 
 ## reviewcheck
 
