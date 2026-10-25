@@ -11,11 +11,11 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 
 | Level | Data | Explanation | Repo |
 |---|---|---|---|
-| h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC), still to come | `safety/hazard-and-risk-analysis.md` | treporting |
-| n1 | `requirements/regulatory-requirements.yaml` (REG) | `requirements/regulatory-requirements.md` | treporting |
-| r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | treporting |
-| r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | treporting |
-| r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | treporting |
+| h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC), still to come | `safety/hazard-and-risk-analysis.md` | specs-and-deploy |
+| n1 | `requirements/regulatory-requirements.yaml` (REG) | `requirements/regulatory-requirements.md` | specs-and-deploy |
+| r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy |
+| r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy |
+| r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy |
 | r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem |
 
 A readable Markdown view of the YAML is generated on request only.
@@ -165,9 +165,9 @@ The level of a test follows from where its file lies (see the test levels in
 | MT | `*_test.go` in the package, `*.test.js` | the subsystem |
 | SwIT | `*_test.go` with the build tag `integration`, `*.integration.test.js` | the subsystem |
 | SwVal | `subsystemtest/` | the subsystem |
-| SysIT | `systemtest/integration/` | treporting |
-| SysQT | `systemtest/system/` | treporting |
-| Val | `systemtest/acceptance/` | treporting |
+| SysIT | `systemtest/integration/` | specs-and-deploy |
+| SysQT | `systemtest/system/` | specs-and-deploy |
+| Val | `systemtest/acceptance/` | specs-and-deploy |
 
 The containers are built in `deploy/` of this repo from the parts the subsystems deliver - the
 reporter and the viewer in one image. A test result is linked to its test case by package and

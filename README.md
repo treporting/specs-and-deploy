@@ -1,4 +1,6 @@
-# treporting
+# specs-and-deploy
+
+The specifications of treporting, and its integration, deployment and system tests.
 
 User needs, requirements, architecture and the way of working of
 [treporting](https://github.com/treporting) - a tool that reports traceability and maturity
