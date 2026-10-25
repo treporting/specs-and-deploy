@@ -1,0 +1,144 @@
+# Review of TOOL-03 to TOOL-10 against the criteria of the tool requirements.
+# Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
+level: review
+created_by: Mathias Fischer
+created_at: '2026-10-25T13:30:00+01:00'
+criteria: reviews/criteria-tool.yaml
+criteria_revision: 'c877cc5'
+results:
+- object_key: RR-01
+  target_ids: [TOOL-03]
+  revision: '19aa72a'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04:
+      result: passed
+      note: 'five conditions in one sentence, yet one check of one tool - kept as one requirement'
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-02
+  target_ids: [TOOL-04]
+  revision: '19aa72a'
+  criteria:
+    RC-01:
+      result: failed
+      note: 'PROC-13 can be met without a skeleton; it eases the work but is not necessary - give a rationale instead of the uplink, or strike it'
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: failed
+- object_key: RR-03
+  target_ids: [TOOL-05]
+  revision: '19aa72a'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-04
+  target_ids: [TOOL-06]
+  revision: '19aa72a'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-05
+  target_ids: [TOOL-07]
+  revision: '19aa72a'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09:
+      result: failed
+      note: 'PROC-05 asks that annotations name approved requirements; the second count is to find errors of the parser, which no rule of the harness asks for - give a rationale: tool error detection, as SYS-23 asks of the product'
+    RC-10: passed
+    RC-11: passed
+  verdict: failed
+- object_key: RR-06
+  target_ids: [TOOL-08]
+  revision: '19aa72a'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-07
+  target_ids: [TOOL-09]
+  revision: '19aa72a'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-08
+  target_ids: [TOOL-10]
+  revision: '19aa72a'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09:
+      result: failed
+      note: 'PROC-04, the full gate, hardly carries it; the test levels stand in the harness as a table, not as a rule - a rule of its own, or a rationale'
+    RC-10: passed
+    RC-11: passed
+  verdict: failed
