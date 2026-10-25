@@ -67,6 +67,8 @@ type Git interface {
 	FileCommits(rev, path string) ([]string, error)
 	// Parent answers the first parent of a commit, and false for the first commit.
 	Parent(commit string) (string, bool)
+	// IsMerge says whether a commit has more than one parent.
+	IsMerge(commit string) bool
 	// Authors answers the author of a commit and the names of its co-authors.
 	Authors(commit string) (author string, coAuthors []string, err error)
 }
@@ -214,7 +216,8 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 }
 
 // authorsOf answers the authors of a requirement or document in a revision: the author and the
-// co-authors of the last commit that changed it, whatever names stand there.
+// co-authors of the last commit, not a merge, that changed it, whatever names stand there. A merge
+// joins what others wrote; the one who merged approves, and is no author.
 //
 // @implements SR-05, SR-08
 func authorsOf(git Git, revision, target string) ([]string, error) {
@@ -229,6 +232,9 @@ func authorsOf(git Git, revision, target string) ([]string, error) {
 		return nil, err
 	}
 	for _, commit := range commits {
+		if git.IsMerge(commit) {
+			continue
+		}
 		now := objectAt(git, commit, file, key)
 		if now == nil {
 			continue

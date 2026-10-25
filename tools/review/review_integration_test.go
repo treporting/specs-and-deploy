@@ -125,3 +125,51 @@ results:
 		}
 	}
 }
+
+// Two pull requests change one document from the same main; the reviewer merges both, so the second
+// merge equals neither parent. Claude Code wrote every line, and the reviewer is no author.
+//
+// @verifies SR-08
+func TestTwoMergesOfOneDocument(t *testing.T) {
+
+	root := t.TempDir()
+	claude := "--author=Claude Opus 5.5 <noreply@anthropic.com>"
+	gitIn(t, root, "init", "-q", "-b", "main")
+	write(t, root, "reviews/criteria-tool.yaml", criteria)
+	write(t, root, "doc.md", "top\n\nmiddle\n\nbottom\n")
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", claude, "-m", "doc")
+	first := gitIn(t, root, "rev-parse", "--short", "HEAD")
+
+	gitIn(t, root, "switch", "-q", "-c", "a")
+	write(t, root, "doc.md", "top, changed\n\nmiddle\n\nbottom\n")
+	gitIn(t, root, "commit", "-q", claude, "-am", "a")
+	gitIn(t, root, "switch", "-q", "main")
+	gitIn(t, root, "switch", "-q", "-c", "b")
+	write(t, root, "doc.md", "top\n\nmiddle\n\nbottom, changed\n")
+	gitIn(t, root, "commit", "-q", claude, "-am", "b")
+	gitIn(t, root, "switch", "-q", "main")
+	gitIn(t, root, "merge", "-q", "--no-ff", "-m", "merge a", "a")
+	gitIn(t, root, "merge", "-q", "--no-ff", "-m", "merge b", "b")
+	merged := gitIn(t, root, "rev-parse", "--short", "HEAD")
+
+	write(t, root, "reviews/r.yaml", `level: review
+created_by: Mathias Fischer
+created_at: '2026-10-25T13:30:00+01:00'
+criteria: reviews/criteria-tool.yaml
+criteria_revision: '`+first+`'
+results:
+- object_key: RR-01
+  target_ids: [doc.md]
+  revision: '`+merged+`'
+  criteria: {RC-01: passed, RC-02: passed}
+  verdict: passed
+`)
+	findings, err := Check(root, "reviews/r.yaml", ExecGit{Root: root})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(findings) != 0 {
+		t.Errorf("want no finding, the merges are no authorship; got %v", findings)
+	}
+}

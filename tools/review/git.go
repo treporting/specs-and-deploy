@@ -48,6 +48,12 @@ func (g ExecGit) Parent(commit string) (string, bool) {
 	return strings.TrimSpace(out), true
 }
 
+// IsMerge says whether a commit has more than one parent.
+func (g ExecGit) IsMerge(commit string) bool {
+	_, err := g.run("rev-parse", "--verify", "--quiet", commit+"^2")
+	return err == nil
+}
+
 // Authors answers the author of a commit and the names of its co-authors, without their address.
 func (g ExecGit) Authors(commit string) (string, []string, error) {
 	out, err := g.run("show", "-s", "--format=%an%x00%(trailers:key=Co-Authored-By,valueonly,separator=%x1f)", commit)
