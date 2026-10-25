@@ -1,14 +1,15 @@
-# Review of SR-01 to SR-05 against the criteria of the software requirements.
-# Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
+# Review of SR-01 to SR-08 against the criteria of the software requirements. It replaces the review
+# of SR-01 to SR-05. Prepared by Claude Code; decided by the reviewer.
+# Format: ../formats.md, section Reviews.
 level: review
 created_by: Mathias Fischer
-created_at: '2026-10-25T19:50:26+01:00'
+created_at: '2026-10-25T20:46:55+01:00'
 criteria: reviews/criteria-r5.yaml
-criteria_revision: 'f836483'
+criteria_revision: '3cbb37e'
 results:
 - object_key: RR-01
   target_ids: [SR-01]
-  revision: 'f836483'
+  revision: '3fa8184'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -26,7 +27,7 @@ results:
   verdict: passed
 - object_key: RR-02
   target_ids: [SR-02]
-  revision: 'f836483'
+  revision: '3fa8184'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -44,7 +45,7 @@ results:
   verdict: passed
 - object_key: RR-03
   target_ids: [SR-03]
-  revision: 'f836483'
+  revision: '3fa8184'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -60,7 +61,7 @@ results:
   verdict: passed
 - object_key: RR-04
   target_ids: [SR-04]
-  revision: 'f836483'
+  revision: '3fa8184'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -76,7 +77,57 @@ results:
   verdict: passed
 - object_key: RR-05
   target_ids: [SR-05]
-  revision: 'f836483'
+  revision: '3fa8184'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-06
+  target_ids: [SR-06]
+  revision: '3fa8184'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04:
+      result: passed
+      note: 'to report and to count as not passed, yet one behaviour - how a value that cannot be read is handled'
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-07
+  target_ids: [SR-07]
+  revision: '3fa8184'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+  verdict: passed
+- object_key: RR-08
+  target_ids: [SR-08]
+  revision: '3fa8184'
   criteria:
     RC-01: passed
     RC-02: passed
