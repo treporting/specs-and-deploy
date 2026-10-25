@@ -14,6 +14,7 @@ The data of every level is in YAML, what explains it in Markdown beside it - see
 | File | What it holds | Ids |
 |---|---|---|
 | [harness.md](harness.md) | how we work: the process we follow (ISO/IEC/IEEE 12207, 29119), our levels, the rules of our work, the loops for every change and every release | `PROC-nn` |
+| [devops.md](devops.md) | the environment of our work: the tools, and the rule that tools are code | - |
 | [definitions.md](definitions.md) | the terms: system, item, content, work product, release, library, baseline, traceability | - |
 | [architecture/attributes.md](architecture/attributes.md) | every attribute of the model: meaning, origin, original, intermediate and mapped values, how it is carried down | - |
 | [formats.md](formats.md) | how requirements, annotations and tests are written down, and what the CI checks; the schemas in [schemas/](schemas/) | - |
