@@ -140,6 +140,9 @@ to the process does not count into the maturity of the product.
 5. pull request that sets the passed requirements to `approved` (PROC-13); the failed ones go
    back to `draft`
 
+Until the tools that check a review (TOOL-03) are approved and built, the approver checks a review
+result by hand against the rules of the section Reviews of formats.md, before setting `approved`.
+
 ## Loop for every release or library
 
 1. compile
