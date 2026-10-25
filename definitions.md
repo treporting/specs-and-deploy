@@ -220,6 +220,11 @@ of requirements. The breakdown depends on the context, code-based or model-based
 on knowledge of the domain. A work product can be related to one architectural entity. An
 architectural entity is realized by the content of items in a system.
 
+## Structural debt
+
+Dependencies in the code that the architecture does not allow - across its layers or packages - and
+code that nothing uses. It is reported on with every release or library.
+
 ## Baseline
 
 A baseline labels, groups and identifies several work products.
