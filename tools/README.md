@@ -99,9 +99,11 @@ breaks the check, so its requirements are reviewed again and the old result is r
 
 ## reviewcheck
 
-Checks every review result in `reviews/` against the rules of formats.md (TOOL-03): every criterion
-of its criteria file once, the verdict passed only when every criterion passed, a note to every
-failed criterion, the revision reviewed exists, and the reviewer is none of its authors.
+Checks every review result in `reviews/` against the rules of formats.md (TOOL-03, TOOL-11; SR-01
+to SR-08 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
+criteria file once, the verdict passed only when every criterion passed, a note to every failed
+criterion, no value but passed or failed, the revision reviewed exists, the criteria revision changed
+the criteria file, and the reviewer is none of the authors of the requirement or document.
 
 ```bash
 cd tools

@@ -88,7 +88,7 @@ var lists = []string{"requirements", "elements", "hazards", "controls"}
 
 // Check reads the review result in path, below root, and answers every rule it breaks.
 //
-// @implements SR-01, SR-02, SR-03, SR-04, SR-05
+// @implements SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08
 func Check(root, path string, git Git) ([]Finding, error) {
 
 	data, err := os.ReadFile(filepath.Join(root, path))
@@ -115,10 +115,21 @@ func Check(root, path string, git Git) ([]Finding, error) {
 }
 
 // criteriaKeys answers the ids of the criteria in the criteria file, in the revision the review used.
+// The revision is a commit that changed the file, so that the criteria the review followed can be
+// traced.
+//
+// @implements SR-07
 func criteriaKeys(git Git, revision, file string) ([]string, error) {
 
 	if !git.CommitExists(revision) {
 		return nil, fmt.Errorf("the criteria revision %s is no commit", revision)
+	}
+	commits, err := git.FileCommits(revision, file)
+	if err != nil {
+		return nil, err
+	}
+	if len(commits) == 0 || !strings.HasPrefix(commits[0], revision) {
+		return nil, fmt.Errorf("the criteria revision %s did not change %s", revision, file)
 	}
 	data, err := git.Show(revision, file)
 	if err != nil {
@@ -141,7 +152,7 @@ func criteriaKeys(git Git, revision, file string) ([]string, error) {
 
 // checkResult answers the rules one result breaks.
 //
-// @implements SR-01, SR-02, SR-03, SR-04, SR-05
+// @implements SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-08
 func checkResult(r Review, result Result, criteria []string, git Git) []string {
 
 	var messages []string
@@ -205,7 +216,7 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 // authorsOf answers the authors of a requirement or document in a revision: the author and the
 // co-authors of the last commit that changed it, whatever names stand there.
 //
-// @implements SR-05
+// @implements SR-05, SR-08
 func authorsOf(git Git, revision, target string) ([]string, error) {
 
 	file, key := fileOf(target)

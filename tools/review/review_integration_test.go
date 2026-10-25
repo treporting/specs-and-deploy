@@ -81,3 +81,47 @@ results:
 		t.Errorf("want one finding, that the reviewer is an author of TOOL-04; got %v", findings)
 	}
 }
+
+// The criteria revision on a real history: a short hash of the commit that changed the criteria is
+// taken, a later commit that did not change them is not.
+//
+// @verifies SR-07
+func TestTheCriteriaRevisionOnAHistoryOfGit(t *testing.T) {
+
+	root := t.TempDir()
+	gitIn(t, root, "init", "-q")
+	write(t, root, "reviews/criteria-tool.yaml", criteria)
+	write(t, root, "requirements/tool-requirements.yaml", requirements)
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "--author=Claude Opus 5.5 <noreply@anthropic.com>", "-m", "criteria")
+	first := gitIn(t, root, "rev-parse", "--short", "HEAD")
+
+	write(t, root, "requirements/tool-requirements.yaml", requirements+"# changed\n")
+	gitIn(t, root, "commit", "-q", "--author=Claude Opus 5.5 <noreply@anthropic.com>", "-am", "no criteria")
+	second := gitIn(t, root, "rev-parse", "--short", "HEAD")
+
+	for _, c := range []struct {
+		revision string
+		want     int
+	}{{first, 0}, {second, 1}} {
+		write(t, root, "reviews/r.yaml", `level: review
+created_by: Mathias Fischer
+created_at: '2026-10-25T13:30:00+01:00'
+criteria: reviews/criteria-tool.yaml
+criteria_revision: '`+c.revision+`'
+results:
+- object_key: RR-01
+  target_ids: [TOOL-03]
+  revision: '`+second+`'
+  criteria: {RC-01: passed, RC-02: passed}
+  verdict: passed
+`)
+		findings, err := Check(root, "reviews/r.yaml", ExecGit{Root: root})
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(findings) != c.want {
+			t.Errorf("criteria revision %s: want %d findings, got %v", c.revision, c.want, findings)
+		}
+	}
+}
