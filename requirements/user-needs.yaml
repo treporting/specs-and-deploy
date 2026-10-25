@@ -6,350 +6,350 @@ requirements:
   function: PM
   object_text: Sees how far each feature has got, down all levels, in a release.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-PM-02
   function: PM
   object_text: Narrows any view to the functions, features, priorities, platforms and launches of the
     own scope.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-PM-03
   function: PM
   object_text: Sees where the chain from requirement to test result breaks, to plan the work there.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-RM-01
   function: RM
   object_text: Sees which of its requirements are not yet backed by passed tests.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-RM-02
   function: RM
   object_text: Sees whether maturity grows from release to release and from library to library.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-RM-03
   function: RM
   object_text: Knows which build and which data a report was made from.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-RM-04
   function: RM
   object_text: Hands a report on to people who do not use the system.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-RM-05
   function: RM
   object_text: Approves a release, and may use the reported data as information for it.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-CM-01
   function: CM
   object_text: Knows which documents, at which revision, belong to which baseline.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-CM-02
   function: CM
   object_text: Knows which tool holds which documents.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-CM-03
   function: CM
   object_text: Sees what changed from one baseline to the next.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-CM-04
   function: CM
   object_text: Sees how a vehicle project is split into subsystems, and its releases and libraries over
     time.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-QA-01
   function: QA
   object_text: Follows the trace from user need over requirements to test cases and their results, both
     ways.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-QA-02
   function: QA
   object_text: Sees the maturity of each level, comparable over releases.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-QA-03
   function: QA
   object_text: Sees the state of the tests by kind (test case, procedure, result) and by test level (MiL
     to HiL).
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-QA-04
   function: QA
   object_text: Reads the same data in the vocabulary of the development process in use.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-QA-05
   function: QA
   object_text: Sees by what each requirement is verified.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-QA-06
   function: QA
   object_text: Sees which requirements were reviewed, against which criteria, with which result.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-SAF-01
   function: SAF
   object_text: Shows that every hazard is controlled by a measure, down to a test result.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-SAF-02
   function: SAF
   object_text: Narrows to a safety class, the unclassified included.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-SAF-03
   function: SAF
   object_text: Relies on a safety class being carried down the trace without gaps.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ASR-01
   function: ASR
   object_text: Sees which clauses of the standards chosen are addressed and verified, per release.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ASR-02
   function: ASR
   object_text: 'Can check the evidence: which revision, which data, how many objects.'
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ASR-03
   function: ASR
   object_text: Compares the project against a process reference model - ASPICE, DO-178C, EN 50716, IEC
     62304, IEC 61508, ISO/IEC/IEEE 12207.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ASR-04
   function: ASR
   object_text: Sees who produced a report, when, from which data and revision, and with which parameters.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN-ASR-05
   function: ASR
   object_text: Sees every import or change of data - who, when, what - and the state before it.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN-ASR-06
   function: ASR
   object_text: Gets complete copies of the records, readable by people and by machines.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ASR-07
   function: ASR
   object_text: Sees which findings of a release were evaluated, by whom and where.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-DEV-01
   function: DEV
   object_text: Sees which of the requirements assigned to them have no code or no test yet.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-TST-01
   function: TST
   object_text: Knows from which requirements, up to the user need, a test is derived.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-TST-02
   function: TST
   object_text: Sees whether a requirement is already verified on another level.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-01
   function: OPS
   object_text: Runs it where no database server can be reached.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-02
   function: OPS
   object_text: Brings together what is kept in different tools - DOORS, Git, SVN, codebeamer and others.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-03
   function: OPS
   object_text: Keeps several data sets side by side and apart - generated data and data read in, each
     baseline on its own.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-04
   function: OPS
   object_text: Gets it running without help from those who built it.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-05
   function: OPS
   object_text: Moves to a new version without losing or changing the data.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-06
   function: OPS
   object_text: Knows when it is not available, and why.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-07
   function: OPS
   object_text: Finds the cause of a failure from what it recorded.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-08
   function: OPS
   object_text: Gives access only to authorised people, each known by an identity of their own.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN-OPS-09
   function: OPS
   object_text: Keeps the records and their history for a set period, readable throughout.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN-OPS-10
   function: OPS
   object_text: Knows which features an installation is licensed for, and uses only those.
   priority: later
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 4_selfhosted
 - object_key: UN-OPS-11
   function: OPS
   object_text: Gets the security fixes for the version in use, over a period known in advance.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-12
   function: OPS
   object_text: Knows which components, at which version and under which licence, a release is made of.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-OPS-13
   function: OPS
   object_text: Reports a vulnerability, and learns how it is handled.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-CFG-01
   function: CFG
   object_text: Maps the attributes and values of a customer's system by configuration, and by code of
     the customer only where a configuration cannot say it - without changing the core.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-CFG-02
   function: CFG
   object_text: Checks a configuration against the data of the system before it is used.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-CFG-03
   function: CFG
   object_text: Keeps the configurations and catalogues of each customer apart from the others and from
     the product.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ALL-01
   function: ALL
   object_text: Understands what to do on a first look, without being told.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ALL-02
   function: ALL
   object_text: Knows whether the data shown is complete or still loading.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ALL-03
   function: ALL
   object_text: Knows which data set a view answers from.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-ALL-04
   function: ALL
   object_text: Is recorded only for a stated purpose and period, and only those who need it see the record.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN-PSF-01
   function: PSF
   object_text: Relies on a gap in the trace never being shown as covered.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-PSF-02
   function: PSF
   object_text: Relies on what is unknown being shown as unknown - never as zero, empty or passed.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-PSF-03
   function: PSF
   object_text: Relies on a filter never hiding an object without saying so.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-PSF-04
   function: PSF
   object_text: Relies on being told of every error that occurred while the data was read in.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-PSF-05
   function: PSF
   object_text: Relies on every figure measuring what its label says.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN-PSF-06
   function: PSF
   object_text: Gets the same report from the same data and revision.
   status: draft
-  verification_method: test
+  verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo

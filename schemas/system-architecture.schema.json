@@ -60,12 +60,19 @@
                 ]
               },
               "verification_method": {
-                "enum": [
-                  "inspection",
-                  "analysis",
-                  "demonstration",
-                  "test"
-                ]
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "inspection",
+                    "analysis",
+                    "demonstration",
+                    "test",
+                    "review"
+                  ]
+                },
+                "description": "how a requirement is verified: inspection, analysis, demonstration, test after ISO/IEC/IEEE 29148; review - our own value - by the review against the criteria of its level (PROC-13)"
               },
               "rationale": {
                 "type": "string",
@@ -126,12 +133,19 @@
                 ]
               },
               "verification_method": {
-                "enum": [
-                  "inspection",
-                  "analysis",
-                  "demonstration",
-                  "test"
-                ]
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "inspection",
+                    "analysis",
+                    "demonstration",
+                    "test",
+                    "review"
+                  ]
+                },
+                "description": "how a requirement is verified: inspection, analysis, demonstration, test after ISO/IEC/IEEE 29148; review - our own value - by the review against the criteria of its level (PROC-13)"
               },
               "rationale": {
                 "type": "string",
@@ -183,12 +197,19 @@
                 ]
               },
               "verification_method": {
-                "enum": [
-                  "inspection",
-                  "analysis",
-                  "demonstration",
-                  "test"
-                ]
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "inspection",
+                    "analysis",
+                    "demonstration",
+                    "test",
+                    "review"
+                  ]
+                },
+                "description": "how a requirement is verified: inspection, analysis, demonstration, test after ISO/IEC/IEEE 29148; review - our own value - by the review against the criteria of its level (PROC-13)"
               },
               "rationale": {
                 "type": "string",

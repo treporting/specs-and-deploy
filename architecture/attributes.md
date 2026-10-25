@@ -124,7 +124,7 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | | |
 |---|---|
 | Meaning | how a requirement is verified, after ISO/IEC/IEEE 29148 |
-| Value | `inspection`, `analysis`, `demonstration` or `test` |
+| Value | a list of one or more of `inspection`, `analysis`, `demonstration`, `test` - after ISO/IEC/IEEE 29148 - and `review`, our own: verified by the review against the criteria of its level |
 | Where | on every requirement, on every level |
 | Used by | SYS-73, SYS-76 |
 | Comes from | author |
