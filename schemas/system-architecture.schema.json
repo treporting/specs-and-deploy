@@ -66,8 +66,25 @@
                   "demonstration",
                   "test"
                 ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1,
+                "description": "why it stands, where it names no uplink (ISO/IEC/IEEE 29148, 5.2.8)"
               }
-            }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "allocated"
+                ]
+              },
+              {
+                "required": [
+                  "rationale"
+                ]
+              }
+            ]
           },
           {
             "type": "object",
@@ -115,6 +132,11 @@
                   "demonstration",
                   "test"
                 ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1,
+                "description": "why it stands, where it names no uplink (ISO/IEC/IEEE 29148, 5.2.8)"
               }
             }
           },
@@ -167,8 +189,25 @@
                   "demonstration",
                   "test"
                 ]
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 1,
+                "description": "why it stands, where it names no uplink (ISO/IEC/IEEE 29148, 5.2.8)"
               }
-            }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "allocated"
+                ]
+              },
+              {
+                "required": [
+                  "rationale"
+                ]
+              }
+            ]
           }
         ]
       }

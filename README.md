@@ -42,8 +42,8 @@ THRC of a threat to our work  →  PROC, a rule of the harness
 *Open:* the threats (`THR-nn`) and their controls (`THRC-nn`) are not written down yet.
 
 Every need and every regulatory requirement that treporting realizes has at least one system
-requirement; every system requirement names its uplinks, or gives its rationale where it has none, and is allocated to the
-subsystems that realize it.
+requirement. Every requirement below the top names its uplinks, or gives its rationale where it has
+none, and is allocated to what realizes it on the level below.
 
 ## Way of working
 
