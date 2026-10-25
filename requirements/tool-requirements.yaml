@@ -83,3 +83,10 @@ requirements:
   target_ids: [PROC-15]
   status: approved
   verification_method: [test]
+- object_key: TOOL-12
+  feature: CI check
+  object_text: check every review result and run the tests of the tools on every pull request; a pull
+    request where one of them fails cannot be merged
+  target_ids: [PROC-04, PROC-13]
+  status: draft
+  verification_method: [test]
