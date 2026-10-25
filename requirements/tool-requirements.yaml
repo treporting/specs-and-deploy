@@ -81,5 +81,5 @@ requirements:
   object_text: check that the reviewer of a document is not its author - the author or a co-author of
     the last commit that changed it
   target_ids: [PROC-15]
-  status: draft
+  status: review
   verification_method: [test]
