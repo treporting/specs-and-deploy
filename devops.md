@@ -16,7 +16,8 @@ It is lighter, but it leaves a part without requirements.
 
 **Consequence**: the requirements on our tools are kept in `requirements/tool-requirements.yaml`,
 with the ids `TOOL-nn`. A tool requirement names as uplink the PROC rule or the regulatory
-requirement it serves. It is reviewed and approved like every other requirement (PROC-13).
+requirement it serves. It is reviewed and approved like every other requirement (PROC-13). Where the tools live,
+in which language, and their chain from requirement to code: [tools/README.md](tools/README.md).
 
 ## Environments
 
