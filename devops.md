@@ -88,6 +88,38 @@ and the revision a review names stays a commit on `main`.
 - rebase - it keeps the author, but writes every commit again with a new hash; a revision named
   before the merge is not on `main`
 
-## Build and deployment
+## Continuous integration
+
+**Decision**: `.github/workflows/tools.yml` runs on every pull request to `main`: the job
+`reviewcheck` (SR-09) and the job `tests` (SR-10). Both are required checks in the ruleset
+`main is protected`, which has no bypass - a pull request whose job failed cannot be merged, by
+anyone. The ruleset also allows the merge commit only, as the settings of the repo do.
+
+```bash
+# the ruleset of main, as it is set
+gh api repos/treporting/specs-and-deploy/rulesets --jq '.[] | {id, name}'
+gh api repos/treporting/specs-and-deploy/rulesets/<id> \
+  --jq '.rules[] | {type, checks: .parameters.required_status_checks, merge: .parameters.allowed_merge_methods}'
+```
+
+To change it, read the ruleset, edit its `rules`, and send it back whole with
+`gh api -X PUT repos/treporting/specs-and-deploy/rulesets/<id> --input ruleset.json`. A required
+check is named by its job, with `integration_id` 15368 - GitHub Actions. GitHub knows the name of a
+check only after it has run once, so a new job runs green before it becomes required.
+
+**Why**: a run by hand leaves no record, and depends on the one who runs it; a run of the CI is
+recorded with the pull request, by a computer (REG-05).
+
+**Rejected**:
+
+- `reviewcheck` only where `reviews/` or `tools/` change - a required check that a filter of paths
+  skips stays pending and blocks the merge; to save a minute, the workflow would need logic of its
+  own
+- a bypass for the admin - a check that someone can step over is a check by hand again
+
+The demonstration of SR-09 and SR-10 is the pull request
+<https://github.com/treporting/specs-and-deploy/pull/150>: a broken review result and a failing test.
+Both jobs failed, the merge was blocked, and it was closed unmerged.
+
 
 *Open*: the containers in `deploy/`, built from the parts the subsystems deliver; the demo.

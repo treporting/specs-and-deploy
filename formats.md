@@ -252,8 +252,11 @@ On every pull request of a code repo, each check a tool with a requirement of it
 | the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to this subsystem in the architecture (r4) | TOOL-08 |
 | an approved requirement names approved uplinks only | TOOL-09 |
 | every test file belongs to exactly one test level | TOOL-10 |
+| every review result keeps the rules of the section Reviews, and the tests of the tools pass | TOOL-12 |
 
 In specs-and-deploy as well: the references both ways, and every SYS allocated.
 
-*Open*: the tools are not built yet; each waits for its approved tool requirement. Where they live
-is still to be settled; the workflow is to be a reusable workflow in `treporting/.github`.
+TOOL-12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
+
+*Open*: the tools of TOOL-05 to TOOL-10 are not built yet; each waits for its approved tool
+requirement. The workflow is to be a reusable workflow in `treporting/.github`.

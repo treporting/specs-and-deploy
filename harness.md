@@ -163,8 +163,8 @@ is reviewed by them.
 5. pull request that sets the passed requirements to `approved` (PROC-13); the failed ones go
    back to `draft`
 
-Until the CI runs `reviewcheck` on every pull request, the approver runs it before setting
-`approved`.
+The CI runs `reviewcheck` on every pull request; a result that breaks a rule blocks the merge
+(TOOL-12, see devops.md).
 
 ## Loop for every release or library
 
