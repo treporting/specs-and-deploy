@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/treporting/specs-and-deploy/schemas/review-criteria.schema.json",
+  "title": "Review criteria (RC) of a level",
+  "type": "object",
+  "required": [
+    "level",
+    "criteria"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "level": {
+      "type": "string",
+      "pattern": "^(r[1-7]|n1|h[12]|tool)$"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "object_key",
+          "source",
+          "object_text",
+          "question"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "object_key": {
+            "type": "string",
+            "pattern": "^RC-[0-9]{2}$"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "object_text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
