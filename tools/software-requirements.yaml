@@ -74,3 +74,38 @@ requirements:
   target_ids: [TOOL-12]
   status: approved
   verification_method: [demonstration]
+- object_key: SR-11
+  component: review
+  object_text: write a skeleton of a review result into reviews/, for the ids or documents given, with
+    the reviewer given as created_by, and the time it is made as created_at and in its name,
+    <yyyymmddThhmmss>_<scope>.yaml
+  target_ids: [TOOL-04]
+  status: approved
+  verification_method: [test]
+- object_key: SR-12
+  component: review
+  object_text: take the criteria file of the level of what is to be reviewed, and as criteria revision
+    the last commit that changed that file
+  target_ids: [TOOL-04]
+  status: approved
+  verification_method: [test]
+- object_key: SR-13
+  component: review
+  object_text: name as revision of each the commit the skeleton is made on
+  target_ids: [TOOL-04]
+  status: approved
+  verification_method: [test]
+- object_key: SR-14
+  component: review
+  object_text: write one result per id or document, with every criterion of the criteria file, and set
+    each criterion and the verdict to todo
+  target_ids: [TOOL-04]
+  status: approved
+  verification_method: [test]
+- object_key: SR-15
+  component: review
+  object_text: write nothing, and report it, where an id or document is not found, or where they belong
+    to more than one level
+  target_ids: [TOOL-04]
+  status: approved
+  verification_method: [test]
