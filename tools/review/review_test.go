@@ -12,6 +12,8 @@ type fakeGit struct {
 	files     map[string]map[string]string // commit -> path -> content
 	parent    map[string]string
 	changed   map[string][]string // path -> the commits that changed it, the newest first
+	merges    map[string]bool
+	authors   map[string]string // commit -> its author, where it is not author
 	author    string
 	coAuthors []string
 }
@@ -37,7 +39,14 @@ func (f fakeGit) Parent(commit string) (string, bool) {
 	return p, ok
 }
 
-func (f fakeGit) Authors(string) (string, []string, error) { return f.author, f.coAuthors, nil }
+func (f fakeGit) IsMerge(commit string) bool { return f.merges[commit] }
+
+func (f fakeGit) Authors(commit string) (string, []string, error) {
+	if a, ok := f.authors[commit]; ok {
+		return a, nil, nil
+	}
+	return f.author, f.coAuthors, nil
+}
 
 const criteria = `level: tool
 criteria:
@@ -245,5 +254,28 @@ func TestTheReviewerIsNotTheAuthorOfADocument(t *testing.T) {
 	git.files["c1"]["formats.md"] = "# formats\n"
 	if got := check(t, result, git); len(got) != 0 {
 		t.Errorf("want no finding, got %q", got)
+	}
+}
+
+// @verifies SR-05, SR-08
+func TestAMergeIsNoAuthorship(t *testing.T) {
+	//	c1 on a branch, written by Claude Code; m1 merges it into a main that changed the file
+	//	as well, so m1 equals neither parent - merged by the reviewer
+	git := history("Claude Opus 5.5")
+	git.files["c0"] = map[string]string{"formats.md": "a\n"}
+	git.files["c1"]["formats.md"] = "a\nb\n"
+	git.files["m1"] = map[string]string{"reviews/criteria-tool.yaml": criteria, "formats.md": "z\na\nb\n"}
+	git.parent = map[string]string{"c1": "c0", "m1": "c0"}
+	git.changed = map[string][]string{"formats.md": {"m1", "c1"}}
+	git.merges = map[string]bool{"m1": true}
+	git.authors = map[string]string{"m1": "Mathias Fischer"}
+	got := check(t, `- object_key: RR-01
+  target_ids: [formats.md]
+  revision: 'm1'
+  criteria: {RC-01: passed, RC-02: passed}
+  verdict: passed
+`, git)
+	if len(got) != 0 {
+		t.Errorf("want no finding, the merge is no authorship; got %q", got)
 	}
 }
