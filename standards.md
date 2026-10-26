@@ -2,13 +2,23 @@
 
 The standards of the domains treporting is used in: the process a project follows, the safety
 standard, and the analysis that finds what is to be controlled. A company process has to match
-the standardized one (see Process in [definitions.md](definitions.md)).
+the standardized one (see Process in [definitions.md](definitions.md)). It also sets the short form
+by which every document names a standard. It is written for whoever writes or reviews a document
+of treporting, and for the auditor who looks for a standard.
 
 ## Short forms
 
-Every document names a standard by its short form: its first publisher and its number, with no
-space between them. A part keeps its hyphen: IEC 61508-1 is IEC61508-1. Only the table below names
-a standard by its number and title.
+**Decision**: every document names a standard by its short form: its first publisher and its
+number, with no space between them. A part keeps its hyphen: IEC 61508-1 is IEC61508-1. Only the
+table below names a standard by its number and title.
+
+**Why**: the full name, such as ISO/IEC/IEEE 12207, is long, and was written out each time. A
+short form is the same in every document, and the table says what stands behind it.
+
+**Rejected**:
+
+- the full name throughout - too long, and found in the review of harness.md
+- a short form with a hyphen, ISO-12207 - longer than needed, and the hyphen is taken by the part
 
 **Table short forms** - every standard named in the documents
 
