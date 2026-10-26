@@ -3,7 +3,7 @@
 level: tool
 documents:
 - name: tool-requirements.md
-  status: review
+  status: approved
   verification_method: [review]
 requirements:
 - object_key: TOOL-01

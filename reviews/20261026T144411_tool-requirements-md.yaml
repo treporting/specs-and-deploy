@@ -9,25 +9,25 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [requirements/tool-requirements.md]
-  revision: '421a0b2'
+  revision: '4b594ba'
   criteria:
     RC-01: passed
     RC-02: passed
     RC-03: passed
     RC-04: passed
     RC-05:
-      result: failed
-      note: 'it does not name its audience'
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
     RC-06:
-      result: failed
-      note: 'the table of the variants of the status has no name'
+      result: passed
+      note: 'found in this review and resolved in it: the table of the variants of the status has no name'
     RC-07: passed
     RC-08:
-      result: failed
-      note: 'the open point on where a document keeps its status is decided - a documents section or documents.yaml, with the values of a requirement; the skeleton of TOOL-04 is said not to be built, though reviewskeleton is'
+      result: passed
+      note: 'found in this review and resolved in it: the open point on where a document keeps its status is decided - a documents section or documents.yaml, with the values of a requirement; the skeleton of TOOL-04 is said not to be built, though reviewskeleton is'
     RC-09: passed
     RC-10: passed
     RC-11: passed
     RC-12: passed
     RC-13: passed
-  verdict: failed
+  verdict: passed
