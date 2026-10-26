@@ -153,19 +153,19 @@ requirements:
     what GitHub sets itself - id, times, links - and bypass_actors, which cannot be read without the
     rights of an admin
   target_ids: [TOOL-13]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR-22
   component: ruleset
   object_text: report it as a finding where the ruleset cannot be read from GitHub, or no ruleset has
     the name in the file, rather than pass
   target_ids: [TOOL-13]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR-23
   component: ci
   object_text: on every pull request, check the ruleset of main against the file, and fail where they
     differ; a pull request whose check failed cannot be merged
   target_ids: [TOOL-13]
-  status: review
+  status: approved
   verification_method: [demonstration]
