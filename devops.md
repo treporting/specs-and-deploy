@@ -69,12 +69,13 @@ and footer. Each waits for its approved tool requirement.
 ## Merging
 
 **Decision**: every repo of treporting merges a pull request by a merge commit only; squash and
-rebase are switched off in the settings of the repo. A new repo gets the same settings when it is
-made:
+rebase are switched off in the settings of the repo. GitHub deletes the branch after the merge;
+its commits stay in `main`. A new repo gets the same settings when it is made:
 
 ```bash
 gh api -X PATCH repos/treporting/<repo> \
-  -F allow_merge_commit=true -F allow_squash_merge=false -F allow_rebase_merge=false
+  -F allow_merge_commit=true -F allow_squash_merge=false -F allow_rebase_merge=false \
+  -F delete_branch_on_merge=true
 ```
 
 **Why**: the commits of the pull request reach `main` as they are, with their author. The author of a
