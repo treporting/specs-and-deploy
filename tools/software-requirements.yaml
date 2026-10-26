@@ -125,3 +125,23 @@ requirements:
   target_ids: [TOOL-04]
   status: approved
   verification_method: [test]
+- object_key: SR-18
+  component: schema
+  object_text: check every YAML file under version control against the schema its field schema names,
+    and report each place where it does not match - the file and the path within it
+  target_ids: [TOOL-05]
+  status: review
+  verification_method: [test]
+- object_key: SR-19
+  component: schema
+  object_text: report a YAML file that names no schema, or a schema that is not there
+  target_ids: [TOOL-05]
+  status: review
+  verification_method: [test]
+- object_key: SR-20
+  component: ci
+  object_text: on every pull request, check every YAML file against its schema, and fail where one does
+    not match; a pull request whose check failed cannot be merged
+  target_ids: [TOOL-05]
+  status: review
+  verification_method: [demonstration]
