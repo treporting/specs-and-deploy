@@ -1,15 +1,21 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/treporting/schemas/hazards.schema.json",
+  "$comment": "@refines ARC-22",
   "title": "Hazards (h1) and their controls (h2)",
   "description": "Draft until the gel schema stands (treporting/storage-edgedb#3); field names are the properties of the gel schema.",
   "type": "object",
   "required": [
+    "schema",
     "level",
     "hazards"
   ],
   "additionalProperties": false,
   "properties": {
+    "schema": {
+      "const": "schemas/hazards.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
     "level": {
       "const": "h1"
     },

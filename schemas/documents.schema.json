@@ -1,13 +1,19 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/documents.schema.json",
+  "$comment": "@refines ARC-22",
   "title": "Documents without a YAML of requirements beside them",
   "type": "object",
   "required": [
+    "schema",
     "documents"
   ],
   "additionalProperties": false,
   "properties": {
+    "schema": {
+      "const": "schemas/documents.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
     "documents": {
       "type": "array",
       "minItems": 1,

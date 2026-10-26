@@ -1,5 +1,6 @@
 # Review criteria of the software requirements (r5), after ISO/IEC/IEEE 29148.
 # A software requirement is approved only when it passed every criterion (PROC-13). See reviews/README.md.
+schema: schemas/review-criteria.schema.json
 level: r5
 criteria:
 - object_key: RC-01

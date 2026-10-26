@@ -1,5 +1,6 @@
 # Review criteria of the documents, after ISO/IEC/IEEE 15289. A document is approved only when it
 # passed every criterion (PROC-13). See reviews/README.md.
+schema: schemas/review-criteria.schema.json
 level: document
 criteria:
 - object_key: RC-01

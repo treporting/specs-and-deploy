@@ -1,5 +1,6 @@
 # Software requirements of the tools (r5). What explains them is in README.md.
-# Format: ../formats.md - schema: ../schemas/software-requirements.schema.json
+# Format: ../formats.md
+schema: schemas/software-requirements.schema.json
 level: r5
 documents:
 - name: README.md
