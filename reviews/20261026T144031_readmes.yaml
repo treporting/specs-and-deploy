@@ -9,53 +9,53 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [README.md]
-  revision: '73a7472'
+  revision: 'c129ecd'
   criteria:
     RC-01: passed
     RC-02: passed
     RC-03: passed
     RC-04: passed
     RC-05:
-      result: failed
-      note: 'it does not name its audience'
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
     RC-06:
-      result: failed
-      note: 'the table of the files has no name'
+      result: passed
+      note: 'found in this review and resolved in it: the table of the files has no name'
     RC-07:
-      result: failed
-      note: 'ISO/IEC/IEEE 12207 and 29119 are named in full'
+      result: passed
+      note: 'found in this review and resolved in it: ISO/IEC/IEEE 12207 and 29119 are named in full'
     RC-08:
-      result: failed
-      note: 'SR-<subsystem>-nn is an id no longer in use - formats.md has SR-nn; reviews/ and formats.md are described without documents and reviews'
+      result: passed
+      note: 'found in this review and resolved in it: SR-<subsystem>-nn is an id no longer in use - formats.md has SR-nn; reviews/ and formats.md are described without documents and reviews'
     RC-09: passed
     RC-10: passed
     RC-11: passed
     RC-12: passed
     RC-13: passed
-  verdict: failed
+  verdict: passed
 - object_key: RR-02
   target_ids: [reviews/README.md]
-  revision: '73a7472'
+  revision: 'c129ecd'
   criteria:
     RC-01: passed
     RC-02: passed
     RC-03: passed
     RC-04: passed
     RC-05:
-      result: failed
-      note: 'it does not name its audience'
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
     RC-06:
-      result: failed
-      note: 'the table of the files has no name'
+      result: passed
+      note: 'found in this review and resolved in it: the table of the files has no name'
     RC-07:
-      result: failed
-      note: 'ISO/IEC/IEEE 15289 is named in full'
+      result: passed
+      note: 'found in this review and resolved in it: ISO/IEC/IEEE 15289 is named in full'
     RC-08: passed
     RC-09: passed
     RC-10: passed
     RC-11: passed
     RC-12: passed
     RC-13:
-      result: failed
-      note: 'reviewskeleton and reviewcheck are not named, though every review needs both'
-  verdict: failed
+      result: passed
+      note: 'found in this review and resolved in it: reviewskeleton and reviewcheck are not named, though every review needs both'
+  verdict: passed
