@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/treporting/specs-and-deploy/schemas/verification-result.schema.json",
+  "$comment": "@refines ARC-22",
+  "title": "A verification by inspection, analysis or demonstration, and its record",
+  "type": "object",
+  "required": [
+    "schema",
+    "level",
+    "method",
+    "target_ids",
+    "created_by",
+    "confirmed_by",
+    "created_at",
+    "revision",
+    "description",
+    "expected",
+    "observed",
+    "verdict"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "schemas/verification-result.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "level": {
+      "const": "verification"
+    },
+    "method": {
+      "enum": [
+        "inspection",
+        "analysis",
+        "demonstration"
+      ],
+      "description": "how the requirements were verified; a review and a test leave records of their own"
+    },
+    "target_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(SR|SYS|TOOL|ARC)-[0-9]{2}$"
+      }
+    },
+    "created_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "who ran it"
+    },
+    "confirmed_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "who confirmed it - not the one who ran it (PROC-15)"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[+-][0-9]{2}:[0-9]{2}$"
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$",
+      "description": "the commit the verification ran on"
+    },
+    "setting": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$",
+      "description": "the commit that last changed a setting outside the repo it depends on, such as deploy/ruleset-main.json"
+    },
+    "description": {
+      "type": "string",
+      "pattern": "^verifications/[0-9]{8}T[0-9]{6}_[a-z0-9-]+\\.md$",
+      "description": "the Markdown beside it: requirement, configuration, steps, expected, observed, verdict"
+    },
+    "expected": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed": {
+      "type": "string",
+      "minLength": 1,
+      "description": "what happened, with the messages copied, so that they outlast the logs"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "links and screenshots beside the record"
+    },
+    "verdict": {
+      "enum": [
+        "passed",
+        "failed"
+      ]
+    }
+  }
+}

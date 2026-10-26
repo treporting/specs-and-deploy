@@ -205,6 +205,56 @@ The schemas are `schemas/review-criteria.schema.json` and `schemas/review-result
 what they cannot say - every criterion once, the reviewer not the author - TOOL-03 checks. See the
 loop for every change in [harness.md](harness.md).
 
+## Verifications
+
+**Decision**: a verification by inspection, analysis or demonstration leaves a record in
+`verifications/`, named as a review result is: `<yyyymmddThhmmss>_<scope>`. The record is a YAML
+with the schema `schemas/verification-result.schema.json`. Beside it stands a Markdown that
+describes the verification, so that it can be repeated, and a screenshot where a log does not show
+what happened.
+
+```yaml
+# verifications/20261027T100000_sr-20.yaml
+schema: schemas/verification-result.schema.json
+level: verification
+method: demonstration
+target_ids: [SR-20]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-10-27T10:00:00+01:00'
+revision: 'a1b2c3d'
+setting: 'e4f5a6b'
+description: verifications/20261027T100000_sr-20.md
+expected: the job schemacheck fails, and the merge is blocked
+observed: |
+  schemacheck  fail
+  mergeStateStatus: BLOCKED
+evidence:
+- verifications/20261027T100000_sr-20.png
+verdict: passed
+```
+
+- `created_by` ran it, `confirmed_by` confirmed it, and the two are not the same (PROC-15)
+- `revision` is the commit it ran on; `setting` the commit that last changed a setting outside the
+  repo it depends on, such as the ruleset of `main` in `deploy/ruleset-main.json`
+- `observed` holds the messages themselves, not only a link: the logs of GitHub Actions are
+  deleted after 90 days
+- the Markdown has the headings Requirement, Configuration, Steps, Expected, Observed and Verdict -
+  the questions an auditor asks of a verification
+
+A review and a test leave records of their own: a review in `reviews/`, a test in the output of its
+run.
+
+**Why**: an auditor asks which requirement a verification shows, what was done and expected, who
+did it, when and on which revision, whether it lasts, whether it still holds, and whether it can be
+repeated. A link to a pull request answers only the first.
+
+**Rejected**:
+
+- a link in devops.md - it answers one question of six, and the logs behind it go after 90 days
+- a folder per method - the same form three times
+- the records in `reviews/` - a review checks a requirement, a verification its realization
+
 ## Breakdown
 
 **Table breakdown** - the levels of the breakdown, and what sets each
