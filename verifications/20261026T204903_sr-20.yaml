@@ -1,0 +1,22 @@
+# The demonstration of SR-20, in the test pull request #235, closed unmerged.
+schema: schemas/verification-result.schema.json
+level: verification
+method: demonstration
+target_ids: [SR-20]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-10-26T20:49:03+01:00'
+revision: 'cad6761'
+setting: 'e7b864b'
+description: verifications/20261026T204903_sr-20.md
+expected: the required check schemacheck fails on the break, and the merge of the pull request is blocked
+observed: |
+  requirements/tool-requirements.yaml /requirements/6/status: value must be one of 'draft', 'review', 'approved', 'obsolete'
+  56 YAML files checked, 1 findings
+  schemacheck: fail (required)
+  the pull request: mergeStateStatus BLOCKED, the button Merge pull request disabled
+evidence:
+- https://github.com/treporting/specs-and-deploy/pull/235
+- https://github.com/treporting/specs-and-deploy/commit/cae8b7e
+- verifications/20261026T204903_gates.jpg
+verdict: passed

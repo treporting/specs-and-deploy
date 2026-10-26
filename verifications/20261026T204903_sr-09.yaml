@@ -1,0 +1,31 @@
+# The demonstration of SR-09, in the test pull request #235, closed unmerged.
+schema: schemas/verification-result.schema.json
+level: verification
+method: demonstration
+target_ids: [SR-09]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-10-26T20:49:03+01:00'
+revision: 'cad6761'
+setting: 'e7b864b'
+description: verifications/20261026T204903_sr-09.md
+expected: the required check reviewcheck fails on the break, and the merge of the pull request is blocked
+observed: |
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-02 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-03 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-04 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-05 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-06 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-07 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-08 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-09 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-10 is missing
+  reviews/20261027T000000_demonstration.yaml RR-01: criterion RC-11 is missing
+  42 review results checked, 10 findings
+  reviewcheck: fail (required)
+  the pull request: mergeStateStatus BLOCKED, the button Merge pull request disabled
+evidence:
+- https://github.com/treporting/specs-and-deploy/pull/235
+- https://github.com/treporting/specs-and-deploy/commit/cae8b7e
+- verifications/20261026T204903_gates.jpg
+verdict: passed
