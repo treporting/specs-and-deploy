@@ -9,7 +9,7 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [definitions.md]
-  revision: 'e09ad13'
+  revision: '2f4c82f'
   criteria:
     RC-01: passed
     RC-02:
@@ -28,7 +28,7 @@ results:
       note: 'found in this review and resolved in it: ISO/IEC/IEEE 29119 is named in full, not as ISO29119'
     RC-08:
       result: passed
-      note: 'found in this review and resolved in it: the process of a company is said to have to match the standardized one, which treporting cannot ask; a document is defined as holding objects only, though harness.md, formats.md and devops.md are documents that explain'
+      note: 'found in this review and resolved in it: the process of a company is said to have to match the standardized one, which treporting cannot ask; a document is named as an item, a file and a document by turns - the chain of generalization under Item, item to artifact to file to document, says how they relate'
     RC-09: passed
     RC-10: passed
     RC-11: passed
