@@ -4,7 +4,7 @@ schema: schemas/tool-requirements.schema.json
 level: tool
 documents:
 - name: tool-requirements.md
-  status: approved
+  status: review
   verification_method: [review]
 requirements:
 - object_key: TOOL-01
@@ -90,4 +90,11 @@ requirements:
     request where one of them fails cannot be merged
   target_ids: [PROC-04, PROC-13]
   status: approved
+  verification_method: [test]
+- object_key: TOOL-13
+  feature: CI check
+  object_text: check on every pull request that the ruleset of main on GitHub has the rules of
+    deploy/ruleset-main.json - all that can be read without the rights of an admin
+  target_ids: [PROC-03]
+  status: review
   verification_method: [test]
