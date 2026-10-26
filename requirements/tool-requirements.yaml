@@ -34,7 +34,7 @@ requirements:
     of their level and the revision of each
   rationale: the automatic support of the review - it gathers the criteria of the level and the revision
     of each requirement, so that the reviewer does not copy them by hand and makes no mistake there
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-05
   feature: CI check
