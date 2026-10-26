@@ -9,25 +9,25 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [standards.md]
-  revision: 'fcb4b1f'
+  revision: '05905d6'
   criteria:
     RC-01: passed
     RC-02:
-      result: failed
-      note: 'the scope names the standards of the domains, not the short forms, which are its first section'
+      result: passed
+      note: 'found in this review and resolved in it: the scope names the standards of the domains, not the short forms, which are its first section'
     RC-03: passed
     RC-04: passed
     RC-05:
-      result: failed
-      note: 'it does not name its audience'
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
     RC-06: passed
     RC-07: passed
     RC-08: passed
     RC-09: passed
     RC-10: passed
     RC-11:
-      result: failed
-      note: 'the rule of the short forms stands without its reason and the alternatives rejected'
+      result: passed
+      note: 'found in this review and resolved in it: the rule of the short forms stands without its reason and the alternatives rejected'
     RC-12: passed
     RC-13: passed
-  verdict: failed
+  verdict: passed

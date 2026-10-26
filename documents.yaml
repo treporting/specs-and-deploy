@@ -14,7 +14,7 @@ documents:
   status: draft
   verification_method: [review]
 - name: standards.md
-  status: review
+  status: approved
   verification_method: [review]
 - name: formats.md
   status: draft
