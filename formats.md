@@ -236,7 +236,7 @@ verdict: passed
 
 - `created_by` ran it, `confirmed_by` confirmed it, and the two are not the same (PROC-15)
 - `revision` is the commit it ran on; `setting` the commit that last changed a setting outside the
-  repo it depends on, such as the ruleset of `main` in `deploy/ruleset-main.json`
+  repo it depends on, such as the ruleset of `main` in `.github/rulesets/main.json`
 - `observed` holds the messages themselves, not only a link: the logs of GitHub Actions are
   deleted after 90 days
 - the Markdown has the headings Requirement, Configuration, Steps, Expected, Observed and Verdict -

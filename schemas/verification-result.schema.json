@@ -66,7 +66,7 @@
     "setting": {
       "type": "string",
       "pattern": "^[0-9a-f]{7,40}$",
-      "description": "the commit that last changed a setting outside the repo it depends on, such as deploy/ruleset-main.json"
+      "description": "the commit that last changed a setting outside the repo it depends on, such as .github/rulesets/main.json"
     },
     "description": {
       "type": "string",

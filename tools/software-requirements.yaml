@@ -4,7 +4,7 @@ schema: schemas/software-requirements.schema.json
 level: r5
 documents:
 - name: README.md
-  status: approved
+  status: review
   verification_method: [review]
 requirements:
 - object_key: SR-01
@@ -148,12 +148,12 @@ requirements:
   verification_method: [demonstration]
 - object_key: SR-21
   component: ruleset
-  object_text: read the ruleset of main from GitHub, found by the name in deploy/ruleset-main.json, and
+  object_text: read the ruleset of main from GitHub, found by the name in .github/rulesets/main.json, and
     report each difference to that file in its target, enforcement, conditions and rules; leave out
     what GitHub sets itself - id, times, links - and bypass_actors, which cannot be read without the
     rights of an admin
   target_ids: [TOOL-13]
-  status: approved
+  status: review
   verification_method: [test]
 - object_key: SR-22
   component: ruleset

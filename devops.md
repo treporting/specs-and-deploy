@@ -128,13 +128,14 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 `main is protected`, which has no bypass - a pull request whose job failed cannot be merged, by
 anyone. The ruleset also allows the merge commit only, as the settings of the repo do.
 
-The ruleset is kept in the repo, in `deploy/ruleset-main.json`, and the job `rulesetcheck` checks
+The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
+is GitHub's - and the job `rulesetcheck` checks
 on every pull request that GitHub has the same (TOOL-13). The file is the source: to change the
 ruleset, change the file by pull request and review, and after the merge send it whole:
 
 ```bash
 gh api repos/treporting/specs-and-deploy/rulesets --jq '.[] | {id, name}'
-gh api -X PUT repos/treporting/specs-and-deploy/rulesets/<id> --input deploy/ruleset-main.json
+gh api -X PUT repos/treporting/specs-and-deploy/rulesets/<id> --input .github/rulesets/main.json
 ```
 
 Until it is sent, `rulesetcheck` fails on every pull request - so it is not forgotten. A required

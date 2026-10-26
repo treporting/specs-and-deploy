@@ -185,7 +185,7 @@ A finding reads `requirements/tool-requirements.yaml /requirements/6/status: val
 
 ## rulesetcheck
 
-Compares the ruleset of main on GitHub with `deploy/ruleset-main.json` (TOOL-13; SR-21 and SR-22 in
+Compares the ruleset of main on GitHub with `.github/rulesets/main.json` (TOOL-13; SR-21 and SR-22 in
 [software-requirements.yaml](software-requirements.yaml)), and reports each difference in its
 target, enforcement, conditions and rules. What GitHub sets itself is left out, and `bypass_actors`,
 which cannot be read without the rights of an admin; that main has no bypass, its demonstration

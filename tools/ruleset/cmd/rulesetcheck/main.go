@@ -1,4 +1,4 @@
-// Command rulesetcheck compares the ruleset of main on GitHub with deploy/ruleset-main.json (TOOL-13).
+// Command rulesetcheck compares the ruleset of main on GitHub with .github/rulesets/main.json (TOOL-13).
 //
 //	rulesetcheck [-root dir] [-repo owner/name] [-api url]
 //
@@ -23,7 +23,7 @@ func main() {
 	api := flag.String("api", "https://api.github.com", "the API of GitHub")
 	flag.Parse()
 
-	want, err := os.ReadFile(filepath.Join(*root, "deploy", "ruleset-main.json"))
+	want, err := os.ReadFile(filepath.Join(*root, ".github", "rulesets", "main.json"))
 	if err != nil {
 		fail(err)
 	}
@@ -34,7 +34,7 @@ func main() {
 	for _, f := range findings {
 		fmt.Println(f)
 	}
-	fmt.Printf("the ruleset of main checked against deploy/ruleset-main.json, %d findings\n", len(findings))
+	fmt.Printf("the ruleset of main checked against .github/rulesets/main.json, %d findings\n", len(findings))
 	if len(findings) > 0 {
 		os.Exit(1)
 	}
