@@ -2,7 +2,7 @@
 # Format: formats.md, section Documents - schema: schemas/documents.schema.json
 documents:
 - name: README.md
-  status: draft
+  status: review
   verification_method: [review]
 - name: harness.md
   status: approved
@@ -20,5 +20,5 @@ documents:
   status: approved
   verification_method: [review]
 - name: reviews/README.md
-  status: draft
+  status: review
   verification_method: [review]
