@@ -55,7 +55,7 @@ a standard by its number and title.
 | Domain | Process | Safety | Safety analysis | Cybersecurity | Security analysis |
 |---|---|---|---|---|---|
 | automotive | ASPICE, ISO330xx | ISO26262 | HARA | ISO21434 | TARA |
-| airborne | ARP4754B, DO178C, DO254 | ARP4761A | FHA, PSSA, SSA | DO326A | SRA |
+| airborne | ARP4754B, DO178C, DO254 | ARP4761A | FHA, SSA | DO326A | SRA |
 | railway | EN50126-1, EN50716, EN50129 | EN50126-1, EN50126-2 | HL | CLC50701 | TRA |
 | medical | ISO13485, IEC62304, IEC60601-1 | ISO14971 | RMF | IEC81001-5-1 | TM |
 | industrial | IEC61508 | IEC61508 | H&RA | IEC62443 | TRA |
@@ -65,7 +65,6 @@ a standard by its number and title.
 - H&RA - hazard and risk analysis according to IEC61508-1, clause 7.4
 - HARA - hazard analysis and risk assessment according to ISO26262-3
 - HL - hazard log, with hazard analysis and risk assessment, according to EN50126-1
-- PSSA - preliminary system safety assessment according to ARP4761A
 - RMF - risk management file according to ISO14971
 - SRA - security risk assessment according to DO326A and DO356A
 - SSA - system safety assessment according to ARP4761A
