@@ -1,6 +1,6 @@
 # Formats
 
-How requirements, architecture, risks, annotations and tests are written down, so that people
+How requirements, architecture, risks, documents, reviews, annotations and tests are written down, so that people
 can review them in a pull request and a program can read them - the CI check and treporting
 itself, in the reference edgedb.
 
@@ -8,6 +8,8 @@ itself, in the reference edgedb.
 
 Every level is kept as data in a YAML file; text that explains - reasons, examples, the chain of
 maturity, introductions - stays in Markdown beside it and refers to the YAML.
+
+**Table files of the levels** - where the data of each level and its explanation lie
 
 | Level | Data | Explanation | Repo |
 |---|---|---|---|
@@ -23,12 +25,16 @@ A readable Markdown view of the YAML is generated on request only.
 
 ### Fields are the properties of the gel schema
 
-The model of the prototype (cm-mono) is the reference: what is not changed on purpose is taken over
-as it is; every deviation is recorded in [attributes.md](architecture/attributes.md), with its reason.
+The model of the prototype is the reference: what is not changed on purpose is taken over as it
+is; every deviation is recorded in [attributes.md](architecture/attributes.md), with its reason. So
+a format taken over from the prototype has the prototype as its reason, and no alternative of its
+own: the prototype was examined, and where it could be better, the deviation stands there.
 
 The fields of the YAML carry the names of the properties of the gel schema of the model
 in storage-edgedb, so that our own data needs no configuration to be read. The YAML
 holds only what the author writes:
+
+**Table kinds of field** - what the author writes, and what comes from elsewhere
 
 | Kind of field | Examples | Where it comes from | In the YAML |
 |---|---|---|---|
@@ -43,12 +49,12 @@ holds only what the author writes:
 - **rationale** of a requirement below the top that names no uplink - a system requirement, a
   software requirement, a tool requirement, a control of a hazard - or of an element of the
   architecture allocated no system requirement: why it stands, for instance derived from the view of
-  its level (ISO/IEC/IEEE 29148, 5.2.8). The top - user needs, regulatory requirements, hazards -
+  its level (ISO29148, clause 5.2.8). The top - user needs, regulatory requirements, hazards -
   has no uplinks.
 - **status** of every requirement: `draft`, `review`, `approved`, `obsolete`; a requirement starts
   as `draft` and is approved only after its review (PROC-13).
 - **verification_method** of every requirement, a list - a requirement may be verified in more
-  than one way, `[inspection, test]`. The values of ISO/IEC/IEEE 29148: `inspection`, `analysis`,
+  than one way, `[inspection, test]`. The values of ISO29148: `inspection`, `analysis`,
   `demonstration`, `test`; and of our own: `review` - verified by the review against the criteria
   of its level (PROC-13), for instance a document.
 - **platform_launch** of every user need and system requirement: `treporting = 2_selfhosted,
@@ -118,18 +124,18 @@ the same form, by their path.
 
 ## Reviews
 
-A review checks a requirement against the criteria of its level. Criteria and result are kept
-like a test case and its result, in `reviews/`:
+A review checks what is reviewed against the criteria of its kind (PROC-13). Criteria and result
+are kept like a test case and its result, in `reviews/`:
 
 ```
 reviews/
-  criteria-r2.yaml               the criteria of a level, after ISO/IEC/IEEE 29148 (RC)
-  20261025T140000_sys-trace.yaml a review: who, when, the revision of every requirement
-                                 reviewed, per requirement and criterion passed or failed (RR)
+  criteria-r2.yaml               the criteria of a level, after ISO29148 (RC)
+  20261025T140000_sys-trace.yaml a review: who, when, the revision of everything reviewed,
+                                 for each and per criterion passed or failed (RR)
 ```
 
 A file of results is named `<yyyymmddThhmmss>_<scope>.yaml`: the time of its `created_at`, in the
-basic format of ISO 8601, and what it reviewed - such as `20261026T140000_r1-pm.yaml`. Every review
+basic format of ISO8601, and what it reviewed - such as `20261026T140000_r1-pm.yaml`. Every review
 has a name of its own, and the files sort by time.
 
 A review is replaced only where it no longer holds as evidence - where a rule of its form changed;
@@ -145,7 +151,7 @@ A review result changes until its merge, never after. A finding resolved on the 
 note of its criterion: "found in this review and resolved in it: ...". The revision is then the
 commit with the fix.
 
-A file of results is one review, with one result per requirement reviewed:
+A file of results is one review, with one result for everything it reviewed:
 
 ```yaml
 # reviews/20261026T140000_r1-pm.yaml
@@ -171,8 +177,8 @@ results:
 - every criterion of the criteria file appears once
 - a failed criterion is a block of `result` and `note`, so that the author knows what to change; a
   passed one may have a note as well, else it is just `passed`
-- `revision` is the commit of the requirement reviewed: the review counts for it only (SYS-75)
-- the reviewer is not the author of the requirement (PROC-15)
+- `revision` is the commit of what is reviewed: the review counts for it only (SYS-75)
+- the reviewer is not the author of what is reviewed (PROC-15)
 - a revision and a time are written in quotes: unquoted, YAML reads `7215683` as a number
 - a note with `: ` in it is written in quotes: unquoted, YAML reads a new key
 
@@ -182,10 +188,12 @@ loop for every change in [harness.md](harness.md).
 
 ## Breakdown
 
+**Table breakdown** - the levels of the breakdown, and what sets each
+
 | Level | treporting | Example | Set by |
 |---|---|---|---|
 | system | treporting | - | r2 |
-| subsystem | a repo, ARC-01 to ARC-06 | reporter-edgedb | r3 |
+| subsystem | a repo, ARC-01 to ARC-06; or the tools in specs-and-deploy, which are not part of the product | reporter-edgedb, tools | r3 |
 | component | a group of packages with one responsibility | `trace`, `maturity` | the field `component` of an SR |
 | module | a Go package or JS module | `trace/gaps` | the code |
 | unit | a source file | `trace/gaps/mark.go` | the annotation, never by hand |
@@ -197,6 +205,8 @@ An id is unique within its document only: its prefix is the `module_prefix` of t
 number the `object_id` within it. The document is unique within its context - the project, and
 for a subsystem the repo. A reference names the id; the context is known where it is written - an
 annotation names software requirements of its own repo only.
+
+**Table ids** - the prefixes of the ids, and their level
 
 | Ids | What | Level |
 |---|---|---|
@@ -252,8 +262,10 @@ it('shows the hidden filters', () => { ... })
 
 ## Test levels
 
-The level of a test follows from where its file lies (see the test levels in
+The level of a test follows from where its file lies (see table test levels in
 [harness.md](harness.md)):
+
+**Table places of the tests** - where the file of a test lies on each level
 
 | Level | Where | Repo |
 |---|---|---|
@@ -272,6 +284,8 @@ function name, from the JSON output of `go test` and of vitest.
 
 On every pull request of a code repo, each check a tool with a requirement of its own
 (`requirements/tool-requirements.yaml`):
+
+**Table CI checks** - each check, and the tool requirement it realizes
 
 | Check | Tool requirement |
 |---|---|
