@@ -5,7 +5,7 @@ documents:
   status: draft
   verification_method: [review]
 - name: harness.md
-  status: review
+  status: approved
   verification_method: [review]
 - name: devops.md
   status: draft
