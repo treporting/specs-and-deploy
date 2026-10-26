@@ -180,6 +180,7 @@ is reviewed by them.
 9. The status of the change follows the review result: `approved` if passed, `draft` if failed.
 10. A pull request takes the branch to `main` (PROC-03). The CI checks it (PROC-04).
 11. The Product Owner merges. The merge is the approval.
+12. The branch is deleted automatically. Its commits stay in `main`.
 
 For code, step 3 means:
 
