@@ -177,10 +177,12 @@ is reviewed by them.
 7. A finding can be resolved on the branch.
 8. A finding that cannot be resolved on the branch fails the review. It becomes one or more tickets
    of its own. Each goes to step 2 again.
-9. The status of the change follows the review result: `approved` if passed, `draft` if failed.
-10. A pull request takes the branch to `main` (PROC-03). The CI checks it (PROC-04).
-11. The Product Owner merges. The merge is the approval.
-12. The branch is deleted automatically. Its commits stay in `main`.
+9. A finding that shows a missing rule stops the review. The rule is changed in a change of its
+   own. Then the review goes on, against the new rule.
+10. The status of the change follows the review result: `approved` if passed, `draft` if failed.
+11. A pull request takes the branch to `main` (PROC-03). The CI checks it (PROC-04).
+12. The Product Owner merges. The merge is the approval.
+13. The branch is deleted automatically. Its commits stay in `main`.
 
 For code, step 3 means:
 
