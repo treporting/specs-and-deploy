@@ -9,29 +9,29 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [devops.md]
-  revision: 'c9b7c03'
+  revision: '9a84669'
   criteria:
     RC-01: passed
     RC-02: passed
     RC-03: passed
     RC-04: passed
     RC-05:
-      result: failed
-      note: 'it does not name its audience'
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
     RC-06:
-      result: failed
-      note: 'the tables of the environments and of the extensions have no names'
+      result: passed
+      note: 'found in this review and resolved in it: the tables of the environments and of the extensions have no names'
     RC-07: passed
     RC-08:
-      result: failed
-      note: 'the table lists the CI as open, though it runs and is described further down; the author rule under Merging lacks "not a merge" and documents, as tools/README.md has them'
+      result: passed
+      note: 'found in this review and resolved in it: the table lists the CI as open, though it runs and is described further down; the author rule under Merging lacks "not a merge" and documents, as tools/README.md has them'
     RC-09: passed
     RC-10: passed
     RC-11:
       result: failed
-      note: 'the choice of Markdown PDF stands without its reason and the alternatives rejected'
+      note: 'the choice of Markdown PDF stands without its reason and the alternatives rejected - it needs the Product Owner, and becomes a ticket of its own'
     RC-12: passed
     RC-13:
-      result: failed
-      note: 'the heading Build and deployment is lost, so its open point hangs under Continuous integration'
+      result: passed
+      note: 'found in this review and resolved in it: the heading Build and deployment is lost, so its open point hangs under Continuous integration'
   verdict: failed
