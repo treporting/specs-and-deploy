@@ -1,6 +1,7 @@
 # devops
 
-The environment of our work: the tools we build treporting with, and how they are ruled.
+The environment of our work: the tools we build treporting with, and how they are ruled. It is
+written for whoever sets up or changes that environment, and for the auditor who checks it.
 
 ## Tools are code
 
@@ -23,6 +24,8 @@ in which language, and their chain from requirement to code: [tools/README.md](t
 
 The versions as installed on 2026-10-25. A tool is listed when the work on treporting needs it.
 
+**Table environments** - the tools of our work, and their versions
+
 | Tool | Version | What for |
 |---|---|---|
 | macOS | 26.4.1 | the development machine |
@@ -35,13 +38,15 @@ The versions as installed on 2026-10-25. A tool is listed when the work on trepo
 | Docker Desktop | 4.17.0 - engine 20.10.23, Compose 2.15.1 | the containers, gel |
 | Google Chrome | 155.0.8059.86 | renders the export of the documents to PDF |
 | GitHub | - | the repos of the organization treporting, its project, protected `main`, pull requests |
-| CI | - | *Open*: the checks of formats.md, SBOM and licences |
+| GitHub Actions | - | the CI: the gate of the tools, see Continuous integration; *Open*: the other checks of formats.md, SBOM and licences |
 
 How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`, `node --version`,
 `npm --version`, `docker --version`, `docker compose version`; VS Code and its extensions in
 *Help > About* and the view *Extensions*.
 
 ### Extensions of VS Code
+
+**Table extensions** - the extensions of VS Code, and their versions
 
 | Extension | Version | What for |
 |---|---|---|
@@ -78,9 +83,9 @@ gh api -X PATCH repos/treporting/<repo> \
   -F delete_branch_on_merge=true
 ```
 
-**Why**: the commits of the pull request reach `main` as they are, with their author. The author of a
-requirement is the author and the co-authors of the last commit that changed it (tools/README.md),
-and the revision a review names stays a commit on `main`.
+**Why**: the commits of the pull request reach `main` as they are, with their author. The authors of
+a requirement or a document are the author and the co-authors of the last commit, not a merge, that
+changed it (tools/README.md), and the revision a review names stays a commit on `main`.
 
 **Rejected**:
 
@@ -122,5 +127,6 @@ The demonstration of SR-09 and SR-10 is the pull request
 <https://github.com/treporting/specs-and-deploy/pull/150>: a broken review result and a failing test.
 Both jobs failed, the merge was blocked, and it was closed unmerged.
 
+## Build and deployment
 
 *Open*: the containers in `deploy/`, built from the parts the subsystems deliver; the demo.
