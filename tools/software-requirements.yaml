@@ -63,17 +63,17 @@ requirements:
   verification_method: [test]
 - object_key: SR-09
   component: ci
-  object_text: on every pull request, check every review result, and fail where a result breaks a rule;
-    a pull request whose check failed cannot be merged
+  object_text: on every pull request, in .github/workflows/tools.yml, check every review result, and
+    fail where a result breaks a rule; a pull request whose check failed cannot be merged
   target_ids: [TOOL-12]
-  status: approved
+  status: review
   verification_method: [demonstration]
 - object_key: SR-10
   component: ci
-  object_text: on every pull request, run the tests of the tools on the levels MT and SwIT, and fail where
-    one fails; a pull request whose tests failed cannot be merged
+  object_text: on every pull request, in .github/workflows/tools.yml, run the tests of the tools on the
+    levels MT and SwIT, and fail where one fails; a pull request whose tests failed cannot be merged
   target_ids: [TOOL-12]
-  status: approved
+  status: review
   verification_method: [demonstration]
 - object_key: SR-11
   component: review
@@ -141,10 +141,10 @@ requirements:
   verification_method: [test]
 - object_key: SR-20
   component: ci
-  object_text: on every pull request, check every YAML file against its schema, and fail where one does
-    not match; a pull request whose check failed cannot be merged
+  object_text: on every pull request, in .github/workflows/tools.yml, check every YAML file against its
+    schema, and fail where one does not match; a pull request whose check failed cannot be merged
   target_ids: [TOOL-05]
-  status: approved
+  status: review
   verification_method: [demonstration]
 - object_key: SR-21
   component: ruleset
@@ -164,8 +164,9 @@ requirements:
   verification_method: [test]
 - object_key: SR-23
   component: ci
-  object_text: on every pull request, check the ruleset of main against the file, and fail where they
-    differ; a pull request whose check failed cannot be merged
+  object_text: on every pull request, in .github/workflows/tools.yml, check the ruleset of main against
+    .github/rulesets/main.json, and fail where they differ; a pull request whose check failed cannot be
+    merged
   target_ids: [TOOL-13]
-  status: approved
+  status: review
   verification_method: [demonstration]

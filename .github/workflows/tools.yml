@@ -10,7 +10,6 @@ permissions:
   contents: read
 
 jobs:
-  # @implements SR-09
   reviewcheck:
     runs-on: ubuntu-latest
     steps:
@@ -25,8 +24,6 @@ jobs:
       - name: reviewcheck
         working-directory: tools
         run: go run ./review/cmd/reviewcheck -root ..
-
-  # @implements SR-10
   tests:
     runs-on: ubuntu-latest
     steps:
@@ -44,8 +41,6 @@ jobs:
       - name: SwIT
         working-directory: tools
         run: go test -tags integration ./...
-
-  # @implements SR-20
   schemacheck:
     runs-on: ubuntu-latest
     steps:
@@ -57,8 +52,6 @@ jobs:
       - name: schemacheck
         working-directory: tools
         run: go run ./schema/cmd/schemacheck -root ..
-
-  # @implements SR-23
   rulesetcheck:
     runs-on: ubuntu-latest
     steps:
