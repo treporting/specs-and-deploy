@@ -164,5 +164,21 @@ go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope h
 go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope sr-11-15 SR-11 SR-12 SR-13
 ```
 
-It prints the path of the file it wrote. The code is the package `review/skeleton`, in the component
-`review`.
+The skeleton names its schema in the field `schema` (SR-17). It prints the path of the file it
+wrote. The code is the package `review/skeleton`, in the component `review`.
+
+## schemacheck
+
+Checks every YAML file of our own data under version control against the schema it names in its
+field `schema` (TOOL-05; SR-18 and SR-19 in [software-requirements.yaml](software-requirements.yaml)),
+and reports each place where one does not match, with the file and the path within it. A YAML in
+`.github/` has a form GitHub owns, and is not checked. The CI runs it on every pull request (SR-20).
+
+```bash
+cd tools
+go run ./schema/cmd/schemacheck -root ..
+```
+
+A finding reads `requirements/tool-requirements.yaml /requirements/6/status: value must be one of
+'draft', 'review', 'approved', 'obsolete'`. The code is the component `schema`: the package
+`schema/check` and the command `schema/cmd/schemacheck`. Its dependencies are in devops.md.

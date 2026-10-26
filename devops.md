@@ -57,6 +57,19 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 | Dev Containers (Microsoft) | 0.469.0 | development inside a container |
 | GitHub Actions (GitHub) | 0.32.3 | the workflows of the CI |
 
+### Dependencies of the tools
+
+**Table dependencies** - the modules the tools in `tools/` are built with
+
+| Module | Version | Licence | What for |
+|---|---|---|---|
+| `gopkg.in/yaml.v3` | 3.0.1 | MIT, Apache-2.0 | reading YAML |
+| `github.com/santhosh-tekuri/jsonschema/v6` | 6.0.3 | Apache-2.0 | checking a YAML against its JSON Schema (TOOL-05) |
+| `golang.org/x/text` | 0.14.0 | BSD-3-Clause | the messages of jsonschema; of the Go team |
+
+`github.com/dlclark/regexp2` stands in `go.sum` as part of the module graph of jsonschema; it is not
+built into the tools (`go list -deps`).
+
 ## Documents to PDF
 
 **Decision**: the documents are exported to PDF with the extension Markdown PDF (yzane) of VS Code.
@@ -110,7 +123,7 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 ## Continuous integration
 
 **Decision**: `.github/workflows/tools.yml` runs on every pull request to `main`: the job
-`reviewcheck` (SR-09) and the job `tests` (SR-10). Both are required checks in the ruleset
+`reviewcheck` (SR-09), the job `tests` (SR-10) and the job `schemacheck` (SR-20). Both are required checks in the ruleset
 `main is protected`, which has no bypass - a pull request whose job failed cannot be merged, by
 anyone. The ruleset also allows the merge commit only, as the settings of the repo do.
 
