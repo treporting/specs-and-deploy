@@ -83,8 +83,9 @@ requirements:
 
 ### Schemas
 
-**Decision**: one JSON Schema per kind of YAML file, in [schemas/](schemas/). Every YAML names its
-schema in the field `schema`, from the root of the repo, as a review result names its criteria:
+**Decision**: one JSON Schema per kind of YAML file of our own data, in [schemas/](schemas/). A YAML
+whose form another owns, such as a workflow of GitHub in `.github/`, is not our data and has no
+schema of ours. Every YAML of our own data names its schema in the field `schema`, from the root of the repo, as a review result names its criteria:
 `schema: schemas/tool-requirements.schema.json`. The schema holds that path as a fixed value, so a
 file that names another schema fails. Every schema names the requirement it refines in its
 `$comment`: `@refines ARC-22`. The schemas are the contract of ARC-22 and are reviewed with it.

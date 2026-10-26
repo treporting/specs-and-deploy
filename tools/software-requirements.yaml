@@ -127,10 +127,11 @@ requirements:
   verification_method: [test]
 - object_key: SR-18
   component: schema
-  object_text: check every YAML file under version control against the schema its field schema names,
-    and report each place where it does not match - the file and the path within it
+  object_text: check every YAML file of our own data under version control against the schema its
+    field schema names, and report each place where it does not match - the file and the path within
+    it; a YAML whose form another owns, such as a workflow of GitHub in .github/, is not our data
   target_ids: [TOOL-05]
-  status: approved
+  status: review
   verification_method: [test]
 - object_key: SR-19
   component: schema
