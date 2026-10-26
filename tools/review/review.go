@@ -222,7 +222,7 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 // @implements SR-05, SR-08
 func authorsOf(git Git, revision, target string) ([]string, error) {
 
-	file, key := fileOf(target)
+	file, key := FileOf(target)
 	if file == "" {
 		return nil, fmt.Errorf("no file holds %s", target)
 	}
@@ -255,9 +255,9 @@ func authorsOf(git Git, revision, target string) ([]string, error) {
 	return nil, fmt.Errorf("%s is not in %s in %s", target, file, revision)
 }
 
-// fileOf answers the file that holds a target, and the key to find it there; a document is its
+// FileOf answers the file that holds a target, and the key to find it there; a document is its
 // own file and has no key.
-func fileOf(target string) (file, key string) {
+func FileOf(target string) (file, key string) {
 
 	if strings.HasSuffix(target, ".md") {
 		return target, ""
@@ -278,6 +278,13 @@ func objectAt(git Git, commit, file, key string) []byte {
 	if err != nil {
 		return nil
 	}
+	return ObjectIn(data, key)
+}
+
+// ObjectIn answers the object with key in the YAML data, as YAML, or the whole data where key is
+// empty; nil where it is not there.
+func ObjectIn(data []byte, key string) []byte {
+
 	if key == "" {
 		return data
 	}

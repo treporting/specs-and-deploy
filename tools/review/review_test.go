@@ -279,3 +279,16 @@ func TestAMergeIsNoAuthorship(t *testing.T) {
 		t.Errorf("want no finding, the merge is no authorship; got %q", got)
 	}
 }
+
+// @verifies SR-06
+func TestAnUnfilledSkeletonIsReported(t *testing.T) {
+	got := check(t, `- object_key: RR-01
+  target_ids: [TOOL-03]
+  revision: 'c1'
+  criteria: {RC-01: todo, RC-02: todo}
+  verdict: todo
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
+	expect(t, got, "criterion RC-01 is neither passed nor failed")
+	expect(t, got, "criterion RC-02 is neither passed nor failed")
+	expect(t, got, "the verdict is neither passed nor failed")
+}

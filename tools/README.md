@@ -121,3 +121,20 @@ go test -tags integration ./...          # SwIT, on a history of git made in the
 ```
 
 It exits with 1 where a result breaks a rule. It depends on `gopkg.in/yaml.v3` (MIT and Apache-2.0).
+
+## reviewskeleton
+
+Writes the skeleton of a review result into `reviews/` (TOOL-04; SR-11 to SR-15 in
+[software-requirements.yaml](software-requirements.yaml)): the name from the time and the scope,
+the criteria file of the level and the last commit that changed it, the commit `HEAD` as the
+revision of each, and every criterion and the verdict as `todo`. It writes nothing where a target is
+not found, or where the targets belong to more than one level.
+
+```bash
+cd tools
+go run ./cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope harness harness.md
+go run ./cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope sr-11-15 SR-11 SR-12 SR-13
+```
+
+It prints the path of the file it wrote. The code is the package `review/skeleton`, in the component
+`review`.

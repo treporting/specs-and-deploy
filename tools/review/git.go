@@ -54,6 +54,12 @@ func (g ExecGit) IsMerge(commit string) bool {
 	return err == nil
 }
 
+// Short answers the short hash of rev.
+func (g ExecGit) Short(rev string) (string, error) {
+	out, err := g.run("rev-parse", "--short", rev)
+	return strings.TrimSpace(out), err
+}
+
 // Authors answers the author of a commit and the names of its co-authors, without their address.
 func (g ExecGit) Authors(commit string) (string, []string, error) {
 	out, err := g.run("show", "-s", "--format=%an%x00%(trailers:key=Co-Authored-By,valueonly,separator=%x1f)", commit)

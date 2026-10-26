@@ -1,0 +1,70 @@
+//go:build integration
+
+package skeleton
+
+import (
+	"os"
+	"os/exec"
+	"path/filepath"
+	"strings"
+	"testing"
+	"time"
+
+	"github.com/treporting/specs-and-deploy/tools/review"
+)
+
+func gitIn(t *testing.T, dir string, args ...string) {
+	t.Helper()
+	cmd := exec.Command("git", append([]string{"-C", dir}, args...)...)
+	cmd.Env = append(os.Environ(), "GIT_AUTHOR_NAME=Claude Opus 5.5", "GIT_AUTHOR_EMAIL=noreply@anthropic.com",
+		"GIT_COMMITTER_NAME=Mathias Fischer", "GIT_COMMITTER_EMAIL=m@example.org")
+	if out, err := cmd.CombinedOutput(); err != nil {
+		t.Fatalf("git %v: %v\n%s", args, err, out)
+	}
+}
+
+func write(t *testing.T, root, path, content string) {
+	t.Helper()
+	os.MkdirAll(filepath.Join(root, filepath.Dir(path)), 0o755)
+	if err := os.WriteFile(filepath.Join(root, path), []byte(content), 0o644); err != nil {
+		t.Fatal(err)
+	}
+}
+
+// A skeleton on a real history: it is made, and reviewcheck then reports every todo in it - an
+// unfilled skeleton cannot pass.
+//
+// @verifies SR-11, SR-12, SR-13, SR-14
+func TestASkeletonOnAHistoryOfGit(t *testing.T) {
+
+	root := t.TempDir()
+	gitIn(t, root, "init", "-q")
+	write(t, root, "reviews/criteria-tool.yaml", "level: tool\ncriteria:\n- object_key: RC-01\n- object_key: RC-02\n")
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "-m", "criteria")
+	write(t, root, "requirements/tool-requirements.yaml", "level: tool\nrequirements:\n- object_key: TOOL-03\n  object_text: check\n")
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "-m", "requirement")
+
+	git := review.ExecGit{Root: root}
+	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03", Targets: []string{"TOOL-03"}, Now: time.Now()}, git)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	findings, err := review.Check(root, path, git)
+	if err != nil {
+		t.Fatal(err)
+	}
+	todo := 0
+	for _, f := range findings {
+		if strings.Contains(f.Message, "neither passed nor failed") {
+			todo++
+		} else {
+			t.Errorf("want only the todos reported, got %v", f)
+		}
+	}
+	if todo != 3 {
+		t.Errorf("want 3 todos reported, two criteria and the verdict; got %d: %v", todo, findings)
+	}
+}

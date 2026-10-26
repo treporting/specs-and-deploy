@@ -137,6 +137,10 @@ the old file goes, and the commit message says why. Git keeps it. A review that 
 replaced: it stays, and the next review follows it in a file of its own. So the trail stays: the
 finding, the change it caused, and the review that found it resolved.
 
+A skeleton of a review result is made by `reviewskeleton` (see tools/README.md). It sets each
+criterion and the verdict to `todo`, never to a value that could be right: the reviewer decides each.
+`reviewcheck` reports every `todo`, so an unfilled skeleton cannot be merged.
+
 A review result changes until its merge, never after. A finding resolved on the branch is kept in a
 note of its criterion: "found in this review and resolved in it: ...". The revision is then the
 commit with the fix.
