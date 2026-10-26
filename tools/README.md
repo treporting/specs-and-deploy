@@ -2,7 +2,8 @@
 
 The tools of our work: what checks and supports the requirements, reviews and documents of
 treporting. Tools are code (see [devops.md](../devops.md)): every tool realizes an approved tool
-requirement of [tool-requirements.yaml](../requirements/tool-requirements.yaml).
+requirement of [tool-requirements.yaml](../requirements/tool-requirements.yaml). It is written for
+whoever builds, runs or reviews the tools.
 
 ## Where the tools live
 
@@ -11,7 +12,7 @@ requirement of [tool-requirements.yaml](../requirements/tool-requirements.yaml).
 **Why**: the tools check above all the files of this repo - requirements, reviews, schemas - so what
 is checked and what checks lie together. The repo is meant for more than documents already: the
 containers and the system tests come here as well. The checks of the code repos run as a reusable
-workflow in `treporting/.github`, which takes the tool from here.
+workflow in `treporting/.github`, which takes the tool from here. That workflow is still open.
 
 **Rejected**:
 
@@ -25,7 +26,8 @@ workflow in `treporting/.github`, which takes the tool from here.
 **Decision**: Go.
 
 **Why**: the same language as the subsystems, and its toolchain stands in devops.md already - no
-new language in the chain of our tools, which THR-02 asks to keep small. A tool is one program
+new language in the chain of our tools, which the threat of an outdated toolchain asks to keep
+small. A tool is one program
 with no dependency at run time, which the CI runs as it is. It is tested like the code of the
 product - a checker with a fault would let faults pass unseen.
 
@@ -44,7 +46,7 @@ uplink. The code names them in `@implements SR-nn`, a test in `@verifies SR-nn`.
 the levels MT and SwIT.
 
 **Why**: the first tool showed it. TOOL-03 holds five behaviours that can each be tested on their
-own; by ISO/IEC/IEEE 29148 each is a requirement of its own (singular). Its review noted it, and
+own; by ISO29148 each is a requirement of its own (singular). Its review noted it, and
 each test of reviewcheck verified one of the five while all named only TOOL-03 - which of them a
 test verifies could not be told. A tool requirement says what a tool does for our work; a
 software requirement says how it behaves.
@@ -69,7 +71,7 @@ audit trail asks for (REG-05), and the original stays original (ARC-R01, REG-10)
   claim rather than a record, it can drift from git unseen, and it would be a second source of the
   same truth
 
-## Who the author of a requirement is
+## Who the author of a requirement or a document is
 
 **Decision**: the authors of a requirement or a document are the names in its `modified_by` - the
 author and the co-authors of the last commit, not a merge, that changed it, whatever names stand
@@ -107,8 +109,7 @@ breaks the check, so its requirements are reviewed again and the old result is r
 
 ## The component review
 
-Everything of the component `review` lies below `tools/review`, so its hierarchy can be read from
-the folders:
+**Decision**: everything of the component `review` lies below `tools/review`:
 
 ```
 tools/review/                the component: what its tools share - git, and finding an id in its file
@@ -118,8 +119,18 @@ tools/review/                the component: what its tools share - git, and find
   cmd/reviewskeleton/        the command
 ```
 
-A command keeps the name of its tool, not `check` or `skeleton`: Go names a program by the last
-part of its path. An SR names the component, `review`; the module is set by the code.
+**Why**: the hierarchy of the component can be read from the folders. `check` and `skeleton`
+depend on `review`, not on each other. A command keeps the name of its tool: Go names a program by
+the last part of its path. An SR names the component, `review`; the module is set by the code.
+
+**Rejected**:
+
+- the commands in `tools/cmd` and the packages beside them - the component would be spread over
+  the tree
+- a folder `lib/` - in Go every package without `main` is a library already
+- commands named `check` and `skeleton` - too general a name for a program
+- the module as the component of an SR - which package realizes a behaviour is a decision of the
+  design, on the levels r6 and r7
 
 ## reviewcheck
 
