@@ -109,3 +109,11 @@ requirements:
   target_ids: [TOOL-04]
   status: approved
   verification_method: [test]
+- object_key: SR-16
+  component: review
+  object_text: report the findings of a result in the same order in every run - by criterion in the
+    order of the criteria file, criteria not in it by their id, then the verdict, the revision and
+    the reviewer
+  target_ids: [TOOL-03]
+  status: approved
+  verification_method: [test]
