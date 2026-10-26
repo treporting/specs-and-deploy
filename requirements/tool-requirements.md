@@ -1,7 +1,8 @@
 # Tool requirements
 
 The requirements on the tools of our work. Tools are code (see [devops.md](../devops.md)): every
-tool realizes an approved requirement of this file.
+tool realizes an approved requirement of this file. It is written for whoever builds a tool or
+reviews its requirement, and for the auditor who asks how the tools are controlled.
 
 The requirements themselves - ids `TOOL-nn` - are in [tool-requirements.yaml](tool-requirements.yaml),
 in the format of [formats.md](../formats.md). A tool requirement names as uplink the rule of the
@@ -16,6 +17,8 @@ A document handed to an auditor shows what it is, which revision, and its status
 
 **Which status** an exported document shows:
 
+**Table status variants** - what the footer of an exported document could show
+
 | | In the footer | From |
 |---|---|---|
 | a) a summary of the status of the requirements it holds | "70 draft, 4 review, 2 approved" | counted from the YAML |
@@ -26,15 +29,16 @@ A document handed to an auditor shows what it is, which revision, and its status
 works for every document - also for one that holds no requirements, such as devops.md or
 harness.md, where a) and b) would give none.
 
-*Open*: where a document keeps its own status, and which values it takes.
+Where it keeps it: in the `documents` section of the YAML beside it, or in `documents.yaml`, with
+the values of a requirement (formats.md, section Documents).
 
 ## Reviews
 
 `TOOL-03` to `TOOL-04`, and `TOOL-11`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The tools that create and check a review. `reviewcheck` checks every review result (TOOL-03,
-TOOL-11) and runs on every pull request (TOOL-12). Until the skeleton of TOOL-04 is built, a review
-result is written by hand.
+TOOL-11) and runs on every pull request (TOOL-12). `reviewskeleton` writes the skeleton of a review
+result (TOOL-04).
 
 ## CI check
 
