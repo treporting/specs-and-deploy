@@ -52,14 +52,14 @@ a standard by its number and title.
 
 **Table domains** - the standards of each domain, at a glance
 
-| Domain | Process | Safety | Safety analysis | Cybersecurity | Security analysis |
-|---|---|---|---|---|---|
-| automotive | ASPICE, ISO330xx | ISO26262 | HARA | ISO21434 | TARA |
-| airborne | ARP4754B, DO178C, DO254 | ARP4761A | FHA, SSA | DO326A | SRA |
-| railway | EN50126-1, EN50716, EN50129 | EN50126-1, EN50126-2 | HL | CLC50701 | TRA |
-| medical | ISO13485, IEC62304, IEC60601-1 | ISO14971 | RMF | IEC81001-5-1 | TM |
-| industrial | IEC61508 | IEC61508 | H&RA | IEC62443 | TRA |
-| software | ISO12207, ISO29119 | ISO15026 | H&RA | IEC62443-4-1 | TRA |
+| Domain | Process | Safety | Security |
+|---|---|---|---|
+| automotive | ASPICE, ISO330xx | HARA ISO26262 | TARA ISO21434 |
+| airborne | ARP4754B, DO178C, DO254 | FHA, SSA ARP4761A | SRA DO326A |
+| railway | EN50126-1, EN50716, EN50129 | HL EN50126-1, EN50126-2 | TRA CLC50701 |
+| medical | ISO13485, IEC62304, IEC60601-1 | RMF ISO14971 | TM IEC81001-5-1 |
+| industrial | IEC61508 | H&RA IEC61508 | TRA IEC62443 |
+| software | ISO12207, ISO29119 | H&RA IEC61508-1, ISO15026 | TRA IEC62443-3-2, IEC62443-4-1 |
 
 - FHA - functional hazard assessment according to ARP4761A
 - H&RA - hazard and risk analysis according to IEC61508-1, clause 7.4
