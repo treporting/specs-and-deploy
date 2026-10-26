@@ -124,10 +124,11 @@ part of its path. An SR names the component, `review`; the module is set by the 
 ## reviewcheck
 
 Checks every review result in `reviews/` against the rules of formats.md (TOOL-03, TOOL-11; SR-01
-to SR-08 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
+to SR-08 and SR-16 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
 criteria file once, the verdict passed only when every criterion passed, a note to every failed
 criterion, no value but passed or failed, the revision reviewed exists, the criteria revision changed
-the criteria file, and the reviewer is none of the authors of the requirement or document.
+the criteria file, and the reviewer is none of the authors of the requirement or document. It
+reports the findings of a result by criterion, in the order of its criteria file, the same in every run.
 
 ```bash
 cd tools
