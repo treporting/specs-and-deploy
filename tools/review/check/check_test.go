@@ -292,3 +292,39 @@ func TestAnUnfilledSkeletonIsReported(t *testing.T) {
 	expect(t, got, "criterion RC-02 is neither passed nor failed")
 	expect(t, got, "the verdict is neither passed nor failed")
 }
+
+// @verifies SR-16
+func TestTheFindingsInTheSameOrderInEveryRun(t *testing.T) {
+	git := history("Claude Opus 5.5", "Claude Opus 5.5")
+	git.files["c1"]["reviews/criteria-tool.yaml"] = `level: tool
+criteria:
+- object_key: RC-01
+- object_key: RC-02
+- object_key: RC-03
+- object_key: RC-04
+- object_key: RC-05
+`
+	result := `- object_key: RR-01
+  target_ids: [TOOL-03]
+  revision: 'c1'
+  criteria: {RC-05: todo, RC-04: todo, RC-01: todo, RC-03: failed, RC-09: passed, RC-07: passed}
+  verdict: todo
+`
+	want := []string{
+		"criterion RC-01 is neither passed nor failed",
+		"criterion RC-02 is missing",
+		"criterion RC-03 failed with no note",
+		"criterion RC-04 is neither passed nor failed",
+		"criterion RC-05 is neither passed nor failed",
+		"criterion RC-07 is not in reviews/criteria-tool.yaml",
+		"criterion RC-09 is not in reviews/criteria-tool.yaml",
+		"the verdict is neither passed nor failed",
+	}
+	//	a map is walked in another order each time; twenty runs show the order does not follow it
+	for run := 0; run < 20; run++ {
+		got := check(t, result, git)
+		if strings.Join(got, "\n") != strings.Join(want, "\n") {
+			t.Fatalf("run %d:\n got %q\nwant %q", run, got, want)
+		}
+	}
+}

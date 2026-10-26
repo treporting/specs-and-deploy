@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"github.com/treporting/specs-and-deploy/tools/review"
@@ -76,7 +77,7 @@ type Git interface {
 
 // Check reads the review result in path, below root, and answers every rule it breaks.
 //
-// @implements SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08
+// @implements SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08, SR-16
 func Check(root, path string, git Git) ([]Finding, error) {
 
 	data, err := os.ReadFile(filepath.Join(root, path))
@@ -140,22 +141,33 @@ func criteriaKeys(git Git, revision, file string) ([]string, error) {
 
 // checkResult answers the rules one result breaks.
 //
-// @implements SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-08
+// @implements SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-08, SR-16
 func checkResult(r Review, result Result, criteria []string, git Git) []string {
 
 	var messages []string
 
 	//	every criterion once - a map has every key once, so what is left to
-	//	ask is whether one is missing or one is not a criterion of the file
+	//	ask is whether one is missing or one is not a criterion of the file;
+	//	walked by criterion in the order of the file, those not in it by id
 	known := map[string]bool{}
 	for _, key := range criteria {
 		known[key] = true
-		if _, ok := result.Criteria[key]; !ok {
-			messages = append(messages, "criterion "+key+" is missing")
+	}
+	var foreign []string
+	for key := range result.Criteria {
+		if !known[key] {
+			foreign = append(foreign, key)
 		}
 	}
+	sort.Strings(foreign)
+
 	allPassed := true
-	for key, j := range result.Criteria {
+	for _, key := range append(append([]string(nil), criteria...), foreign...) {
+		j, ok := result.Criteria[key]
+		if !ok {
+			messages = append(messages, "criterion "+key+" is missing")
+			continue
+		}
 		if !known[key] {
 			messages = append(messages, "criterion "+key+" is not in "+r.Criteria)
 		}
