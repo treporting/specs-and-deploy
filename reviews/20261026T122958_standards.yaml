@@ -9,7 +9,7 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [standards.md]
-  revision: '0e6a9bd'
+  revision: '0784bb3'
   criteria:
     RC-01: passed
     RC-02:
@@ -20,7 +20,9 @@ results:
     RC-05:
       result: passed
       note: 'found in this review and resolved in it: it does not name its audience'
-    RC-06: passed
+    RC-06:
+      result: passed
+      note: 'found in this review and resolved in it: the title of IEC 62443 was wrong; EN 50129 merges into DIN EN IEC 62425, which was missing'
     RC-07: passed
     RC-08: passed
     RC-09: passed
