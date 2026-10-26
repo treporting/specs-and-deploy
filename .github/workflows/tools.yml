@@ -1,4 +1,4 @@
-# The gate of the tools on every pull request (TOOL-12). Each job is a required check of the ruleset
+# The gate of the tools on every pull request (TOOL-12, TOOL-05). Each job is a required check of the ruleset
 # of main, so a pull request whose job failed cannot be merged. See devops.md.
 name: tools
 
@@ -44,3 +44,16 @@ jobs:
       - name: SwIT
         working-directory: tools
         run: go test -tags integration ./...
+
+  # @implements SR-20
+  schemacheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/go.mod
+          cache-dependency-path: tools/go.sum
+      - name: schemacheck
+        working-directory: tools
+        run: go run ./schema/cmd/schemacheck -root ..
