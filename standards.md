@@ -1,14 +1,24 @@
 # Standards
 
 The standards of the domains treporting is used in: the process a project follows, the safety
-standard, and the analysis that finds what is to be controlled. A company process has to match
-the standardized one (see Process in [definitions.md](definitions.md)).
+standard, and the analysis that finds what is to be controlled. treporting takes them as the basis
+of its development (see Process in [definitions.md](definitions.md)). It also sets the short form
+by which every document names a standard. It is written for whoever writes or reviews a document
+of treporting, and for the auditor who looks for a standard.
 
 ## Short forms
 
-Every document names a standard by its short form: its first publisher and its number, with no
-space between them. A part keeps its hyphen: IEC 61508-1 is IEC61508-1. Only the table below names
-a standard by its number and title.
+**Decision**: every document names a standard by its short form: its first publisher and its
+number, with no space between them. A part keeps its hyphen: IEC 61508-1 is IEC61508-1. Only the
+table below names a standard by its number and title.
+
+**Why**: the full name, such as ISO/IEC/IEEE 12207, is long, and was written out each time. A
+short form is the same in every document, and the table says what stands behind it.
+
+**Rejected**:
+
+- the full name throughout - too long, and found in the review of harness.md
+- a short form with a hyphen, ISO-12207 - longer than needed, and the hyphen is taken by the part
 
 **Table short forms** - every standard named in the documents
 
@@ -32,12 +42,13 @@ a standard by its number and title.
 | IEC60601-1 | IEC 60601-1 Medical electrical equipment - Part 1: General requirements for basic safety and essential performance | |
 | IEC81001-5-1 | IEC 81001-5-1 Health software and health IT systems safety, effectiveness and security - Part 5-1: Security - Activities in the product life cycle | |
 | IEC61508 | IEC 61508 Functional safety of electrical/electronic/programmable electronic safety-related systems | |
-| IEC62443 | IEC 62443 Security for industrial automation and control systems | |
+| IEC62443 | IEC 62443 Industrial communication networks - Network and system security | |
 | EN50126 | EN 50126 Railway applications - The specification and demonstration of Reliability, Availability, Maintainability and Safety (RAMS) | |
 | EN50716 | EN 50716 Railway applications - Requirements for software development | |
 | EN50128 | EN 50128 Railway applications - Communication, signalling and processing systems - Software for railway control and protection systems | replaced by EN50716 |
 | EN50657 | EN 50657 Railway applications - Rolling stock applications - Software on board rolling stock | replaced by EN50716 |
-| EN50129 | EN 50129 Railway applications - Communication, signalling and processing systems - Safety related electronic systems for signalling | |
+| EN50129 | EN 50129 Railway applications - Communication, signalling and processing systems - Safety related electronic systems for signalling | merges into IEC62425 |
+| IEC62425 | DIN EN IEC 62425 Railway applications - Communication, signalling and processing systems - Safety related electronic systems for signalling | |
 | CLC50701 | CLC/TS 50701 Railway applications - Cybersecurity | |
 | ASPICE | Automotive SPICE Process Reference and Assessment Model | |
 | ARP4754B | ARP4754B Guidelines for Development of Civil Aircraft and Systems | |

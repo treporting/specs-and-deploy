@@ -1,0 +1,35 @@
+# Review of standards.md against the criteria of the level document.
+# Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
+# Format: ../formats.md, section Reviews.
+level: review
+created_by: Mathias Fischer
+created_at: '2026-10-26T12:29:58+01:00'
+criteria: reviews/criteria-documents.yaml
+criteria_revision: 'a4a8931'
+results:
+- object_key: RR-01
+  target_ids: [standards.md]
+  revision: '0784bb3'
+  criteria:
+    RC-01: passed
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: the scope names the standards of the domains, not the short forms, which are its first section; it asks a company process to match the standardized one, which treporting cannot ask - it takes the standards as the basis of its development'
+    RC-03: passed
+    RC-04: passed
+    RC-05:
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
+    RC-06:
+      result: passed
+      note: 'found in this review and resolved in it: the title of IEC 62443 was wrong; EN 50129 merges into DIN EN IEC 62425, which was missing'
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11:
+      result: passed
+      note: 'found in this review and resolved in it: the rule of the short forms stands without its reason and the alternatives rejected'
+    RC-12: passed
+    RC-13: passed
+  verdict: passed
