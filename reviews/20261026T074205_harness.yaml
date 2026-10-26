@@ -1,5 +1,5 @@
 # Review of harness.md against the criteria of the documents. It follows the failed review in
-# 20261025T221734_harness.yaml, whose findings are resolved.
+# 20261025T221734_harness.yaml, whose findings are resolved; it finds new ones.
 # Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
 level: review
 created_by: Mathias Fischer
@@ -16,11 +16,15 @@ results:
     RC-03: passed
     RC-04: passed
     RC-05: passed
-    RC-06: passed
-    RC-07: passed
+    RC-06:
+      result: failed
+      note: '"12207, 6.3.4" names no standard; the columns of the tables Levels and Maturity are headed by standards, so a cell such as 6.4.2 does not say from which it comes - a column Reference with cells such as ISO-12207, clause 6.4.2; a table can be referenced only by the heading above it, it has no name of its own'
+    RC-07:
+      result: failed
+      note: 'standards are named in full each time; a short form, such as ISO-12207, is to be set in standards.md and used throughout'
     RC-08: passed
     RC-09: passed
     RC-10: passed
     RC-11: passed
     RC-12: passed
-  verdict: passed
+  verdict: failed
