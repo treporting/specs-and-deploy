@@ -116,6 +116,11 @@ that replaces another of the same scope takes the name of the old one with `-rec
 `2026-10-25-tool-03-10-recreated.yaml`; one of a wider scope takes a name of its own. Either way the
 old file goes, and the commit message says why. Git keeps it.
 
+A review is replaced only where it no longer holds as evidence - where a rule of its form changed. A
+review that failed is not replaced: it stays, and the next review follows it in a file of its own,
+named by its own day, such as `2026-10-26-harness.yaml` after `2026-10-25-harness.yaml`. So the
+trail stays: the finding, the change it caused, and the review that found it resolved.
+
 A file of results is one review, with one result per requirement reviewed:
 
 ```yaml
