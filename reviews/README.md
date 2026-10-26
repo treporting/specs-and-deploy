@@ -11,6 +11,7 @@ auditor who looks for its evidence.
 |---|---|
 | [criteria-r1.yaml](criteria-r1.yaml) | the criteria of the user needs (r1) |
 | [criteria-r2.yaml](criteria-r2.yaml) | the criteria of the system requirements (r2) |
+| [criteria-r3.yaml](criteria-r3.yaml) | the criteria of the elements of the architecture (r3) |
 | [criteria-r5.yaml](criteria-r5.yaml) | the criteria of the software requirements (r5), of the subsystems and of the tools |
 | [criteria-tool.yaml](criteria-tool.yaml) | the criteria of the tool requirements |
 | [criteria-documents.yaml](criteria-documents.yaml) | the criteria of the documents, after ISO15289 |
