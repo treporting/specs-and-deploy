@@ -107,19 +107,23 @@ like a test case and its result, in `reviews/`:
 ```
 reviews/
   criteria-r2.yaml               the criteria of a level, after ISO/IEC/IEEE 29148 (RC)
-  2026-10-25-sys-trace.yaml      a review: who, when, the revision of every requirement
+  20261025T140000_sys-trace.yaml a review: who, when, the revision of every requirement
                                  reviewed, per requirement and criterion passed or failed (RR)
 ```
 
-A file of results is named `<date>-<scope>.yaml`: the day of the review, and what it reviewed. A review
-that replaces another of the same scope takes the name of the old one with `-recreated`, such as
-`2026-10-25-tool-03-10-recreated.yaml`; one of a wider scope takes a name of its own. Either way the
-old file goes, and the commit message says why. Git keeps it.
+A file of results is named `<yyyymmddThhmmss>_<scope>.yaml`: the time of its `created_at`, in the
+basic format of ISO 8601, and what it reviewed - such as `20261026T140000_r1-pm.yaml`. Every review
+has a name of its own, and the files sort by time.
+
+A review is replaced only where it no longer holds as evidence - where a rule of its form changed;
+the old file goes, and the commit message says why. Git keeps it. A review that failed is not
+replaced: it stays, and the next review follows it in a file of its own. So the trail stays: the
+finding, the change it caused, and the review that found it resolved.
 
 A file of results is one review, with one result per requirement reviewed:
 
 ```yaml
-# reviews/2026-10-26-r1-pm.yaml
+# reviews/20261026T140000_r1-pm.yaml
 level: review
 created_by: the reviewer
 created_at: '2026-10-26T14:00:00+01:00'
