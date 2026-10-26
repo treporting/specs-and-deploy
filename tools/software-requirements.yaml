@@ -115,5 +115,5 @@ requirements:
     order of the criteria file, criteria not in it by their id, then the verdict, the revision and
     the reviewer
   target_ids: [TOOL-03]
-  status: review
+  status: approved
   verification_method: [test]
