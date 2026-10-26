@@ -56,7 +56,7 @@ requirements:
     counts differ
   rationale: tool error detection - a count made by the parser shares every error of the parser and
     cannot find one, as SYS-23 asks of the product for an import
-  status: approved
+  status: aproved
   verification_method: [test]
 - object_key: TOOL-08
   feature: CI check
