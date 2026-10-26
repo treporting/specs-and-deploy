@@ -10,7 +10,7 @@ criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
   target_ids: [formats.md]
-  revision: '4e47249'
+  revision: '4dc1ad0'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -24,11 +24,13 @@ results:
     RC-10: passed
     RC-11: passed
     RC-12: passed
-    RC-13: passed
+    RC-13:
+      result: passed
+      note: 'found in this review and resolved in it: the rule for a file whose form another owns held for the schemas only, though such a file needs no annotation either - it is one rule now, Files whose form another owns'
   verdict: passed
 - object_key: RR-02
   target_ids: [devops.md]
-  revision: '4e47249'
+  revision: '4dc1ad0'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -46,7 +48,7 @@ results:
   verdict: passed
 - object_key: RR-03
   target_ids: [tools/README.md]
-  revision: '4e47249'
+  revision: '4dc1ad0'
   criteria:
     RC-01: passed
     RC-02: passed
