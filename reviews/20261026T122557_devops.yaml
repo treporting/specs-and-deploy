@@ -9,7 +9,7 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [devops.md]
-  revision: '9a84669'
+  revision: 'd9cceb3'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -28,10 +28,10 @@ results:
     RC-09: passed
     RC-10: passed
     RC-11:
-      result: failed
-      note: 'the choice of Markdown PDF stands without its reason and the alternatives rejected - it needs the Product Owner, and becomes a ticket of its own'
+      result: passed
+      note: 'found in this review and resolved in it: the choice of Markdown PDF stood without its reason and the alternatives rejected'
     RC-12: passed
     RC-13:
       result: passed
       note: 'found in this review and resolved in it: the heading Build and deployment is lost, so its open point hangs under Continuous integration'
-  verdict: failed
+  verdict: passed
