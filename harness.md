@@ -14,31 +14,33 @@ one level above the repos.
 treporting is a pure software project and is developed following the process of the domain
 *software* (see [standards.md](standards.md)):
 
-- **ISO/IEC/IEEE 12207** is the life cycle, **ISO/IEC/IEEE 29119** gives the test levels.
-- 12207 knows no safety and no security, so companion standards are added:
-  - **safety analysis**: the hazard and risk analysis by the method of IEC 61508-1, 7.4, in
+- **ISO12207** is the life cycle, **ISO29119** gives the test levels.
+- ISO12207 knows no safety and no security, so companion standards are added:
+  - **safety analysis**: the hazard and risk analysis by the method of IEC61508-1, clause 7.4, in
     [safety/hazard-and-risk-analysis.md](safety/hazard-and-risk-analysis.md) (HAZ);
-  - **security**: IEC 62443-4-1 for the secure development, IEC 62443-3-2 for the analysis of the
+  - **security**: IEC62443-4-1 for the secure development, IEC62443-3-2 for the analysis of the
     threats (THR);
-  - **assurance**: ISO/IEC/IEEE 15026 is proposed for the case why the tool can be relied on, in
+  - **assurance**: ISO15026 is proposed for the case why the tool can be relied on, in
     the tool qualification.
-- **project risks** are handled by the risk management process of 12207, 6.3.4.
+- **project risks** are handled by the risk management process of ISO12207, clause 6.3.4.
 - REG-01 to REG-04 are requirements on the tool from the domains of its users, not our process.
 
 ### Levels
 
-| Level | Here | ISO/IEC/IEEE 12207 |
+**Table levels** - the levels of the work, and the clause of each
+
+| Level | Here | Reference |
 |---|---|---|
-| h1 | hazards (HAZ) and threats (THR), told apart by their prefix - a trace starts here or at r1 | - (method of IEC 61508-1, 7.4; IEC 62443-3-2) |
+| h1 | hazards (HAZ) and threats (THR), told apart by their prefix - a trace starts here or at r1 | the method of IEC61508-1, clause 7.4; IEC62443-3-2 |
 | h2 | the measure that controls a hazard (HAZC) or a threat (THRC), and asks for r1 | - |
-| n1 | the clauses of the standards and laws to be met: regulatory requirements (REG) | 6.4.2 stakeholder needs and requirements definition |
-| r1 | user needs (UN) | 6.4.2 stakeholder needs and requirements definition |
-| r2 | system requirements (SYS) | 6.4.3 system requirements definition |
-| r3 | system architecture (ARC) | 6.4.4 architecture definition |
-| r4 | the system requirements allocated to the subsystems - derived directly from r2 by the allocation in the system architecture, with no ids of their own | 6.4.4 architecture definition |
-| r5 | software requirements (SR) per subsystem | 6.4.3 software requirements definition |
-| r6 | software architecture of a subsystem: its components | 6.4.4 architecture definition |
-| r7 | software design of a subsystem: its modules and units | 6.4.5 design definition |
+| n1 | the clauses of the standards and laws to be met: regulatory requirements (REG) | ISO12207, clause 6.4.2 - stakeholder needs and requirements definition |
+| r1 | user needs (UN) | ISO12207, clause 6.4.2 - stakeholder needs and requirements definition |
+| r2 | system requirements (SYS) | ISO12207, clause 6.4.3 - system requirements definition |
+| r3 | system architecture (ARC) | ISO12207, clause 6.4.4 - architecture definition |
+| r4 | the system requirements allocated to the subsystems - derived directly from r2 by the allocation in the system architecture, with no ids of their own | ISO12207, clause 6.4.4 - architecture definition |
+| r5 | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition |
+| r6 | software architecture of a subsystem: its components | ISO12207, clause 6.4.4 - architecture definition |
+| r7 | software design of a subsystem: its modules and units | ISO12207, clause 6.4.5 - design definition |
 
 In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
 tests SYS, r5 to r7 with the code and the software tests SW. n1 is read by the compliance
@@ -46,7 +48,9 @@ view, not by a trace.
 
 ### Test levels
 
-| Level | ISO/IEC/IEEE 29119 | What | Data |
+**Table test levels** - the levels of the tests, and the term of each in ISO29119
+
+| Level | Term in ISO29119 | What | Data |
 |---|---|---|---|
 | MT | unit test | a function or a package | made in the test |
 | SwIT | integration test | a subsystem, through its API and its model | synthetic, in memory |
@@ -61,26 +65,30 @@ A software test names SR in `@verifies`, a system test SYS.
 
 The data of treporting itself (the reference edgedb) is measured by this chain:
 
-| Order | Object | ISO/IEC/IEEE 12207, 29119 | Group |
+**Table maturity** - the steps of the chain, the clause of each, and its group
+
+| Order | Object | Reference | Group |
 |---|---|---|---|
-| 1 | stakeholder requirement | 6.4.2 | RG-SYS-R |
-| 2 | system requirement | 6.4.3 | RG-SYS-R |
-| 3 | system architecture | 6.4.4 | RG-SYS-R |
-| 4 | software requirement | 6.4.3 | RG-SW-R |
-| 5 | software architecture - the components | 6.4.4 | RG-SW-R |
-| 6 | software design - the modules | 6.4.5 | RG-SW-R |
-| 7 | source code, one step per code coverage level | 6.4.7 | RG-SC |
-| 8 | object code, one step per code coverage level | 6.4.7 | RG-OC |
-| 9 | test case, test result of the unit test (MT) | 29119 | RG-SW-TC, RG-SW-TR |
-| 10 | test case, test result of the integration test (SwIT) | 29119 | RG-SW-TC, RG-SW-TR |
-| 11 | test case, test result of the subsystem test (SwVal) | 29119 | RG-SW-TC, RG-SW-TR |
-| 12 | test case, test result of the system integration test (SysIT) | 29119 | RG-SYS-TC, RG-SYS-TR |
-| 13 | test case, test result of the system test (SysQT) | 29119 | RG-SYS-TC, RG-SYS-TR |
-| 14 | test case, test result of the acceptance test (Val) | 29119 | RG-SYS-TC, RG-SYS-TR |
+| 1 | stakeholder requirement | ISO12207, clause 6.4.2 | RG-SYS-R |
+| 2 | system requirement | ISO12207, clause 6.4.3 | RG-SYS-R |
+| 3 | system architecture | ISO12207, clause 6.4.4 | RG-SYS-R |
+| 4 | software requirement | ISO12207, clause 6.4.3 | RG-SW-R |
+| 5 | software architecture - the components | ISO12207, clause 6.4.4 | RG-SW-R |
+| 6 | software design - the modules | ISO12207, clause 6.4.5 | RG-SW-R |
+| 7 | source code, one step per code coverage level | ISO12207, clause 6.4.7 | RG-SC |
+| 8 | object code, one step per code coverage level | ISO12207, clause 6.4.7 | RG-OC |
+| 9 | test case, test result of the unit test (MT) | ISO29119 | RG-SW-TC, RG-SW-TR |
+| 10 | test case, test result of the integration test (SwIT) | ISO29119 | RG-SW-TC, RG-SW-TR |
+| 11 | test case, test result of the subsystem test (SwVal) | ISO29119 | RG-SW-TC, RG-SW-TR |
+| 12 | test case, test result of the system integration test (SysIT) | ISO29119 | RG-SYS-TC, RG-SYS-TR |
+| 13 | test case, test result of the system test (SysQT) | ISO29119 | RG-SYS-TC, RG-SYS-TR |
+| 14 | test case, test result of the acceptance test (Val) | ISO29119 | RG-SYS-TC, RG-SYS-TR |
 
 With one code coverage level each, the chain has 20 steps.
 
 ## Roles
+
+**Table roles** - who does what
 
 | Role | Who | Task |
 |---|---|---|
@@ -113,6 +121,8 @@ reasoned and written down, as here.
 
 The ids are `PROC-nn`. They are kept apart from the ids of the requirements, so that keeping
 to the process does not count into the maturity of the product.
+
+**Table rules** - the rules of the work
 
 | Id | Rule |
 |---|---|
@@ -186,7 +196,7 @@ The CI runs `reviewcheck` on every pull request; a result that breaks a rule blo
 1. compile
 2. run linter
 3. run unit-testing in local
-4. run the tests of the levels SwVal, SysIT, SysQT and Val (see Test levels)
+4. run the tests of the levels SwVal, SysIT, SysQT and Val (see table test levels)
 5. report on
    - test coverage
    - structural debt
