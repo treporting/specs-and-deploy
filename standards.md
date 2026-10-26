@@ -42,12 +42,13 @@ short form is the same in every document, and the table says what stands behind 
 | IEC60601-1 | IEC 60601-1 Medical electrical equipment - Part 1: General requirements for basic safety and essential performance | |
 | IEC81001-5-1 | IEC 81001-5-1 Health software and health IT systems safety, effectiveness and security - Part 5-1: Security - Activities in the product life cycle | |
 | IEC61508 | IEC 61508 Functional safety of electrical/electronic/programmable electronic safety-related systems | |
-| IEC62443 | IEC 62443 Security for industrial automation and control systems | |
+| IEC62443 | IEC 62443 Industrial communication networks - Network and system security | |
 | EN50126 | EN 50126 Railway applications - The specification and demonstration of Reliability, Availability, Maintainability and Safety (RAMS) | |
 | EN50716 | EN 50716 Railway applications - Requirements for software development | |
 | EN50128 | EN 50128 Railway applications - Communication, signalling and processing systems - Software for railway control and protection systems | replaced by EN50716 |
 | EN50657 | EN 50657 Railway applications - Rolling stock applications - Software on board rolling stock | replaced by EN50716 |
-| EN50129 | EN 50129 Railway applications - Communication, signalling and processing systems - Safety related electronic systems for signalling | |
+| EN50129 | EN 50129 Railway applications - Communication, signalling and processing systems - Safety related electronic systems for signalling | merges into IEC62425 |
+| IEC62425 | DIN EN IEC 62425 Railway applications - Communication, signalling and processing systems - Safety related electronic systems for signalling | |
 | CLC50701 | CLC/TS 50701 Railway applications - Cybersecurity | |
 | ASPICE | Automotive SPICE Process Reference and Assessment Model | |
 | ARP4754B | ARP4754B Guidelines for Development of Civil Aircraft and Systems | |
