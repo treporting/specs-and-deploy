@@ -1,6 +1,7 @@
 # Definitions
 
-The terms used in the requirements and the architecture of treporting.
+The terms used in the requirements, the architecture and the process of treporting. It is written
+for whoever writes, reads or reviews them, and for the auditor who looks up a term.
 
 ## System
 
@@ -33,6 +34,10 @@ puts it.
 An item is an entity that can be identified uniquely within a system. Its name depends on the
 system: DOORS has modules, SVN and GIT have files, JIRA and CODEBEAMER have tickets or issues.
 
+The names are a question of generalization, from the most general to the most special:
+item → artifact → file → document. A document of treporting, such as harness.md, is a file, and
+so an item as well.
+
 ## Document
 
 A document is an item that holds objects - requirements, test cases, hazards - in a system: a
@@ -59,8 +64,8 @@ from the idea to the realization. It splits the development of a product into sm
 
 A process defined by a company is mostly used by many projects, so that people find their way in
 different projects and use the same words. Each domain has its standardized processes, listed in
-[standards.md](standards.md). The process of the company has to match the standardized one, which
-a process audit evaluates. The goal of a project, beside its daily work, is to apply the process
+[standards.md](standards.md). In a regulated domain, the process of a company is measured against
+the standardized one; a process audit evaluates it. The goal of a project, beside its daily work, is to apply the process
 of the company and so to fulfil the standardized one, which a project audit evaluates. Audits use
 models of process assessment and improvement.
 
@@ -173,7 +178,7 @@ subsystem.
 
 ## Tests
 
-After ISO/IEC/IEEE 29119:
+After ISO29119:
 
 **Test case** - the unit a verdict belongs to. Its results hang on it.
 
@@ -268,7 +273,9 @@ requirement ← test case ← test result - every test case names the requiremen
 test result the test case it is for.
 
 Traceability is the base for knowing which requirement is tested, and with which result. The
-matrix of requirements and tests
+matrix of requirements and tests:
+
+**Table traceability matrix** - which test case tests which requirement, and with which result
 
 | tests vs requirements | requirement-1 | requirement-2 | requirement-3 |
 |---|---|---|---|
