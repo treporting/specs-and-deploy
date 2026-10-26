@@ -24,7 +24,7 @@ jobs:
           cache-dependency-path: tools/go.sum
       - name: reviewcheck
         working-directory: tools
-        run: go run ./cmd/reviewcheck -root ..
+        run: go run ./review/cmd/reviewcheck -root ..
 
   # @implements SR-10
   tests:

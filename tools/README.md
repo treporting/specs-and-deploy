@@ -105,6 +105,22 @@ resolved by hand in a merge is a change no author is found for.
 Every review result made before this decision reviewed commits with the Product Owner as author. It
 breaks the check, so its requirements are reviewed again and the old result is removed.
 
+## The component review
+
+Everything of the component `review` lies below `tools/review`, so its hierarchy can be read from
+the folders:
+
+```
+tools/review/                the component: what its tools share - git, and finding an id in its file
+  check/                     the module review/check: reviewcheck
+  skeleton/                  the module review/skeleton: reviewskeleton
+  cmd/reviewcheck/           the command
+  cmd/reviewskeleton/        the command
+```
+
+A command keeps the name of its tool, not `check` or `skeleton`: Go names a program by the last
+part of its path. An SR names the component, `review`; the module is set by the code.
+
 ## reviewcheck
 
 Checks every review result in `reviews/` against the rules of formats.md (TOOL-03, TOOL-11; SR-01
@@ -115,7 +131,7 @@ the criteria file, and the reviewer is none of the authors of the requirement or
 
 ```bash
 cd tools
-go run ./cmd/reviewcheck -root ..        # every result in reviews/
+go run ./review/cmd/reviewcheck -root ..        # every result in reviews/
 go test ./...                            # MT
 go test -tags integration ./...          # SwIT, on a history of git made in the test
 ```
@@ -132,8 +148,8 @@ not found, or where the targets belong to more than one level.
 
 ```bash
 cd tools
-go run ./cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope harness harness.md
-go run ./cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope sr-11-15 SR-11 SR-12 SR-13
+go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope harness harness.md
+go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope sr-11-15 SR-11 SR-12 SR-13
 ```
 
 It prints the path of the file it wrote. The code is the package `review/skeleton`, in the component

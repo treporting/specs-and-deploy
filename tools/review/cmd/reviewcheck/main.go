@@ -14,6 +14,7 @@ import (
 	"strings"
 
 	"github.com/treporting/specs-and-deploy/tools/review"
+	"github.com/treporting/specs-and-deploy/tools/review/check"
 )
 
 // @implements SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08
@@ -39,7 +40,7 @@ func main() {
 	git := review.ExecGit{Root: *root}
 	broken := 0
 	for _, f := range files {
-		findings, err := review.Check(*root, f, git)
+		findings, err := check.Check(*root, f, git)
 		if err != nil {
 			fail(err)
 		}
