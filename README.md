@@ -38,9 +38,9 @@ realizes them; an id is unique together with that repo and its document (formats
 ## How the ids hang together
 
 ```
-HAZ, THR (h1)  →  HAZC, THRC (h2)  →  UN (r1) ─┐
-                                   REG (n1) ─┼─→  SYS (r2)  →  ARC (r3)  →  SR (r5)  →  code, tests
-                                              ┘
+HAZ, THR (h1)  →  HAZC, THRC (h2)  →  UN (r1) ──┐
+                                      REG (n1) ─┴─→  SYS (r2)  →  ARC (r3)  →  SR (r5)  →  code, tests
+
 THRC of a threat to our work  →  PROC, a rule of the harness
 ```
 
