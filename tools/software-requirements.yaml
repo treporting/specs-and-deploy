@@ -3,7 +3,7 @@
 level: r5
 documents:
 - name: README.md
-  status: review
+  status: approved
   verification_method: [review]
 requirements:
 - object_key: SR-01

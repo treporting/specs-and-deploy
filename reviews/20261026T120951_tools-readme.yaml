@@ -9,29 +9,29 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [tools/README.md]
-  revision: '50ba618'
+  revision: '78d56f6'
   criteria:
     RC-01: passed
     RC-02: passed
     RC-03: passed
     RC-04: passed
     RC-05:
-      result: failed
-      note: 'it does not name its audience'
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
     RC-06:
-      result: failed
-      note: 'THR-02 is named, though it stands in no YAML - the reference points to nothing'
+      result: passed
+      note: 'found in this review and resolved in it: THR-02 is named, though it stands in no YAML - the reference points to nothing'
     RC-07:
-      result: failed
-      note: 'ISO/IEC/IEEE 29148 is named in full, not as ISO29148'
+      result: passed
+      note: 'found in this review and resolved in it: ISO/IEC/IEEE 29148 is named in full, not as ISO29148'
     RC-08:
-      result: failed
-      note: 'a reusable workflow in treporting/.github is stated as running, though formats.md has it as open; the heading "Who the author of a requirement is" covers documents as well'
+      result: passed
+      note: 'found in this review and resolved in it: a reusable workflow in treporting/.github is stated as running, though formats.md has it as open; the heading "Who the author of a requirement is" covers documents as well'
     RC-09: passed
     RC-10: passed
     RC-11:
-      result: failed
-      note: 'the layout of the component review is a decision without its reason and the alternatives rejected'
+      result: passed
+      note: 'found in this review and resolved in it: the layout of the component review is a decision without its reason and the alternatives rejected'
     RC-12: passed
     RC-13: passed
-  verdict: failed
+  verdict: passed
