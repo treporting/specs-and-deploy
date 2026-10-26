@@ -1,5 +1,5 @@
-// Package review checks the results of reviews against the rules of formats.md (TOOL-03).
-package review
+// Package check checks the results of reviews against the rules of formats.md (TOOL-03, TOOL-11).
+package check
 
 import (
 	"bytes"
@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/treporting/specs-and-deploy/tools/review"
 	"gopkg.in/yaml.v3"
 )
 
@@ -72,21 +73,6 @@ type Git interface {
 	// Authors answers the author of a commit and the names of its co-authors.
 	Authors(commit string) (author string, coAuthors []string, err error)
 }
-
-// requirementFiles tell by the prefix of an id the file that holds it.
-var requirementFiles = []struct{ prefix, file string }{
-	{"UN-", "requirements/user-needs.yaml"},
-	{"REG-", "requirements/regulatory-requirements.yaml"},
-	{"SYS-", "requirements/system-requirements.yaml"},
-	{"TOOL-", "requirements/tool-requirements.yaml"},
-	{"SR-", "tools/software-requirements.yaml"},
-	{"ARC-", "architecture/system-architecture.yaml"},
-	{"HAZC-", "safety/hazards.yaml"},
-	{"HAZ-", "safety/hazards.yaml"},
-}
-
-// lists are the sections of a YAML that hold objects with an object_key.
-var lists = []string{"requirements", "elements", "hazards", "controls"}
 
 // Check reads the review result in path, below root, and answers every rule it breaks.
 //
@@ -222,7 +208,7 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 // @implements SR-05, SR-08
 func authorsOf(git Git, revision, target string) ([]string, error) {
 
-	file, key := FileOf(target)
+	file, key := review.FileOf(target)
 	if file == "" {
 		return nil, fmt.Errorf("no file holds %s", target)
 	}
@@ -255,21 +241,6 @@ func authorsOf(git Git, revision, target string) ([]string, error) {
 	return nil, fmt.Errorf("%s is not in %s in %s", target, file, revision)
 }
 
-// FileOf answers the file that holds a target, and the key to find it there; a document is its
-// own file and has no key.
-func FileOf(target string) (file, key string) {
-
-	if strings.HasSuffix(target, ".md") {
-		return target, ""
-	}
-	for _, rf := range requirementFiles {
-		if strings.HasPrefix(target, rf.prefix) {
-			return rf.file, target
-		}
-	}
-	return "", ""
-}
-
 // objectAt answers the object with key in file in a commit, as YAML, or the whole file where key
 // is empty; nil where it is not there.
 func objectAt(git Git, commit, file, key string) []byte {
@@ -278,29 +249,5 @@ func objectAt(git Git, commit, file, key string) []byte {
 	if err != nil {
 		return nil
 	}
-	return ObjectIn(data, key)
-}
-
-// ObjectIn answers the object with key in the YAML data, as YAML, or the whole data where key is
-// empty; nil where it is not there.
-func ObjectIn(data []byte, key string) []byte {
-
-	if key == "" {
-		return data
-	}
-	var doc map[string]any
-	if yaml.Unmarshal(data, &doc) != nil {
-		return nil
-	}
-	for _, list := range lists {
-		items, _ := doc[list].([]any)
-		for _, item := range items {
-			object, _ := item.(map[string]any)
-			if object["object_key"] == key {
-				out, _ := yaml.Marshal(object)
-				return out
-			}
-		}
-	}
-	return nil
+	return review.ObjectIn(data, key)
 }

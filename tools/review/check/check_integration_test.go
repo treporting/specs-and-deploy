@@ -1,6 +1,6 @@
 //go:build integration
 
-package review
+package check
 
 import (
 	"os"
@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
 // gitIn runs git in dir and answers its output.
@@ -72,7 +74,7 @@ results:
   verdict: passed
 `)
 
-	findings, err := Check(root, "reviews/r.yaml", ExecGit{Root: root})
+	findings, err := Check(root, "reviews/r.yaml", review.ExecGit{Root: root})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -116,7 +118,7 @@ results:
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
 `)
-		findings, err := Check(root, "reviews/r.yaml", ExecGit{Root: root})
+		findings, err := Check(root, "reviews/r.yaml", review.ExecGit{Root: root})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -165,7 +167,7 @@ results:
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
 `)
-	findings, err := Check(root, "reviews/r.yaml", ExecGit{Root: root})
+	findings, err := Check(root, "reviews/r.yaml", review.ExecGit{Root: root})
 	if err != nil {
 		t.Fatal(err)
 	}

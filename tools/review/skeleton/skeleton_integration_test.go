@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/treporting/specs-and-deploy/tools/review"
+	"github.com/treporting/specs-and-deploy/tools/review/check"
 )
 
 func gitIn(t *testing.T, dir string, args ...string) {
@@ -52,7 +53,7 @@ func TestASkeletonOnAHistoryOfGit(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	findings, err := review.Check(root, path, git)
+	findings, err := check.Check(root, path, git)
 	if err != nil {
 		t.Fatal(err)
 	}
