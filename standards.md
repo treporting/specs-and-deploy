@@ -59,7 +59,7 @@ a standard by its number and title.
 | railway | EN50126-1, EN50716, EN50129 | HL EN50126-1, EN50126-2 | TRA CLC50701 |
 | medical | ISO13485, IEC62304, IEC60601-1 | RMF ISO14971 | TM IEC81001-5-1 |
 | industrial | IEC61508 | H&RA IEC61508 | TRA IEC62443 |
-| software | ISO12207, ISO29119 | H&RA IEC61508-1, ISO15026 | TRA IEC62443-3-2, IEC62443-4-1 |
+| software | ISO12207, ISO29119 | H&RA ISO15026 | TRA IEC62443 |
 
 - FHA - functional hazard assessment according to ARP4761A
 - H&RA - hazard and risk analysis according to IEC61508-1, clause 7.4
