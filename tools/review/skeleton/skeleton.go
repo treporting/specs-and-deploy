@@ -13,6 +13,11 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// resultSchema is the schema of a review result, from the root of the repo.
+//
+// @implements SR-17
+const resultSchema = "schemas/review-result.schema.json"
+
 // Git is what the skeleton asks of the history of the repo.
 type Git interface {
 	// Show answers the content of path in the commit rev.
@@ -35,7 +40,7 @@ type Request struct {
 // HEAD, and answers its path relative to root. Where a target is not found, or the targets belong
 // to more than one level, it writes nothing.
 //
-// @implements SR-11, SR-12, SR-13, SR-14, SR-15
+// @implements SR-11, SR-12, SR-13, SR-14, SR-15, SR-17
 func Make(root string, req Request, git Git) (string, error) {
 
 	head, err := git.Short("HEAD")
@@ -62,6 +67,7 @@ func Make(root string, req Request, git Git) (string, error) {
 	fmt.Fprintf(&b, "# Review of %s against the criteria of the level %s.\n", strings.Join(req.Targets, ", "), level)
 	fmt.Fprintf(&b, "# Skeleton made by reviewskeleton: every todo is for the reviewer to decide.\n")
 	fmt.Fprintf(&b, "# Format: ../formats.md, section Reviews.\n")
+	fmt.Fprintf(&b, "schema: %s\n", resultSchema)
 	fmt.Fprintf(&b, "level: review\n")
 	fmt.Fprintf(&b, "created_by: %s\n", req.Reviewer)
 	fmt.Fprintf(&b, "created_at: '%s'\n", req.Now.Format("2006-01-02T15:04:05-07:00"))
