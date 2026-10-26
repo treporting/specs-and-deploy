@@ -152,9 +152,8 @@ recorded with the pull request, by a computer (REG-05).
   own
 - a bypass for the admin - a check that someone can step over is a check by hand again
 
-The demonstration of SR-09 and SR-10 is the pull request
-<https://github.com/treporting/specs-and-deploy/pull/150>: a broken review result and a failing test.
-Both jobs failed, the merge was blocked, and it was closed unmerged.
+Each required check is shown to block the merge by a demonstration, recorded in `verifications/`
+as formats.md, section Verifications, sets: SR-09, SR-10, SR-20 and SR-23.
 
 ## Build and deployment
 
