@@ -59,7 +59,20 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 
 ## Documents to PDF
 
-The documents are exported to PDF with Markdown PDF.
+**Decision**: the documents are exported to PDF with the extension Markdown PDF (yzane) of VS Code.
+
+**Why**: it is the most widely used extension for it. Header and footer are set in its settings, as
+HTML templates with placeholders for title and page. PlantUML goes to a server whose address is
+set, so a local server keeps a diagram on the machine.
+
+**Rejected**:
+
+- Markdown Preview Enhanced - it draws PlantUML without a server, from `plantuml.jar`, but needs
+  Java, and its header and footer in the PDF could not be confirmed
+- Pretty Markdown PDF - a fork of Markdown PDF that writes the date in the form of ISO8601, used by
+  fewer than the original
+
+How it works:
 
 - It renders with the Chrome of the machine.
 - Mermaid diagrams are drawn; the script of Mermaid is loaded from a CDN, the diagram stays on the
