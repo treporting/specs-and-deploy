@@ -99,6 +99,23 @@ The documents without a YAML of requirements beside them - harness.md, devops.md
 standards.md, formats.md, the READMEs - are named in `documents.yaml` in the root of the repo, in
 the same form, by their path.
 
+### Standards, clauses and tables in a document
+
+- A standard is named by its short form, as standards.md sets it: ISO-12207, not ISO/IEC/IEEE
+  12207. Only standards.md names it in full.
+- A clause names its standard: "ISO-12207, clause 6.4.2", never "6.4.2" alone, also not in a
+  column headed by the standard.
+- Every table has a name, on a line of its own above it. A reference names the table by it - "see
+  table levels", or "table levels in harness.md" from another document:
+
+```markdown
+**Table levels** - the levels of the work, and the clause of each
+
+| Level | Here | Reference |
+|---|---|---|
+| r2 | system requirements (SYS) | ISO-12207, clause 6.4.3 |
+```
+
 ## Reviews
 
 A review checks a requirement against the criteria of its level. Criteria and result are kept

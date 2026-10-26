@@ -6,6 +6,8 @@ the standardized one (see Process in [definitions.md](definitions.md)).
 
 ## Per domain
 
+**Table domains** - the standards of each domain
+
 | Domain | Process | Safety | Safety analysis | Cybersecurity | Security analysis |
 |---|---|---|---|---|---|
 | automotive | Automotive SPICE, ISO/IEC 330xx (formerly ISO/IEC 15504) | ISO 26262 | HARA - hazard analysis and risk assessment, ISO 26262-3 | ISO/SAE 21434 | TARA - threat analysis and risk assessment, ISO/SAE 21434 |
@@ -17,9 +19,35 @@ the standardized one (see Process in [definitions.md](definitions.md)).
 
 ## Across domains
 
+**Table kinds** - the standards that hold in every domain
+
 | Kind | Standards |
 |---|---|
 | process assessment and improvement | ISO/IEC 330xx (Automotive SPICE), CMMI |
 | quality management | ISO 9001 |
 | information security | ISO/IEC 27001 |
 | software life cycle | ISO/IEC/IEEE 12207 |
+
+## Short forms
+
+Every other document names a standard by its short form: the first of its publishers, a hyphen,
+and its number with its part. A standard whose name has no publisher in front keeps its name -
+DO-178C, ARP4754B, Automotive SPICE, CMMI.
+
+**Table short forms** - the standards with more than one publisher, in full and short
+
+| Standard | Short form |
+|---|---|
+| ISO/IEC/IEEE 12207 - software life cycle processes | ISO-12207 |
+| ISO/IEC/IEEE 15026 - assurance | ISO-15026 |
+| ISO/IEC/IEEE 15289 - content of life-cycle information items | ISO-15289 |
+| ISO/IEC/IEEE 29119 - software testing | ISO-29119 |
+| ISO/IEC/IEEE 29148 - requirements engineering | ISO-29148 |
+| ISO/IEC 330xx - process assessment | ISO-330xx |
+| ISO/IEC 15504 - process assessment, replaced by ISO/IEC 330xx | ISO-15504 |
+| ISO/IEC 27001 - information security | ISO-27001 |
+| ISO/SAE 21434 - road vehicles, cybersecurity | ISO-21434 |
+| CLC/TS 50701 - railway, cybersecurity | CLC-50701 |
+
+A standard of one publisher only takes the hyphen: IEC 61508-1 is IEC-61508-1, EN 50716 is
+EN-50716, ISO 26262-3 is ISO-26262-3.
