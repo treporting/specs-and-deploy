@@ -123,19 +123,21 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 ## Continuous integration
 
 **Decision**: `.github/workflows/tools.yml` runs on every pull request to `main`: the job
-`reviewcheck` (SR-09), the job `tests` (SR-10) and the job `schemacheck` (SR-20). Both are required checks in the ruleset
+`reviewcheck` (SR-09), the job `tests` (SR-10), the job `schemacheck` (SR-20) and the job
+`rulesetcheck` (SR-23). Both are required checks in the ruleset
 `main is protected`, which has no bypass - a pull request whose job failed cannot be merged, by
 anyone. The ruleset also allows the merge commit only, as the settings of the repo do.
 
+The ruleset is kept in the repo, in `deploy/ruleset-main.json`, and the job `rulesetcheck` checks
+on every pull request that GitHub has the same (TOOL-13). The file is the source: to change the
+ruleset, change the file by pull request and review, and after the merge send it whole:
+
 ```bash
-# the ruleset of main, as it is set
 gh api repos/treporting/specs-and-deploy/rulesets --jq '.[] | {id, name}'
-gh api repos/treporting/specs-and-deploy/rulesets/<id> \
-  --jq '.rules[] | {type, checks: .parameters.required_status_checks, merge: .parameters.allowed_merge_methods}'
+gh api -X PUT repos/treporting/specs-and-deploy/rulesets/<id> --input deploy/ruleset-main.json
 ```
 
-To change it, read the ruleset, edit its `rules`, and send it back whole with
-`gh api -X PUT repos/treporting/specs-and-deploy/rulesets/<id> --input ruleset.json`. A required
+Until it is sent, `rulesetcheck` fails on every pull request - so it is not forgotten. A required
 check is named by its job, with `integration_id` 15368 - GitHub Actions. GitHub knows the name of a
 check only after it has run once, so a new job runs green before it becomes required.
 
