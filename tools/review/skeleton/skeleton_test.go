@@ -140,3 +140,12 @@ func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
 		t.Errorf("want two levels refused, got %v", err)
 	}
 }
+
+// @verifies SR-17
+func TestTheSkeletonNamesItsSchema(t *testing.T) {
+	_, content, err := makeSkeleton(t, "TOOL-03")
+	if err != nil {
+		t.Fatal(err)
+	}
+	contains(t, content, "schema: schemas/review-result.schema.json\nlevel: review\n")
+}

@@ -1,15 +1,21 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/treporting/schemas/system-architecture.schema.json",
+  "$comment": "@refines ARC-22",
   "title": "System architecture (r3) with the allocation (r4)",
   "description": "Draft until the gel schema stands (treporting/storage-edgedb#3); field names are the properties of the gel schema.",
   "type": "object",
   "required": [
+    "schema",
     "level",
     "elements"
   ],
   "additionalProperties": false,
   "properties": {
+    "schema": {
+      "const": "schemas/system-architecture.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
     "level": {
       "const": "r3"
     },

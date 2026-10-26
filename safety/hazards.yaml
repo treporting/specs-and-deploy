@@ -1,5 +1,6 @@
 # Hazards (h1) and their controls (h2). What explains them is in hazard-and-risk-analysis.md.
-# Format: ../formats.md - schema: ../schemas/hazards.schema.json
+# Format: ../formats.md
+schema: schemas/hazards.schema.json
 level: h1
 documents:
 - name: hazard-and-risk-analysis.md

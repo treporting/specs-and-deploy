@@ -68,6 +68,7 @@ holds only what the author writes:
 
 ```yaml
 # requirements/system-requirements.yaml
+schema: schemas/system-requirements.schema.json
 level: r2
 requirements:
   - object_key: SYS-58
@@ -82,8 +83,22 @@ requirements:
 
 ### Schemas
 
-One JSON Schema per kind of file, in [schemas/](schemas/). They are drafts until the gel schema
-stands; then they become a part of it, and a CI check in storage-edgedb compares both.
+**Decision**: one JSON Schema per kind of YAML file, in [schemas/](schemas/). Every YAML names its
+schema in the field `schema`, from the root of the repo, as a review result names its criteria:
+`schema: schemas/tool-requirements.schema.json`. The schema holds that path as a fixed value, so a
+file that names another schema fails. Every schema names the requirement it refines in its
+`$comment`: `@refines ARC-22`. The schemas are the contract of ARC-22 and are reviewed with it.
+They are drafts until the gel schema stands; then they become a part of it, and a CI check in
+storage-edgedb compares both.
+
+**Why**: which schema belongs to a file stands where the file is read, and a tool needs no list of
+its own (TOOL-05). A schema gives the form of a requirement and realizes none, so it refines it.
+
+**Rejected**:
+
+- the schema in a comment of the YAML - no field, so neither a schema nor a tool can rely on it
+- a table of patterns of paths in the tool - a new kind of file that no one enters stays unchecked
+- `@implements` in a schema - a schema realizes no requirement (PROC-05)
 
 ### Documents
 
@@ -92,6 +107,7 @@ the same values as a requirement. A document is reviewed like a requirement (`re
 verification method), and an exported document shows its status (TOOL-02):
 
 ```yaml
+schema: schemas/tool-requirements.schema.json
 level: tool
 documents:
 - name: tool-requirements.md
@@ -147,7 +163,8 @@ A skeleton of a review result is made by `reviewskeleton` (see tools/README.md).
 criterion and the verdict to `todo`, never to a value that could be right: the reviewer decides each.
 `reviewcheck` reports every `todo`, so an unfilled skeleton cannot be merged.
 
-A review result changes until its merge, never after. A finding resolved on the branch is kept in a
+A review result changes until its merge, never after - save a field its form adds that changes no
+judgement, such as `schema`; the commit that adds it says so. A finding resolved on the branch is kept in a
 note of its criterion: "found in this review and resolved in it: ...". The revision is then the
 commit with the fix.
 
@@ -155,6 +172,7 @@ A file of results is one review, with one result for everything it reviewed:
 
 ```yaml
 # reviews/20261026T140000_r1-pm.yaml
+schema: schemas/review-result.schema.json
 level: review
 created_by: the reviewer
 created_at: '2026-10-26T14:00:00+01:00'
@@ -259,6 +277,8 @@ it('shows the hidden filters', () => { ... })
 - `@implements` names software requirements of its own repo only - in `tools/` as well
 - `@verifies` names software requirements of its own repo in a software test, system
   requirements in a system test
+- `@refines` names the requirement a schema gives the form of, in its `$comment`:
+  `"$comment": "@refines ARC-22"`
 
 ## Test levels
 

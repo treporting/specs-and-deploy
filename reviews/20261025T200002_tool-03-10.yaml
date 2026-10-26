@@ -1,6 +1,7 @@
 # Review of TOOL-03 to TOOL-10 against the criteria of the tool requirements, again under the rule
 # of the author in tools/README.md. Prepared by Claude Code; decided by the reviewer.
 # Format: ../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
 level: review
 created_by: Mathias Fischer
 created_at: '2026-10-25T20:00:02+01:00'

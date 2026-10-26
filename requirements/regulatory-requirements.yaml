@@ -1,5 +1,6 @@
 # Regulatory requirements (n1). What explains them is in regulatory-requirements.md.
-# Format: ../formats.md - schema: ../schemas/regulatory-requirements.schema.json
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
 level: n1
 documents:
 - name: regulatory-requirements.md
