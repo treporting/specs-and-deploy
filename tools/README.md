@@ -182,3 +182,21 @@ go run ./schema/cmd/schemacheck -root ..
 A finding reads `requirements/tool-requirements.yaml /requirements/6/status: value must be one of
 'draft', 'review', 'approved', 'obsolete'`. The code is the component `schema`: the package
 `schema/check` and the command `schema/cmd/schemacheck`. Its dependencies are in devops.md.
+
+## rulesetcheck
+
+Compares the ruleset of main on GitHub with `.github/rulesets/main.json` (TOOL-13; SR-21 and SR-22 in
+[software-requirements.yaml](software-requirements.yaml)), and reports each difference in its
+target, enforcement, conditions and rules. What GitHub sets itself is left out, and `bypass_actors`,
+which cannot be read without the rights of an admin; that main has no bypass, its demonstration
+shows. A ruleset that cannot be read, or no ruleset of the name in the file, is a finding, not a
+pass. The CI runs it on every pull request (SR-23), with the token of the workflow, read only.
+
+```bash
+cd tools
+GITHUB_TOKEN=$(gh auth token) go run ./ruleset/cmd/rulesetcheck -root ..
+```
+
+The code is the component `ruleset`: the package `ruleset/check` and the command
+`ruleset/cmd/rulesetcheck`. Its tests stand in for GitHub with a server in the test process
+(`net/http/httptest`), so they run without a network.

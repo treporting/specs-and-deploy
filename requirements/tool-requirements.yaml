@@ -94,7 +94,7 @@ requirements:
 - object_key: TOOL-13
   feature: CI check
   object_text: check on every pull request that the ruleset of main on GitHub has the rules of
-    deploy/ruleset-main.json - all that can be read without the rights of an admin
+    .github/rulesets/main.json - all that can be read without the rights of an admin
   target_ids: [PROC-03]
   status: approved
   verification_method: [test]
