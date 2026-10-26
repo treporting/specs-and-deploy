@@ -164,7 +164,7 @@ elements:
   contract: schemas/
   rationale: our own data is written by hand in YAML (formats.md); a schema per kind lets a tool check
     every file (TOOL-05), and is the draft from which the gel schema of ARC-21 grows
-  status: approved
+  status: review
   verification_method: [test]
 decisions:
 - object_key: ARC-R01
