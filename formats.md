@@ -81,11 +81,16 @@ requirements:
     priority: later
 ```
 
+### Files whose form another owns
+
+A file whose form another owns - we only configure it, in a format another sets, such as a
+workflow or the ruleset of GitHub in `.github/` - is not our data. It names no schema of ours and
+carries no annotation. The requirement it serves names it.
+
 ### Schemas
 
-**Decision**: one JSON Schema per kind of YAML file of our own data, in [schemas/](schemas/). A YAML
-whose form another owns, such as a workflow of GitHub in `.github/`, is not our data and has no
-schema of ours. Every YAML of our own data names its schema in the field `schema`, from the root of the repo, as a review result names its criteria:
+**Decision**: one JSON Schema per kind of YAML file of our own data, in [schemas/](schemas/). A file
+whose form another owns has none (see Files whose form another owns). Every YAML of our own data names its schema in the field `schema`, from the root of the repo, as a review result names its criteria:
 `schema: schemas/tool-requirements.schema.json`. The schema holds that path as a fixed value, so a
 file that names another schema fails. Every schema names the requirement it refines in its
 `$comment`: `@refines ARC-22`. The schemas are the contract of ARC-22 and are reviewed with it.
@@ -330,6 +335,7 @@ it('shows the hidden filters', () => { ... })
   requirements in a system test
 - `@refines` names the requirement a schema gives the form of, in its `$comment`:
   `"$comment": "@refines ARC-22"`
+- a file whose form another owns carries no annotation (see Files whose form another owns)
 
 ## Test levels
 
