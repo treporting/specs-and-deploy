@@ -34,11 +34,14 @@ puts it.
 An item is an entity that can be identified uniquely within a system. Its name depends on the
 system: DOORS has modules, SVN and GIT have files, JIRA and CODEBEAMER have tickets or issues.
 
+The names are a question of generalization, from the most general to the most special:
+item → artifact → file → document. A document of treporting, such as harness.md, is a file, and
+so an item as well.
+
 ## Document
 
-A document is an item that holds objects - requirements, test cases, hazards - or explains them
-and the work on them, such as harness.md or formats.md; in a system: a module in DOORS, a file in
-GIT. Its **category** says what kind of document it is: a requirement
+A document is an item that holds objects - requirements, test cases, hazards - in a system: a
+module in DOORS, a file in GIT. Its **category** says what kind of document it is: a requirement
 document, a test specification, a test procedure, a test report.
 
 ## Content
