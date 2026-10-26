@@ -55,3 +55,7 @@ criteria:
   source: treporting
   object_text: readable - its sentences are short, one statement each
   question: Are its sentences short, one statement each?
+- object_key: RC-13
+  source: treporting - after ISO29148, 5.2.5, complete, read for the documents
+  object_text: complete - it says all that its scope asks for
+  question: Does it say all that its scope asks for?
