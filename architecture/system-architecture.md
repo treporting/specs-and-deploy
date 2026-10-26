@@ -14,7 +14,8 @@ There are two kinds of system:
 
 Every system has an extractor of its own that lists and fetches what it holds. Converter,
 storage and reporter speak one language, the information model (ARC-21), whose contract is
-[attributes.md](attributes.md). Both ways end in
+[attributes.md](attributes.md). Our own data in YAML has the schemas of ARC-22 as its contract, in
+[schemas/](../schemas/); each schema names it as `@refines ARC-22`, and is a draft of the gel schema. Both ways end in
 the import of the storage, which works the same for every system. Each subsystem is a repo of
 its own. r4 is the allocation in this file: the system requirements allocated to a subsystem are
 its requirements, derived directly from r2, with no ids of their own.

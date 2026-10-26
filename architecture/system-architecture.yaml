@@ -156,6 +156,15 @@ elements:
     SYS-41, SYS-43, SYS-45, SYS-49, SYS-68, SYS-69, SYS-70, SYS-72, SYS-73, SYS-74, SYS-75, SYS-76]
   status: draft
   verification_method: [analysis]
+- object_key: ARC-22
+  kind: model
+  object_text: the schemas of our own data - one JSON Schema per kind of YAML file, which every file of
+    that kind names; a draft of the gel schema of ARC-21
+  contract: schemas/
+  rationale: our own data is written by hand in YAML (formats.md); a schema per kind lets a tool check
+    every file (TOOL-05), and is the draft from which the gel schema of ARC-21 grows
+  status: approved
+  verification_method: [test]
 decisions:
 - object_key: ARC-R01
   object_text: Read only
