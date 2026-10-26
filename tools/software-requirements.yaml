@@ -4,7 +4,7 @@ schema: schemas/software-requirements.schema.json
 level: r5
 documents:
 - name: README.md
-  status: review
+  status: approved
   verification_method: [review]
 requirements:
 - object_key: SR-01
@@ -153,7 +153,7 @@ requirements:
     what GitHub sets itself - id, times, links - and bypass_actors, which cannot be read without the
     rights of an admin
   target_ids: [TOOL-13]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR-22
   component: ruleset
