@@ -1,8 +1,8 @@
 # Standards
 
 The standards of the domains treporting is used in: the process a project follows, the safety
-standard, and the analysis that finds what is to be controlled. A company process has to match
-the standardized one (see Process in [definitions.md](definitions.md)). It also sets the short form
+standard, and the analysis that finds what is to be controlled. treporting takes them as the basis
+of its development (see Process in [definitions.md](definitions.md)). It also sets the short form
 by which every document names a standard. It is written for whoever writes or reviews a document
 of treporting, and for the auditor who looks for a standard.
 
