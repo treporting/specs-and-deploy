@@ -9,29 +9,29 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [definitions.md]
-  revision: 'bfbb6c6'
+  revision: 'e09ad13'
   criteria:
     RC-01: passed
     RC-02:
-      result: failed
-      note: 'the scope names the requirements and the architecture, though process terms such as gate and structural debt stand here as well'
+      result: passed
+      note: 'found in this review and resolved in it: the scope names the requirements and the architecture, though process terms such as gate and structural debt stand here as well'
     RC-03: passed
     RC-04: passed
     RC-05:
-      result: failed
-      note: 'it does not name its audience'
+      result: passed
+      note: 'found in this review and resolved in it: it does not name its audience'
     RC-06:
-      result: failed
-      note: 'the matrix under Traceability has no name'
+      result: passed
+      note: 'found in this review and resolved in it: the matrix under Traceability has no name'
     RC-07:
-      result: failed
-      note: 'ISO/IEC/IEEE 29119 is named in full, not as ISO29119'
+      result: passed
+      note: 'found in this review and resolved in it: ISO/IEC/IEEE 29119 is named in full, not as ISO29119'
     RC-08:
-      result: failed
-      note: 'the process of a company is said to have to match the standardized one, which treporting cannot ask; a document is defined as holding objects only, though harness.md, formats.md and devops.md are documents that explain'
+      result: passed
+      note: 'found in this review and resolved in it: the process of a company is said to have to match the standardized one, which treporting cannot ask; a document is defined as holding objects only, though harness.md, formats.md and devops.md are documents that explain'
     RC-09: passed
     RC-10: passed
     RC-11: passed
     RC-12: passed
     RC-13: passed
-  verdict: failed
+  verdict: passed
