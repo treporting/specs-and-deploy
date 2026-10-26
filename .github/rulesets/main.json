@@ -53,6 +53,10 @@
           {
             "context": "schemacheck",
             "integration_id": 15368
+          },
+          {
+            "context": "rulesetcheck",
+            "integration_id": 15368
           }
         ]
       }
