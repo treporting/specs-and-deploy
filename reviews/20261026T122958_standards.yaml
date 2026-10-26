@@ -9,12 +9,12 @@ criteria_revision: 'a4a8931'
 results:
 - object_key: RR-01
   target_ids: [standards.md]
-  revision: '05905d6'
+  revision: '0e6a9bd'
   criteria:
     RC-01: passed
     RC-02:
       result: passed
-      note: 'found in this review and resolved in it: the scope names the standards of the domains, not the short forms, which are its first section'
+      note: 'found in this review and resolved in it: the scope names the standards of the domains, not the short forms, which are its first section; it asks a company process to match the standardized one, which treporting cannot ask - it takes the standards as the basis of its development'
     RC-03: passed
     RC-04: passed
     RC-05:
