@@ -50,13 +50,25 @@ a standard by its number and title.
 
 ## Per domain
 
-**Table domains** - the standards of each domain
+**Table domains** - the standards of each domain, at a glance
 
 | Domain | Process | Safety | Safety analysis | Cybersecurity | Security analysis |
 |---|---|---|---|---|---|
-| automotive | ASPICE, ISO330xx | ISO26262 | HARA - hazard analysis and risk assessment, ISO26262-3 | ISO21434 | TARA - threat analysis and risk assessment, ISO21434 |
-| airborne | ARP4754B (system), DO178C (software), DO254 (hardware) | ARP4761A | FHA - functional hazard assessment, then PSSA and SSA, ARP4761A | DO326A | security risk assessment, DO326A and DO356A |
-| railway | EN50126-1 (RAMS), EN50716 (software), EN50129 | EN50126-1, EN50126-2 | hazard log, with hazard analysis and risk assessment, EN50126-1 | CLC50701 | threat and risk assessment, CLC50701 |
-| medical | ISO13485 (quality management), IEC62304 (software), IEC60601-1 (electrical equipment) | ISO14971 | risk management file, ISO14971 | IEC81001-5-1 | threat model, IEC81001-5-1 |
-| industrial | IEC61508 | IEC61508 | H&RA - hazard and risk analysis, IEC61508-1, clause 7.4 | IEC62443 | threat and risk assessment, IEC62443-3-2 |
-| software | ISO12207, ISO29119 (test) | ISO15026 (assurance) | hazard and risk analysis, by the method of IEC61508-1, clause 7.4 | IEC62443-4-1 | threat and risk assessment, IEC62443-3-2 |
+| automotive | ASPICE, ISO330xx | ISO26262 | HARA, ISO26262-3 | ISO21434 | TARA, ISO21434 |
+| airborne | ARP4754B, DO178C, DO254 | ARP4761A | FHA, PSSA, SSA, ARP4761A | DO326A | SRA, DO326A, DO356A |
+| railway | EN50126-1, EN50716, EN50129 | EN50126-1, EN50126-2 | HL, EN50126-1 | CLC50701 | TRA, CLC50701 |
+| medical | ISO13485, IEC62304, IEC60601-1 | ISO14971 | RMF, ISO14971 | IEC81001-5-1 | TM, IEC81001-5-1 |
+| industrial | IEC61508 | IEC61508 | H&RA, IEC61508-1, clause 7.4 | IEC62443 | TRA, IEC62443-3-2 |
+| software | ISO12207, ISO29119 | ISO15026 | H&RA, IEC61508-1, clause 7.4 | IEC62443-4-1 | TRA, IEC62443-3-2 |
+
+- FHA - functional hazard assessment
+- H&RA - hazard and risk analysis
+- HARA - hazard analysis and risk assessment
+- HL - hazard log, with hazard analysis and risk assessment
+- PSSA - preliminary system safety assessment
+- RMF - risk management file
+- SRA - security risk assessment
+- SSA - system safety assessment
+- TARA - threat analysis and risk assessment
+- TM - threat model
+- TRA - threat and risk assessment
