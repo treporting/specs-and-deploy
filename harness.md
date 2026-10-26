@@ -130,7 +130,7 @@ to the process does not count into the maturity of the product.
 | PROC-02 | Every change has a ticket in the org project treporting and a branch `<ticket number>-<slug>`. |
 | PROC-03 | A change reaches `main` only through a pull request; `main` is protected. |
 | PROC-04 | A pull request passes the full gate before it is merged to `main`. |
-| PROC-05 | Every change of code realizes or verifies an approved requirement and names it in `@implements` or `@verifies`. Code is everything that is built or run - also schemas, configurations and container files. |
+| PROC-05 | Every change of code realizes or verifies an approved requirement and names it in `@implements` or `@verifies`. Code is everything that is built or run - also configurations and container files. A schema is no code: it is the contract of the requirement it refines, and names it in `@refines`. |
 | PROC-06 | A baseline is a signed tag: in this repo (specs-and-deploy) it is a release, in any other repo a library. |
 | PROC-07 | Every release and every library writes its data into the reference edgedb. |
 | PROC-08 | Every release has an SBOM, and the licences of its components are checked against Apache-2.0 (REG-15, REG-18). |
