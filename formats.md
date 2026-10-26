@@ -137,6 +137,10 @@ the old file goes, and the commit message says why. Git keeps it. A review that 
 replaced: it stays, and the next review follows it in a file of its own. So the trail stays: the
 finding, the change it caused, and the review that found it resolved.
 
+A review result changes until its merge, never after. A finding resolved on the branch is kept in a
+note of its criterion: "found in this review and resolved in it: ...". The revision is then the
+commit with the fix.
+
 A file of results is one review, with one result per requirement reviewed:
 
 ```yaml
@@ -170,7 +174,7 @@ results:
 
 The schemas are `schemas/review-criteria.schema.json` and `schemas/review-result.schema.json`;
 what they cannot say - every criterion once, the reviewer not the author - TOOL-03 checks. See the
-loop for every review in [harness.md](harness.md).
+loop for every change in [harness.md](harness.md).
 
 ## Breakdown
 

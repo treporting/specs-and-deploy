@@ -1,7 +1,7 @@
 # Reviews
 
 The reviews of the requirements and documents of treporting: the criteria of every level, and the result of
-every review. See the section Reviews of [formats.md](../formats.md) and the loop for every review
+every review. See the section Reviews of [formats.md](../formats.md) and the loop for every change
 of [harness.md](../harness.md).
 
 | File | What |
