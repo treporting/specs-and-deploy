@@ -30,11 +30,11 @@ requirements:
   verification_method: [test]
 - object_key: TOOL-04
   feature: Reviews
-  object_text: create the skeleton of a review for a set of requirements, with the criteria of their level
-    and the revision of each requirement
+  object_text: create the skeleton of a review for a set of requirements or documents, with the criteria
+    of their level and the revision of each
   rationale: the automatic support of the review - it gathers the criteria of the level and the revision
     of each requirement, so that the reviewer does not copy them by hand and makes no mistake there
-  status: approved
+  status: review
   verification_method: [test]
 - object_key: TOOL-05
   feature: CI check
