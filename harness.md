@@ -165,31 +165,31 @@ better.
 This overcomes the chicken-and-egg problem: the rules of review stand first, and every requirement
 is reviewed by them.
 
-## Loop for every code change
+## Loop for every change
 
-1. the requirement the change realizes is approved (PROC-05)
-2. compile
-3. run linter
-4. run unit-testing in local
-5. update documentation (swagger, *.md)
-6. gate checks - the quick gate before a commit, the full gate before a merge to main (PROC-04)
-7. commit, pull request, merge (PROC-03)
-8. provide feedback
+1. A ticket is the start of every change (PROC-02).
+2. A branch is created for the ticket.
+3. The change is realized, in commits.
+4. If the change touches what has review criteria of its kind (PROC-13), it needs a review. The
+   author sets it to `review`. The change is then finished.
+5. The reviewer checks it against the criteria of its kind. The reviewer is not the author (PROC-15).
+6. The review result goes into `reviews/`.
+7. A finding can be resolved on the branch.
+8. A finding that cannot be resolved on the branch fails the review. It becomes one or more tickets
+   of its own. Each goes to step 2 again.
+9. The status of the change follows the review result: `approved` if passed, `draft` if failed.
+10. A pull request takes the branch to `main` (PROC-03). The CI checks it (PROC-04).
+11. The Product Owner merges. The merge is the approval.
 
-## Loop for every review
+For code, step 3 means:
 
-1. set the requirements to be reviewed to `review`, by a pull request
-2. the reviewer - not the author (PROC-15) - checks them against the criteria of their level
-3. write the result into a file of its own in `reviews/`: who, when, the revision of every
-   requirement reviewed, per requirement and criterion passed or failed, and the verdict - one
-   result may cover many requirements
-4. pull request for the result - it checks the form of the evidence, not the requirements;
-   `reviewcheck` (TOOL-03, see tools/README.md) shows no finding
-5. pull request that sets the passed requirements to `approved` (PROC-13); the failed ones go
-   back to `draft`
+- the requirement it realizes is approved (PROC-05)
+- it compiles, the linter passes, the unit tests pass
+- update documentation
+- the quick gate passes before a commit
 
-The CI runs `reviewcheck` on every pull request; a result that breaks a rule blocks the merge
-(TOOL-12, see devops.md).
+The CI runs `reviewcheck` on every pull request; a review result that breaks a rule blocks the
+merge (TOOL-12, see devops.md).
 
 ## Loop for every release or library
 
