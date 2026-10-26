@@ -131,7 +131,7 @@ requirements:
     field schema names, and report each place where it does not match - the file and the path within
     it; a YAML whose form another owns, such as a workflow of GitHub in .github/, is not our data
   target_ids: [TOOL-05]
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR-19
   component: schema
