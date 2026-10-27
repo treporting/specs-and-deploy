@@ -8,195 +8,276 @@ documents:
   verification_method: [review]
 requirements:
 - object_key: SR-01
+  object_version: '1.1.1'
   component: review
   object_text: report a criterion of the criteria file that a result of a review leaves out, and a
     criterion the result names that the file does not hold
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-02
+  object_version: '1.1.1'
   component: review
   object_text: report a verdict passed where a criterion failed, and a verdict failed where every
     criterion passed
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-03
+  object_version: '1.1.1'
   component: review
   object_text: report a failed criterion that carries no note
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-04
+  object_version: '1.1.1'
   component: review
   object_text: report a revision reviewed that names no commit
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-05
+  object_version: '1.1.1'
   component: review
   object_text: report a result whose reviewer is the author or a co-author of the last commit, not a
     merge, that changed the requirement reviewed
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-06
+  object_version: '1.1.1'
   component: review
   object_text: where a criterion or the verdict of a result holds a value other than passed or failed,
     report it; count such a criterion as not passed
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-07
+  object_version: '1.1.1'
   component: review
   object_text: where the criteria revision of a review names no commit that changed its criteria file,
     report it once for the review, as the criteria the review followed cannot be traced
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-08
+  object_version: '1.1.1'
   component: review
   object_text: report a result whose reviewer is the author or a co-author of the last commit, not a
     merge, that changed the document reviewed
-  target_ids: [TOOL-11]
+  source_ids: [TOOL-11@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-09
+  object_version: '1.1.1'
   component: ci
   object_text: on every pull request, in .github/workflows/tools.yml, check every review result, and
     fail where a result breaks a rule; a pull request whose check failed cannot be merged
-  target_ids: [TOOL-12]
+  source_ids: [TOOL-12@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [demonstration]
 - object_key: SR-10
+  object_version: '1.1.1'
   component: ci
   object_text: on every pull request, in .github/workflows/tools.yml, run the tests of the tools on the
     levels MT and SwIT, and fail where one fails; a pull request whose tests failed cannot be merged
-  target_ids: [TOOL-12]
+  source_ids: [TOOL-12@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [demonstration]
 - object_key: SR-11
+  object_version: '1.1.1'
   component: review
   object_text: write a skeleton of a review result into reviews/, for the ids or documents given, with
     the reviewer given as created_by, and the time it is made as created_at and in its name,
     <yyyymmddThhmmss>_<scope>.yaml
-  target_ids: [TOOL-04]
+  source_ids: [TOOL-04@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-12
+  object_version: '1.1.1'
   component: review
   object_text: take the criteria file of the level of what is to be reviewed, and as criteria revision
     the last commit that changed that file
-  target_ids: [TOOL-04]
+  source_ids: [TOOL-04@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-13
+  object_version: '1.1.1'
   component: review
   object_text: name as revision of each the commit the skeleton is made on
-  target_ids: [TOOL-04]
+  source_ids: [TOOL-04@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-14
+  object_version: '1.1.1'
   component: review
   object_text: write one result per id or document, with every criterion of the criteria file, and set
     each criterion and the verdict to todo
-  target_ids: [TOOL-04]
+  source_ids: [TOOL-04@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-15
+  object_version: '1.1.1'
   component: review
   object_text: write nothing, and report it, where an id or document is not found, or where they belong
     to more than one level
-  target_ids: [TOOL-04]
+  source_ids: [TOOL-04@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-16
+  object_version: '1.1.1'
   component: review
   object_text: report the findings of a result in the same order in every run - by criterion in the
     order of the criteria file, criteria not in it by their id, then the verdict, the revision and
     the reviewer
-  target_ids: [TOOL-03]
+  source_ids: [TOOL-03@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-17
+  object_version: '1.1.1'
   component: review
   object_text: write into a skeleton of a review result the field schema, naming the schema of review
     results from the root of the repo
-  target_ids: [TOOL-04]
+  source_ids: [TOOL-04@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-18
+  object_version: '1.1.1'
   component: schema
   object_text: check every YAML file of our own data under version control against the schema its
     field schema names, and report each place where it does not match - the file and the path within
     it; a YAML whose form another owns, such as a workflow of GitHub in .github/, is not our data
-  target_ids: [TOOL-05]
+  source_ids: [TOOL-05@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-19
+  object_version: '1.1.1'
   component: schema
   object_text: report a YAML file that names no schema, or a schema that is not there
-  target_ids: [TOOL-05]
+  source_ids: [TOOL-05@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-20
+  object_version: '1.1.1'
   component: ci
   object_text: on every pull request, in .github/workflows/tools.yml, check every YAML file against its
     schema, and fail where one does not match; a pull request whose check failed cannot be merged
-  target_ids: [TOOL-05]
+  source_ids: [TOOL-05@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [demonstration]
 - object_key: SR-21
+  object_version: '1.1.1'
   component: ruleset
   object_text: read the ruleset of main from GitHub, found by the name in .github/rulesets/main.json, and
     report each difference to that file in its target, enforcement, conditions and rules; leave out
     what GitHub sets itself - id, times, links - and bypass_actors, which cannot be read without the
     rights of an admin
-  target_ids: [TOOL-13]
+  source_ids: [TOOL-13@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-22
+  object_version: '1.1.1'
   component: ruleset
   object_text: report it as a finding where the ruleset cannot be read from GitHub, or no ruleset has
     the name in the file, rather than pass
-  target_ids: [TOOL-13]
+  source_ids: [TOOL-13@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-23
+  object_version: '1.1.1'
   component: ci
   object_text: on every pull request, in .github/workflows/tools.yml, check the ruleset of main against
     .github/rulesets/main.json, and fail where they differ; a pull request whose check failed cannot be
     merged
-  target_ids: [TOOL-13]
+  source_ids: [TOOL-13@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [demonstration]
 - object_key: SR-24
+  object_version: '1.1.1'
   component: annotation
   object_text: find every @implements and @verifies in the files of the repo git knows and which are code
     (PROC-05), and report an id that is not in the requirements of the base commit of the pull request
-  target_ids: [TOOL-06]
+  source_ids: [TOOL-06@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-25
+  object_version: '1.1.1'
   component: annotation
   object_text: report an id named in @implements or @verifies that is in the base commit, but not
     approved there
-  target_ids: [TOOL-06]
+  source_ids: [TOOL-06@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-26
+  object_version: '1.1.1'
   component: ci
   object_text: on every pull request, in .github/workflows/tools.yml, check the annotations against the
     base commit, and fail where one names an id that is missing or not approved there; a pull request
     whose check failed cannot be merged
-  target_ids: [TOOL-06]
+  source_ids: [TOOL-06@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [demonstration]
 - object_key: SR-27
+  object_version: '1.1.1'
   component: annotation
   object_text: report a file git knows whose kind is set neither as code nor as no code, rather than
     read it or pass it
-  target_ids: [TOOL-06]
+  source_ids: [TOOL-06@1.1.1]
+  priority: 'medium'
+  safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR-28

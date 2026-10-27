@@ -20,8 +20,42 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 | r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy |
 | tool | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy |
 | r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem |
+| rules | `rules.yaml` (PROC) | `harness.md` | specs-and-deploy |
 
-A readable Markdown view of the YAML is generated on request only.
+A readable Markdown view of the YAML is generated on request only - save the table of the rules
+(see Rules).
+
+### Rules
+
+The rules of our work are requirements under another name (traceability.md). They are kept as
+data in `rules.yaml`, in the root beside harness.md, at a level of their own, `rules`, apart from
+the requirements of the product. Each has the fields of a requirement; its `status` is `approved`
+on `main`, and its `verification_method` is empty: a rule passes no review of its own, it is
+approved by its merge (harness.md).
+
+**Decision**: harness.md shows the rules in a table generated from `rules.yaml`, between two
+marks, whenever `rules.yaml` changes. The table names the hash of the content of `rules.yaml`, in
+the mark and in its title, such as `rules.yaml@1a2b3c4`. Whoever checks runs `git hash-object rules.yaml`;
+the same hash says the table fits the data.
+
+**Why**: the export to PDF can insert only Markdown, not YAML, so a table that is not in
+harness.md is in no PDF of it. The hash of the content is known before the commit, so the table
+and the data change in the same commit.
+
+**Rejected**:
+
+- the table in rules.yaml only: it would be in no PDF of harness.md
+- a tool that writes the table: too much for one table
+- the hash of the commit that last changed `rules.yaml`: it is known only after that commit, so a
+  second commit would follow, and in between the table would not fit the data
+
+**Decision**: harness.md is named in `documents.yaml`, not in `rules.yaml`.
+
+**Why**: the hash covers all of `rules.yaml`. Were the status of harness.md in it, the decision of
+a review of harness.md would change the hash, the table, and so harness.md again - without end.
+
+**Rejected**: the hash over the rules alone. `git hash-object` could no longer check it, and a tool
+would be needed.
 
 ### Fields are the properties of the gel schema
 
@@ -38,14 +72,23 @@ holds only what the author writes:
 
 | Kind of field | Examples | Where it comes from | In the YAML |
 |---|---|---|---|
-| content | `object_key`, `object_text`, `level`, `function`, `feature`, `component`, `priority`, `safety`, `status`, the uplink | the author | yes |
+| content | `object_key`, `object_version`, `object_text`, `level`, `function`, `feature`, `component`, `priority`, `safety`, `status`, the uplink | the author | yes |
 | context | `organization`, `project`, `baseline`, `library`, `system`, `module_id`, `revision` | the extractor: repo, file, commit, tag | no |
 | derived | `istatus`, `mstatus`, `mpriority`, `msafety`, `mplatform_launch`, `mfeature`, `mfunction`, `parentOf`, `assignedTo`, `unit` | the import | never |
 
 - **function** is the role of a user need (PM, RM, ..., PSF); a requirement below takes it from its
   parent into `mfunction` where its own is empty.
 - **feature** is given on r2; r5 takes it from its parent into `mfeature`.
-- **priority** is `later` where a requirement is kept for later; empty otherwise.
+- **object_version** of every requirement, element and decision of the architecture, hazard and
+  control: `x.y.z`, written in quotes - x the text and the attributes its schema names in
+  `attributes_for_version_x`, y the links, z every other attribute. It is set at the approval;
+  a new object starts at `'1.1.1'` (traceability.md).
+- **priority** of every requirement, element of the architecture, hazard and control: a string,
+  `'medium'` by default, `'later'` where it is kept for later. It stands in every object, also
+  where it holds the default.
+- **safety** of every requirement, element of the architecture and hazard: the safety class, a
+  string, `''` by default. It stands in every object, also where it holds the default. A control
+  has none: its class is always the one of its hazard (attributes.md).
 - **rationale** of a requirement below the top that names no uplink - a system requirement, a
   software requirement, a tool requirement, a control of a hazard - or of an element of the
   architecture allocated no system requirement: why it stands, for instance derived from the view of
@@ -59,10 +102,16 @@ holds only what the author writes:
   of its level (PROC-13), for instance a document.
 - **platform_launch** of every user need and system requirement: `treporting = 2_selfhosted,
   1_demo`, or narrower where a requirement holds for one of them only.
-- **the links**: an object writes the ends of its own links in `target_ids` - in our files, the
-  parents it is derived from (the uplink). As in the gel schema, `source_ids` and `target_ids`
-  keep the original ends of the links without saying which is parent or child; the import makes
-  the link `parentOf` from them, a derived value.
+- **the links**: an object writes the parents it is derived from, its uplinks, in `source_ids` -
+  its sources. `target_ids` is what an object points at: a review result points at what it
+  reviewed, a verification at what it verified. As in the gel schema, `source_ids` and
+  `target_ids` keep the original ends of the links; the import makes the link `parentOf` from
+  them, a derived value: the sources of an object are its parents. Every uplink names the version
+  of its parent, `UN-OPS-10@1.1.1` (PROC-20); so does an entry of `allocated`. Rejected: the
+  uplink in `target_ids`, as it stood before - read so, parent and child turn round.
+- **controls** of a control of a hazard: the user needs that realize it, with their versions,
+  `controls: [UN-PSF-01@1.1.1]` - a down-link between two trees (traceability.md, section Links
+  between trees).
 
 ### Example
 
@@ -72,13 +121,15 @@ schema: schemas/system-requirements.schema.json
 level: r2
 requirements:
   - object_key: SYS-58
+    object_version: '1.1.1'
     feature: Licensing
     object_text: >-
       check, on every request to a licensed feature, the role and the rights of the user and
       the licence of the installation, and refuse the request with the reason when one of
       them is missing
-    target_ids: [UN-OPS-10]
-    priority: later
+    source_ids: [UN-OPS-10@1.1.1]
+    priority: 'later'
+    safety: ''
 ```
 
 ### Files whose form another owns
@@ -93,7 +144,9 @@ carries no annotation. The requirement it serves names it.
 whose form another owns has none (see Files whose form another owns). Every YAML of our own data names its schema in the field `schema`, from the root of the repo, as a review result names its criteria:
 `schema: schemas/tool-requirements.schema.json`. The schema holds that path as a fixed value, so a
 file that names another schema fails. Every schema names the requirement it refines in its
-`$comment`: `@refines ARC-22`. The schemas are the contract of ARC-22 and are reviewed with it.
+`$comment`: `@refines ARC-22`. The schema of a kind with versions names the attributes for x in
+the list `attributes_for_version_x`, always written out (traceability.md). The schemas are the
+contract of ARC-22 and are reviewed with it.
 They are drafts until the gel schema stands; then they become a part of it, and a CI check in
 storage-edgedb compares both.
 
@@ -123,9 +176,9 @@ requirements:
 - ...
 ```
 
-The documents without a YAML of requirements beside them - harness.md, devops.md, definitions.md,
-standards.md, formats.md, the READMEs - are named in `documents.yaml` in the root of the repo, in
-the same form, by their path.
+The documents without a YAML of requirements beside them - devops.md, definitions.md, standards.md,
+formats.md, the READMEs - and harness.md (see Rules) are named in `documents.yaml` in the root of
+the repo, in the same form, by their path.
 
 ### Standards, clauses and tables in a document
 
@@ -303,7 +356,7 @@ annotation names software requirements of its own repo only.
 | `ARC-Rnn`, `ARC-Dnn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
 | `SR-nn` | software requirements of a subsystem - unique together with their context, the repo of the subsystem (LProject) and the document | r5 |
 | *open* | software architecture (r6) and software design (r7) of a subsystem; their prefixes are still to be set | r6, r7 |
-| `PROC-nn` | rules of our work | - |
+| `PROC-nn` | rules of our work | rules |
 | `TOOL-nn` | requirements on the tools of our work; tools are code (devops.md) | tool |
 
 ### Software requirements
@@ -419,7 +472,7 @@ On every pull request of a code repo, each check a tool with a requirement of it
 | every id in `@implements` and `@verifies` exists, and is approved, in the YAML of the **base commit** of the pull request - a requirement added in the same pull request does not count (PROC-05); a SYS named by a system test exists in specs-and-deploy on `main` | TOOL-06 |
 | the annotations counted a second way, apart from the parser - `git grep -c` | TOOL-07 |
 | the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to this subsystem in the architecture (r4) | TOOL-08 |
-| an approved requirement names approved uplinks only | TOOL-09 |
+| a requirement becomes approved only while its uplinks are approved | TOOL-09 |
 | every test file belongs to exactly one test level | TOOL-10 |
 | every review result keeps the rules of the section Reviews, and the tests of the tools pass | TOOL-12 |
 

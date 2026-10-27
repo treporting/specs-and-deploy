@@ -8,66 +8,91 @@ documents:
   verification_method: [review]
 requirements:
 - object_key: REG-01
+  object_version: '1.1.1'
   category: Tool qualification
   source: ISO 26262-8, clause 11
   object_text: classify a software tool by its impact and by how surely its errors are detected (TI, TD,
     TCL), and qualify it where the confidence level is TCL2 or TCL3
   applies_to: automotive
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-02
+  object_version: '1.1.1'
   category: Tool qualification
   source: IEC 61508-3, 7.4.4
   object_text: show that an offline support tool of class T2, which can fail to reveal a defect, is fit
     for its use
   applies_to: industry, railway (EN 50716)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-03
+  object_version: '1.1.1'
   category: Tool qualification
   source: DO-330
   object_text: qualify a verification tool whose output is not verified otherwise
   applies_to: airborne
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-04
+  object_version: '1.1.1'
   category: Tool qualification
   source: ISO 13485, 4.1.6
   object_text: validate software used in the quality management system before its first use and after
     changes
   applies_to: medical
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-05
+  object_version: '1.1.1'
   category: Electronic records
   source: 21 CFR 11.10(e)
   object_text: keep a secure, computer-generated audit trail with time stamps of every creation, change
     and deletion of a record, without hiding what was there before
   applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-06
+  object_version: '1.1.1'
   category: Electronic records
   source: 21 CFR 11.10(d), (g)
   object_text: let only authorised people use the system, and check their authority for what they do
   applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-07
+  object_version: '1.1.1'
   category: Electronic records
   source: 21 CFR 11.10(b)
   object_text: produce accurate and complete copies of records, readable by people and in electronic form
   applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-08
+  object_version: '1.1.1'
   category: Electronic records
   source: 21 CFR 11.10(c)
   object_text: protect records so that they can be retrieved accurately throughout their retention period
   applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-09
+  object_version: '1.1.1'
   category: Electronic records
   source: 21 CFR 11.50, 11.70
   object_text: an electronic signature shows the name of the signer, the time and its meaning, and is
@@ -75,108 +100,149 @@ requirements:
   applies_to: medical (FDA)
   not_realized: treporting signs nothing; an approval is made where the organization makes it, and can
     name the report it relied on (SYS-43)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-10
+  object_version: '1.1.1'
   category: Electronic records
   source: FDA, data integrity (ALCOA)
   object_text: data are attributable, legible, contemporaneous, original and accurate - every figure can
     be followed back to whom and what it comes from
   applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-11
+  object_version: '1.1.1'
   category: Personal data and legal notice
   source: GDPR, Art. 5(1)(b), (e)
   object_text: process personal data only for the purposes stated, and keep it no longer than they need
   applies_to: EU
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-12
+  object_version: '1.1.1'
   category: Personal data and legal notice
   source: BetrVG, §87(1) no. 6
   object_text: a technical means that can monitor the behaviour or performance of employees needs the
     consent of the works council
   applies_to: Germany
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-13
+  object_version: '1.1.1'
   category: Personal data and legal notice
   source: DDG, §5; GDPR, Art. 13
   object_text: a service on the internet names who runs it, and tells users what personal data it processes
   applies_to: Germany, EU
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-19
+  object_version: '1.1.1'
   category: Safety classes
   source: ISO 26262-9, clause 5; ISO 26262-3, -4, -6
   object_text: a safety requirement inherits the ASIL of the requirement it is derived from; it may get
     a lower one only by an ASIL decomposition into independent requirements
   applies_to: automotive
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-20
+  object_version: '1.1.1'
   category: Safety classes
   source: ARP4754B, development assurance level assignment; DO-178C, 2.3
   object_text: an item gets the development assurance level (IDAL) of the function it realizes (FDAL),
     and its software the software level that follows from it; a lower level only where independence between
     the items is shown
   applies_to: airborne
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-21
+  object_version: '1.1.1'
   category: Safety classes
   source: IEC 61508-2, 7.4.3; IEC 61508-3, 7.4.2.8 to 7.4.2.10
   object_text: an element gets the SIL of the safety function it realizes; software elements of different
     SIL are all treated as of the highest one, unless their independence is shown
   applies_to: industry, railway (EN 50716)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-22
+  object_version: '1.1.1'
   category: Safety classes
   source: IEC 62304, 4.3; 5.3.5
   object_text: a software item gets the software safety class of the software system or item it is decomposed
     from; a lower class only with a documented rationale, such as a segregation of the items
   applies_to: medical
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-14
+  object_version: '1.1.1'
   category: Products on the market
   source: CRA (EU) 2024/2847, Annex I Part I
   object_text: a product with digital elements is placed on the market without known exploitable vulnerabilities,
     with a secure configuration by default, and can be secured by updates
   applies_to: EU, commercial
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-15
+  object_version: '1.1.1'
   category: Products on the market
   source: CRA, Annex I Part II
   object_text: 'the manufacturer handles vulnerabilities: keeps an SBOM, fixes without delay and free
     of charge, has a policy of coordinated disclosure and a contact for reports'
   applies_to: EU, commercial
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-16
+  object_version: '1.1.1'
   category: Products on the market
   source: CRA, Art. 14
   object_text: 'an actively exploited vulnerability is notified: an early warning within 24 hours, a notification
     within 72 hours, a final report later'
   applies_to: EU, commercial
   not_realized: a duty of the manufacturer, kept by our work (harness)
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-17
+  object_version: '1.1.1'
   category: Products on the market
   source: CRA, Art. 13(8)
   object_text: security updates are provided over a support period stated in advance, as a rule at least
     five years
   applies_to: EU, commercial
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]
 - object_key: REG-18
+  object_version: '1.1.1'
   category: Products on the market
   source: licences of the components, e.g. Apache-2.0 §4
   object_text: a release hands on the licence texts and notices of every component it contains
   applies_to: all
+  priority: 'medium'
+  safety: ''
   status: draft
   verification_method: [inspection]

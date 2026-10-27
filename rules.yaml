@@ -1,0 +1,160 @@
+# The rules of our work (PROC). What explains them is in harness.md; harness.md is named in
+# documents.yaml, not here - see formats.md, section Rules.
+# Format: formats.md
+schema: schemas/rules.schema.json
+level: rules
+rules:
+- object_key: PROC-01
+  object_version: '1.1.1'
+  object_text: 'The language for tickets, code, code comments and documentation is English only.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-02
+  object_version: '1.1.1'
+  object_text: 'Every change has a ticket in the org project treporting and a branch `<ticket
+    number>-<slug>`.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-03
+  object_version: '1.1.1'
+  object_text: 'A change reaches `main` only through a pull request; `main` is protected.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-04
+  object_version: '1.1.1'
+  object_text: 'A pull request passes the full gate before it is merged to `main`.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-05
+  object_version: '1.1.1'
+  object_text: 'Every change of code realizes or verifies an approved requirement and names it in
+    `@implements` or `@verifies`. Code is everything that is built or run - also configurations and
+    container files. A schema is no code: it is the contract of the requirement it refines, and names
+    it in `@refines`.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-06
+  object_version: '1.1.1'
+  object_text: 'A baseline is a signed tag: in this repo (specs-and-deploy) it is a release, in any
+    other repo a library.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-07
+  object_version: '1.1.1'
+  object_text: 'Every release and every library writes its data into the reference edgedb.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-08
+  object_version: '1.1.1'
+  object_text: 'Every release has an SBOM, and the licences of its components are checked against
+    Apache-2.0 (REG-15, REG-18).'
+  source_ids: [REG-15@1.1.1, REG-18@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-09
+  object_version: '1.1.1'
+  object_text: 'A reported vulnerability is assessed and fixed without delay; one that is actively
+    exploited is notified within 24 hours (REG-15, REG-16).'
+  source_ids: [REG-15@1.1.1, REG-16@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-10
+  object_version: '1.1.1'
+  object_text: 'Every release gets security fixes over the support period it states (REG-17).'
+  source_ids: [REG-17@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-11
+  object_version: '1.1.1'
+  object_text: 'A document names no ticket; what is open, it states as open. The ticket names the
+    document, not the other way round.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-12
+  object_version: '2.1.1'
+  object_text: 'An object is merged before another names it.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-13
+  object_version: '1.1.1'
+  object_text: 'Whatever has review criteria of its kind in `reviews/` - today requirements and
+    documents - is approved only when it passed its review against those criteria, and whatever it
+    names as uplink is approved at that moment. A later change of an uplink does not take the approval
+    back. See traceability.md.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-14
+  object_version: '1.1.1'
+  object_text: 'A change of the content of whatever is approved that changes x of its version - the
+    text of a requirement or an attribute its kind names for x, a document as a whole - sets it back
+    to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge
+    approves it. See traceability.md.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-15
+  object_version: '1.1.1'
+  object_text: 'The reviewer of whatever is reviewed is not its author.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-16
+  object_version: '1.1.1'
+  object_text: 'A pull request closes one ticket and changes one concern. Group things which belong
+    together so they do not contradict.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-18
+  object_version: '1.1.1'
+  object_text: 'A decision is written down with its reason and the alternatives rejected.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-19
+  object_version: '1.1.1'
+  object_text: 'Every test belongs to exactly one test level, read from the place of its file.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC-20
+  object_version: '2.1.1'
+  object_text: 'Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect
+    where the linked object has another x than the link names. A suspect link is reported on every
+    pull request. It blocks a baseline that holds both its ends, compared with the versions in that
+    baseline, not on `main`. See traceability.md.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []

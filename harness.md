@@ -120,31 +120,35 @@ reasoned and written down, as here.
 ## Rules
 
 The ids are `PROC-nn`. They are kept apart from the ids of the requirements, so that keeping
-to the process does not count into the maturity of the product.
+to the process does not count into the maturity of the product. The rules are kept as data in
+[rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
+hash of its content, `git hash-object rules.yaml`.
 
-**Table rules** - the rules of the work
+<!-- generated from rules.yaml@e2699c7 - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@e2699c7
 
-| Id | Rule |
-|---|---|
-| PROC-01 | The language for tickets, code, code comments and documentation is English only. |
-| PROC-02 | Every change has a ticket in the org project treporting and a branch `<ticket number>-<slug>`. |
-| PROC-03 | A change reaches `main` only through a pull request; `main` is protected. |
-| PROC-04 | A pull request passes the full gate before it is merged to `main`. |
-| PROC-05 | Every change of code realizes or verifies an approved requirement and names it in `@implements` or `@verifies`. Code is everything that is built or run - also configurations and container files. A schema is no code: it is the contract of the requirement it refines, and names it in `@refines`. |
-| PROC-06 | A baseline is a signed tag: in this repo (specs-and-deploy) it is a release, in any other repo a library. |
-| PROC-07 | Every release and every library writes its data into the reference edgedb. |
-| PROC-08 | Every release has an SBOM, and the licences of its components are checked against Apache-2.0 (REG-15, REG-18). |
-| PROC-09 | A reported vulnerability is assessed and fixed without delay; one that is actively exploited is notified within 24 hours (REG-15, REG-16). |
-| PROC-10 | Every release gets security fixes over the support period it states (REG-17). |
-| PROC-11 | A document names no ticket; what is open, it states as open. The ticket names the document, not the other way round. |
-| PROC-12 | A level is merged before the level below names it: user needs and regulatory requirements, system requirements, architecture, software requirements, code. |
-| PROC-13 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved. |
-| PROC-14 | A change of the content of whatever is approved - the text of a requirement, a document as a whole - sets it back to `draft`. |
-| PROC-15 | The reviewer of whatever is reviewed is not its author. |
-| PROC-16 | A pull request closes one ticket and changes one concern; a ticket that touches data, rules and explanations at once is split into several pull requests. |
-| PROC-17 | Where a rule of the harness changes its meaning, every requirement that names it as uplink goes back to `review`. |
-| PROC-18 | A decision is written down with its reason and the alternatives rejected. |
-| PROC-19 | Every test belongs to exactly one test level, read from the place of its file. |
+| Id | Version | Rule |
+|---|---|---|
+| PROC-01 | 1.1.1 | The language for tickets, code, code comments and documentation is English only. |
+| PROC-02 | 1.1.1 | Every change has a ticket in the org project treporting and a branch `<ticket number>-<slug>`. |
+| PROC-03 | 1.1.1 | A change reaches `main` only through a pull request; `main` is protected. |
+| PROC-04 | 1.1.1 | A pull request passes the full gate before it is merged to `main`. |
+| PROC-05 | 1.1.1 | Every change of code realizes or verifies an approved requirement and names it in `@implements` or `@verifies`. Code is everything that is built or run - also configurations and container files. A schema is no code: it is the contract of the requirement it refines, and names it in `@refines`. |
+| PROC-06 | 1.1.1 | A baseline is a signed tag: in this repo (specs-and-deploy) it is a release, in any other repo a library. |
+| PROC-07 | 1.1.1 | Every release and every library writes its data into the reference edgedb. |
+| PROC-08 | 1.1.1 | Every release has an SBOM, and the licences of its components are checked against Apache-2.0 (REG-15, REG-18). |
+| PROC-09 | 1.1.1 | A reported vulnerability is assessed and fixed without delay; one that is actively exploited is notified within 24 hours (REG-15, REG-16). |
+| PROC-10 | 1.1.1 | Every release gets security fixes over the support period it states (REG-17). |
+| PROC-11 | 1.1.1 | A document names no ticket; what is open, it states as open. The ticket names the document, not the other way round. |
+| PROC-12 | 2.1.1 | An object is merged before another names it. |
+| PROC-13 | 1.1.1 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. See traceability.md. |
+| PROC-14 | 1.1.1 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
+| PROC-15 | 1.1.1 | The reviewer of whatever is reviewed is not its author. |
+| PROC-16 | 1.1.1 | A pull request closes one ticket and changes one concern. Group things which belong together so they do not contradict. |
+| PROC-18 | 1.1.1 | A decision is written down with its reason and the alternatives rejected. |
+| PROC-19 | 1.1.1 | Every test belongs to exactly one test level, read from the place of its file. |
+| PROC-20 | 2.1.1 | Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect where the linked object has another x than the link names. A suspect link is reported on every pull request. It blocks a baseline that holds both its ends, compared with the versions in that baseline, not on `main`. See traceability.md. |
+<!-- end of generated -->
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
 and passes no review of its own. So a rule can be the uplink of an approved requirement (PROC-13).
@@ -170,8 +174,9 @@ is reviewed by them.
 1. A ticket is the start of every change (PROC-02).
 2. A branch is created for the ticket.
 3. The change is realized, in commits.
-4. If the change touches what has review criteria of its kind (PROC-13), it needs a review. The
-   author sets it to `review`. The change is then finished.
+4. If the change touches what has review criteria of its kind (PROC-13) - something new, or a
+   change of x of its version (PROC-14) - it needs a review. The author sets it to `review`. The
+   change is then finished. A change of y or z only needs no review: the merge approves it.
 5. The reviewer checks it against the criteria of its kind. The reviewer is not the author (PROC-15).
 6. The review result goes into `reviews/`.
 7. A finding can be resolved on the branch.
