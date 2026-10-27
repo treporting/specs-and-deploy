@@ -210,7 +210,8 @@ requirements:
     and reviews the product regularly, discloses fixed vulnerabilities, has a policy of coordinated
     disclosure and a contact for reports, and distributes security updates securely, without delay and
     free of charge'
-  applies_to: EU, commercial
+  applies_to: products with digital elements made available on the EU market in the course of a
+    commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
   status: review
@@ -222,7 +223,8 @@ requirements:
   object_text: 'an actively exploited vulnerability is notified to the CSIRT designated as coordinator
     and to ENISA: an early warning within 24 hours, a notification within 72 hours, a final report
     within 14 days after a corrective or mitigating measure is available'
-  applies_to: EU, commercial
+  applies_to: products with digital elements made available on the EU market in the course of a
+    commercial activity - not free and open-source software that is not monetised
   not_realized: a duty of the manufacturer, kept by our work (harness)
   priority: 'medium'
   safety: ''
@@ -234,7 +236,8 @@ requirements:
   source: CRA, Art. 13(8)
   object_text: 'vulnerabilities are handled over the support period, at least five years unless the
     product is expected to be in use for a shorter time'
-  applies_to: EU, commercial
+  applies_to: products with digital elements made available on the EU market in the course of a
+    commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
   status: review
