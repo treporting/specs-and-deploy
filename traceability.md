@@ -215,13 +215,45 @@ Code and tests name their requirement in an annotation, not in `target_ids`.
 last changed. No one would have to update anything, but no one would see in the file which version
 the code was checked against - the same reason the git revision on a link was rejected.
 
+## The version in the schema
+
+**Decision**: every object carries its version in a field `object_version`, `x.y.z`. The schema of
+its kind requires it.
+
+**Decision**: the schema of every kind names the attributes for x in a list beside the properties
+of the object, `attributes_for_version_x`. The list is always written out, also where it holds the
+default.
+
+```json
+"items": {
+  "type": "object",
+  "attributes_for_version_x": ["object_text", "safety"],
+  "properties": {
+    "object_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    …
+  }
+}
+```
+
+`target_ids` counts for z. `status` counts for nothing unless the list names it. Every other field
+counts for y.
+
+**Why**:
+
+- x can be read at one place, at a glance
+- written out, x is visible in the schema itself; no one has to know a default
+- JSON Schema 2020-12 ignores a keyword it does not know. schemacheck can check that every name in
+  the list is a property of the kind.
+
+**Rejected**: a mark on each attribute, `"safety": { …, "versionPart": "x" }`. Then x is found only
+by searching every field.
+
 ## Open questions
 
-1. **How the schema of a kind names the attributes for x.**
-2. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
+1. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
    for suspect links.
-3. **The tools:** a check that a change raises the right part of the version, a check for suspect
+2. **The tools:** a check that a change raises the right part of the version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
    version of its parent. annotationcheck has to read `@x.y.z`.
-4. **TOOL-09** (#248): SR-28 would read "a requirement that becomes approved while an uplink of it
+3. **TOOL-09** (#248): SR-28 would read "a requirement that becomes approved while an uplink of it
    is not approved". #248 waits until the rules stand.
