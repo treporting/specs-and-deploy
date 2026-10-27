@@ -423,3 +423,7 @@ Markdown table, and the rules would be kept apart from every other requirement.
    "a requirement that becomes approved while an uplink of it is not approved".
 4. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
    from its tag, not `main`. How such a state is made and kept is not set yet.
+5. **The field of the uplink:** our files keep the uplink in `target_ids`. A target is what an
+   object points at; what it is derived from is its source. The uplink belongs in `source_ids`.
+   The fields here are named as they are today. A review result keeps `target_ids`: it points at
+   what it reviewed.

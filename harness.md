@@ -144,7 +144,7 @@ to the process does not count into the maturity of the product.
 | PROC-16 | A pull request closes one ticket and changes one concern; a ticket that touches data, rules and explanations at once is split into several pull requests. |
 | PROC-18 | A decision is written down with its reason and the alternatives rejected. |
 | PROC-19 | Every test belongs to exactly one test level, read from the place of its file. |
-| PROC-20 | Every uplink names the version of its parent: `target_ids`, `allocated` and an annotation, as `ID@x.y.z`. An uplink is suspect where its parent has another x in the same baseline. A suspect uplink is reported on every pull request and blocks the baseline that holds both its ends. |
+| PROC-20 | Every uplink names the version of its parent, as `ID@x.y.z`: a link, an entry of the allocation, an annotation. An uplink is suspect where its parent has another x in the same baseline. A suspect uplink is reported on every pull request and blocks the baseline that holds both its ends. |
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
 and passes no review of its own. So a rule can be the uplink of an approved requirement (PROC-13).
