@@ -157,6 +157,15 @@ of them is in its first version too: text, links and other attributes all have t
   though they have
 - `0.0.0`: it would say nothing has a state yet, though the object is approved
 
+**Decision**: a new object starts at `1.1.1` when it is written, as a draft.
+
+**Why**: the draft is its first version. The status changes the version nowhere, so not here
+either. No child can name the draft as uplink at its own approval, because an approval needs
+approved uplinks.
+
+**Rejected**: `0.0.0` while the object is a draft, and `1.1.1` at its first approval. It would make
+an exception to the rule of the status.
+
 **Table cascade** - how far a change reaches
 
 | What happens | UN-PM-01 | SYS-09 | SR-01 |
