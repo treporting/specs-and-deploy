@@ -23,3 +23,6 @@ documents:
 - name: reviews/README.md
   status: approved
   verification_method: [review]
+- name: traceability.md
+  status: approved
+  verification_method: [review]
