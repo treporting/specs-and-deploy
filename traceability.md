@@ -373,10 +373,26 @@ Whether another subsystem has to join, only the allocation shows.
 are long, and versions make them harder to read; a view in the reporter can help, without changing
 the data.
 
+## Links to rules
+
+Requirements name rules of the harness as uplink, such as `target_ids: [PROC-12]`. Today a rule
+has no version. Where a rule changes its meaning, PROC-17 sends every requirement that names it
+back to `review` - the strict cascade c).
+
+**Decision**: a rule carries a version, `x.y.z`, as every requirement does. A link names it:
+`target_ids: [PROC-12@1.1.1]`. The version is set at the merge, because the merge is the approval
+of a rule. PROC-17 goes: a suspect link does its work.
+
+**Why**: rules are requirements under another name. One rule holds for every uplink, and the
+cascade ends for rules as well.
+
+**Rejected**: rules without a version, and PROC-17 kept. Two ways would stand side by side, and
+for rules the cascade would go on.
+
 ## Open questions
 
 1. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
-   for suspect links.
+   for suspect links; PROC-17 goes; where the version of a rule is written.
 2. **The tools:** a check that an approval sets the right version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
    version of its parent. annotationcheck has to read `@x.y.z`.
