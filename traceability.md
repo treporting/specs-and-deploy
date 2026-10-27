@@ -417,6 +417,15 @@ question, and it has to be answered on its own.
 
 **Rejected**: approved user needs at the approval of a control, as for uplinks.
 
+**Decision**: PROC-12 follows the links, not a list of levels: an object is merged before another
+names it.
+
+**Why**: a down-link runs the other way. The user needs are merged before a control names them in
+`controls`, though the control stands above them. A list of levels would have to say so for every
+link between trees.
+
+**Rejected**: a list of levels with the hazards added. It would hold for uplinks only.
+
 ## Links to rules
 
 Requirements name rules of the harness as uplink, such as `source_ids: [PROC-12]`. Before this
