@@ -16,7 +16,7 @@ requirements:
   applies_to: automotive
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-02
   object_version: '1.1.1'
@@ -27,7 +27,7 @@ requirements:
   applies_to: industry, railway (EN 50716)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-03
   object_version: '1.1.1'
@@ -40,7 +40,7 @@ requirements:
   applies_to: airborne
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-04
   object_version: '1.1.1'
@@ -52,7 +52,7 @@ requirements:
   applies_to: medical
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-05
   object_version: '1.1.1'
@@ -63,7 +63,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-06
   object_version: '1.1.1'
@@ -73,7 +73,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-07
   object_version: '1.1.1'
@@ -83,7 +83,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-08
   object_version: '1.1.1'
@@ -93,7 +93,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-09
   object_version: '1.1.1'
@@ -106,7 +106,7 @@ requirements:
     name the report it relied on (SYS-43)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-10
   object_version: '1.1.1'
@@ -117,7 +117,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-11
   object_version: '1.1.1'
@@ -127,7 +127,7 @@ requirements:
   applies_to: EU
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-12
   object_version: '1.1.1'
@@ -148,7 +148,7 @@ requirements:
   applies_to: Germany
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-13
   object_version: '1.1.1'
@@ -168,7 +168,7 @@ requirements:
   applies_to: Germany, EU
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-19
   object_version: '1.1.1'
@@ -180,7 +180,7 @@ requirements:
   applies_to: automotive
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-20
   object_version: '1.1.1'
@@ -193,7 +193,7 @@ requirements:
   applies_to: airborne
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-21
   object_version: '1.1.1'
@@ -207,7 +207,7 @@ requirements:
   applies_to: industry, railway (EN 50716)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-22
   object_version: '1.1.1'
@@ -218,7 +218,7 @@ requirements:
   applies_to: medical
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-14
   object_version: '1.1.1'
@@ -232,7 +232,7 @@ requirements:
     commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-15
   object_version: '1.1.1'
@@ -246,7 +246,7 @@ requirements:
     commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-16
   object_version: '1.1.1'
@@ -260,7 +260,7 @@ requirements:
   not_realized: a duty of the manufacturer, kept by our work (harness)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-17
   object_version: '1.1.1'
@@ -272,7 +272,7 @@ requirements:
     commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG-18
   object_version: '1.1.1'
@@ -282,5 +282,5 @@ requirements:
   applies_to: all
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]

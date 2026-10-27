@@ -1,5 +1,5 @@
 # Review of REG-01, REG-02, REG-03, REG-04, REG-05, REG-06, REG-07, REG-08, REG-09, REG-10, REG-11, REG-12, REG-13, REG-14, REG-19, REG-20, REG-21, REG-22 against the criteria of the level n1.
-# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides. The free sources were
+# Made with reviewskeleton; proposed by Claude Code, decided by the reviewer: passed. The free sources were
 # read by Claude Code; the standards - ISO, IEC, ARP, DO - were checked by the reviewer against their copies.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
