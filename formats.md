@@ -20,8 +20,42 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 | r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy |
 | tool | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy |
 | r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem |
+| rules | `rules.yaml` (PROC) | `harness.md` | specs-and-deploy |
 
-A readable Markdown view of the YAML is generated on request only.
+A readable Markdown view of the YAML is generated on request only - save the table of the rules
+(see Rules).
+
+### Rules
+
+The rules of our work are requirements under another name (traceability.md). They are kept as
+data in `rules.yaml`, in the root beside harness.md, at a level of their own, `rules`, apart from
+the requirements of the product. Each has the fields of a requirement; its `status` is `approved`
+on `main`, and its `verification_method` is empty: a rule passes no review of its own, it is
+approved by its merge (harness.md).
+
+**Decision**: harness.md shows the rules in a table generated from `rules.yaml`, between two
+marks, whenever `rules.yaml` changes. The table names the hash of the content of `rules.yaml`, in
+the mark and in its title, such as `rules.yaml@1a2b3c4`. Whoever checks runs `git hash-object rules.yaml`;
+the same hash says the table fits the data.
+
+**Why**: the export to PDF can insert only Markdown, not YAML, so a table that is not in
+harness.md is in no PDF of it. The hash of the content is known before the commit, so the table
+and the data change in the same commit.
+
+**Rejected**:
+
+- the table in rules.yaml only: it would be in no PDF of harness.md
+- a tool that writes the table: too much for one table
+- the hash of the commit that last changed `rules.yaml`: it is known only after that commit, so a
+  second commit would follow, and in between the table would not fit the data
+
+**Decision**: harness.md is named in `documents.yaml`, not in `rules.yaml`.
+
+**Why**: the hash covers all of `rules.yaml`. Were the status of harness.md in it, the decision of
+a review of harness.md would change the hash, the table, and so harness.md again - without end.
+
+**Rejected**: the hash over the rules alone. `git hash-object` could no longer check it, and a tool
+would be needed.
 
 ### Fields are the properties of the gel schema
 
@@ -140,9 +174,9 @@ requirements:
 - ...
 ```
 
-The documents without a YAML of requirements beside them - harness.md, devops.md, definitions.md,
-standards.md, formats.md, the READMEs - are named in `documents.yaml` in the root of the repo, in
-the same form, by their path.
+The documents without a YAML of requirements beside them - devops.md, definitions.md, standards.md,
+formats.md, the READMEs - and harness.md (see Rules) are named in `documents.yaml` in the root of
+the repo, in the same form, by their path.
 
 ### Standards, clauses and tables in a document
 
@@ -320,7 +354,7 @@ annotation names software requirements of its own repo only.
 | `ARC-Rnn`, `ARC-Dnn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
 | `SR-nn` | software requirements of a subsystem - unique together with their context, the repo of the subsystem (LProject) and the document | r5 |
 | *open* | software architecture (r6) and software design (r7) of a subsystem; their prefixes are still to be set | r6, r7 |
-| `PROC-nn` | rules of our work | - |
+| `PROC-nn` | rules of our work | rules |
 | `TOOL-nn` | requirements on the tools of our work; tools are code (devops.md) | tool |
 
 ### Software requirements
