@@ -93,9 +93,8 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC-12
-  object_version: '1.1.1'
-  object_text: 'A level is merged before the level below names it: user needs and regulatory
-    requirements, system requirements, architecture, software requirements, code.'
+  object_version: '2.1.1'
+  object_text: 'An object is merged before another names it.'
   priority: 'medium'
   safety: ''
   status: approved
@@ -150,11 +149,11 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC-20
-  object_version: '1.1.1'
-  object_text: 'Every uplink names the version of its parent, as `ID@x.y.z`: a link, an entry of the
-    allocation, an annotation. An uplink is suspect where its parent has another x in the same
-    baseline. A suspect uplink is reported on every pull request and blocks the baseline that holds
-    both its ends. See traceability.md.'
+  object_version: '2.1.1'
+  object_text: 'Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect
+    where the linked object has another x than the link names. A suspect link is reported on every
+    pull request. It blocks a baseline that holds both its ends, compared with the versions in that
+    baseline, not on `main`. See traceability.md.'
   priority: 'medium'
   safety: ''
   status: approved

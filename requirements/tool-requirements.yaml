@@ -84,7 +84,7 @@ requirements:
   feature: CI check
   object_text: check that the system requirement a software requirement names as uplink exists in
     specs-and-deploy on main, and is allocated to the subsystem of the software requirement
-  source_ids: [PROC-12@1.1.1]
+  source_ids: [PROC-12@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved

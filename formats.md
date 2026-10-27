@@ -107,9 +107,11 @@ holds only what the author writes:
   reviewed, a verification at what it verified. As in the gel schema, `source_ids` and
   `target_ids` keep the original ends of the links; the import makes the link `parentOf` from
   them, a derived value: the sources of an object are its parents. Every uplink names the version
-  of its parent, `UN-OPS-10@1.1.1` (PROC-20); so does an entry of `allocated`.
-  Rejected: the uplink in `target_ids`, as it stood before - read so, parent and child turn
-  round.
+  of its parent, `UN-OPS-10@1.1.1` (PROC-20); so does an entry of `allocated`. Rejected: the
+  uplink in `target_ids`, as it stood before - read so, parent and child turn round.
+- **controls** of a control of a hazard: the user needs that realize it, with their versions,
+  `controls: [UN-PSF-01@1.1.1]` - a down-link between two trees (traceability.md, section Links
+  between trees).
 
 ### Example
 
