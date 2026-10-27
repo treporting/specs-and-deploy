@@ -114,7 +114,7 @@ not.
 
 **Rejected**: y for the other attributes and z for the links. The links would stand below a remark.
 
-**Decision**: a link names the full version of its parent: `target_ids: [SYS-09@3.0.2]`.
+**Decision**: a link names the full version of its parent: `target_ids: [SYS-09@3.1.2]`.
 
 **Why**: the link shows the exact state the child was checked against.
 
@@ -138,7 +138,7 @@ would otherwise raise x twice.
 touched.
 
 **Decision**: each part only counts up. None of them is set back to 0 when another rises:
-`3.0.2` becomes `4.0.2`.
+`3.1.2` becomes `4.1.2`.
 
 **Why**: each part counts, over the whole life of the object, how often its kind of change
 happened.
@@ -170,11 +170,11 @@ an exception to the rule of the status.
 
 | What happens | UN-PM-01 | SYS-09 | SR-01 |
 |---|---|---|---|
-| Start | `2.0.0` | `3.1.0`, link `UN-PM-01@2.0.0` | link `SYS-09@3.1.0` |
-| The text of UN-PM-01 changes | `3.0.0` | its link names an older x: **suspect** | clean |
-| SYS-09 still fits; only its link is updated | | `3.2.0`, link `UN-PM-01@3.0.0` | clean, only y of SYS-09 changed |
-| SYS-09 no longer fits; its text changes | | `4.2.0`, `draft` | its link names an older x: **suspect** |
-| A remark on SYS-09 changes | | `4.2.1` | clean, only z of SYS-09 changed |
+| Start | `2.1.1` | `3.2.1`, link `UN-PM-01@2.1.1` | link `SYS-09@3.2.1` |
+| The text of UN-PM-01 changes | `3.1.1` | its link names an older x: **suspect** | clean |
+| SYS-09 still fits; only its link is updated | | `3.3.1`, link `UN-PM-01@3.1.1` | clean, only y of SYS-09 changed |
+| SYS-09 no longer fits; its text changes | | `4.3.1`, `draft` | its link names an older x: **suspect** |
+| A remark on SYS-09 changes | | `4.3.2` | clean, only z of SYS-09 changed |
 
 The cascade reaches only as far as meaning really changes. A child that still fits changes y only,
 and its own children stay clean.
@@ -202,16 +202,16 @@ library could hold a link that no one checked.
 
 ## When a link is suspect
 
-The link names the full version, such as `SYS-09@3.0.2`. The parent may have moved on in y or z
+The link names the full version, such as `SYS-09@3.1.2`. The parent may have moved on in y or z
 only.
 
-**Table suspect** - a link `SYS-09@3.0.2` against the version SYS-09 has now
+**Table suspect** - a link `SYS-09@3.1.2` against the version SYS-09 has now
 
 | SYS-09 now | What changed | Suspect? |
 |---|---|---|
-| `3.1.2` | a link of SYS-09 | no |
-| `3.0.3` | a remark | no |
-| `4.0.2` | the text, or `safety` | yes |
+| `3.2.2` | a link of SYS-09 | no |
+| `3.1.3` | a remark | no |
+| `4.1.2` | the text, or `safety` | yes |
 
 **Decision**: only a different x makes a link suspect. A difference in y or z does not.
 
@@ -238,7 +238,7 @@ only.
 Code and tests name their requirement in an annotation, not in `target_ids`.
 
 **Decision**: an annotation names the version of its requirement, as a link does:
-`// @implements SR-01@3.0.2`. It is suspect by the same rule: when x of the requirement differs.
+`// @implements SR-01@3.1.2`. It is suspect by the same rule: when x of the requirement differs.
 
 **Why**:
 
@@ -269,7 +269,7 @@ its kind requires it.
 
 The version belongs to the object itself. Every object has its own, so it is no place. It counts
 the changes of the attributes, so it is no attribute. With `object_key` it names one state of the
-object, and that is what a link names: `SYS-09@3.0.2` is `object_key@object_version`.
+object, and that is what a link names: `SYS-09@3.1.2` is `object_key@object_version`.
 
 **Rejected**: `version`. Without the prefix it would belong to the place, beside `revision` and
 `baseline`: the version of the module or document the object lies in. Both fields could stand
