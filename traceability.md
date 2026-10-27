@@ -148,6 +148,15 @@ happened.
 **Decision**: every object that exists today starts at `1.1.1`. Every link that exists today names
 `@1.1.1`.
 
+**Why**: an approved object is in its first version. The three parts count independently, so each
+of them is in its first version too: text, links and other attributes all have their first state.
+
+**Rejected**:
+
+- `1.0.0`, as SemVer starts: it would say the links and the other attributes have no state yet,
+  though they have
+- `0.0.0`: it would say nothing has a state yet, though the object is approved
+
 **Table cascade** - how far a change reaches
 
 | What happens | UN-PM-01 | SYS-09 | SR-01 |
