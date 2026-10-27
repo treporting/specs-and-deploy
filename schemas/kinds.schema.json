@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/treporting/specs-and-deploy/schemas/kinds.schema.json",
+  "$comment": "@refines ARC-22",
+  "title": "The kinds of files: code, read for annotations, and no code, never read",
+  "type": "object",
+  "required": ["schema", "whitelist", "blacklist"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "schemas/kinds.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "whitelist": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1},
+      "description": "the kinds of files that are code, read for annotations: patterns of the name of a file, such as *.go or Dockerfile"
+    },
+    "blacklist": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1},
+      "description": "the kinds of files that are no code, never read: patterns of the name of a file, such as *.md"
+    }
+  }
+}

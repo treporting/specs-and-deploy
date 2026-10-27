@@ -192,3 +192,10 @@ requirements:
   target_ids: [TOOL-06]
   status: approved
   verification_method: [demonstration]
+- object_key: SR-27
+  component: annotation
+  object_text: report a file git knows whose kind is set neither as code nor as no code, rather than
+    read it or pass it
+  target_ids: [TOOL-06]
+  status: review
+  verification_method: [test]
