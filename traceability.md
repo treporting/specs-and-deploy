@@ -94,8 +94,6 @@ not. The meaning has to be visible in the data.
 - a hash of the text, `SYS-09#a1b2`: it changes by itself, but it is hard to read, and it does not
   show which version is newer
 
-DOORS and ReqIF keep a version per object too, apart from the revision of the store.
-
 ## The parts of the version
 
 **Decision**: the version is `x.y.z`.
