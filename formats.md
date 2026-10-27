@@ -174,6 +174,16 @@ judgement, such as `schema`; the commit that adds it says so. A finding resolved
 note of its criterion: "found in this review and resolved in it: ...". The revision is then the
 commit with the fix.
 
+On the branch, the commits of a review result are its course: the proposal, the decision, a finding
+resolved. What reaches `main` by the merge is the decision.
+
+- the commit of a proposal says so - "Proposed review result of …" - and leaves the status at
+  `review`; its header names it a proposal of its author
+- once the reviewer has decided, a commit of its own - "Review result of … decided: passed" or
+  "… decided: failed" - sets the status and names the decision in the header
+- where the reviewer merges without a word, the merge is the decision; the status is then set
+  before the merge
+
 A file of results is one review, with one result for everything it reviewed:
 
 ```yaml
