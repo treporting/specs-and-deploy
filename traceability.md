@@ -37,17 +37,25 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 | h) | A failed review never reaches `main` | Only the result is merged; `main` keeps the approved version | `main` is always consistent | against the rule "failed sets `draft` on `main`"; a successful change still raises the question whether the children fit |
 | i) | Impact assessment in the same pull request | Whoever changes a parent checks every child in the same pull request | no state in between | large pull requests where a parent has many children |
 
-**Decision**: b) + e) + i).
+**Decision**: b) + e) + h) + i).
 
 - **b)** An approval needs approved uplinks at the moment of approval. A later change of an uplink
-  does not take the approval back. TOOL-09 checks this at the approval.
+  does not take the approval back. TOOL-09 checks on every pull request that every approved
+  requirement names approved uplinks only.
 - **e)** Every link names the version of its parent. A link whose version is outdated is suspect.
+- **h)** A change of an approved object whose review failed does not reach `main`. It is taken
+  back on the branch; only the review result and the tickets reach `main`. The intended change
+  was rejected by its review, so the approved version stands.
 - **i)** Whoever changes a parent updates the links of its children in the same pull request where
   that is cheap.
 
 **Why**:
 
-- b) ends the cascade: a parent in `draft` no longer breaks its approved children
+- b) with h) ends the cascade: the drafts of a parent live on its branch. On `main` it stays
+  approved until its change passes, so its approved children keep approved uplinks. Git, used here
+  as the tool of requirements management, keeps every draft on a branch anyway.
+- h) also keeps from `main` a new text under an old version: the version rises only at the
+  approval, so PROC-20 would not see such a text. The check of TOOL-09 would.
 - e) finds the dangerous case: a parent changes its meaning, is approved again, and a child no
   longer fits it
 - updating the version on the link is the record of the impact assessment: the commit shows who
@@ -60,8 +68,10 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
   and was approved again (Table d versus e).
 - f) eases the problem but does not solve it
 - g) alone: gaps stay unnoticed until the baseline
-- h) keeps `main` consistent but does not answer whether the children fit a parent that changed
-  with success; it would also need a) or e)
+- h) alone: it keeps `main` consistent but does not answer whether the children fit a parent that
+  changed with success; e) does
+- the new text as `draft` on `main`, and its approved children back to `draft` with it: the
+  cascade again, in the case of a failed review
 - a) as a state of its own on the link: e) shows the same in the version the link names, and needs
   no state that someone has to set and clear
 
@@ -268,8 +278,8 @@ only.
 
 **Decision**: only a different x makes a link suspect. A difference in y or z does not.
 
-A parent in `draft` keeps its approved version. Its links turn suspect only when it is approved
-with a new x.
+A parent changed on its branch keeps its approved version on `main`. Its links turn suspect only
+when it is approved with a new x.
 
 **Why**:
 
@@ -457,9 +467,7 @@ Markdown table, and the rules would be kept apart from every other requirement.
 1. **The tools:** a check that an approval sets the right version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
    version of its parent. annotationcheck has to read `@x.y.z`.
-2. **TOOL-09:** its software requirements follow the rules as they stand now. SR-28 would read
-   "a requirement that becomes approved while an uplink of it is not approved".
-3. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
+2. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
    from its tag, not `main`. How such a state is made and kept is not set yet.
-4. **The realization of a control:** how it is checked that a control is realized by its user
+3. **The realization of a control:** how it is checked that a control is realized by its user
    needs, and when.
