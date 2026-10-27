@@ -2,7 +2,8 @@
 
 How a link between two levels stays valid when the parent changes. This document records the
 problem, the options weighed, and the decisions taken. The questions still open are marked as such.
-The changes to the rules, the schemas and the tools follow in changes of their own. It is written
+The rules that follow from it stand in harness.md: PROC-13, PROC-14 and PROC-20. The changes to
+the schemas and the tools follow in changes of their own. It is written
 for whoever changes a requirement or checks its trace, and for the auditor who looks for the
 reasons.
 
@@ -31,7 +32,7 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 | c) | Strict cascade | Children follow the status of their parents at once | PROC-13 as written | every small change blocks everything below |
 | d) | Computed status | The own status stays; a computed status shows "approved, but an uplink is not" | uses what the model has: an original and a derived value | misses a parent that changed and was approved again |
 | e) | Uplink with a revision | The child names the version of the parent it was approved against | precise, like a pinned dependency | every change above needs an update below |
-| f) | Only a change of meaning counts | PROC-14 worded like PROC-17 | editorial changes set off nothing | eases the problem, does not solve it; who decides "meaning"? |
+| f) | Only a change of meaning counts | PROC-14 worded with "changes its meaning" | editorial changes set off nothing | eases the problem, does not solve it; who decides "meaning"? |
 | g) | Consistency only at the baseline | Between baselines the state may be inconsistent | little load in daily work | gaps stay unnoticed for long |
 | h) | A failed review never reaches `main` | Only the result is merged; `main` keeps the approved version | `main` is always consistent | against the rule "failed sets `draft` on `main`"; a successful change still raises the question whether the children fit |
 | i) | Impact assessment in the same pull request | Whoever changes a parent checks every child in the same pull request | no state in between | large pull requests where a parent has many children |
@@ -386,9 +387,9 @@ the data.
 
 ## Links to rules
 
-Requirements name rules of the harness as uplink, such as `target_ids: [PROC-12]`. Today a rule
-has no version. Where a rule changes its meaning, PROC-17 sends every requirement that names it
-back to `review` - the strict cascade c).
+Requirements name rules of the harness as uplink, such as `target_ids: [PROC-12]`. Before this
+decision, a rule had no version. Where a rule changed its meaning, a rule of its own, PROC-17, sent
+every requirement that named it back to `review` - the strict cascade c).
 
 **Decision**: a rule carries a version, `x.y.z`, as every requirement does. A link names it:
 `target_ids: [PROC-12@1.1.1]`. The version is set at the merge, because the merge is the approval
@@ -400,14 +401,25 @@ cascade ends for rules as well.
 **Rejected**: rules without a version, and PROC-17 kept. Two ways would stand side by side, and
 for rules the cascade would go on.
 
+**Decision**: the rules become data, as the requirements are: a YAML file with a schema, each rule
+with `object_key`, `object_text`, `object_version` and its uplinks in `target_ids`. harness.md
+explains them and refers to it, as formats.md sets out for every level.
+
+**Why**: rules are requirements under another name, so they are kept as requirements are. The tools
+read them as any other requirement, with the same check of version and links.
+
+**Rejected**: a column for the version in the table of harness.md. A tool would have to read a
+Markdown table, and the rules would be kept apart from every other requirement.
+
 ## Open questions
 
-1. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
-   for suspect links; PROC-17 goes; where the version of a rule is written.
+1. **The schemas and the objects of today:** `object_version` and `attributes_for_version_x` in
+   every schema, `@x.y.z` in `target_ids` and `allocated`, every object at `1.1.1`; the rules as
+   data.
 2. **The tools:** a check that an approval sets the right version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
    version of its parent. annotationcheck has to read `@x.y.z`.
-3. **TOOL-09:** its software requirements wait until the rules stand. SR-28 would read "a
-   requirement that becomes approved while an uplink of it is not approved".
+3. **TOOL-09:** its software requirements follow the rules as they stand now. SR-28 would read
+   "a requirement that becomes approved while an uplink of it is not approved".
 4. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
    from its tag, not `main`. How such a state is made and kept is not set yet.
