@@ -288,7 +288,7 @@ requirements:
   source_ids: [TOOL-09@3.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR-29
   object_version: '1.1.1'
@@ -299,5 +299,5 @@ requirements:
   source_ids: [TOOL-09@3.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [demonstration]
