@@ -29,13 +29,25 @@
           "function",
           "status",
           "verification_method",
-          "platform_launch"
+          "platform_launch",
+          "object_version",
+          "priority",
+          "safety"
         ],
         "additionalProperties": false,
+        "attributes_for_version_x": [
+          "object_text",
+          "safety"
+        ],
         "properties": {
           "object_key": {
             "type": "string",
             "pattern": "^UN-[A-Z]+-[0-9]{2}$"
+          },
+          "object_version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "description": "x.y.z - x the text and the attributes for x, y the links, z every other attribute; set at the approval (traceability.md)"
           },
           "object_text": {
             "type": "string",
@@ -46,9 +58,10 @@
             "pattern": "^[A-Z]+$"
           },
           "priority": {
-            "enum": [
-              "later"
-            ]
+            "type": "string"
+          },
+          "safety": {
+            "type": "string"
           },
           "status": {
             "enum": [

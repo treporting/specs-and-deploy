@@ -38,14 +38,23 @@ holds only what the author writes:
 
 | Kind of field | Examples | Where it comes from | In the YAML |
 |---|---|---|---|
-| content | `object_key`, `object_text`, `level`, `function`, `feature`, `component`, `priority`, `safety`, `status`, the uplink | the author | yes |
+| content | `object_key`, `object_version`, `object_text`, `level`, `function`, `feature`, `component`, `priority`, `safety`, `status`, the uplink | the author | yes |
 | context | `organization`, `project`, `baseline`, `library`, `system`, `module_id`, `revision` | the extractor: repo, file, commit, tag | no |
 | derived | `istatus`, `mstatus`, `mpriority`, `msafety`, `mplatform_launch`, `mfeature`, `mfunction`, `parentOf`, `assignedTo`, `unit` | the import | never |
 
 - **function** is the role of a user need (PM, RM, ..., PSF); a requirement below takes it from its
   parent into `mfunction` where its own is empty.
 - **feature** is given on r2; r5 takes it from its parent into `mfeature`.
-- **priority** is `later` where a requirement is kept for later; empty otherwise.
+- **object_version** of every requirement, element and decision of the architecture, hazard and
+  control: `x.y.z`, written in quotes - x the text and the attributes its schema names in
+  `attributes_for_version_x`, y the links, z every other attribute. It is set at the approval;
+  a new object starts at `'1.1.1'` (traceability.md).
+- **priority** of every requirement, element of the architecture, hazard and control: a string,
+  `'medium'` by default, `'later'` where it is kept for later. It stands in every object, also
+  where it holds the default.
+- **safety** of every requirement, element of the architecture and hazard: the safety class, a
+  string, `''` by default. It stands in every object, also where it holds the default. A control
+  has none: its class is always the one of its hazard (attributes.md).
 - **rationale** of a requirement below the top that names no uplink - a system requirement, a
   software requirement, a tool requirement, a control of a hazard - or of an element of the
   architecture allocated no system requirement: why it stands, for instance derived from the view of
@@ -63,7 +72,8 @@ holds only what the author writes:
   its sources. `target_ids` is what an object points at: a review result points at what it
   reviewed, a verification at what it verified. As in the gel schema, `source_ids` and
   `target_ids` keep the original ends of the links; the import makes the link `parentOf` from
-  them, a derived value: the sources of an object are its parents.
+  them, a derived value: the sources of an object are its parents. Every uplink names the version
+  of its parent, `UN-OPS-10@1.1.1` (PROC-20); so does an entry of `allocated`.
   Rejected: the uplink in `target_ids`, as it stood before - read so, parent and child turn
   round.
 
@@ -75,13 +85,15 @@ schema: schemas/system-requirements.schema.json
 level: r2
 requirements:
   - object_key: SYS-58
+    object_version: '1.1.1'
     feature: Licensing
     object_text: >-
       check, on every request to a licensed feature, the role and the rights of the user and
       the licence of the installation, and refuse the request with the reason when one of
       them is missing
-    source_ids: [UN-OPS-10]
-    priority: later
+    source_ids: [UN-OPS-10@1.1.1]
+    priority: 'later'
+    safety: ''
 ```
 
 ### Files whose form another owns
@@ -96,7 +108,9 @@ carries no annotation. The requirement it serves names it.
 whose form another owns has none (see Files whose form another owns). Every YAML of our own data names its schema in the field `schema`, from the root of the repo, as a review result names its criteria:
 `schema: schemas/tool-requirements.schema.json`. The schema holds that path as a fixed value, so a
 file that names another schema fails. Every schema names the requirement it refines in its
-`$comment`: `@refines ARC-22`. The schemas are the contract of ARC-22 and are reviewed with it.
+`$comment`: `@refines ARC-22`. The schema of a kind with versions names the attributes for x in
+the list `attributes_for_version_x`, always written out (traceability.md). The schemas are the
+contract of ARC-22 and are reviewed with it.
 They are drafts until the gel schema stands; then they become a part of it, and a CI check in
 storage-edgedb compares both.
 
