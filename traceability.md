@@ -334,7 +334,7 @@ default.
 }
 ```
 
-`target_ids` counts for y. `status` counts for nothing unless the list names it. Every other field
+`target_ids` and `allocated` count for y. `status` counts for nothing unless the list names it. Every other field
 counts for z.
 
 **Why**:
@@ -347,6 +347,32 @@ counts for z.
 **Rejected**: a mark on each attribute, `"safety": { …, "versionPart": "x" }`. Then x is found only
 by searching every field.
 
+## The allocation
+
+The allocation (r4) is the field `allocated` of each subsystem in the architecture. The system
+requirements allocated to a subsystem are its requirements, derived directly from r2
+(system-architecture.md). So `allocated` is an uplink: the element stands below the system
+requirements and names its parents. Only its name differs from `target_ids`.
+
+**Decision**: `allocated` names the version of each system requirement, as a link does:
+`allocated: [SYS-01@1.1.1, SYS-02@1.1.1, …]`. The same rules hold: a different x makes an entry
+suspect, and updating it raises y of the element. Both ends lie in the release, so a suspect entry
+blocks the release.
+
+**Table allocation** - what only the allocation finds
+
+| | Allocation | Software requirements |
+|---|---|---|
+| Before | SYS-09 `3.1.2` → viewer, reporter | reporter: SR-01 → `SYS-09@3.1.2` |
+| SYS-09 becomes `4.1.2`: "… and exports the selection" | Does the export still belong to viewer and reporter, or does it need converter as well? | SR-01 turns suspect; the reporter checks its own part |
+
+**Why**: the software requirements of a subsystem can tell only whether their own part still fits.
+Whether another subsystem has to join, only the allocation shows.
+
+**Rejected**: the allocation without versions. The case of the table would go unnoticed. The lists
+are long, and versions make them harder to read; a view in the reporter can help, without changing
+the data.
+
 ## Open questions
 
 1. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
@@ -358,5 +384,3 @@ by searching every field.
    requirement that becomes approved while an uplink of it is not approved".
 4. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
    from its tag, not `main`. How such a state is made and kept is not set yet.
-5. **The allocation (r4):** an element of the architecture names its system requirements in
-   `allocated`. That is a link to SYS too, but no uplink, and it names no version yet.
