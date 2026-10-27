@@ -19,7 +19,7 @@ documents:
   status: approved
   verification_method: [review]
 - name: formats.md
-  status: approved
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   status: approved
