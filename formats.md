@@ -337,6 +337,45 @@ it('shows the hidden filters', () => { ... })
   `"$comment": "@refines ARC-22"`
 - a file whose form another owns carries no annotation (see Files whose form another owns)
 
+### Where an annotation is read
+
+**Decision**: annotationcheck tells by the kind of a file whether to read it, from two lists in
+`tools/annotation/kinds.yaml`: a **whitelist** of the kinds that are code, read for annotations,
+and a **blacklist** of the kinds that are no code, never read. A file of a kind on neither list is a
+finding (SR-27) until its kind is set. A YAML that names a schema is our data and is not read,
+though `*.yaml` is on the whitelist. In a file that is read, an annotation stands first in a line of
+comment: after spaces, a comment mark of one to three signs other than a quote, then `@implements`
+or `@verifies`.
+
+**Why**: for a risk, the question is which error goes unseen, and which does more harm.
+annotationcheck is a gate: it is to stop code that names a requirement not approved (PROC-05).
+
+**Table failures of one list** - what can go wrong with one list alone
+
+| One list alone | What can go wrong | Seen? | Harm to the gate |
+|---|---|---|---|
+| blacklist - an unknown kind is code | an example in a `.txt` is read, with an id missing or not approved | yes, a finding that stops the pull request | small: the false alarm is loud, and the remedy is an entry in the list |
+| blacklist - an unknown kind is code | an example in a `.txt` is read, with an id approved | no | none for the gate: no breach gets through |
+| whitelist - an unknown kind is no code | a file of a new language is not read | no | the breach the gate is to stop gets through |
+
+For the gate alone, the blacklist is the safer: its errors are loud, or harmless for the gate. The
+error of the whitelist is silent, and hits the purpose of the tool. That is fail-safe: in doubt,
+check, and stop once too often rather than let through once unseen. With both lists and a finding
+for every unknown kind, every error is loud, both ways - the least risk, at the cost of SR-27 and an
+entry for each new kind.
+
+For counting realizations it is the other way round - the trace in the reporter, and
+reporter-annotations: an example in a `.txt` with an approved id would count as a realization, a
+false evidence, worse for a tool of traceability than a missing one. There the whitelist is the
+safer. That is a question for those tools, not for annotationcheck.
+
+**Rejected**:
+
+- a whitelist alone - a file of a new language would go unchecked, unseen
+- a blacklist alone - every new kind of text would be read as code, unseen
+- a scanner of its own for the comments of each language - a table of languages to keep; the first
+  place in a line of comment holds for every language
+
 ## Test levels
 
 The level of a test follows from where its file lies (see table test levels in
