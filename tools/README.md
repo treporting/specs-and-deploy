@@ -208,11 +208,19 @@ commit of the pull request, and approved there (TOOL-06; SR-24 and SR-25 in
 [software-requirements.yaml](software-requirements.yaml)). A requirement approved in the same pull
 request does not count: it has to be through before the code (PROC-05, PROC-12).
 
-It reads the files git knows that are code by PROC-05 - every file, but documents, schemas, images,
-and our data, the YAML that names a schema - and in them the comments only: in Go the scanner of Go
-tells a comment from a string; in another file a comment is a line that begins with `//`, `#`, `/*`
-or `*`. An example in a document, or a string in a test, is no annotation. The CI runs it on every
-pull request with the base commit GitHub gives (SR-26).
+It reads a file by its kind, from the two lists in [kinds.yaml](annotation/kinds.yaml): the
+whitelist of the kinds that are code, the blacklist of those that are no code. A file of a kind on
+neither list is a finding (SR-27), until its kind is set; a YAML that names a schema is our data and
+is not read. In a file it reads, an annotation stands first in a line of comment: after spaces, a
+comment mark of one to three signs other than a quote, then `@implements` or `@verifies` - in every
+language, with no list of languages. Why both lists: formats.md, "Where an annotation is read".
+
+Its known limit: a line of a string over lines - a raw string of Go, a template of JavaScript - that
+begins with a comment mark and an annotation is read as one. With an id that is approved, it passes
+unseen; for the gate that is no harm, as no breach gets through. A test writes such content with
+`\n`, not over lines.
+
+The CI runs it on every pull request with the base commit GitHub gives (SR-26).
 
 ```bash
 cd tools

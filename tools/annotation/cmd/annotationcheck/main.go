@@ -12,13 +12,14 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 
 	"github.com/treporting/specs-and-deploy/tools/annotation/check"
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements SR-24, SR-25
+// @implements SR-24, SR-25, SR-27
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
@@ -37,11 +38,15 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	annotations, err := check.Find(*root, strings.Fields(string(out)))
+	kinds, err := check.ReadKinds(filepath.Join(*root, "tools", "annotation", "kinds.yaml"))
 	if err != nil {
 		fail(err)
 	}
-	findings := check.Check(review.ExecGit{Root: *root}, *base, annotations)
+	annotations, unknown, err := check.Find(*root, strings.Fields(string(out)), kinds)
+	if err != nil {
+		fail(err)
+	}
+	findings := append(unknown, check.Check(review.ExecGit{Root: *root}, *base, annotations)...)
 	for _, f := range findings {
 		fmt.Println(f)
 	}

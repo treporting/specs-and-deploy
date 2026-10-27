@@ -3,6 +3,7 @@ package check
 import (
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
 )
@@ -48,38 +49,83 @@ func messages(findings []Finding) []string {
 	return out
 }
 
-// @verifies SR-24
-func TestOnlyCodeIsRead(t *testing.T) {
-	files := map[string]string{
-		"a.go":                  "// @implements SR-01\nfunc a() {}\n",
-		"b.js":                  "/** @verifies SR-01 */\n",
-		"Dockerfile":            "# @implements SR-01\nFROM scratch\n",
-		"doc.md":                "// @implements SR-99\n",
-		"schemas/x.schema.json": `{"$comment": "@implements SR-99"}`,
-		"data.yaml":             "schema: schemas/x.schema.json\nnote: '@implements SR-99'\n",
-		"picture.png":           "@implements SR-99",
-		"config.yaml":           "# @implements SR-01\nkey: value\n",
-	}
+var kinds = Kinds{
+	Whitelist: []string{"*.go", "*.js", "*.sh", "Dockerfile", "*.yaml"},
+	Blacklist: []string{"*.md", "*.txt", "*.json", "*.png"},
+}
+
+func find(t *testing.T, files map[string]string) ([]Annotation, []Finding) {
+	t.Helper()
 	dir := write(t, files)
 	var names []string
 	for f := range files {
 		names = append(names, f)
 	}
-	found, err := Find(dir, names)
+	found, unknown, err := Find(dir, names, kinds)
 	if err != nil {
 		t.Fatal(err)
 	}
+	return found, unknown
+}
+
+func filesOf(found []Annotation) string {
 	var got []string
 	for _, a := range found {
 		got = append(got, a.File)
 	}
-	for _, want := range []string{"a.go", "b.js", "Dockerfile", "config.yaml"} {
-		if !strings.Contains(strings.Join(got, " "), want) {
-			t.Errorf("want %s read as code, got %q", want, got)
-		}
+	sort.Strings(got)
+	return strings.Join(got, " ")
+}
+
+// @verifies SR-24
+func TestOnlyCodeIsRead(t *testing.T) {
+	found, unknown := find(t, map[string]string{
+		"a.go":                  "// @implements SR-01\nfunc a() {}\n",
+		"b.js":                  "/** @verifies SR-01 */\n",
+		"Dockerfile":            "# @implements SR-01\nFROM scratch\n",
+		"run.sh":                "  # @implements SR-01\n",
+		"config.yaml":           "# @implements SR-01\nkey: value\n",
+		"doc.md":                "// @implements SR-99\n",
+		"datei.txt":             "Find(root, files):\n    # @implements SR-99\n",
+		"schemas/x.schema.json": `{"$comment": "@implements SR-99"}`,
+		"data.yaml":             "schema: schemas/x.schema.json\n# @implements SR-99\n",
+		"picture.png":           "# @implements SR-99",
+	})
+	if got := filesOf(found); got != "Dockerfile a.go b.js config.yaml run.sh" {
+		t.Errorf("want the five files of code, got %q", got)
 	}
-	if len(got) != 4 {
-		t.Errorf("want only the four files of code, got %q", got)
+	if len(unknown) != 0 {
+		t.Errorf("want no unknown kind, got %q", messages(unknown))
+	}
+}
+
+// @verifies SR-27
+func TestAKindOnNeitherList(t *testing.T) {
+	found, unknown := find(t, map[string]string{
+		"query.sql": "-- @implements SR-99\n",
+		"a.go":      "// @implements SR-01\n",
+	})
+	got := messages(unknown)
+	if len(got) != 1 || got[0] != "query.sql: its kind is set neither as code nor as no code (tools/annotation/kinds.yaml)" {
+		t.Errorf("want query.sql reported, got %q", got)
+	}
+	if filesOf(found) != "a.go" {
+		t.Errorf("want only a.go read, got %q", filesOf(found))
+	}
+}
+
+// @verifies SR-24
+func TestOnlyFirstInALineOfComment(t *testing.T) {
+	//	built with \n, not as a string over lines: a line of a raw string that begins with a mark of
+	//	comment would be read as an annotation of this file itself
+	found, _ := find(t, map[string]string{"a_test.go": "package a\n\n" +
+		"const s = \"// @implements SR-99\"\n" +
+		"var list = []string{\n\t\"// @implements SR-98\",\n}\n" +
+		"func f() {} // @implements SR-97\n\n" +
+		"// @verifies SR-01\n" +
+		"func TestA() {}\n"})
+	if len(found) != 1 || found[0].IDs[0] != "SR-01" || found[0].Line != 9 {
+		t.Errorf("want only the comment on line 9, got %+v", found)
 	}
 }
 
@@ -100,24 +146,8 @@ func TestAnIdNotApprovedInTheBaseCommit(t *testing.T) {
 }
 
 // @verifies SR-24
-func TestAStringIsNoAnnotation(t *testing.T) {
-	dir := write(t, map[string]string{"a_test.go": "package a\n\nconst s = \"// @implements SR-99\"\n\n// @verifies SR-01\nfunc TestA() {}\n"})
-	found, err := Find(dir, []string{"a_test.go"})
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(found) != 1 || found[0].IDs[0] != "SR-01" || found[0].Line != 5 {
-		t.Errorf("want only the comment on line 5, got %+v", found)
-	}
-}
-
-// @verifies SR-24
 func TestSeveralIdsInOneAnnotation(t *testing.T) {
-	dir := write(t, map[string]string{"a.go": "// @implements SR-01, SR-02,SR-03\n"})
-	found, err := Find(dir, []string{"a.go"})
-	if err != nil {
-		t.Fatal(err)
-	}
+	found, _ := find(t, map[string]string{"a.go": "// @implements SR-01, SR-02,SR-03\n"})
 	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR-01 SR-02 SR-03" {
 		t.Errorf("got %+v", found)
 	}

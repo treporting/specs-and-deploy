@@ -42,7 +42,7 @@ func TestApprovedInTheSamePullRequestDoesNotCount(t *testing.T) {
 	gitIn(t, dir, "-c", "user.name=x", "-c", "user.email=x@x", "add", "-A")
 	gitIn(t, dir, "-c", "user.name=x", "-c", "user.email=x@x", "commit", "-q", "-m", "SR-01 approved, and its code")
 
-	found, err := Find(dir, strings.Fields(gitIn(t, dir, "ls-files")))
+	found, _, err := Find(dir, strings.Fields(gitIn(t, dir, "ls-files")), Kinds{Whitelist: []string{"*.go", "*.yaml"}})
 	if err != nil {
 		t.Fatal(err)
 	}

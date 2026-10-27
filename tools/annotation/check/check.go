@@ -4,8 +4,6 @@ package check
 
 import (
 	"fmt"
-	"go/scanner"
-	"go/token"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -29,7 +27,8 @@ type Annotation struct {
 	IDs  []string
 }
 
-// Finding is one id an annotation names that is missing or not approved in the base commit.
+// Finding is one id an annotation names that is missing or not approved in the base commit, or a
+// file whose kind is set neither as code nor as no code.
 type Finding struct {
 	Annotation Annotation
 	ID         string
@@ -37,42 +36,95 @@ type Finding struct {
 }
 
 func (f Finding) String() string {
+	if f.Annotation.Kind == "" {
+		return f.Annotation.File + ": " + f.Message
+	}
 	return fmt.Sprintf("%s:%d @%s %s: %s", f.Annotation.File, f.Annotation.Line, f.Annotation.Kind, f.ID, f.Message)
 }
 
-// annotation is an @implements or @verifies, and the ids it names, separated by commas.
-var annotation = regexp.MustCompile(`@(implements|verifies)\s+([A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:\s*,\s*[A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9])*)`)
+// Kinds are the two lists of tools/annotation/kinds.yaml: the kinds of files that are code, read
+// for annotations, and those that are no code, never read (formats.md, "Where an annotation is
+// read").
+type Kinds struct {
+	Whitelist []string `yaml:"whitelist"`
+	Blacklist []string `yaml:"blacklist"`
+}
 
-// notCode tells the files git knows that are no code by PROC-05 - neither built nor run - so that
-// an example of an annotation in them is none: documents, schemas and images. Our data, the YAML
-// that names a schema in its field schema, is told by its content (isData).
-var notCode = []func(file string) bool{
-	func(f string) bool { return strings.HasSuffix(f, ".md") },
-	func(f string) bool { return strings.HasPrefix(f, "schemas/") && strings.HasSuffix(f, ".schema.json") },
-	func(f string) bool {
-		for _, ext := range []string{".png", ".jpg", ".jpeg", ".gif", ".svg", ".pdf"} {
-			if strings.HasSuffix(strings.ToLower(f), ext) {
+// ReadKinds reads the two lists from the file path.
+func ReadKinds(path string) (Kinds, error) {
+	var k Kinds
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return k, err
+	}
+	return k, yaml.Unmarshal(data, &k)
+}
+
+// kindOf answers whether a file is code to read, no code, or of a kind on neither list - by its
+// name alone.
+func (k Kinds) kindOf(file string) string {
+	name := filepath.Base(file)
+	matches := func(patterns []string) bool {
+		for _, p := range patterns {
+			if ok, _ := filepath.Match(p, name); ok {
 				return true
 			}
 		}
 		return false
-	},
+	}
+	switch {
+	case matches(k.Blacklist):
+		return "no code"
+	case matches(k.Whitelist):
+		return "code"
+	}
+	return "unknown"
 }
 
-// IsCode says whether a file git knows is code by PROC-05: every file, but documents, schemas,
-// images, and our data.
+// annotation is a line of comment that begins with an annotation: after spaces, a comment mark of
+// one to three signs other than a quote, then @implements or @verifies and its ids.
+var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+([A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:\\s*,\\s*[A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9])*)")
+
+// Find answers every annotation in the files, relative to root, whose kind is code, and a finding
+// for every file whose kind is on neither list. A YAML that names a schema is our data and is not
+// read. A file is read only once its name has told it is code.
 //
-// @implements SR-24
-func IsCode(file string, content []byte) bool {
-	for _, no := range notCode {
-		if no(file) {
-			return false
+// @implements SR-24, SR-27
+func Find(root string, files []string, kinds Kinds) ([]Annotation, []Finding, error) {
+
+	var found []Annotation
+	var unknown []Finding
+	for _, file := range files {
+		switch kinds.kindOf(file) {
+		case "no code":
+			continue
+		case "unknown":
+			unknown = append(unknown, Finding{Annotation{File: file}, "", "its kind is set neither as code nor as no code (tools/annotation/kinds.yaml)"})
+			continue
+		}
+		data, err := os.ReadFile(filepath.Join(root, file))
+		if err != nil {
+			return nil, nil, err
+		}
+		if isData(file, data) {
+			continue
+		}
+		for i, line := range strings.Split(string(data), "\n") {
+			m := annotation.FindStringSubmatch(line)
+			if m == nil {
+				continue
+			}
+			var ids []string
+			for _, id := range strings.Split(m[2], ",") {
+				ids = append(ids, strings.TrimSpace(id))
+			}
+			found = append(found, Annotation{file, i + 1, m[1], ids})
 		}
 	}
-	return !isData(file, content)
+	return found, unknown, nil
 }
 
-// isData says whether a file is our data: a YAML that names its schema in its field schema.
+// isData says whether a YAML is our data: one that names its schema in its field schema.
 func isData(file string, content []byte) bool {
 	if !strings.HasSuffix(file, ".yaml") && !strings.HasSuffix(file, ".yml") {
 		return false
@@ -81,76 +133,6 @@ func isData(file string, content []byte) bool {
 		Schema string `yaml:"schema"`
 	}
 	return yaml.Unmarshal(content, &doc) == nil && doc.Schema != ""
-}
-
-// Find answers every annotation in the files, relative to root, that are code. An annotation
-// stands in a comment (formats.md, section Annotations): in Go the scanner of Go tells comments
-// from strings; in another file a comment is a line that begins with //, #, /* or *.
-//
-// @implements SR-24
-func Find(root string, files []string) ([]Annotation, error) {
-
-	var found []Annotation
-	for _, file := range files {
-		data, err := os.ReadFile(filepath.Join(root, file))
-		if err != nil {
-			return nil, err
-		}
-		if !IsCode(file, data) {
-			continue
-		}
-		for _, c := range comments(file, data) {
-			for _, m := range annotation.FindAllStringSubmatch(c.text, -1) {
-				var ids []string
-				for _, id := range strings.Split(m[2], ",") {
-					ids = append(ids, strings.TrimSpace(id))
-				}
-				found = append(found, Annotation{file, c.line, m[1], ids})
-			}
-		}
-	}
-	return found, nil
-}
-
-// comment is the text of one line of a comment, and the number of that line.
-type comment struct {
-	line int
-	text string
-}
-
-// comments answers the lines of the comments of a file.
-func comments(file string, data []byte) []comment {
-
-	var out []comment
-	if strings.HasSuffix(file, ".go") {
-		fset := token.NewFileSet()
-		f := fset.AddFile(file, -1, len(data))
-		var s scanner.Scanner
-		s.Init(f, data, nil, scanner.ScanComments)
-		for {
-			pos, tok, lit := s.Scan()
-			if tok == token.EOF {
-				break
-			}
-			if tok == token.COMMENT {
-				first := fset.Position(pos).Line
-				for i, l := range strings.Split(lit, "\n") {
-					out = append(out, comment{first + i, l})
-				}
-			}
-		}
-		return out
-	}
-	for i, l := range strings.Split(string(data), "\n") {
-		l = strings.TrimSpace(l)
-		for _, mark := range []string{"//", "#", "/*", "*"} {
-			if strings.HasPrefix(l, mark) {
-				out = append(out, comment{i + 1, l})
-				break
-			}
-		}
-	}
-	return out
 }
 
 // Check answers each id the annotations name that is not in the requirements of the base commit,
