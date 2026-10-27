@@ -1,0 +1,237 @@
+# Review of REG-01, REG-02, REG-03, REG-04, REG-05, REG-06, REG-07, REG-08, REG-09, REG-10, REG-11, REG-12, REG-13, REG-14, REG-19, REG-20, REG-21, REG-22 against the criteria of the level n1.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides. The free sources were
+# read by Claude Code; the standards - ISO, IEC, ARP, DO - were checked by the reviewer against their copies.
+# Format: ../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+level: review
+created_by: Mathias Fischer
+created_at: '2026-10-28T00:21:15+01:00'
+criteria: reviews/criteria-n1.yaml
+criteria_revision: '6bc400b'
+results:
+- object_key: RR-01
+  target_ids: [REG-01]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-02
+  target_ids: [REG-02]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-03
+  target_ids: [REG-03]
+  revision: '4050eb4'
+  criteria:
+    RC-01:
+      result: passed
+      note: 'found in this review and resolved in it: the duty to qualify a tool is in DO-178C, 12.2 - its criteria and its matrix; DO-330 is how'
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: the tool qualification level (TQL), not the software level, was missing'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-04
+  target_ids: [REG-04]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: it rendered less than ISO 13485, 4.1.6 - documented procedures, and an approach and effort proportionate to the risk'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-05
+  target_ids: [REG-05]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-06
+  target_ids: [REG-06]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-07
+  target_ids: [REG-07]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-08
+  target_ids: [REG-08]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-09
+  target_ids: [REG-09]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-10
+  target_ids: [REG-10]
+  revision: '4050eb4'
+  criteria:
+    RC-01:
+      result: passed
+      note: 'found in this review and resolved in it: "FDA, data integrity (ALCOA)" named no document; now the guidance of 2018'
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: "original or a true copy", complete and consistent were missing; "every figure can be followed back" was our gloss, not the guidance'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-11
+  target_ids: [REG-11]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-12
+  target_ids: [REG-12]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: "can monitor" for "dazu bestimmt"; "consent" for co-determination with the conciliation board; introduction and use. The German original now stands before the English rendering'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-13
+  target_ids: [REG-13]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: "a service on the internet" for business services as a rule offered for payment; the information always available; Art. 13 at the time of collection and its content. The German originals now stand before the English rendering'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-14
+  target_ids: [REG-14]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: it rendered less than CRA Annex I Part I - (1) the level of cybersecurity appropriate to the risks, and the further properties of (2)'
+    RC-03:
+      result: passed
+      note: 'found in this review and resolved in it: "EU, commercial" did not say for which products - the condition of the CRA, as for REG-15 to REG-17'
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-15
+  target_ids: [REG-19]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: "independent requirements" - the decomposition is into redundant safety requirements, realized by sufficiently independent elements'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-16
+  target_ids: [REG-20]
+  revision: '4050eb4'
+  criteria:
+    RC-01:
+      result: passed
+      note: 'found in this review and resolved in it: "development assurance level assignment" named no clause; now ARP4754B, 5.2.1 to 5.2.3'
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: the FDAL from the functional hazard assessment, and the lower level by a decomposition into independent, redundant items'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-17
+  target_ids: [REG-21]
+  revision: '4050eb4'
+  criteria:
+    RC-01:
+      result: passed
+      note: 'found in this review and resolved in it: IEC 61508-3, 7.4.2.8 to 7.4.2.10 are methods; what is meant is the definition of the SIL (61508-4, 3.5.8), its target failure measures (61508-1, 7.6.2.9) and the systematic capability (61508-2, 7.4.3)'
+    RC-02:
+      result: passed
+      note: 'found in this review and resolved in it: "an element gets the SIL" - an element does not get a SIL; the text renders the three clauses now'
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-18
+  target_ids: [REG-22]
+  revision: '4050eb4'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
