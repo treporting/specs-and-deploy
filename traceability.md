@@ -141,7 +141,7 @@ happened.
 | The text of UN-PM-01 changes | `3.0.0` | its link names an older x: **suspect** | clean |
 | SYS-09 still fits; only its link is updated | | `3.0.2`, link `UN-PM-01@3.0.0` | clean, only z of SYS-09 changed |
 | SYS-09 no longer fits; its text changes | | `4.0.2`, `draft` | its link names an older x: **suspect** |
-| A remark on SYS-09 changes | | `4.1.2` | open question 1 |
+| A remark on SYS-09 changes | | `4.1.2` | clean, only y of SYS-09 changed |
 
 The cascade reaches only as far as meaning really changes. A child that still fits changes z only,
 and its own children stay clean.
@@ -166,27 +166,34 @@ that no one has checked.
 
 ## When a link is suspect
 
-**Decision**: a difference in z never makes a link suspect.
+**Decision**: only a different x makes a link suspect. A difference in y or z does not.
 
-**Why**: our files keep uplinks only. A child writes its parent in `target_ids` (formats.md,
-section Fields). So the z of a parent counts the changes of its own uplinks, and no child depends
-on them. Updating a link changes the z of the child only, and so the cascade ends there.
+**Why**:
 
-**Rejected**: down-links, a parent that names its children. Then a new child would change the
-parent, and every child would see it.
+- x is defined to cover everything a child depends on: the text, and the attributes the schema of
+  the kind names for x. An attribute that matters to the children belongs in x.
+- our files keep uplinks only. A child writes its parent in `target_ids` (formats.md, section
+  Fields). So the z of a parent counts the changes of its own uplinks, and no child depends on
+  them. Updating a link changes the z of the child only, and so the cascade ends there.
+- so anyone can read from the first number whether a link is suspect
+
+**Rejected**:
+
+- every difference makes a link suspect: y would mean the same as x, and every child would have
+  to follow a change of `priority` of its parent
+- down-links, a parent that names its children: then a new child would change the parent, and
+  every child would see it
 
 ## Open questions
 
-1. **Does a difference in y make a link suspect?** y counts the changes of the attributes outside
-   x - those the child, by the meaning of x, does not depend on.
-2. **The right side of the V.** Code and tests name their requirement in an annotation,
+1. **The right side of the V.** Code and tests name their requirement in an annotation,
    `@implements SR-01`, not in `target_ids`. Either the annotation names the version too,
    `@implements SR-01@3.0.2`, or a tool computes from git whether the text of the SR changed after
    the line with the annotation.
-3. **How the schema of a kind names the attributes for x.**
-4. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
+2. **How the schema of a kind names the attributes for x.**
+3. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
    for suspect links.
-5. **The tools:** a check that a change raises the right part of the version, a check for suspect
+4. **The tools:** a check that a change raises the right part of the version, a check for suspect
    links, and a command that updates a link to the current version of its parent.
-6. **TOOL-09** (#248): SR-28 would read "a requirement that becomes approved while an uplink of it
+5. **TOOL-09** (#248): SR-28 would read "a requirement that becomes approved while an uplink of it
    is not approved". #248 waits until the rules stand.
