@@ -20,7 +20,9 @@ results:
     RC-06: passed
     RC-07: passed
     RC-08: passed
-    RC-09: passed
+    RC-09:
+      result: failed
+      note: '"the code of the repo that git knows" reads as if git knew the code; it is the files git knows, and of those the ones that are code (PROC-05)'
     RC-10: passed
     RC-11: passed
-  verdict: passed
+  verdict: failed
