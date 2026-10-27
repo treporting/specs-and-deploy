@@ -7,7 +7,7 @@ documents:
   status: approved
   verification_method: [review]
 - name: harness.md
-  status: review
+  status: approved
   verification_method: [review]
 - name: devops.md
   status: approved
@@ -19,7 +19,7 @@ documents:
   status: approved
   verification_method: [review]
 - name: formats.md
-  status: review
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   status: approved
