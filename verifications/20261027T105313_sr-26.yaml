@@ -1,0 +1,22 @@
+# The demonstration of SR-26, in the test pull request #244, closed unmerged.
+schema: schemas/verification-result.schema.json
+level: verification
+method: demonstration
+target_ids: [SR-26]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-10-27T10:53:13+01:00'
+revision: '79a02f4'
+setting: 'c3d4aeb'
+description: verifications/20261027T105313_sr-26.md
+expected: the required check annotationcheck fails on the break, and the merge of the pull request is blocked
+observed: |
+  tools/review/check/demonstration.go:5 @implements SR-99: not in tools/software-requirements.yaml in the base commit 79a02f4
+  59 annotations, 108 ids, checked against the base commit 79a02f4, 1 findings
+  annotationcheck: fail (required); reviewcheck, rulesetcheck, schemacheck, tests: pass
+  the pull request: mergeStateStatus BLOCKED, the button Merge pull request disabled
+evidence:
+- https://github.com/treporting/specs-and-deploy/pull/244
+- https://github.com/treporting/specs-and-deploy/commit/90374e9
+- verifications/20261027T105313_annotationcheck.jpg
+verdict: passed
