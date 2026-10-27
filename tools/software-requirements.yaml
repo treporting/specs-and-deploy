@@ -170,3 +170,25 @@ requirements:
   target_ids: [TOOL-13]
   status: approved
   verification_method: [demonstration]
+- object_key: SR-24
+  component: annotation
+  object_text: find every @implements and @verifies in the files of the repo that git knows, and report
+    an id that is not in the requirements of the base commit of the pull request
+  target_ids: [TOOL-06]
+  status: approved
+  verification_method: [test]
+- object_key: SR-25
+  component: annotation
+  object_text: report an id named in @implements or @verifies that is in the base commit, but not
+    approved there
+  target_ids: [TOOL-06]
+  status: approved
+  verification_method: [test]
+- object_key: SR-26
+  component: ci
+  object_text: on every pull request, in .github/workflows/tools.yml, check the annotations against the
+    base commit, and fail where one names an id that is missing or not approved there; a pull request
+    whose check failed cannot be merged
+  target_ids: [TOOL-06]
+  status: approved
+  verification_method: [demonstration]
