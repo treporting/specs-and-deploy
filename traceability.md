@@ -217,8 +217,14 @@ the code was checked against - the same reason the git revision on a link was re
 
 ## The version in the schema
 
-**Decision**: every object carries its version in a field `object_version`, `x.y.z`. The schema of
-its kind requires it.
+**Decision**: every object carries its version in a field `version`, `x.y.z`. The schema of its
+kind requires it.
+
+**Why**: the gel schema of the prototype has the property `version` on every requirement. Our
+fields carry the names of the gel properties (formats.md), so there is no deviation to record.
+
+**Rejected**: `object_version`, a name beside `object_key` and `object_text`. It would deviate
+from the prototype without need.
 
 **Decision**: the schema of every kind names the attributes for x in a list beside the properties
 of the object, `attributes_for_version_x`. The list is always written out, also where it holds the
@@ -229,7 +235,7 @@ default.
   "type": "object",
   "attributes_for_version_x": ["object_text", "safety"],
   "properties": {
-    "object_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
     …
   }
 }
