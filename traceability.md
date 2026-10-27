@@ -1,14 +1,15 @@
 # Traceability
 
 How a link between two levels stays valid when the parent changes. This document records the
-discussion of ticket #249: the problem, the options weighed, and the decisions taken. The questions
-still open are marked as such. The changes to the rules, the schemas and the tools follow in
-tickets of their own.
+problem, the options weighed, and the decisions taken. The questions still open are marked as such.
+The changes to the rules, the schemas and the tools follow in changes of their own. It is written
+for whoever changes a requirement or checks its trace, and for the auditor who looks for the
+reasons.
 
 ## The problem: the cascade of PROC-13
 
 PROC-13 says a requirement is approved only when "whatever it names as uplink is approved". Read as
-a state that must hold at all times, every change above sets off a cascade below. TOOL-09 (#247)
+a state that must hold at all times, every change above sets off a cascade below. TOOL-09
 would check exactly that state, and so it showed the problem:
 
 1. TOOL-03 fails its review and goes to `draft`.
@@ -60,6 +61,8 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 - g) alone: gaps stay unnoticed until the baseline
 - h) keeps `main` consistent but does not answer whether the children fit a parent that changed
   with success; it would also need a) or e)
+- a) as a state of its own on the link: e) shows the same in the version the link names, and needs
+  no state that someone has to set and clear
 
 **Table d versus e** - TOOL-03 changes its text and is approved again; does SR-01 still fit?
 
@@ -117,16 +120,24 @@ not.
 
 **Why**: the link shows the exact state the child was checked against.
 
+**Rejected**: only x on the link, `SYS-09@3`. It names what the child depends on, but not the state
+the child saw.
+
 **Decision**: the status changes the version only where the schema of the kind names it for x.
 Otherwise a change of the status changes nothing.
 
 **Why**: a status that changed z would change the version at every approval.
+
+**Rejected**: the status as one of the other attributes, counted in z.
 
 **Decision**: a change of the text and of the status at the same time counts once. A commit raises
 x by one at most.
 
 **Why**: PROC-14 sets a changed text back to `draft`. Where the status counts for x, one change
 would otherwise raise x twice.
+
+**Rejected**: to count each changed attribute. One change would then raise x by as many as it
+touched.
 
 **Decision**: each part only counts up. None of them is set back to 0 when another rises:
 `3.0.2` becomes `4.0.2`.
@@ -154,8 +165,8 @@ and its own children stay clean.
 
 ## Where a suspect link blocks
 
-A suspect link is reported on every pull request. It blocks the baseline whose scope holds the
-child of the link.
+**Decision**: a suspect link is reported on every pull request. It blocks the baseline whose scope
+holds the child of the link.
 
 **Table baselines** - which suspect links block which baseline
 
@@ -169,6 +180,9 @@ subsystem whose SRs name it, because there the links have to be updated.
 
 **Why**: a pull request that blocked would bring the cascade back. A baseline must not hold a link
 that no one has checked.
+
+**Rejected**: to block the pull request; the cascade would be back. To block nothing; a release or a
+library could hold a link that no one checked.
 
 ## When a link is suspect
 
@@ -190,8 +204,9 @@ only.
 - x is defined to cover everything a child depends on: the text, and the attributes the schema of
   the kind names for x. An attribute that matters to the children belongs in x.
 - our files keep uplinks only. A child writes its parent in `target_ids` (formats.md, section
-  Fields). So the y of a parent counts the changes of its own uplinks, and no child depends on
-  them. Updating a link changes the y of the child only, and so the cascade ends there.
+  Fields are the properties of the gel schema). So the y of a parent counts the changes of its own
+  uplinks, and no child depends on them. Updating a link changes the y of the child only, and so
+  the cascade ends there.
 - so anyone can read from the first number whether a link is suspect
 
 **Rejected**:
@@ -280,5 +295,5 @@ by searching every field.
 2. **The tools:** a check that a change raises the right part of the version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
    version of its parent. annotationcheck has to read `@x.y.z`.
-3. **TOOL-09** (#248): SR-28 would read "a requirement that becomes approved while an uplink of it
-   is not approved". #248 waits until the rules stand.
+3. **TOOL-09:** its software requirements wait until the rules stand. SR-28 would read "a
+   requirement that becomes approved while an uplink of it is not approved".
