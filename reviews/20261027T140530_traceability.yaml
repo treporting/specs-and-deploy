@@ -10,7 +10,7 @@ criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
   target_ids: [traceability.md]
-  revision: 'f7939f8'
+  revision: '491549b'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -43,6 +43,6 @@ results:
     RC-13:
       result: passed
       note: 'found in this review and resolved in it: it said how the objects of today start, not a new
-        one; it did not say when the version is set - now once, at the approval; the allocation was left
-        out'
+        one; it did not say when the version is set - now once, at the approval; the allocation and the
+        links to rules were left out'
   verdict: passed
