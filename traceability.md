@@ -98,14 +98,20 @@ DOORS and ReqIF keep a version per object too, apart from the revision of the st
 **Decision**: the version is `x.y.z`.
 
 - **x** changes when the text changes, or an attribute the schema of the kind names for x
-- **y** changes when another attribute changes
-- **z** changes when a link changes
+- **y** changes when a link changes
+- **z** changes when another attribute changes
 
 Where the schema of a kind names no attribute for x, x covers the text and `safety`.
 
 **Why**: a child depends on the text of its parent and on what the parent means for safety. It does
 not depend on a remark or on the links of its parent. So each part of the version shows in the
 data which kind of change happened.
+
+The parts stand in the order of their weight. A change of a link changes what the object is derived
+from, its place in the trace; a change of another attribute, such as a remark or `priority`, does
+not.
+
+**Rejected**: y for the other attributes and z for the links. The links would stand below a remark.
 
 **Decision**: a link names the full version of its parent: `target_ids: [SYS-09@3.0.2]`.
 
@@ -114,7 +120,7 @@ data which kind of change happened.
 **Decision**: the status changes the version only where the schema of the kind names it for x.
 Otherwise a change of the status changes nothing.
 
-**Why**: a status that changed y would change the version at every approval.
+**Why**: a status that changed z would change the version at every approval.
 
 **Decision**: a change of the text and of the status at the same time counts once. A commit raises
 x by one at most.
@@ -137,13 +143,13 @@ happened.
 
 | What happens | UN-PM-01 | SYS-09 | SR-01 |
 |---|---|---|---|
-| Start | `2.0.0` | `3.0.1`, link `UN-PM-01@2.0.0` | link `SYS-09@3.0.1` |
+| Start | `2.0.0` | `3.1.0`, link `UN-PM-01@2.0.0` | link `SYS-09@3.1.0` |
 | The text of UN-PM-01 changes | `3.0.0` | its link names an older x: **suspect** | clean |
-| SYS-09 still fits; only its link is updated | | `3.0.2`, link `UN-PM-01@3.0.0` | clean, only z of SYS-09 changed |
-| SYS-09 no longer fits; its text changes | | `4.0.2`, `draft` | its link names an older x: **suspect** |
-| A remark on SYS-09 changes | | `4.1.2` | clean, only y of SYS-09 changed |
+| SYS-09 still fits; only its link is updated | | `3.2.0`, link `UN-PM-01@3.0.0` | clean, only y of SYS-09 changed |
+| SYS-09 no longer fits; its text changes | | `4.2.0`, `draft` | its link names an older x: **suspect** |
+| A remark on SYS-09 changes | | `4.2.1` | clean, only z of SYS-09 changed |
 
-The cascade reaches only as far as meaning really changes. A child that still fits changes z only,
+The cascade reaches only as far as meaning really changes. A child that still fits changes y only,
 and its own children stay clean.
 
 ## Where a suspect link blocks
@@ -173,8 +179,8 @@ only.
 
 | SYS-09 now | What changed | Suspect? |
 |---|---|---|
-| `3.0.3` | a link of SYS-09 | no |
-| `3.1.2` | a remark | no |
+| `3.1.2` | a link of SYS-09 | no |
+| `3.0.3` | a remark | no |
 | `4.0.2` | the text, or `safety` | yes |
 
 **Decision**: only a different x makes a link suspect. A difference in y or z does not.
@@ -184,14 +190,14 @@ only.
 - x is defined to cover everything a child depends on: the text, and the attributes the schema of
   the kind names for x. An attribute that matters to the children belongs in x.
 - our files keep uplinks only. A child writes its parent in `target_ids` (formats.md, section
-  Fields). So the z of a parent counts the changes of its own uplinks, and no child depends on
-  them. Updating a link changes the z of the child only, and so the cascade ends there.
+  Fields). So the y of a parent counts the changes of its own uplinks, and no child depends on
+  them. Updating a link changes the y of the child only, and so the cascade ends there.
 - so anyone can read from the first number whether a link is suspect
 
 **Rejected**:
 
-- every difference makes a link suspect: y would mean the same as x, and every child would have
-  to follow a change of `priority` of its parent. With z, the grandchildren would have to follow
+- every difference makes a link suspect: z would mean the same as x, and every child would have
+  to follow a change of `priority` of its parent. With y, the grandchildren would have to follow
   every update of a link of the child, and the cascade would run to the bottom.
 - down-links, a parent that names its children: then a new child would change the parent, and
   every child would see it
@@ -254,8 +260,8 @@ default.
 }
 ```
 
-`target_ids` counts for z. `status` counts for nothing unless the list names it. Every other field
-counts for y.
+`target_ids` counts for y. `status` counts for nothing unless the list names it. Every other field
+counts for z.
 
 **Why**:
 
