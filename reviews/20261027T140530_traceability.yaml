@@ -10,7 +10,7 @@ criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
   target_ids: [traceability.md]
-  revision: '491549b'
+  revision: '6865f75'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -30,7 +30,8 @@ results:
         3.0.2, which its own rules - start at 1.1.1, no part goes back to 0 - do not allow; the
         reason for 1.1.1 named an approved object, while a new object starts at 1.1.1 as a draft; it
         blocked the baseline that holds the child, checked against main - against definitions.md, where a
-        baseline is a set of work products at their revisions - and so blocked every fix of a library'
+        baseline is a set of work products at their revisions - and so blocked every fix of a library; it
+        contradicted PROC-13 and PROC-17 - the rules are changed in harness.md with it'
     RC-09: passed
     RC-10:
       result: passed
