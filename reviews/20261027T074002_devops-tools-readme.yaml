@@ -10,7 +10,7 @@ criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
   target_ids: [devops.md]
-  revision: 'b417978'
+  revision: '358aa3a'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -28,7 +28,7 @@ results:
   verdict: passed
 - object_key: RR-02
   target_ids: [tools/README.md]
-  revision: 'b417978'
+  revision: '358aa3a'
   criteria:
     RC-01: passed
     RC-02: passed
