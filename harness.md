@@ -138,13 +138,13 @@ to the process does not count into the maturity of the product.
 | PROC-10 | Every release gets security fixes over the support period it states (REG-17). |
 | PROC-11 | A document names no ticket; what is open, it states as open. The ticket names the document, not the other way round. |
 | PROC-12 | A level is merged before the level below names it: user needs and regulatory requirements, system requirements, architecture, software requirements, code. |
-| PROC-13 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. |
+| PROC-13 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. See traceability.md. |
 | PROC-14 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
 | PROC-15 | The reviewer of whatever is reviewed is not its author. |
 | PROC-16 | A pull request closes one ticket and changes one concern; a ticket that touches data, rules and explanations at once is split into several pull requests, save a rule and the document that gives its reasons: they change together, or each would contradict the other. |
 | PROC-18 | A decision is written down with its reason and the alternatives rejected. |
 | PROC-19 | Every test belongs to exactly one test level, read from the place of its file. |
-| PROC-20 | Every uplink names the version of its parent, as `ID@x.y.z`: a link, an entry of the allocation, an annotation. An uplink is suspect where its parent has another x in the same baseline. A suspect uplink is reported on every pull request and blocks the baseline that holds both its ends. |
+| PROC-20 | Every uplink names the version of its parent, as `ID@x.y.z`: a link, an entry of the allocation, an annotation. An uplink is suspect where its parent has another x in the same baseline. A suspect uplink is reported on every pull request and blocks the baseline that holds both its ends. See traceability.md. |
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
 and passes no review of its own. So a rule can be the uplink of an approved requirement (PROC-13).
