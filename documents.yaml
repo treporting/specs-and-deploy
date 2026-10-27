@@ -1,4 +1,5 @@
-# The documents that have no YAML of requirements beside them, each with a status of its own.
+# The documents that have no YAML of requirements beside them, and harness.md (formats.md, section
+# Rules), each with a status of its own.
 # Format: formats.md, section Documents
 schema: schemas/documents.schema.json
 documents:

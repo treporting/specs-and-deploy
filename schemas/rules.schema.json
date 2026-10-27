@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/treporting/specs-and-deploy/schemas/rules.schema.json",
+  "$comment": "@refines ARC-22",
+  "title": "Rules of the harness",
+  "description": "The rules of our work (PROC): requirements under another name, approved by their merge (harness.md, traceability.md).",
+  "type": "object",
+  "required": [
+    "schema",
+    "level",
+    "rules"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "schemas/rules.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "level": {
+      "const": "rules"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "object_key",
+          "object_version",
+          "object_text",
+          "priority",
+          "safety",
+          "status",
+          "verification_method"
+        ],
+        "additionalProperties": false,
+        "attributes_for_version_x": [
+          "object_text",
+          "safety"
+        ],
+        "properties": {
+          "object_key": {
+            "type": "string",
+            "pattern": "^PROC-[0-9]{2}$"
+          },
+          "object_version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "description": "x.y.z - x the text and the attributes for x, y the links, z every other attribute; set at the approval (traceability.md)"
+          },
+          "object_text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^REG-[0-9]{2}@[0-9]+\\.[0-9]+\\.[0-9]+$"
+            },
+            "minItems": 1
+          },
+          "priority": {
+            "type": "string"
+          },
+          "safety": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "approved",
+              "obsolete"
+            ]
+          },
+          "verification_method": {
+            "type": "array",
+            "minItems": 0,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "inspection",
+                "analysis",
+                "demonstration",
+                "test",
+                "review"
+              ]
+            },
+            "description": "empty: a rule passes no review of its own; it is approved by its merge (harness.md)"
+          }
+        }
+      }
+    }
+  }
+}
