@@ -150,11 +150,11 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC-20
-  object_version: '1.1.1'
-  object_text: 'Every uplink names the version of its parent, as `ID@x.y.z`: a link, an entry of the
-    allocation, an annotation. An uplink is suspect where its parent has another x in the same
-    baseline. A suspect uplink is reported on every pull request and blocks the baseline that holds
-    both its ends. See traceability.md.'
+  object_version: '2.1.1'
+  object_text: 'Every link names the version of the object at its other end, as `ID@x.y.z`: an
+    uplink, an entry of the allocation, an entry of `controls`, an annotation. A link is suspect where
+    that object has another x in the same baseline. A suspect link is reported on every pull request
+    and blocks the baseline that holds both its ends. See traceability.md.'
   priority: 'medium'
   safety: ''
   status: approved

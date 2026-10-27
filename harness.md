@@ -124,8 +124,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@0cfdfae - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@0cfdfae
+<!-- generated from rules.yaml@0a631fe - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@0a631fe
 
 | Id | Version | Rule |
 |---|---|---|
@@ -147,7 +147,7 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC-16 | 1.1.1 | A pull request closes one ticket and changes one concern. Group things which belong together so they do not contradict. |
 | PROC-18 | 1.1.1 | A decision is written down with its reason and the alternatives rejected. |
 | PROC-19 | 1.1.1 | Every test belongs to exactly one test level, read from the place of its file. |
-| PROC-20 | 1.1.1 | Every uplink names the version of its parent, as `ID@x.y.z`: a link, an entry of the allocation, an annotation. An uplink is suspect where its parent has another x in the same baseline. A suspect uplink is reported on every pull request and blocks the baseline that holds both its ends. See traceability.md. |
+| PROC-20 | 2.1.1 | Every link names the version of the object at its other end, as `ID@x.y.z`: an uplink, an entry of the allocation, an entry of `controls`, an annotation. A link is suspect where that object has another x in the same baseline. A suspect link is reported on every pull request and blocks the baseline that holds both its ends. See traceability.md. |
 <!-- end of generated -->
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
