@@ -217,14 +217,27 @@ the code was checked against - the same reason the git revision on a link was re
 
 ## The version in the schema
 
-**Decision**: every object carries its version in a field `version`, `x.y.z`. The schema of its
-kind requires it.
+**Decision**: every object carries its version in a field `object_version`, `x.y.z`. The schema of
+its kind requires it.
 
-**Why**: the gel schema of the prototype has the property `version` on every requirement. Our
-fields carry the names of the gel properties (formats.md), so there is no deviation to record.
+**Why**: the fields fall into three groups.
 
-**Rejected**: `object_version`, a name beside `object_key` and `object_text`. It would deviate
-from the prototype without need.
+**Table groups of fields** - which fields carry the prefix `object_`
+
+| Group | Fields | What they say | Prefix |
+|---|---|---|---|
+| Place | `organization`, `project`, `system`, `module_id`, `baseline`, `library`, `revision` | where the object lies; all objects of a module share them | no |
+| The object itself | `object_id`, `object_key`, `object_text`, `object_hid`, `object_heading` | who it is and what it says; every object has its own | `object_` |
+| Attributes | `level`, `feature`, `status`, `safety`, … | properties to filter and compute by | no |
+
+The version belongs to the object itself. Every object has its own, so it is no place. It counts
+the changes of the attributes, so it is no attribute. With `object_key` it names one state of the
+object, and that is what a link names: `SYS-09@3.0.2` is `object_key@object_version`.
+
+**Rejected**: `version`. Without the prefix it would belong to the place, beside `revision` and
+`baseline`: the version of the module or document the object lies in. Both fields could stand
+side by side without contradicting each other - which shows that `version` alone leaves open whose
+version it is.
 
 **Decision**: the schema of every kind names the attributes for x in a list beside the properties
 of the object, `attributes_for_version_x`. The list is always written out, also where it holds the
@@ -235,7 +248,7 @@ default.
   "type": "object",
   "attributes_for_version_x": ["object_text", "safety"],
   "properties": {
-    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "object_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
     …
   }
 }
