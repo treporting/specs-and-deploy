@@ -92,11 +92,12 @@ requirements:
 - object_key: TOOL-09
   object_version: '1.1.1'
   feature: CI check
-  object_text: check that an approved requirement names approved requirements only as its uplinks
+  object_text: check that a requirement becomes approved only while every requirement it names as
+    uplink is approved
   source_ids: [PROC-13@1.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: review
   verification_method: [test]
 - object_key: TOOL-10
   object_version: '1.1.1'
