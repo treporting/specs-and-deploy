@@ -196,16 +196,32 @@ only.
 - down-links, a parent that names its children: then a new child would change the parent, and
   every child would see it
 
+## The right side of the V
+
+Code and tests name their requirement in an annotation, not in `target_ids`.
+
+**Decision**: an annotation names the version of its requirement, as a link does:
+`// @implements SR-01@3.0.2`. It is suspect by the same rule: when x of the requirement differs.
+
+**Why**:
+
+- one rule for both sides of the V
+- the version is visible in the file, as on a link
+- updating the line is the record of the impact assessment: the commit shows who checked the code
+  against which version, and when
+- the cascade ends here: nothing lies below code and tests
+
+**Rejected**: a tool that computes from git whether x of the requirement rose after the line was
+last changed. No one would have to update anything, but no one would see in the file which version
+the code was checked against - the same reason the git revision on a link was rejected.
+
 ## Open questions
 
-1. **The right side of the V.** Code and tests name their requirement in an annotation,
-   `@implements SR-01`, not in `target_ids`. Either the annotation names the version too,
-   `@implements SR-01@3.0.2`, or a tool computes from git whether the text of the SR changed after
-   the line with the annotation.
-2. **How the schema of a kind names the attributes for x.**
-3. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
+1. **How the schema of a kind names the attributes for x.**
+2. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
    for suspect links.
-4. **The tools:** a check that a change raises the right part of the version, a check for suspect
-   links, and a command that updates a link to the current version of its parent.
-5. **TOOL-09** (#248): SR-28 would read "a requirement that becomes approved while an uplink of it
+3. **The tools:** a check that a change raises the right part of the version, a check for suspect
+   links and annotations, and a command that updates a link or an annotation to the current
+   version of its parent. annotationcheck has to read `@x.y.z`.
+4. **TOOL-09** (#248): SR-28 would read "a requirement that becomes approved while an uplink of it
    is not approved". #248 waits until the rules stand.
