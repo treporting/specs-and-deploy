@@ -196,24 +196,49 @@ and its own children stay clean.
 
 ## Where a suspect link blocks
 
-**Decision**: a suspect link is reported on every pull request. It blocks the baseline whose scope
-holds the child of the link.
+A baseline is not the state of `main`. It is the set of versions it is made of (definitions.md,
+section Baseline). A release holds its levels and the libraries it delivers; a library holds its
+levels and its code.
 
-**Table baselines** - which suspect links block which baseline
+**Decision**: a suspect link is reported on every pull request. It blocks the baseline that holds
+both its ends. It is checked against the version of its parent in that baseline, not on `main`.
 
-| Baseline | Levels | Blocked, for example, by |
+**Table baselines** - which baseline a suspect link blocks
+
+| Link | Child in | Parent in | Blocked |
+|---|---|---|---|
+| SYS-09 → UN-PM-01 | release | release | the release |
+| `@implements SR-01` in the code | library | library | the library: its code is not checked against its own SRs |
+| SR-01 → SYS-09 | library | release | not the library; the release that delivers the library and holds SYS-09 in its new version |
+
+**Table maintenance** - a fix for an older release, while `main` has moved on
+
+| | specs-and-deploy | reporter |
 |---|---|---|
-| Release | h1, h2, n1, r1 to r3 | SYS-09 → UN-PM-01, when UN-PM-01 changed its text |
-| Library | r4 to r7, source code (sc1) | SR-01 → SYS-09, when SYS-09 changed its text |
+| Release 1 | SYS-09 `3.1.2` | library 1.3, SR-01 → `SYS-09@3.1.2` |
+| afterwards on `main` | SYS-09 `4.1.2`, for release 2 | |
+| Release 1.1, a fix | SYS-09 `3.1.2`, the state of release 1 | library 1.3.1, SR-01 → `SYS-09@3.1.2`: clean |
+| Release 2 | SYS-09 `4.1.2` | a library whose SR-01 names `SYS-09@4.x.x`; else blocked |
 
-So a changed SYS does not block the release of its own level. It blocks the next library of every
-subsystem whose SRs name it, because there the links have to be updated.
+So a library can still be built on the software requirements approved so far, while the system
+requirements change. Only a release that promises the new version waits until its libraries
+follow.
 
-**Why**: a pull request that blocked would bring the cascade back. A baseline must not hold a link
-that no one has checked.
+**Why**:
 
-**Rejected**: to block the pull request; the cascade would be back. To block nothing; a release or a
-library could hold a link that no one checked.
+- a pull request that blocked would bring the cascade back
+- a baseline must not hold a link that no one has checked
+- a contradiction exists only where both ends of a link come together. A library on the approved
+  software requirements says nothing about a newer system requirement.
+- checked against `main`, every fix of an existing library would be blocked
+
+**Rejected**:
+
+- to block the pull request: the cascade would be back
+- to block nothing: a release could deliver a library that no one checked against its version
+- to block the baseline that holds the child: a changed system requirement would block every
+  library, also a fix of an existing one
+- to check against `main`: a baseline is not the state of `main`
 
 ## When a link is suspect
 
@@ -331,3 +356,7 @@ by searching every field.
    version of its parent. annotationcheck has to read `@x.y.z`.
 3. **TOOL-09:** its software requirements wait until the rules stand. SR-28 would read "a
    requirement that becomes approved while an uplink of it is not approved".
+4. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
+   from its tag, not `main`. How such a state is made and kept is not set yet.
+5. **The allocation (r4):** an element of the architecture names its system requirements in
+   `allocated`. That is a link to SYS too, but no uplink, and it names no version yet.
