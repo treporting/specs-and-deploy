@@ -206,35 +206,38 @@ requirements:
   object_version: '1.1.1'
   category: Products on the market
   source: CRA, Annex I Part II
-  object_text: 'the manufacturer handles vulnerabilities: keeps an SBOM, fixes without delay and free
-    of charge, has a policy of coordinated disclosure and a contact for reports'
+  object_text: 'the manufacturer handles vulnerabilities: keeps an SBOM, fixes without delay, tests
+    and reviews the product regularly, discloses fixed vulnerabilities, has a policy of coordinated
+    disclosure and a contact for reports, and distributes security updates securely, without delay and
+    free of charge'
   applies_to: EU, commercial
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG-16
   object_version: '1.1.1'
   category: Products on the market
   source: CRA, Art. 14
-  object_text: 'an actively exploited vulnerability is notified: an early warning within 24 hours, a notification
-    within 72 hours, a final report later'
+  object_text: 'an actively exploited vulnerability is notified to the CSIRT designated as coordinator
+    and to ENISA: an early warning within 24 hours, a notification within 72 hours, a final report
+    within 14 days after a corrective or mitigating measure is available'
   applies_to: EU, commercial
   not_realized: a duty of the manufacturer, kept by our work (harness)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG-17
   object_version: '1.1.1'
   category: Products on the market
   source: CRA, Art. 13(8)
-  object_text: security updates are provided over a support period stated in advance, as a rule at least
-    five years
+  object_text: 'vulnerabilities are handled over the support period, at least five years unless the
+    product is expected to be in use for a shorter time'
   applies_to: EU, commercial
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG-18
   object_version: '1.1.1'
@@ -244,5 +247,5 @@ requirements:
   applies_to: all
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
