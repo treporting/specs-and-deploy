@@ -52,43 +52,43 @@ hazards:
 controls:
 - object_key: HAZC-01
   object_text: a gap in the trace is marked as gap and never counted as covered
-  target_ids: [HAZ-01]
+  source_ids: [HAZ-01]
   controls: [UN-PSF-01]
   status: draft
   verification_method: [analysis]
 - object_key: HAZC-02
   object_text: an unknown value is kept and shown as unknown
-  target_ids: [HAZ-02]
+  source_ids: [HAZ-02]
   controls: [UN-PSF-02]
   status: draft
   verification_method: [analysis]
 - object_key: HAZC-03
   object_text: every view says which filters are in effect and what they leave out
-  target_ids: [HAZ-03]
+  source_ids: [HAZ-03]
   controls: [UN-PSF-03]
   status: draft
   verification_method: [analysis]
 - object_key: HAZC-04
   object_text: every import is counted on a way of its own, and every error is reported
-  target_ids: [HAZ-04]
+  source_ids: [HAZ-04]
   controls: [UN-PSF-04]
   status: draft
   verification_method: [analysis]
 - object_key: HAZC-05
   object_text: every figure is defined by what it counts, and its calculation is tested
-  target_ids: [HAZ-05]
+  source_ids: [HAZ-05]
   controls: [UN-PSF-05]
   status: draft
   verification_method: [analysis]
 - object_key: HAZC-06
   object_text: every report records the data, revision and parameters it was made from
-  target_ids: [HAZ-06]
+  source_ids: [HAZ-06]
   controls: [UN-PSF-06]
   status: draft
   verification_method: [analysis]
 - object_key: HAZC-07
   object_text: a safety class is carried down the trace, and a lower one without decomposition is found
-  target_ids: [HAZ-07]
+  source_ids: [HAZ-07]
   controls: [UN-SAF-03]
   status: draft
   verification_method: [analysis]

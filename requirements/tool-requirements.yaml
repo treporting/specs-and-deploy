@@ -12,13 +12,13 @@ requirements:
   object_text: export every document to PDF with the settings kept in the repo - the title of the document
     and the name of the repo in the header, the date and the page of the pages in the footer, margins
     of 2 cm at top and bottom
-  target_ids: [REG-10]
+  source_ids: [REG-10]
   status: draft
   verification_method: [inspection]
 - object_key: TOOL-02
   feature: Documents to PDF
   object_text: show in the header or footer of an exported document its revision and its own status
-  target_ids: [REG-10]
+  source_ids: [REG-10]
   status: draft
   verification_method: [test]
 - object_key: TOOL-03
@@ -26,7 +26,7 @@ requirements:
   object_text: check every review result - every criterion of its criteria file once, the verdict passed
     only when every criterion passed, a note to every failed criterion, the revision reviewed exists,
     and the reviewer is not the author of the requirement
-  target_ids: [PROC-13, PROC-15]
+  source_ids: [PROC-13, PROC-15]
   status: approved
   verification_method: [test]
 - object_key: TOOL-04
@@ -40,14 +40,14 @@ requirements:
 - object_key: TOOL-05
   feature: CI check
   object_text: check on every pull request that every YAML file matches its schema
-  target_ids: [PROC-04]
+  source_ids: [PROC-04]
   status: approved
   verification_method: [test]
 - object_key: TOOL-06
   feature: CI check
   object_text: check on every pull request that every id named in `@implements` or `@verifies` exists, and
     is approved, in the base commit of the pull request
-  target_ids: [PROC-05]
+  source_ids: [PROC-05]
   status: approved
   verification_method: [test]
 - object_key: TOOL-07
@@ -62,39 +62,39 @@ requirements:
   feature: CI check
   object_text: check that the system requirement a software requirement names as uplink exists in
     specs-and-deploy on main, and is allocated to the subsystem of the software requirement
-  target_ids: [PROC-12]
+  source_ids: [PROC-12]
   status: approved
   verification_method: [test]
 - object_key: TOOL-09
   feature: CI check
   object_text: check that an approved requirement names approved requirements only as its uplinks
-  target_ids: [PROC-13]
+  source_ids: [PROC-13]
   status: approved
   verification_method: [test]
 - object_key: TOOL-10
   feature: CI check
   object_text: check that every test file belongs to exactly one test level
-  target_ids: [PROC-19]
+  source_ids: [PROC-19]
   status: approved
   verification_method: [test]
 - object_key: TOOL-11
   feature: Reviews
   object_text: check that the reviewer of a document is not its author - the author or a co-author of
     the last commit that changed it
-  target_ids: [PROC-15]
+  source_ids: [PROC-15]
   status: approved
   verification_method: [test]
 - object_key: TOOL-12
   feature: CI check
   object_text: check every review result and run the tests of the tools on every pull request; a pull
     request where one of them fails cannot be merged
-  target_ids: [PROC-04, PROC-13]
+  source_ids: [PROC-04, PROC-13]
   status: approved
   verification_method: [test]
 - object_key: TOOL-13
   feature: CI check
   object_text: check on every pull request that the ruleset of main on GitHub has the rules of
     .github/rulesets/main.json - all that can be read without the rights of an admin
-  target_ids: [PROC-03]
+  source_ids: [PROC-03]
   status: approved
   verification_method: [test]

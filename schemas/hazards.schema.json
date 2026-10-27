@@ -96,7 +96,7 @@
             "type": "string",
             "minLength": 1
           },
-          "target_ids": {
+          "source_ids": {
             "type": "array",
             "items": {
               "type": "string",
@@ -144,7 +144,7 @@
         "anyOf": [
           {
             "required": [
-              "target_ids"
+              "source_ids"
             ]
           },
           {
