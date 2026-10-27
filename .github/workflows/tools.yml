@@ -1,4 +1,4 @@
-# The gate of the tools on every pull request (TOOL-12, TOOL-05, TOOL-13). Each job is a required check of the ruleset
+# The gate of the tools on every pull request (TOOL-12, TOOL-05, TOOL-13, TOOL-06). Each job is a required check of the ruleset
 # of main, so a pull request whose job failed cannot be merged. See devops.md.
 name: tools
 
@@ -66,3 +66,20 @@ jobs:
           #	read only: with it the limit of requests to the API is higher
           GITHUB_TOKEN: ${{ github.token }}
         run: go run ./ruleset/cmd/rulesetcheck -root ..
+
+  annotationcheck:
+    runs-on: ubuntu-latest
+    steps:
+      #	the whole history: the requirements are read as they stand in the base commit
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/go.mod
+          cache-dependency-path: tools/go.sum
+      - name: annotationcheck
+        working-directory: tools
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: go run ./annotation/cmd/annotationcheck -root .. -base "$BASE"
