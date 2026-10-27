@@ -184,7 +184,10 @@ is reviewed by them.
    of its own. Each goes to step 2 again.
 9. A finding that shows a missing rule stops the review. The rule is changed in a change of its
    own. Then the review goes on, against the new rule.
-10. The status of the change follows the review result: `approved` if passed, `draft` if failed.
+10. The status of the change follows the review result: `approved` if passed, `draft` if failed -
+    save a change of what is approved: where its review failed, the change is rejected. It is taken
+    back on the branch, and only the review result and the tickets reach `main`. The approved
+    version stands (traceability.md).
 11. A pull request takes the branch to `main` (PROC-03). The CI checks it (PROC-04).
 12. The Product Owner merges. The merge is the approval.
 13. The branch is deleted automatically. Its commits stay in `main`.
