@@ -124,8 +124,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@0a631fe - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@0a631fe
+<!-- generated from rules.yaml@e2699c7 - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@e2699c7
 
 | Id | Version | Rule |
 |---|---|---|
@@ -140,14 +140,14 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC-09 | 1.1.1 | A reported vulnerability is assessed and fixed without delay; one that is actively exploited is notified within 24 hours (REG-15, REG-16). |
 | PROC-10 | 1.1.1 | Every release gets security fixes over the support period it states (REG-17). |
 | PROC-11 | 1.1.1 | A document names no ticket; what is open, it states as open. The ticket names the document, not the other way round. |
-| PROC-12 | 1.1.1 | A level is merged before the level below names it: user needs and regulatory requirements, system requirements, architecture, software requirements, code. |
+| PROC-12 | 2.1.1 | An object is merged before another names it. |
 | PROC-13 | 1.1.1 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. See traceability.md. |
 | PROC-14 | 1.1.1 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
 | PROC-15 | 1.1.1 | The reviewer of whatever is reviewed is not its author. |
 | PROC-16 | 1.1.1 | A pull request closes one ticket and changes one concern. Group things which belong together so they do not contradict. |
 | PROC-18 | 1.1.1 | A decision is written down with its reason and the alternatives rejected. |
 | PROC-19 | 1.1.1 | Every test belongs to exactly one test level, read from the place of its file. |
-| PROC-20 | 2.1.1 | Every link names the version of the object at its other end, as `ID@x.y.z`: an uplink, an entry of the allocation, an entry of `controls`, an annotation. A link is suspect where that object has another x in the same baseline. A suspect link is reported on every pull request and blocks the baseline that holds both its ends. See traceability.md. |
+| PROC-20 | 2.1.1 | Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect where the linked object has another x than the link names. A suspect link is reported on every pull request. It blocks a baseline that holds both its ends, compared with the versions in that baseline, not on `main`. See traceability.md. |
 <!-- end of generated -->
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
