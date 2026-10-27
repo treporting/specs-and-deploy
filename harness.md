@@ -139,7 +139,7 @@ to the process does not count into the maturity of the product.
 | PROC-11 | A document names no ticket; what is open, it states as open. The ticket names the document, not the other way round. |
 | PROC-12 | A level is merged before the level below names it: user needs and regulatory requirements, system requirements, architecture, software requirements, code. |
 | PROC-13 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. |
-| PROC-14 | A change of the content of whatever is approved - the text of a requirement, a document as a whole - sets it back to `draft`. |
+| PROC-14 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
 | PROC-15 | The reviewer of whatever is reviewed is not its author. |
 | PROC-16 | A pull request closes one ticket and changes one concern; a ticket that touches data, rules and explanations at once is split into several pull requests. |
 | PROC-17 | Where a rule of the harness changes its meaning, every requirement that names it as uplink goes back to `review`. |
