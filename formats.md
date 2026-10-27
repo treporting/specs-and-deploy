@@ -472,7 +472,7 @@ On every pull request of a code repo, each check a tool with a requirement of it
 | every id in `@implements` and `@verifies` exists, and is approved, in the YAML of the **base commit** of the pull request - a requirement added in the same pull request does not count (PROC-05); a SYS named by a system test exists in specs-and-deploy on `main` | TOOL-06 |
 | the annotations counted a second way, apart from the parser - `git grep -c` | TOOL-07 |
 | the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to this subsystem in the architecture (r4) | TOOL-08 |
-| a requirement becomes approved only while its uplinks are approved | TOOL-09 |
+| an approved requirement names approved uplinks only | TOOL-09 |
 | every test file belongs to exactly one test level | TOOL-10 |
 | every review result keeps the rules of the section Reviews, and the tests of the tools pass | TOOL-12 |
 
