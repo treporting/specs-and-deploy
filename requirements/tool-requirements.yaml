@@ -90,13 +90,13 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL-09
-  object_version: '2.1.1'
+  object_version: '3.1.1'
   feature: CI check
   object_text: check that an approved requirement names approved requirements only as its uplinks
   source_ids: [PROC-13@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-10
   object_version: '1.1.1'
