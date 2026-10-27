@@ -280,3 +280,24 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR-28
+  object_version: '1.1.1'
+  component: uplink
+  object_text: report an approved requirement that names an uplink in its source_ids that is not
+    approved
+  source_ids: [TOOL-09@3.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR-29
+  object_version: '1.1.1'
+  component: ci
+  object_text: on every pull request, in .github/workflows/tools.yml, check the uplinks of the approved
+    requirements, and fail where one is not approved; a pull request whose check failed cannot be
+    merged
+  source_ids: [TOOL-09@3.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [demonstration]
