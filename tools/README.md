@@ -200,3 +200,46 @@ GITHUB_TOKEN=$(gh auth token) go run ./ruleset/cmd/rulesetcheck -root ..
 The code is the component `ruleset`: the package `ruleset/check` and the command
 `ruleset/cmd/rulesetcheck`. Its tests stand in for GitHub with a server in the test process
 (`net/http/httptest`), so they run without a network.
+
+## annotationcheck
+
+Checks that every id named in `@implements` or `@verifies` is in the requirements of the base
+commit of the pull request, and approved there (TOOL-06; SR-24 and SR-25 in
+[software-requirements.yaml](software-requirements.yaml)). A requirement approved in the same pull
+request does not count: it has to be through before the code (PROC-05, PROC-12).
+
+It reads a file by its kind, from the two lists in [kinds.yaml](annotation/kinds.yaml): the
+whitelist of the kinds that are code, the blacklist of those that are no code. A file of a kind on
+neither list is a finding (SR-27), until its kind is set; a YAML that names a schema is our data and
+is not read. In a file it reads, an annotation stands first in a line of comment: after spaces, a
+comment mark of one to three signs other than a quote, then `@implements` or `@verifies` - in every
+language, with no list of languages. Why both lists: formats.md, "Where an annotation is read".
+
+**Decision**: a line of comment is told by its start alone, with no knowledge of the strings of a
+language. Its known limit: a line of a string over lines - a raw string of Go, a template of
+JavaScript - that begins with a comment mark and an annotation is read as one. A test writes such
+content with `\n`, not over lines.
+
+**Why**: the limit does the gate no harm. With an id that is approved, no breach gets through; with
+one that is not, the false alarm is loud, and the remedy is a line in a test. It arises in practice
+only in tests that need annotations as their content.
+
+**Rejected**:
+
+- a lexer for each kind, set in `kinds.yaml` - comment marks, strings, escapes - a large effort,
+  with traps of its own (escapes that differ, a `'` that is no string, strings with no quotes), for
+  an error that does the gate no harm
+- a parser for each language - right where an error harms: in reporter-annotations, which counts an
+  annotation as a realization; not for the gate
+- `go/scanner` for Go alone - exact for Go, but a switch by language again
+
+The CI runs it on every pull request with the base commit GitHub gives (SR-26).
+
+```bash
+cd tools
+go run ./annotation/cmd/annotationcheck -root ..                 # base: where HEAD branched from main
+go run ./annotation/cmd/annotationcheck -root .. -base <commit>
+```
+
+The code is the component `annotation`: the package `annotation/check` and the command
+`annotation/cmd/annotationcheck`.

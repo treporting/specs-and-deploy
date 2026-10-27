@@ -1,0 +1,180 @@
+// Package check checks that every id an annotation names is approved in the base commit of the
+// pull request (TOOL-06).
+package check
+
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+	"regexp"
+	"strings"
+
+	"github.com/treporting/specs-and-deploy/tools/review"
+	"gopkg.in/yaml.v3"
+)
+
+// Git is what the check asks of the history of the repo.
+type Git interface {
+	// Show answers the content of path in the commit rev.
+	Show(rev, path string) ([]byte, error)
+}
+
+// Annotation is one @implements or @verifies, and the ids it names.
+type Annotation struct {
+	File string
+	Line int
+	Kind string // implements or verifies
+	IDs  []string
+}
+
+// Finding is one id an annotation names that is missing or not approved in the base commit, or a
+// file whose kind is set neither as code nor as no code.
+type Finding struct {
+	Annotation Annotation
+	ID         string
+	Message    string
+}
+
+func (f Finding) String() string {
+	if f.Annotation.Kind == "" {
+		return f.Annotation.File + ": " + f.Message
+	}
+	return fmt.Sprintf("%s:%d @%s %s: %s", f.Annotation.File, f.Annotation.Line, f.Annotation.Kind, f.ID, f.Message)
+}
+
+// Kinds are the two lists of tools/annotation/kinds.yaml: the kinds of files that are code, read
+// for annotations, and those that are no code, never read (formats.md, "Where an annotation is
+// read").
+type Kinds struct {
+	Whitelist []string `yaml:"whitelist"`
+	Blacklist []string `yaml:"blacklist"`
+}
+
+// ReadKinds reads the two lists from the file path.
+func ReadKinds(path string) (Kinds, error) {
+	var k Kinds
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return k, err
+	}
+	return k, yaml.Unmarshal(data, &k)
+}
+
+// kindOf answers whether a file is code to read, no code, or of a kind on neither list - by its
+// name alone.
+func (k Kinds) kindOf(file string) string {
+	name := filepath.Base(file)
+	matches := func(patterns []string) bool {
+		for _, p := range patterns {
+			if ok, _ := filepath.Match(p, name); ok {
+				return true
+			}
+		}
+		return false
+	}
+	switch {
+	case matches(k.Blacklist):
+		return "no code"
+	case matches(k.Whitelist):
+		return "code"
+	}
+	return "unknown"
+}
+
+// annotation is a line of comment that begins with an annotation: after spaces, a comment mark of
+// one to three signs other than a quote, then @implements or @verifies and its ids.
+var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+([A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:\\s*,\\s*[A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9])*)")
+
+// Find answers every annotation in the files, relative to root, whose kind is code, and a finding
+// for every file whose kind is on neither list. A YAML that names a schema is our data and is not
+// read. A file is read only once its name has told it is code.
+//
+// @implements SR-24, SR-27
+func Find(root string, files []string, kinds Kinds) ([]Annotation, []Finding, error) {
+
+	var found []Annotation
+	var unknown []Finding
+	for _, file := range files {
+		switch kinds.kindOf(file) {
+		case "no code":
+			continue
+		case "unknown":
+			unknown = append(unknown, Finding{Annotation{File: file}, "", "its kind is set neither as code nor as no code (tools/annotation/kinds.yaml)"})
+			continue
+		}
+		data, err := os.ReadFile(filepath.Join(root, file))
+		if err != nil {
+			return nil, nil, err
+		}
+		if isData(file, data) {
+			continue
+		}
+		for i, line := range strings.Split(string(data), "\n") {
+			m := annotation.FindStringSubmatch(line)
+			if m == nil {
+				continue
+			}
+			var ids []string
+			for _, id := range strings.Split(m[2], ",") {
+				ids = append(ids, strings.TrimSpace(id))
+			}
+			found = append(found, Annotation{file, i + 1, m[1], ids})
+		}
+	}
+	return found, unknown, nil
+}
+
+// isData says whether a YAML is our data: one that names its schema in its field schema.
+func isData(file string, content []byte) bool {
+	if !strings.HasSuffix(file, ".yaml") && !strings.HasSuffix(file, ".yml") {
+		return false
+	}
+	var doc struct {
+		Schema string `yaml:"schema"`
+	}
+	return yaml.Unmarshal(content, &doc) == nil && doc.Schema != ""
+}
+
+// Check answers each id the annotations name that is not in the requirements of the base commit,
+// or not approved there.
+//
+// @implements SR-24, SR-25
+func Check(git Git, base string, annotations []Annotation) []Finding {
+
+	var findings []Finding
+	for _, a := range annotations {
+		for _, id := range a.IDs {
+			if message := status(git, base, id); message != "" {
+				findings = append(findings, Finding{a, id, message})
+			}
+		}
+	}
+	return findings
+}
+
+// status answers why id does not count in the base commit, or "" where it is approved there.
+func status(git Git, base, id string) string {
+
+	file, key := review.FileOf(id)
+	if file == "" || key == "" {
+		return "no file of requirements holds such an id"
+	}
+	data, err := git.Show(base, file)
+	if err != nil {
+		return fmt.Sprintf("%s is not in the base commit %.7s", file, base)
+	}
+	object := review.ObjectIn(data, key)
+	if object == nil {
+		return fmt.Sprintf("not in %s in the base commit %.7s", file, base)
+	}
+	var o struct {
+		Status string `yaml:"status"`
+	}
+	if err := yaml.Unmarshal(object, &o); err != nil {
+		return err.Error()
+	}
+	if o.Status != "approved" {
+		return fmt.Sprintf("%s in the base commit %.7s, not approved", o.Status, base)
+	}
+	return ""
+}
