@@ -16,7 +16,7 @@ requirements:
   applies_to: automotive
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-02
   object_version: '1.1.1'
@@ -27,28 +27,32 @@ requirements:
   applies_to: industry, railway (EN 50716)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-03
   object_version: '1.1.1'
   category: Tool qualification
-  source: DO-330
-  object_text: qualify a verification tool whose output is not verified otherwise
+  source: 'DO-178C, 12.2; DO-330'
+  object_text: 'a tool that eliminates, reduces or automates a process of DO-178C and whose output is
+    not verified otherwise is qualified; it gets a tool qualification level (TQL) from the software
+    level and its function as a tool, not the software level itself, and is qualified by the process of
+    DO-330 for that TQL'
   applies_to: airborne
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-04
   object_version: '1.1.1'
   category: Tool qualification
   source: ISO 13485, 4.1.6
-  object_text: validate software used in the quality management system before its first use and after
-    changes
+  object_text: 'document procedures to validate software used in the quality management system, and
+    validate it before its first use and after changes, with an approach and an effort proportionate to
+    its risk'
   applies_to: medical
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-05
   object_version: '1.1.1'
@@ -59,7 +63,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-06
   object_version: '1.1.1'
@@ -69,7 +73,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-07
   object_version: '1.1.1'
@@ -79,7 +83,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-08
   object_version: '1.1.1'
@@ -89,7 +93,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-09
   object_version: '1.1.1'
@@ -102,18 +106,18 @@ requirements:
     name the report it relied on (SYS-43)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-10
   object_version: '1.1.1'
   category: Electronic records
-  source: FDA, data integrity (ALCOA)
-  object_text: data are attributable, legible, contemporaneous, original and accurate - every figure can
-    be followed back to whom and what it comes from
+  source: 'FDA, Data Integrity and Compliance With Drug CGMP - Guidance for Industry (2018)'
+  object_text: 'data are complete, consistent and accurate - attributable, legible, contemporaneously
+    recorded, original or a true copy, and accurate (ALCOA)'
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-11
   object_version: '1.1.1'
@@ -123,62 +127,87 @@ requirements:
   applies_to: EU
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-12
   object_version: '1.1.1'
   category: Personal data and legal notice
-  source: BetrVG, §87(1) no. 6
-  object_text: a technical means that can monitor the behaviour or performance of employees needs the
-    consent of the works council
+  source: 'BetrVG, §87(1) no. 6, (2)'
+  object_text: |-
+    (1) Der Betriebsrat hat, soweit eine gesetzliche oder tarifliche Regelung nicht besteht, in
+    folgenden Angelegenheiten mitzubestimmen: … 6. Einführung und Anwendung von technischen
+    Einrichtungen, die dazu bestimmt sind, das Verhalten oder die Leistung der Arbeitnehmer zu
+    überwachen; …
+    (2) Kommt eine Einigung über eine Angelegenheit nach Absatz 1 nicht zustande, so entscheidet die
+    Einigungsstelle. Der Spruch der Einigungsstelle ersetzt die Einigung zwischen Arbeitgeber und
+    Betriebsrat.
+
+    the introduction and use of a technical means meant to monitor the behaviour or performance of
+    employees is co-determined by the works council - by an agreement, or else by a ruling of the
+    conciliation board
   applies_to: Germany
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-13
   object_version: '1.1.1'
   category: Personal data and legal notice
-  source: DDG, §5; GDPR, Art. 13
-  object_text: a service on the internet names who runs it, and tells users what personal data it processes
+  source: 'DDG, §5(1); GDPR, Art. 13(1)'
+  object_text: |-
+    Diensteanbieter haben für geschäftsmäßige, in der Regel gegen Entgelt angebotene digitale Dienste
+    folgende Informationen, die leicht erkennbar und unmittelbar erreichbar sein müssen, ständig
+    verfügbar zu halten: … (DDG, §5(1))
+    Werden personenbezogene Daten bei der betroffenen Person erhoben, so teilt der Verantwortliche der
+    betroffenen Person zum Zeitpunkt der Erhebung dieser Daten Folgendes mit: … (DSGVO, Art. 13(1))
+
+    a digital service offered in business, as a rule for payment, keeps who runs it easy to recognize,
+    directly reachable and always available; where personal data are collected from a user, the
+    controller tells them at that time who is responsible, the purposes and the legal basis, the
+    recipients, and the further information of Art. 13
   applies_to: Germany, EU
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-19
   object_version: '1.1.1'
   category: Safety classes
   source: ISO 26262-9, clause 5; ISO 26262-3, -4, -6
-  object_text: a safety requirement inherits the ASIL of the requirement it is derived from; it may get
-    a lower one only by an ASIL decomposition into independent requirements
+  object_text: 'a safety requirement inherits the ASIL of the requirement it is derived from; it may
+    get a lower one only by an ASIL decomposition into redundant safety requirements, realized by
+    sufficiently independent elements'
   applies_to: automotive
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-20
   object_version: '1.1.1'
   category: Safety classes
-  source: ARP4754B, development assurance level assignment; DO-178C, 2.3
-  object_text: an item gets the development assurance level (IDAL) of the function it realizes (FDAL),
-    and its software the software level that follows from it; a lower level only where independence between
-    the items is shown
+  source: 'ARP4754B, 5.2.1 to 5.2.3; DO-178C, 2.3'
+  object_text: 'a function gets its FDAL from the severity of its failure conditions in the functional
+    hazard assessment; an item gets the IDAL that follows from the function it realizes, and its
+    software the software level that follows from the severity of the failure conditions it can
+    contribute to; a lower level only by a decomposition into independent, redundant items'
   applies_to: airborne
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-21
   object_version: '1.1.1'
   category: Safety classes
-  source: IEC 61508-2, 7.4.3; IEC 61508-3, 7.4.2.8 to 7.4.2.10
-  object_text: an element gets the SIL of the safety function it realizes; software elements of different
-    SIL are all treated as of the highest one, unless their independence is shown
+  source: 'IEC 61508-1, 7.6.2.9; IEC 61508-2, 7.4.3; IEC 61508-4, 3.5.8'
+  object_text: 'a safety function has a SIL, one of four discrete levels of its safety integrity
+    requirements; each SIL sets the target failure measure a system has to reach - a probability of
+    dangerous failure on demand (PFD) or per hour (PFH); systematic faults - design defects, software
+    bugs, specification errors - are controlled, and the systematic capability is stated in four levels,
+    SC 1 to SC 4'
   applies_to: industry, railway (EN 50716)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-22
   object_version: '1.1.1'
@@ -189,52 +218,61 @@ requirements:
   applies_to: medical
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-14
   object_version: '1.1.1'
   category: Products on the market
   source: CRA (EU) 2024/2847, Annex I Part I
-  object_text: a product with digital elements is placed on the market without known exploitable vulnerabilities,
-    with a secure configuration by default, and can be secured by updates
-  applies_to: EU, commercial
+  object_text: 'a product with digital elements is designed and produced for a level of cybersecurity
+    appropriate to its risks, and placed on the market without known exploitable vulnerabilities, with a
+    secure configuration by default, securable by updates, and with the further properties of Annex I
+    Part I (2)'
+  applies_to: products with digital elements made available on the EU market in the course of a
+    commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-15
   object_version: '1.1.1'
   category: Products on the market
   source: CRA, Annex I Part II
-  object_text: 'the manufacturer handles vulnerabilities: keeps an SBOM, fixes without delay and free
-    of charge, has a policy of coordinated disclosure and a contact for reports'
-  applies_to: EU, commercial
+  object_text: 'the manufacturer handles vulnerabilities: keeps an SBOM, fixes without delay, tests
+    and reviews the product regularly, discloses fixed vulnerabilities, has a policy of coordinated
+    disclosure and a contact for reports, and distributes security updates securely, without delay and
+    free of charge'
+  applies_to: products with digital elements made available on the EU market in the course of a
+    commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-16
   object_version: '1.1.1'
   category: Products on the market
   source: CRA, Art. 14
-  object_text: 'an actively exploited vulnerability is notified: an early warning within 24 hours, a notification
-    within 72 hours, a final report later'
-  applies_to: EU, commercial
+  object_text: 'an actively exploited vulnerability is notified to the CSIRT designated as coordinator
+    and to ENISA: an early warning within 24 hours, a notification within 72 hours, a final report
+    within 14 days after a corrective or mitigating measure is available'
+  applies_to: products with digital elements made available on the EU market in the course of a
+    commercial activity - not free and open-source software that is not monetised
   not_realized: a duty of the manufacturer, kept by our work (harness)
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-17
   object_version: '1.1.1'
   category: Products on the market
   source: CRA, Art. 13(8)
-  object_text: security updates are provided over a support period stated in advance, as a rule at least
-    five years
-  applies_to: EU, commercial
+  object_text: 'vulnerabilities are handled over the support period, at least five years unless the
+    product is expected to be in use for a shorter time'
+  applies_to: products with digital elements made available on the EU market in the course of a
+    commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
 - object_key: REG-18
   object_version: '1.1.1'
@@ -244,5 +282,5 @@ requirements:
   applies_to: all
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [inspection]
