@@ -64,6 +64,8 @@ holds only what the author writes:
   reviewed, a verification at what it verified. As in the gel schema, `source_ids` and
   `target_ids` keep the original ends of the links; the import makes the link `parentOf` from
   them, a derived value: the sources of an object are its parents.
+  Rejected: the uplink in `target_ids`, as it stood before - read so, parent and child turn
+  round.
 
 ### Example
 
