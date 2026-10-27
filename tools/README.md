@@ -200,3 +200,25 @@ GITHUB_TOKEN=$(gh auth token) go run ./ruleset/cmd/rulesetcheck -root ..
 The code is the component `ruleset`: the package `ruleset/check` and the command
 `ruleset/cmd/rulesetcheck`. Its tests stand in for GitHub with a server in the test process
 (`net/http/httptest`), so they run without a network.
+
+## annotationcheck
+
+Checks that every id named in `@implements` or `@verifies` is in the requirements of the base
+commit of the pull request, and approved there (TOOL-06; SR-24 and SR-25 in
+[software-requirements.yaml](software-requirements.yaml)). A requirement approved in the same pull
+request does not count: it has to be through before the code (PROC-05, PROC-12).
+
+It reads the files git knows that are code by PROC-05 - every file, but documents, schemas, images,
+and our data, the YAML that names a schema - and in them the comments only: in Go the scanner of Go
+tells a comment from a string; in another file a comment is a line that begins with `//`, `#`, `/*`
+or `*`. An example in a document, or a string in a test, is no annotation. The CI runs it on every
+pull request with the base commit GitHub gives (SR-26).
+
+```bash
+cd tools
+go run ./annotation/cmd/annotationcheck -root ..                 # base: where HEAD branched from main
+go run ./annotation/cmd/annotationcheck -root .. -base <commit>
+```
+
+The code is the component `annotation`: the package `annotation/check` and the command
+`annotation/cmd/annotationcheck`.
