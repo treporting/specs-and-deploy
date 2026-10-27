@@ -75,7 +75,7 @@ controls:
   object_version: '1.1.1'
   object_text: a gap in the trace is marked as gap and never counted as covered
   source_ids: [HAZ-01@1.1.1]
-  controls: [UN-PSF-01]
+  controls: [UN-PSF-01@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -83,7 +83,7 @@ controls:
   object_version: '1.1.1'
   object_text: an unknown value is kept and shown as unknown
   source_ids: [HAZ-02@1.1.1]
-  controls: [UN-PSF-02]
+  controls: [UN-PSF-02@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -91,7 +91,7 @@ controls:
   object_version: '1.1.1'
   object_text: every view says which filters are in effect and what they leave out
   source_ids: [HAZ-03@1.1.1]
-  controls: [UN-PSF-03]
+  controls: [UN-PSF-03@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -99,7 +99,7 @@ controls:
   object_version: '1.1.1'
   object_text: every import is counted on a way of its own, and every error is reported
   source_ids: [HAZ-04@1.1.1]
-  controls: [UN-PSF-04]
+  controls: [UN-PSF-04@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -107,7 +107,7 @@ controls:
   object_version: '1.1.1'
   object_text: every figure is defined by what it counts, and its calculation is tested
   source_ids: [HAZ-05@1.1.1]
-  controls: [UN-PSF-05]
+  controls: [UN-PSF-05@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -115,7 +115,7 @@ controls:
   object_version: '1.1.1'
   object_text: every report records the data, revision and parameters it was made from
   source_ids: [HAZ-06@1.1.1]
-  controls: [UN-PSF-06]
+  controls: [UN-PSF-06@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -123,7 +123,7 @@ controls:
   object_version: '1.1.1'
   object_text: a safety class is carried down the trace, and a lower one without decomposition is found
   source_ids: [HAZ-07@1.1.1]
-  controls: [UN-SAF-03]
+  controls: [UN-SAF-03@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
