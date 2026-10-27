@@ -10,7 +10,7 @@ criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
   target_ids: [harness.md]
-  revision: '6c926d8'
+  revision: '4cdfb77'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -22,7 +22,7 @@ results:
     RC-08:
       result: passed
       note: 'found in this review and resolved in it: PROC-16 split a rule from the document that gives
-        its reasons, which this change needs together; step 4 of the loop asked a review for every change,
+        its reasons, which this change needs together - now it groups what belongs together; step 4 of the loop asked a review for every change,
         against the new PROC-14'
     RC-09: passed
     RC-10: passed
