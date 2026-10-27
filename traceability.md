@@ -222,6 +222,7 @@ both its ends. It is checked against the version of its parent in that baseline,
 | SYS-09 → UN-PM-01 | release | release | the release |
 | `@implements SR-01` in the code | library | library | the library: its code is not checked against its own SRs |
 | SR-01 → SYS-09 | library | release | not the library; the release that delivers the library and holds SYS-09 in its new version |
+| HAZC-07 `controls` UN-SAF-03 | release | release | the release |
 
 **Table maintenance** - a fix for an older release, while `main` has moved on
 
@@ -274,7 +275,7 @@ with a new x.
 
 - x is defined to cover everything a child depends on: the text, and the attributes the schema of
   the kind names for x. An attribute that matters to the children belongs in x.
-- our files keep uplinks only. A child writes its parent in `source_ids` (formats.md, section
+- within a tree, our files keep uplinks only. A child writes its parent in `source_ids` (formats.md, section
   Fields are the properties of the gel schema). So the y of a parent counts the changes of its own
   uplinks, and no child depends on them. Updating a link changes the y of the child only, and so
   the cascade ends there.
@@ -385,6 +386,37 @@ Whether another subsystem has to join, only the allocation shows.
 are long, and versions make them harder to read; a view in the reporter can help, without changing
 the data.
 
+## Links between trees
+
+A control of a hazard (h2) names the user needs that realize it, in `controls`. That link does not
+run within the tree of the requirements: it joins two trees, the one of safety (hazard → control)
+and the one of the requirements (user need → system requirement → …). The user needs stay the top
+of their tree, with no uplink (attributes.md: `controls` from a measure to the requirements it asks
+for).
+
+**Decision**: `controls` is a down-link, from the control to its user needs, and names their
+versions: `controls: [UN-PSF-01@1.1.1]`. It is suspect where x of a user need changed: the control
+then checks whether it is still realized. A change of x of the control does not make its user
+needs suspect; its review covers its list `controls`.
+
+**Why**:
+
+- the user needs stay the top of their tree; a link from each of them to a control would make
+  them children of the tree of safety
+- the control answers for being realized, so a change of its user needs is what it has to see
+- the reason against down-links within a tree - a new child would change the parent - no longer
+  holds: a new user need changes y of the control only, and no one sees y
+
+**Rejected**: `controlledBy` on every user need, an uplink to the control.
+
+**Decision**: PROC-13 asks approved uplinks only. A control may be approved while a user need it
+names in `controls` is not. Whether a control is realized is checked on its own.
+
+**Why**: the approval of a control is about what it asks for. That it is realized is another
+question, and it has to be answered on its own.
+
+**Rejected**: approved user needs at the approval of a control, as for uplinks.
+
 ## Links to rules
 
 Requirements name rules of the harness as uplink, such as `source_ids: [PROC-12]`. Before this
@@ -413,13 +445,12 @@ Markdown table, and the rules would be kept apart from every other requirement.
 
 ## Open questions
 
-1. **The schemas and the objects of today:** `object_version` and `attributes_for_version_x` in
-   every schema, `@x.y.z` in `source_ids` and `allocated`, every object at `1.1.1`; the rules as
-   data.
-2. **The tools:** a check that an approval sets the right version, a check for suspect
+1. **The tools:** a check that an approval sets the right version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
    version of its parent. annotationcheck has to read `@x.y.z`.
-3. **TOOL-09:** its software requirements follow the rules as they stand now. SR-28 would read
+2. **TOOL-09:** its software requirements follow the rules as they stand now. SR-28 would read
    "a requirement that becomes approved while an uplink of it is not approved".
-4. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
+3. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
    from its tag, not `main`. How such a state is made and kept is not set yet.
+4. **The realization of a control:** how it is checked that a control is realized by its user
+   needs, and when.
