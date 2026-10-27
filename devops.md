@@ -131,14 +131,19 @@ anyone. The ruleset also allows the merge commit only, as the settings of the re
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
 is GitHub's - and the job `rulesetcheck` checks
 on every pull request that GitHub has the same (TOOL-13). The file is the source: to change the
-ruleset, change the file by pull request and review, and after the merge send it whole:
+ruleset, change the file by pull request and review. As `rulesetcheck` is required, that pull
+request cannot be merged until GitHub has the change. So once it is green but for `rulesetcheck`,
+the file is sent whole; `rulesetcheck` then turns green, and the pull request is merged. Where it is
+not merged, the file of `main` is sent back:
 
 ```bash
 gh api repos/treporting/specs-and-deploy/rulesets --jq '.[] | {id, name}'
 gh api -X PUT repos/treporting/specs-and-deploy/rulesets/<id> --input .github/rulesets/main.json
 ```
 
-Until it is sent, `rulesetcheck` fails on every pull request - so it is not forgotten. A required
+Until a change is sent or sent back, `rulesetcheck` fails on every pull request - so it is not
+forgotten. For the minutes between the sending and the merge, GitHub holds the ruleset of the pull
+request, not that of `main`. A required
 check is named by its job, with `integration_id` 15368 - GitHub Actions. GitHub knows the name of a
 check only after it has run once, so a new job runs green before it becomes required.
 
