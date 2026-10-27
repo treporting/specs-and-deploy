@@ -114,6 +114,16 @@ not.
 
 **Rejected**: y for the other attributes and z for the links. The links would stand below a remark.
 
+**Decision**: the version is set once, at the approval - the act that closes the review. Each part
+rises by one where its kind changed since the last approved version; the others stay. While an
+object is a draft, its version stays as it is.
+
+**Why**: a child is checked against an approved parent. The working steps of a draft are no state
+anyone checks against.
+
+**Rejected**: to raise the version at every change. A draft would count its working steps, and a
+child could name a state that was never approved.
+
 **Decision**: a link names the full version of its parent: `target_ids: [SYS-09@3.1.2]`.
 
 **Why**: the link shows the exact state the child was checked against.
@@ -128,13 +138,13 @@ Otherwise a change of the status changes nothing.
 
 **Rejected**: the status as one of the other attributes, counted in z.
 
-**Decision**: a change of the text and of the status at the same time counts once. A commit raises
-x by one at most.
+**Decision**: an approval raises each part by one at most, however many of its attributes
+changed - the text and the status as well, where the status counts for x.
 
-**Why**: PROC-14 sets a changed text back to `draft`. Where the status counts for x, one change
-would otherwise raise x twice.
+**Why**: each part counts how often its kind of change was approved, not how many attributes it
+touched.
 
-**Rejected**: to count each changed attribute. One change would then raise x by as many as it
+**Rejected**: to count each changed attribute. One approval would then raise x by as many as it
 touched.
 
 **Decision**: each part only counts up. None of them is set back to 0 when another rises:
@@ -148,8 +158,9 @@ happened.
 **Decision**: every object that exists today starts at `1.1.1`. Every link that exists today names
 `@1.1.1`.
 
-**Why**: an approved object is in its first version. The three parts count independently, so each
-of them is in its first version too: text, links and other attributes all have their first state.
+**Why**: an object is in its first version from the moment it is written - a draft as well as an
+approved one. The three parts count independently, so each of them is in its first version too:
+text, links and other attributes all have their first state.
 
 **Rejected**:
 
@@ -157,24 +168,28 @@ of them is in its first version too: text, links and other attributes all have t
   though they have
 - `0.0.0`: it would say nothing has a state yet, though the object is approved
 
-**Decision**: a new object starts at `1.1.1` when it is written, as a draft.
+**Decision**: a new object carries `1.1.1` by default, as a draft. Its first approval keeps
+`1.1.1`: there is no approved version before it to compare with.
 
 **Why**: the draft is its first version. The status changes the version nowhere, so not here
 either. No child can name the draft as uplink at its own approval, because an approval needs
 approved uplinks.
 
-**Rejected**: `0.0.0` while the object is a draft, and `1.1.1` at its first approval. It would make
-an exception to the rule of the status.
+**Rejected**: `0.0.0` while the object is a draft, and `1.1.1` at its first approval.
 
-**Table cascade** - how far a change reaches
+- it would make an exception to the rule of the status
+- the objects that are drafts today would have to start at `0.0.0`, against the start of today's
+  objects at `1.1.1`
+
+**Table cascade** - how far a change reaches; every change ends with its approval
 
 | What happens | UN-PM-01 | SYS-09 | SR-01 |
 |---|---|---|---|
 | Start | `2.1.1` | `3.2.1`, link `UN-PM-01@2.1.1` | link `SYS-09@3.2.1` |
-| The text of UN-PM-01 changes | `3.1.1` | its link names an older x: **suspect** | clean |
-| SYS-09 still fits; only its link is updated | | `3.3.1`, link `UN-PM-01@3.1.1` | clean, only y of SYS-09 changed |
-| SYS-09 no longer fits; its text changes | | `4.3.1`, `draft` | its link names an older x: **suspect** |
-| A remark on SYS-09 changes | | `4.3.2` | clean, only z of SYS-09 changed |
+| The text of UN-PM-01 changes, approved | `3.1.1` | its link names an older x: **suspect** | clean |
+| SYS-09 still fits; only its link is updated, approved | | `3.3.1`, link `UN-PM-01@3.1.1` | clean, only y of SYS-09 changed |
+| SYS-09 no longer fits; its text changes, approved | | `4.3.1` | its link names an older x: **suspect** |
+| A remark on SYS-09 changes, approved | | `4.3.2` | clean, only z of SYS-09 changed |
 
 The cascade reaches only as far as meaning really changes. A child that still fits changes y only,
 and its own children stay clean.
@@ -214,6 +229,9 @@ only.
 | `4.1.2` | the text, or `safety` | yes |
 
 **Decision**: only a different x makes a link suspect. A difference in y or z does not.
+
+A parent in `draft` keeps its approved version. Its links turn suspect only when it is approved
+with a new x.
 
 **Why**:
 
@@ -308,7 +326,7 @@ by searching every field.
 
 1. **The rule changes:** PROC-13 "at its approval"; PROC-14 for the parts of the version; a rule
    for suspect links.
-2. **The tools:** a check that a change raises the right part of the version, a check for suspect
+2. **The tools:** a check that an approval sets the right version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
    version of its parent. annotationcheck has to read `@x.y.z`.
 3. **TOOL-09:** its software requirements wait until the rules stand. SR-28 would read "a
