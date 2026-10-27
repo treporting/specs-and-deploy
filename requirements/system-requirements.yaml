@@ -11,7 +11,7 @@ requirements:
   feature: Trace
   object_text: show the trace from any level chosen - user need, requirement, test or hazard - up and
     down to the test results, per release and library
-  target_ids: [UN-QA-01, UN-TST-01, UN-PM-03]
+  source_ids: [UN-QA-01, UN-TST-01, UN-PM-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -19,21 +19,21 @@ requirements:
   feature: Trace
   object_text: mark every place in the trace where a link, a test case or a test result is missing, and
     never count such a place as covered
-  target_ids: [UN-PM-03, UN-RM-01, UN-PSF-01]
+  source_ids: [UN-PM-03, UN-RM-01, UN-PSF-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-03
   feature: Trace
   object_text: show per release the requirements that are not yet verified by a passed test result
-  target_ids: [UN-RM-01]
+  source_ids: [UN-RM-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-04
   feature: Trace
   object_text: show per feature its state on every level below it, per release
-  target_ids: [UN-PM-01]
+  source_ids: [UN-PM-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -41,14 +41,14 @@ requirements:
   feature: Trace
   object_text: count the states of each level per release and library, so that two releases or two libraries
     can be compared
-  target_ids: [UN-QA-02, UN-RM-02]
+  source_ids: [UN-QA-02, UN-RM-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-06
   feature: Trace
   object_text: show for a requirement on which other levels it is verified, and by which tests
-  target_ids: [UN-TST-02]
+  source_ids: [UN-TST-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -56,14 +56,14 @@ requirements:
   feature: Trace
   object_text: show per person responsible the requirements assigned to them that have no implementation
     or no test
-  target_ids: [UN-DEV-01]
+  source_ids: [UN-DEV-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-08
   feature: Trace
   object_text: tell test cases, test procedures and test results apart, each with its test level
-  target_ids: [UN-QA-03]
+  source_ids: [UN-QA-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -71,14 +71,14 @@ requirements:
   feature: Filter
   object_text: narrow every view by function, feature, priority, safety class, platform, launch and stream,
     the unclassified included, the same way in table and chart, over the whole trace
-  target_ids: [UN-PM-02, UN-SAF-02]
+  source_ids: [UN-PM-02, UN-SAF-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-10
   feature: Filter
   object_text: show on every view which filters are in effect and how many objects they leave out
-  target_ids: [UN-PSF-03]
+  source_ids: [UN-PSF-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -87,7 +87,7 @@ requirements:
   object_text: carry function, feature, priority, safety class, platform and launch down the trace; where
     a requirement has several parents, it carries the highest safety class among them and the union of
     their platforms and launches
-  target_ids: [UN-SAF-03, UN-PM-02]
+  source_ids: [UN-SAF-03, UN-PM-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -95,14 +95,14 @@ requirements:
   feature: Hazards
   object_text: trace each hazard over its measures to the requirements and test results, and mark a hazard
     that has no measure or no passed result
-  target_ids: [UN-SAF-01]
+  source_ids: [UN-SAF-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-13
   feature: Standards
   object_text: show per clause of a chosen standard whether it is open, addressed or verified, per release
-  target_ids: [UN-ASR-01]
+  source_ids: [UN-ASR-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -110,7 +110,7 @@ requirements:
   feature: Standards
   object_text: show one data set in the vocabulary of a chosen process reference model - ASPICE, DO-178C,
     EN 50716, IEC 62304, IEC 61508, ISO/IEC/IEEE 12207
-  target_ids: [UN-QA-04, UN-ASR-03]
+  source_ids: [UN-QA-04, UN-ASR-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -118,21 +118,21 @@ requirements:
   feature: Baselines
   object_text: list per baseline its documents with their revision, their kind and the tool they are kept
     in
-  target_ids: [UN-CM-01, UN-CM-02]
+  source_ids: [UN-CM-01, UN-CM-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-16
   feature: Baselines
   object_text: 'show what changed between two baselines: objects and documents added, removed or changed'
-  target_ids: [UN-CM-03]
+  source_ids: [UN-CM-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-17
   feature: Baselines
   object_text: show releases and libraries over time, and the split of a project into subsystems
-  target_ids: [UN-CM-04, UN-RM-02]
+  source_ids: [UN-CM-04, UN-RM-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -140,14 +140,14 @@ requirements:
   feature: Provenance
   object_text: show on every view and in every report which data set, which revision and which build of
     the system it answers from, and how many objects of each kind
-  target_ids: [UN-RM-03, UN-ASR-02, UN-ALL-03, REG-10]
+  source_ids: [UN-RM-03, UN-ASR-02, UN-ALL-03, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-19
   feature: Provenance
   object_text: give the same report for the same data set, revision and parameters
-  target_ids: [UN-PSF-06]
+  source_ids: [UN-PSF-06]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -155,14 +155,14 @@ requirements:
   feature: Provenance
   object_text: hold several data sets apart - generated data and data read in, each baseline on its own
     - and answer each request from exactly one of them
-  target_ids: [UN-OPS-03]
+  source_ids: [UN-OPS-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-21
   feature: Provenance
   object_text: answer from a data file when no database server can be reached
-  target_ids: [UN-OPS-01]
+  source_ids: [UN-OPS-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -170,7 +170,7 @@ requirements:
   feature: Provenance
   object_text: read the data of different tools into one model, and name every object it could not read,
     with the reason
-  target_ids: [UN-OPS-02, UN-PSF-04]
+  source_ids: [UN-OPS-02, UN-PSF-04]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -179,14 +179,14 @@ requirements:
   object_text: count at every import, per kind of object, per type of link and per state, at four points
     - in the source by a query of its own, read, refused, and stored, counted from the storage afterwards
     - and name every difference
-  target_ids: [UN-PSF-01, UN-PSF-04, REG-01, REG-02, REG-03]
+  source_ids: [UN-PSF-01, UN-PSF-04, REG-01, REG-02, REG-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-24
   feature: Integrity
   object_text: build the same data set from the same source on every import
-  target_ids: [UN-PSF-06, REG-01, REG-02, REG-03]
+  source_ids: [UN-PSF-06, REG-01, REG-02, REG-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -194,7 +194,7 @@ requirements:
   feature: Integrity
   object_text: compare at every import a fingerprint of the fields that matter of each object in the source
     with the same object as stored, and name every object that differs
-  target_ids: [UN-PSF-01, UN-PSF-02, REG-01, REG-02, REG-03]
+  source_ids: [UN-PSF-01, UN-PSF-02, REG-01, REG-02, REG-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -203,7 +203,7 @@ requirements:
   object_text: mark every data set as complete, incomplete when its import showed a difference, or unverified
     when its source could not be counted on a way of its own - on every view and in every report that
     answers from it
-  target_ids: [UN-PSF-02, UN-PSF-04, REG-01, REG-02, REG-03]
+  source_ids: [UN-PSF-02, UN-PSF-04, REG-01, REG-02, REG-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -211,21 +211,21 @@ requirements:
   feature: Integrity
   object_text: report, in every release, every fault built into a data set of known content - a missing
     object, a missing link, an unknown value, a spelling that differs
-  target_ids: [REG-01, REG-02, REG-03, REG-04]
+  source_ids: [REG-01, REG-02, REG-03, REG-04]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-28
   feature: Errors
   object_text: show a value that is unknown as unknown, distinct from zero, empty or passed
-  target_ids: [UN-PSF-02]
+  source_ids: [UN-PSF-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-29
   feature: Errors
   object_text: refuse a request it cannot answer, with the reason, rather than answer it empty
-  target_ids: [UN-PSF-02, UN-PSF-04]
+  source_ids: [UN-PSF-02, UN-PSF-04]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -233,28 +233,28 @@ requirements:
   feature: Errors
   object_text: say for every figure what it counts, and count in a chart exactly what the table beside
     it shows
-  target_ids: [UN-PSF-05]
+  source_ids: [UN-PSF-05]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-31
   feature: Export
   object_text: export every table in a machine-readable format and every chart as a picture
-  target_ids: [UN-RM-04, UN-ASR-06]
+  source_ids: [UN-RM-04, UN-ASR-06]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-32
   feature: Export
   object_text: export complete records with their history, readable by people and by machines
-  target_ids: [UN-ASR-06, REG-07]
+  source_ids: [UN-ASR-06, REG-07]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-33
   feature: Usability
   object_text: say on the first screen what it does and where to start, and lead back there from any view
-  target_ids: [UN-ALL-01]
+  source_ids: [UN-ALL-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -262,14 +262,14 @@ requirements:
   feature: Usability
   object_text: show while a view is loading, or while the data is not there yet, that it is, and fill
     the view by itself when the data arrives
-  target_ids: [UN-ALL-02]
+  source_ids: [UN-ALL-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-35
   feature: Operation
   object_text: be installed and started from a release by following its operator manual alone
-  target_ids: [UN-OPS-04]
+  source_ids: [UN-OPS-04]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -277,28 +277,28 @@ requirements:
   feature: Operation
   object_text: keep the data unchanged when moved to a new version, and say before the move which data
     the new version cannot read
-  target_ids: [UN-OPS-05]
+  source_ids: [UN-OPS-05]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-37
   feature: Operation
   object_text: tell the user when it, or a part of it, is not available, and why
-  target_ids: [UN-OPS-06]
+  source_ids: [UN-OPS-06]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-38
   feature: Operation
   object_text: record its errors and warnings with time and cause
-  target_ids: [UN-OPS-07]
+  source_ids: [UN-OPS-07]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-39
   feature: Audit
   object_text: authenticate every user by an identity of their own, and grant access by role
-  target_ids: [UN-OPS-08, REG-06]
+  source_ids: [UN-OPS-08, REG-06]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
@@ -306,7 +306,7 @@ requirements:
   feature: Audit
   object_text: record for every report who produced it, when, from which data set and revision, and with
     which parameters
-  target_ids: [UN-ASR-04, REG-05, REG-10]
+  source_ids: [UN-ASR-04, REG-05, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
@@ -316,14 +316,14 @@ requirements:
     the record of an import holds the source and its revision, the time, who started it, the version of
     the converter, the counts at the four points of SYS-23, the objects refused with their reason, the
     result of the fingerprints of SYS-25 and the state of SYS-26
-  target_ids: [UN-ASR-05, REG-05, REG-10]
+  source_ids: [UN-ASR-05, REG-05, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: SYS-42
   feature: Audit
   object_text: keep the records and their audit trail for a set period, readable throughout
-  target_ids: [UN-OPS-09, REG-08]
+  source_ids: [UN-OPS-09, REG-08]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
@@ -332,7 +332,7 @@ requirements:
   object_text: give every report an identity of its own and a fingerprint of the data it was made from,
     so that a decision taken elsewhere - such as the approval of a release - can name the report it relied
     on
-  target_ids: [UN-RM-05, REG-10]
+  source_ids: [UN-RM-05, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
@@ -340,7 +340,7 @@ requirements:
   feature: Audit
   object_text: use the record of what users did only for the purposes set, delete it after the period
     set, and show it only to the roles allowed to see it
-  target_ids: [UN-ALL-04, REG-11, REG-12]
+  source_ids: [UN-ALL-04, REG-11, REG-12]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
@@ -348,7 +348,7 @@ requirements:
   feature: Maturity
   object_text: give the maturity of a requirement as the share of the steps of the longest chain it has
     reached
-  target_ids: [UN-RM-02, UN-QA-02]
+  source_ids: [UN-RM-02, UN-QA-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -356,21 +356,21 @@ requirements:
   feature: Maturity
   object_text: give the maturity of each group - RG-SYS-R, RG-SW-R, RG-SC, RG-OC, RG-SW-TC, RG-SW-TR,
     RG-SYS-TC, RG-SYS-TR - as the share of the steps of that group reached
-  target_ids: [UN-RM-02, UN-QA-02]
+  source_ids: [UN-RM-02, UN-QA-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-47
   feature: Maturity
   object_text: count a test result as reached only when it passed
-  target_ids: [UN-PSF-05]
+  source_ids: [UN-PSF-05]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-48
   feature: Maturity
   object_text: count a step as reached only when every branch below the requirement reaches it
-  target_ids: [UN-PSF-01]
+  source_ids: [UN-PSF-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -380,7 +380,7 @@ requirements:
     coded for source code and object code - ASPICE with one level each, 20 steps, when none is chosen
     - and leave out every step whose level holds no object in the release; every report states the chain
     it used and the steps it left out
-  target_ids: [UN-QA-04, UN-ASR-03, UN-PSF-05, UN-ASR-02]
+  source_ids: [UN-QA-04, UN-ASR-03, UN-PSF-05, UN-ASR-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -388,7 +388,7 @@ requirements:
   feature: Maturity
   object_text: give the maturity of a level, a feature or a release as the mean of the maturity of its
     requirements
-  target_ids: [UN-RM-02, UN-QA-02]
+  source_ids: [UN-RM-02, UN-QA-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -397,7 +397,7 @@ requirements:
   object_text: answer from a data set of size large
   measured: open
   target: open
-  target_ids: [UN-OPS-02, UN-OPS-03]
+  source_ids: [UN-OPS-02, UN-OPS-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -406,7 +406,7 @@ requirements:
   object_text: show a view of a data set of size large within the time given
   measured: open
   target: open
-  target_ids: [UN-ALL-02]
+  source_ids: [UN-ALL-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -415,7 +415,7 @@ requirements:
   object_text: import a data set of size large, with the checks of Integrity, within the time given
   measured: open
   target: open
-  target_ids: [UN-OPS-02]
+  source_ids: [UN-OPS-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -424,7 +424,7 @@ requirements:
   object_text: be ready to answer within the time given after it was started
   measured: open
   target: open
-  target_ids: [UN-OPS-04, UN-OPS-06]
+  source_ids: [UN-OPS-04, UN-OPS-06]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -433,7 +433,7 @@ requirements:
   object_text: run within the memory and the processor time given
   measured: open
   target: open
-  target_ids: [UN-OPS-01, UN-OPS-04]
+  source_ids: [UN-OPS-01, UN-OPS-04]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -442,14 +442,14 @@ requirements:
   object_text: serve the number of users given at once, each within the time of SYS-52
   measured: open
   target: open
-  target_ids: [UN-OPS-08]
+  source_ids: [UN-OPS-08]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-57
   feature: Constraints
   object_text: carry a legal notice and a privacy notice on every page reachable from the internet
-  target_ids: [REG-13]
+  source_ids: [REG-13]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 1_demo
@@ -457,7 +457,7 @@ requirements:
   feature: Licensing
   object_text: check, on every request to a licensed feature, the role and the rights of the user and
     the licence of the installation, and refuse the request with the reason when one of them is missing
-  target_ids: [UN-OPS-10]
+  source_ids: [UN-OPS-10]
   priority: later
   status: draft
   verification_method: [test]
@@ -465,7 +465,7 @@ requirements:
 - object_key: SYS-59
   feature: Licensing
   object_text: show which features an installation is licensed for
-  target_ids: [UN-OPS-10]
+  source_ids: [UN-OPS-10]
   priority: later
   status: draft
   verification_method: [test]
@@ -474,7 +474,7 @@ requirements:
   feature: Configuration
   object_text: take the mapping of attributes and values from a configuration file per system of a customer,
     and take code of the customer, kept outside the core, only where a configuration cannot say it
-  target_ids: [UN-CFG-01]
+  source_ids: [UN-CFG-01]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -482,7 +482,7 @@ requirements:
   feature: Configuration
   object_text: check a configuration against the data of its system, and name every attribute and every
     value it does not map
-  target_ids: [UN-CFG-02]
+  source_ids: [UN-CFG-02]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -491,7 +491,7 @@ requirements:
   object_text: read the configurations and the catalogues of the customer - such as the mapping of the
     clauses of a standard to work products - from a place the operator sets, outside the installation
     of the product
-  target_ids: [UN-CFG-03]
+  source_ids: [UN-CFG-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -499,14 +499,14 @@ requirements:
   feature: Delivery
   object_text: come with an SBOM in every release, naming each component, its version and its licence,
     and with the licence texts and notices of the components
-  target_ids: [UN-OPS-12, REG-14, REG-15, REG-18]
+  source_ids: [UN-OPS-12, REG-14, REG-15, REG-18]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-64
   feature: Delivery
   object_text: be delivered with a secure configuration by default
-  target_ids: [REG-14]
+  source_ids: [REG-14]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -514,14 +514,14 @@ requirements:
   feature: Delivery
   object_text: be updatable to a release that fixes a vulnerability, without other changes coming with
     it
-  target_ids: [UN-OPS-11, REG-14, REG-15]
+  source_ids: [UN-OPS-11, REG-14, REG-15]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-66
   feature: Delivery
   object_text: state the period over which a release gets security fixes
-  target_ids: [UN-OPS-11, REG-17]
+  source_ids: [UN-OPS-11, REG-17]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -529,7 +529,7 @@ requirements:
   feature: Delivery
   object_text: name, in every release and on the demo, where a vulnerability is reported and how it is
     handled
-  target_ids: [UN-OPS-13, REG-15]
+  source_ids: [UN-OPS-13, REG-15]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -538,7 +538,7 @@ requirements:
   object_text: keep every value as read from its source, and keep a value it derives beside it under a
     name of its own - `M` for mapped, also from the parent where the original is empty; `I` for an intermediate
     form of the status -, and say on every view which of the two it shows
-  target_ids: [UN-PSF-05, UN-SAF-03, REG-10]
+  source_ids: [UN-PSF-05, UN-SAF-03, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -546,7 +546,7 @@ requirements:
   feature: Derived values
   object_text: make the derived values of a stored data set again on request when a rule changes, back
     in time, without fetching the data from the source systems again
-  target_ids: [ARC-D03]
+  source_ids: [ARC-D03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -556,14 +556,14 @@ requirements:
     class than its parent and no decomposition, an unclassified child under a classified parent, a passed
     test result without a test case, a cycle in the trace, a link into another baseline; the import reads
     the data as it is and is never stopped or changed by such a finding
-  target_ids: [UN-SAF-01, UN-SAF-03, UN-PSF-01, REG-19, REG-20, REG-21, REG-22]
+  source_ids: [UN-SAF-01, UN-SAF-03, UN-PSF-01, REG-19, REG-20, REG-21, REG-22]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-71
   feature: Plausibility
   object_text: show every finding of SYS-70 with its rule and its objects, in a view of its own
-  target_ids: [UN-SAF-01, UN-PSF-03]
+  source_ids: [UN-SAF-01, UN-PSF-03]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -572,7 +572,7 @@ requirements:
   object_text: recognize a finding as evaluated when its object carries an evaluation in its source -
     an attribute or a link set by the configuration -, and show for every finding whether it is evaluated
     or open, with the evaluation
-  target_ids: [UN-ASR-07, UN-SAF-01, REG-10]
+  source_ids: [UN-ASR-07, UN-SAF-01, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -580,7 +580,7 @@ requirements:
   feature: Verification
   object_text: show for every requirement its verification method; a requirement verified by inspection
     or analysis needs no test case - the maturity leaves out its test steps, and the report says so
-  target_ids: [UN-QA-05]
+  source_ids: [UN-QA-05]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -588,14 +588,14 @@ requirements:
   feature: Verification
   object_text: show for every requirement its status and its reviews - the criteria, the result per criterion,
     who reviewed it, when, and the revision reviewed
-  target_ids: [UN-QA-06, REG-10]
+  source_ids: [UN-QA-06, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS-75
   feature: Verification
   object_text: count a review of a requirement only for the revision it reviewed, never for a newer one
-  target_ids: [UN-QA-06, REG-10]
+  source_ids: [UN-QA-06, REG-10]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
@@ -603,7 +603,7 @@ requirements:
   feature: Verification
   object_text: count a passed inspection of the realization of a requirement - a review of the code or
     document that realizes it - as its verification, where its verification method is inspection
-  target_ids: [UN-QA-05, UN-QA-06]
+  source_ids: [UN-QA-05, UN-QA-06]
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
