@@ -166,6 +166,17 @@ that no one has checked.
 
 ## When a link is suspect
 
+The link names the full version, such as `SYS-09@3.0.2`. The parent may have moved on in y or z
+only.
+
+**Table suspect** - a link `SYS-09@3.0.2` against the version SYS-09 has now
+
+| SYS-09 now | What changed | Suspect? |
+|---|---|---|
+| `3.0.3` | a link of SYS-09 | no |
+| `3.1.2` | a remark | no |
+| `4.0.2` | the text, or `safety` | yes |
+
 **Decision**: only a different x makes a link suspect. A difference in y or z does not.
 
 **Why**:
@@ -180,7 +191,8 @@ that no one has checked.
 **Rejected**:
 
 - every difference makes a link suspect: y would mean the same as x, and every child would have
-  to follow a change of `priority` of its parent
+  to follow a change of `priority` of its parent. With z, the grandchildren would have to follow
+  every update of a link of the child, and the cascade would run to the bottom.
 - down-links, a parent that names its children: then a new child would change the parent, and
   every child would see it
 
