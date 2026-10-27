@@ -1,5 +1,5 @@
 # Review of formats.md against the criteria of the level document.
-# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Made with reviewskeleton; proposed by Claude Code, decided by the reviewer: passed.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
 level: review
