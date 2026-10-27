@@ -199,3 +199,18 @@ requirements:
   target_ids: [TOOL-06]
   status: approved
   verification_method: [test]
+- object_key: SR-28
+  component: uplink
+  object_text: report an approved requirement that names an uplink in its target_ids that is not
+    approved; a rule of the harness counts as approved, as it is approved when merged
+  target_ids: [TOOL-09]
+  status: review
+  verification_method: [test]
+- object_key: SR-29
+  component: ci
+  object_text: on every pull request, in .github/workflows/tools.yml, check the uplinks of the approved
+    requirements, and fail where one is not approved; a pull request whose check failed cannot be
+    merged
+  target_ids: [TOOL-09]
+  status: review
+  verification_method: [demonstration]
