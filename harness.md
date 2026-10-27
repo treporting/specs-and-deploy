@@ -170,8 +170,9 @@ is reviewed by them.
 1. A ticket is the start of every change (PROC-02).
 2. A branch is created for the ticket.
 3. The change is realized, in commits.
-4. If the change touches what has review criteria of its kind (PROC-13), it needs a review. The
-   author sets it to `review`. The change is then finished.
+4. If the change touches what has review criteria of its kind (PROC-13) - something new, or a
+   change of x of its version (PROC-14) - it needs a review. The author sets it to `review`. The
+   change is then finished. A change of y or z only needs no review: the merge approves it.
 5. The reviewer checks it against the criteria of its kind. The reviewer is not the author (PROC-15).
 6. The review result goes into `reviews/`.
 7. A finding can be resolved on the branch.
