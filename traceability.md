@@ -136,7 +136,7 @@ full review. So updating a link stays cheap, and the cascade stays away.
 **Rejected**: every change sets back to `draft` and needs a full review. Every updated link would
 be checked again against all criteria.
 
-**Decision**: a link names the full version of its parent: `target_ids: [SYS-09@3.1.2]`.
+**Decision**: a link names the full version of its parent: `source_ids: [SYS-09@3.1.2]`.
 
 **Why**: the link shows the exact state the child was checked against.
 
@@ -274,7 +274,7 @@ with a new x.
 
 - x is defined to cover everything a child depends on: the text, and the attributes the schema of
   the kind names for x. An attribute that matters to the children belongs in x.
-- our files keep uplinks only. A child writes its parent in `target_ids` (formats.md, section
+- our files keep uplinks only. A child writes its parent in `source_ids` (formats.md, section
   Fields are the properties of the gel schema). So the y of a parent counts the changes of its own
   uplinks, and no child depends on them. Updating a link changes the y of the child only, and so
   the cascade ends there.
@@ -290,7 +290,7 @@ with a new x.
 
 ## The right side of the V
 
-Code and tests name their requirement in an annotation, not in `target_ids`.
+Code and tests name their requirement in an annotation, not in `source_ids`.
 
 **Decision**: an annotation names the version of its requirement, as a link does:
 `// @implements SR-01@3.1.2`. It is suspect by the same rule: when x of the requirement differs.
@@ -346,7 +346,7 @@ default.
 }
 ```
 
-`target_ids` and `allocated` count for y. `status` counts for nothing unless the list names it. Every other field
+`source_ids` and `allocated` count for y. `status` counts for nothing unless the list names it. Every other field
 counts for z.
 
 **Why**:
@@ -364,7 +364,7 @@ by searching every field.
 The allocation (r4) is the field `allocated` of each subsystem in the architecture. The system
 requirements allocated to a subsystem are its requirements, derived directly from r2
 (system-architecture.md). So `allocated` is an uplink: the element stands below the system
-requirements and names its parents. Only its name differs from `target_ids`.
+requirements and names its parents. Only its name differs from `source_ids`.
 
 **Decision**: `allocated` names the version of each system requirement, as a link does:
 `allocated: [SYS-01@1.1.1, SYS-02@1.1.1, …]`. The same rules hold: a different x makes an entry
@@ -387,12 +387,12 @@ the data.
 
 ## Links to rules
 
-Requirements name rules of the harness as uplink, such as `target_ids: [PROC-12]`. Before this
+Requirements name rules of the harness as uplink, such as `source_ids: [PROC-12]`. Before this
 decision, a rule had no version. Where a rule changed its meaning, a rule of its own, PROC-17, sent
 every requirement that named it back to `review` - the strict cascade c).
 
 **Decision**: a rule carries a version, `x.y.z`, as every requirement does. A link names it:
-`target_ids: [PROC-12@1.1.1]`. The version is set at the merge, because the merge is the approval
+`source_ids: [PROC-12@1.1.1]`. The version is set at the merge, because the merge is the approval
 of a rule. PROC-17 goes: a suspect link does its work.
 
 **Why**: rules are requirements under another name. One rule holds for every uplink, and the
@@ -402,7 +402,7 @@ cascade ends for rules as well.
 for rules the cascade would go on.
 
 **Decision**: the rules become data, as the requirements are: a YAML file with a schema, each rule
-with `object_key`, `object_text`, `object_version` and its uplinks in `target_ids`. harness.md
+with `object_key`, `object_text`, `object_version` and its uplinks in `source_ids`. harness.md
 explains them and refers to it, as formats.md sets out for every level.
 
 **Why**: rules are requirements under another name, so they are kept as requirements are. The tools
@@ -414,7 +414,7 @@ Markdown table, and the rules would be kept apart from every other requirement.
 ## Open questions
 
 1. **The schemas and the objects of today:** `object_version` and `attributes_for_version_x` in
-   every schema, `@x.y.z` in `target_ids` and `allocated`, every object at `1.1.1`; the rules as
+   every schema, `@x.y.z` in `source_ids` and `allocated`, every object at `1.1.1`; the rules as
    data.
 2. **The tools:** a check that an approval sets the right version, a check for suspect
    links and annotations, and a command that updates a link or an annotation to the current
@@ -423,7 +423,3 @@ Markdown table, and the rules would be kept apart from every other requirement.
    "a requirement that becomes approved while an uplink of it is not approved".
 4. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
    from its tag, not `main`. How such a state is made and kept is not set yet.
-5. **The field of the uplink:** our files keep the uplink in `target_ids`. A target is what an
-   object points at; what it is derived from is its source. The uplink belongs in `source_ids`.
-   The fields here are named as they are today. A review result keeps `target_ids`: it points at
-   what it reviewed.

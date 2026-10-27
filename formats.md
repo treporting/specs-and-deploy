@@ -59,10 +59,11 @@ holds only what the author writes:
   of its level (PROC-13), for instance a document.
 - **platform_launch** of every user need and system requirement: `treporting = 2_selfhosted,
   1_demo`, or narrower where a requirement holds for one of them only.
-- **the links**: an object writes the ends of its own links in `target_ids` - in our files, the
-  parents it is derived from (the uplink). As in the gel schema, `source_ids` and `target_ids`
-  keep the original ends of the links without saying which is parent or child; the import makes
-  the link `parentOf` from them, a derived value.
+- **the links**: an object writes the parents it is derived from, its uplinks, in `source_ids` -
+  its sources. `target_ids` is what an object points at: a review result points at what it
+  reviewed, a verification at what it verified. As in the gel schema, `source_ids` and
+  `target_ids` keep the original ends of the links; the import makes the link `parentOf` from
+  them, a derived value: the sources of an object are its parents.
 
 ### Example
 
@@ -77,7 +78,7 @@ requirements:
       check, on every request to a licensed feature, the role and the rights of the user and
       the licence of the installation, and refuse the request with the reason when one of
       them is missing
-    target_ids: [UN-OPS-10]
+    source_ids: [UN-OPS-10]
     priority: later
 ```
 
