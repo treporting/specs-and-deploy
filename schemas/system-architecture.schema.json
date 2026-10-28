@@ -330,14 +330,29 @@
         "type": "object",
         "required": [
           "name",
+          "object_version",
+          "object_hash",
           "status",
           "verification_method"
         ],
         "additionalProperties": false,
+        "attributes_for_version_x": [
+          "object_hash"
+        ],
         "properties": {
           "name": {
             "type": "string",
             "pattern": "^([a-z0-9-]+/)*[A-Za-z0-9-]+\\.md$"
+          },
+          "object_version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "description": "x.y.z - x the content of the file, as object_hash; y the links, z every other attribute; set at the approval (traceability.md)"
+          },
+          "object_hash": {
+            "type": "string",
+            "pattern": "^([0-9a-f]{7})?$",
+            "description": "the content approved: git hash-object of the file, 7 characters; set at the approval, '' before the first (traceability.md)"
           },
           "status": {
             "enum": [

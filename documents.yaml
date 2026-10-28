@@ -4,26 +4,42 @@
 schema: schemas/documents.schema.json
 documents:
 - name: README.md
+  object_version: '1.1.1'
+  object_hash: '197a047'
   status: approved
   verification_method: [review]
 - name: harness.md
+  object_version: '1.1.1'
+  object_hash: 'f9378df'
   status: approved
   verification_method: [review]
 - name: devops.md
+  object_version: '1.1.1'
+  object_hash: '03a4531'
   status: approved
   verification_method: [review]
 - name: definitions.md
+  object_version: '1.1.1'
+  object_hash: 'e6d50a0'
   status: approved
   verification_method: [review]
 - name: standards.md
+  object_version: '1.1.1'
+  object_hash: '5f77916'
   status: approved
   verification_method: [review]
 - name: formats.md
+  object_version: '1.1.1'
+  object_hash: '9b51d27'
   status: approved
   verification_method: [review]
 - name: reviews/README.md
+  object_version: '1.1.1'
+  object_hash: '3343203'
   status: approved
   verification_method: [review]
 - name: traceability.md
+  object_version: '1.1.1'
+  object_hash: 'eb14b96'
   status: approved
   verification_method: [review]

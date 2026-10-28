@@ -4,6 +4,8 @@ schema: schemas/system-requirements.schema.json
 level: r2
 documents:
 - name: system-requirements.md
+  object_version: '1.1.1'
+  object_hash: ''
   status: draft
   verification_method: [review]
 requirements:

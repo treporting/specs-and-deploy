@@ -4,9 +4,13 @@ schema: schemas/system-architecture.schema.json
 level: r3
 documents:
 - name: system-architecture.md
+  object_version: '1.1.1'
+  object_hash: ''
   status: draft
   verification_method: [review]
 - name: attributes.md
+  object_version: '1.1.1'
+  object_hash: ''
   status: draft
   verification_method: [review]
 elements:
