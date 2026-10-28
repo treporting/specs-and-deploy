@@ -10,7 +10,7 @@ criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
   target_ids: [TOOL_14]
-  revision: 'c5f3a2a'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -26,7 +26,7 @@ results:
   verdict: passed
 - object_key: RR-02
   target_ids: [TOOL_15]
-  revision: 'c5f3a2a'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -42,7 +42,7 @@ results:
   verdict: passed
 - object_key: RR-03
   target_ids: [TOOL_16]
-  revision: 'c5f3a2a'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -58,7 +58,7 @@ results:
   verdict: passed
 - object_key: RR-04
   target_ids: [TOOL_17]
-  revision: 'c5f3a2a'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -74,7 +74,7 @@ results:
   verdict: passed
 - object_key: RR-05
   target_ids: [TOOL_18]
-  revision: 'c5f3a2a'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -90,7 +90,7 @@ results:
   verdict: passed
 - object_key: RR-06
   target_ids: [TOOL_19]
-  revision: 'c5f3a2a'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -106,7 +106,7 @@ results:
   verdict: passed
 - object_key: RR-07
   target_ids: [TOOL_20]
-  revision: 'c5f3a2a'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

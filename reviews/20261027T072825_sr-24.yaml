@@ -10,7 +10,7 @@ criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
   target_ids: [SR_24]
-  revision: 'f99d758'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

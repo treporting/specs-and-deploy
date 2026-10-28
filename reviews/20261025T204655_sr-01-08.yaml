@@ -10,7 +10,7 @@ criteria_revision: '3cbb37e'
 results:
 - object_key: RR-01
   target_ids: [SR_01]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -28,7 +28,7 @@ results:
   verdict: passed
 - object_key: RR-02
   target_ids: [SR_02]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -46,7 +46,7 @@ results:
   verdict: passed
 - object_key: RR-03
   target_ids: [SR_03]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -62,7 +62,7 @@ results:
   verdict: passed
 - object_key: RR-04
   target_ids: [SR_04]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -78,7 +78,7 @@ results:
   verdict: passed
 - object_key: RR-05
   target_ids: [SR_05]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -94,7 +94,7 @@ results:
   verdict: passed
 - object_key: RR-06
   target_ids: [SR_06]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -112,7 +112,7 @@ results:
   verdict: passed
 - object_key: RR-07
   target_ids: [SR_07]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -128,7 +128,7 @@ results:
   verdict: passed
 - object_key: RR-08
   target_ids: [SR_08]
-  revision: '3fa8184'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

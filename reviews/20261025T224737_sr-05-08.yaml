@@ -9,7 +9,7 @@ criteria_revision: '6095c77'
 results:
 - object_key: RR-01
   target_ids: [SR_05]
-  revision: '9d02b7b'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -25,7 +25,7 @@ results:
   verdict: passed
 - object_key: RR-02
   target_ids: [SR_08]
-  revision: '9d02b7b'
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
