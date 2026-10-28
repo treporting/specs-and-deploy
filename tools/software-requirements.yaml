@@ -6,7 +6,7 @@ documents:
 - name: README.md
   object_version: '2.1.1'
   object_hash: 'bfb5ecf'
-  status: approved
+  status: review
   verification_method: [review]
 requirements:
 - object_key: SR-01

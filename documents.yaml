@@ -16,7 +16,7 @@ documents:
 - name: devops.md
   object_version: '2.1.1'
   object_hash: '008834b'
-  status: approved
+  status: review
   verification_method: [review]
 - name: definitions.md
   object_version: '2.1.1'
