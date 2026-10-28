@@ -21,7 +21,7 @@ documents:
 - name: definitions.md
   object_version: '1.1.1'
   object_hash: 'e6d50a0'
-  status: approved
+  status: review
   verification_method: [review]
 - name: standards.md
   object_version: '1.1.1'
@@ -41,5 +41,5 @@ documents:
 - name: traceability.md
   object_version: '2.1.1'
   object_hash: '4ecab9a'
-  status: approved
+  status: review
   verification_method: [review]
