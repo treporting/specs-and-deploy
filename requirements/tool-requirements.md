@@ -51,14 +51,25 @@ the values of a requirement (formats.md, section Documents).
 
 ## Reviews
 
-`TOOL-03` to `TOOL-04`, and `TOOL-11`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL-03` to `TOOL-04`, `TOOL-11` and `TOOL-15`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The tools that create and check a review. `reviewcheck` checks every review result (TOOL-03,
 TOOL-11) and runs on every pull request (TOOL-12). `reviewskeleton` writes the skeleton of a review
-result (TOOL-04).
+result (TOOL-04). Whatever is approved in a pull request, for the first time or with a new x, needs
+a passed review result in that pull request (TOOL-15, PROC-13).
 
 ## CI check
 
 `TOOL-05` to `TOOL-10`, `TOOL-12` and `TOOL-13`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The checks run on every pull request - one tool requirement per check.
+
+## Versions
+
+`TOOL-14`, `TOOL-16` to `TOOL-18`: in [tool-requirements.yaml](tool-requirements.yaml).
+
+The tools for the version of an object and the links that name it (traceability.md, PROC-14,
+PROC-20). TOOL-14 checks that an approval sets the right version, against the base commit of the
+pull request. TOOL-16 makes the link check (definitions.md): it reports, and does not fail, as a
+suspect link blocks the baseline, not the pull request. TOOL-17 is that block. TOOL-18 updates a
+link; it stays a requirement, kept for later (`priority: 'later'`).

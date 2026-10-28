@@ -64,12 +64,12 @@ requirements:
 - object_key: TOOL-06
   object_version: '1.1.1'
   feature: CI check
-  object_text: check on every pull request that every id named in `@implements` or `@verifies` exists, and
-    is approved, in the base commit of the pull request
-  source_ids: [PROC-05@1.1.1]
+  object_text: check on every pull request that every id named in `@implements` or `@verifies` names its
+    version, as `ID@x.y.z`, and exists, and is approved, in the base commit of the pull request
+  source_ids: [PROC-05@1.1.1, PROC-20@2.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
 - object_key: TOOL-07
   object_version: '1.1.1'
@@ -139,4 +139,58 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
+  verification_method: [test]
+- object_key: TOOL-14
+  object_version: '1.1.1'
+  feature: Versions
+  object_text: check on every pull request that every requirement and document changed against the base
+    commit carries the right version - each part one higher where its kind changed since the base
+    commit and the others the same, the version of a draft unchanged, a new one at 1.1.1 - and that
+    the object_hash of an approved document is the hash of its file
+  source_ids: [PROC-14@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL-15
+  object_version: '1.1.1'
+  feature: Reviews
+  object_text: report a requirement or a document that is approved in a pull request, where it was not
+    approved in the base commit or its x rose, and that no passed review result of the pull request
+    names
+  source_ids: [PROC-13@1.1.1, PROC-14@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL-16
+  object_version: '1.1.1'
+  feature: Versions
+  object_text: make the link check on every pull request - for every link, entry of the allocation and
+    annotation, compare the version it names with the version its object has - and report each whose
+    object has another x than it names, without failing
+  source_ids: [PROC-20@2.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL-17
+  object_version: '1.1.1'
+  feature: Versions
+  object_text: refuse to make a baseline that holds both ends of a suspect link, compared with the
+    versions in that baseline
+  source_ids: [PROC-06@1.1.1, PROC-20@2.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL-18
+  object_version: '1.1.1'
+  feature: Versions
+  object_text: update a link, an entry of the allocation or an annotation, named by the one who calls
+    it, to the version its object has now
+  source_ids: [PROC-20@2.1.1]
+  priority: 'later'
+  safety: ''
+  status: draft
   verification_method: [test]
