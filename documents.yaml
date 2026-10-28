@@ -39,7 +39,7 @@ documents:
   status: approved
   verification_method: [review]
 - name: traceability.md
-  object_version: '1.1.1'
-  object_hash: 'eb14b96'
-  status: review
+  object_version: '2.1.1'
+  object_hash: '4ecab9a'
+  status: approved
   verification_method: [review]
