@@ -1,29 +1,45 @@
 # The documents that have no YAML of requirements beside them, and harness.md (formats.md, section
-# Rules), each with a status of its own.
+# Rules), each with a version and a status of its own.
 # Format: formats.md, section Documents
 schema: schemas/documents.schema.json
 documents:
 - name: README.md
+  object_version: '1.1.1'
+  object_hash: '197a047'
   status: approved
   verification_method: [review]
 - name: harness.md
+  object_version: '1.1.1'
+  object_hash: 'f9378df'
   status: approved
   verification_method: [review]
 - name: devops.md
+  object_version: '1.1.1'
+  object_hash: '03a4531'
   status: approved
   verification_method: [review]
 - name: definitions.md
+  object_version: '1.1.1'
+  object_hash: 'e6d50a0'
   status: approved
   verification_method: [review]
 - name: standards.md
+  object_version: '1.1.1'
+  object_hash: '5f77916'
   status: approved
   verification_method: [review]
 - name: formats.md
+  object_version: '2.1.1'
+  object_hash: '54cfdb8'
   status: approved
   verification_method: [review]
 - name: reviews/README.md
+  object_version: '1.1.1'
+  object_hash: '3343203'
   status: approved
   verification_method: [review]
 - name: traceability.md
+  object_version: '2.1.1'
+  object_hash: '4ecab9a'
   status: approved
   verification_method: [review]

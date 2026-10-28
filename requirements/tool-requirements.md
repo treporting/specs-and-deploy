@@ -13,7 +13,24 @@ like every other requirement (PROC-13). Each section is a feature, the field `fe
 
 `TOOL-01` to `TOOL-02`: in [tool-requirements.yaml](tool-requirements.yaml).
 
-A document handed to an auditor shows what it is, which revision, and its status (REG-10).
+A document handed to an auditor shows what it is, which version, which revision, and its status
+(REG-10).
+
+**Which version and revision** an exported document shows:
+
+**Decision**: its version, `x.y.z` (traceability.md, section The version of a document), and its
+revision: the last commit that changed its file - the revision tells changes of the same item apart
+(definitions.md). For example "devops.md · 2.1.1 · a1b2c3d · approved".
+
+**Why**: the version shows which approved state lies before the auditor, and it matches the entry
+in the YAML. A draft keeps its version while its content changes; only the revision tells two of
+its exports apart.
+
+**Rejected**:
+
+- the version alone: two exports of a draft of different days would look the same
+- the revision alone: the auditor would have to look up in git which approved state it is
+- the commit the export ran on: two exports of the same content would show different revisions
 
 **Which status** an exported document shows:
 

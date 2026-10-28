@@ -4,6 +4,8 @@ schema: schemas/tool-requirements.schema.json
 level: tool
 documents:
 - name: tool-requirements.md
+  object_version: '2.1.1'
+  object_hash: '2a6bb2b'
   status: approved
   verification_method: [review]
 requirements:
@@ -21,7 +23,8 @@ requirements:
 - object_key: TOOL-02
   object_version: '1.1.1'
   feature: Documents to PDF
-  object_text: show in the header or footer of an exported document its revision and its own status
+  object_text: show in the header or footer of an exported document its version, its revision and its
+    own status
   source_ids: [REG-10@1.1.1]
   priority: 'medium'
   safety: ''

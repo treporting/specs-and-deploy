@@ -4,6 +4,8 @@ schema: schemas/regulatory-requirements.schema.json
 level: n1
 documents:
 - name: regulatory-requirements.md
+  object_version: '1.1.1'
+  object_hash: ''
   status: draft
   verification_method: [review]
 requirements:
