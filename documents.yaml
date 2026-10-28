@@ -14,9 +14,9 @@ documents:
   status: approved
   verification_method: [review]
 - name: devops.md
-  object_version: '1.1.1'
-  object_hash: '03a4531'
-  status: review
+  object_version: '2.1.1'
+  object_hash: '008834b'
+  status: approved
   verification_method: [review]
 - name: definitions.md
   object_version: '2.1.1'
@@ -29,9 +29,9 @@ documents:
   status: approved
   verification_method: [review]
 - name: formats.md
-  object_version: '2.1.1'
-  object_hash: '54cfdb8'
-  status: review
+  object_version: '3.1.1'
+  object_hash: '1e7f4df'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
