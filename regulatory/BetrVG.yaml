@@ -21,5 +21,5 @@ requirements:
   applies_to: Germany
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]

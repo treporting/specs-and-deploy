@@ -11,7 +11,7 @@ requirements:
   applies_to: EU
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_EU2016-679_02
   object_version: '1.1.1'
@@ -25,5 +25,5 @@ requirements:
   applies_to: EU
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]

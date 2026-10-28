@@ -6,17 +6,17 @@ documents:
 - name: README.md
   object_version: '1.1.1'
   object_hash: '197a047'
-  status: approved
+  status: review
   verification_method: [review]
 - name: harness.md
   object_version: '1.1.1'
   object_hash: 'f9378df'
-  status: approved
+  status: review
   verification_method: [review]
 - name: devops.md
   object_version: '3.1.1'
   object_hash: 'dc75dbf'
-  status: approved
+  status: review
   verification_method: [review]
 - name: definitions.md
   object_version: '2.1.1'
@@ -46,5 +46,5 @@ documents:
 - name: regulatory/regulatory-requirements.md
   object_version: '1.1.1'
   object_hash: ''
-  status: draft
+  status: review
   verification_method: [review]
