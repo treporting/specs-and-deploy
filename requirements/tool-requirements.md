@@ -60,16 +60,17 @@ a passed review result in that pull request (TOOL-15, PROC-13).
 
 ## CI check
 
-`TOOL-05` to `TOOL-10`, `TOOL-12` and `TOOL-13`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL-05` to `TOOL-10`, `TOOL-12`, `TOOL-13` and `TOOL-20`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The checks run on every pull request - one tool requirement per check.
 
 ## Versions
 
-`TOOL-14`, `TOOL-16` to `TOOL-18`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL-14`, `TOOL-16` to `TOOL-19`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The tools for the version of an object and the links that name it (traceability.md, PROC-14,
 PROC-20). TOOL-14 checks that an approval sets the right version, against the base commit of the
-pull request. TOOL-16 makes the link check (definitions.md): it reports, and does not fail, as a
-suspect link blocks the baseline, not the pull request. TOOL-17 is that block. TOOL-18 updates a
-link; it stays a requirement, kept for later (`priority: 'later'`).
+pull request; TOOL-19 checks that an approved document is the file approved. TOOL-16 makes the link
+check (definitions.md): it reports, and does not fail, as a suspect link blocks the baseline, not
+the pull request. TOOL-17 is that block. TOOL-18 updates a link; it stays a requirement, kept for
+later (`priority: 'later'`).

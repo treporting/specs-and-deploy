@@ -64,12 +64,12 @@ requirements:
 - object_key: TOOL-06
   object_version: '1.1.1'
   feature: CI check
-  object_text: check on every pull request that every id named in `@implements` or `@verifies` names its
-    version, as `ID@x.y.z`, and exists, and is approved, in the base commit of the pull request
-  source_ids: [PROC-05@1.1.1, PROC-20@2.1.1]
+  object_text: check on every pull request that every id named in `@implements` or `@verifies` exists, and
+    is approved, in the base commit of the pull request
+  source_ids: [PROC-05@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-07
   object_version: '1.1.1'
@@ -145,8 +145,7 @@ requirements:
   feature: Versions
   object_text: check on every pull request that every requirement and document changed against the base
     commit carries the right version - each part one higher where its kind changed since the base
-    commit and the others the same, the version of a draft unchanged, a new one at 1.1.1 - and that
-    the object_hash of an approved document is the hash of its file
+    commit and the others the same, the version of a draft unchanged, a new one at 1.1.1
   source_ids: [PROC-14@1.1.1]
   priority: 'medium'
   safety: ''
@@ -191,6 +190,26 @@ requirements:
     it, to the version its object has now
   source_ids: [PROC-20@2.1.1]
   priority: 'later'
+  safety: ''
+  status: review
+  verification_method: [test]
+- object_key: TOOL-19
+  object_version: '1.1.1'
+  feature: Versions
+  object_text: check on every pull request that the object_hash of every approved document is the hash
+    of its file
+  source_ids: [PROC-14@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: review
+  verification_method: [test]
+- object_key: TOOL-20
+  object_version: '1.1.1'
+  feature: CI check
+  object_text: check on every pull request that every `@implements` and `@verifies` names the version of
+    its id, as `ID@x.y.z`
+  source_ids: [PROC-20@2.1.1]
+  priority: 'medium'
   safety: ''
   status: review
   verification_method: [test]
