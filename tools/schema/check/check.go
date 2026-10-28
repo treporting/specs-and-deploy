@@ -35,7 +35,7 @@ var notOurs = []string{".github/"}
 
 // Files answers the YAML files of our own data under version control below root, relative to it.
 //
-// @implements SR-18
+// @implements SR-18@1.1.1
 func Files(root string) ([]string, error) {
 	out, err := exec.Command("git", "-C", root, "ls-files", "--", "*.yaml", "*.yml").Output()
 	if err != nil {
@@ -58,7 +58,7 @@ next:
 // answers every place where one does not match, and every file that names no schema or a schema
 // that is not there.
 //
-// @implements SR-18, SR-19
+// @implements SR-18@1.1.1, SR-19@1.1.1
 func Check(root string, files []string) ([]Finding, error) {
 
 	schemas := map[string]*jsonschema.Schema{}

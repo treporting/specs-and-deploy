@@ -205,7 +205,8 @@ The code is the component `ruleset`: the package `ruleset/check` and the command
 
 Checks that every id named in `@implements` or `@verifies` is in the requirements of the base
 commit of the pull request, and approved there (TOOL-06; SR-24 and SR-25 in
-[software-requirements.yaml](software-requirements.yaml)). A requirement approved in the same pull
+[software-requirements.yaml](software-requirements.yaml)), and that it names its version, as
+`ID@x.y.z` (TOOL-20, SR-30). The id is read apart from its version and checked as before. A requirement approved in the same pull
 request does not count: it has to be through before the code (PROC-05, PROC-12).
 
 It reads a file by its kind, from the two lists in [kinds.yaml](annotation/kinds.yaml): the
@@ -233,7 +234,7 @@ only in tests that need annotations as their content.
   annotation as a realization; not for the gate
 - `go/scanner` for Go alone - exact for Go, but a switch by language again
 
-The CI runs it on every pull request with the base commit GitHub gives (SR-26).
+The CI runs it on every pull request with the base commit GitHub gives (SR-26, SR-31).
 
 ```bash
 cd tools

@@ -15,7 +15,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/ruleset/check"
 )
 
-// @implements SR-21, SR-22
+// @implements SR-21@1.1.1, SR-22@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

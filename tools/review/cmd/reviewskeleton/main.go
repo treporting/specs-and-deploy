@@ -16,7 +16,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review/skeleton"
 )
 
-// @implements SR-11, SR-12, SR-13, SR-14, SR-15, SR-17
+// @implements SR-11@1.1.1, SR-12@1.1.1, SR-13@1.1.1, SR-14@1.1.1, SR-15@1.1.1, SR-17@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

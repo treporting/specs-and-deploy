@@ -15,7 +15,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/schema/check"
 )
 
-// @implements SR-18, SR-19
+// @implements SR-18@1.1.1, SR-19@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

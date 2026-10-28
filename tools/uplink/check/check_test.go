@@ -45,7 +45,7 @@ rules:
   status: approved
 `
 
-// @verifies SR-28
+// @verifies SR-28@1.1.1
 func TestApprovedUplinksPass(t *testing.T) {
 	got, approved := messages(t, files{
 		"requirements/tool-requirements.yaml": tools,
@@ -64,7 +64,7 @@ func TestApprovedUplinksPass(t *testing.T) {
 	}
 }
 
-// @verifies SR-28
+// @verifies SR-28@1.1.1
 func TestUplinkNotApprovedIsAFinding(t *testing.T) {
 	got, _ := messages(t, files{
 		"requirements/tool-requirements.yaml": tools,
@@ -87,7 +87,7 @@ func TestUplinkNotApprovedIsAFinding(t *testing.T) {
 // A requirement that is not approved may name what it likes: only the state of approved ones is
 // checked.
 //
-// @verifies SR-28
+// @verifies SR-28@1.1.1
 func TestDraftIsNotChecked(t *testing.T) {
 	got, approved := messages(t, files{
 		"requirements/tool-requirements.yaml": tools,
@@ -102,7 +102,7 @@ func TestDraftIsNotChecked(t *testing.T) {
 	}
 }
 
-// @verifies SR-28
+// @verifies SR-28@1.1.1
 func TestFileNotThere(t *testing.T) {
 	got, _ := messages(t, files{
 		"tools/software-requirements.yaml": `requirements:

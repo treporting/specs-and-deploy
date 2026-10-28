@@ -27,7 +27,7 @@ func (f Finding) String() string {
 // requirement that no file holds, or that is not approved. It answers too how many approved
 // requirements it checked. A file of requirements that is not there holds none.
 //
-// @implements SR-28
+// @implements SR-28@1.1.1
 func Check(read Read) ([]Finding, int, error) {
 
 	files := map[string][]byte{}

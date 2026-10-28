@@ -35,7 +35,7 @@ func write(t *testing.T, root, path, content string) {
 // A skeleton on a real history: it is made, and reviewcheck then reports every todo in it - an
 // unfilled skeleton cannot pass.
 //
-// @verifies SR-11, SR-12, SR-13, SR-14
+// @verifies SR-11@1.1.1, SR-12@1.1.1, SR-13@1.1.1, SR-14@1.1.1
 func TestASkeletonOnAHistoryOfGit(t *testing.T) {
 
 	root := t.TempDir()
