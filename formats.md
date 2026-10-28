@@ -101,8 +101,8 @@ of an object, as `Hazard` is for a hazard.
 
 **Rejected**:
 
-- a field `clause`: a renumbered clause would not change x, unless the schema named the field
-  for x as well; in `object_text` it does
+- a field `clause`: x rises when `object_text` changes; a change of the clause in a field of its
+  own would not raise it
 - the clause as a number alone, `'11: …'`: Art. 14 and Annex I of a law would both be numbers
 - the topic in `category`: it would mean another thing for this kind than for every other
 
