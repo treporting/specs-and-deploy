@@ -36,7 +36,7 @@ criteria:
   object_text: termed - it uses the terms as definitions.md defines them
   question: Does it use the terms as definitions.md defines them?
 - object_key: RC-08
-  source: ISO/IEC/IEEE 29148, 5.2.6 - consistent, a characteristic of a set of requirements, read for
+  source: REG_ISO29148_02 - consistent, a characteristic of a set of requirements, read for
     the documents
   object_text: consistent - it contradicts no other document and no requirement
   question: Does it contradict no other document and no requirement?
@@ -57,6 +57,6 @@ criteria:
   object_text: readable - its sentences are short, one statement each
   question: Are its sentences short, one statement each?
 - object_key: RC-13
-  source: treporting - after ISO29148, 5.2.5, complete, read for the documents
+  source: treporting - after REG_ISO29148_01, complete, read for the documents
   object_text: complete - it says all that its scope asks for
   question: Does it say all that its scope asks for?
