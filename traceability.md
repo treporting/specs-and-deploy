@@ -138,8 +138,9 @@ child could name a state that was never approved.
 
 **Decision**: only a change of x sets an approved object back to `draft`, and needs a review. A
 change of y or z only - a link updated, a remark - leaves it `approved`. Its merge is its approval,
-as for a rule, and raises y or z by one. The author makes the link check (definitions.md) - does the child
-still fit the new version of its parent? - and the Product Owner confirms it by the merge.
+as for a rule, and raises y or z by one. The author makes the link check (definitions.md) - does
+the child still fit the new version of its parent? - and the Product Owner confirms it by the
+merge.
 
 **Why**: x is there to set apart a change of meaning. What does not change the meaning needs no
 full review. So updating a link stays cheap, and the cascade stays away.
