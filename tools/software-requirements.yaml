@@ -285,7 +285,7 @@ requirements:
   component: uplink
   object_text: report an approved requirement that names an uplink in its source_ids that is not
     approved
-  source_ids: [TOOL-09@3.1.1]
+  source_ids: [TOOL-09@3.1.1, TOOL-01@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
