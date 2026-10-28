@@ -101,6 +101,8 @@ of an object, as `Hazard` is for a hazard.
 
 **Rejected**:
 
+- a field `clause`: the gel schema has no such property (section Fields are the properties of the
+  gel schema), and the clause fits in `object_text`
 - the clause as a number alone, `'11: …'`: Art. 14 and Annex I of a law would both be numbers
 - the topic in `category`: it would mean another thing for this kind than for every other
 
