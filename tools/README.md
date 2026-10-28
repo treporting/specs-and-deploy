@@ -266,3 +266,30 @@ go run ./uplink/cmd/uplinkcheck -root ..
 
 The code is the component `uplink`: the package `uplink/check` and the command
 `uplink/cmd/uplinkcheck`. It finds an id in its file through the component `review`.
+
+## linkcheck
+
+Makes the link check (TOOL-16; SR-32 to SR-34 in [software-requirements.yaml](software-requirements.yaml)),
+as definitions.md sets it out in the section Link check and impact assessment. It compares the
+version each entry names with the version its object has, and reports each whose object has
+another x (traceability.md, section When a link is suspect):
+
+- the links in `source_ids`, the entries of `allocated` and of `controls` in every file of
+  requirements (SR-32)
+- the ids of `@implements` and `@verifies`, found as annotationcheck finds them (SR-33)
+
+It reads the files as they stand. An entry whose object no file holds, or that names no version, is
+not compared: uplinkcheck, schemacheck and annotationcheck report it. It reports and does not
+decide whether the child still fits; that is the impact assessment.
+
+The CI runs it on every pull request in a job of its own, which does not fail and is no required
+check (SR-34): a suspect link blocks the baseline, not the pull request (PROC-20).
+
+```bash
+cd tools
+go run ./link/cmd/linkcheck -root ..
+```
+
+The code is the component `link`: the package `link/check` and the command `link/cmd/linkcheck`. It
+finds an id in its file through the component `review`, and the annotations through the component
+`annotation`.

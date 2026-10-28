@@ -126,7 +126,9 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 `reviewcheck` (SR-09), the job `tests` (SR-10), the job `schemacheck` (SR-20), the job
 `rulesetcheck` (SR-23), the job `annotationcheck` (SR-26, SR-31) and the job `uplinkcheck`
 (SR-29). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
-job failed cannot be merged, by anyone. The ruleset also allows the merge commit only, as the settings of the repo do.
+job failed cannot be merged, by anyone. The job `linkcheck` (SR-34) runs beside them and is no
+required check: it reports a suspect link and does not fail, as a suspect link blocks the baseline,
+not the pull request (PROC-20). The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
 is GitHub's - and the job `rulesetcheck` checks
