@@ -1,0 +1,309 @@
+# Review of REG_ARP4754B_01, REG_BetrVG_01, REG_CFR21-11_01, REG_CFR21-11_02, REG_CFR21-11_03, REG_CFR21-11_04, REG_CFR21-11_05, REG_DDG_01, REG_DO178C_01, REG_DO178C_02, REG_DO330_01, REG_EU2016-679_01, REG_EU2016-679_02, REG_EU2024-2847_01, REG_EU2024-2847_02, REG_EU2024-2847_03, REG_EU2024-2847_04, REG_FDADI_01, REG_IEC61508-1_01, REG_IEC61508-2_01, REG_IEC61508-3_01, REG_IEC61508-4_01, REG_IEC62304_01, REG_ISO13485_01, REG_ISO26262-8_01, REG_ISO26262-9_01, REG_Licences_01 against the criteria of the level n1.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides. The parts of a split
+# requirement were assigned to their clauses by Claude Code from the old text; the standards - ISO,
+# IEC, ARP, DO - are to be checked by the reviewer against their copies.
+# Format: ../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+level: review
+created_by: Mathias Fischer
+created_at: '2026-10-28T22:38:02+01:00'
+criteria: reviews/criteria-n1.yaml
+criteria_revision: '6bc400b'
+results:
+- object_key: RR-01
+  target_ids: [REG_ARP4754B_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-02
+  target_ids: [REG_BetrVG_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-03
+  target_ids: [REG_CFR21-11_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-04
+  target_ids: [REG_CFR21-11_02]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-05
+  target_ids: [REG_CFR21-11_03]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-06
+  target_ids: [REG_CFR21-11_04]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-07
+  target_ids: [REG_CFR21-11_05]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-08
+  target_ids: [REG_DDG_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-09
+  target_ids: [REG_DO178C_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-10
+  target_ids: [REG_DO178C_02]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-11
+  target_ids: [REG_DO330_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-12
+  target_ids: [REG_EU2016-679_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-13
+  target_ids: [REG_EU2016-679_02]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-14
+  target_ids: [REG_EU2024-2847_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-15
+  target_ids: [REG_EU2024-2847_02]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-16
+  target_ids: [REG_EU2024-2847_03]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-17
+  target_ids: [REG_EU2024-2847_04]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-18
+  target_ids: [REG_FDADI_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-19
+  target_ids: [REG_IEC61508-1_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-20
+  target_ids: [REG_IEC61508-2_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-21
+  target_ids: [REG_IEC61508-3_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-22
+  target_ids: [REG_IEC61508-4_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-23
+  target_ids: [REG_IEC62304_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-24
+  target_ids: [REG_ISO13485_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-25
+  target_ids: [REG_ISO26262-8_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-26
+  target_ids: [REG_ISO26262-9_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
+- object_key: RR-27
+  target_ids: [REG_Licences_01]
+  revision: '263587f'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+  verdict: passed
