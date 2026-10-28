@@ -3,6 +3,7 @@ package check
 import (
 	"os"
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -16,9 +17,20 @@ func (f files) read(file string) ([]byte, error) {
 	return nil, os.ErrNotExist
 }
 
+// list answers the names of the files directly in dir.
+func (f files) list(dir string) ([]string, error) {
+	var names []string
+	for file := range f {
+		if name, ok := strings.CutPrefix(file, dir+"/"); ok && !strings.Contains(name, "/") {
+			names = append(names, name)
+		}
+	}
+	return names, nil
+}
+
 func messages(t *testing.T, f files) ([]string, int) {
 	t.Helper()
-	findings, approved, err := Check(f.read)
+	findings, approved, err := Check(f.read, f.list)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -114,5 +126,29 @@ func TestFileNotThere(t *testing.T) {
 	want := []string{"SR-01 names TOOL-01@1.1.1: requirements/tool-requirements.yaml cannot be read"}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("findings %q, want %q", got, want)
+	}
+}
+
+// A regulatory requirement is found in the file of its module, which regulatory/ holds.
+//
+// @verifies SR-28@1.1.1
+func TestARegulatoryRequirementIsFoundInItsModule(t *testing.T) {
+	got, approved := messages(t, files{
+		"regulatory/ISO26262-8.yaml": `requirements:
+- object_key: REG_ISO26262-8_01
+  status: approved
+`,
+		"tools/software-requirements.yaml": `requirements:
+- object_key: SR-01
+  source_ids: [REG_ISO26262-8_01@1.1.1, REG_EU2016-679_01@1.1.1]
+  status: approved
+`,
+	})
+	want := []string{"SR-01 names REG_EU2016-679_01@1.1.1: regulatory/EU2016-679.yaml cannot be read"}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("findings %q, want %q", got, want)
+	}
+	if approved != 2 {
+		t.Errorf("approved %d, want 2", approved)
 	}
 }

@@ -3,6 +3,7 @@ package check
 import (
 	"os"
 	"reflect"
+	"strings"
 	"testing"
 
 	annotation "github.com/treporting/specs-and-deploy/tools/annotation/check"
@@ -16,6 +17,22 @@ func (f files) read(file string) ([]byte, error) {
 		return []byte(c), nil
 	}
 	return nil, os.ErrNotExist
+}
+
+// links makes the link check on the files.
+func (f files) links() ([]Finding, int, error) {
+	return Links(f.read, f.list)
+}
+
+// list answers the names of the files directly in dir.
+func (f files) list(dir string) ([]string, error) {
+	var names []string
+	for file := range f {
+		if name, ok := strings.CutPrefix(file, dir+"/"); ok && !strings.Contains(name, "/") {
+			names = append(names, name)
+		}
+	}
+	return names, nil
 }
 
 func lines(findings []Finding) []string {
@@ -38,13 +55,13 @@ requirements:
 
 // @verifies SR-32@1.1.1
 func TestOnlyAnotherXIsReported(t *testing.T) {
-	got, compared, err := Links(files{
+	got, compared, err := files{
 		"requirements/tool-requirements.yaml": tools,
 		"tools/software-requirements.yaml": `requirements:
 - object_key: SR-01
   source_ids: [TOOL-01@1.1.1, TOOL-09@3.1.1]
 `,
-	}.read)
+	}.links()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -59,7 +76,7 @@ func TestOnlyAnotherXIsReported(t *testing.T) {
 
 // @verifies SR-32@1.1.1
 func TestTheAllocationAndControlsAreCompared(t *testing.T) {
-	got, compared, err := Links(files{
+	got, compared, err := files{
 		"requirements/system-requirements.yaml": `requirements:
 - object_key: SYS-09
   object_version: '4.1.2'
@@ -76,7 +93,7 @@ func TestTheAllocationAndControlsAreCompared(t *testing.T) {
 - object_key: HAZC-01
   controls: [UN-PSF-01@1.1.1]
 `,
-	}.read)
+	}.links()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -96,13 +113,13 @@ func TestTheAllocationAndControlsAreCompared(t *testing.T) {
 //
 // @verifies SR-32@1.1.1
 func TestAMissingObjectIsNotCompared(t *testing.T) {
-	got, compared, err := Links(files{
+	got, compared, err := files{
 		"requirements/tool-requirements.yaml": tools,
 		"tools/software-requirements.yaml": `requirements:
 - object_key: SR-01
   source_ids: [TOOL-99@1.1.1, TOOL-09]
 `,
-	}.read)
+	}.links()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -124,5 +141,31 @@ func TestAnAnnotationWithAnotherXIsReported(t *testing.T) {
 	}
 	if compared != 3 {
 		t.Errorf("compared %d, want 3", compared)
+	}
+}
+
+// A link to a regulatory requirement is compared with the version in the file of its module.
+//
+// @verifies SR-32@1.1.1
+func TestALinkToAModuleIsCompared(t *testing.T) {
+	got, compared, err := files{
+		"regulatory/DO178C.yaml": `requirements:
+- object_key: REG_DO178C_02
+  object_version: '2.1.1'
+`,
+		"requirements/system-requirements.yaml": `requirements:
+- object_key: SYS-09
+  source_ids: [REG_DO178C_02@1.1.1]
+`,
+	}.links()
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := []string{"SYS-09 source_ids names REG_DO178C_02@1.1.1: its object has 2.1.1"}
+	if !reflect.DeepEqual(lines(got), want) {
+		t.Errorf("findings %q, want %q", lines(got), want)
+	}
+	if compared != 1 {
+		t.Errorf("compared %d, want 1", compared)
 	}
 }

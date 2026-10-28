@@ -28,7 +28,7 @@ func (f Finding) String() string {
 // requirements it checked. A file of requirements that is not there holds none.
 //
 // @implements SR-28@1.1.1
-func Check(read Read) ([]Finding, int, error) {
+func Check(read Read, list review.List) ([]Finding, int, error) {
 
 	files := map[string][]byte{}
 	load := func(file string) []byte {
@@ -45,7 +45,7 @@ func Check(read Read) ([]Finding, int, error) {
 
 	var findings []Finding
 	approved := 0
-	for _, file := range review.Files() {
+	for _, file := range review.Files(list) {
 		for _, object := range objects(load(file)) {
 			if object.Status != "approved" {
 				continue
