@@ -124,9 +124,9 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 
 **Decision**: `.github/workflows/tools.yml` runs on every pull request to `main`: the job
 `reviewcheck` (SR-09), the job `tests` (SR-10), the job `schemacheck` (SR-20), the job
-`rulesetcheck` (SR-23) and the job `annotationcheck` (SR-26). Both are required checks in the ruleset
-`main is protected`, which has no bypass - a pull request whose job failed cannot be merged, by
-anyone. The ruleset also allows the merge commit only, as the settings of the repo do.
+`rulesetcheck` (SR-23), the job `annotationcheck` (SR-26) and the job `uplinkcheck` (SR-29). Each
+is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
+job failed cannot be merged, by anyone. The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
 is GitHub's - and the job `rulesetcheck` checks

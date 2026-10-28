@@ -19,10 +19,25 @@ var requirementFiles = []struct{ prefix, file string }{
 	{"ARC-", "architecture/system-architecture.yaml"},
 	{"HAZC-", "safety/hazards.yaml"},
 	{"HAZ-", "safety/hazards.yaml"},
+	{"PROC-", "rules.yaml"},
+}
+
+// Files answers every file that holds requirements, each once, in the order of requirementFiles.
+func Files() []string {
+
+	var files []string
+	seen := map[string]bool{}
+	for _, rf := range requirementFiles {
+		if !seen[rf.file] {
+			seen[rf.file] = true
+			files = append(files, rf.file)
+		}
+	}
+	return files
 }
 
 // lists are the sections of a YAML that hold objects with an object_key.
-var lists = []string{"requirements", "elements", "hazards", "controls"}
+var lists = []string{"requirements", "elements", "decisions", "hazards", "controls", "rules"}
 
 // FileOf answers the file that holds a target, and the key to find it there; a document is its
 // own file and has no key.

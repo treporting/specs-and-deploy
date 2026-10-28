@@ -243,3 +243,25 @@ go run ./annotation/cmd/annotationcheck -root .. -base <commit>
 
 The code is the component `annotation`: the package `annotation/check` and the command
 `annotation/cmd/annotationcheck`.
+
+## uplinkcheck
+
+Checks that every approved requirement names approved uplinks only (TOOL-09; SR-28 and SR-29 in
+[software-requirements.yaml](software-requirements.yaml)). It reads every file of requirements as it
+stands - the levels, the tools, the rules - and reports each uplink in `source_ids` of an approved
+requirement that no file holds, or that is not approved. The version after `@` is not compared here;
+that is PROC-20.
+
+It checks the state, not a change: on `main` a requirement stays approved until its change passes
+its review, and a change whose review failed does not reach `main` (harness.md, step 10). So an
+approved requirement never names a draft there, unless someone merges one.
+
+The CI runs it on every pull request (SR-29).
+
+```bash
+cd tools
+go run ./uplink/cmd/uplinkcheck -root ..
+```
+
+The code is the component `uplink`: the package `uplink/check` and the command
+`uplink/cmd/uplinkcheck`. It finds an id in its file through the component `review`.

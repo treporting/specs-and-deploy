@@ -1,4 +1,4 @@
-# The gate of the tools on every pull request (TOOL-12, TOOL-05, TOOL-13, TOOL-06). Each job is a required check of the ruleset
+# The gate of the tools on every pull request (TOOL-12, TOOL-05, TOOL-13, TOOL-06, TOOL-09). Each job is a required check of the ruleset
 # of main, so a pull request whose job failed cannot be merged. See devops.md.
 name: tools
 
@@ -83,3 +83,14 @@ jobs:
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
         run: go run ./annotation/cmd/annotationcheck -root .. -base "$BASE"
+  uplinkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/go.mod
+          cache-dependency-path: tools/go.sum
+      - name: uplinkcheck
+        working-directory: tools
+        run: go run ./uplink/cmd/uplinkcheck -root ..
