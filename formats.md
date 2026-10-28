@@ -382,22 +382,24 @@ The same in Go and JavaScript, in the comment right above the function, method, 
 test, with no blank line between:
 
 ```go
-// @implements SR-02, SR-03
+// @implements SR-02@1.1.1, SR-03@2.1.1
 func markGaps(trace *Trace) { ... }
 
-// @verifies SR-02
+// @verifies SR-02@1.1.1
 func TestMarkGapsNeverCovered(t *testing.T) { ... }
 ```
 
 ```js
-/** @implements SR-05 */
+/** @implements SR-05@1.2.1 */
 export function StatusBand(props) { ... }
 
-// @verifies SR-05
+// @verifies SR-05@1.2.1
 it('shows the hidden filters', () => { ... })
 ```
 
 - one annotation per line, several ids separated by commas; never over two lines
+- each id names the version of its requirement, as `ID@x.y.z`, as a link does (TOOL-20;
+  traceability.md, section The right side of the V)
 - `@implements` names software requirements of its own repo only - in `tools/` as well
 - `@verifies` names software requirements of its own repo in a software test, system
   requirements in a system test
