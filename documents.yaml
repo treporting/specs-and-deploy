@@ -16,7 +16,7 @@ documents:
 - name: devops.md
   object_version: '1.1.1'
   object_hash: '03a4531'
-  status: approved
+  status: review
   verification_method: [review]
 - name: definitions.md
   object_version: '2.1.1'
@@ -31,7 +31,7 @@ documents:
 - name: formats.md
   object_version: '2.1.1'
   object_hash: '54cfdb8'
-  status: approved
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
