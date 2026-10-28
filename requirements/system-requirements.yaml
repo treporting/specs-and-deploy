@@ -194,7 +194,7 @@ requirements:
   feature: Provenance
   object_text: show on every view and in every report which data set, which revision and which build of
     the system it answers from, and how many objects of each kind
-  source_ids: [UN-RM-03@1.1.1, UN-ASR-02@1.1.1, UN-ALL-03@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-RM-03@1.1.1, UN-ASR-02@1.1.1, UN-ALL-03@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -248,7 +248,7 @@ requirements:
   object_text: count at every import, per kind of object, per type of link and per state, at four points
     - in the source by a query of its own, read, refused, and stored, counted from the storage afterwards
     - and name every difference
-  source_ids: [UN-PSF-01@1.1.1, UN-PSF-04@1.1.1, REG-01@1.1.1, REG-02@1.1.1, REG-03@1.1.1]
+  source_ids: [UN-PSF-01@1.1.1, UN-PSF-04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -258,7 +258,7 @@ requirements:
   object_version: '1.1.1'
   feature: Integrity
   object_text: build the same data set from the same source on every import
-  source_ids: [UN-PSF-06@1.1.1, REG-01@1.1.1, REG-02@1.1.1, REG-03@1.1.1]
+  source_ids: [UN-PSF-06@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -269,7 +269,7 @@ requirements:
   feature: Integrity
   object_text: compare at every import a fingerprint of the fields that matter of each object in the source
     with the same object as stored, and name every object that differs
-  source_ids: [UN-PSF-01@1.1.1, UN-PSF-02@1.1.1, REG-01@1.1.1, REG-02@1.1.1, REG-03@1.1.1]
+  source_ids: [UN-PSF-01@1.1.1, UN-PSF-02@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -281,7 +281,7 @@ requirements:
   object_text: mark every data set as complete, incomplete when its import showed a difference, or unverified
     when its source could not be counted on a way of its own - on every view and in every report that
     answers from it
-  source_ids: [UN-PSF-02@1.1.1, UN-PSF-04@1.1.1, REG-01@1.1.1, REG-02@1.1.1, REG-03@1.1.1]
+  source_ids: [UN-PSF-02@1.1.1, UN-PSF-04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -292,7 +292,7 @@ requirements:
   feature: Integrity
   object_text: report, in every release, every fault built into a data set of known content - a missing
     object, a missing link, an unknown value, a spelling that differs
-  source_ids: [REG-01@1.1.1, REG-02@1.1.1, REG-03@1.1.1, REG-04@1.1.1]
+  source_ids: [REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1, REG_ISO13485_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -343,7 +343,7 @@ requirements:
   object_version: '1.1.1'
   feature: Export
   object_text: export complete records with their history, readable by people and by machines
-  source_ids: [UN-ASR-06@1.1.1, REG-07@1.1.1]
+  source_ids: [UN-ASR-06@1.1.1, REG_CFR21-11_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -415,7 +415,7 @@ requirements:
   object_version: '1.1.1'
   feature: Audit
   object_text: authenticate every user by an identity of their own, and grant access by role
-  source_ids: [UN-OPS-08@1.1.1, REG-06@1.1.1]
+  source_ids: [UN-OPS-08@1.1.1, REG_CFR21-11_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -426,7 +426,7 @@ requirements:
   feature: Audit
   object_text: record for every report who produced it, when, from which data set and revision, and with
     which parameters
-  source_ids: [UN-ASR-04@1.1.1, REG-05@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-ASR-04@1.1.1, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -439,7 +439,7 @@ requirements:
     the record of an import holds the source and its revision, the time, who started it, the version of
     the converter, the counts at the four points of SYS-23, the objects refused with their reason, the
     result of the fingerprints of SYS-25 and the state of SYS-26
-  source_ids: [UN-ASR-05@1.1.1, REG-05@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-ASR-05@1.1.1, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -449,7 +449,7 @@ requirements:
   object_version: '1.1.1'
   feature: Audit
   object_text: keep the records and their audit trail for a set period, readable throughout
-  source_ids: [UN-OPS-09@1.1.1, REG-08@1.1.1]
+  source_ids: [UN-OPS-09@1.1.1, REG_CFR21-11_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -461,7 +461,7 @@ requirements:
   object_text: give every report an identity of its own and a fingerprint of the data it was made from,
     so that a decision taken elsewhere - such as the approval of a release - can name the report it relied
     on
-  source_ids: [UN-RM-05@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-RM-05@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -472,7 +472,7 @@ requirements:
   feature: Audit
   object_text: use the record of what users did only for the purposes set, delete it after the period
     set, and show it only to the roles allowed to see it
-  source_ids: [UN-ALL-04@1.1.1, REG-11@1.1.1, REG-12@1.1.1]
+  source_ids: [UN-ALL-04@1.1.1, REG_EU2016-679_01@1.1.1, REG_BetrVG_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -620,7 +620,7 @@ requirements:
   object_version: '1.1.1'
   feature: Constraints
   object_text: carry a legal notice and a privacy notice on every page reachable from the internet
-  source_ids: [REG-13@1.1.1]
+  source_ids: [REG_DDG_01@1.1.1, REG_EU2016-679_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -686,7 +686,7 @@ requirements:
   feature: Delivery
   object_text: come with an SBOM in every release, naming each component, its version and its licence,
     and with the licence texts and notices of the components
-  source_ids: [UN-OPS-12@1.1.1, REG-14@1.1.1, REG-15@1.1.1, REG-18@1.1.1]
+  source_ids: [UN-OPS-12@1.1.1, REG_EU2024-2847_01@1.1.1, REG_EU2024-2847_02@1.1.1, REG_Licences_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -696,7 +696,7 @@ requirements:
   object_version: '1.1.1'
   feature: Delivery
   object_text: be delivered with a secure configuration by default
-  source_ids: [REG-14@1.1.1]
+  source_ids: [REG_EU2024-2847_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -707,7 +707,7 @@ requirements:
   feature: Delivery
   object_text: be updatable to a release that fixes a vulnerability, without other changes coming with
     it
-  source_ids: [UN-OPS-11@1.1.1, REG-14@1.1.1, REG-15@1.1.1]
+  source_ids: [UN-OPS-11@1.1.1, REG_EU2024-2847_01@1.1.1, REG_EU2024-2847_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -717,7 +717,7 @@ requirements:
   object_version: '1.1.1'
   feature: Delivery
   object_text: state the period over which a release gets security fixes
-  source_ids: [UN-OPS-11@1.1.1, REG-17@1.1.1]
+  source_ids: [UN-OPS-11@1.1.1, REG_EU2024-2847_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -728,7 +728,7 @@ requirements:
   feature: Delivery
   object_text: name, in every release and on the demo, where a vulnerability is reported and how it is
     handled
-  source_ids: [UN-OPS-13@1.1.1, REG-15@1.1.1]
+  source_ids: [UN-OPS-13@1.1.1, REG_EU2024-2847_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -740,7 +740,7 @@ requirements:
   object_text: keep every value as read from its source, and keep a value it derives beside it under a
     name of its own - `M` for mapped, also from the parent where the original is empty; `I` for an intermediate
     form of the status -, and say on every view which of the two it shows
-  source_ids: [UN-PSF-05@1.1.1, UN-SAF-03@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-PSF-05@1.1.1, UN-SAF-03@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -764,8 +764,8 @@ requirements:
     class than its parent and no decomposition, an unclassified child under a classified parent, a passed
     test result without a test case, a cycle in the trace, a link into another baseline; the import reads
     the data as it is and is never stopped or changed by such a finding
-  source_ids: [UN-SAF-01@1.1.1, UN-SAF-03@1.1.1, UN-PSF-01@1.1.1, REG-19@1.1.1, REG-20@1.1.1,
-    REG-21@1.1.1, REG-22@1.1.1]
+  source_ids: [UN-SAF-01@1.1.1, UN-SAF-03@1.1.1, UN-PSF-01@1.1.1, REG_ISO26262-9_01@1.1.1, REG_ARP4754B_01@1.1.1, REG_DO178C_02@1.1.1,
+    REG_IEC61508-4_01@1.1.1, REG_IEC61508-1_01@1.1.1, REG_IEC61508-2_01@1.1.1, REG_IEC62304_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -787,7 +787,7 @@ requirements:
   object_text: recognize a finding as evaluated when its object carries an evaluation in its source -
     an attribute or a link set by the configuration -, and show for every finding whether it is evaluated
     or open, with the evaluation
-  source_ids: [UN-ASR-07@1.1.1, UN-SAF-01@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-ASR-07@1.1.1, UN-SAF-01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -809,7 +809,7 @@ requirements:
   feature: Verification
   object_text: show for every requirement its status and its reviews - the criteria, the result per criterion,
     who reviewed it, when, and the revision reviewed
-  source_ids: [UN-QA-06@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-QA-06@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -819,7 +819,7 @@ requirements:
   object_version: '1.1.1'
   feature: Verification
   object_text: count a review of a requirement only for the revision it reviewed, never for a newer one
-  source_ids: [UN-QA-06@1.1.1, REG-10@1.1.1]
+  source_ids: [UN-QA-06@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft

@@ -1,0 +1,57 @@
+# Regulatory requirements of CFR21-11 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_CFR21-11_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '11.10(e) - keep a secure, computer-generated audit trail with time stamps of every
+    creation, change and deletion of a record, without hiding what was there before'
+  applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: REG_CFR21-11_02
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '11.10(d), (g) - let only authorised people use the system, and check their authority
+    for what they do'
+  applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: REG_CFR21-11_03
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '11.10(b) - produce accurate and complete copies of records, readable by people and
+    in electronic form'
+  applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: REG_CFR21-11_04
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '11.10(c) - protect records so that they can be retrieved accurately throughout their
+    retention period'
+  applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: REG_CFR21-11_05
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '11.50, 11.70 - an electronic signature shows the name of the signer, the time and
+    its meaning, and is bound to its record so that it cannot be moved to another'
+  applies_to: medical (FDA)
+  not_realized: treporting signs nothing; an approval is made where the organization makes it, and
+    can name the report it relied on (SYS-43)
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]

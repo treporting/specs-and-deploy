@@ -1,0 +1,15 @@
+# Regulatory requirements of IEC61508-4 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_IEC61508-4_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '3.5.8 - a safety function has a SIL, one of four discrete levels of its safety
+    integrity requirements'
+  applies_to: industry, railway (EN 50716)
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]

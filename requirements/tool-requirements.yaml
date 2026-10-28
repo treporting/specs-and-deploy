@@ -4,8 +4,8 @@ schema: schemas/tool-requirements.schema.json
 level: tool
 documents:
 - name: tool-requirements.md
-  object_version: '3.1.1'
-  object_hash: '94b2d52'
+  object_version: '4.1.1'
+  object_hash: 'd3a1bbd'
   status: approved
   verification_method: [review]
 requirements:
@@ -15,7 +15,7 @@ requirements:
   object_text: export every document to PDF with the settings kept in the repo - the title of the document
     and the name of the repo in the header, the date and the page of the pages in the footer, margins
     of 2 cm at top and bottom
-  source_ids: [REG-10@1.1.1]
+  source_ids: [REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -25,7 +25,7 @@ requirements:
   feature: Documents to PDF
   object_text: show in the header or footer of an exported document its version, its revision and its
     own status
-  source_ids: [REG-10@1.1.1]
+  source_ids: [REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft

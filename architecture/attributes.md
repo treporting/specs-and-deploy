@@ -72,8 +72,8 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | Value | a time with its zone; the name of a person as the source gives it |
 | Comes from | the source, as it records it - DOORS, for instance, keeps *Created On*, *Created By*, *Last Modified On*, *Last Modified By*; for a file in GIT the commit gives them |
 | Note | not the time of the import: that is in the import record. The names are personal data, kept only for the purposes set (UN-ALL-04, SYS-44) |
-| Used by | REG-10, data attributable to whom it comes from; SYS-16, what changed between two baselines |
-| Prototype | new - REG-10: data attributable to whom it comes from |
+| Used by | REG_FDADI_01, data attributable to whom it comes from; SYS-16, what changed between two baselines |
+| Prototype | new - REG_FDADI_01: data attributable to whom it comes from |
 
 ## Requirement
 
@@ -402,11 +402,11 @@ The other types follow.
 
 | What | How | Why |
 |---|---|---|
-| feature, function and safety of a requirement, taken from the parent where the own original is empty | changed: they go into the mapped value (`M`); the prototype writes them into the original - for priority and platform and launch it uses the mapped value already | the original stays original (ARC-R01, REG-10), and it can be shown that an object was not classified by itself |
+| feature, function and safety of a requirement, taken from the parent where the own original is empty | changed: they go into the mapped value (`M`); the prototype writes them into the original - for priority and platform and launch it uses the mapped value already | the original stays original (ARC-R01, REG_FDADI_01), and it can be shown that an object was not classified by itself |
 | `verification_method` | renamed from `coverage` | `coverage` had two meanings; ISO/IEC/IEEE 29148 |
 | `coverage` | changed: the code coverage level | as above |
 | `module_prefix` | changed: on every object in a document | an id is unique only within its document, and links name it |
-| `created_at`, `created_by`, `modified_at`, `modified_by` | new, on every type | REG-10 |
+| `created_at`, `created_by`, `modified_at`, `modified_by` | new, on every type | REG_FDADI_01 |
 | `prefix` of a document | renamed to `module_prefix` | the same thing as on its objects |
 | ReviewCriteria, ReviewResult, the link `reviewedBy` | new | the review of every requirement before it is approved |
 | `feature`, `function`, `safety` of a test case | renamed to `mfeature`, `mfunction`, `msafety`, with no original | they are always derived from the requirement; the name says so |

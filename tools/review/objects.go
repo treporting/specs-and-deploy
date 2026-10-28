@@ -13,7 +13,6 @@ import (
 // requirementFiles tell by the prefix of an id the file that holds it.
 var requirementFiles = []struct{ prefix, file string }{
 	{"UN-", "requirements/user-needs.yaml"},
-	{"REG-", "requirements/regulatory-requirements.yaml"},
 	{"SYS-", "requirements/system-requirements.yaml"},
 	{"TOOL-", "requirements/tool-requirements.yaml"},
 	{"SR-", "tools/software-requirements.yaml"},

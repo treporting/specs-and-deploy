@@ -1,0 +1,26 @@
+# Regulatory requirements of DO178C (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_DO178C_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '12.2 - a tool that eliminates, reduces or automates a process of DO-178C and whose
+    output is not verified otherwise is qualified; it gets a tool qualification level (TQL) from the
+    software level and its function as a tool, not the software level itself'
+  applies_to: airborne
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: REG_DO178C_02
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '2.3 - software gets the software level that follows from the severity of the failure
+    conditions it can contribute to'
+  applies_to: airborne
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]

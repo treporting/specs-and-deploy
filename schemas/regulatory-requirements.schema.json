@@ -26,7 +26,7 @@
         "required": [
           "object_key",
           "object_text",
-          "source",
+          "category",
           "applies_to",
           "status",
           "verification_method",
@@ -42,7 +42,8 @@
         "properties": {
           "object_key": {
             "type": "string",
-            "pattern": "^REG-[0-9]{2}$"
+            "pattern": "^REG_[A-Za-z0-9-]+_[0-9]{2}$",
+            "description": "REG_<module>_nn - the module is the short form of standards.md and the name of the file, nn counts from 01 in it (formats.md, section Regulatory requirements)"
           },
           "object_version": {
             "type": "string",
@@ -51,11 +52,8 @@
           },
           "object_text": {
             "type": "string",
-            "minLength": 1
-          },
-          "source": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "description": "begins with the clause, where its source has one, as the source names it, then ' - ' (formats.md, section Regulatory requirements)"
           },
           "applies_to": {
             "type": "string",
@@ -66,8 +64,8 @@
             "description": "why treporting does not realize it; then no SYS names it"
           },
           "category": {
-            "type": "string",
-            "minLength": 1
+            "const": "Normative",
+            "description": "the kind of the object, as in the model (attributes.md, section Normative)"
           },
           "priority": {
             "type": "string"
@@ -100,63 +98,6 @@
           }
         }
       }
-    },
-    "documents": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "required": [
-          "name",
-          "object_version",
-          "object_hash",
-          "status",
-          "verification_method"
-        ],
-        "additionalProperties": false,
-        "attributes_for_version_x": [
-          "object_hash"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "pattern": "^([a-z0-9-]+/)*[A-Za-z0-9-]+\\.md$"
-          },
-          "object_version": {
-            "type": "string",
-            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
-            "description": "x.y.z - x the content of the file, as object_hash; y the links, z every other attribute; set at the approval (traceability.md)"
-          },
-          "object_hash": {
-            "type": "string",
-            "pattern": "^([0-9a-f]{7})?$",
-            "description": "the content approved: git hash-object of the file, 7 characters; set at the approval, '' before the first (traceability.md)"
-          },
-          "status": {
-            "enum": [
-              "draft",
-              "review",
-              "approved",
-              "obsolete"
-            ]
-          },
-          "verification_method": {
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-              "enum": [
-                "inspection",
-                "analysis",
-                "demonstration",
-                "test",
-                "review"
-              ]
-            }
-          }
-        }
-      },
-      "description": "the documents beside this file that explain it, each with a status of its own"
     }
   }
 }
