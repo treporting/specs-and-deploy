@@ -303,3 +303,23 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: SR-30
+  object_version: '1.1.1'
+  component: annotation
+  object_text: report an `@implements` or `@verifies` that does not name the version of its id, as
+    `ID@x.y.z`
+  source_ids: [TOOL-20@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR-31
+  object_version: '1.1.1'
+  component: ci
+  object_text: on every pull request, in .github/workflows/tools.yml, fail where an annotation names no
+    version; a pull request whose check failed cannot be merged
+  source_ids: [TOOL-20@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
