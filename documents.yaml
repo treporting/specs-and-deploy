@@ -41,5 +41,5 @@ documents:
 - name: traceability.md
   object_version: '1.1.1'
   object_hash: 'eb14b96'
-  status: draft
+  status: review
   verification_method: [review]
