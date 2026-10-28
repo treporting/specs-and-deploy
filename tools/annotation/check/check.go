@@ -1,5 +1,5 @@
 // Package check checks that every id an annotation names is approved in the base commit of the
-// pull request (TOOL-06).
+// pull request (TOOL-06), and that it names its version (TOOL-20).
 package check
 
 import (
@@ -21,14 +21,15 @@ type Git interface {
 
 // Annotation is one @implements or @verifies, and the ids it names.
 type Annotation struct {
-	File string
-	Line int
-	Kind string // implements or verifies
-	IDs  []string
+	File     string
+	Line     int
+	Kind     string   // implements or verifies
+	IDs      []string // the ids alone
+	Versions []string // the version each id names after its @, "" where it names none
 }
 
-// Finding is one id an annotation names that is missing or not approved in the base commit, or a
-// file whose kind is set neither as code nor as no code.
+// Finding is one id an annotation names that is missing or not approved in the base commit, or
+// that names no version, or a file whose kind is set neither as code nor as no code.
 type Finding struct {
 	Annotation Annotation
 	ID         string
@@ -82,14 +83,18 @@ func (k Kinds) kindOf(file string) string {
 }
 
 // annotation is a line of comment that begins with an annotation: after spaces, a comment mark of
-// one to three signs other than a quote, then @implements or @verifies and its ids.
-var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+([A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:\\s*,\\s*[A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9])*)")
+// one to three signs other than a quote, then @implements or @verifies and its ids, each with what
+// follows its @, if anything.
+var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+([A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:@[^\\s,]*)?(?:\\s*,\\s*[A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:@[^\\s,]*)?)*)")
+
+// version is the form of a version: x.y.z.
+var version = regexp.MustCompile(`^[0-9]+\.[0-9]+\.[0-9]+$`)
 
 // Find answers every annotation in the files, relative to root, whose kind is code, and a finding
 // for every file whose kind is on neither list. A YAML that names a schema is our data and is not
 // read. A file is read only once its name has told it is code.
 //
-// @implements SR-24, SR-27
+// @implements SR-24@1.1.1, SR-27@1.1.1
 func Find(root string, files []string, kinds Kinds) ([]Annotation, []Finding, error) {
 
 	var found []Annotation
@@ -114,11 +119,13 @@ func Find(root string, files []string, kinds Kinds) ([]Annotation, []Finding, er
 			if m == nil {
 				continue
 			}
-			var ids []string
-			for _, id := range strings.Split(m[2], ",") {
-				ids = append(ids, strings.TrimSpace(id))
+			var ids, versions []string
+			for _, named := range strings.Split(m[2], ",") {
+				id, v, _ := strings.Cut(strings.TrimSpace(named), "@")
+				ids = append(ids, id)
+				versions = append(versions, v)
 			}
-			found = append(found, Annotation{file, i + 1, m[1], ids})
+			found = append(found, Annotation{file, i + 1, m[1], ids, versions})
 		}
 	}
 	return found, unknown, nil
@@ -135,10 +142,26 @@ func isData(file string, content []byte) bool {
 	return yaml.Unmarshal(content, &doc) == nil && doc.Schema != ""
 }
 
+// Unversioned answers each id the annotations name without a version as x.y.z after its @.
+//
+// @implements SR-30@1.1.1
+func Unversioned(annotations []Annotation) []Finding {
+
+	var findings []Finding
+	for _, a := range annotations {
+		for i, id := range a.IDs {
+			if !version.MatchString(a.Versions[i]) {
+				findings = append(findings, Finding{a, id, fmt.Sprintf("names no version, as %s@x.y.z", id)})
+			}
+		}
+	}
+	return findings
+}
+
 // Check answers each id the annotations name that is not in the requirements of the base commit,
 // or not approved there.
 //
-// @implements SR-24, SR-25
+// @implements SR-24@1.1.1, SR-25@1.1.1
 func Check(git Git, base string, annotations []Annotation) []Finding {
 
 	var findings []Finding

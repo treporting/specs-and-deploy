@@ -15,7 +15,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/uplink/check"
 )
 
-// @implements SR-28
+// @implements SR-28@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

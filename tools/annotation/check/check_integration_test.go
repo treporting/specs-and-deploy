@@ -21,7 +21,7 @@ func gitIn(t *testing.T, dir string, args ...string) string {
 
 // A requirement approved in the same pull request does not count: the base commit has it as draft.
 //
-// @verifies SR-25
+// @verifies SR-25@1.1.1
 func TestApprovedInTheSamePullRequestDoesNotCount(t *testing.T) {
 
 	dir := write(t, map[string]string{"tools/software-requirements.yaml": strings.Replace(requirements, "SR-01\n  status: approved", "SR-01\n  status: draft", 1)})

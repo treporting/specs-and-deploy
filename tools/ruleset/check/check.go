@@ -39,7 +39,7 @@ type Client struct {
 // and answers each difference. A ruleset that cannot be read, or no ruleset of that name, is a
 // finding too, not a pass.
 //
-// @implements SR-21, SR-22
+// @implements SR-21@1.1.1, SR-22@1.1.1
 func Check(c Client, want []byte) ([]Finding, error) {
 
 	var file map[string]any
@@ -83,7 +83,7 @@ func Check(c Client, want []byte) ([]Finding, error) {
 // compareRules answers each rule that is only on GitHub, only in the file, or different in both,
 // by the type of the rule.
 //
-// @implements SR-21
+// @implements SR-21@1.1.1
 func compareRules(github, file any) []Finding {
 
 	byType := func(rules any) (map[string]any, []string) {

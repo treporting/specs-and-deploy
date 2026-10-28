@@ -1,4 +1,4 @@
-# The gate of the tools on every pull request (TOOL-12, TOOL-05, TOOL-13, TOOL-06, TOOL-09). Each job is a required check of the ruleset
+# The gate of the tools on every pull request (TOOL-12, TOOL-05, TOOL-13, TOOL-06, TOOL-20, TOOL-09). Each job is a required check of the ruleset
 # of main, so a pull request whose job failed cannot be merged. See devops.md.
 name: tools
 

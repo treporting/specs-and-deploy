@@ -77,7 +77,7 @@ func contains(t *testing.T, content string, want ...string) {
 	}
 }
 
-// @verifies SR-11
+// @verifies SR-11@1.1.1
 func TestTheNameTheReviewerAndTheTime(t *testing.T) {
 	path, content, err := makeSkeleton(t, "TOOL-03")
 	if err != nil {
@@ -89,7 +89,7 @@ func TestTheNameTheReviewerAndTheTime(t *testing.T) {
 	contains(t, content, "created_by: Mathias Fischer\n", "created_at: '2026-10-26T14:30:05+01:00'\n")
 }
 
-// @verifies SR-12
+// @verifies SR-12@1.1.1
 func TestTheCriteriaOfTheLevel(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL-03")
 	if err != nil {
@@ -104,7 +104,7 @@ func TestTheCriteriaOfTheLevel(t *testing.T) {
 	contains(t, content, "criteria: reviews/criteria-documents.yaml\n")
 }
 
-// @verifies SR-13
+// @verifies SR-13@1.1.1
 func TestTheRevisionIsHead(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL-03")
 	if err != nil {
@@ -113,7 +113,7 @@ func TestTheRevisionIsHead(t *testing.T) {
 	contains(t, content, "  revision: 'c2'\n")
 }
 
-// @verifies SR-14
+// @verifies SR-14@1.1.1
 func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL-03", "TOOL-04")
 	if err != nil {
@@ -128,7 +128,7 @@ func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
 	}
 }
 
-// @verifies SR-15
+// @verifies SR-15@1.1.1
 func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
 	if _, _, err := makeSkeleton(t, "TOOL-99"); err == nil || !strings.Contains(err.Error(), "TOOL-99 is not in") {
 		t.Errorf("want TOOL-99 not found, got %v", err)
@@ -141,7 +141,7 @@ func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
 	}
 }
 
-// @verifies SR-17
+// @verifies SR-17@1.1.1
 func TestTheSkeletonNamesItsSchema(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL-03")
 	if err != nil {

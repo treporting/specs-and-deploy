@@ -1,10 +1,10 @@
 // Command annotationcheck checks that every id named in @implements or @verifies is approved in the
-// base commit of the pull request (TOOL-06).
+// base commit of the pull request (TOOL-06), and names its version (TOOL-20).
 //
 //	annotationcheck [-root dir] [-base rev]
 //
 // Without -base, the base commit is where HEAD branched from main. It prints every id that is
-// missing or not approved there, and exits with 1 where there is one.
+// missing or not approved there, or names no version, and exits with 1 where there is one.
 package main
 
 import (
@@ -19,7 +19,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements SR-24, SR-25, SR-27
+// @implements SR-24@1.1.1, SR-25@1.1.1, SR-27@1.1.1, SR-30@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
@@ -46,7 +46,8 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	findings := append(unknown, check.Check(review.ExecGit{Root: *root}, *base, annotations)...)
+	findings := append(unknown, check.Unversioned(annotations)...)
+	findings = append(findings, check.Check(review.ExecGit{Root: *root}, *base, annotations)...)
 	for _, f := range findings {
 		fmt.Println(f)
 	}

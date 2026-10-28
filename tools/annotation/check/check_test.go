@@ -77,7 +77,7 @@ func filesOf(found []Annotation) string {
 	return strings.Join(got, " ")
 }
 
-// @verifies SR-24
+// @verifies SR-24@1.1.1
 func TestOnlyCodeIsRead(t *testing.T) {
 	found, unknown := find(t, map[string]string{
 		"a.go":                  "// @implements SR-01\nfunc a() {}\n",
@@ -99,7 +99,7 @@ func TestOnlyCodeIsRead(t *testing.T) {
 	}
 }
 
-// @verifies SR-27
+// @verifies SR-27@1.1.1
 func TestAKindOnNeitherList(t *testing.T) {
 	found, unknown := find(t, map[string]string{
 		"query.sql": "-- @implements SR-99\n",
@@ -114,7 +114,7 @@ func TestAKindOnNeitherList(t *testing.T) {
 	}
 }
 
-// @verifies SR-24
+// @verifies SR-24@1.1.1
 func TestOnlyFirstInALineOfComment(t *testing.T) {
 	//	built with \n, not as a string over lines: a line of a raw string that begins with a mark of
 	//	comment would be read as an annotation of this file itself
@@ -129,27 +129,51 @@ func TestOnlyFirstInALineOfComment(t *testing.T) {
 	}
 }
 
-// @verifies SR-24
+// @verifies SR-24@1.1.1
 func TestAnIdNotInTheBaseCommit(t *testing.T) {
-	got := messages(Check(base, "b1", []Annotation{{"a.go", 3, "implements", []string{"SR-01", "SR-07"}}}))
+	got := messages(Check(base, "b1", []Annotation{{"a.go", 3, "implements", []string{"SR-01", "SR-07"}, []string{"1.1.1", "1.1.1"}}}))
 	if len(got) != 1 || got[0] != "a.go:3 @implements SR-07: not in tools/software-requirements.yaml in the base commit b1" {
 		t.Errorf("got %q", got)
 	}
 }
 
-// @verifies SR-25
+// @verifies SR-25@1.1.1
 func TestAnIdNotApprovedInTheBaseCommit(t *testing.T) {
-	got := messages(Check(base, "b1", []Annotation{{"a_test.go", 9, "verifies", []string{"SR-02"}}}))
+	got := messages(Check(base, "b1", []Annotation{{"a_test.go", 9, "verifies", []string{"SR-02"}, []string{"1.1.1"}}}))
 	if len(got) != 1 || got[0] != "a_test.go:9 @verifies SR-02: draft in the base commit b1, not approved" {
 		t.Errorf("got %q", got)
 	}
 }
 
-// @verifies SR-24
+// @verifies SR-24@1.1.1
 func TestSeveralIdsInOneAnnotation(t *testing.T) {
 	found, _ := find(t, map[string]string{"a.go": "// @implements SR-01, SR-02,SR-03\n"})
 	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR-01 SR-02 SR-03" {
 		t.Errorf("got %+v", found)
+	}
+}
+
+// @verifies SR-30@1.1.1
+func TestTheVersionIsReadApartFromTheId(t *testing.T) {
+	found, _ := find(t, map[string]string{"a.go": "// @implements SR-01@2.1.3, SR-02@1.1.1\n"})
+	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR-01 SR-02" || strings.Join(found[0].Versions, " ") != "2.1.3 1.1.1" {
+		t.Errorf("got %+v", found)
+	}
+	if got := messages(Unversioned(found)); len(got) != 0 {
+		t.Errorf("want no finding, got %q", got)
+	}
+}
+
+// @verifies SR-30@1.1.1
+func TestAnIdWithoutAVersion(t *testing.T) {
+	found, _ := find(t, map[string]string{"a.go": "// @implements SR-01@1.1.1, SR-02, SR-03@1.1\n"})
+	got := messages(Unversioned(found))
+	want := []string{
+		"a.go:1 @implements SR-02: names no version, as SR-02@x.y.z",
+		"a.go:1 @implements SR-03: names no version, as SR-03@x.y.z",
+	}
+	if strings.Join(got, "\n") != strings.Join(want, "\n") {
+		t.Errorf("got %q, want %q", got, want)
 	}
 }
 
