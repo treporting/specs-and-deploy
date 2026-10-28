@@ -41,7 +41,7 @@ criteria:
   object_text: correct - it states rightly what its uplinks ask for
   question: Does it state rightly what its uplinks ask for?
 - object_key: RC-10
-  source: treporting - traceable; ISO/IEC/IEEE 29148, 5.2.8 - rationale
+  source: treporting - traceable; REG_ISO29148_03 - rationale
   object_text: traceable - every uplink it names - a rule of the harness or a regulatory requirement -
     exists; where it names none, it gives its rationale
   question: Does every uplink it names exist - and where it has none, does it give its rationale?

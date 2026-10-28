@@ -27,3 +27,15 @@ requirements:
   safety: ''
   status: review
   verification_method: [inspection]
+- object_key: REG_ISO29148_03
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '5.2.8 - a requirement has attributes beside its statement, among them its rationale -
+    why it is needed'
+  applies_to: all
+  not_realized: kept by our work, not by the product - the reviews against the criteria of each level
+    (PROC_13), whose criteria name it as their source
+  priority: 'medium'
+  safety: ''
+  status: review
+  verification_method: [inspection]

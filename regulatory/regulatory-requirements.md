@@ -50,4 +50,4 @@ The characteristics every requirement of treporting is reviewed against. treport
 them; our work keeps them, in the reviews against the criteria of each level (PROC_13). A criterion
 names the one it comes from in its field `source`.
 
-`REG_ISO29148_01`, `REG_ISO29148_02`: in [ISO29148.yaml](ISO29148.yaml).
+`REG_ISO29148_01` to `REG_ISO29148_03`: in [ISO29148.yaml](ISO29148.yaml).
