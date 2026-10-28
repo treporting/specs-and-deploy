@@ -62,10 +62,10 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_06
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   feature: CI check
-  object_text: check on every pull request that every id named in `@implements` or `@verifies` exists, and
-    is approved, in the base commit of the pull request
+  object_text: check on every pull request that every id named in `@implements`, `@verifies` or `@refines`
+    exists, and is approved, in the base commit of the pull request
   source_ids: [PROC_05@1.1.1]
   priority: 'medium'
   safety: ''
@@ -204,10 +204,10 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_20
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   feature: CI check
-  object_text: check on every pull request that every `@implements` and `@verifies` names the version of
-    its id, as `ID@x.y.z`
+  object_text: check on every pull request that every `@implements`, `@verifies` and `@refines` names the
+    version of its id, as `ID@x.y.z`
   source_ids: [PROC_20@2.1.1]
   priority: 'medium'
   safety: ''
