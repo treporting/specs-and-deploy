@@ -370,6 +370,83 @@ counts for z.
 **Rejected**: a mark on each attribute, `"safety": { …, "versionPart": "x" }`. Then x is found only
 by searching every field.
 
+## The version of a document
+
+PROC-13 and PROC-14 hold for documents as well as for requirements. A document is named in the
+`documents` section of a YAML (formats.md, section Documents).
+
+**Decision**: a document carries a version `x.y.z` in `object_version`, as a requirement does, with
+the same meaning: x its content, y its links, z every other attribute.
+
+**Why**: one form and one rule for everything that is approved. A check of the version needs no
+special case, and where a document gets links one day, y is there for them.
+
+**Rejected**: a single number for a document, `version: '3'`. It is simpler to read, but there
+would be two forms of a version, and the tools would need two rules.
+
+**Decision**: the content of a document is held in `object_hash`: `git hash-object` of its file,
+7 characters, as for rules.yaml (formats.md, section Rules). It is the one attribute for x:
+`"attributes_for_version_x": ["object_hash"]`.
+
+```yaml
+documents:
+- name: devops.md
+  object_version: '2.1.1'
+  object_hash: 'a1b2c3d'
+  status: approved
+  verification_method: [review]
+```
+
+**Why**:
+
+- the hash stands for the text of the document, as `object_text` holds the text of a requirement.
+  So x counts a field, as for every other kind, and the list for x is not empty.
+- it records which content was approved
+- it makes a change visible that PROC-14 forbids: an approved document whose file no longer
+  matches its hash was changed without going back to `draft`
+
+**Rejected**:
+
+- `"attributes_for_version_x": []` with a sentence in formats.md that x of a document is its
+  file: a special case, which no field shows
+- a field that names the file, such as `["file"]`: it is no field of the entry, and a check of
+  the list against the fields would fail on it
+- `content_hash`: it says more exactly what is hashed, but it falls out of the group of the
+  object itself (section The version in the schema)
+
+The hash is no version. The version stays `x.y.z`; the hash is what x counts. A hash on a link,
+`SYS-09#a1b2`, stays rejected (section The version a link names).
+
+**Decision**: `object_hash` is set at the approval only, with the version. While a document is a
+draft, its hash stays the one approved last; before its first approval it is `''`.
+
+**Table hash** - devops.md, `object_hash` and the hash of its file
+
+| State | `object_hash` | Check |
+|---|---|---|
+| `approved`, unchanged | equals the file | fine |
+| changed, `draft` | stays the old one, differs | fine: a draft may differ |
+| changed, still `approved` | differs | finding: against PROC-14 |
+| new, `draft` | `''` | fine |
+| approved | the hash of the file, x rises | equals the file |
+
+**Why**:
+
+- it is set once, in the commit of the decision, not at every change of the file
+- a draft shows which approved content it changes
+
+**Rejected**: the hash follows every change of the file, as `object_text` does. Every commit on a
+document would have to update it as well, and without a tool it is forgotten; the check against
+PROC-14 would need the base commit again.
+
+**Decision**: every document of today starts at `1.1.1`. An approved one carries the hash of its
+file of today, a draft `''`.
+
+**Why**: the same start as for every other object (section The parts of the version). The drafts
+of today were never approved, so no approved content exists for them.
+
+**Rejected**: none other was weighed; the start of the other objects holds here as well.
+
 ## The allocation
 
 The allocation (r4) is the field `allocated` of each subsystem in the architecture. The system

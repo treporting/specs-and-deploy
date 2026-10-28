@@ -79,10 +79,10 @@ holds only what the author writes:
 - **function** is the role of a user need (PM, RM, ..., PSF); a requirement below takes it from its
   parent into `mfunction` where its own is empty.
 - **feature** is given on r2; r5 takes it from its parent into `mfeature`.
-- **object_version** of every requirement, element and decision of the architecture, hazard and
-  control: `x.y.z`, written in quotes - x the text and the attributes its schema names in
-  `attributes_for_version_x`, y the links, z every other attribute. It is set at the approval;
-  a new object starts at `'1.1.1'` (traceability.md).
+- **object_version** of every requirement, element and decision of the architecture, hazard,
+  control and document: `x.y.z`, written in quotes - x the text and the attributes its schema
+  names in `attributes_for_version_x`, y the links, z every other attribute. It is set at the
+  approval; a new object starts at `'1.1.1'` (traceability.md).
 - **priority** of every requirement, element of the architecture, hazard and control: a string,
   `'medium'` by default, `'later'` where it is kept for later. It stands in every object, also
   where it holds the default.
@@ -161,16 +161,21 @@ its own (TOOL-05). A schema gives the form of a requirement and realizes none, s
 
 ### Documents
 
-The YAML of a level names the documents beside it that explain it, each with a status of its own -
-the same values as a requirement. A document is reviewed like a requirement (`review` as its
-verification method), and an exported document shows its status (TOOL-02):
+The YAML of a level names the documents beside it that explain it, each with a version and a status
+of its own - the same values as a requirement. A document is reviewed like a requirement (`review`
+as its verification method), and an exported document shows its version, its revision and its
+status (TOOL-02). Its `object_hash` is the content approved: `git hash-object` of its file, 7
+characters, set at the approval with the version, `''` before the first. It is the one attribute
+for x of a document (traceability.md, section The version of a document):
 
 ```yaml
 schema: schemas/tool-requirements.schema.json
 level: tool
 documents:
 - name: tool-requirements.md
-  status: draft
+  object_version: '2.1.1'
+  object_hash: 'a1b2c3d'
+  status: approved
   verification_method: [review]
 requirements:
 - ...
