@@ -31,7 +31,7 @@ documents:
 - name: formats.md
   object_version: '1.1.1'
   object_hash: '9b51d27'
-  status: approved
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
@@ -41,5 +41,5 @@ documents:
 - name: traceability.md
   object_version: '1.1.1'
   object_hash: 'eb14b96'
-  status: approved
+  status: review
   verification_method: [review]

@@ -6,7 +6,7 @@ documents:
 - name: tool-requirements.md
   object_version: '1.1.1'
   object_hash: '9e6eac9'
-  status: approved
+  status: review
   verification_method: [review]
 requirements:
 - object_key: TOOL-01
