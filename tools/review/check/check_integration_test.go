@@ -37,23 +37,23 @@ func write(t *testing.T, root, path, content string) {
 // requirement of the same file is changed by the reviewer alone - which must not make the reviewer
 // an author of the first.
 //
-// @verifies SR-05@1.1.1
+// @verifies SR_05@1.1.1
 func TestTheCheckOnAHistoryOfGit(t *testing.T) {
 
 	root := t.TempDir()
 	gitIn(t, root, "init", "-q")
 	write(t, root, "reviews/criteria-tool.yaml", criteria)
-	write(t, root, "requirements/tool-requirements.yaml", requirements+`- object_key: TOOL-04
+	write(t, root, "requirements/tool-requirements.yaml", requirements+`- object_key: TOOL_04
   object_text: first
 `)
 	gitIn(t, root, "add", "-A")
 	gitIn(t, root, "commit", "-q", "--author=Claude Opus 5.5 <noreply@anthropic.com>", "-m", "requirements")
 	first := gitIn(t, root, "rev-parse", "--short", "HEAD")
 
-	write(t, root, "requirements/tool-requirements.yaml", requirements+`- object_key: TOOL-04
+	write(t, root, "requirements/tool-requirements.yaml", requirements+`- object_key: TOOL_04
   object_text: changed by the reviewer alone
 `)
-	gitIn(t, root, "commit", "-q", "-am", "TOOL-04 changed")
+	gitIn(t, root, "commit", "-q", "-am", "TOOL_04 changed")
 	second := gitIn(t, root, "rev-parse", "--short", "HEAD")
 
 	write(t, root, "reviews/r.yaml", `level: review
@@ -63,12 +63,12 @@ criteria: reviews/criteria-tool.yaml
 criteria_revision: '`+first+`'
 results:
 - object_key: RR-01
-  target_ids: [TOOL-03]
+  target_ids: [TOOL_03]
   revision: '`+second+`'
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
 - object_key: RR-02
-  target_ids: [TOOL-04]
+  target_ids: [TOOL_04]
   revision: '`+second+`'
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
@@ -79,15 +79,15 @@ results:
 		t.Fatal(err)
 	}
 	if len(findings) != 1 || findings[0].Result != "RR-02" ||
-		!strings.Contains(findings[0].Message, "is an author of TOOL-04") {
-		t.Errorf("want one finding, that the reviewer is an author of TOOL-04; got %v", findings)
+		!strings.Contains(findings[0].Message, "is an author of TOOL_04") {
+		t.Errorf("want one finding, that the reviewer is an author of TOOL_04; got %v", findings)
 	}
 }
 
 // The criteria revision on a real history: a short hash of the commit that changed the criteria is
 // taken, a later commit that did not change them is not.
 //
-// @verifies SR-07@1.1.1
+// @verifies SR_07@1.1.1
 func TestTheCriteriaRevisionOnAHistoryOfGit(t *testing.T) {
 
 	root := t.TempDir()
@@ -113,7 +113,7 @@ criteria: reviews/criteria-tool.yaml
 criteria_revision: '`+c.revision+`'
 results:
 - object_key: RR-01
-  target_ids: [TOOL-03]
+  target_ids: [TOOL_03]
   revision: '`+second+`'
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
@@ -131,7 +131,7 @@ results:
 // Two pull requests change one document from the same main; the reviewer merges both, so the second
 // merge equals neither parent. Claude Code wrote every line, and the reviewer is no author.
 //
-// @verifies SR-08@1.1.1
+// @verifies SR_08@1.1.1
 func TestTwoMergesOfOneDocument(t *testing.T) {
 
 	root := t.TempDir()

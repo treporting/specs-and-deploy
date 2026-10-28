@@ -1,5 +1,5 @@
 // Package check checks that every id an annotation names is approved in the base commit of the
-// pull request (TOOL-06), and that it names its version (TOOL-20).
+// pull request (TOOL_06), and that it names its version (TOOL_20).
 package check
 
 import (
@@ -85,7 +85,7 @@ func (k Kinds) kindOf(file string) string {
 // annotation is a line of comment that begins with an annotation: after spaces, a comment mark of
 // one to three signs other than a quote, then @implements or @verifies and its ids, each with what
 // follows its @, if anything.
-var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+([A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:@[^\\s,]*)?(?:\\s*,\\s*[A-Z][A-Z0-9]*-[A-Z0-9-]*[0-9](?:@[^\\s,]*)?)*)")
+var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+([A-Z][A-Za-z0-9]*_[A-Za-z0-9_-]*[0-9](?:@[^\\s,]*)?(?:\\s*,\\s*[A-Z][A-Za-z0-9]*_[A-Za-z0-9_-]*[0-9](?:@[^\\s,]*)?)*)")
 
 // version is the form of a version: x.y.z.
 var version = regexp.MustCompile(`^[0-9]+\.[0-9]+\.[0-9]+$`)
@@ -94,7 +94,7 @@ var version = regexp.MustCompile(`^[0-9]+\.[0-9]+\.[0-9]+$`)
 // for every file whose kind is on neither list. A YAML that names a schema is our data and is not
 // read. A file is read only once its name has told it is code.
 //
-// @implements SR-24@1.1.1, SR-27@1.1.1
+// @implements SR_24@1.1.1, SR_27@1.1.1
 func Find(root string, files []string, kinds Kinds) ([]Annotation, []Finding, error) {
 
 	var found []Annotation
@@ -144,7 +144,7 @@ func isData(file string, content []byte) bool {
 
 // Unversioned answers each id the annotations name without a version as x.y.z after its @.
 //
-// @implements SR-30@1.1.1
+// @implements SR_30@1.1.1
 func Unversioned(annotations []Annotation) []Finding {
 
 	var findings []Finding
@@ -161,7 +161,7 @@ func Unversioned(annotations []Annotation) []Finding {
 // Check answers each id the annotations name that is not in the requirements of the base commit,
 // or not approved there.
 //
-// @implements SR-24@1.1.1, SR-25@1.1.1
+// @implements SR_24@1.1.1, SR_25@1.1.1
 func Check(git Git, base string, annotations []Annotation) []Finding {
 
 	var findings []Finding

@@ -1,4 +1,4 @@
-# Review of SR-09 and SR-10 against the criteria of the software requirements.
+# Review of SR_09 and SR_10 against the criteria of the software requirements.
 # Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
 level: review
@@ -8,7 +8,7 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: '6095c77'
 results:
 - object_key: RR-01
-  target_ids: [SR-09]
+  target_ids: [SR_09]
   revision: '610445b'
   criteria:
     RC-01: passed
@@ -26,7 +26,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [SR-10]
+  target_ids: [SR_10]
   revision: '610445b'
   criteria:
     RC-01: passed

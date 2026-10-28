@@ -1,4 +1,4 @@
-// Package check makes the link check (TOOL-16): it compares the version a link, an entry of the
+// Package check makes the link check (TOOL_16): it compares the version a link, an entry of the
 // allocation or of controls, or an annotation names with the version its object has, and reports
 // each whose object has another x. It reports and does not decide (definitions.md, section Link
 // check and impact assessment).
@@ -37,7 +37,7 @@ var fields = []string{"source_ids", "allocated", "controls"}
 // it compared. An entry whose object no file holds, or that names no version, is not compared:
 // uplinkcheck and schemacheck report it.
 //
-// @implements SR-32@1.1.1
+// @implements SR_32@1.1.1
 func Links(read Read, list review.List) ([]Finding, int, error) {
 
 	versions := newVersions(read)
@@ -66,7 +66,7 @@ func Links(read Read, list review.List) ([]Finding, int, error) {
 // names, and how many ids it compared. An id whose object no file holds, or that names no version,
 // is not compared: annotationcheck reports it.
 //
-// @implements SR-33@1.1.1
+// @implements SR_33@1.1.1
 func Annotations(read Read, annotations []annotation.Annotation) ([]Finding, int) {
 
 	versions := newVersions(read)

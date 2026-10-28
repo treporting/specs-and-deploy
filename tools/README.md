@@ -42,17 +42,17 @@ product - a checker with a fault would let faults pass unseen.
 **Decision**: a tool requirement leads to software requirements, and those to code and tests - as
 for a subsystem. The software requirements of the tools are in
 [software-requirements.yaml](software-requirements.yaml), each naming its tool requirement as
-uplink. The code names them in `@implements SR-nn`, a test in `@verifies SR-nn`. The tests are on
+uplink. The code names them in `@implements SR_nn`, a test in `@verifies SR_nn`. The tests are on
 the levels MT and SwIT.
 
-**Why**: the first tool showed it. TOOL-03 holds five behaviours that can each be tested on their
+**Why**: the first tool showed it. TOOL_03 holds five behaviours that can each be tested on their
 own; by ISO29148 each is a requirement of its own (singular). Its review noted it, and
-each test of reviewcheck verified one of the five while all named only TOOL-03 - which of them a
+each test of reviewcheck verified one of the five while all named only TOOL_03 - which of them a
 test verifies could not be told. A tool requirement says what a tool does for our work; a
 software requirement says how it behaves.
 
 **Rejected**: a tool requirement leading straight to code and tests - the first decision here. It
-held a tool requirement as concrete as a software requirement, which TOOL-03 proved wrong.
+held a tool requirement as concrete as a software requirement, which TOOL_03 proved wrong.
 
 ## Who changed a requirement
 
@@ -61,7 +61,7 @@ not a merge, that changed the requirement, and its co-authors - `Claude Opus 5.5
 Nothing is derived from it and kept beside it; there is no `mmodified_by`.
 
 **Why**: git records author and co-authors by itself; a record made by a computer is the evidence an
-audit trail asks for (REG_CFR21-11_01), and the original stays original (ARC-R01, REG_FDADI_01).
+audit trail asks for (REG_CFR21-11_01), and the original stays original (ARCR_01, REG_FDADI_01).
 
 **Rejected**:
 
@@ -75,7 +75,7 @@ audit trail asks for (REG_CFR21-11_01), and the original stays original (ARC-R01
 
 **Decision**: the authors of a requirement or a document are the names in its `modified_by` - the
 author and the co-authors of the last commit, not a merge, that changed it, whatever names stand
-there. The reviewer is none of them (PROC-15; TOOL-03, TOOL-11). Who writes the text is the author of the commit:
+there. The reviewer is none of them (PROC_15; TOOL_03, TOOL_11). Who writes the text is the author of the commit:
 Claude Code commits with `--author="Claude Opus 5.5 <noreply@anthropic.com>"`; the Product Owner
 stays its committer.
 
@@ -100,7 +100,7 @@ resolved by hand in a merge is a change no author is found for.
   it names a product, so another assistant, such as Copilot, would need a change of the rule
 - the authors without the committer, where none is left the committer - it keeps the history valid,
   but it is a rule about git again, not the record of git
-- the check left to the approver by hand - TOOL-03 asks for it
+- the check left to the approver by hand - TOOL_03 asks for it
 - rebase merges, so that `main` has no merge commits - git would no longer record who merged, the
   evidence of the approval
 
@@ -146,8 +146,8 @@ files of requirements.
 
 ## reviewcheck
 
-Checks every review result in `reviews/` against the rules of formats.md (TOOL-03, TOOL-11; SR-01
-to SR-08 and SR-16 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
+Checks every review result in `reviews/` against the rules of formats.md (TOOL_03, TOOL_11; SR_01
+to SR_08 and SR_16 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
 criteria file once, the verdict passed only when every criterion passed, a note to every failed
 criterion, no value but passed or failed, the revision reviewed exists, the criteria revision changed
 the criteria file, and the reviewer is none of the authors of the requirement or document. It
@@ -164,7 +164,7 @@ It exits with 1 where a result breaks a rule. It depends on `gopkg.in/yaml.v3` (
 
 ## reviewskeleton
 
-Writes the skeleton of a review result into `reviews/` (TOOL-04; SR-11 to SR-15 in
+Writes the skeleton of a review result into `reviews/` (TOOL_04; SR_11 to SR_15 in
 [software-requirements.yaml](software-requirements.yaml)): the name from the time and the scope,
 the criteria file of the level and the last commit that changed it, the commit `HEAD` as the
 revision of each, and every criterion and the verdict as `todo`. It writes nothing where a target is
@@ -173,18 +173,18 @@ not found, or where the targets belong to more than one level.
 ```bash
 cd tools
 go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope harness harness.md
-go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope sr-11-15 SR-11 SR-12 SR-13
+go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope sr-11-15 SR_11 SR_12 SR_13
 ```
 
-The skeleton names its schema in the field `schema` (SR-17). It prints the path of the file it
+The skeleton names its schema in the field `schema` (SR_17). It prints the path of the file it
 wrote. The code is the package `review/skeleton`, in the component `review`.
 
 ## schemacheck
 
 Checks every YAML file of our own data under version control against the schema it names in its
-field `schema` (TOOL-05; SR-18 and SR-19 in [software-requirements.yaml](software-requirements.yaml)),
+field `schema` (TOOL_05; SR_18 and SR_19 in [software-requirements.yaml](software-requirements.yaml)),
 and reports each place where one does not match, with the file and the path within it. A YAML in
-`.github/` has a form GitHub owns, and is not checked. The CI runs it on every pull request (SR-20).
+`.github/` has a form GitHub owns, and is not checked. The CI runs it on every pull request (SR_20).
 
 ```bash
 cd tools
@@ -197,12 +197,12 @@ A finding reads `requirements/tool-requirements.yaml /requirements/6/status: val
 
 ## rulesetcheck
 
-Compares the ruleset of main on GitHub with `.github/rulesets/main.json` (TOOL-13; SR-21 and SR-22 in
+Compares the ruleset of main on GitHub with `.github/rulesets/main.json` (TOOL_13; SR_21 and SR_22 in
 [software-requirements.yaml](software-requirements.yaml)), and reports each difference in its
 target, enforcement, conditions and rules. What GitHub sets itself is left out, and `bypass_actors`,
 which cannot be read without the rights of an admin; that main has no bypass, its demonstration
 shows. A ruleset that cannot be read, or no ruleset of the name in the file, is a finding, not a
-pass. The CI runs it on every pull request (SR-23), with the token of the workflow, read only.
+pass. The CI runs it on every pull request (SR_23), with the token of the workflow, read only.
 
 ```bash
 cd tools
@@ -216,14 +216,14 @@ The code is the component `ruleset`: the package `ruleset/check` and the command
 ## annotationcheck
 
 Checks that every id named in `@implements` or `@verifies` is in the requirements of the base
-commit of the pull request, and approved there (TOOL-06; SR-24 and SR-25 in
+commit of the pull request, and approved there (TOOL_06; SR_24 and SR_25 in
 [software-requirements.yaml](software-requirements.yaml)), and that it names its version, as
-`ID@x.y.z` (TOOL-20, SR-30). The id is read apart from its version and checked as before. A requirement approved in the same pull
-request does not count: it has to be through before the code (PROC-05, PROC-12).
+`ID@x.y.z` (TOOL_20, SR_30). The id is read apart from its version and checked as before. A requirement approved in the same pull
+request does not count: it has to be through before the code (PROC_05, PROC_12).
 
 It reads a file by its kind, from the two lists in [kinds.yaml](annotation/kinds.yaml): the
 whitelist of the kinds that are code, the blacklist of those that are no code. A file of a kind on
-neither list is a finding (SR-27), until its kind is set; a YAML that names a schema is our data and
+neither list is a finding (SR_27), until its kind is set; a YAML that names a schema is our data and
 is not read. In a file it reads, an annotation stands first in a line of comment: after spaces, a
 comment mark of one to three signs other than a quote, then `@implements` or `@verifies` - in every
 language, with no list of languages. Why both lists: formats.md, "Where an annotation is read".
@@ -246,7 +246,7 @@ only in tests that need annotations as their content.
   annotation as a realization; not for the gate
 - `go/scanner` for Go alone - exact for Go, but a switch by language again
 
-The CI runs it on every pull request with the base commit GitHub gives (SR-26, SR-31).
+The CI runs it on every pull request with the base commit GitHub gives (SR_26, SR_31).
 
 ```bash
 cd tools
@@ -259,17 +259,17 @@ The code is the component `annotation`: the package `annotation/check` and the c
 
 ## uplinkcheck
 
-Checks that every approved requirement names approved uplinks only (TOOL-09; SR-28 and SR-29 in
+Checks that every approved requirement names approved uplinks only (TOOL_09; SR_28 and SR_29 in
 [software-requirements.yaml](software-requirements.yaml)). It reads every file of requirements as it
 stands - the levels, the tools, the rules - and reports each uplink in `source_ids` of an approved
 requirement that no file holds, or that is not approved. The version after `@` is not compared here;
-that is PROC-20.
+that is PROC_20.
 
 It checks the state, not a change: on `main` a requirement stays approved until its change passes
 its review, and a change whose review failed does not reach `main` (harness.md, step 10). So an
 approved requirement never names a draft there, unless someone merges one.
 
-The CI runs it on every pull request (SR-29).
+The CI runs it on every pull request (SR_29).
 
 ```bash
 cd tools
@@ -281,21 +281,21 @@ The code is the component `uplink`: the package `uplink/check` and the command
 
 ## linkcheck
 
-Makes the link check (TOOL-16; SR-32 to SR-34 in [software-requirements.yaml](software-requirements.yaml)),
+Makes the link check (TOOL_16; SR_32 to SR_34 in [software-requirements.yaml](software-requirements.yaml)),
 as definitions.md sets it out in the section Link check and impact assessment. It compares the
 version each entry names with the version its object has, and reports each whose object has
 another x (traceability.md, section When a link is suspect):
 
 - the links in `source_ids`, the entries of `allocated` and of `controls` in every file of
-  requirements (SR-32)
-- the ids of `@implements` and `@verifies`, found as annotationcheck finds them (SR-33)
+  requirements (SR_32)
+- the ids of `@implements` and `@verifies`, found as annotationcheck finds them (SR_33)
 
 It reads the files as they stand. An entry whose object no file holds, or that names no version, is
 not compared: uplinkcheck, schemacheck and annotationcheck report it. It reports and does not
 decide whether the child still fits; that is the impact assessment.
 
-The CI runs it on every pull request in a job of its own (SR-34). The job does not fail and is no
-required check: a suspect link blocks the baseline, not the pull request (PROC-20).
+The CI runs it on every pull request in a job of its own (SR_34). The job does not fail and is no
+required check: a suspect link blocks the baseline, not the pull request (PROC_20).
 
 ```bash
 cd tools

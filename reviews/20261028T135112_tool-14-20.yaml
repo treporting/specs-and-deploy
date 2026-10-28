@@ -1,4 +1,4 @@
-# Review of TOOL-14, TOOL-15, TOOL-16, TOOL-17, TOOL-18, TOOL-19, TOOL-20 against the criteria of the level tool.
+# Review of TOOL_14, TOOL_15, TOOL_16, TOOL_17, TOOL_18, TOOL_19, TOOL_20 against the criteria of the level tool.
 # Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,7 +9,7 @@ criteria: reviews/criteria-tool.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [TOOL-14]
+  target_ids: [TOOL_14]
   revision: 'c5f3a2a'
   criteria:
     RC-01: passed
@@ -25,7 +25,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [TOOL-15]
+  target_ids: [TOOL_15]
   revision: 'c5f3a2a'
   criteria:
     RC-01: passed
@@ -41,7 +41,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-03
-  target_ids: [TOOL-16]
+  target_ids: [TOOL_16]
   revision: 'c5f3a2a'
   criteria:
     RC-01: passed
@@ -57,7 +57,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-04
-  target_ids: [TOOL-17]
+  target_ids: [TOOL_17]
   revision: 'c5f3a2a'
   criteria:
     RC-01: passed
@@ -73,7 +73,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-05
-  target_ids: [TOOL-18]
+  target_ids: [TOOL_18]
   revision: 'c5f3a2a'
   criteria:
     RC-01: passed
@@ -89,7 +89,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-06
-  target_ids: [TOOL-19]
+  target_ids: [TOOL_19]
   revision: 'c5f3a2a'
   criteria:
     RC-01: passed
@@ -105,7 +105,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-07
-  target_ids: [TOOL-20]
+  target_ids: [TOOL_20]
   revision: 'c5f3a2a'
   criteria:
     RC-01: passed

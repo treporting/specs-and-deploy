@@ -1,4 +1,4 @@
-// Command rulesetcheck compares the ruleset of main on GitHub with .github/rulesets/main.json (TOOL-13).
+// Command rulesetcheck compares the ruleset of main on GitHub with .github/rulesets/main.json (TOOL_13).
 //
 //	rulesetcheck [-root dir] [-repo owner/name] [-api url]
 //
@@ -15,7 +15,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/ruleset/check"
 )
 
-// @implements SR-21@1.1.1, SR-22@1.1.1
+// @implements SR_21@1.1.1, SR_22@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

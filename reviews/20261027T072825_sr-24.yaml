@@ -1,4 +1,4 @@
-# Review of SR-24 against the criteria of the level r5.
+# Review of SR_24 against the criteria of the level r5.
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,7 +9,7 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [SR-24]
+  target_ids: [SR_24]
   revision: 'f99d758'
   criteria:
     RC-01: passed
@@ -22,7 +22,7 @@ results:
     RC-08: passed
     RC-09:
       result: failed
-      note: '"the code of the repo that git knows" reads as if git knew the code; it is the files git knows, and of those the ones that are code (PROC-05)'
+      note: '"the code of the repo that git knows" reads as if git knew the code; it is the files git knows, and of those the ones that are code (PROC_05)'
     RC-10: passed
     RC-11: passed
   verdict: failed

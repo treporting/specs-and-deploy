@@ -1,7 +1,7 @@
 # Attributes of the model
 
-This is the contract of the information model, ARC-21: the common language of converter, storage
-and reporter over the interfaces ARC-12, ARC-13 and ARC-18.
+This is the contract of the information model, ARC_21: the common language of converter, storage
+and reporter over the interfaces ARC_12, ARC_13 and ARC_18.
 
 Every attribute of the model, type by type: what it means, where it comes from, whether it has an
 intermediate (`I`) or a mapped (`M`) value, how it is carried down the trace, and which system
@@ -71,8 +71,8 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | Meaning | when and by whom an object was created in its source, and when and by whom it was last modified there |
 | Value | a time with its zone; the name of a person as the source gives it |
 | Comes from | the source, as it records it - DOORS, for instance, keeps *Created On*, *Created By*, *Last Modified On*, *Last Modified By*; for a file in GIT the commit gives them |
-| Note | not the time of the import: that is in the import record. The names are personal data, kept only for the purposes set (UN-ALL-04, SYS-44) |
-| Used by | REG_FDADI_01, data attributable to whom it comes from; SYS-16, what changed between two baselines |
+| Note | not the time of the import: that is in the import record. The names are personal data, kept only for the purposes set (UN_ALL_04, SYS_44) |
+| Used by | REG_FDADI_01, data attributable to whom it comes from; SYS_16, what changed between two baselines |
 | Prototype | new - REG_FDADI_01: data attributable to whom it comes from |
 
 ## Requirement
@@ -86,7 +86,7 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | Comes from | author, on r1 |
 | Variants | `mplatform_launch` - mapped, or where the original is empty the union of the `mplatform_launch` of the parents |
 | Carried down | yes. A requirement with several parents carries the **union** of their platforms and launches - it holds wherever any of them holds (unlike the safety class, where the highest is carried) |
-| Used by | SYS-09 filter over the whole trace; SYS-11 carrying down. The selection of a release offers the launches that release has |
+| Used by | SYS_09 filter over the whole trace; SYS_11 carrying down. The selection of a release offers the launches that release has |
 | Version | a new version of an object where its launches change, not with every release |
 | Open | the value `all`: resolved into the platforms by the converter, by the configuration of the customer |
 | Prototype | same - the prototype writes the value taken from the parents into `mplatform_launch` |
@@ -115,7 +115,7 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | | |
 |---|---|
 | Meaning | the names of the attributes that changed against the previous version of the object |
-| Use | to show the difference between two versions efficiently - SYS-16 |
+| Use | to show the difference between two versions efficiently - SYS_16 |
 | Comes from | derived, by comparing with the previous version |
 | Prototype | same |
 
@@ -126,7 +126,7 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | Meaning | how a requirement is verified, after ISO/IEC/IEEE 29148 |
 | Value | a list of one or more of `inspection`, `analysis`, `demonstration`, `test` - after ISO/IEC/IEEE 29148 - and `review`, our own: verified by the review against the criteria of its level |
 | Where | on every requirement, on every level |
-| Used by | SYS-73, SYS-76 |
+| Used by | SYS_73, SYS_76 |
 | Comes from | author |
 | Variants | `mverification_method` mapped - the converter maps the values of a customer to those of 29148: *review* to `inspection`, *design* to `analysis`. A customer may keep it in an attribute called coverage, which is a different thing here: the converter has to take care |
 | Prototype | renamed - from `coverage`, which had two meanings; values after ISO/IEC/IEEE 29148 |
@@ -177,7 +177,7 @@ how tests are carried out, a script being an automated one.
 |---|---|
 | Meaning | the variant the test is run in - a hardware, a mode of operation (see definitions.md) |
 | Comes from | author |
-| Used by | SYS-09, filter |
+| Used by | SYS_09, filter |
 | Prototype | same |
 
 ### mfeature, mfunction, msafety
@@ -244,7 +244,7 @@ A test result is one run of a test case: its verdict, in a stream.
 |---|---|
 | Meaning | the verdict of the run |
 | Comes from | the source as it writes it - for a test in Go, `pass`, `fail` or `skip` of `go test -json` |
-| Variants | `mstatus` - mapped: `passed`, `failed`; only `passed` counts as reached in the maturity (SYS-47) |
+| Variants | `mstatus` - mapped: `passed`, `failed`; only `passed` counts as reached in the maturity (SYS_47) |
 | Prototype | same in the model; its generator leaves the original empty - see the deviations of the generator |
 
 ### mfeature, mfunction, msafety, mpriority
@@ -376,7 +376,7 @@ The review of a requirement against criteria, kept like a test case and its resu
 | ReviewResult (RR) | one review: who, when, the revision of the requirement reviewed, per criterion passed or failed, the verdict |
 | Links | `reviewedBy` from a requirement to the criteria of its level; `resultOf` from the criteria to the results |
 | Note | apart from the types of the tests, though of the same shape: easier to understand, and tests and reviews keep tables and indexes of their own |
-| Used by | SYS-74, SYS-75 |
+| Used by | SYS_74, SYS_75 |
 | Prototype | new - the prototype reads review results from spreadsheets and shows them, with no type of its own |
 
 ## Project, System, Baseline, Artifact, Component
@@ -402,7 +402,7 @@ The other types follow.
 
 | What | How | Why |
 |---|---|---|
-| feature, function and safety of a requirement, taken from the parent where the own original is empty | changed: they go into the mapped value (`M`); the prototype writes them into the original - for priority and platform and launch it uses the mapped value already | the original stays original (ARC-R01, REG_FDADI_01), and it can be shown that an object was not classified by itself |
+| feature, function and safety of a requirement, taken from the parent where the own original is empty | changed: they go into the mapped value (`M`); the prototype writes them into the original - for priority and platform and launch it uses the mapped value already | the original stays original (ARCR_01, REG_FDADI_01), and it can be shown that an object was not classified by itself |
 | `verification_method` | renamed from `coverage` | `coverage` had two meanings; ISO/IEC/IEEE 29148 |
 | `coverage` | changed: the code coverage level | as above |
 | `module_prefix` | changed: on every object in a document | an id is unique only within its document, and links name it |
@@ -432,7 +432,7 @@ the generator is taken over.
 
 ## Open
 
-- **the record of an import** (SYS-41): no type for it yet
-- **the record of a report** (SYS-43), with its identity and the fingerprint of its data: no type
+- **the record of an import** (SYS_41): no type for it yet
+- **the record of a report** (SYS_43), with its identity and the fingerprint of its data: no type
   for it yet
-- **the evaluation of a finding** (SYS-72): no attribute yet; the configuration names it
+- **the evaluation of a finding** (SYS_72): no attribute yet; the configuration names it

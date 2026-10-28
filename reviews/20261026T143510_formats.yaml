@@ -27,7 +27,7 @@ results:
       note: 'found in this review and resolved in it: ISO/IEC/IEEE 29148 and ISO 8601 are named in full, not as ISO29148 and ISO8601'
     RC-08:
       result: passed
-      note: 'found in this review and resolved in it: the section Reviews speaks of requirements only, though whatever has criteria of its kind is reviewed (PROC-13, PROC-15); the Breakdown names a subsystem as a repo of the architecture only, though the tools are a subsystem; the prototype is named by its repo, which the public repos never reference'
+      note: 'found in this review and resolved in it: the section Reviews speaks of requirements only, though whatever has criteria of its kind is reviewed (PROC_13, PROC_15); the Breakdown names a subsystem as a repo of the architecture only, though the tools are a subsystem; the prototype is named by its repo, which the public repos never reference'
     RC-09: passed
     RC-10: passed
     RC-11:

@@ -10,7 +10,7 @@ import (
 // The files of a real repo: a YAML of our data is checked; one in .github/ and one not under
 // version control are not.
 //
-// @verifies SR-18@1.1.1
+// @verifies SR_18@1.1.1
 func TestTheFilesOfAHistoryOfGit(t *testing.T) {
 
 	dir := root(t, map[string]string{

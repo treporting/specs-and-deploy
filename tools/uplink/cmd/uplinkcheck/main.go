@@ -1,4 +1,4 @@
-// Command uplinkcheck checks that every approved requirement names approved uplinks only (TOOL-09).
+// Command uplinkcheck checks that every approved requirement names approved uplinks only (TOOL_09).
 //
 //	uplinkcheck [-root dir]
 //
@@ -16,7 +16,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/uplink/check"
 )
 
-// @implements SR-28@1.1.1
+// @implements SR_28@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

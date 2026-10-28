@@ -1,5 +1,5 @@
-# Review of SR-01 to SR-08 against the criteria of the software requirements. It replaces the review
-# of SR-01 to SR-05. Prepared by Claude Code; decided by the reviewer.
+# Review of SR_01 to SR_08 against the criteria of the software requirements. It replaces the review
+# of SR_01 to SR_05. Prepared by Claude Code; decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
 level: review
@@ -9,7 +9,7 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: '3cbb37e'
 results:
 - object_key: RR-01
-  target_ids: [SR-01]
+  target_ids: [SR_01]
   revision: '3fa8184'
   criteria:
     RC-01: passed
@@ -27,7 +27,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [SR-02]
+  target_ids: [SR_02]
   revision: '3fa8184'
   criteria:
     RC-01: passed
@@ -45,7 +45,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-03
-  target_ids: [SR-03]
+  target_ids: [SR_03]
   revision: '3fa8184'
   criteria:
     RC-01: passed
@@ -61,7 +61,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-04
-  target_ids: [SR-04]
+  target_ids: [SR_04]
   revision: '3fa8184'
   criteria:
     RC-01: passed
@@ -77,7 +77,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-05
-  target_ids: [SR-05]
+  target_ids: [SR_05]
   revision: '3fa8184'
   criteria:
     RC-01: passed
@@ -93,7 +93,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-06
-  target_ids: [SR-06]
+  target_ids: [SR_06]
   revision: '3fa8184'
   criteria:
     RC-01: passed
@@ -111,7 +111,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-07
-  target_ids: [SR-07]
+  target_ids: [SR_07]
   revision: '3fa8184'
   criteria:
     RC-01: passed
@@ -127,7 +127,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-08
-  target_ids: [SR-08]
+  target_ids: [SR_08]
   revision: '3fa8184'
   criteria:
     RC-01: passed

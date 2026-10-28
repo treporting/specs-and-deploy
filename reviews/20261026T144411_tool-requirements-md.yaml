@@ -25,7 +25,7 @@ results:
     RC-07: passed
     RC-08:
       result: passed
-      note: 'found in this review and resolved in it: the open point on where a document keeps its status is decided - a documents section or documents.yaml, with the values of a requirement; the skeleton of TOOL-04 is said not to be built, though reviewskeleton is'
+      note: 'found in this review and resolved in it: the open point on where a document keeps its status is decided - a documents section or documents.yaml, with the values of a requirement; the skeleton of TOOL_04 is said not to be built, though reviewskeleton is'
     RC-09: passed
     RC-10: passed
     RC-11: passed

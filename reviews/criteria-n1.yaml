@@ -1,7 +1,7 @@
 # Review criteria of the regulatory requirements (n1). A review of a REG finds what can be changed:
 # how a duty was written down - its source, its text, where it applies, who keeps it - not the duty,
 # which the law or the standard sets. A REG is approved only when it passed every criterion
-# (PROC-13). See reviews/README.md.
+# (PROC_13). See reviews/README.md.
 schema: schemas/review-criteria.schema.json
 level: n1
 criteria:

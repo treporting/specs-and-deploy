@@ -1,4 +1,4 @@
-# Review of SR-24 against the criteria of the level r5.
+# Review of SR_24 against the criteria of the level r5.
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # It follows the failed review 20261027T072825_sr-24.yaml.
 # Format: ../formats.md, section Reviews.
@@ -10,7 +10,7 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [SR-24]
+  target_ids: [SR_24]
   revision: '5f72b26'
   criteria:
     RC-01: passed

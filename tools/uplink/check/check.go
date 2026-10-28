@@ -1,4 +1,4 @@
-// Package check checks that every approved requirement names approved uplinks only (TOOL-09).
+// Package check checks that every approved requirement names approved uplinks only (TOOL_09).
 package check
 
 import (
@@ -27,7 +27,7 @@ func (f Finding) String() string {
 // requirement that no file holds, or that is not approved. It answers too how many approved
 // requirements it checked. A file of requirements that is not there holds none.
 //
-// @implements SR-28@1.1.1
+// @implements SR_28@1.1.1
 func Check(read Read, list review.List) ([]Finding, int, error) {
 
 	files := map[string][]byte{}
@@ -92,7 +92,7 @@ func objects(data []byte) []object {
 }
 
 // status answers why an uplink does not count, or "" where it is approved. The uplink names its
-// version after @; the version is not compared here (PROC-20).
+// version after @; the version is not compared here (PROC_20).
 func status(load func(string) []byte, uplink string) string {
 
 	id, _, _ := strings.Cut(uplink, "@")

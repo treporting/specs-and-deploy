@@ -1,4 +1,4 @@
-# Review of SR-21, SR-22, SR-23 against the criteria of the level r5.
+# Review of SR_21, SR_22, SR_23 against the criteria of the level r5.
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,7 +9,7 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [SR-21]
+  target_ids: [SR_21]
   revision: 'e88b8b2'
   criteria:
     RC-01: passed
@@ -25,7 +25,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [SR-22]
+  target_ids: [SR_22]
   revision: 'e88b8b2'
   criteria:
     RC-01: passed
@@ -41,7 +41,7 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-03
-  target_ids: [SR-23]
+  target_ids: [SR_23]
   revision: 'e88b8b2'
   criteria:
     RC-01: passed

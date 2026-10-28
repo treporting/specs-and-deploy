@@ -1,4 +1,4 @@
-// Package skeleton writes the skeleton of a review result (TOOL-04): what the reviewer would
+// Package skeleton writes the skeleton of a review result (TOOL_04): what the reviewer would
 // otherwise copy by hand. Every judgement is todo, so an unfilled skeleton fails reviewcheck.
 package skeleton
 
@@ -15,7 +15,7 @@ import (
 
 // resultSchema is the schema of a review result, from the root of the repo.
 //
-// @implements SR-17@1.1.1
+// @implements SR_17@1.1.1
 const resultSchema = "schemas/review-result.schema.json"
 
 // Git is what the skeleton asks of the history of the repo.
@@ -40,7 +40,7 @@ type Request struct {
 // HEAD, and answers its path relative to root. Where a target is not found, or the targets belong
 // to more than one level, it writes nothing.
 //
-// @implements SR-11@1.1.1, SR-12@1.1.1, SR-13@1.1.1, SR-14@1.1.1, SR-15@1.1.1, SR-17@1.1.1
+// @implements SR_11@1.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@1.1.1
 func Make(root string, req Request, git Git) (string, error) {
 
 	head, err := git.Short("HEAD")
@@ -94,7 +94,7 @@ func Make(root string, req Request, git Git) (string, error) {
 // levelOf answers the one level of the targets in HEAD: the field level of the YAML that holds a
 // requirement, and document for a document.
 //
-// @implements SR-15@1.1.1
+// @implements SR_15@1.1.1
 func levelOf(git Git, targets []string) (string, error) {
 
 	if len(targets) == 0 {
@@ -131,7 +131,7 @@ func levelOf(git Git, targets []string) (string, error) {
 // criteriaOf answers the criteria file of a level, the last commit that changed it, and the ids of
 // its criteria in that commit.
 //
-// @implements SR-12@1.1.1
+// @implements SR_12@1.1.1
 func criteriaOf(git Git, level string) (file, revision string, keys []string, err error) {
 
 	name := "criteria-" + level + ".yaml"

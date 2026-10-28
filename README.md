@@ -16,23 +16,23 @@ The data of every level is in YAML, what explains it in Markdown beside it - see
 
 | File | What it holds | Ids |
 |---|---|---|
-| [harness.md](harness.md) | how we work: the process we follow (ISO12207, ISO29119), our levels, the rules of our work, the loops for every change and every release | `PROC-nn` |
-| [tools/](tools/) | the tools of our work, in Go; where, why and how they are built; their software requirements in [software-requirements.yaml](tools/software-requirements.yaml) | `SR-nn` |
+| [harness.md](harness.md) | how we work: the process we follow (ISO12207, ISO29119), our levels, the rules of our work, the loops for every change and every release | `PROC_nn` |
+| [tools/](tools/) | the tools of our work, in Go; where, why and how they are built; their software requirements in [software-requirements.yaml](tools/software-requirements.yaml) | `SR_nn` |
 | [documents.yaml](documents.yaml) | the status of the documents that have no YAML of requirements beside them | - |
 | [devops.md](devops.md) | the environment of our work: the tools, and the rule that tools are code | - |
 | [definitions.md](definitions.md) | the terms: system, item, content, work product, release, library, baseline, traceability | - |
 | [architecture/attributes.md](architecture/attributes.md) | every attribute of the model: meaning, origin, original, intermediate and mapped values, how it is carried down | - |
 | [formats.md](formats.md) | how requirements, documents, reviews, annotations and tests are written down, and what the CI checks; the schemas in [schemas/](schemas/) | - |
 | [standards.md](standards.md) | the process, safety and security standards per domain | - |
-| [requirements/user-needs.yaml](requirements/user-needs.yaml), [.md](requirements/user-needs.md) | what each role needs, without a solution (r1) | `UN-<role>-nn` |
+| [requirements/user-needs.yaml](requirements/user-needs.yaml), [.md](requirements/user-needs.md) | what each role needs, without a solution (r1) | `UN_<role>_nn` |
 | [regulatory/](regulatory/), [regulatory-requirements.md](regulatory/regulatory-requirements.md) | what standards and laws ask, one file per module | `REG_<module>_nn` |
-| [requirements/system-requirements.yaml](requirements/system-requirements.yaml), [.md](requirements/system-requirements.md) | what the system has to do, seen as one box (r2); each section is a feature | `SYS-nn` |
-| [requirements/tool-requirements.yaml](requirements/tool-requirements.yaml), [.md](requirements/tool-requirements.md) | what the tools of our work have to do; tools are code | `TOOL-nn` |
-| [architecture/system-architecture.yaml](architecture/system-architecture.yaml), [.md](architecture/system-architecture.md) | the subsystems, their interfaces, the rationale and the decisions, and which subsystem realizes which requirement (r3) | `ARC-nn` |
+| [requirements/system-requirements.yaml](requirements/system-requirements.yaml), [.md](requirements/system-requirements.md) | what the system has to do, seen as one box (r2); each section is a feature | `SYS_nn` |
+| [requirements/tool-requirements.yaml](requirements/tool-requirements.yaml), [.md](requirements/tool-requirements.md) | what the tools of our work have to do; tools are code | `TOOL_nn` |
+| [architecture/system-architecture.yaml](architecture/system-architecture.yaml), [.md](architecture/system-architecture.md) | the subsystems, their interfaces, the rationale and the decisions, and which subsystem realizes which requirement (r3) | `ARC_nn` |
 | [reviews/](reviews/) | the criteria of the reviews of requirements and documents, and their results | `RC`, `RR` |
-| [safety/hazards.yaml](safety/hazards.yaml), [hazard-and-risk-analysis.md](safety/hazard-and-risk-analysis.md) | the hazards treporting can cause (h1) and the measures that control them (h2) | `HAZ-nn`, `HAZC-nn` |
+| [safety/hazards.yaml](safety/hazards.yaml), [hazard-and-risk-analysis.md](safety/hazard-and-risk-analysis.md) | the hazards treporting can cause (h1) and the measures that control them (h2) | `HAZ_nn`, `HAZC_nn` |
 
-The software requirements (r5, `SR-nn`) live in the repo of their subsystem, next to the code that
+The software requirements (r5, `SR_nn`) live in the repo of their subsystem, next to the code that
 realizes them; an id is unique together with that repo and its document (formats.md, section Ids).
 
 ## How the ids hang together
@@ -44,7 +44,7 @@ HAZ, THR (h1)  →  HAZC, THRC (h2)  →  UN (r1) ──┐
 THRC of a threat to our work  →  PROC, a rule of the harness
 ```
 
-*Open:* the threats (`THR-nn`) and their controls (`THRC-nn`) are not written down yet.
+*Open:* the threats (`THR_nn`) and their controls (`THRC_nn`) are not written down yet.
 
 Every need and every regulatory requirement that treporting realizes has at least one system
 requirement. Every requirement below the top names its uplinks, or gives its rationale where it has

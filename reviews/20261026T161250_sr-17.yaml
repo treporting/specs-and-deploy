@@ -1,4 +1,4 @@
-# Review of SR-17 against the criteria of the level r5.
+# Review of SR_17 against the criteria of the level r5.
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,7 +9,7 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: '6095c77'
 results:
 - object_key: RR-01
-  target_ids: [SR-17]
+  target_ids: [SR_17]
   revision: 'd5201c8'
   criteria:
     RC-01: passed

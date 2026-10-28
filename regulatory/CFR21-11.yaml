@@ -50,7 +50,7 @@ requirements:
     its meaning, and is bound to its record so that it cannot be moved to another'
   applies_to: medical (FDA)
   not_realized: treporting signs nothing; an approval is made where the organization makes it, and
-    can name the report it relied on (SYS-43)
+    can name the report it relied on (SYS_43)
   priority: 'medium'
   safety: ''
   status: approved

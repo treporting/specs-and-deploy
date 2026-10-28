@@ -12,14 +12,16 @@ import (
 
 // requirementFiles tell by the prefix of an id the file that holds it.
 var requirementFiles = []struct{ prefix, file string }{
-	{"UN-", "requirements/user-needs.yaml"},
-	{"SYS-", "requirements/system-requirements.yaml"},
-	{"TOOL-", "requirements/tool-requirements.yaml"},
-	{"SR-", "tools/software-requirements.yaml"},
-	{"ARC-", "architecture/system-architecture.yaml"},
-	{"HAZC-", "safety/hazards.yaml"},
-	{"HAZ-", "safety/hazards.yaml"},
-	{"PROC-", "rules.yaml"},
+	{"UN_", "requirements/user-needs.yaml"},
+	{"SYS_", "requirements/system-requirements.yaml"},
+	{"TOOL_", "requirements/tool-requirements.yaml"},
+	{"SR_", "tools/software-requirements.yaml"},
+	{"ARC_", "architecture/system-architecture.yaml"},
+	{"ARCD_", "architecture/system-architecture.yaml"},
+	{"ARCR_", "architecture/system-architecture.yaml"},
+	{"HAZC_", "safety/hazards.yaml"},
+	{"HAZ_", "safety/hazards.yaml"},
+	{"PROC_", "rules.yaml"},
 }
 
 // regulatory is the directory of the regulatory requirements, one file per module: the id

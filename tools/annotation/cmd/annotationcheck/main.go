@@ -1,5 +1,5 @@
 // Command annotationcheck checks that every id named in @implements or @verifies is approved in the
-// base commit of the pull request (TOOL-06), and names its version (TOOL-20).
+// base commit of the pull request (TOOL_06), and names its version (TOOL_20).
 //
 //	annotationcheck [-root dir] [-base rev]
 //
@@ -19,7 +19,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements SR-24@1.1.1, SR-25@1.1.1, SR-27@1.1.1, SR-30@1.1.1
+// @implements SR_24@1.1.1, SR_25@1.1.1, SR_27@1.1.1, SR_30@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

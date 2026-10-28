@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/review-result.schema.json",
-  "$comment": "@refines ARC-22",
+  "$comment": "@refines ARC_22",
   "title": "Review results (RR) of one review",
-  "description": "One file is one review: who, when, against which criteria; one result per requirement reviewed. Checked beyond the schema by the CI: every criterion of the criteria file appears once; the reviewer is not the author of the requirement (PROC-15).",
+  "description": "One file is one review: who, when, against which criteria; one result per requirement reviewed. Checked beyond the schema by the CI: every criterion of the criteria file appears once; the reviewer is not the author of the requirement (PROC_15).",
   "type": "object",
   "required": [
     "schema",

@@ -35,7 +35,7 @@ func write(t *testing.T, root, path, content string) {
 // A skeleton on a real history: it is made, and reviewcheck then reports every todo in it - an
 // unfilled skeleton cannot pass.
 //
-// @verifies SR-11@1.1.1, SR-12@1.1.1, SR-13@1.1.1, SR-14@1.1.1
+// @verifies SR_11@1.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1
 func TestASkeletonOnAHistoryOfGit(t *testing.T) {
 
 	root := t.TempDir()
@@ -43,12 +43,12 @@ func TestASkeletonOnAHistoryOfGit(t *testing.T) {
 	write(t, root, "reviews/criteria-tool.yaml", "level: tool\ncriteria:\n- object_key: RC-01\n- object_key: RC-02\n")
 	gitIn(t, root, "add", "-A")
 	gitIn(t, root, "commit", "-q", "-m", "criteria")
-	write(t, root, "requirements/tool-requirements.yaml", "level: tool\nrequirements:\n- object_key: TOOL-03\n  object_text: check\n")
+	write(t, root, "requirements/tool-requirements.yaml", "level: tool\nrequirements:\n- object_key: TOOL_03\n  object_text: check\n")
 	gitIn(t, root, "add", "-A")
 	gitIn(t, root, "commit", "-q", "-m", "requirement")
 
 	git := review.ExecGit{Root: root}
-	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03", Targets: []string{"TOOL-03"}, Now: time.Now()}, git)
+	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03", Targets: []string{"TOOL_03"}, Now: time.Now()}, git)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/kinds.schema.json",
-  "$comment": "@refines ARC-22",
+  "$comment": "@refines ARC_22",
   "title": "The kinds of files: code, read for annotations, and no code, never read",
   "type": "object",
   "required": ["schema", "whitelist", "blacklist"],

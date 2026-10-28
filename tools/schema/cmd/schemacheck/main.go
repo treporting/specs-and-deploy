@@ -1,5 +1,5 @@
 // Command schemacheck checks every YAML file under version control against the schema it names in
-// its field schema (TOOL-05).
+// its field schema (TOOL_05).
 //
 //	schemacheck [-root dir]
 //
@@ -15,7 +15,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/schema/check"
 )
 
-// @implements SR-18@1.1.1, SR-19@1.1.1
+// @implements SR_18@1.1.1, SR_19@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

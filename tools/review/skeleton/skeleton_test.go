@@ -40,9 +40,9 @@ func history() fakeGit {
 		"reviews/criteria-documents.yaml": "level: document\ncriteria:\n- object_key: RC-01\n",
 		"requirements/tool-requirements.yaml": `level: tool
 requirements:
-- object_key: TOOL-03
+- object_key: TOOL_03
   object_text: check every review result
-- object_key: TOOL-04
+- object_key: TOOL_04
   object_text: create the skeleton
 `,
 		"harness.md": "# Harness\n",
@@ -77,9 +77,9 @@ func contains(t *testing.T, content string, want ...string) {
 	}
 }
 
-// @verifies SR-11@1.1.1
+// @verifies SR_11@1.1.1
 func TestTheNameTheReviewerAndTheTime(t *testing.T) {
-	path, content, err := makeSkeleton(t, "TOOL-03")
+	path, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -89,9 +89,9 @@ func TestTheNameTheReviewerAndTheTime(t *testing.T) {
 	contains(t, content, "created_by: Mathias Fischer\n", "created_at: '2026-10-26T14:30:05+01:00'\n")
 }
 
-// @verifies SR-12@1.1.1
+// @verifies SR_12@1.1.1
 func TestTheCriteriaOfTheLevel(t *testing.T) {
-	_, content, err := makeSkeleton(t, "TOOL-03")
+	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -104,22 +104,22 @@ func TestTheCriteriaOfTheLevel(t *testing.T) {
 	contains(t, content, "criteria: reviews/criteria-documents.yaml\n")
 }
 
-// @verifies SR-13@1.1.1
+// @verifies SR_13@1.1.1
 func TestTheRevisionIsHead(t *testing.T) {
-	_, content, err := makeSkeleton(t, "TOOL-03")
+	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
 		t.Fatal(err)
 	}
 	contains(t, content, "  revision: 'c2'\n")
 }
 
-// @verifies SR-14@1.1.1
+// @verifies SR_14@1.1.1
 func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
-	_, content, err := makeSkeleton(t, "TOOL-03", "TOOL-04")
+	_, content, err := makeSkeleton(t, "TOOL_03", "TOOL_04")
 	if err != nil {
 		t.Fatal(err)
 	}
-	contains(t, content, "- object_key: RR-01\n  target_ids: [TOOL-03]\n", "- object_key: RR-02\n  target_ids: [TOOL-04]\n")
+	contains(t, content, "- object_key: RR-01\n  target_ids: [TOOL_03]\n", "- object_key: RR-02\n  target_ids: [TOOL_04]\n")
 	if n := strings.Count(content, ": todo\n"); n != 6 {
 		t.Errorf("want 6 todo, two criteria and a verdict for each of two; got %d", n)
 	}
@@ -128,22 +128,22 @@ func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
 	}
 }
 
-// @verifies SR-15@1.1.1
+// @verifies SR_15@1.1.1
 func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
-	if _, _, err := makeSkeleton(t, "TOOL-99"); err == nil || !strings.Contains(err.Error(), "TOOL-99 is not in") {
-		t.Errorf("want TOOL-99 not found, got %v", err)
+	if _, _, err := makeSkeleton(t, "TOOL_99"); err == nil || !strings.Contains(err.Error(), "TOOL_99 is not in") {
+		t.Errorf("want TOOL_99 not found, got %v", err)
 	}
 	if _, _, err := makeSkeleton(t, "nothing.md"); err == nil {
 		t.Errorf("want nothing.md not found")
 	}
-	if _, _, err := makeSkeleton(t, "TOOL-03", "harness.md"); err == nil || !strings.Contains(err.Error(), "one review, one level") {
+	if _, _, err := makeSkeleton(t, "TOOL_03", "harness.md"); err == nil || !strings.Contains(err.Error(), "one review, one level") {
 		t.Errorf("want two levels refused, got %v", err)
 	}
 }
 
-// @verifies SR-17@1.1.1
+// @verifies SR_17@1.1.1
 func TestTheSkeletonNamesItsSchema(t *testing.T) {
-	_, content, err := makeSkeleton(t, "TOOL-03")
+	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
 		t.Fatal(err)
 	}

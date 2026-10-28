@@ -21,10 +21,10 @@ func gitIn(t *testing.T, dir string, args ...string) string {
 
 // A requirement approved in the same pull request does not count: the base commit has it as draft.
 //
-// @verifies SR-25@1.1.1
+// @verifies SR_25@1.1.1
 func TestApprovedInTheSamePullRequestDoesNotCount(t *testing.T) {
 
-	dir := write(t, map[string]string{"tools/software-requirements.yaml": strings.Replace(requirements, "SR-01\n  status: approved", "SR-01\n  status: draft", 1)})
+	dir := write(t, map[string]string{"tools/software-requirements.yaml": strings.Replace(requirements, "SR_01\n  status: approved", "SR_01\n  status: draft", 1)})
 	gitIn(t, dir, "init", "-q")
 	gitIn(t, dir, "-c", "user.name=x", "-c", "user.email=x@x", "add", "-A")
 	gitIn(t, dir, "-c", "user.name=x", "-c", "user.email=x@x", "commit", "-q", "-m", "base")
@@ -32,7 +32,7 @@ func TestApprovedInTheSamePullRequestDoesNotCount(t *testing.T) {
 
 	write2 := map[string]string{
 		"tools/software-requirements.yaml": requirements,
-		"a.go":                             "// @implements SR-01\nfunc a() {}\n",
+		"a.go":                             "// @implements SR_01\nfunc a() {}\n",
 	}
 	for path, content := range write2 {
 		if err := writeFile(dir, path, content); err != nil {
@@ -40,14 +40,14 @@ func TestApprovedInTheSamePullRequestDoesNotCount(t *testing.T) {
 		}
 	}
 	gitIn(t, dir, "-c", "user.name=x", "-c", "user.email=x@x", "add", "-A")
-	gitIn(t, dir, "-c", "user.name=x", "-c", "user.email=x@x", "commit", "-q", "-m", "SR-01 approved, and its code")
+	gitIn(t, dir, "-c", "user.name=x", "-c", "user.email=x@x", "commit", "-q", "-m", "SR_01 approved, and its code")
 
 	found, _, err := Find(dir, strings.Fields(gitIn(t, dir, "ls-files")), Kinds{Whitelist: []string{"*.go", "*.yaml"}})
 	if err != nil {
 		t.Fatal(err)
 	}
 	got := messages(Check(review.ExecGit{Root: dir}, base, found))
-	if len(got) != 1 || !strings.Contains(got[0], "@implements SR-01: draft in the base commit") {
-		t.Errorf("want SR-01 refused as draft in the base commit, got %q", got)
+	if len(got) != 1 || !strings.Contains(got[0], "@implements SR_01: draft in the base commit") {
+		t.Errorf("want SR_01 refused as draft in the base commit, got %q", got)
 	}
 }
