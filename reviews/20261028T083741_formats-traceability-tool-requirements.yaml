@@ -1,5 +1,5 @@
 # Review of formats.md, traceability.md, requirements/tool-requirements.md against the criteria of the level document.
-# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Proposed by Claude Code as passed; decided by the reviewer: RR-01 and RR-03 passed, RR-02 failed.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
 level: review
@@ -41,9 +41,12 @@ results:
     RC-09: passed
     RC-10: passed
     RC-11: passed
-    RC-12: passed
+    RC-12:
+      result: failed
+      note: '"- a requirement as well as a document" repeats what "every object approved" says; to
+        strike'
     RC-13: passed
-  verdict: passed
+  verdict: failed
 - object_key: RR-03
   target_ids: [requirements/tool-requirements.md]
   revision: '638eea4'

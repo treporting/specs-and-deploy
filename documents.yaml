@@ -29,9 +29,9 @@ documents:
   status: approved
   verification_method: [review]
 - name: formats.md
-  object_version: '1.1.1'
-  object_hash: '9b51d27'
-  status: review
+  object_version: '2.1.1'
+  object_hash: '54cfdb8'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
@@ -41,5 +41,5 @@ documents:
 - name: traceability.md
   object_version: '1.1.1'
   object_hash: 'eb14b96'
-  status: review
+  status: draft
   verification_method: [review]

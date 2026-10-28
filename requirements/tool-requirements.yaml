@@ -4,9 +4,9 @@ schema: schemas/tool-requirements.schema.json
 level: tool
 documents:
 - name: tool-requirements.md
-  object_version: '1.1.1'
-  object_hash: '9e6eac9'
-  status: review
+  object_version: '2.1.1'
+  object_hash: '2a6bb2b'
+  status: approved
   verification_method: [review]
 requirements:
 - object_key: TOOL-01
