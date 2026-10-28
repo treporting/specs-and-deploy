@@ -24,14 +24,14 @@ documents:
   status: approved
   verification_method: [review]
 - name: standards.md
-  object_version: '1.1.1'
-  object_hash: '5f77916'
-  status: review
+  object_version: '2.1.1'
+  object_hash: '4e7bb59'
+  status: approved
   verification_method: [review]
 - name: formats.md
-  object_version: '3.1.1'
-  object_hash: '1e7f4df'
-  status: review
+  object_version: '4.1.1'
+  object_hash: 'a59b5a1'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
