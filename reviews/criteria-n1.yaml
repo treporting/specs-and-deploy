@@ -10,7 +10,7 @@ criteria:
   object_text: sourced - its source names the law or the standard and the clause, and they exist
   question: Does its source name the law or the standard and the clause, and do they exist?
 - object_key: RC-02
-  source: ISO/IEC/IEEE 29148, 5.2.5 - correct, read for a duty rendered in own words
+  source: REG_ISO29148_01 - correct, read for a duty rendered in own words
   object_text: rendered - its text renders what the clause asks, in own words, no more and no less
   question: Does its text say what the clause asks, no more and no less?
 - object_key: RC-03
@@ -22,11 +22,11 @@ criteria:
   object_text: placed - where treporting does not realize it, not_realized says who keeps the duty
   question: Does the product realize it, or does not_realized say who keeps it?
 - object_key: RC-05
-  source: ISO/IEC/IEEE 29148, 5.2.5 - verifiable
+  source: REG_ISO29148_01 - verifiable
   object_text: verifiable - its verification method can show that it is met
   question: Can its verification method show that it is met?
 - object_key: RC-06
-  source: ISO/IEC/IEEE 29148, 5.2.5 - conforming; what to conform to is set by treporting, formats.md
+  source: REG_ISO29148_01 - conforming; what to conform to is set by treporting, formats.md
   object_text: conforming - it follows formats.md - id, category, source, applies_to, status and
     verification method need to be present
   question: Does it follow formats.md?

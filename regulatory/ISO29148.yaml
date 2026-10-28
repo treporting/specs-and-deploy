@@ -1,0 +1,29 @@
+# Regulatory requirements of ISO29148 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_ISO29148_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '5.2.5 - each requirement is necessary, appropriate, unambiguous, complete, singular,
+    feasible, verifiable, correct and conforming'
+  applies_to: all
+  not_realized: kept by our work, not by the product - the reviews against the criteria of each level
+    (PROC_13), whose criteria name it as their source
+  priority: 'medium'
+  safety: ''
+  status: review
+  verification_method: [inspection]
+- object_key: REG_ISO29148_02
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '5.2.6 - a set of requirements is complete, consistent, feasible, comprehensible and able
+    to be validated'
+  applies_to: all
+  not_realized: kept by our work, not by the product - the reviews against the criteria of each level
+    (PROC_13), whose criteria name it as their source
+  priority: 'medium'
+  safety: ''
+  status: review
+  verification_method: [inspection]
