@@ -30,8 +30,8 @@ documents:
   verification_method: [review]
 - name: formats.md
   object_version: '4.1.1'
-  object_hash: 'a59b5a1'
-  status: review
+  object_hash: '754c8e0'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
