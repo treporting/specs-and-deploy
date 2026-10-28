@@ -147,8 +147,8 @@ import 2026-10-23T14:02:11Z  by m.fischer
 ```
 
 **Why**: the record carries the trace of a report past the data set to the source and its
-revision (REG-10), it is the audit trail of a change of data (REG-05), and it is the evidence that
-errors of an import are detected (REG-01 to REG-03).
+revision (REG_FDADI_01), it is the audit trail of a change of data (REG_CFR21-11_01), and it is the evidence that
+errors of an import are detected (REG_ISO26262-8_01, REG_IEC61508-3_01, REG_DO178C_01, REG_DO330_01).
 
 ### ARC-D03 Original and derived values (SYS-11)
 
@@ -168,7 +168,7 @@ filter selects platform-1, made for the filter set where it is not stored. A sof
 without a safety class under parents of ASIL B and QM keeps `Safety` empty and gets
 `MSafety = 'ASIL B'`; its test case and test result get `MSafety = 'ASIL B'` as well.
 
-**Why**: what is stored can be compared with the source (SYS-25) and stays original (REG-10).
+**Why**: what is stored can be compared with the source (SYS-25) and stays original (REG_FDADI_01).
 Where the evidence is that every requirement was classified by a person, the report shows
 `Safety`, not `MSafety`; where the evidence is that nothing falls out of a filter, it shows
 `MSafety`. A change of a rule needs no new import. Only a derived value that is stored can be

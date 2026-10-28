@@ -14,7 +14,7 @@ like every other requirement (PROC-13). Each section is a feature, the field `fe
 `TOOL-01` to `TOOL-02`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 A document handed to an auditor shows what it is, which version, which revision, and its status
-(REG-10).
+(REG_FDADI_01).
 
 **Which version and revision** an exported document shows:
 

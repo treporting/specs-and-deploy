@@ -25,7 +25,7 @@ The data of every level is in YAML, what explains it in Markdown beside it - see
 | [formats.md](formats.md) | how requirements, documents, reviews, annotations and tests are written down, and what the CI checks; the schemas in [schemas/](schemas/) | - |
 | [standards.md](standards.md) | the process, safety and security standards per domain | - |
 | [requirements/user-needs.yaml](requirements/user-needs.yaml), [.md](requirements/user-needs.md) | what each role needs, without a solution (r1) | `UN-<role>-nn` |
-| [requirements/regulatory-requirements.yaml](requirements/regulatory-requirements.yaml), [.md](requirements/regulatory-requirements.md) | what standards and laws ask | `REG-nn` |
+| [regulatory/](regulatory/), [regulatory-requirements.md](regulatory/regulatory-requirements.md) | what standards and laws ask, one file per module | `REG_<module>_nn` |
 | [requirements/system-requirements.yaml](requirements/system-requirements.yaml), [.md](requirements/system-requirements.md) | what the system has to do, seen as one box (r2); each section is a feature | `SYS-nn` |
 | [requirements/tool-requirements.yaml](requirements/tool-requirements.yaml), [.md](requirements/tool-requirements.md) | what the tools of our work have to do; tools are code | `TOOL-nn` |
 | [architecture/system-architecture.yaml](architecture/system-architecture.yaml), [.md](architecture/system-architecture.md) | the subsystems, their interfaces, the rationale and the decisions, and which subsystem realizes which requirement (r3) | `ARC-nn` |

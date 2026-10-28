@@ -150,7 +150,7 @@ check is named by its job, with `integration_id` 15368 - GitHub Actions. GitHub 
 check only after it has run once, so a new job runs green before it becomes required.
 
 **Why**: a run by hand leaves no record, and depends on the one who runs it; a run of the CI is
-recorded with the pull request, by a computer (REG-05).
+recorded with the pull request, by a computer (REG_CFR21-11_01).
 
 **Rejected**:
 

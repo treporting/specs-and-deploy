@@ -61,7 +61,7 @@ not a merge, that changed the requirement, and its co-authors - `Claude Opus 5.5
 Nothing is derived from it and kept beside it; there is no `mmodified_by`.
 
 **Why**: git records author and co-authors by itself; a record made by a computer is the evidence an
-audit trail asks for (REG-05), and the original stays original (ARC-R01, REG-10).
+audit trail asks for (REG_CFR21-11_01), and the original stays original (ARC-R01, REG_FDADI_01).
 
 **Rejected**:
 
