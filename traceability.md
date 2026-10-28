@@ -1,7 +1,7 @@
 # Traceability
 
 How a link between two levels stays valid when the parent changes, and the version that every
-object approved carries - a requirement as well as a document. This document records the
+object approved carries. This document records the
 problem, the options weighed, and the decisions taken. The questions still open are marked as such.
 The rules that follow from it stand in harness.md: PROC-13, PROC-14 and PROC-20. The changes to
 the schemas and the tools follow in changes of their own. It is written
