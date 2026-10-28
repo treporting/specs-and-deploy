@@ -4,9 +4,9 @@ schema: schemas/tool-requirements.schema.json
 level: tool
 documents:
 - name: tool-requirements.md
-  object_version: '2.1.1'
-  object_hash: '2a6bb2b'
-  status: review
+  object_version: '3.1.1'
+  object_hash: '94b2d52'
+  status: approved
   verification_method: [review]
 requirements:
 - object_key: TOOL-01
@@ -149,7 +149,7 @@ requirements:
   source_ids: [PROC-14@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-15
   object_version: '1.1.1'
@@ -160,7 +160,7 @@ requirements:
   source_ids: [PROC-13@1.1.1, PROC-14@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-16
   object_version: '1.1.1'
@@ -171,7 +171,7 @@ requirements:
   source_ids: [PROC-20@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-17
   object_version: '1.1.1'
@@ -181,7 +181,7 @@ requirements:
   source_ids: [PROC-06@1.1.1, PROC-20@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-18
   object_version: '1.1.1'
@@ -191,7 +191,7 @@ requirements:
   source_ids: [PROC-20@2.1.1]
   priority: 'later'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-19
   object_version: '1.1.1'
@@ -201,7 +201,7 @@ requirements:
   source_ids: [PROC-14@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL-20
   object_version: '1.1.1'
@@ -211,5 +211,5 @@ requirements:
   source_ids: [PROC-20@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
