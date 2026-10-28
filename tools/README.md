@@ -132,6 +132,18 @@ the last part of its path. An SR names the component, `review`; the module is se
 - the module as the component of an SR - which package realizes a behaviour is a decision of the
   design, on the levels r6 and r7
 
+**Decision**: the id of an object tells the file that holds it. A level with one file is kept in a
+list, by the prefix of its ids. A regulatory requirement `REG_<module>_nn` is in
+`regulatory/<module>.yaml`, one file per module (formats.md, section Regulatory requirements). The
+files of requirements are those of the list and the YAML files in `regulatory/`.
+
+**Why**: a tool finds an object from its id alone, also in an old revision, without reading every
+file.
+
+**Rejected**: every YAML that names a schema, as annotationcheck tells our data. To find one id, a
+tool would read every file, in every revision it looks at; and the review results would count as
+files of requirements.
+
 ## reviewcheck
 
 Checks every review result in `reviews/` against the rules of formats.md (TOOL-03, TOOL-11; SR-01
