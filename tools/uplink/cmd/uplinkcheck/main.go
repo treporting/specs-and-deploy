@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/treporting/specs-and-deploy/tools/review"
 	"github.com/treporting/specs-and-deploy/tools/uplink/check"
 )
 
@@ -23,7 +24,7 @@ func main() {
 
 	findings, approved, err := check.Check(func(file string) ([]byte, error) {
 		return os.ReadFile(filepath.Join(*root, file))
-	})
+	}, list(*root))
 	if err != nil {
 		fail(err)
 	}
@@ -33,6 +34,23 @@ func main() {
 	fmt.Printf("%d approved requirements checked, %d findings\n", approved, len(findings))
 	if len(findings) > 0 {
 		os.Exit(1)
+	}
+}
+
+// list answers the names of the files in a directory below root.
+func list(root string) review.List {
+	return func(dir string) ([]string, error) {
+		entries, err := os.ReadDir(filepath.Join(root, dir))
+		if err != nil {
+			return nil, err
+		}
+		var names []string
+		for _, e := range entries {
+			if !e.IsDir() {
+				names = append(names, e.Name())
+			}
+		}
+		return names, nil
 	}
 }
 

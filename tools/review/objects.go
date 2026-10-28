@@ -4,6 +4,7 @@
 package review
 
 import (
+	"sort"
 	"strings"
 
 	"gopkg.in/yaml.v3"
@@ -22,8 +23,16 @@ var requirementFiles = []struct{ prefix, file string }{
 	{"PROC-", "rules.yaml"},
 }
 
-// Files answers every file that holds requirements, each once, in the order of requirementFiles.
-func Files() []string {
+// regulatory is the directory of the regulatory requirements, one file per module: the id
+// REG_<module>_nn is in regulatory/<module>.yaml (formats.md, section Regulatory requirements).
+const regulatory = "regulatory"
+
+// List answers the names of the files in a directory of the repo, by its path from the root.
+type List func(dir string) ([]string, error)
+
+// Files answers every file that holds requirements, each once: those of requirementFiles in their
+// order, then the modules in regulatory/ that list finds. A directory list cannot read holds none.
+func Files(list List) []string {
 
 	var files []string
 	seen := map[string]bool{}
@@ -33,7 +42,29 @@ func Files() []string {
 			files = append(files, rf.file)
 		}
 	}
+	names, _ := list(regulatory)
+	sort.Strings(names)
+	for _, name := range names {
+		if strings.HasSuffix(name, ".yaml") {
+			files = append(files, regulatory+"/"+name)
+		}
+	}
 	return files
+}
+
+// moduleOf answers the module a regulatory requirement names in its id, REG_<module>_nn, and
+// false where the id has another form.
+func moduleOf(id string) (string, bool) {
+
+	rest, ok := strings.CutPrefix(id, "REG_")
+	if !ok {
+		return "", false
+	}
+	i := strings.LastIndex(rest, "_")
+	if i <= 0 || i == len(rest)-1 || strings.Trim(rest[i+1:], "0123456789") != "" {
+		return "", false
+	}
+	return rest[:i], true
 }
 
 // lists are the sections of a YAML that hold objects with an object_key.
@@ -45,6 +76,9 @@ func FileOf(target string) (file, key string) {
 
 	if strings.HasSuffix(target, ".md") {
 		return target, ""
+	}
+	if module, ok := moduleOf(target); ok {
+		return regulatory + "/" + module + ".yaml", target
 	}
 	for _, rf := range requirementFiles {
 		if strings.HasPrefix(target, rf.prefix) {

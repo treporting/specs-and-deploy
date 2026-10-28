@@ -38,12 +38,12 @@ var fields = []string{"source_ids", "allocated", "controls"}
 // uplinkcheck and schemacheck report it.
 //
 // @implements SR-32@1.1.1
-func Links(read Read) ([]Finding, int, error) {
+func Links(read Read, list review.List) ([]Finding, int, error) {
 
 	versions := newVersions(read)
 	var findings []Finding
 	compared := 0
-	for _, file := range review.Files() {
+	for _, file := range review.Files(list) {
 		for _, object := range objects(versions.load(file)) {
 			for _, field := range fields {
 				for _, link := range object.links(field) {
