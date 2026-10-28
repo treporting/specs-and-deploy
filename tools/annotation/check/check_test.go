@@ -77,7 +77,7 @@ func filesOf(found []Annotation) string {
 	return strings.Join(got, " ")
 }
 
-// @verifies SR_24@1.1.1
+// @verifies SR_24@2.1.1
 func TestOnlyCodeIsRead(t *testing.T) {
 	found, unknown := find(t, map[string]string{
 		"a.go":                  "// @implements SR_01\nfunc a() {}\n",
@@ -114,7 +114,7 @@ func TestAKindOnNeitherList(t *testing.T) {
 	}
 }
 
-// @verifies SR_24@1.1.1
+// @verifies SR_24@2.1.1
 func TestOnlyFirstInALineOfComment(t *testing.T) {
 	//	built with \n, not as a string over lines: a line of a raw string that begins with a mark of
 	//	comment would be read as an annotation of this file itself
@@ -129,7 +129,7 @@ func TestOnlyFirstInALineOfComment(t *testing.T) {
 	}
 }
 
-// @verifies SR_24@1.1.1
+// @verifies SR_24@2.1.1
 func TestAnIdNotInTheBaseCommit(t *testing.T) {
 	got := messages(Check(base, "b1", []Annotation{{"a.go", 3, "implements", []string{"SR_01", "SR_07"}, []string{"1.1.1", "1.1.1"}}}))
 	if len(got) != 1 || got[0] != "a.go:3 @implements SR_07: not in tools/software-requirements.yaml in the base commit b1" {
@@ -145,7 +145,7 @@ func TestAnIdNotApprovedInTheBaseCommit(t *testing.T) {
 	}
 }
 
-// @verifies SR_24@1.1.1
+// @verifies SR_24@2.1.1
 func TestSeveralIdsInOneAnnotation(t *testing.T) {
 	found, _ := find(t, map[string]string{"a.go": "// @implements SR_01, SR_02,SR_03\n"})
 	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR_01 SR_02 SR_03" {

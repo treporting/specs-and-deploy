@@ -751,7 +751,7 @@ requirements:
   feature: Derived values
   object_text: make the derived values of a stored data set again on request when a rule changes, back
     in time, without fetching the data from the source systems again
-  source_ids: [ARCD_03@1.1.1]
+  source_ids: [ARCD_03@2.1.1]
   priority: 'medium'
   safety: ''
   status: draft
