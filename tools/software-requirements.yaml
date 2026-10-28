@@ -4,9 +4,9 @@ schema: schemas/software-requirements.schema.json
 level: r5
 documents:
 - name: README.md
-  object_version: '2.1.1'
-  object_hash: 'bfb5ecf'
-  status: review
+  object_version: '3.1.1'
+  object_hash: 'a1f0424'
+  status: approved
   verification_method: [review]
 requirements:
 - object_key: SR-01
