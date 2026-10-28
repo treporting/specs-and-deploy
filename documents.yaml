@@ -43,3 +43,8 @@ documents:
   object_hash: '4c874ae'
   status: approved
   verification_method: [review]
+- name: regulatory/regulatory-requirements.md
+  object_version: '1.1.1'
+  object_hash: ''
+  status: draft
+  verification_method: [review]

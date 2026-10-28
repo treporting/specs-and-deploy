@@ -1,0 +1,15 @@
+# Regulatory requirements of ISO26262-8 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_ISO26262-8_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: 'clause 11 - classify a software tool by its impact and by how surely its errors are
+    detected (TI, TD, TCL), and qualify it where the confidence level is TCL2 or TCL3'
+  applies_to: automotive
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

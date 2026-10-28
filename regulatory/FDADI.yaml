@@ -1,0 +1,15 @@
+# Regulatory requirements of FDADI (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_FDADI_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: 'data are complete, consistent and accurate - attributable, legible,
+    contemporaneously recorded, original or a true copy, and accurate (ALCOA)'
+  applies_to: medical (FDA)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

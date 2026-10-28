@@ -1,0 +1,20 @@
+# Regulatory requirements of DDG (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_DDG_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: |-
+    §5(1) - Diensteanbieter haben für geschäftsmäßige, in der Regel gegen Entgelt angebotene digitale Dienste
+    folgende Informationen, die leicht erkennbar und unmittelbar erreichbar sein müssen, ständig
+    verfügbar zu halten: …
+
+    a digital service offered in business, as a rule for payment, keeps who runs it easy to recognize,
+    directly reachable and always available
+  applies_to: Germany
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

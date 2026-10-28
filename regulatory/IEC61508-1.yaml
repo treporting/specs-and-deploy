@@ -1,0 +1,15 @@
+# Regulatory requirements of IEC61508-1 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_IEC61508-1_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '7.6.2.9 - each SIL sets the target failure measure a system has to reach - a
+    probability of dangerous failure on demand (PFD) or per hour (PFH)'
+  applies_to: industry, railway (EN 50716)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

@@ -1,0 +1,16 @@
+# Regulatory requirements of IEC62304 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_IEC62304_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '4.3; 5.3.5 - a software item gets the software safety class of the software system
+    or item it is decomposed from; a lower class only with a documented rationale, such as a
+    segregation of the items'
+  applies_to: medical
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

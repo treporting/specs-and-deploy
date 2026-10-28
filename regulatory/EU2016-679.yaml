@@ -1,0 +1,29 @@
+# Regulatory requirements of EU2016-679 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_EU2016-679_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: 'Art. 5(1)(b), (e) - process personal data only for the purposes stated, and keep it
+    no longer than they need'
+  applies_to: EU
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_EU2016-679_02
+  object_version: '1.1.1'
+  category: Normative
+  object_text: |-
+    Art. 13(1) - Werden personenbezogene Daten bei der betroffenen Person erhoben, so teilt der
+    Verantwortliche der betroffenen Person zum Zeitpunkt der Erhebung dieser Daten Folgendes mit: …
+
+    where personal data are collected from a user, the controller tells them at that time who is
+    responsible, the purposes and the legal basis, the recipients, and the further information of Art. 13
+  applies_to: EU
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

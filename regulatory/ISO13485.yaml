@@ -1,0 +1,16 @@
+# Regulatory requirements of ISO13485 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_ISO13485_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '4.1.6 - document procedures to validate software used in the quality management
+    system, and validate it before its first use and after changes, with an approach and an effort
+    proportionate to its risk'
+  applies_to: medical
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

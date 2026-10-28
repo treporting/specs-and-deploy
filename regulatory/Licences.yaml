@@ -1,0 +1,14 @@
+# Regulatory requirements of Licences (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+level: n1
+requirements:
+- object_key: REG_Licences_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: 'a release hands on the licence texts and notices of every component it contains'
+  applies_to: all
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
