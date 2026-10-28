@@ -292,3 +292,31 @@ can be one reference for the decision to release a product. Traceability serves
 - product management, to create a roadmap and to find a minimum viable product,
 - quality assurance, to determine the maturity of the product and to state KPIs,
 - configuration management, to determine the state of work products.
+
+## Link check and impact assessment
+
+A change of an object reaches what builds on it. Two things are set apart here.
+
+**Link check** - when the x of an object rises, the check, for each object that names it - by a
+link, an entry of the allocation or an annotation - whether it still fits the new version.
+Updating the link records it. It is what a suspect link asks for (traceability.md).
+
+**Impact assessment** - when an object changes, in x, y or z, the assessment of what follows for
+everything that builds on it: the objects that name it, the architecture, the scope of the
+project, the priorities, the implementation and the tests. A link check is one part of it, not the
+whole.
+
+The part of the version that changed tells where to look first.
+
+**Table impact** - what a change of each part of the version touches
+
+| Part | What changes | What it touches | The question |
+|---|---|---|---|
+| x | the content | the objects that name it | Do they still fit? |
+| y | the links | the dependencies, at worst the architecture | Does the breakdown still hold? |
+| z | other attributes, such as `platform_launch` or `priority` | the order of the implementation, the scope of the project, the priorities, the architecture | What has to be done when, and what not at all? Which subsystem is needed earlier? |
+
+For each part, the assessment goes on to what most tools leave out:
+
+- the implementation: which code is touched, found by `@implements`
+- the tests: which tests are touched, found by `@verifies`, and which records in `verifications/`
