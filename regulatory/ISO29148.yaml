@@ -13,7 +13,7 @@ requirements:
     (PROC_13), whose criteria name it as their source
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_ISO29148_02
   object_version: '1.1.1'
@@ -25,7 +25,7 @@ requirements:
     (PROC_13), whose criteria name it as their source
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_ISO29148_03
   object_version: '1.1.1'
@@ -37,5 +37,5 @@ requirements:
     (PROC_13), whose criteria name it as their source
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
