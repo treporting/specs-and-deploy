@@ -6,17 +6,17 @@ documents:
 - name: README.md
   object_version: '2.1.1'
   object_hash: '5d18fdb'
-  status: approved
+  status: review
   verification_method: [review]
 - name: harness.md
   object_version: '2.1.1'
   object_hash: 'a9d9af5'
-  status: approved
+  status: review
   verification_method: [review]
 - name: devops.md
   object_version: '4.1.1'
   object_hash: '0d45e44'
-  status: approved
+  status: review
   verification_method: [review]
 - name: definitions.md
   object_version: '2.1.1'
@@ -31,7 +31,7 @@ documents:
 - name: formats.md
   object_version: '4.1.1'
   object_hash: '754c8e0'
-  status: approved
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
@@ -41,7 +41,7 @@ documents:
 - name: traceability.md
   object_version: '4.1.1'
   object_hash: '4c874ae'
-  status: approved
+  status: review
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   object_version: '1.1.1'
