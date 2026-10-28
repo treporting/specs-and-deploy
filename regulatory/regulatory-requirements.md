@@ -43,3 +43,11 @@ treporting is open source, with the possibility of licensed features, and offere
 when the Cyber Resilience Act applies to it is to be confirmed by legal advice.
 
 `REG_EU2024-2847_01` to `REG_EU2024-2847_04`, `REG_Licences_01`: in [EU2024-2847.yaml](EU2024-2847.yaml), [Licences.yaml](Licences.yaml).
+
+## Requirements engineering
+
+The characteristics every requirement of treporting is reviewed against. treporting does not realize
+them; our work keeps them, in the reviews against the criteria of each level (PROC_13). A criterion
+names the one it comes from in its field `source`.
+
+`REG_ISO29148_01`, `REG_ISO29148_02`: in [ISO29148.yaml](ISO29148.yaml).
