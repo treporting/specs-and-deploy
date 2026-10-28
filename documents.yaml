@@ -19,8 +19,8 @@ documents:
   status: approved
   verification_method: [review]
 - name: definitions.md
-  object_version: '1.1.1'
-  object_hash: 'e6d50a0'
+  object_version: '2.1.1'
+  object_hash: 'd1fbd20'
   status: approved
   verification_method: [review]
 - name: standards.md
@@ -39,7 +39,7 @@ documents:
   status: approved
   verification_method: [review]
 - name: traceability.md
-  object_version: '2.1.1'
-  object_hash: '4ecab9a'
+  object_version: '3.1.1'
+  object_hash: 'f197a04'
   status: approved
   verification_method: [review]

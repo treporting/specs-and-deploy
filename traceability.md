@@ -36,7 +36,7 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 | f) | Only a change of meaning counts | PROC-14 worded with "changes its meaning" | editorial changes set off nothing | eases the problem, does not solve it; who decides "meaning"? |
 | g) | Consistency only at the baseline | Between baselines the state may be inconsistent | little load in daily work | gaps stay unnoticed for long |
 | h) | A failed review never reaches `main` | Only the result is merged; `main` keeps the approved version | `main` is always consistent | against the rule "failed sets `draft` on `main`"; a successful change still raises the question whether the children fit |
-| i) | Impact assessment in the same pull request | Whoever changes a parent checks every child in the same pull request | no state in between | large pull requests where a parent has many children |
+| i) | Check of the children in the same pull request | Whoever changes a parent checks every child in the same pull request | no state in between | large pull requests where a parent has many children |
 
 **Decision**: b) + e) + h) + i).
 
@@ -59,7 +59,7 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
   approval, so PROC-20 would not see such a text. The check of TOOL-09 would.
 - e) finds the dangerous case: a parent changes its meaning, is approved again, and a child no
   longer fits it
-- updating the version on the link is the record of the impact assessment: the commit shows who
+- updating the version on the link is the record of the check of the child: the commit shows who
   checked the child against which version, and when
 
 **Rejected**:
@@ -82,7 +82,7 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 |---|---|---|
 | TOOL-03 fails, `draft` | found: "SR-01 approved, uplink not" | found: TOOL-03 changed |
 | TOOL-03 is revised and approved again, with another text | **missed**: all approved, SR-01 never checked against the new text | found: SR-01 names an older version |
-| TOOL-03 changes only editorially and is approved again | missed, which is right here | found: a short impact assessment is due |
+| TOOL-03 changes only editorially and is approved again | missed, which is right here | found: a short check of the child is due |
 
 ## The version a link names
 
@@ -138,8 +138,9 @@ child could name a state that was never approved.
 
 **Decision**: only a change of x sets an approved object back to `draft`, and needs a review. A
 change of y or z only - a link updated, a remark - leaves it `approved`. Its merge is its approval,
-as for a rule, and raises y or z by one. The author makes the impact assessment - does the child
-still fit the new version of its parent? - and the Product Owner confirms it by the merge.
+as for a rule, and raises y or z by one. The author checks the child - does it still fit the new
+version of its parent? - the first question of the impact assessment (definitions.md), and the
+Product Owner confirms it by the merge.
 
 **Why**: x is there to set apart a change of meaning. What does not change the meaning needs no
 full review. So updating a link stays cheap, and the cascade stays away.
@@ -311,7 +312,7 @@ Code and tests name their requirement in an annotation, not in `source_ids`.
 
 - one rule for both sides of the V
 - the version is visible in the file, as on a link
-- updating the line is the record of the impact assessment: the commit shows who checked the code
+- updating the line is the record of the check of the code: the commit shows who checked the code
   against which version, and when
 - the cascade ends here: nothing lies below code and tests
 
