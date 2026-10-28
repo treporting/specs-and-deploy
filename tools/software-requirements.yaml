@@ -323,3 +323,33 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: SR-32
+  object_version: '1.1.1'
+  component: link
+  object_text: report every link in `source_ids`, entry of `allocated` and entry of `controls` whose
+    object has another x than the version it names
+  source_ids: [TOOL-16@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR-33
+  object_version: '1.1.1'
+  component: link
+  object_text: report every `@implements` and `@verifies` whose id has another x than the version it
+    names
+  source_ids: [TOOL-16@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR-34
+  object_version: '1.1.1'
+  component: ci
+  object_text: on every pull request, in .github/workflows/tools.yml, make the link check in a job of its
+    own and show its report in the log, without failing
+  source_ids: [TOOL-16@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
