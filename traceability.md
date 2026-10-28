@@ -136,6 +136,18 @@ anyone checks against.
 **Rejected**: to raise the version at every change. A draft would count its working steps, and a
 child could name a state that was never approved.
 
+**Decision**: the last approved version of an object is its version in the base commit of the pull
+request. Where it is not there, the object is new and starts at `1.1.1`.
+
+**Why**: by step 10 of the loop (harness.md), a change of an approved object whose review failed
+is taken back on its branch, so it never reaches `main`. A draft on `main` was never approved, or it
+is the state `main` holds. So the base commit holds the last approved version, and a check needs no
+more than it.
+
+**Rejected**: the last approved version searched in the history of git, with the review results.
+It would also hold where a changed draft reached `main`, but step 10 rules that out, and the check
+would have to read the history and every review result.
+
 **Decision**: only a change of x sets an approved object back to `draft`, and needs a review. A
 change of y or z only - a link updated, a remark - leaves it `approved`. Its merge is its approval,
 as for a rule, and raises y or z by one. The author checks the child - does it still fit the new
@@ -543,10 +555,7 @@ Markdown table, and the rules would be kept apart from every other requirement.
 
 ## Open questions
 
-1. **The tools:** a check that an approval sets the right version, a check for suspect
-   links and annotations, and a command that updates a link or an annotation to the current
-   version of its parent. annotationcheck has to read `@x.y.z`.
-2. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
+1. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
    from its tag, not `main`. How such a state is made and kept is not set yet.
-3. **The realization of a control:** how it is checked that a control is realized by its user
+2. **The realization of a control:** how it is checked that a control is realized by its user
    needs, and when.
