@@ -54,10 +54,41 @@ short form is the same in every document, and the table says what stands behind 
 | ARP4754B | ARP4754B Guidelines for Development of Civil Aircraft and Systems | |
 | ARP4761A | ARP4761A Guidelines for Conducting the Safety Assessment Process on Civil Aircraft, Systems, and Equipment | |
 | DO178C | DO-178C Software Considerations in Airborne Systems and Equipment Certification | |
+| DO330 | DO-330 Software Tool Qualification Considerations | |
 | DO254 | DO-254 Design Assurance Guidance for Airborne Electronic Hardware | |
 | DO326A | DO-326A Airworthiness Security Process Specification | |
 | DO356A | DO-356A Airworthiness Security Methods and Considerations | |
 | CMMI | CMMI Capability Maturity Model Integration | |
+
+## Laws, guidance and licences
+
+A regulatory requirement comes from a standard, but also from a law, a guidance or a licence. Its
+module is named by a short form as well (formats.md, section Regulatory requirements).
+
+**Decision**: a law or a guidance with a number is named like a standard: its publisher and its
+number, with no space between them, and a part with its hyphen. A slash in the number becomes a
+hyphen. One with no number is named by its own short name. Only the table below names it in full.
+
+**Why**: the same rule holds for every module, standard or law. The short form names a file and
+stands in an id, where a slash would separate directories.
+
+**Rejected**:
+
+- the common names, GDPR and CRA: the rule of the standards gives the publisher and the number
+- VO(EU)2016/679: VO is German, and the slash separates directories
+- 21CFR11: the only short form to begin with its number, its part without a hyphen
+
+**Table other short forms** - every law, guidance and licence named in the documents
+
+| Short form | Source | Remark |
+|---|---|---|
+| CFR21-11 | 21 CFR Part 11 Electronic Records; Electronic Signatures | |
+| EU2016-679 | Regulation (EU) 2016/679 General Data Protection Regulation | |
+| EU2024-2847 | Regulation (EU) 2024/2847 Cyber Resilience Act | |
+| DDG | Digitale-Dienste-Gesetz | its own short name |
+| BetrVG | Betriebsverfassungsgesetz | its own short name |
+| FDADI | FDA Data Integrity and Compliance With Drug CGMP - Guidance for Industry (2018) | no number |
+| Licences | the licences of the components a release contains, such as Apache-2.0 | no publisher |
 
 ## Per domain
 

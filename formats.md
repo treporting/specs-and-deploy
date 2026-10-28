@@ -14,7 +14,7 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 | Level | Data | Explanation | Repo |
 |---|---|---|---|
 | h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC), still to come | `safety/hazard-and-risk-analysis.md` | specs-and-deploy |
-| n1 | `requirements/regulatory-requirements.yaml` (REG) | `requirements/regulatory-requirements.md` | specs-and-deploy |
+| n1 | `regulatory/<module>.yaml` (REG), one file per module | `regulatory/regulatory-requirements.md` | specs-and-deploy |
 | r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy |
 | r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy |
 | r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy |
@@ -56,6 +56,62 @@ a review of harness.md would change the hash, the table, and so harness.md again
 
 **Rejected**: the hash over the rules alone. `git hash-object` could no longer check it, and a tool
 would be needed.
+
+### Regulatory requirements
+
+A regulatory requirement is a clause of a standard, a law, a guidance or a licence (n1). The model
+keeps it as an object in a module, and the module is where it comes from (attributes.md, section
+Normative).
+
+**Decision**: one file per module, `regulatory/<module>.yaml`. The module is a standard, or a part
+of it; a law; a guidance; or the licences of the components. Its name is the short form of
+standards.md, such as `regulatory/ISO26262-8.yaml`.
+
+**Why**: the standards and laws are given from outside; the requirements are written by us. So they
+lie in a directory of their own, apart from `requirements/`. The numbers of the clauses start anew
+in each part of a standard: clause 11 stands in ISO26262-8 and in ISO26262-6. A file per part keeps
+a clause unique.
+
+**Rejected**:
+
+- one file for all: the module would be the file, not the standard
+- one file per standard, such as `ISO26262.yaml`: clause 11 would be ambiguous in it
+- `requirements/regulatory/`: what is given and what we write would lie in one directory
+
+**Decision**: the id is `REG_<module>_nn`, numbered from 01 in each file, such as
+`REG_ISO26262-8_01`. A requirement that comes from more than one module is split, one per module.
+
+**Why**: an id is unique within its document only (section Ids); the module makes it unique in the
+project. `REG` shows the level, as `UN` does for the user needs. The module holds hyphens itself,
+so the underscore separates its parts.
+
+**Rejected**:
+
+- `<module>_nn`, without `REG`: the id would not tell its level
+- a requirement with more than one module: it would belong in more than one file
+
+**Decision**: `object_text` begins with the clause, as its source names it, then ` - `, such as
+`'clause 11 - classify a software tool …'` or `'Art. 13(1) - …'`. The field `source` goes.
+`category` is `Normative`. The topics, such as tool qualification, are the sections of
+regulatory-requirements.md.
+
+**Why**: the file names the module, so of `source` only the clause is left. A clause is found in its
+source by the word it carries there - clause, Art., §, Annex. In the model, `category` is the kind
+of an object, as `Hazard` is for a hazard.
+
+**Rejected**:
+
+- a field `clause`: a renumbered clause would not change x, unless the schema named the field
+  for x as well; in `object_text` it does
+- the clause as a number alone, `'11: …'`: Art. 14 and Annex I of a law would both be numbers
+- the topic in `category`: it would mean another thing for this kind than for every other
+
+**Decision**: regulatory-requirements.md lies in `regulatory/`, and is named in `documents.yaml`.
+
+**Why**: it explains every module, not one of them; `documents.yaml` holds every document with no
+YAML of its own.
+
+**Rejected**: the section `documents` of one of the modules - which one would be chosen at will.
 
 ### Fields are the properties of the gel schema
 
@@ -354,7 +410,7 @@ annotation names software requirements of its own repo only.
 |---|---|---|
 | `HAZ-nn`, `THR-nn` | hazards, threats | h1 |
 | `HAZC-nn`, `THRC-nn` | the controls of a hazard, of a threat | h2 |
-| `REG-nn` | regulatory requirements | n1 |
+| `REG_<module>_nn` | regulatory requirements; `<module>` is the short form of standards.md | n1 |
 | `UN-<role>-nn` | user needs | r1 |
 | `SYS-nn` | system requirements | r2 |
 | `ARC-nn` | subsystems, interfaces | r3 |
