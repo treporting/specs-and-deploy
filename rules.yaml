@@ -59,27 +59,27 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC-08
-  object_version: '1.1.1'
+  object_version: '2.2.1'
   object_text: 'Every release has an SBOM, and the licences of its components are checked against
-    Apache-2.0 (REG-15, REG-18).'
-  source_ids: [REG-15@1.1.1, REG-18@1.1.1]
+    Apache-2.0 (REG_EU2024-2847_02, REG_Licences_01).'
+  source_ids: [REG_EU2024-2847_02@1.1.1, REG_Licences_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC-09
-  object_version: '1.1.1'
+  object_version: '2.2.1'
   object_text: 'A reported vulnerability is assessed and fixed without delay; one that is actively
-    exploited is notified within 24 hours (REG-15, REG-16).'
-  source_ids: [REG-15@1.1.1, REG-16@1.1.1]
+    exploited is notified within 24 hours (REG_EU2024-2847_02, REG_EU2024-2847_03).'
+  source_ids: [REG_EU2024-2847_02@1.1.1, REG_EU2024-2847_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC-10
-  object_version: '1.1.1'
-  object_text: 'Every release gets security fixes over the support period it states (REG-17).'
-  source_ids: [REG-17@1.1.1]
+  object_version: '2.2.1'
+  object_text: 'Every release gets security fixes over the support period it states (REG_EU2024-2847_04).'
+  source_ids: [REG_EU2024-2847_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved

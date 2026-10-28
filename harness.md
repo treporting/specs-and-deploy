@@ -23,7 +23,8 @@ treporting is a pure software project and is developed following the process of 
   - **assurance**: ISO15026 is proposed for the case why the tool can be relied on, in
     the tool qualification.
 - **project risks** are handled by the risk management process of ISO12207, clause 6.3.4.
-- REG-01 to REG-04 are requirements on the tool from the domains of its users, not our process.
+- REG_ISO26262-8_01, REG_IEC61508-3_01, REG_DO178C_01, REG_DO330_01 and REG_ISO13485_01 are
+  requirements on the tool from the domains of its users, not our process.
 
 ### Levels
 
@@ -124,8 +125,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@e2699c7 - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@e2699c7
+<!-- generated from rules.yaml@07dc4f3 - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@07dc4f3
 
 | Id | Version | Rule |
 |---|---|---|
@@ -136,9 +137,9 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC-05 | 1.1.1 | Every change of code realizes or verifies an approved requirement and names it in `@implements` or `@verifies`. Code is everything that is built or run - also configurations and container files. A schema is no code: it is the contract of the requirement it refines, and names it in `@refines`. |
 | PROC-06 | 1.1.1 | A baseline is a signed tag: in this repo (specs-and-deploy) it is a release, in any other repo a library. |
 | PROC-07 | 1.1.1 | Every release and every library writes its data into the reference edgedb. |
-| PROC-08 | 1.1.1 | Every release has an SBOM, and the licences of its components are checked against Apache-2.0 (REG-15, REG-18). |
-| PROC-09 | 1.1.1 | A reported vulnerability is assessed and fixed without delay; one that is actively exploited is notified within 24 hours (REG-15, REG-16). |
-| PROC-10 | 1.1.1 | Every release gets security fixes over the support period it states (REG-17). |
+| PROC-08 | 2.2.1 | Every release has an SBOM, and the licences of its components are checked against Apache-2.0 (REG_EU2024-2847_02, REG_Licences_01). |
+| PROC-09 | 2.2.1 | A reported vulnerability is assessed and fixed without delay; one that is actively exploited is notified within 24 hours (REG_EU2024-2847_02, REG_EU2024-2847_03). |
+| PROC-10 | 2.2.1 | Every release gets security fixes over the support period it states (REG_EU2024-2847_04). |
 | PROC-11 | 1.1.1 | A document names no ticket; what is open, it states as open. The ticket names the document, not the other way round. |
 | PROC-12 | 2.1.1 | An object is merged before another names it. |
 | PROC-13 | 1.1.1 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. See traceability.md. |
