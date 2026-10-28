@@ -282,8 +282,8 @@ It reads the files as they stand. An entry whose object no file holds, or that n
 not compared: uplinkcheck, schemacheck and annotationcheck report it. It reports and does not
 decide whether the child still fits; that is the impact assessment.
 
-The CI runs it on every pull request in a job of its own, which does not fail and is no required
-check (SR-34): a suspect link blocks the baseline, not the pull request (PROC-20).
+The CI runs it on every pull request in a job of its own (SR-34). The job does not fail and is no
+required check: a suspect link blocks the baseline, not the pull request (PROC-20).
 
 ```bash
 cd tools

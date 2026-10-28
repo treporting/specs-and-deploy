@@ -126,9 +126,9 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 `reviewcheck` (SR-09), the job `tests` (SR-10), the job `schemacheck` (SR-20), the job
 `rulesetcheck` (SR-23), the job `annotationcheck` (SR-26, SR-31) and the job `uplinkcheck`
 (SR-29). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
-job failed cannot be merged, by anyone. The job `linkcheck` (SR-34) runs beside them and is no
-required check: it reports a suspect link and does not fail, as a suspect link blocks the baseline,
-not the pull request (PROC-20). The ruleset also allows the merge commit only, as the settings of the repo do.
+job failed cannot be merged, by anyone. The job `linkcheck` (SR-34) runs beside them. It is no
+required check. It reports a suspect link and does not fail: a suspect link blocks the baseline, not
+the pull request (PROC-20). The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
 is GitHub's - and the job `rulesetcheck` checks
@@ -158,6 +158,8 @@ recorded with the pull request, by a computer (REG-05).
   skips stays pending and blocks the merge; to save a minute, the workflow would need logic of its
   own
 - a bypass for the admin - a check that someone can step over is a check by hand again
+- `linkcheck` as a required check - it never fails, so it would block no merge; it would only make
+  each merge wait until it has run
 
 Each required check is shown to block the merge by a demonstration, recorded in `verifications/`
 as formats.md, section Verifications, sets: SR-09, SR-10, SR-20 and SR-23.
