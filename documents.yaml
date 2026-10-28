@@ -46,5 +46,5 @@ documents:
 - name: regulatory/regulatory-requirements.md
   object_version: '2.1.1'
   object_hash: 'ce0a048'
-  status: approved
+  status: review
   verification_method: [review]
