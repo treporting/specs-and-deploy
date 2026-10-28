@@ -10,7 +10,7 @@ documents:
   status: approved
   verification_method: [review]
 - name: devops.md
-  status: review
+  status: approved
   verification_method: [review]
 - name: definitions.md
   status: approved
