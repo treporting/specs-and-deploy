@@ -8,7 +8,7 @@ import (
 )
 
 const schema = `{
-  "$comment": "@refines ARC-22",
+  "$comment": "@refines ARC_22",
   "type": "object",
   "required": ["schema", "level"],
   "additionalProperties": false,
@@ -51,7 +51,7 @@ func expect(t *testing.T, got []string, want string) {
 	t.Errorf("no finding %q in %q", want, got)
 }
 
-// @verifies SR-18@1.1.1
+// @verifies SR_18@1.1.1
 func TestEachPlaceThatDoesNotMatch(t *testing.T) {
 	dir := root(t, map[string]string{
 		"good.yaml": "schema: schemas/t.schema.json\nlevel: r1\n",
@@ -69,7 +69,7 @@ func TestEachPlaceThatDoesNotMatch(t *testing.T) {
 	expect(t, got, "bad.yaml /items/0/status:")
 }
 
-// @verifies SR-18@1.1.1
+// @verifies SR_18@1.1.1
 func TestAFieldTheSchemaDoesNotKnow(t *testing.T) {
 	dir := root(t, map[string]string{
 		"other.yaml": "schema: schemas/t.schema.json\nlevel: r1\nextra: 1\n",
@@ -81,7 +81,7 @@ func TestAFieldTheSchemaDoesNotKnow(t *testing.T) {
 	expect(t, messages(findings), "other.yaml /:")
 }
 
-// @verifies SR-19@1.1.1
+// @verifies SR_19@1.1.1
 func TestNoSchemaOrASchemaThatIsNotThere(t *testing.T) {
 	dir := root(t, map[string]string{
 		"none.yaml":    "level: r1\n",

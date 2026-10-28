@@ -1,0 +1,136 @@
+# Review of README.md, devops.md, formats.md, harness.md, traceability.md, requirements/tool-requirements.md, tools/README.md against the criteria of the level document.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+level: review
+created_by: Mathias Fischer
+created_at: '2026-10-28T23:15:09+01:00'
+criteria: reviews/criteria-documents.yaml
+criteria_revision: 'c7cf7df'
+results:
+- object_key: RR-01
+  target_ids: [README.md]
+  revision: '52e057e'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+    RC-12: passed
+    RC-13: passed
+  verdict: passed
+- object_key: RR-02
+  target_ids: [devops.md]
+  revision: '52e057e'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+    RC-12: passed
+    RC-13: passed
+  verdict: passed
+- object_key: RR-03
+  target_ids: [formats.md]
+  revision: '52e057e'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+    RC-12: passed
+    RC-13: passed
+  verdict: passed
+- object_key: RR-04
+  target_ids: [harness.md]
+  revision: '52e057e'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+    RC-12: passed
+    RC-13: passed
+  verdict: passed
+- object_key: RR-05
+  target_ids: [traceability.md]
+  revision: '52e057e'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+    RC-12: passed
+    RC-13: passed
+  verdict: passed
+- object_key: RR-06
+  target_ids: [requirements/tool-requirements.md]
+  revision: '52e057e'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+    RC-12: passed
+    RC-13: passed
+  verdict: passed
+- object_key: RR-07
+  target_ids: [tools/README.md]
+  revision: '52e057e'
+  criteria:
+    RC-01: passed
+    RC-02: passed
+    RC-03: passed
+    RC-04: passed
+    RC-05: passed
+    RC-06: passed
+    RC-07: passed
+    RC-08: passed
+    RC-09: passed
+    RC-10: passed
+    RC-11: passed
+    RC-12: passed
+    RC-13: passed
+  verdict: passed

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/review-criteria.schema.json",
-  "$comment": "@refines ARC-22",
+  "$comment": "@refines ARC_22",
   "title": "Review criteria (RC) of a level",
   "type": "object",
   "required": [

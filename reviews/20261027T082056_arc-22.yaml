@@ -1,4 +1,4 @@
-# Review of ARC-22 against the criteria of the level r3.
+# Review of ARC_22 against the criteria of the level r3.
 # Made with reviewskeleton; proposed by Claude Code, decided by the reviewer: passed.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,8 +9,8 @@ criteria: reviews/criteria-r3.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [ARC-22]
-  revision: '003afc6'
+  target_ids: [ARC_22]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

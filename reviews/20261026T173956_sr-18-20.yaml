@@ -1,4 +1,4 @@
-# Review of SR-18, SR-19, SR-20 against the criteria of the level r5.
+# Review of SR_18, SR_19, SR_20 against the criteria of the level r5.
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,8 +9,8 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [SR-18]
-  revision: '6223dad'
+  target_ids: [SR_18]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -25,8 +25,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [SR-19]
-  revision: '6223dad'
+  target_ids: [SR_19]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -41,8 +41,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-03
-  target_ids: [SR-20]
-  revision: '6223dad'
+  target_ids: [SR_20]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

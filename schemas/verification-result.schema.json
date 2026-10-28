@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/verification-result.schema.json",
-  "$comment": "@refines ARC-22",
+  "$comment": "@refines ARC_22",
   "title": "A verification by inspection, analysis or demonstration, and its record",
   "type": "object",
   "required": [
@@ -41,7 +41,7 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^(SR|SYS|TOOL|ARC)-[0-9]{2}$"
+        "pattern": "^(SR|SYS|TOOL|ARC)_[0-9]{2}$"
       }
     },
     "created_by": {
@@ -52,7 +52,7 @@
     "confirmed_by": {
       "type": "string",
       "minLength": 1,
-      "description": "who confirmed it - not the one who ran it (PROC-15)"
+      "description": "who confirmed it - not the one who ran it (PROC_15)"
     },
     "created_at": {
       "type": "string",

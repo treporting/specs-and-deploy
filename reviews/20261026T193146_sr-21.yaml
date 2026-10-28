@@ -1,4 +1,4 @@
-# Review of SR-21 against the criteria of the level r5.
+# Review of SR_21 against the criteria of the level r5.
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,8 +9,8 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [SR-21]
-  revision: '4e47249'
+  target_ids: [SR_21]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

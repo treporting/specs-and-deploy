@@ -9,7 +9,7 @@ documents:
   status: draft
   verification_method: [review]
 hazards:
-- object_key: HAZ-01
+- object_key: HAZ_01
   object_version: '1.1.1'
   object_text: a gap in the trace is shown as covered
   cause: a link, test case or test result missing in the data, or lost at the import
@@ -18,7 +18,7 @@ hazards:
   safety: ''
   status: draft
   verification_method: [analysis]
-- object_key: HAZ-02
+- object_key: HAZ_02
   object_version: '1.1.1'
   object_text: an unknown value is shown as zero, empty or passed
   cause: a value missing in the source turned into a default at the import or in a view
@@ -27,7 +27,7 @@ hazards:
   safety: ''
   status: draft
   verification_method: [analysis]
-- object_key: HAZ-03
+- object_key: HAZ_03
   object_version: '1.1.1'
   object_text: a filter hides objects without saying so
   cause: a filter on an attribute an object does not carry, a spelling that differs
@@ -36,7 +36,7 @@ hazards:
   safety: ''
   status: draft
   verification_method: [analysis]
-- object_key: HAZ-04
+- object_key: HAZ_04
   object_version: '1.1.1'
   object_text: an error while reading goes unreported
   cause: an extractor or converter ends without reporting what it could not read
@@ -45,7 +45,7 @@ hazards:
   safety: ''
   status: draft
   verification_method: [analysis]
-- object_key: HAZ-05
+- object_key: HAZ_05
   object_version: '1.1.1'
   object_text: a figure measures something else than its label says
   cause: a maturity read off a level name, a chart counting what the table does not
@@ -54,7 +54,7 @@ hazards:
   safety: ''
   status: draft
   verification_method: [analysis]
-- object_key: HAZ-06
+- object_key: HAZ_06
   object_version: '1.1.1'
   object_text: the same data gives another report
   cause: a rule changed without trace, data changed between two reports
@@ -63,7 +63,7 @@ hazards:
   safety: ''
   status: draft
   verification_method: [analysis]
-- object_key: HAZ-07
+- object_key: HAZ_07
   object_version: '1.1.1'
   object_text: a safety class is lost or lowered down the trace
   cause: an inherited class not carried down, a lower class without decomposition
@@ -73,59 +73,59 @@ hazards:
   status: draft
   verification_method: [analysis]
 controls:
-- object_key: HAZC-01
+- object_key: HAZC_01
   object_version: '1.1.1'
   object_text: a gap in the trace is marked as gap and never counted as covered
-  source_ids: [HAZ-01@1.1.1]
-  controls: [UN-PSF-01@1.1.1]
+  source_ids: [HAZ_01@1.1.1]
+  controls: [UN_PSF_01@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
-- object_key: HAZC-02
+- object_key: HAZC_02
   object_version: '1.1.1'
   object_text: an unknown value is kept and shown as unknown
-  source_ids: [HAZ-02@1.1.1]
-  controls: [UN-PSF-02@1.1.1]
+  source_ids: [HAZ_02@1.1.1]
+  controls: [UN_PSF_02@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
-- object_key: HAZC-03
+- object_key: HAZC_03
   object_version: '1.1.1'
   object_text: every view says which filters are in effect and what they leave out
-  source_ids: [HAZ-03@1.1.1]
-  controls: [UN-PSF-03@1.1.1]
+  source_ids: [HAZ_03@1.1.1]
+  controls: [UN_PSF_03@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
-- object_key: HAZC-04
+- object_key: HAZC_04
   object_version: '1.1.1'
   object_text: every import is counted on a way of its own, and every error is reported
-  source_ids: [HAZ-04@1.1.1]
-  controls: [UN-PSF-04@1.1.1]
+  source_ids: [HAZ_04@1.1.1]
+  controls: [UN_PSF_04@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
-- object_key: HAZC-05
+- object_key: HAZC_05
   object_version: '1.1.1'
   object_text: every figure is defined by what it counts, and its calculation is tested
-  source_ids: [HAZ-05@1.1.1]
-  controls: [UN-PSF-05@1.1.1]
+  source_ids: [HAZ_05@1.1.1]
+  controls: [UN_PSF_05@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
-- object_key: HAZC-06
+- object_key: HAZC_06
   object_version: '1.1.1'
   object_text: every report records the data, revision and parameters it was made from
-  source_ids: [HAZ-06@1.1.1]
-  controls: [UN-PSF-06@1.1.1]
+  source_ids: [HAZ_06@1.1.1]
+  controls: [UN_PSF_06@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
-- object_key: HAZC-07
+- object_key: HAZC_07
   object_version: '1.1.1'
   object_text: a safety class is carried down the trace, and a lower one without decomposition is found
-  source_ids: [HAZ-07@1.1.1]
-  controls: [UN-SAF-03@1.1.1]
+  source_ids: [HAZ_07@1.1.1]
+  controls: [UN_SAF_03@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]

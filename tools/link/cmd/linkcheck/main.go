@@ -1,11 +1,11 @@
-// Command linkcheck makes the link check (TOOL-16): it compares the version each link, entry of
+// Command linkcheck makes the link check (TOOL_16): it compares the version each link, entry of
 // the allocation or of controls, and annotation names with the version its object has.
 //
 //	linkcheck [-root dir]
 //
 // It reads the files as they stand in the working tree. It prints every one whose object has
 // another x than it names, and exits with 0 all the same: it reports, and a suspect link blocks
-// the baseline, not the pull request (PROC-20). It exits with 2 where it cannot read the repo.
+// the baseline, not the pull request (PROC_20). It exits with 2 where it cannot read the repo.
 package main
 
 import (
@@ -21,7 +21,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements SR-32@1.1.1, SR-33@1.1.1
+// @implements SR_32@1.1.1, SR_33@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

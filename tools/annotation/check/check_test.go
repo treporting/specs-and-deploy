@@ -21,9 +21,9 @@ func (f fakeGit) Show(rev, path string) ([]byte, error) {
 const requirements = `schema: schemas/software-requirements.schema.json
 level: r5
 requirements:
-- object_key: SR-01
+- object_key: SR_01
   status: approved
-- object_key: SR-02
+- object_key: SR_02
   status: draft
 `
 
@@ -77,19 +77,19 @@ func filesOf(found []Annotation) string {
 	return strings.Join(got, " ")
 }
 
-// @verifies SR-24@1.1.1
+// @verifies SR_24@2.1.1
 func TestOnlyCodeIsRead(t *testing.T) {
 	found, unknown := find(t, map[string]string{
-		"a.go":                  "// @implements SR-01\nfunc a() {}\n",
-		"b.js":                  "/** @verifies SR-01 */\n",
-		"Dockerfile":            "# @implements SR-01\nFROM scratch\n",
-		"run.sh":                "  # @implements SR-01\n",
-		"config.yaml":           "# @implements SR-01\nkey: value\n",
-		"doc.md":                "// @implements SR-99\n",
-		"datei.txt":             "Find(root, files):\n    # @implements SR-99\n",
-		"schemas/x.schema.json": `{"$comment": "@implements SR-99"}`,
-		"data.yaml":             "schema: schemas/x.schema.json\n# @implements SR-99\n",
-		"picture.png":           "# @implements SR-99",
+		"a.go":                  "// @implements SR_01\nfunc a() {}\n",
+		"b.js":                  "/** @verifies SR_01 */\n",
+		"Dockerfile":            "# @implements SR_01\nFROM scratch\n",
+		"run.sh":                "  # @implements SR_01\n",
+		"config.yaml":           "# @implements SR_01\nkey: value\n",
+		"doc.md":                "// @implements SR_99\n",
+		"datei.txt":             "Find(root, files):\n    # @implements SR_99\n",
+		"schemas/x.schema.json": `{"$comment": "@implements SR_99"}`,
+		"data.yaml":             "schema: schemas/x.schema.json\n# @implements SR_99\n",
+		"picture.png":           "# @implements SR_99",
 	})
 	if got := filesOf(found); got != "Dockerfile a.go b.js config.yaml run.sh" {
 		t.Errorf("want the five files of code, got %q", got)
@@ -99,11 +99,11 @@ func TestOnlyCodeIsRead(t *testing.T) {
 	}
 }
 
-// @verifies SR-27@1.1.1
+// @verifies SR_27@1.1.1
 func TestAKindOnNeitherList(t *testing.T) {
 	found, unknown := find(t, map[string]string{
-		"query.sql": "-- @implements SR-99\n",
-		"a.go":      "// @implements SR-01\n",
+		"query.sql": "-- @implements SR_99\n",
+		"a.go":      "// @implements SR_01\n",
 	})
 	got := messages(unknown)
 	if len(got) != 1 || got[0] != "query.sql: its kind is set neither as code nor as no code (tools/annotation/kinds.yaml)" {
@@ -114,49 +114,49 @@ func TestAKindOnNeitherList(t *testing.T) {
 	}
 }
 
-// @verifies SR-24@1.1.1
+// @verifies SR_24@2.1.1
 func TestOnlyFirstInALineOfComment(t *testing.T) {
 	//	built with \n, not as a string over lines: a line of a raw string that begins with a mark of
 	//	comment would be read as an annotation of this file itself
 	found, _ := find(t, map[string]string{"a_test.go": "package a\n\n" +
-		"const s = \"// @implements SR-99\"\n" +
-		"var list = []string{\n\t\"// @implements SR-98\",\n}\n" +
-		"func f() {} // @implements SR-97\n\n" +
-		"// @verifies SR-01\n" +
+		"const s = \"// @implements SR_99\"\n" +
+		"var list = []string{\n\t\"// @implements SR_98\",\n}\n" +
+		"func f() {} // @implements SR_97\n\n" +
+		"// @verifies SR_01\n" +
 		"func TestA() {}\n"})
-	if len(found) != 1 || found[0].IDs[0] != "SR-01" || found[0].Line != 9 {
+	if len(found) != 1 || found[0].IDs[0] != "SR_01" || found[0].Line != 9 {
 		t.Errorf("want only the comment on line 9, got %+v", found)
 	}
 }
 
-// @verifies SR-24@1.1.1
+// @verifies SR_24@2.1.1
 func TestAnIdNotInTheBaseCommit(t *testing.T) {
-	got := messages(Check(base, "b1", []Annotation{{"a.go", 3, "implements", []string{"SR-01", "SR-07"}, []string{"1.1.1", "1.1.1"}}}))
-	if len(got) != 1 || got[0] != "a.go:3 @implements SR-07: not in tools/software-requirements.yaml in the base commit b1" {
+	got := messages(Check(base, "b1", []Annotation{{"a.go", 3, "implements", []string{"SR_01", "SR_07"}, []string{"1.1.1", "1.1.1"}}}))
+	if len(got) != 1 || got[0] != "a.go:3 @implements SR_07: not in tools/software-requirements.yaml in the base commit b1" {
 		t.Errorf("got %q", got)
 	}
 }
 
-// @verifies SR-25@1.1.1
+// @verifies SR_25@1.1.1
 func TestAnIdNotApprovedInTheBaseCommit(t *testing.T) {
-	got := messages(Check(base, "b1", []Annotation{{"a_test.go", 9, "verifies", []string{"SR-02"}, []string{"1.1.1"}}}))
-	if len(got) != 1 || got[0] != "a_test.go:9 @verifies SR-02: draft in the base commit b1, not approved" {
+	got := messages(Check(base, "b1", []Annotation{{"a_test.go", 9, "verifies", []string{"SR_02"}, []string{"1.1.1"}}}))
+	if len(got) != 1 || got[0] != "a_test.go:9 @verifies SR_02: draft in the base commit b1, not approved" {
 		t.Errorf("got %q", got)
 	}
 }
 
-// @verifies SR-24@1.1.1
+// @verifies SR_24@2.1.1
 func TestSeveralIdsInOneAnnotation(t *testing.T) {
-	found, _ := find(t, map[string]string{"a.go": "// @implements SR-01, SR-02,SR-03\n"})
-	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR-01 SR-02 SR-03" {
+	found, _ := find(t, map[string]string{"a.go": "// @implements SR_01, SR_02,SR_03\n"})
+	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR_01 SR_02 SR_03" {
 		t.Errorf("got %+v", found)
 	}
 }
 
-// @verifies SR-30@1.1.1
+// @verifies SR_30@1.1.1
 func TestTheVersionIsReadApartFromTheId(t *testing.T) {
-	found, _ := find(t, map[string]string{"a.go": "// @implements SR-01@2.1.3, SR-02@1.1.1\n"})
-	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR-01 SR-02" || strings.Join(found[0].Versions, " ") != "2.1.3 1.1.1" {
+	found, _ := find(t, map[string]string{"a.go": "// @implements SR_01@2.1.3, SR_02@1.1.1\n"})
+	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR_01 SR_02" || strings.Join(found[0].Versions, " ") != "2.1.3 1.1.1" {
 		t.Errorf("got %+v", found)
 	}
 	if got := messages(Unversioned(found)); len(got) != 0 {
@@ -164,13 +164,13 @@ func TestTheVersionIsReadApartFromTheId(t *testing.T) {
 	}
 }
 
-// @verifies SR-30@1.1.1
+// @verifies SR_30@1.1.1
 func TestAnIdWithoutAVersion(t *testing.T) {
-	found, _ := find(t, map[string]string{"a.go": "// @implements SR-01@1.1.1, SR-02, SR-03@1.1\n"})
+	found, _ := find(t, map[string]string{"a.go": "// @implements SR_01@1.1.1, SR_02, SR_03@1.1\n"})
 	got := messages(Unversioned(found))
 	want := []string{
-		"a.go:1 @implements SR-02: names no version, as SR-02@x.y.z",
-		"a.go:1 @implements SR-03: names no version, as SR-03@x.y.z",
+		"a.go:1 @implements SR_02: names no version, as SR_02@x.y.z",
+		"a.go:1 @implements SR_03: names no version, as SR_03@x.y.z",
 	}
 	if strings.Join(got, "\n") != strings.Join(want, "\n") {
 		t.Errorf("got %q, want %q", got, want)

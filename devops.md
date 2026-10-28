@@ -5,19 +5,19 @@ written for whoever sets up or changes that environment, and for the auditor who
 
 ## Tools are code
 
-**Decision**: PROC-05 holds for the tools of our work as for the code of the product. Editor
+**Decision**: PROC_05 holds for the tools of our work as for the code of the product. Editor
 settings, scripts and the CI are code. Every tool realizes an approved requirement. There is no
 part where something is built without one.
 
 **Why**: an auditor asks how the tools that build the product are controlled. With this rule the
 answer is the same as for the product: by requirements, reviewed and approved before the change.
 
-**Rejected**: to narrow PROC-05 to the code of the product, and rule the tools by PROC rules alone.
+**Rejected**: to narrow PROC_05 to the code of the product, and rule the tools by PROC rules alone.
 It is lighter, but it leaves a part without requirements.
 
 **Consequence**: the requirements on our tools are kept in `requirements/tool-requirements.yaml`,
-with the ids `TOOL-nn`. A tool requirement names as uplink the PROC rule or the regulatory
-requirement it serves. It is reviewed and approved like every other requirement (PROC-13). Where the tools live,
+with the ids `TOOL_nn`. A tool requirement names as uplink the PROC rule or the regulatory
+requirement it serves. It is reviewed and approved like every other requirement (PROC_13). Where the tools live,
 in which language, and their chain from requirement to code: [tools/README.md](tools/README.md).
 
 ## Environments
@@ -64,7 +64,7 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 | Module | Version | Licence | What for |
 |---|---|---|---|
 | `gopkg.in/yaml.v3` | 3.0.1 | MIT, Apache-2.0 | reading YAML |
-| `github.com/santhosh-tekuri/jsonschema/v6` | 6.0.3 | Apache-2.0 | checking a YAML against its JSON Schema (TOOL-05) |
+| `github.com/santhosh-tekuri/jsonschema/v6` | 6.0.3 | Apache-2.0 | checking a YAML against its JSON Schema (TOOL_05) |
 | `golang.org/x/text` | 0.14.0 | BSD-3-Clause | the messages of jsonschema; of the Go team |
 
 `github.com/dlclark/regexp2` stands in `go.sum` as part of the module graph of jsonschema; it is not
@@ -123,16 +123,16 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 ## Continuous integration
 
 **Decision**: `.github/workflows/tools.yml` runs on every pull request to `main`: the job
-`reviewcheck` (SR-09), the job `tests` (SR-10), the job `schemacheck` (SR-20), the job
-`rulesetcheck` (SR-23), the job `annotationcheck` (SR-26, SR-31) and the job `uplinkcheck`
-(SR-29). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
-job failed cannot be merged, by anyone. The job `linkcheck` (SR-34) runs beside them. It is no
+`reviewcheck` (SR_09), the job `tests` (SR_10), the job `schemacheck` (SR_20), the job
+`rulesetcheck` (SR_23), the job `annotationcheck` (SR_26, SR_31) and the job `uplinkcheck`
+(SR_29). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
+job failed cannot be merged, by anyone. The job `linkcheck` (SR_34) runs beside them. It is no
 required check. It reports a suspect link and does not fail: a suspect link blocks the baseline, not
-the pull request (PROC-20). The ruleset also allows the merge commit only, as the settings of the repo do.
+the pull request (PROC_20). The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
 is GitHub's - and the job `rulesetcheck` checks
-on every pull request that GitHub has the same (TOOL-13). The file is the source: to change the
+on every pull request that GitHub has the same (TOOL_13). The file is the source: to change the
 ruleset, change the file by pull request and review. As `rulesetcheck` is required, that pull
 request cannot be merged until GitHub has the change. So once it is green but for `rulesetcheck`,
 the file is sent whole; `rulesetcheck` then turns green, and the pull request is merged. Where it is
@@ -162,7 +162,7 @@ recorded with the pull request, by a computer (REG_CFR21-11_01).
   each merge wait until it has run
 
 Each required check is shown to block the merge by a demonstration, recorded in `verifications/`
-as formats.md, section Verifications, sets: SR-09, SR-10, SR-20 and SR-23.
+as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
 
 ## Build and deployment
 

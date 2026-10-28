@@ -23,7 +23,7 @@ results:
     RC-06: passed
     RC-07:
       result: failed
-      note: 'quick gate, full gate, spec-testing and structural debt are defined nowhere, though PROC-04 rests on the full gate'
+      note: 'quick gate, full gate, spec-testing and structural debt are defined nowhere, though PROC_04 rests on the full gate'
     RC-08:
       result: failed
       note: 'r7 names verification_method as its own, though every requirement carries it; the role Reviewer says "and the other way round", though a person is responsible for the result of a review'

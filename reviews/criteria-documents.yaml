@@ -1,5 +1,5 @@
 # Review criteria of the documents, after ISO/IEC/IEEE 15289. A document is approved only when it
-# passed every criterion (PROC-13). See reviews/README.md.
+# passed every criterion (PROC_13). See reviews/README.md.
 schema: schemas/review-criteria.schema.json
 level: document
 criteria:
@@ -41,15 +41,15 @@ criteria:
   object_text: consistent - it contradicts no other document and no requirement
   question: Does it contradict no other document and no requirement?
 - object_key: RC-09
-  source: treporting - PROC-01
+  source: treporting - PROC_01
   object_text: English - it is written in English only
   question: Is it written in English only?
 - object_key: RC-10
-  source: treporting - PROC-11
+  source: treporting - PROC_11
   object_text: free of tickets - it names no ticket; what is open, it states as open
   question: Does it name no ticket, and state as open what is open?
 - object_key: RC-11
-  source: treporting - PROC-18
+  source: treporting - PROC_18
   object_text: decided - every decision in it gives its reason and the alternatives rejected
   question: Does every decision give its reason and the alternatives rejected?
 - object_key: RC-12

@@ -1,4 +1,4 @@
-# Review of TOOL-03 to TOOL-10 against the criteria of the tool requirements, again under the rule
+# Review of TOOL_03 to TOOL_10 against the criteria of the tool requirements, again under the rule
 # of the author in tools/README.md. Prepared by Claude Code; decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,15 +9,15 @@ criteria: reviews/criteria-tool.yaml
 criteria_revision: 'c877cc5'
 results:
 - object_key: RR-01
-  target_ids: [TOOL-03]
-  revision: 'df766d7'
+  target_ids: [TOOL_03]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
     RC-03: passed
     RC-04:
       result: passed
-      note: 'five conditions, now one software requirement each, SR-01 to SR-05'
+      note: 'five conditions, now one software requirement each, SR_01 to SR_05'
     RC-05: passed
     RC-06: passed
     RC-07: passed
@@ -27,8 +27,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [TOOL-04]
-  revision: 'df766d7'
+  target_ids: [TOOL_04]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -43,8 +43,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-03
-  target_ids: [TOOL-05]
-  revision: 'df766d7'
+  target_ids: [TOOL_05]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -59,8 +59,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-04
-  target_ids: [TOOL-06]
-  revision: 'df766d7'
+  target_ids: [TOOL_06]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -75,8 +75,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-05
-  target_ids: [TOOL-07]
-  revision: 'df766d7'
+  target_ids: [TOOL_07]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -91,8 +91,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-06
-  target_ids: [TOOL-08]
-  revision: 'df766d7'
+  target_ids: [TOOL_08]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -107,8 +107,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-07
-  target_ids: [TOOL-09]
-  revision: 'df766d7'
+  target_ids: [TOOL_09]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -123,8 +123,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-08
-  target_ids: [TOOL-10]
-  revision: 'df766d7'
+  target_ids: [TOOL_10]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

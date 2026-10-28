@@ -21,14 +21,14 @@ results:
     RC-07: passed
     RC-08:
       result: passed
-      note: 'found in this review and resolved in it: PROC-16 split a rule from the document that gives
+      note: 'found in this review and resolved in it: PROC_16 split a rule from the document that gives
         its reasons, which this change needs together - now it groups what belongs together; step 4 of the loop asked a review for every change,
-        against the new PROC-14'
+        against the new PROC_14'
     RC-09: passed
     RC-10: passed
     RC-11:
       result: passed
-      note: 'found in this review and resolved in it: PROC-13 and PROC-20 did not point to their reasons
+      note: 'found in this review and resolved in it: PROC_13 and PROC_20 did not point to their reasons
         in traceability.md'
     RC-12: passed
     RC-13: passed

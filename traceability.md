@@ -3,22 +3,22 @@
 How a link between two levels stays valid when the parent changes, and the version that every
 object approved carries. This document records the
 problem, the options weighed, and the decisions taken. The questions still open are marked as such.
-The rules that follow from it stand in harness.md: PROC-13, PROC-14 and PROC-20. The changes to
+The rules that follow from it stand in harness.md: PROC_13, PROC_14 and PROC_20. The changes to
 the schemas and the tools follow in changes of their own. It is written
 for whoever changes a requirement or checks its trace, and for the auditor who looks for the
 reasons.
 
-## The problem: the cascade of PROC-13
+## The problem: the cascade of PROC_13
 
-PROC-13 says a requirement is approved only when "whatever it names as uplink is approved". Read as
-a state that must hold at all times, every change above sets off a cascade below. TOOL-09
+PROC_13 says a requirement is approved only when "whatever it names as uplink is approved". Read as
+a state that must hold at all times, every change above sets off a cascade below. TOOL_09
 would check exactly that state, and so it showed the problem:
 
-1. TOOL-03 fails its review and goes to `draft`.
-2. SR-01 to SR-08 break PROC-13, because their uplink is no longer approved.
-3. The code that names SR-01 to SR-08 fails annotationcheck, because the IDs are no longer
+1. TOOL_03 fails its review and goes to `draft`.
+2. SR_01 to SR_08 break PROC_13, because their uplink is no longer approved.
+3. The code that names SR_01 to SR_08 fails annotationcheck, because the IDs are no longer
    approved.
-4. A small finding on TOOL-03 blocks the whole tool.
+4. A small finding on TOOL_03 blocks the whole tool.
 
 The industry knows this trap under the name **suspect links**. DOORS has them built in.
 
@@ -29,11 +29,11 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 | | Option | Core | Advantage | Drawback |
 |---|---|---|---|---|
 | a) | A status for the link: suspect | A change above marks the links below | common in the industry (DOORS), precise | a new state for links; a tool must find it |
-| b) | PROC-13 at the moment of approval | An approval needs approved uplinks; later it does not | simple, no cascade | alone, it does not say what follows a change above |
-| c) | Strict cascade | Children follow the status of their parents at once | PROC-13 as written | every small change blocks everything below |
+| b) | PROC_13 at the moment of approval | An approval needs approved uplinks; later it does not | simple, no cascade | alone, it does not say what follows a change above |
+| c) | Strict cascade | Children follow the status of their parents at once | PROC_13 as written | every small change blocks everything below |
 | d) | Computed status | The own status stays; a computed status shows "approved, but an uplink is not" | uses what the model has: an original and a derived value | misses a parent that changed and was approved again |
 | e) | Uplink with a revision | The child names the version of the parent it was approved against | precise, like a pinned dependency | every change above needs an update below |
-| f) | Only a change of meaning counts | PROC-14 worded with "changes its meaning" | editorial changes set off nothing | eases the problem, does not solve it; who decides "meaning"? |
+| f) | Only a change of meaning counts | PROC_14 worded with "changes its meaning" | editorial changes set off nothing | eases the problem, does not solve it; who decides "meaning"? |
 | g) | Consistency only at the baseline | Between baselines the state may be inconsistent | little load in daily work | gaps stay unnoticed for long |
 | h) | A failed review never reaches `main` | Only the result is merged; `main` keeps the approved version | `main` is always consistent | against the rule "failed sets `draft` on `main`"; a successful change still raises the question whether the children fit |
 | i) | Check of the children in the same pull request | Whoever changes a parent checks every child in the same pull request | no state in between | large pull requests where a parent has many children |
@@ -41,7 +41,7 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 **Decision**: b) + e) + h) + i).
 
 - **b)** An approval needs approved uplinks at the moment of approval. A later change of an uplink
-  does not take the approval back. TOOL-09 checks on every pull request that every approved
+  does not take the approval back. TOOL_09 checks on every pull request that every approved
   requirement names approved uplinks only.
 - **e)** Every link names the version of its parent. A link whose version is outdated is suspect.
 - **h)** A change of an approved object whose review failed does not reach `main`. It is taken
@@ -56,7 +56,7 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
   approved until its change passes, so its approved children keep approved uplinks. Git, used here
   as the tool of requirements management, keeps every draft on a branch anyway.
 - h) also keeps from `main` a new text under an old version: the version rises only at the
-  approval, so PROC-20 would not see such a text. The check of TOOL-09 would.
+  approval, so PROC_20 would not see such a text. The check of TOOL_09 would.
 - e) finds the dangerous case: a parent changes its meaning, is approved again, and a child no
   longer fits it
 - updating the version on the link is the record of the check of the child: the commit shows who
@@ -76,24 +76,24 @@ The industry knows this trap under the name **suspect links**. DOORS has them bu
 - a) as a state of its own on the link: e) shows the same in the version the link names, and needs
   no state that someone has to set and clear
 
-**Table d versus e** - TOOL-03 changes its text and is approved again; does SR-01 still fit?
+**Table d versus e** - TOOL_03 changes its text and is approved again; does SR_01 still fit?
 
 | What happens | d) computed status | e) version on the link |
 |---|---|---|
-| TOOL-03 fails, `draft` | found: "SR-01 approved, uplink not" | found: TOOL-03 changed |
-| TOOL-03 is revised and approved again, with another text | **missed**: all approved, SR-01 never checked against the new text | found: SR-01 names an older version |
-| TOOL-03 changes only editorially and is approved again | missed, which is right here | found: a short check of the child is due |
+| TOOL_03 fails, `draft` | found: "SR_01 approved, uplink not" | found: TOOL_03 changed |
+| TOOL_03 is revised and approved again, with another text | **missed**: all approved, SR_01 never checked against the new text | found: SR_01 names an older version |
+| TOOL_03 changes only editorially and is approved again | missed, which is right here | found: a short check of the child is due |
 
 ## The version a link names
 
-The first idea for e) named a git revision on the link, `TOOL-03@c3`, meaning the last commit that
-changed the text of TOOL-03.
+The first idea for e) named a git revision on the link, `TOOL_03@c3`, meaning the last commit that
+changed the text of TOOL_03.
 
 **Decision**: every object carries a version of its own, `x.y.z`. A link names the version of its
 parent, not a git revision.
 
 **Why**: a revision means a commit everywhere else. On the link it would mean something else: the
-last commit that changed the text, not the last commit that changed the object. `TOOL-03@c3` does
+last commit that changed the text, not the last commit that changed the object. `TOOL_03@c3` does
 not show this. Only a tool could tell when a new revision makes a child suspect and when it does
 not. The meaning has to be visible in the data.
 
@@ -103,7 +103,7 @@ not. The meaning has to be visible in the data.
 - a revision computed from git and the review results, with nothing written into the link: no one
   sees in the file which version a child was approved against
 - a single number for the text: it says nothing about a change of an attribute such as safety
-- a hash of the text, `SYS-09#a1b2`: it changes by itself, but it is hard to read, and it does not
+- a hash of the text, `SYS_09#a1b2`: it changes by itself, but it is hard to read, and it does not
   show which version is newer
 
 ## The parts of the version
@@ -160,11 +160,11 @@ full review. So updating a link stays cheap, and the cascade stays away.
 **Rejected**: every change sets back to `draft` and needs a full review. Every updated link would
 be checked again against all criteria.
 
-**Decision**: a link names the full version of its parent: `source_ids: [SYS-09@3.1.2]`.
+**Decision**: a link names the full version of its parent: `source_ids: [SYS_09@3.1.2]`.
 
 **Why**: the link shows the exact state the child was checked against.
 
-**Rejected**: only x on the link, `SYS-09@3`. It names what the child depends on, but not the state
+**Rejected**: only x on the link, `SYS_09@3`. It names what the child depends on, but not the state
 the child saw.
 
 **Decision**: the status changes the version only where the schema of the kind names it for x.
@@ -219,13 +219,13 @@ approved uplinks.
 
 **Table cascade** - how far a change reaches; every change ends with its approval
 
-| What happens | UN-PM-01 | SYS-09 | SR-01 |
+| What happens | UN_PM_01 | SYS_09 | SR_01 |
 |---|---|---|---|
-| Start | `2.1.1` | `3.2.1`, link `UN-PM-01@2.1.1` | link `SYS-09@3.2.1` |
-| The text of UN-PM-01 changes, approved | `3.1.1` | its link names an older x: **suspect** | clean |
-| SYS-09 still fits; only its link is updated, approved | | `3.3.1`, link `UN-PM-01@3.1.1` | clean, only y of SYS-09 changed |
-| SYS-09 no longer fits; its text changes, approved | | `4.3.1` | its link names an older x: **suspect** |
-| A remark on SYS-09 changes, approved | | `4.3.2` | clean, only z of SYS-09 changed |
+| Start | `2.1.1` | `3.2.1`, link `UN_PM_01@2.1.1` | link `SYS_09@3.2.1` |
+| The text of UN_PM_01 changes, approved | `3.1.1` | its link names an older x: **suspect** | clean |
+| SYS_09 still fits; only its link is updated, approved | | `3.3.1`, link `UN_PM_01@3.1.1` | clean, only y of SYS_09 changed |
+| SYS_09 no longer fits; its text changes, approved | | `4.3.1` | its link names an older x: **suspect** |
+| A remark on SYS_09 changes, approved | | `4.3.2` | clean, only z of SYS_09 changed |
 
 The cascade reaches only as far as meaning really changes. A child that still fits changes y only,
 and its own children stay clean.
@@ -243,19 +243,19 @@ both its ends. It is checked against the version of its parent in that baseline,
 
 | Link | Child in | Parent in | Blocked |
 |---|---|---|---|
-| SYS-09 → UN-PM-01 | release | release | the release |
-| `@implements SR-01` in the code | library | library | the library: its code is not checked against its own SRs |
-| SR-01 → SYS-09 | library | release | not the library; the release that delivers the library and holds SYS-09 in its new version |
-| HAZC-07 `controls` UN-SAF-03 | release | release | the release |
+| SYS_09 → UN_PM_01 | release | release | the release |
+| `@implements SR_01` in the code | library | library | the library: its code is not checked against its own SRs |
+| SR_01 → SYS_09 | library | release | not the library; the release that delivers the library and holds SYS_09 in its new version |
+| HAZC_07 `controls` UN_SAF_03 | release | release | the release |
 
 **Table maintenance** - a fix for an older release, while `main` has moved on
 
 | | specs-and-deploy | reporter |
 |---|---|---|
-| Release 1 | SYS-09 `3.1.2` | library 1.3, SR-01 → `SYS-09@3.1.2` |
-| afterwards on `main` | SYS-09 `4.1.2`, for release 2 | |
-| Release 1.1, a fix | SYS-09 `3.1.2`, the state of release 1 | library 1.3.1, SR-01 → `SYS-09@3.1.2`: clean |
-| Release 2 | SYS-09 `4.1.2` | a library whose SR-01 names `SYS-09@4.x.x`; else blocked |
+| Release 1 | SYS_09 `3.1.2` | library 1.3, SR_01 → `SYS_09@3.1.2` |
+| afterwards on `main` | SYS_09 `4.1.2`, for release 2 | |
+| Release 1.1, a fix | SYS_09 `3.1.2`, the state of release 1 | library 1.3.1, SR_01 → `SYS_09@3.1.2`: clean |
+| Release 2 | SYS_09 `4.1.2` | a library whose SR_01 names `SYS_09@4.x.x`; else blocked |
 
 So a library can still be built on the software requirements approved so far, while the system
 requirements change. Only a release that promises the new version waits until its libraries
@@ -279,14 +279,14 @@ follow.
 
 ## When a link is suspect
 
-The link names the full version, such as `SYS-09@3.1.2`. The parent may have moved on in y or z
+The link names the full version, such as `SYS_09@3.1.2`. The parent may have moved on in y or z
 only.
 
-**Table suspect** - a link `SYS-09@3.1.2` against the version SYS-09 has now
+**Table suspect** - a link `SYS_09@3.1.2` against the version SYS_09 has now
 
-| SYS-09 now | What changed | Suspect? |
+| SYS_09 now | What changed | Suspect? |
 |---|---|---|
-| `3.2.2` | a link of SYS-09 | no |
+| `3.2.2` | a link of SYS_09 | no |
 | `3.1.3` | a remark | no |
 | `4.1.2` | the text, or `safety` | yes |
 
@@ -318,7 +318,7 @@ when it is approved with a new x.
 Code and tests name their requirement in an annotation, not in `source_ids`.
 
 **Decision**: an annotation names the version of its requirement, as a link does:
-`// @implements SR-01@3.1.2`. It is suspect by the same rule: when x of the requirement differs.
+`// @implements SR_01@3.1.2`. It is suspect by the same rule: when x of the requirement differs.
 
 **Why**:
 
@@ -349,7 +349,7 @@ its kind requires it.
 
 The version belongs to the object itself. Every object has its own, so it is no place. It counts
 the changes of the attributes, so it is no attribute. With `object_key` it names one state of the
-object, and that is what a link names: `SYS-09@3.1.2` is `object_key@object_version`.
+object, and that is what a link names: `SYS_09@3.1.2` is `object_key@object_version`.
 
 **Rejected**: `version`. Without the prefix it would belong to the place, beside `revision` and
 `baseline`: the version of the module or document the object lies in. Both fields could stand
@@ -386,7 +386,7 @@ by searching every field.
 
 ## The version of a document
 
-PROC-13 and PROC-14 hold for documents as well as for requirements. A document is named in the
+PROC_13 and PROC_14 hold for documents as well as for requirements. A document is named in the
 `documents` section of a YAML (formats.md, section Documents).
 
 **Decision**: a document carries a version `x.y.z` in `object_version`, as a requirement does, with
@@ -416,7 +416,7 @@ documents:
 - the hash stands for the text of the document, as `object_text` holds the text of a requirement.
   So x counts a field, as for every other kind, and the list for x is not empty.
 - it records which content was approved
-- it makes a change visible that PROC-14 forbids: an approved document whose file no longer
+- it makes a change visible that PROC_14 forbids: an approved document whose file no longer
   matches its hash was changed without going back to `draft`
 
 **Rejected**:
@@ -429,7 +429,7 @@ documents:
   object itself (section The version in the schema)
 
 The hash is no version. The version stays `x.y.z`; the hash is what x counts. A hash on a link,
-`SYS-09#a1b2`, stays rejected (section The version a link names).
+`SYS_09#a1b2`, stays rejected (section The version a link names).
 
 **Decision**: `object_hash` is set at the approval only, with the version. While a document is a
 draft, its hash stays the one approved last; before its first approval it is `''`.
@@ -440,7 +440,7 @@ draft, its hash stays the one approved last; before its first approval it is `''
 |---|---|---|
 | `approved`, unchanged | equals the file | fine |
 | changed, `draft` | stays the old one, differs | fine: a draft may differ |
-| changed, still `approved` | differs | finding: against PROC-14 |
+| changed, still `approved` | differs | finding: against PROC_14 |
 | new, `draft` | `''` | fine |
 | approved | the hash of the file, x rises | equals the file |
 
@@ -451,7 +451,7 @@ draft, its hash stays the one approved last; before its first approval it is `''
 
 **Rejected**: the hash follows every change of the file, as `object_text` does. Every commit on a
 document would have to update it as well, and without a tool it is forgotten; the check against
-PROC-14 would need the base commit again.
+PROC_14 would need the base commit again.
 
 **Decision**: every document of today starts at `1.1.1`. An approved one carries the hash of its
 file of today, a draft `''`.
@@ -469,7 +469,7 @@ requirements allocated to a subsystem are its requirements, derived directly fro
 requirements and names its parents. Only its name differs from `source_ids`.
 
 **Decision**: `allocated` names the version of each system requirement, as a link does:
-`allocated: [SYS-01@1.1.1, SYS-02@1.1.1, …]`. The same rules hold: a different x makes an entry
+`allocated: [SYS_01@1.1.1, SYS_02@1.1.1, …]`. The same rules hold: a different x makes an entry
 suspect, and updating it raises y of the element. Both ends lie in the release, so a suspect entry
 blocks the release.
 
@@ -477,8 +477,8 @@ blocks the release.
 
 | | Allocation | Software requirements |
 |---|---|---|
-| Before | SYS-09 `3.1.2` → viewer, reporter | reporter: SR-01 → `SYS-09@3.1.2` |
-| SYS-09 becomes `4.1.2`: "… and exports the selection" | Does the export still belong to viewer and reporter, or does it need converter as well? | SR-01 turns suspect; the reporter checks its own part |
+| Before | SYS_09 `3.1.2` → viewer, reporter | reporter: SR_01 → `SYS_09@3.1.2` |
+| SYS_09 becomes `4.1.2`: "… and exports the selection" | Does the export still belong to viewer and reporter, or does it need converter as well? | SR_01 turns suspect; the reporter checks its own part |
 
 **Why**: the software requirements of a subsystem can tell only whether their own part still fits.
 Whether another subsystem has to join, only the allocation shows.
@@ -496,7 +496,7 @@ of their tree, with no uplink (attributes.md: `controls` from a measure to the r
 for).
 
 **Decision**: `controls` is a down-link, from the control to its user needs, and names their
-versions: `controls: [UN-PSF-01@1.1.1]`. It is suspect where x of a user need changed: the control
+versions: `controls: [UN_PSF_01@1.1.1]`. It is suspect where x of a user need changed: the control
 then checks whether it is still realized. A change of x of the control does not make its user
 needs suspect; its review covers its list `controls`.
 
@@ -510,7 +510,7 @@ needs suspect; its review covers its list `controls`.
 
 **Rejected**: `controlledBy` on every user need, an uplink to the control.
 
-**Decision**: PROC-13 asks approved uplinks only. A control may be approved while a user need it
+**Decision**: PROC_13 asks approved uplinks only. A control may be approved while a user need it
 names in `controls` is not. Whether a control is realized is checked on its own.
 
 **Why**: the approval of a control is about what it asks for. That it is realized is another
@@ -518,7 +518,7 @@ question, and it has to be answered on its own.
 
 **Rejected**: approved user needs at the approval of a control, as for uplinks.
 
-**Decision**: PROC-12 follows the links, not a list of levels: an object is merged before another
+**Decision**: PROC_12 follows the links, not a list of levels: an object is merged before another
 names it.
 
 **Why**: a down-link runs the other way. The user needs are merged before a control names them in
@@ -529,18 +529,18 @@ link between trees.
 
 ## Links to rules
 
-Requirements name rules of the harness as uplink, such as `source_ids: [PROC-12]`. Before this
-decision, a rule had no version. Where a rule changed its meaning, a rule of its own, PROC-17, sent
+Requirements name rules of the harness as uplink, such as `source_ids: [PROC_12]`. Before this
+decision, a rule had no version. Where a rule changed its meaning, a rule of its own, PROC_17, sent
 every requirement that named it back to `review` - the strict cascade c).
 
 **Decision**: a rule carries a version, `x.y.z`, as every requirement does. A link names it:
-`source_ids: [PROC-12@1.1.1]`. The version is set at the merge, because the merge is the approval
-of a rule. PROC-17 goes: a suspect link does its work.
+`source_ids: [PROC_12@1.1.1]`. The version is set at the merge, because the merge is the approval
+of a rule. PROC_17 goes: a suspect link does its work.
 
 **Why**: rules are requirements under another name. One rule holds for every uplink, and the
 cascade ends for rules as well.
 
-**Rejected**: rules without a version, and PROC-17 kept. Two ways would stand side by side, and
+**Rejected**: rules without a version, and PROC_17 kept. Two ways would stand side by side, and
 for rules the cascade would go on.
 
 **Decision**: the rules become data, as the requirements are: a YAML file with a schema, each rule

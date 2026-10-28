@@ -1,4 +1,4 @@
-# Review of TOOL-11 against the criteria of the tool requirements.
+# Review of TOOL_11 against the criteria of the tool requirements.
 # Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
 level: review
@@ -8,8 +8,8 @@ criteria: reviews/criteria-tool.yaml
 criteria_revision: 'c877cc5'
 results:
 - object_key: RR-01
-  target_ids: [TOOL-11]
-  revision: '4c3f5fb'
+  target_ids: [TOOL_11]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

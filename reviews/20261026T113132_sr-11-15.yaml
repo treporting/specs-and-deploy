@@ -1,4 +1,4 @@
-# Review of SR-11 to SR-15 against the criteria of the software requirements.
+# Review of SR_11 to SR_15 against the criteria of the software requirements.
 # Prepared by Claude Code; decided by the reviewer. Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
 level: review
@@ -8,8 +8,8 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: '6095c77'
 results:
 - object_key: RR-01
-  target_ids: [SR-11]
-  revision: 'd45fa04'
+  target_ids: [SR_11]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -24,8 +24,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [SR-12]
-  revision: 'd45fa04'
+  target_ids: [SR_12]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -40,8 +40,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-03
-  target_ids: [SR-13]
-  revision: 'd45fa04'
+  target_ids: [SR_13]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -56,8 +56,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-04
-  target_ids: [SR-14]
-  revision: 'd45fa04'
+  target_ids: [SR_14]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -72,8 +72,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-05
-  target_ids: [SR-15]
-  revision: 'd45fa04'
+  target_ids: [SR_15]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

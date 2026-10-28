@@ -1,4 +1,4 @@
-// Package check checks the results of reviews against the rules of formats.md (TOOL-03, TOOL-11).
+// Package check checks the results of reviews against the rules of formats.md (TOOL_03, TOOL_11).
 package check
 
 import (
@@ -77,7 +77,7 @@ type Git interface {
 
 // Check reads the review result in path, below root, and answers every rule it breaks.
 //
-// @implements SR-01@1.1.1, SR-02@1.1.1, SR-03@1.1.1, SR-04@1.1.1, SR-05@1.1.1, SR-06@1.1.1, SR-07@1.1.1, SR-08@1.1.1, SR-16@1.1.1
+// @implements SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1, SR_06@1.1.1, SR_07@1.1.1, SR_08@1.1.1, SR_16@1.1.1
 func Check(root, path string, git Git) ([]Finding, error) {
 
 	data, err := os.ReadFile(filepath.Join(root, path))
@@ -107,7 +107,7 @@ func Check(root, path string, git Git) ([]Finding, error) {
 // The revision is a commit that changed the file, so that the criteria the review followed can be
 // traced.
 //
-// @implements SR-07@1.1.1
+// @implements SR_07@1.1.1
 func criteriaKeys(git Git, revision, file string) ([]string, error) {
 
 	if !git.CommitExists(revision) {
@@ -141,7 +141,7 @@ func criteriaKeys(git Git, revision, file string) ([]string, error) {
 
 // checkResult answers the rules one result breaks.
 //
-// @implements SR-01@1.1.1, SR-02@1.1.1, SR-03@1.1.1, SR-04@1.1.1, SR-05@1.1.1, SR-06@1.1.1, SR-08@1.1.1, SR-16@1.1.1
+// @implements SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1, SR_06@1.1.1, SR_08@1.1.1, SR_16@1.1.1
 func checkResult(r Review, result Result, criteria []string, git Git) []string {
 
 	var messages []string
@@ -217,7 +217,7 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 // co-authors of the last commit, not a merge, that changed it, whatever names stand there. A merge
 // joins what others wrote; the one who merged approves, and is no author.
 //
-// @implements SR-05@1.1.1, SR-08@1.1.1
+// @implements SR_05@1.1.1, SR_08@1.1.1
 func authorsOf(git Git, revision, target string) ([]string, error) {
 
 	file, key := review.FileOf(target)

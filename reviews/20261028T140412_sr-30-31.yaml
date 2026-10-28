@@ -1,4 +1,4 @@
-# Review of SR-30, SR-31 against the criteria of the level r5.
+# Review of SR_30, SR_31 against the criteria of the level r5.
 # Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,8 +9,8 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [SR-30]
-  revision: 'e96020e'
+  target_ids: [SR_30]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -25,8 +25,8 @@ results:
     RC-11: passed
   verdict: passed
 - object_key: RR-02
-  target_ids: [SR-31]
-  revision: 'e96020e'
+  target_ids: [SR_31]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

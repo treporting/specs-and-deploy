@@ -1,4 +1,4 @@
-# Review of TOOL-13 against the criteria of the level tool.
+# Review of TOOL_13 against the criteria of the level tool.
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,8 +9,8 @@ criteria: reviews/criteria-tool.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [TOOL-13]
-  revision: '4e47249'
+  target_ids: [TOOL_13]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

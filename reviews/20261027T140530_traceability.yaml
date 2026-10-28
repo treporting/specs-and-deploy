@@ -31,7 +31,7 @@ results:
         reason for 1.1.1 named an approved object, while a new object starts at 1.1.1 as a draft; it
         blocked the baseline that holds the child, checked against main - against definitions.md, where a
         baseline is a set of work products at their revisions - and so blocked every fix of a library; it
-        contradicted PROC-13 and PROC-17 - the rules are changed in harness.md with it'
+        contradicted PROC_13 and PROC_17 - the rules are changed in harness.md with it'
     RC-09: passed
     RC-10:
       result: passed

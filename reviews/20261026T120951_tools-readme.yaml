@@ -21,7 +21,7 @@ results:
       note: 'found in this review and resolved in it: it does not name its audience'
     RC-06:
       result: passed
-      note: 'found in this review and resolved in it: THR-02 is named, though it stands in no YAML - the reference points to nothing'
+      note: 'found in this review and resolved in it: THR_02 is named, though it stands in no YAML - the reference points to nothing'
     RC-07:
       result: passed
       note: 'found in this review and resolved in it: ISO/IEC/IEEE 29148 is named in full, not as ISO29148'

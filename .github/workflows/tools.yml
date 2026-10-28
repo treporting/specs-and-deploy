@@ -1,5 +1,5 @@
-# The gate of the tools on every pull request (TOOL-12, TOOL-05, TOOL-13, TOOL-06, TOOL-20, TOOL-09). Each job is a required check of the ruleset
-# of main, so a pull request whose job failed cannot be merged - but linkcheck (TOOL-16), which reports and does not fail. See devops.md.
+# The gate of the tools on every pull request (TOOL_12, TOOL_05, TOOL_13, TOOL_06, TOOL_20, TOOL_09). Each job is a required check of the ruleset
+# of main, so a pull request whose job failed cannot be merged - but linkcheck (TOOL_16), which reports and does not fail. See devops.md.
 name: tools
 
 on:
@@ -94,7 +94,7 @@ jobs:
       - name: uplinkcheck
         working-directory: tools
         run: go run ./uplink/cmd/uplinkcheck -root ..
-  #	reports and does not fail: a suspect link blocks the baseline, not the pull request (PROC-20)
+  #	reports and does not fail: a suspect link blocks the baseline, not the pull request (PROC_20)
   linkcheck:
     runs-on: ubuntu-latest
     steps:

@@ -151,11 +151,11 @@ holds only what the author writes:
   its level (ISO29148, clause 5.2.8). The top - user needs, regulatory requirements, hazards -
   has no uplinks.
 - **status** of every requirement: `draft`, `review`, `approved`, `obsolete`; a requirement starts
-  as `draft` and is approved only after its review (PROC-13).
+  as `draft` and is approved only after its review (PROC_13).
 - **verification_method** of every requirement, a list - a requirement may be verified in more
   than one way, `[inspection, test]`. The values of ISO29148: `inspection`, `analysis`,
   `demonstration`, `test`; and of our own: `review` - verified by the review against the criteria
-  of its level (PROC-13), for instance a document.
+  of its level (PROC_13), for instance a document.
 - **platform_launch** of every user need and system requirement: `treporting = 2_selfhosted,
   1_demo`, or narrower where a requirement holds for one of them only.
 - **the links**: an object writes the parents it is derived from, its uplinks, in `source_ids` -
@@ -163,10 +163,10 @@ holds only what the author writes:
   reviewed, a verification at what it verified. As in the gel schema, `source_ids` and
   `target_ids` keep the original ends of the links; the import makes the link `parentOf` from
   them, a derived value: the sources of an object are its parents. Every uplink names the version
-  of its parent, `UN-OPS-10@1.1.1` (PROC-20); so does an entry of `allocated`. Rejected: the
+  of its parent, `UN_OPS_10@1.1.1` (PROC_20); so does an entry of `allocated`. Rejected: the
   uplink in `target_ids`, as it stood before - read so, parent and child turn round.
 - **controls** of a control of a hazard: the user needs that realize it, with their versions,
-  `controls: [UN-PSF-01@1.1.1]` - a down-link between two trees (traceability.md, section Links
+  `controls: [UN_PSF_01@1.1.1]` - a down-link between two trees (traceability.md, section Links
   between trees).
 
 ### Example
@@ -176,14 +176,14 @@ holds only what the author writes:
 schema: schemas/system-requirements.schema.json
 level: r2
 requirements:
-  - object_key: SYS-58
+  - object_key: SYS_58
     object_version: '1.1.1'
     feature: Licensing
     object_text: >-
       check, on every request to a licensed feature, the role and the rights of the user and
       the licence of the installation, and refuse the request with the reason when one of
       them is missing
-    source_ids: [UN-OPS-10@1.1.1]
+    source_ids: [UN_OPS_10@1.1.1]
     priority: 'later'
     safety: ''
 ```
@@ -200,27 +200,27 @@ carries no annotation. The requirement it serves names it.
 whose form another owns has none (see Files whose form another owns). Every YAML of our own data names its schema in the field `schema`, from the root of the repo, as a review result names its criteria:
 `schema: schemas/tool-requirements.schema.json`. The schema holds that path as a fixed value, so a
 file that names another schema fails. Every schema names the requirement it refines in its
-`$comment`: `@refines ARC-22`. The schema of a kind with versions names the attributes for x in
+`$comment`: `@refines ARC_22`. The schema of a kind with versions names the attributes for x in
 the list `attributes_for_version_x`, always written out (traceability.md). The schemas are the
-contract of ARC-22 and are reviewed with it.
+contract of ARC_22 and are reviewed with it.
 They are drafts until the gel schema stands; then they become a part of it, and a CI check in
 storage-edgedb compares both.
 
 **Why**: which schema belongs to a file stands where the file is read, and a tool needs no list of
-its own (TOOL-05). A schema gives the form of a requirement and realizes none, so it refines it.
+its own (TOOL_05). A schema gives the form of a requirement and realizes none, so it refines it.
 
 **Rejected**:
 
 - the schema in a comment of the YAML - no field, so neither a schema nor a tool can rely on it
 - a table of patterns of paths in the tool - a new kind of file that no one enters stays unchecked
-- `@implements` in a schema - a schema realizes no requirement (PROC-05)
+- `@implements` in a schema - a schema realizes no requirement (PROC_05)
 
 ### Documents
 
 The YAML of a level names the documents beside it that explain it, each with a version and a status
 of its own - the same values as a requirement. A document is reviewed like a requirement (`review`
 as its verification method), and an exported document shows its version, its revision and its
-status (TOOL-02). Its `object_hash` is the content approved: `git hash-object` of its file, 7
+status (TOOL_02). Its `object_hash` is the content approved: `git hash-object` of its file, 7
 characters, set at the approval with the version, `''` before the first. It is the one attribute
 for x of a document (traceability.md, section The version of a document):
 
@@ -260,7 +260,7 @@ the repo, in the same form, by their path.
 
 ## Reviews
 
-A review checks what is reviewed against the criteria of its kind (PROC-13). Criteria and result
+A review checks what is reviewed against the criteria of its kind (PROC_13). Criteria and result
 are kept like a test case and its result, in `reviews/`:
 
 ```
@@ -310,7 +310,7 @@ criteria: reviews/criteria-r1.yaml
 criteria_revision: 'd5922d1'
 results:
 - object_key: RR-01
-  target_ids: [UN-PM-01]
+  target_ids: [UN_PM_01]
   revision: '7215683'
   criteria:
     RC-01: passed
@@ -321,17 +321,17 @@ results:
   verdict: failed
 ```
 
-- the verdict is `passed` only when every criterion passed (PROC-13)
+- the verdict is `passed` only when every criterion passed (PROC_13)
 - every criterion of the criteria file appears once
 - a failed criterion is a block of `result` and `note`, so that the author knows what to change; a
   passed one may have a note as well, else it is just `passed`
-- `revision` is the commit of what is reviewed: the review counts for it only (SYS-75)
-- the reviewer is not the author of what is reviewed (PROC-15)
+- `revision` is the commit of what is reviewed: the review counts for it only (SYS_75)
+- the reviewer is not the author of what is reviewed (PROC_15)
 - a revision and a time are written in quotes: unquoted, YAML reads `7215683` as a number
 - a note with `: ` in it is written in quotes: unquoted, YAML reads a new key
 
 The schemas are `schemas/review-criteria.schema.json` and `schemas/review-result.schema.json`;
-what they cannot say - every criterion once, the reviewer not the author - TOOL-03 checks. See the
+what they cannot say - every criterion once, the reviewer not the author - TOOL_03 checks. See the
 loop for every change in [harness.md](harness.md).
 
 ## Verifications
@@ -347,7 +347,7 @@ what happened.
 schema: schemas/verification-result.schema.json
 level: verification
 method: demonstration
-target_ids: [SR-20]
+target_ids: [SR_20]
 created_by: Claude Opus 5.5
 confirmed_by: Mathias Fischer
 created_at: '2026-10-27T10:00:00+01:00'
@@ -363,7 +363,7 @@ evidence:
 verdict: passed
 ```
 
-- `created_by` ran it, `confirmed_by` confirmed it, and the two are not the same (PROC-15)
+- `created_by` ran it, `confirmed_by` confirmed it, and the two are not the same (PROC_15)
 - `revision` is the commit it ran on; `setting` the commit that last changed a setting outside the
   repo it depends on, such as the ruleset of `main` in `.github/rulesets/main.json`
 - `observed` holds the messages themselves, not only a link: the logs of GitHub Actions are
@@ -391,7 +391,7 @@ repeated. A link to a pull request answers only the first.
 | Level | treporting | Example | Set by |
 |---|---|---|---|
 | system | treporting | - | r2 |
-| subsystem | a repo, ARC-01 to ARC-06; or the tools in specs-and-deploy, which are not part of the product | reporter-edgedb, tools | r3 |
+| subsystem | a repo, ARC_01 to ARC_06; or the tools in specs-and-deploy, which are not part of the product | reporter-edgedb, tools | r3 |
 | component | a group of packages with one responsibility | `trace`, `maturity` | the field `component` of an SR |
 | module | a Go package or JS module | `trace/gaps` | the code |
 | unit | a source file | `trace/gaps/mark.go` | the annotation, never by hand |
@@ -408,17 +408,38 @@ annotation names software requirements of its own repo only.
 
 | Ids | What | Level |
 |---|---|---|
-| `HAZ-nn`, `THR-nn` | hazards, threats | h1 |
-| `HAZC-nn`, `THRC-nn` | the controls of a hazard, of a threat | h2 |
+| `HAZ_nn`, `THR_nn` | hazards, threats | h1 |
+| `HAZC_nn`, `THRC_nn` | the controls of a hazard, of a threat | h2 |
 | `REG_<module>_nn` | regulatory requirements; `<module>` is the short form of standards.md | n1 |
-| `UN-<role>-nn` | user needs | r1 |
-| `SYS-nn` | system requirements | r2 |
-| `ARC-nn` | subsystems, interfaces | r3 |
-| `ARC-Rnn`, `ARC-Dnn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
-| `SR-nn` | software requirements of a subsystem - unique together with their context, the repo of the subsystem (LProject) and the document | r5 |
+| `UN_<role>_nn` | user needs | r1 |
+| `SYS_nn` | system requirements | r2 |
+| `ARC_nn` | subsystems, interfaces | r3 |
+| `ARCR_nn`, `ARCD_nn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
+| `SR_nn` | software requirements of a subsystem - unique together with their context, the repo of the subsystem (LProject) and the document | r5 |
 | *open* | software architecture (r6) and software design (r7) of a subsystem; their prefixes are still to be set | r6, r7 |
-| `PROC-nn` | rules of our work | rules |
-| `TOOL-nn` | requirements on the tools of our work; tools are code (devops.md) | tool |
+| `PROC_nn` | rules of our work | rules |
+| `TOOL_nn` | requirements on the tools of our work; tools are code (devops.md) | tool |
+
+**Decision**: a key has the form `xyz_nn` or `xyz_xyz_nn`: its parts are joined by an underscore,
+and the last part is the number. The keys of criteria and review results, `RC-nn` and `RR-nn`, are
+no keys of requirements and keep their form.
+
+**Why**: a part may hold a hyphen itself, as the module of a regulatory requirement does,
+`REG_ISO26262-8_01`. The underscore separates the parts without doubt, and every key has one form.
+
+**Rejected**: the hyphen for every key but those of the regulatory requirements - two forms of keys
+would stand side by side.
+
+**Decision**: the review results and the verifications name the keys as they are now. A review
+result whose target got a new key names as its revision the commit that changed the key. What a
+record quotes from a log stays as the log printed it.
+
+**Why**: every key in the repo changes, the records too. A tool finds the target of a review result
+in the revision it names; a revision before the change does not hold the new key. A quote of a log
+that changed would no longer be what the tool printed.
+
+**Rejected**: the records as they were written, with the old keys - two forms of keys would stand
+side by side.
 
 ### Software requirements
 
@@ -429,7 +450,7 @@ annotation names software requirements of its own repo only.
 - it names as a rule **one** system requirement as uplink; several only where the behaviour
   serves each of them
 - every subsystem repo is an element of its own in the architecture, so that the CI can check
-  the allocation (r4): ARC-06 *extractor-SYSTEM* describes the kind; extractor-git, a second
+  the allocation (r4): ARC_06 *extractor-SYSTEM* describes the kind; extractor-git, a second
   reporter or a second viewer each get an element of their own when their repo is made
 
 ## Annotations
@@ -438,29 +459,29 @@ The same in Go and JavaScript, in the comment right above the function, method, 
 test, with no blank line between:
 
 ```go
-// @implements SR-02@1.1.1, SR-03@2.1.1
+// @implements SR_02@1.1.1, SR_03@2.1.1
 func markGaps(trace *Trace) { ... }
 
-// @verifies SR-02@1.1.1
+// @verifies SR_02@1.1.1
 func TestMarkGapsNeverCovered(t *testing.T) { ... }
 ```
 
 ```js
-/** @implements SR-05@1.2.1 */
+/** @implements SR_05@1.2.1 */
 export function StatusBand(props) { ... }
 
-// @verifies SR-05@1.2.1
+// @verifies SR_05@1.2.1
 it('shows the hidden filters', () => { ... })
 ```
 
 - one annotation per line, several ids separated by commas; never over two lines
-- each id names the version of its requirement, as `ID@x.y.z`, as a link does (TOOL-20;
+- each id names the version of its requirement, as `ID@x.y.z`, as a link does (TOOL_20;
   traceability.md, section The right side of the V)
 - `@implements` names software requirements of its own repo only - in `tools/` as well
 - `@verifies` names software requirements of its own repo in a software test, system
   requirements in a system test
 - `@refines` names the requirement a schema gives the form of, in its `$comment`:
-  `"$comment": "@refines ARC-22"`
+  `"$comment": "@refines ARC_22"`
 - a file whose form another owns carries no annotation (see Files whose form another owns)
 
 ### Where an annotation is read
@@ -468,13 +489,13 @@ it('shows the hidden filters', () => { ... })
 **Decision**: annotationcheck tells by the kind of a file whether to read it, from two lists in
 `tools/annotation/kinds.yaml`: a **whitelist** of the kinds that are code, read for annotations,
 and a **blacklist** of the kinds that are no code, never read. A file of a kind on neither list is a
-finding (SR-27) until its kind is set. A YAML that names a schema is our data and is not read,
+finding (SR_27) until its kind is set. A YAML that names a schema is our data and is not read,
 though `*.yaml` is on the whitelist. In a file that is read, an annotation stands first in a line of
 comment: after spaces, a comment mark of one to three signs other than a quote, then `@implements`
 or `@verifies`.
 
 **Why**: for a risk, the question is which error goes unseen, and which does more harm.
-annotationcheck is a gate: it is to stop code that names a requirement not approved (PROC-05).
+annotationcheck is a gate: it is to stop code that names a requirement not approved (PROC_05).
 
 **Table failures of one list** - what can go wrong with one list alone
 
@@ -487,7 +508,7 @@ annotationcheck is a gate: it is to stop code that names a requirement not appro
 For the gate alone, the blacklist is the safer: its errors are loud, or harmless for the gate. The
 error of the whitelist is silent, and hits the purpose of the tool. That is fail-safe: in doubt,
 check, and stop once too often rather than let through once unseen. With both lists and a finding
-for every unknown kind, every error is loud, both ways - the least risk, at the cost of SR-27 and an
+for every unknown kind, every error is loud, both ways - the least risk, at the cost of SR_27 and an
 entry for each new kind.
 
 For counting realizations it is the other way round - the trace in the reporter, and
@@ -531,17 +552,17 @@ On every pull request of a code repo, each check a tool with a requirement of it
 
 | Check | Tool requirement |
 |---|---|
-| every YAML file matches its schema | TOOL-05 |
-| every id in `@implements` and `@verifies` exists, and is approved, in the YAML of the **base commit** of the pull request - a requirement added in the same pull request does not count (PROC-05); a SYS named by a system test exists in specs-and-deploy on `main` | TOOL-06 |
-| the annotations counted a second way, apart from the parser - `git grep -c` | TOOL-07 |
-| the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to this subsystem in the architecture (r4) | TOOL-08 |
-| an approved requirement names approved uplinks only | TOOL-09 |
-| every test file belongs to exactly one test level | TOOL-10 |
-| every review result keeps the rules of the section Reviews, and the tests of the tools pass | TOOL-12 |
+| every YAML file matches its schema | TOOL_05 |
+| every id in `@implements` and `@verifies` exists, and is approved, in the YAML of the **base commit** of the pull request - a requirement added in the same pull request does not count (PROC_05); a SYS named by a system test exists in specs-and-deploy on `main` | TOOL_06 |
+| the annotations counted a second way, apart from the parser - `git grep -c` | TOOL_07 |
+| the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to this subsystem in the architecture (r4) | TOOL_08 |
+| an approved requirement names approved uplinks only | TOOL_09 |
+| every test file belongs to exactly one test level | TOOL_10 |
+| every review result keeps the rules of the section Reviews, and the tests of the tools pass | TOOL_12 |
 
 In specs-and-deploy as well: the references both ways, and every SYS allocated.
 
-TOOL-12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
+TOOL_12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
 
-*Open*: the tools of TOOL-05 to TOOL-10 are not built yet; each waits for its approved tool
+*Open*: the tools of TOOL_05 to TOOL_10 are not built yet; each waits for its approved tool
 requirement. The workflow is to be a reusable workflow in `treporting/.github`.

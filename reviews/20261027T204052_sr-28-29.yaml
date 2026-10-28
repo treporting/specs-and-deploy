@@ -1,4 +1,4 @@
-# Review of SR-28, SR-29 against the criteria of the level r5, at their texts after TOOL-09 2.1.1.
+# Review of SR_28, SR_29 against the criteria of the level r5, at their texts after TOOL_09 2.1.1.
 # Proposed by Claude Code as passed; decided by the reviewer: failed.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
@@ -9,8 +9,8 @@ criteria: reviews/criteria-r5.yaml
 criteria_revision: 'fc90eda'
 results:
 - object_key: RR-01
-  target_ids: [SR-28]
-  revision: 'e3f2d9a'
+  target_ids: [SR_28]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed
@@ -30,8 +30,8 @@ results:
     RC-11: passed
   verdict: failed
 - object_key: RR-02
-  target_ids: [SR-29]
-  revision: 'e3f2d9a'
+  target_ids: [SR_29]
+  revision: 'c7cf7df'
   criteria:
     RC-01: passed
     RC-02: passed

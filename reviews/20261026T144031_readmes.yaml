@@ -27,7 +27,7 @@ results:
       note: 'found in this review and resolved in it: ISO/IEC/IEEE 12207 and 29119 are named in full'
     RC-08:
       result: passed
-      note: 'found in this review and resolved in it: SR-<subsystem>-nn is an id no longer in use - formats.md has SR-nn; reviews/ and formats.md are described without documents and reviews'
+      note: 'found in this review and resolved in it: SR-<subsystem>-nn is an id no longer in use - formats.md has SR_nn; reviews/ and formats.md are described without documents and reviews'
     RC-09: passed
     RC-10: passed
     RC-11: passed
