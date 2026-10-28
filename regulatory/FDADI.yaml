@@ -11,5 +11,5 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]

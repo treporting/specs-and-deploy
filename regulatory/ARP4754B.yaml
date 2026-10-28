@@ -12,5 +12,5 @@ requirements:
   applies_to: airborne
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]

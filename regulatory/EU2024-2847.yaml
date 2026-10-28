@@ -14,7 +14,7 @@ requirements:
     commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_EU2024-2847_02
   object_version: '1.1.1'
@@ -27,7 +27,7 @@ requirements:
     commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_EU2024-2847_03
   object_version: '1.1.1'
@@ -40,7 +40,7 @@ requirements:
   not_realized: a duty of the manufacturer, kept by our work (harness)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_EU2024-2847_04
   object_version: '1.1.1'
@@ -51,5 +51,5 @@ requirements:
     commercial activity - not free and open-source software that is not monetised
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]

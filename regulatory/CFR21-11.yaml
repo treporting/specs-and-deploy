@@ -11,7 +11,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_CFR21-11_02
   object_version: '1.1.1'
@@ -21,7 +21,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_CFR21-11_03
   object_version: '1.1.1'
@@ -31,7 +31,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_CFR21-11_04
   object_version: '1.1.1'
@@ -41,7 +41,7 @@ requirements:
   applies_to: medical (FDA)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_CFR21-11_05
   object_version: '1.1.1'
@@ -53,5 +53,5 @@ requirements:
     can name the report it relied on (SYS-43)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]

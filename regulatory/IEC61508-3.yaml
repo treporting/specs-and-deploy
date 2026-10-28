@@ -11,5 +11,5 @@ requirements:
   applies_to: industry, railway (EN 50716)
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]

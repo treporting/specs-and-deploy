@@ -12,7 +12,7 @@ requirements:
   applies_to: airborne
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
 - object_key: REG_DO178C_02
   object_version: '1.1.1'
@@ -22,5 +22,5 @@ requirements:
   applies_to: airborne
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
