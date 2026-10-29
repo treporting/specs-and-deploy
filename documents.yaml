@@ -10,9 +10,9 @@ documents:
   status: approved
   verification_method: [review]
 - name: harness.md
-  object_version: '3.1.1'
-  object_hash: 'ff6c317'
-  status: review
+  object_version: '4.1.1'
+  object_hash: '912ce6c'
+  status: approved
   verification_method: [review]
 - name: devops.md
   object_version: '5.1.1'
@@ -30,14 +30,14 @@ documents:
   status: approved
   verification_method: [review]
 - name: formats.md
-  object_version: '7.1.1'
-  object_hash: 'aa1ba45'
-  status: review
+  object_version: '8.1.1'
+  object_hash: '3fb5016'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
-  object_version: '1.1.1'
-  object_hash: '3343203'
-  status: review
+  object_version: '2.1.1'
+  object_hash: 'b8ec0ef'
+  status: approved
   verification_method: [review]
 - name: traceability.md
   object_version: '5.1.1'
