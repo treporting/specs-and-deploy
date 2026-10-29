@@ -85,7 +85,7 @@ func Make(root string, req Request, git Git, index *review.Index) (string, error
 	fmt.Fprintf(&b, "criteria_revision: '%s'\n", criteriaRevision)
 	fmt.Fprintf(&b, "results:\n")
 	for i, target := range req.Targets {
-		fmt.Fprintf(&b, "- object_key: RR-%02d\n", i+1)
+		fmt.Fprintf(&b, "- object_key: RR_%02d\n", i+1)
 		fmt.Fprintf(&b, "  target_ids: [%s]\n", target)
 		fmt.Fprintf(&b, "  revision: '%s'\n", head)
 		fmt.Fprintf(&b, "  criteria:\n")

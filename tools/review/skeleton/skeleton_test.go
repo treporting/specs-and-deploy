@@ -39,8 +39,8 @@ func (f fakeGit) Short(rev string) (string, error) {
 
 func history() fakeGit {
 	return fakeGit{files: map[string]string{
-		"reviews/criteria-tool.yaml":      "level: tool\ncriteria:\n- object_key: RC-01\n- object_key: RC-02\n",
-		"reviews/criteria-documents.yaml": "level: document\ncriteria:\n- object_key: RC-01\n",
+		"reviews/criteria-tool.yaml":      "level: tool\ncriteria:\n- object_key: RC_01\n- object_key: RC_02\n",
+		"reviews/criteria-documents.yaml": "level: document\ncriteria:\n- object_key: RC_01\n",
 		"requirements/tool-requirements.yaml": `type: requirements
 level: tool
 requirements:
@@ -133,7 +133,7 @@ func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	contains(t, content, "- object_key: RR-01\n  target_ids: [TOOL_03]\n", "- object_key: RR-02\n  target_ids: [TOOL_04]\n")
+	contains(t, content, "- object_key: RR_01\n  target_ids: [TOOL_03]\n", "- object_key: RR_02\n  target_ids: [TOOL_04]\n")
 	if n := strings.Count(content, ": todo\n"); n != 6 {
 		t.Errorf("want 6 todo, two criteria and a verdict for each of two; got %d", n)
 	}

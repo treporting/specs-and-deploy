@@ -62,15 +62,15 @@ created_at: '2026-10-25T13:30:00+01:00'
 criteria: reviews/criteria-tool.yaml
 criteria_revision: '`+first+`'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [TOOL_03]
   revision: '`+second+`'
-  criteria: {RC-01: passed, RC-02: passed}
+  criteria: {RC_01: passed, RC_02: passed}
   verdict: passed
-- object_key: RR-02
+- object_key: RR_02
   target_ids: [TOOL_04]
   revision: '`+second+`'
-  criteria: {RC-01: passed, RC-02: passed}
+  criteria: {RC_01: passed, RC_02: passed}
   verdict: passed
 `)
 
@@ -78,7 +78,7 @@ results:
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(findings) != 1 || findings[0].Result != "RR-02" ||
+	if len(findings) != 1 || findings[0].Result != "RR_02" ||
 		!strings.Contains(findings[0].Message, "is an author of TOOL_04") {
 		t.Errorf("want one finding, that the reviewer is an author of TOOL_04; got %v", findings)
 	}
@@ -112,10 +112,10 @@ created_at: '2026-10-25T13:30:00+01:00'
 criteria: reviews/criteria-tool.yaml
 criteria_revision: '`+c.revision+`'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [TOOL_03]
   revision: '`+second+`'
-  criteria: {RC-01: passed, RC-02: passed}
+  criteria: {RC_01: passed, RC_02: passed}
   verdict: passed
 `)
 		findings, err := checkAt(t, root)
@@ -161,10 +161,10 @@ created_at: '2026-10-25T13:30:00+01:00'
 criteria: reviews/criteria-tool.yaml
 criteria_revision: '`+first+`'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [doc.md]
   revision: '`+merged+`'
-  criteria: {RC-01: passed, RC-02: passed}
+  criteria: {RC_01: passed, RC_02: passed}
   verdict: passed
 `)
 	findings, err := checkAt(t, root)
