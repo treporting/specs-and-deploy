@@ -45,7 +45,7 @@ documents:
   type: document
   object_version: '2.1.1'
   object_hash: 'b8ec0ef'
-  status: approved
+  status: review
   verification_method: [review]
 - name: traceability.md
   type: document
