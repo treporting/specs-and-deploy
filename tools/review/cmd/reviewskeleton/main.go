@@ -29,12 +29,17 @@ func main() {
 		os.Exit(2)
 	}
 
+	index, err := review.IndexAt(*root)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(2)
+	}
 	path, err := skeleton.Make(*root, skeleton.Request{
 		Reviewer: *reviewer,
 		Scope:    *scope,
 		Targets:  flag.Args(),
 		Now:      time.Now(),
-	}, review.ExecGit{Root: *root})
+	}, review.ExecGit{Root: *root}, index)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

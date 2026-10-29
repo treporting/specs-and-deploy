@@ -53,7 +53,11 @@ func main() {
 	}
 	annotations = append(annotations, refines...)
 	findings := append(unknown, check.Unversioned(annotations)...)
-	findings = append(findings, check.Check(review.ExecGit{Root: *root}, *base, annotations)...)
+	index, err := review.IndexAt(*root)
+	if err != nil {
+		fail(err)
+	}
+	findings = append(findings, check.Check(review.ExecGit{Root: *root}, *base, index, annotations)...)
 	for _, f := range findings {
 		fmt.Println(f)
 	}

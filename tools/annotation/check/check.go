@@ -207,15 +207,15 @@ func Unversioned(annotations []Annotation) []Finding {
 }
 
 // Check answers each id the annotations name that is not in the requirements of the base commit,
-// or not approved there.
+// or not approved there. The index tells the file of an id, as the working tree holds it.
 //
 // @implements SR_24@2.1.1, SR_25@2.2.1
-func Check(git Git, base string, annotations []Annotation) []Finding {
+func Check(git Git, base string, index *review.Index, annotations []Annotation) []Finding {
 
 	var findings []Finding
 	for _, a := range annotations {
 		for _, id := range a.IDs {
-			if message := status(git, base, id); message != "" {
+			if message := status(git, base, index, id); message != "" {
 				findings = append(findings, Finding{a, id, message})
 			}
 		}
@@ -224,9 +224,9 @@ func Check(git Git, base string, annotations []Annotation) []Finding {
 }
 
 // status answers why id does not count in the base commit, or "" where it is approved there.
-func status(git Git, base, id string) string {
+func status(git Git, base string, index *review.Index, id string) string {
 
-	file, key := review.FileOf(id)
+	file, key := index.FileOf(id)
 	if file == "" || key == "" {
 		return "no file of requirements holds such an id"
 	}

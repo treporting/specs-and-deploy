@@ -132,17 +132,21 @@ the last part of its path. An SR names the component, `review`; the module is se
 - the module as the component of an SR - which package realizes a behaviour is a decision of the
   design, on the levels r6 and r7
 
-**Decision**: the id of an object tells the file that holds it. A level with one file is kept in a
-list, by the prefix of its ids. A regulatory requirement `REG_<module>_nn` is in
-`regulatory/<module>.yaml`, one file per module (formats.md, section Regulatory requirements). The
-files of requirements are those of the list and the YAML files in `regulatory/`.
+**Decision**: a tool finds the files of requirements by their `type`. The component `review` reads
+the head of every YAML git knows in the working tree, and keeps those whose `type` holds
+requirements: `requirements`, `normative`, `architecture`, `hazards` and `rules` (formats.md, table
+types). From the `object_key` in them it knows the file of every id. In an old revision a tool reads
+an id in the file the working tree names for it.
 
-**Why**: a tool finds an object from its id alone, also in an old revision, without reading every
-file.
+**Why**: a file says itself what it holds (formats.md, section The head of a file). A new level, a
+new file or a changed prefix needs no change of code.
 
-**Rejected**: every YAML that names a schema, as annotationcheck tells our data. To find one id, a
-tool would read every file, in every revision it looks at; and the review results would count as
-files of requirements.
+**Rejected**:
+
+- the id tells its file, by a fixed list of prefixes and the rule `REG_<module>_nn` →
+  `regulatory/<module>.yaml`, as before - every new level or prefix is a change of code, and the
+  list stood a second time beside the table files of the levels in formats.md
+- a file `levels.yaml` - see formats.md, section Documents
 
 ## reviewcheck
 

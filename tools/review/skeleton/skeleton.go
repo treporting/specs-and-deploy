@@ -50,14 +50,14 @@ type Request struct {
 // to more than one level, it writes nothing.
 //
 // @implements SR_11@2.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1
-func Make(root string, req Request, git Git) (string, error) {
+func Make(root string, req Request, git Git, index *review.Index) (string, error) {
 
 	head, err := git.Short("HEAD")
 	if err != nil {
 		return "", err
 	}
 
-	level, err := levelOf(git, req.Targets)
+	level, err := levelOf(git, index, req.Targets)
 	if err != nil {
 		return "", err
 	}
@@ -108,14 +108,14 @@ func Make(root string, req Request, git Git) (string, error) {
 // requirement, and document for a document.
 //
 // @implements SR_15@1.1.1
-func levelOf(git Git, targets []string) (string, error) {
+func levelOf(git Git, index *review.Index, targets []string) (string, error) {
 
 	if len(targets) == 0 {
 		return "", fmt.Errorf("no id or document given")
 	}
 	level := ""
 	for _, target := range targets {
-		file, key := review.FileOf(target)
+		file, key := index.FileOf(target)
 		if file == "" {
 			return "", fmt.Errorf("no file holds %s", target)
 		}

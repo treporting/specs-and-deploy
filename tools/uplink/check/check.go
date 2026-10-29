@@ -23,12 +23,12 @@ func (f Finding) String() string {
 	return f.ID + " names " + f.Uplink + ": " + f.Message
 }
 
-// Check reads every file of requirements and answers each uplink in the source_ids of an approved
-// requirement that no file holds, or that is not approved. It answers too how many approved
-// requirements it checked. A file of requirements that is not there holds none.
+// Check reads every file of requirements the index knows and answers each uplink in the
+// source_ids of an approved requirement that no file holds, or that is not approved. It answers too
+// how many approved requirements it checked. A file of requirements that is not there holds none.
 //
 // @implements SR_28@1.1.1
-func Check(read Read, list review.List) ([]Finding, int, error) {
+func Check(read Read, index *review.Index) ([]Finding, int, error) {
 
 	files := map[string][]byte{}
 	load := func(file string) []byte {
@@ -45,14 +45,14 @@ func Check(read Read, list review.List) ([]Finding, int, error) {
 
 	var findings []Finding
 	approved := 0
-	for _, file := range review.Files(list) {
+	for _, file := range index.Files() {
 		for _, object := range objects(load(file)) {
 			if object.Status != "approved" {
 				continue
 			}
 			approved++
 			for _, uplink := range object.SourceIDs {
-				if message := status(load, uplink); message != "" {
+				if message := status(load, index, uplink); message != "" {
 					findings = append(findings, Finding{object.Key, uplink, message})
 				}
 			}
@@ -93,10 +93,10 @@ func objects(data []byte) []object {
 
 // status answers why an uplink does not count, or "" where it is approved. The uplink names its
 // version after @; the version is not compared here (PROC_20).
-func status(load func(string) []byte, uplink string) string {
+func status(load func(string) []byte, index *review.Index, uplink string) string {
 
 	id, _, _ := strings.Cut(uplink, "@")
-	file, key := review.FileOf(id)
+	file, key := index.FileOf(id)
 	if file == "" || key == "" {
 		return "no file of requirements holds such an id"
 	}

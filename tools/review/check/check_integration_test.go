@@ -74,7 +74,7 @@ results:
   verdict: passed
 `)
 
-	findings, err := Check(root, "reviews/r.yaml", review.ExecGit{Root: root})
+	findings, err := checkAt(t, root)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -118,7 +118,7 @@ results:
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
 `)
-		findings, err := Check(root, "reviews/r.yaml", review.ExecGit{Root: root})
+		findings, err := checkAt(t, root)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -167,11 +167,21 @@ results:
   criteria: {RC-01: passed, RC-02: passed}
   verdict: passed
 `)
-	findings, err := Check(root, "reviews/r.yaml", review.ExecGit{Root: root})
+	findings, err := checkAt(t, root)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(findings) != 0 {
 		t.Errorf("want no finding, the merges are no authorship; got %v", findings)
 	}
+}
+
+// checkAt checks reviews/r.yaml on the history of git at root, with the index of its working tree.
+func checkAt(t *testing.T, root string) ([]Finding, error) {
+	t.Helper()
+	index, err := review.IndexAt(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return Check(root, "reviews/r.yaml", review.ExecGit{Root: root}, index)
 }

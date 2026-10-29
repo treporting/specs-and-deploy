@@ -46,7 +46,11 @@ func TestApprovedInTheSamePullRequestDoesNotCount(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	got := messages(Check(review.ExecGit{Root: dir}, base, found))
+	index, err := review.IndexAt(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := messages(Check(review.ExecGit{Root: dir}, base, index, found))
 	if len(got) != 1 || !strings.Contains(got[0], "@implements SR_01: draft in the base commit") {
 		t.Errorf("want SR_01 refused as draft in the base commit, got %q", got)
 	}

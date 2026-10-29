@@ -38,12 +38,12 @@ var fields = []string{"source_ids", "allocated", "controls"}
 // uplinkcheck and schemacheck report it.
 //
 // @implements SR_32@1.1.1
-func Links(read Read, list review.List) ([]Finding, int, error) {
+func Links(read Read, index *review.Index) ([]Finding, int, error) {
 
-	versions := newVersions(read)
+	versions := newVersions(read, index)
 	var findings []Finding
 	compared := 0
-	for _, file := range review.Files(list) {
+	for _, file := range index.Files() {
 		for _, object := range objects(versions.load(file)) {
 			for _, field := range fields {
 				for _, link := range object.links(field) {
@@ -67,9 +67,9 @@ func Links(read Read, list review.List) ([]Finding, int, error) {
 // is not compared: annotationcheck reports it.
 //
 // @implements SR_33@2.1.1
-func Annotations(read Read, annotations []annotation.Annotation) ([]Finding, int) {
+func Annotations(read Read, index *review.Index, annotations []annotation.Annotation) ([]Finding, int) {
 
-	versions := newVersions(read)
+	versions := newVersions(read, index)
 	var findings []Finding
 	compared := 0
 	for _, a := range annotations {
@@ -91,11 +91,12 @@ func Annotations(read Read, annotations []annotation.Annotation) ([]Finding, int
 // versions finds the version of an object in its file, and reads each file once.
 type versions struct {
 	read  Read
+	index *review.Index
 	files map[string][]byte
 }
 
-func newVersions(read Read) *versions {
-	return &versions{read, map[string][]byte{}}
+func newVersions(read Read, index *review.Index) *versions {
+	return &versions{read, index, map[string][]byte{}}
 }
 
 func (v *versions) load(file string) []byte {
@@ -118,7 +119,7 @@ func (v *versions) suspect(link string) (string, bool) {
 	if !version.MatchString(named) {
 		return "", false
 	}
-	file, key := review.FileOf(id)
+	file, key := v.index.FileOf(id)
 	if file == "" || key == "" {
 		return "", false
 	}

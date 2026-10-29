@@ -30,7 +30,11 @@ func main() {
 	read := func(file string) ([]byte, error) {
 		return os.ReadFile(filepath.Join(*root, file))
 	}
-	links, comparedLinks, err := check.Links(read, list(*root))
+	index, err := review.IndexAt(*root)
+	if err != nil {
+		fail(err)
+	}
+	links, comparedLinks, err := check.Links(read, index)
 	if err != nil {
 		fail(err)
 	}
@@ -54,29 +58,12 @@ func main() {
 		fail(err)
 	}
 	annotations = append(annotations, refines...)
-	ids, comparedIDs := check.Annotations(read, annotations)
+	ids, comparedIDs := check.Annotations(read, index, annotations)
 
 	for _, f := range append(links, ids...) {
 		fmt.Println(f)
 	}
 	fmt.Printf("%d links and %d ids of annotations compared, %d suspect\n", comparedLinks, comparedIDs, len(links)+len(ids))
-}
-
-// list answers the names of the files in a directory below root.
-func list(root string) review.List {
-	return func(dir string) ([]string, error) {
-		entries, err := os.ReadDir(filepath.Join(root, dir))
-		if err != nil {
-			return nil, err
-		}
-		var names []string
-		for _, e := range entries {
-			if !e.IsDir() {
-				names = append(names, e.Name())
-			}
-		}
-		return names, nil
-	}
 }
 
 func fail(err error) {
