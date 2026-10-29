@@ -29,6 +29,7 @@ short form is the same in every document, and the table says what stands behind 
 | ISO15289 | ISO/IEC/IEEE 15289 Systems and software engineering - Content of life-cycle information items (documentation) | |
 | ISO29119 | ISO/IEC/IEEE 29119 Software and systems engineering - Software testing | |
 | ISO29148 | ISO/IEC/IEEE 29148 Systems and software engineering - Life cycle processes - Requirements engineering | |
+| ISO25010 | ISO/IEC 25010 Systems and software engineering - Systems and software Quality Requirements and Evaluation (SQuaRE) - Product quality model | |
 | ISO330xx | ISO/IEC 330xx Information technology - Process assessment | |
 | ISO15504 | ISO/IEC 15504 Information technology - Process assessment | replaced by ISO330xx |
 | ISO27001 | ISO/IEC 27001 Information security, cybersecurity and privacy protection - Information security management systems - Requirements | |
@@ -88,6 +89,8 @@ stands in an id, where a slash would separate directories.
 | DDG | Digitale-Dienste-Gesetz | its own short name |
 | BetrVG | Betriebsverfassungsgesetz | its own short name |
 | FDADI | FDA Data Integrity and Compliance With Drug CGMP - Guidance for Industry (2018) | no number |
+| ATAM | CMU/SEI-2000-TR-004 ATAM: Method for Architecture Evaluation | its own short name |
+| LASR | Team-Driven Architecture Evaluation with LASR, Stefan Toth and Stefan Zörner, ICSA 2026 | its own short name, no number |
 | Licences | the licences of the components a release contains, such as Apache-2.0 | no publisher |
 
 ## Per domain
