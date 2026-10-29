@@ -109,11 +109,13 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: SR_11
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: review
-  object_text: write a skeleton of a review result into reviews/, for the ids or documents given, with
-    the reviewer given as created_by, and the time it is made as created_at and in its name,
-    <yyyymmddThhmmss>_<scope>.yaml
+  object_text: |-
+    create the skeleton of a review result for the ids or documents given, where:
+    - the file lies in reviews/results/ and is named <yyyymmddThhmmss>_<scope>.yaml
+    - the field created_by is the reviewer given
+    - the field created_at is the time it is made, the same as in its name
   source_ids: [TOOL_04@1.1.1]
   priority: 'medium'
   safety: ''
