@@ -169,7 +169,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_17
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: review
   object_text: |-
     create the skeleton of a review result where:
@@ -179,7 +179,7 @@ requirements:
   source_ids: [TOOL_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_18
   object_version: '1.1.1'
