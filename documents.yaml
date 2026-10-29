@@ -33,7 +33,7 @@ documents:
   type: document
   object_version: '3.1.1'
   object_hash: '1b4d8c8'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: formats.md
   type: document
