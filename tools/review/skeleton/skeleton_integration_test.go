@@ -40,7 +40,7 @@ func TestASkeletonOnAHistoryOfGit(t *testing.T) {
 
 	root := t.TempDir()
 	gitIn(t, root, "init", "-q")
-	write(t, root, "reviews/criteria-tool.yaml", "level: tool\ncriteria:\n- object_key: RC-01\n- object_key: RC-02\n")
+	write(t, root, "reviews/criteria-tool.yaml", "level: tool\ncriteria:\n- object_key: RC_01\n- object_key: RC_02\n")
 	gitIn(t, root, "add", "-A")
 	gitIn(t, root, "commit", "-q", "-m", "criteria")
 	write(t, root, "requirements/tool-requirements.yaml", "type: requirements\nlevel: tool\nrequirements:\n- object_key: TOOL_03\n  object_text: check\n")

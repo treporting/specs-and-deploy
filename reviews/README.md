@@ -31,7 +31,7 @@ form. Six criteria, in [criteria-n1.yaml](criteria-n1.yaml).
 
 **Why**: the duty itself is set by the law or the standard; we cannot change it. What we write is
 its source and its text in own words (regulatory-requirements.md), and there an error can be made
-when it is written down - RC-01 for the source, RC-02 for the text.
+when it is written down - RC_01 for the source, RC_02 for the text.
 
 **Rejected**: the criteria of r1 taken over - unambiguous, singular, complete, consistent, necessary,
 feasible. They judge the duty, and a finding on it would change nothing we keep.

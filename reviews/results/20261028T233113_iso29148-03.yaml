@@ -7,16 +7,16 @@ level: n1
 created_by: Mathias Fischer
 created_at: '2026-10-28T23:31:13+01:00'
 criteria: reviews/criteria-n1.yaml
-criteria_revision: '23a10cb'
+criteria_revision: '2f3a459'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [REG_ISO29148_03]
   revision: '242e186'
   criteria:
-    RC-01: passed
-    RC-02: passed
-    RC-03: passed
-    RC-04: passed
-    RC-05: passed
-    RC-06: passed
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
   verdict: passed

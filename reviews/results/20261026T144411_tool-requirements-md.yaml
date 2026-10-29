@@ -7,29 +7,29 @@ level: document
 created_by: Mathias Fischer
 created_at: '2026-10-26T14:44:11+01:00'
 criteria: reviews/criteria-documents.yaml
-criteria_revision: 'a4a8931'
+criteria_revision: '2f3a459'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [requirements/tool-requirements.md]
   revision: '4b594ba'
   criteria:
-    RC-01: passed
-    RC-02: passed
-    RC-03: passed
-    RC-04: passed
-    RC-05:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05:
       result: passed
       note: 'found in this review and resolved in it: it does not name its audience'
-    RC-06:
+    RC_06:
       result: passed
       note: 'found in this review and resolved in it: the table of the variants of the status has no name'
-    RC-07: passed
-    RC-08:
+    RC_07: passed
+    RC_08:
       result: passed
       note: 'found in this review and resolved in it: the open point on where a document keeps its status is decided - a documents section or documents.yaml, with the values of a requirement; the skeleton of TOOL_04 is said not to be built, though reviewskeleton is'
-    RC-09: passed
-    RC-10: passed
-    RC-11: passed
-    RC-12: passed
-    RC-13: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
   verdict: passed

@@ -6,23 +6,23 @@ level: tool
 created_by: Mathias Fischer
 created_at: '2026-10-25T21:04:38+01:00'
 criteria: reviews/criteria-tool.yaml
-criteria_revision: 'c877cc5'
+criteria_revision: '2f3a459'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [TOOL_12]
   revision: 'c7cf7df'
   criteria:
-    RC-01: passed
-    RC-02: passed
-    RC-03: passed
-    RC-04:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04:
       result: passed
       note: 'two runs, yet one gate - what a pull request has to pass before it is merged'
-    RC-05: passed
-    RC-06: passed
-    RC-07: passed
-    RC-08: passed
-    RC-09: passed
-    RC-10: passed
-    RC-11: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
   verdict: passed

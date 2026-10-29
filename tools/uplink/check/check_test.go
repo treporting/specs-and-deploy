@@ -130,7 +130,7 @@ func TestAFileIsReadByItsType(t *testing.T) {
 `,
 		"reviews/criteria-tool.yaml": `type: criteria
 criteria:
-- object_key: RC-01
+- object_key: RC_01
 `,
 		"elsewhere/more.yaml": `type: requirements
 requirements:
@@ -140,13 +140,13 @@ requirements:
 		"tools/software-requirements.yaml": `type: requirements
 requirements:
 - object_key: SR_01
-  source_ids: [TOOL_01@1.1.1, TOOL_09@1.1.1, RC-01@1.1.1]
+  source_ids: [TOOL_01@1.1.1, TOOL_09@1.1.1, RC_01@1.1.1]
   status: approved
 `,
 	})
 	want := []string{
 		"SR_01 names TOOL_01@1.1.1: no file of requirements holds such an id",
-		"SR_01 names RC-01@1.1.1: no file of requirements holds such an id",
+		"SR_01 names RC_01@1.1.1: no file of requirements holds such an id",
 	}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("findings %q, want %q", got, want)
