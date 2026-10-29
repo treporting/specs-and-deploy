@@ -9,31 +9,31 @@ created_at: '2026-10-26T14:35:10+01:00'
 criteria: reviews/criteria-documents.yaml
 criteria_revision: 'a4a8931'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [formats.md]
   revision: '094977f'
   criteria:
-    RC-01: passed
-    RC-02:
+    RC_01: passed
+    RC_02:
       result: passed
       note: 'found in this review and resolved in it: the scope names requirements, architecture, risks, annotations and tests, not the reviews and documents it has sections for'
-    RC-03: passed
-    RC-04: passed
-    RC-05: passed
-    RC-06:
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06:
       result: passed
       note: 'found in this review and resolved in it: six tables have no name - levels, kinds of field, breakdown, ids, test levels, CI checks; the test levels of harness.md are referenced by a heading, not by the name of the table'
-    RC-07:
+    RC_07:
       result: passed
       note: 'found in this review and resolved in it: ISO/IEC/IEEE 29148 and ISO 8601 are named in full, not as ISO29148 and ISO8601'
-    RC-08:
+    RC_08:
       result: passed
       note: 'found in this review and resolved in it: the section Reviews speaks of requirements only, though whatever has criteria of its kind is reviewed (PROC_13, PROC_15); the Breakdown names a subsystem as a repo of the architecture only, though the tools are a subsystem; the prototype is named by its repo, which the public repos never reference'
-    RC-09: passed
-    RC-10: passed
-    RC-11:
+    RC_09: passed
+    RC_10: passed
+    RC_11:
       result: passed
       note: 'found in this review and resolved in it: the formats taken over from the prototype say nothing of why, and name no alternative'
-    RC-12: passed
-    RC-13: passed
+    RC_12: passed
+    RC_13: passed
   verdict: passed

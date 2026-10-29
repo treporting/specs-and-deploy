@@ -9,24 +9,24 @@ created_at: '2026-10-26T07:42:05+01:00'
 criteria: reviews/criteria-documents.yaml
 criteria_revision: '1ba2174'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [harness.md]
   revision: 'eb7ab88'
   criteria:
-    RC-01: passed
-    RC-02: passed
-    RC-03: passed
-    RC-04: passed
-    RC-05: passed
-    RC-06:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06:
       result: failed
       note: '"12207, 6.3.4" names no standard; the columns of the tables Levels and Maturity are headed by standards, so a cell such as 6.4.2 does not say from which it comes - a column Reference with cells such as ISO-12207, clause 6.4.2; a table can be referenced only by the heading above it, it has no name of its own'
-    RC-07:
+    RC_07:
       result: failed
       note: 'standards are named in full each time; a short form, such as ISO-12207, is to be set in standards.md and used throughout'
-    RC-08: passed
-    RC-09: passed
-    RC-10: passed
-    RC-11: passed
-    RC-12: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
   verdict: failed

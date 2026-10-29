@@ -6,27 +6,27 @@ schema: schemas/review-criteria.schema.json
 type: criteria
 level: n1
 criteria:
-- object_key: RC-01
+- object_key: RC_01
   source: treporting - an error made when it was written down
   object_text: sourced - its source names the law or the standard and the clause, and they exist
   question: Does its source name the law or the standard and the clause, and do they exist?
-- object_key: RC-02
+- object_key: RC_02
   source: REG_ISO29148_01 - correct, read for a duty rendered in own words
   object_text: rendered - its text renders what the clause asks, in own words, no more and no less
   question: Does its text say what the clause asks, no more and no less?
-- object_key: RC-03
+- object_key: RC_03
   source: treporting
   object_text: applicable - applies_to names rightly where it holds - the domain, the market
   question: Does it hold where applies_to says, and only there?
-- object_key: RC-04
+- object_key: RC_04
   source: treporting
   object_text: placed - where treporting does not realize it, not_realized says who keeps the duty
   question: Does the product realize it, or does not_realized say who keeps it?
-- object_key: RC-05
+- object_key: RC_05
   source: REG_ISO29148_01 - verifiable
   object_text: verifiable - its verification method can show that it is met
   question: Can its verification method show that it is met?
-- object_key: RC-06
+- object_key: RC_06
   source: REG_ISO29148_01 - conforming; what to conform to is set by treporting, formats.md
   object_text: conforming - it follows formats.md - id, category, source, applies_to, status and
     verification method need to be present
