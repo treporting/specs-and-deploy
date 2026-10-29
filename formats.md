@@ -108,8 +108,8 @@ of an object, as `Hazard` is for a hazard.
 
 **Decision**: regulatory-requirements.md lies in `regulatory/`, and is named in `documents.yaml`.
 
-**Why**: it explains every module, not one of them; `documents.yaml` holds every document with no
-YAML of its own.
+**Why**: it explains every module, not one of them; `documents.yaml` holds every document (see
+Documents).
 
 **Rejected**: the section `documents` of one of the modules - which one would be chosen at will.
 
@@ -225,8 +225,7 @@ its own (TOOL_05). A schema gives the form of a requirement and realizes none, s
 - `level` - the level it belongs to. A review result names the level of its criteria, a
   verification the level of its targets.
 
-A Markdown file has no head. Its type and level are those of table types; where it names them is
-open.
+A Markdown file has no head. Its entry in documents.yaml names its type and level (see Documents).
 
 **Why**: a tool for requirements management knows what each of its modules holds. Our files take
 its place, so each says what it holds itself. The level of a review result is the level it was
@@ -252,37 +251,65 @@ reviewed against.
 | criteria | review criteria | the level they are for, or document | `reviews/criteria-*.yaml` |
 | review | review results | the level of their criteria | `reviews/<time>_<scope>.yaml` |
 | verification | verification results | the level of their targets | `verifications/<time>_<scope>.yaml` |
-| documents | the documents without a YAML of requirements beside them | - | `documents.yaml` |
+| documents | every Markdown file, with its type, level and version | - | `documents.yaml` |
 | kinds | the kinds of files, for annotationcheck | - | `tools/annotation/kinds.yaml` |
 | explanation | the explanation of a level, in Markdown | its level | see table files of the levels |
 | document | a document without a level, in Markdown | - | such as formats.md |
 
 ### Documents
 
-The YAML of a level names the documents beside it that explain it, each with a version and a status
-of its own - the same values as a requirement. A document is reviewed like a requirement (`review`
-as its verification method), and an exported document shows its version, its revision and its
-status (TOOL_02). Its `object_hash` is the content approved: `git hash-object` of its file, 7
-characters, set at the approval with the version, `''` before the first. It is the one attribute
-for x of a document (traceability.md, section The version of a document):
+**Decision**: `documents.yaml` in the root of the repo holds every Markdown file, by its path from
+the root. The description of a verification is not in it: it is a part of its record (see
+Verifications). Each entry names:
+
+- `type` and `level`, as table types sets them - `explanation` with the level it explains, or
+  `document` without a level
+- a version and a status of its own - the same values as a requirement
+
+A YAML of a level names the Markdown files that explain it in its field `documents`, by their path,
+without a version.
+
+A document is reviewed like a requirement (`review` as its verification method), and an exported
+document shows its version, its revision and its status (TOOL_02). Its `object_hash` is the content
+approved: `git hash-object` of its file, 7 characters, set at the approval with the version, `''`
+before the first. It is the one attribute for x of a document (traceability.md, section The version
+of a document):
 
 ```yaml
-schema: schemas/tool-requirements.schema.json
-type: requirements
-level: tool
+# documents.yaml
+schema: schemas/documents.schema.json
+type: documents
 documents:
-- name: tool-requirements.md
+- name: requirements/tool-requirements.md
+  type: explanation
+  level: tool
   object_version: '2.1.1'
   object_hash: 'a1b2c3d'
   status: approved
   verification_method: [review]
+- name: formats.md
+  type: document
+  object_version: '8.1.1'
+  ...
+
+# requirements/tool-requirements.yaml
+schema: schemas/tool-requirements.schema.json
+type: requirements
+level: tool
+documents: [requirements/tool-requirements.md]
 requirements:
 - ...
 ```
 
-The documents without a YAML of requirements beside them - devops.md, definitions.md, standards.md,
-formats.md, the READMEs - and harness.md (see Rules) are named in `documents.yaml` in the root of
-the repo, in the same form, by their path.
+**Why**: one place holds the version of every document. A tool finds it there, whatever the
+document explains.
+
+**Rejected**:
+
+- the version of an explanation in the YAML of its level, as before - versions of documents in
+  eight places; harness.md and regulatory-requirements.md have no such YAML of their own
+- a file `levels.yaml` with the files and the explanations of each level - nothing fails without
+  it, and it would hold a second time what the heads of the files and documents.yaml say
 
 ### Standards, clauses and tables in a document
 

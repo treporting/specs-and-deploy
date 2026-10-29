@@ -7,7 +7,7 @@ documents:
 - name: README.md
   object_version: '3.1.1'
   object_hash: '00d4100'
-  status: approved
+  status: review
   verification_method: [review]
 - name: harness.md
   object_version: '4.1.1'
@@ -32,7 +32,7 @@ documents:
 - name: formats.md
   object_version: '8.1.1'
   object_hash: '3fb5016'
-  status: approved
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   object_version: '2.1.1'
@@ -42,7 +42,7 @@ documents:
 - name: traceability.md
   object_version: '5.1.1'
   object_hash: '136e9b4'
-  status: approved
+  status: review
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   object_version: '2.1.1'

@@ -18,7 +18,7 @@ The data of every level is in YAML, what explains it in Markdown beside it - see
 |---|---|---|
 | [harness.md](harness.md) | how we work: the process we follow (ISO12207, ISO29119), our levels, the rules of our work, the loops for every change and every release | `PROC_nn` |
 | [tools/](tools/) | the tools of our work, in Go; where, why and how they are built; their software requirements in [software-requirements.yaml](tools/software-requirements.yaml) | `SR_nn` |
-| [documents.yaml](documents.yaml) | the status of the documents that have no YAML of requirements beside them | - |
+| [documents.yaml](documents.yaml) | the type, level, version and status of every document | - |
 | [devops.md](devops.md) | the environment of our work: the tools, and the rule that tools are code | - |
 | [definitions.md](definitions.md) | the terms: system, item, content, work product, release, library, baseline, traceability | - |
 | [architecture/attributes.md](architecture/attributes.md) | every attribute of the model: meaning, origin, original, intermediate and mapped values, how it is carried down | - |

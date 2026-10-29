@@ -386,8 +386,8 @@ by searching every field.
 
 ## The version of a document
 
-PROC_13 and PROC_14 hold for documents as well as for requirements. A document is named in the
-`documents` section of a YAML (formats.md, section Documents).
+PROC_13 and PROC_14 hold for documents as well as for requirements. A document is named in
+`documents.yaml` (formats.md, section Documents).
 
 **Decision**: a document carries a version `x.y.z` in `object_version`, as a requirement does, with
 the same meaning: x its content, y its links, z every other attribute.
