@@ -7,7 +7,20 @@ reviews its requirement, and for the auditor who asks how the tools are controll
 The requirements themselves - ids `TOOL_nn` - are in [tool-requirements.yaml](tool-requirements.yaml),
 in the format of [formats.md](../formats.md). A tool requirement names as uplink the rule of the
 harness (`PROC_nn`) or the regulatory requirement (`REG_<module>_nn`) it serves. It is reviewed and approved
-like every other requirement (PROC_13). Each section is a feature, the field `feature`.
+like every other requirement (PROC_13). Each section after Launches is a feature, the field `feature`.
+
+## Launches
+
+**Decision**: a tool requirement names the launch of the tools it is planned for in
+`platform_launch`: `treporting = 1_tools`, `treporting = 2_tools`, `treporting = 3_tools`.
+
+**Why**: a launch says when a requirement is to be available (definitions.md, section Platform,
+launch and stream). It stays right when a release is made.
+
+**Rejected**:
+
+- `priority: 'later'` - it says "not now", not for which release
+- a list in a document - a second place beside the requirement
 
 ## Documents to PDF
 
@@ -72,5 +85,4 @@ The tools for the version of an object and the links that name it (traceability.
 PROC_20). TOOL_14 checks that an approval sets the right version, against the base commit of the
 pull request; TOOL_19 checks that an approved document is the file approved. TOOL_16 makes the link
 check (definitions.md): it reports, and does not fail, as a suspect link blocks the baseline, not
-the pull request. TOOL_17 is that block. TOOL_18 updates a link; it stays a requirement, kept for
-later (`priority: 'later'`).
+the pull request. TOOL_17 is that block. TOOL_18 updates a link.

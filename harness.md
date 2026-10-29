@@ -87,6 +87,25 @@ The data of treporting itself (the reference edgedb) is measured by this chain:
 
 With one code coverage level each, the chain has 20 steps.
 
+### Platform and launches
+
+The platform is treporting, this organization on GitHub. The launches are the deliveries: of the
+tools our work needs, of the demo environment, and of a selfhosted environment. An object (requirement
+etc.) names the launches it is planned for in `platform_launch`.
+
+**Table launches** - the launches of each platform, and the release and the library of each
+
+| Platform | Launch | Release | Library |
+|---|---|---|---|
+| treporting | 1_tools | specs-and-deploy 1.0.0 | – |
+| treporting | 1_demo | specs-and-deploy 2.0.0 | reporter-edgedb 1.0.0<br>viewer-edgedb 1.0.0<br>… |
+| treporting | 2_selfhosted | | |
+| treporting | 2_tools | | |
+| treporting | 3_tools | | |
+
+The values in the table are an example only, made up to show the form. Open: whether this reading
+holds, and the values themselves - or whether the columns stay empty until the tags exist.
+
 ## Roles
 
 **Table roles** - who does what

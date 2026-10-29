@@ -83,7 +83,7 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 |---|---|
 | Meaning | the platforms a requirement holds for, and per platform the launches it is planned for |
 | Value | one line per platform, its launches after `=` separated by commas, each launch its number and its type: `platform-1 = 1_type1, 2_type1, 2_type2`, next line `platform-2 = 1_type1, 2_type1, 2_type2`; spaces around `=` and after a comma are allowed |
-| Comes from | author, on r1 |
+| Comes from | author |
 | Variants | `mplatform_launch` - mapped, or where the original is empty the union of the `mplatform_launch` of the parents |
 | Carried down | yes. A requirement with several parents carries the **union** of their platforms and launches - it holds wherever any of them holds (unlike the safety class, where the highest is carried) |
 | Used by | SYS_09 filter over the whole trace; SYS_11 carrying down. The selection of a release offers the launches that release has |

@@ -36,7 +36,8 @@
           "verification_method",
           "object_version",
           "priority",
-          "safety"
+          "safety",
+          "platform_launch"
         ],
         "additionalProperties": false,
         "attributes_for_version_x": [
@@ -74,6 +75,10 @@
           },
           "safety": {
             "type": "string"
+          },
+          "platform_launch": {
+            "type": "string",
+            "minLength": 1
           },
           "status": {
             "enum": [
