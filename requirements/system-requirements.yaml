@@ -3,12 +3,7 @@
 schema: schemas/system-requirements.schema.json
 type: requirements
 level: r2
-documents:
-- name: system-requirements.md
-  object_version: '1.1.1'
-  object_hash: ''
-  status: draft
-  verification_method: [review]
+documents: [requirements/system-requirements.md]
 requirements:
 - object_key: SYS_01
   object_version: '1.1.1'
