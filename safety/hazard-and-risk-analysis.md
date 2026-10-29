@@ -27,3 +27,8 @@ The severity of each hazard is that of the product a user releases on its inform
 treporting does not know. The risk is therefore kept low by detection rather than rated: every
 hazard is either prevented by the requirements above, or made visible to the user, and the
 detection itself is validated with faults built into data of known content (SYS_27).
+
+## Open
+
+- the threats of security (`THR_nn`) and their controls are not written down yet.
+- the tool qualification package, which builds its analysis of tool errors on this file.

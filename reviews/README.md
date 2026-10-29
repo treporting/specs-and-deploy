@@ -36,4 +36,6 @@ when it is written down - RC_01 for the source, RC_02 for the text.
 **Rejected**: the criteria of r1 taken over - unambiguous, singular, complete, consistent, necessary,
 feasible. They judge the duty, and a finding on it would change nothing we keep.
 
-*Open:* the criteria of the other levels.
+## Open
+
+- the criteria of the other levels.

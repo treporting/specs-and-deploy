@@ -44,8 +44,6 @@ HAZ, THR (h1)  →  HAZC, THRC (h2)  →  UN (r1) ──┐
 THRC of a threat to our work  →  PROC, a rule of the harness
 ```
 
-*Open:* the threats (`THR_nn`) and their controls (`THRC_nn`) are not written down yet.
-
 Every need and every regulatory requirement that treporting realizes has at least one system
 requirement. Every requirement below the top names its uplinks, or gives its rationale where it has
 none, and is allocated to what realizes it on the level below.
@@ -59,3 +57,7 @@ and a branch of its own, and reaches `main` only through a pull request - see th
 ## Licence
 
 [Apache-2.0](LICENSE).
+
+## Open
+
+- the threats (`THR_nn`) and their controls (`THRC_nn`) are not written down yet.

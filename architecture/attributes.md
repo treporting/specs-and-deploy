@@ -88,7 +88,6 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | Carried down | yes. A requirement with several parents carries the **union** of their platforms and launches - it holds wherever any of them holds (unlike the safety class, where the highest is carried) |
 | Used by | SYS_09 filter over the whole trace; SYS_11 carrying down. The selection of a release offers the launches that release has |
 | Version | a new version of an object where its launches change, not with every release |
-| Open | the value `all`: resolved into the platforms by the converter, by the configuration of the customer |
 | Prototype | same - the prototype writes the value taken from the parents into `mplatform_launch` |
 
 ### status
@@ -396,8 +395,6 @@ the architecture. They are no objects in a document, and have `name` and `text` 
 A system is file-based or attribute-based (see the system architecture); that follows from its
 category, by the configuration, and needs no attribute of its own.
 
-The other types follow.
-
 ## Deviations from the prototype
 
 | What | How | Why |
@@ -436,3 +433,8 @@ the generator is taken over.
 - **the record of a report** (SYS_43), with its identity and the fingerprint of its data: no type
   for it yet
 - **the evaluation of a finding** (SYS_72): no attribute yet; the configuration names it
+- **platform_launch**: the value `all`, resolved into the platforms by the converter, by the
+  configuration of the customer
+- **the other types** of the model, beside those above
+- **the generator**: the points of the section Deviations of the generator, when it is taken over
+- **issue_ids** for treporting itself: whether it holds the link to the tickets

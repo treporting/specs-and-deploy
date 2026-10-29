@@ -62,3 +62,8 @@ names the one it comes from in its field `source`.
 The characteristics of the product quality model of ISO25010. treporting does not realize them as
 requirements of its own; our work keeps them in its decisions. Where a means was applied to gain
 more information on them, the decision states what it found (PROC_18).
+
+## Open
+
+- **Products on the market**: whether and from when the Cyber Resilience Act applies to treporting,
+  to be confirmed by legal advice.

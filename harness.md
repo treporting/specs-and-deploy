@@ -103,8 +103,7 @@ etc.) names the launches it is planned for in `platform_launch`.
 | treporting | 2_tools | | |
 | treporting | 3_tools | | |
 
-The values in the table are an example only, made up to show the form. Open: whether this reading
-holds, and the values themselves - or whether the columns stay empty until the tags exist.
+The values in the table are an example only, made up to show the form (see Open).
 
 ## Roles
 
@@ -237,3 +236,10 @@ merge (TOOL_12, see devops.md).
 9. write the data of the release or library into a separate edgedb, kept as reference
    data - the real data of treporting itself, used instead of synthetic data to show that
    it works in practice (PROC_07)
+
+## Open
+
+- **Process**: ISO15026 is proposed for the case why the tool can be relied on, in the tool
+  qualification.
+- **Platform and launches**: whether the reading of the table launches holds, and its values - or
+  whether the columns stay empty until the tags exist.

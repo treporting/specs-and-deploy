@@ -38,7 +38,7 @@ The versions as installed on 2026-10-25. A tool is listed when the work on trepo
 | Docker Desktop | 4.17.0 - engine 20.10.23, Compose 2.15.1 | the containers, gel |
 | Google Chrome | 155.0.8059.86 | renders the export of the documents to PDF |
 | GitHub | - | the repos of the organization treporting, its project, protected `main`, pull requests |
-| GitHub Actions | - | the CI: the gate of the tools, see Continuous integration; *Open*: the other checks of formats.md, SBOM and licences |
+| GitHub Actions | - | the CI: the gate of the tools, see Continuous integration |
 
 How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`, `node --version`,
 `npm --version`, `docker --version`, `docker compose version`; VS Code and its extensions in
@@ -93,9 +93,6 @@ How it works:
 - PlantUML diagrams are drawn by a local PlantUML server only, never the public one: a diagram must
   not leave the machine.
 - An exported PDF is never committed.
-
-*Open*: the settings of the export - header, footer, margins - and revision and status in header
-and footer. Each waits for its approved tool requirement.
 
 ## Merging
 
@@ -166,4 +163,12 @@ as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
 
 ## Build and deployment
 
-*Open*: the containers in `deploy/`, built from the parts the subsystems deliver; the demo.
+See Open.
+
+## Open
+
+- **Environments** (GitHub Actions): the other checks of formats.md, SBOM and licences.
+- **Documents to PDF**: the settings of the export - header, footer, margins - and revision and
+  status in header and footer. Each waits for its approved tool requirement.
+- **Build and deployment**: the containers in `deploy/`, built from the parts the subsystems
+  deliver; the demo.
