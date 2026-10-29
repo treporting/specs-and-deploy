@@ -39,6 +39,7 @@ apply to a project is decided by the organization that uses treporting, by its d
 | [EU2024-2847.yaml](EU2024-2847.yaml) | Products on the market |
 | [Licences.yaml](Licences.yaml) | Products on the market |
 | [ISO29148.yaml](ISO29148.yaml) | Requirements engineering |
+| [ISO25010.yaml](ISO25010.yaml) | Product quality |
 
 ## Tool qualification
 
@@ -55,3 +56,9 @@ when the Cyber Resilience Act applies to it is to be confirmed by legal advice.
 The characteristics every requirement of treporting is reviewed against. treporting does not realize
 them; our work keeps them, in the reviews against the criteria of each level (PROC_13). A criterion
 names the one it comes from in its field `source`.
+
+## Product quality
+
+The characteristics of the product quality model of ISO25010. treporting does not realize them as
+requirements of its own; our work keeps them in its decisions. Where a means was applied to gain
+more information on them, the decision states what it found (PROC_18).

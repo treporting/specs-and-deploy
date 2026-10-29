@@ -1,0 +1,114 @@
+# Regulatory requirements of ISO25010 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+type: normative
+level: n1
+requirements:
+- object_key: REG_ISO25010_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.1 - functional suitability - the software provides the correct, complete and
+    appropriate functions to meet user needs'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_02
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.2 - performance efficiency - how the software performs relative to the resources
+    it uses, such as speed, memory usage and processing capacity'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_03
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.3 - compatibility - how effectively the system shares information with other
+    products, or coexists with them in the same environment'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_04
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.4 - interaction capability - how easily the software is operated, understood and
+    learned by its users'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_05
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.5 - reliability - the system keeps a specified level of performance, prevents
+    faults, remains available and recovers from failures'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_06
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.6 - security - the protection of data and of access to it: levels of
+    authorization, integrity and resistance to attacks'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_07
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.7 - maintainability - how easily, effectively and efficiently the system is
+    modified, repaired or updated by its developers'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_08
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.8 - flexibility - how easily the software adapts to new environments, scales up to
+    its workload or replaces its parts'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]
+- object_key: REG_ISO25010_09
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.9 - safety - how well the system avoids harm to people, property or the
+    environment in its operation'
+  applies_to: all
+  not_realized: kept by our work, not by the product - a decision states what a means found, where one
+    was applied to gain more information according to ISO25010 (PROC_18)
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [inspection]

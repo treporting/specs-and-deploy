@@ -125,8 +125,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@5911886 - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@5911886
+<!-- generated from rules.yaml@fe0ed68 - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@fe0ed68
 
 | Id | Version | Rule |
 |---|---|---|
@@ -146,7 +146,7 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC_14 | 1.1.1 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
 | PROC_15 | 1.1.1 | The reviewer of whatever is reviewed is not its author. |
 | PROC_16 | 1.1.1 | A pull request closes one ticket and changes one concern. Group things which belong together so they do not contradict. |
-| PROC_18 | 1.1.1 | A decision is written down with its reason and the alternatives rejected. |
+| PROC_18 | 2.1.1 | A decision is written down with:<br>- its reason<br>- the alternatives rejected<br>- what a means found, where one was applied to gain more information according to ISO25010:<br>&nbsp;&nbsp;- scenarios of change and growth, after ATAM<br>&nbsp;&nbsp;- one source for each information<br>&nbsp;&nbsp;- a comparison with models<br>&nbsp;&nbsp;- a pre-mortem, after LASR |
 | PROC_19 | 1.1.1 | Every test belongs to exactly one test level, read from the place of its file. |
 | PROC_20 | 2.1.1 | Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect where the linked object has another x than the link names. A suspect link is reported on every pull request. It blocks a baseline that holds both its ends, compared with the versions in that baseline, not on `main`. See traceability.md. |
 <!-- end of generated -->

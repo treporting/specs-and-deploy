@@ -136,8 +136,16 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC_18
-  object_version: '1.1.1'
-  object_text: 'A decision is written down with its reason and the alternatives rejected.'
+  object_version: '2.1.1'
+  object_text: |-
+    A decision is written down with:
+    - its reason
+    - the alternatives rejected
+    - what a means found, where one was applied to gain more information according to ISO25010:
+      - scenarios of change and growth, after ATAM
+      - one source for each information
+      - a comparison with models
+      - a pre-mortem, after LASR
   priority: 'medium'
   safety: ''
   status: approved
