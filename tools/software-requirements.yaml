@@ -252,14 +252,14 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_25
-  object_version: '1.1.1'
+  object_version: '2.2.1'
   component: annotation
   object_text: report an id named in @implements, @verifies or @refines that is in the base commit,
     but not approved there
   source_ids: [TOOL_06@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_26
   object_version: '1.2.1'
@@ -304,14 +304,14 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: SR_30
-  object_version: '1.1.1'
+  object_version: '2.2.1'
   component: annotation
   object_text: report an `@implements`, `@verifies` or `@refines` that does not name the version of its id,
     as `ID@x.y.z`
   source_ids: [TOOL_20@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_31
   object_version: '1.2.1'
@@ -334,14 +334,14 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_33
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: link
   object_text: report every `@implements`, `@verifies` and `@refines` whose id has another x than the
     version it names
   source_ids: [TOOL_16@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_34
   object_version: '1.1.1'
@@ -361,5 +361,5 @@ requirements:
   source_ids: [TOOL_06@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
