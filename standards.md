@@ -29,7 +29,7 @@ short form is the same in every document, and the table says what stands behind 
 | ISO15289 | ISO/IEC/IEEE 15289 Systems and software engineering - Content of life-cycle information items (documentation) | |
 | ISO29119 | ISO/IEC/IEEE 29119 Software and systems engineering - Software testing | |
 | ISO29148 | ISO/IEC/IEEE 29148 Systems and software engineering - Life cycle processes - Requirements engineering | |
-| ISO25010 | ISO/IEC 25010 Systems and software engineering - Systems and software Quality Requirements and Evaluation (SQuaRE) - Product quality model | |
+| ISO25010 | ISO/IEC 25010:2023 Systems and software engineering - Systems and software Quality Requirements and Evaluation (SQuaRE) - Product quality model | |
 | ISO330xx | ISO/IEC 330xx Information technology - Process assessment | |
 | ISO15504 | ISO/IEC 15504 Information technology - Process assessment | replaced by ISO330xx |
 | ISO27001 | ISO/IEC 27001 Information security, cybersecurity and privacy protection - Information security management systems - Requirements | |
@@ -60,6 +60,21 @@ short form is the same in every document, and the table says what stands behind 
 | DO326A | DO-326A Airworthiness Security Process Specification | |
 | DO356A | DO-356A Airworthiness Security Methods and Considerations | |
 | CMMI | CMMI Capability Maturity Model Integration | |
+
+## Editions
+
+**Decision**: the tables name a standard, a law or a guidance with its edition, as its publisher
+designates it, such as ISO/IEC 25010:2023. A regulatory requirement names its clause in that
+edition.
+
+**Why**: the numbering of the clauses changes from one edition to the next. Without the edition,
+a clause such as 6.1 does not say where it stands.
+
+**Rejected**:
+
+- a column Edition - each publisher gives its edition in another way: a year, a date, a letter
+- the edition in the short form, ISO25010-2023 - the short form names a file and stands in an id; a
+  new edition would rename both
 
 ## Laws, guidance and licences
 
