@@ -179,7 +179,7 @@ is reviewed by them.
    change of x of its version (PROC_14) - it needs a review. The author sets it to `review`. The
    change is then finished. A change of y or z only needs no review: the merge approves it.
 5. The reviewer checks it against the criteria of its kind. The reviewer is not the author (PROC_15).
-6. The review result goes into `reviews/`.
+6. The review result goes into `reviews/results/`.
 7. A finding can be resolved on the branch.
 8. A finding that cannot be resolved on the branch fails the review. It becomes one or more tickets
    of its own. Each goes to step 2 again.

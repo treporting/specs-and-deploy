@@ -12,7 +12,7 @@ documents:
 - name: harness.md
   object_version: '3.1.1'
   object_hash: 'ff6c317'
-  status: approved
+  status: review
   verification_method: [review]
 - name: devops.md
   object_version: '5.1.1'
@@ -32,12 +32,12 @@ documents:
 - name: formats.md
   object_version: '7.1.1'
   object_hash: 'aa1ba45'
-  status: approved
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   object_version: '1.1.1'
   object_hash: '3343203'
-  status: approved
+  status: review
   verification_method: [review]
 - name: traceability.md
   object_version: '5.1.1'

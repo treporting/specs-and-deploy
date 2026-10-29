@@ -304,13 +304,15 @@ the repo, in the same form, by their path.
 ## Reviews
 
 A review checks what is reviewed against the criteria of its kind (PROC_13). Criteria and result
-are kept like a test case and its result, in `reviews/`:
+are kept like a test case and its result: the criteria in `reviews/`, the results apart from them in
+`reviews/results/`, so that the few criteria are not lost among the many results:
 
 ```
 reviews/
-  criteria-r2.yaml               the criteria of a level, after ISO29148 (RC)
-  20261025T140000_sys-trace.yaml a review: who, when, the revision of everything reviewed,
-                                 for each and per criterion passed or failed (RR)
+  criteria-r2.yaml                 the criteria of a level, after ISO29148 (RC)
+  results/
+    20261025T140000_sys-trace.yaml a review: who, when, the revision of everything reviewed,
+                                   for each and per criterion passed or failed (RR)
 ```
 
 A file of results is named `<yyyymmddThhmmss>_<scope>.yaml`: the time of its `created_at`, in the
@@ -344,7 +346,7 @@ resolved. What reaches `main` by the merge is the decision.
 A file of results is one review, with one result for everything it reviewed:
 
 ```yaml
-# reviews/20261026T140000_r1-pm.yaml
+# reviews/results/20261026T140000_r1-pm.yaml
 schema: schemas/review-result.schema.json
 type: review
 level: r1

@@ -146,7 +146,7 @@ files of requirements.
 
 ## reviewcheck
 
-Checks every review result in `reviews/` against the rules of formats.md (TOOL_03, TOOL_11; SR_01
+Checks every review result in `reviews/results/` against the rules of formats.md (TOOL_03, TOOL_11; SR_01
 to SR_08 and SR_16 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
 criteria file once, the verdict passed only when every criterion passed, a note to every failed
 criterion, no value but passed or failed, the revision reviewed exists, the criteria revision changed
@@ -155,7 +155,7 @@ reports the findings of a result by criterion, in the order of its criteria file
 
 ```bash
 cd tools
-go run ./review/cmd/reviewcheck -root ..        # every result in reviews/
+go run ./review/cmd/reviewcheck -root ..        # every result in reviews/results/
 go test ./...                            # MT
 go test -tags integration ./...          # SwIT, on a history of git made in the test
 ```
@@ -164,7 +164,7 @@ It exits with 1 where a result breaks a rule. It depends on `gopkg.in/yaml.v3` (
 
 ## reviewskeleton
 
-Writes the skeleton of a review result into `reviews/` (TOOL_04; SR_11 to SR_15 in
+Writes the skeleton of a review result into `reviews/results/` (TOOL_04; SR_11 to SR_15 in
 [software-requirements.yaml](software-requirements.yaml)): the name from the time and the scope,
 the criteria file of the level and the last commit that changed it, the commit `HEAD` as the
 revision of each, and every criterion and the verdict as `todo`. It writes nothing where a target is
