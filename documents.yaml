@@ -1,51 +1,111 @@
-# The documents that have no YAML of requirements beside them, and harness.md (formats.md, section
-# Rules), each with a version and a status of its own.
+# Every Markdown file, each with its type, its level where it explains one, and a version and a
+# status of its own.
 # Format: formats.md, section Documents
 schema: schemas/documents.schema.json
 type: documents
 documents:
 - name: README.md
+  type: document
   object_version: '4.1.1'
   object_hash: '8253db3'
   status: approved
   verification_method: [review]
 - name: harness.md
+  type: explanation
+  level: rules
   object_version: '4.1.1'
   object_hash: '912ce6c'
   status: approved
   verification_method: [review]
 - name: devops.md
+  type: document
   object_version: '5.1.1'
   object_hash: '72a87dd'
   status: approved
   verification_method: [review]
 - name: definitions.md
+  type: document
   object_version: '2.1.1'
   object_hash: 'd1fbd20'
   status: approved
   verification_method: [review]
 - name: standards.md
+  type: document
   object_version: '2.1.1'
   object_hash: '4e7bb59'
   status: approved
   verification_method: [review]
 - name: formats.md
+  type: document
   object_version: '9.1.1'
   object_hash: '5e9a7a4'
   status: approved
   verification_method: [review]
 - name: reviews/README.md
+  type: document
   object_version: '2.1.1'
   object_hash: 'b8ec0ef'
   status: approved
   verification_method: [review]
 - name: traceability.md
+  type: document
   object_version: '6.1.1'
   object_hash: '4c1b624'
   status: approved
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
+  type: explanation
+  level: n1
   object_version: '2.1.1'
   object_hash: '9a3730b'
   status: approved
+  verification_method: [review]
+- name: requirements/user-needs.md
+  type: explanation
+  level: r1
+  object_version: '1.1.1'
+  object_hash: ''
+  status: draft
+  verification_method: [review]
+- name: requirements/system-requirements.md
+  type: explanation
+  level: r2
+  object_version: '1.1.1'
+  object_hash: ''
+  status: draft
+  verification_method: [review]
+- name: architecture/system-architecture.md
+  type: explanation
+  level: r3
+  object_version: '1.1.1'
+  object_hash: ''
+  status: draft
+  verification_method: [review]
+- name: architecture/attributes.md
+  type: explanation
+  level: r3
+  object_version: '1.1.1'
+  object_hash: ''
+  status: draft
+  verification_method: [review]
+- name: tools/README.md
+  type: explanation
+  level: r5
+  object_version: '10.1.1'
+  object_hash: '1f2167d'
+  status: approved
+  verification_method: [review]
+- name: requirements/tool-requirements.md
+  type: explanation
+  level: tool
+  object_version: '6.1.1'
+  object_hash: '0bcba81'
+  status: approved
+  verification_method: [review]
+- name: safety/hazard-and-risk-analysis.md
+  type: explanation
+  level: h1
+  object_version: '1.1.1'
+  object_hash: ''
+  status: draft
   verification_method: [review]

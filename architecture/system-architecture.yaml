@@ -3,17 +3,7 @@
 schema: schemas/system-architecture.schema.json
 type: architecture
 level: r3
-documents:
-- name: system-architecture.md
-  object_version: '1.1.1'
-  object_hash: ''
-  status: draft
-  verification_method: [review]
-- name: attributes.md
-  object_version: '1.1.1'
-  object_hash: ''
-  status: draft
-  verification_method: [review]
+documents: [architecture/system-architecture.md, architecture/attributes.md]
 elements:
 - object_key: ARC_01
   object_version: '1.1.1'

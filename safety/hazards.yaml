@@ -3,12 +3,7 @@
 schema: schemas/hazards.schema.json
 type: hazards
 level: h1
-documents:
-- name: hazard-and-risk-analysis.md
-  object_version: '1.1.1'
-  object_hash: ''
-  status: draft
-  verification_method: [review]
+documents: [safety/hazard-and-risk-analysis.md]
 hazards:
 - object_key: HAZ_01
   object_version: '1.1.1'

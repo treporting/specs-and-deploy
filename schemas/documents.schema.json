@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/documents.schema.json",
   "$comment": "@refines ARC_22@2.1.1",
-  "title": "Documents without a YAML of requirements beside them",
+  "title": "Every Markdown file, with its type, level and version",
   "type": "object",
   "required": [
     "schema",
@@ -26,12 +26,32 @@
         "type": "object",
         "required": [
           "name",
+          "type",
           "object_version",
           "object_hash",
           "status",
           "verification_method"
         ],
         "additionalProperties": false,
+        "if": {
+          "properties": {
+            "type": {
+              "const": "explanation"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "level"
+          ]
+        },
+        "else": {
+          "not": {
+            "required": [
+              "level"
+            ]
+          }
+        },
         "attributes_for_version_x": [
           "object_hash"
         ],
@@ -40,6 +60,18 @@
             "type": "string",
             "pattern": "^([a-z0-9-]+/)*[A-Za-z0-9-]+\\.md$",
             "description": "the path of the document from the root of the repo"
+          },
+          "type": {
+            "enum": [
+              "explanation",
+              "document"
+            ],
+            "description": "an explanation of a level, or a document without a level (formats.md, table types)"
+          },
+          "level": {
+            "type": "string",
+            "pattern": "^(r[1-7]|n1|h[12]|tool|rules)$",
+            "description": "the level an explanation explains (formats.md, section Documents)"
           },
           "object_version": {
             "type": "string",

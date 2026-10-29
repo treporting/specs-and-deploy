@@ -46,8 +46,8 @@ its exports apart.
 works for every document - also for one that holds no requirements, such as devops.md or
 harness.md, where a) and b) would give none.
 
-Where it keeps it: in the `documents` section of the YAML beside it, or in `documents.yaml`, with
-the values of a requirement (formats.md, section Documents).
+Where it keeps it: in `documents.yaml`, with the values of a requirement (formats.md, section
+Documents).
 
 ## Reviews
 
