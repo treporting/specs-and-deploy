@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/treporting/schemas/regulatory-requirements.schema.json",
-  "$comment": "@refines ARC_22",
+  "$comment": "@refines ARC_22@2.1.1",
   "title": "Regulatory requirements (n1)",
   "description": "Draft until the gel schema stands (treporting/storage-edgedb#3); field names are the properties of the gel schema.",
   "type": "object",

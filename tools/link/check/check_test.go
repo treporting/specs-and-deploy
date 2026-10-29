@@ -128,7 +128,7 @@ func TestAMissingObjectIsNotCompared(t *testing.T) {
 	}
 }
 
-// @verifies SR_33@1.1.1
+// @verifies SR_33@2.1.1
 func TestAnAnnotationWithAnotherXIsReported(t *testing.T) {
 	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, []annotation.Annotation{
 		{File: "a.go", Line: 3, Kind: "implements", IDs: []string{"TOOL_01", "TOOL_09"}, Versions: []string{"1.1.1", "3.1.1"}},
@@ -141,6 +141,17 @@ func TestAnAnnotationWithAnotherXIsReported(t *testing.T) {
 	}
 	if compared != 3 {
 		t.Errorf("compared %d, want 3", compared)
+	}
+}
+
+// @verifies SR_33@2.1.1
+func TestARefinesWithAnotherXIsReported(t *testing.T) {
+	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, []annotation.Annotation{
+		{File: "schemas/a.schema.json", Line: 4, Kind: "refines", IDs: []string{"TOOL_09"}, Versions: []string{"3.1.1"}},
+	})
+	want := []string{"schemas/a.schema.json:4 @refines names TOOL_09@3.1.1: its object has 4.1.1"}
+	if !reflect.DeepEqual(lines(got), want) || compared != 1 {
+		t.Errorf("findings %q, compared %d, want %q and 1", lines(got), compared, want)
 	}
 }
 

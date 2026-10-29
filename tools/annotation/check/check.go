@@ -1,8 +1,10 @@
 // Package check checks that every id an annotation names is approved in the base commit of the
-// pull request (TOOL_06), and that it names its version (TOOL_20).
+// pull request (TOOL_06), and that it names its version (TOOL_20). It reads @refines in the
+// $comment of the schemas as well.
 package check
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -19,11 +21,11 @@ type Git interface {
 	Show(rev, path string) ([]byte, error)
 }
 
-// Annotation is one @implements or @verifies, and the ids it names.
+// Annotation is one @implements, @verifies or @refines, and the ids it names.
 type Annotation struct {
 	File     string
 	Line     int
-	Kind     string   // implements or verifies
+	Kind     string   // implements, verifies or refines
 	IDs      []string // the ids alone
 	Versions []string // the version each id names after its @, "" where it names none
 }
@@ -85,7 +87,13 @@ func (k Kinds) kindOf(file string) string {
 // annotation is a line of comment that begins with an annotation: after spaces, a comment mark of
 // one to three signs other than a quote, then @implements or @verifies and its ids, each with what
 // follows its @, if anything.
-var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+([A-Z][A-Za-z0-9]*_[A-Za-z0-9_-]*[0-9](?:@[^\\s,]*)?(?:\\s*,\\s*[A-Z][A-Za-z0-9]*_[A-Za-z0-9_-]*[0-9](?:@[^\\s,]*)?)*)")
+var annotation = regexp.MustCompile("^\\s*[^\\w\\s\"'`]{1,3}\\s*@(implements|verifies)\\s+(" + ids + ")")
+
+// refines is the $comment of a schema that begins with @refines and its ids.
+var refines = regexp.MustCompile("^\\s*@(refines)\\s+(" + ids + ")")
+
+// ids is a list of ids, each with what follows its @, if anything.
+const ids = "[A-Z][A-Za-z0-9]*_[A-Za-z0-9_-]*[0-9](?:@[^\\s,]*)?(?:\\s*,\\s*[A-Z][A-Za-z0-9]*_[A-Za-z0-9_-]*[0-9](?:@[^\\s,]*)?)*"
 
 // version is the form of a version: x.y.z.
 var version = regexp.MustCompile(`^[0-9]+\.[0-9]+\.[0-9]+$`)
@@ -115,20 +123,60 @@ func Find(root string, files []string, kinds Kinds) ([]Annotation, []Finding, er
 			continue
 		}
 		for i, line := range strings.Split(string(data), "\n") {
-			m := annotation.FindStringSubmatch(line)
-			if m == nil {
-				continue
+			if m := annotation.FindStringSubmatch(line); m != nil {
+				found = append(found, named(file, i+1, m))
 			}
-			var ids, versions []string
-			for _, named := range strings.Split(m[2], ",") {
-				id, v, _ := strings.Cut(strings.TrimSpace(named), "@")
-				ids = append(ids, id)
-				versions = append(versions, v)
-			}
-			found = append(found, Annotation{file, i + 1, m[1], ids, versions})
 		}
 	}
 	return found, unknown, nil
+}
+
+// Refines answers the @refines in the $comment of each schema among the files, relative to root: a
+// JSON in schemas/. Its line is the line of the $comment.
+//
+// @implements SR_35@1.1.1
+func Refines(root string, files []string) ([]Annotation, error) {
+
+	var found []Annotation
+	for _, file := range files {
+		if filepath.Dir(file) != "schemas" || filepath.Ext(file) != ".json" {
+			continue
+		}
+		data, err := os.ReadFile(filepath.Join(root, file))
+		if err != nil {
+			return nil, err
+		}
+		var schema struct {
+			Comment string `json:"$comment"`
+		}
+		if json.Unmarshal(data, &schema) != nil {
+			continue
+		}
+		m := refines.FindStringSubmatch(schema.Comment)
+		if m == nil {
+			continue
+		}
+		line := 0
+		for i, l := range strings.Split(string(data), "\n") {
+			if strings.Contains(l, `"$comment"`) {
+				line = i + 1
+				break
+			}
+		}
+		found = append(found, named(file, line, m))
+	}
+	return found, nil
+}
+
+// named answers the annotation of a match: its kind, then its ids, each with its version.
+func named(file string, line int, m []string) Annotation {
+	var ids, versions []string
+	for _, n := range strings.Split(m[2], ",") {
+		id, v, _ := strings.Cut(strings.TrimSpace(n), "@")
+		ids = append(ids, id)
+		versions = append(versions, v)
+	}
+	return Annotation{file, line, m[1], ids, versions}
 }
 
 // isData says whether a YAML is our data: one that names its schema in its field schema.
@@ -144,7 +192,7 @@ func isData(file string, content []byte) bool {
 
 // Unversioned answers each id the annotations name without a version as x.y.z after its @.
 //
-// @implements SR_30@1.1.1
+// @implements SR_30@2.2.1
 func Unversioned(annotations []Annotation) []Finding {
 
 	var findings []Finding
@@ -161,7 +209,7 @@ func Unversioned(annotations []Annotation) []Finding {
 // Check answers each id the annotations name that is not in the requirements of the base commit,
 // or not approved there.
 //
-// @implements SR_24@2.1.1, SR_25@1.1.1
+// @implements SR_24@2.1.1, SR_25@2.2.1
 func Check(git Git, base string, annotations []Annotation) []Finding {
 
 	var findings []Finding

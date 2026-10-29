@@ -66,7 +66,7 @@ func Links(read Read, list review.List) ([]Finding, int, error) {
 // names, and how many ids it compared. An id whose object no file holds, or that names no version,
 // is not compared: annotationcheck reports it.
 //
-// @implements SR_33@1.1.1
+// @implements SR_33@2.1.1
 func Annotations(read Read, annotations []annotation.Annotation) ([]Finding, int) {
 
 	versions := newVersions(read)

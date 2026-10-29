@@ -21,7 +21,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements SR_32@1.1.1, SR_33@1.1.1
+// @implements SR_32@1.1.1, SR_33@2.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
@@ -44,10 +44,16 @@ func main() {
 		fail(err)
 	}
 	//	a file of unknown kind is annotationcheck's to report
-	annotations, _, err := annotation.Find(*root, strings.Fields(string(out)), kinds)
+	files := strings.Fields(string(out))
+	annotations, _, err := annotation.Find(*root, files, kinds)
 	if err != nil {
 		fail(err)
 	}
+	refines, err := annotation.Refines(*root, files)
+	if err != nil {
+		fail(err)
+	}
+	annotations = append(annotations, refines...)
 	ids, comparedIDs := check.Annotations(read, annotations)
 
 	for _, f := range append(links, ids...) {
