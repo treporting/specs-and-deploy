@@ -5,9 +5,9 @@ schema: schemas/documents.schema.json
 type: documents
 documents:
 - name: README.md
-  object_version: '3.1.1'
-  object_hash: '00d4100'
-  status: review
+  object_version: '4.1.1'
+  object_hash: '8253db3'
+  status: approved
   verification_method: [review]
 - name: harness.md
   object_version: '4.1.1'
@@ -30,9 +30,9 @@ documents:
   status: approved
   verification_method: [review]
 - name: formats.md
-  object_version: '8.1.1'
-  object_hash: '3fb5016'
-  status: review
+  object_version: '9.1.1'
+  object_hash: '5e9a7a4'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   object_version: '2.1.1'
@@ -40,9 +40,9 @@ documents:
   status: approved
   verification_method: [review]
 - name: traceability.md
-  object_version: '5.1.1'
-  object_hash: '136e9b4'
-  status: review
+  object_version: '6.1.1'
+  object_hash: '4c1b624'
+  status: approved
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   object_version: '2.1.1'
