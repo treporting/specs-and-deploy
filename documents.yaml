@@ -8,20 +8,20 @@ documents:
   type: document
   object_version: '4.1.1'
   object_hash: '8253db3'
-  status: draft
+  status: review
   verification_method: [review]
 - name: harness.md
   type: explanation
   level: rules
   object_version: '6.1.1'
   object_hash: '6d173e7'
-  status: draft
+  status: review
   verification_method: [review]
 - name: devops.md
   type: document
   object_version: '5.1.1'
   object_hash: '72a87dd'
-  status: draft
+  status: review
   verification_method: [review]
 - name: definitions.md
   type: document
@@ -39,13 +39,13 @@ documents:
   type: document
   object_version: '11.1.1'
   object_hash: '764d856'
-  status: draft
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   type: document
   object_version: '3.1.1'
   object_hash: '727ce7e'
-  status: draft
+  status: review
   verification_method: [review]
 - name: traceability.md
   type: document
@@ -58,7 +58,7 @@ documents:
   level: n1
   object_version: '3.1.1'
   object_hash: '70a19a4'
-  status: draft
+  status: review
   verification_method: [review]
 - name: requirements/user-needs.md
   type: explanation
@@ -93,7 +93,7 @@ documents:
   level: r5
   object_version: '10.1.1'
   object_hash: '1f2167d'
-  status: draft
+  status: review
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
