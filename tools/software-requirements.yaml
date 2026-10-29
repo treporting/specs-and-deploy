@@ -171,9 +171,11 @@ requirements:
 - object_key: SR_17
   object_version: '1.1.1'
   component: review
-  object_text: write into a skeleton of a review result the field schema, naming the schema of review
-    results from the root of the repo, the field type as review, and the field level as the level of
-    its criteria file
+  object_text: |-
+    create the skeleton of a review result where:
+    - the field schema names the used schema from the root of the repo.
+    - the field type is review and
+    - the field level is the level of its criteria file
   source_ids: [TOOL_04@1.1.1]
   priority: 'medium'
   safety: ''
