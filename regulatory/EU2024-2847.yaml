@@ -1,6 +1,7 @@
 # Regulatory requirements of EU2024-2847 (n1). What explains them is in regulatory-requirements.md.
 # Format: ../formats.md
 schema: schemas/regulatory-requirements.schema.json
+type: normative
 level: n1
 requirements:
 - object_key: REG_EU2024-2847_01

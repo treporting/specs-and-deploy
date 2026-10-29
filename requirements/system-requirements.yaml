@@ -1,6 +1,7 @@
 # System requirements (r2). What explains them is in system-requirements.md.
 # Format: ../formats.md
 schema: schemas/system-requirements.schema.json
+type: requirements
 level: r2
 documents:
 - name: system-requirements.md

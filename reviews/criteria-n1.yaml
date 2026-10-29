@@ -3,6 +3,7 @@
 # which the law or the standard sets. A REG is approved only when it passed every criterion
 # (PROC_13). See reviews/README.md.
 schema: schemas/review-criteria.schema.json
+type: criteria
 level: n1
 criteria:
 - object_key: RC-01

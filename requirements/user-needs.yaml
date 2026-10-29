@@ -1,6 +1,7 @@
 # User needs (r1). What explains them is in user-needs.md.
 # Format: ../formats.md
 schema: schemas/user-needs.schema.json
+type: requirements
 level: r1
 documents:
 - name: user-needs.md

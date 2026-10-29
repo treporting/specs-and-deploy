@@ -6,6 +6,7 @@
   "type": "object",
   "required": [
     "schema",
+    "type",
     "level",
     "criteria"
   ],
@@ -14,6 +15,10 @@
     "schema": {
       "const": "schemas/review-criteria.schema.json",
       "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "type": {
+      "const": "criteria",
+      "description": "what this file holds (formats.md, section The head of a file)"
     },
     "level": {
       "type": "string",

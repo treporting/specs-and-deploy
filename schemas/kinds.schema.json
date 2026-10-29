@@ -4,12 +4,16 @@
   "$comment": "@refines ARC_22@2.1.1",
   "title": "The kinds of files: code, read for annotations, and no code, never read",
   "type": "object",
-  "required": ["schema", "whitelist", "blacklist"],
+  "required": ["schema", "type", "whitelist", "blacklist"],
   "additionalProperties": false,
   "properties": {
     "schema": {
       "const": "schemas/kinds.schema.json",
       "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "type": {
+      "const": "kinds",
+      "description": "what this file holds (formats.md, section The head of a file)"
     },
     "whitelist": {
       "type": "array",

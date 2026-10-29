@@ -4,7 +4,8 @@
 # IEC, ARP, DO - are to be checked by the reviewer against their copies.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
-level: review
+type: review
+level: n1
 created_by: Mathias Fischer
 created_at: '2026-10-28T22:38:02+01:00'
 criteria: reviews/criteria-n1.yaml

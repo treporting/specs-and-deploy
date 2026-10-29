@@ -2,6 +2,7 @@
 # documents.yaml, not here - see formats.md, section Rules.
 # Format: formats.md
 schema: schemas/rules.schema.json
+type: rules
 level: rules
 rules:
 - object_key: PROC_01
