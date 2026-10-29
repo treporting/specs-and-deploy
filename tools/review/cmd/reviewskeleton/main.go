@@ -1,4 +1,4 @@
-// Command reviewskeleton writes the skeleton of a review result into reviews/ (TOOL_04).
+// Command reviewskeleton writes the skeleton of a review result into reviews/results/ (TOOL_04).
 //
 //	reviewskeleton [-root dir] -reviewer name -scope scope id-or-document ...
 //
@@ -16,7 +16,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review/skeleton"
 )
 
-// @implements SR_11@1.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1
+// @implements SR_11@2.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
