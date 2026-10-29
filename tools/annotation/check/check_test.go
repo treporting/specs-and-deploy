@@ -137,7 +137,7 @@ func TestAnIdNotInTheBaseCommit(t *testing.T) {
 	}
 }
 
-// @verifies SR_25@1.1.1
+// @verifies SR_25@2.2.1
 func TestAnIdNotApprovedInTheBaseCommit(t *testing.T) {
 	got := messages(Check(base, "b1", []Annotation{{"a_test.go", 9, "verifies", []string{"SR_02"}, []string{"1.1.1"}}}))
 	if len(got) != 1 || got[0] != "a_test.go:9 @verifies SR_02: draft in the base commit b1, not approved" {
@@ -153,7 +153,7 @@ func TestSeveralIdsInOneAnnotation(t *testing.T) {
 	}
 }
 
-// @verifies SR_30@1.1.1
+// @verifies SR_30@2.2.1
 func TestTheVersionIsReadApartFromTheId(t *testing.T) {
 	found, _ := find(t, map[string]string{"a.go": "// @implements SR_01@2.1.3, SR_02@1.1.1\n"})
 	if len(found) != 1 || strings.Join(found[0].IDs, " ") != "SR_01 SR_02" || strings.Join(found[0].Versions, " ") != "2.1.3 1.1.1" {
@@ -164,7 +164,7 @@ func TestTheVersionIsReadApartFromTheId(t *testing.T) {
 	}
 }
 
-// @verifies SR_30@1.1.1
+// @verifies SR_30@2.2.1
 func TestAnIdWithoutAVersion(t *testing.T) {
 	found, _ := find(t, map[string]string{"a.go": "// @implements SR_01@1.1.1, SR_02, SR_03@1.1\n"})
 	got := messages(Unversioned(found))
@@ -174,6 +174,55 @@ func TestAnIdWithoutAVersion(t *testing.T) {
 	}
 	if strings.Join(got, "\n") != strings.Join(want, "\n") {
 		t.Errorf("got %q, want %q", got, want)
+	}
+}
+
+func refinesIn(t *testing.T, files map[string]string) []Annotation {
+	t.Helper()
+	dir := write(t, files)
+	var names []string
+	for f := range files {
+		names = append(names, f)
+	}
+	sort.Strings(names)
+	found, err := Refines(dir, names)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return found
+}
+
+// @verifies SR_35@1.1.1
+func TestRefinesIsReadInTheCommentOfASchema(t *testing.T) {
+	found := refinesIn(t, map[string]string{
+		"schemas/a.schema.json": "{\n  \"$schema\": \"x\",\n  \"$comment\": \"@refines SR_01@1.1.1, SR_07@1.1.1\"\n}\n",
+		"schemas/b.schema.json": "{\n  \"$comment\": \"no annotation\"\n}\n",
+		"other/c.schema.json":   "{\n  \"$comment\": \"@refines SR_01@1.1.1\"\n}\n",
+	})
+	if len(found) != 1 || found[0].File != "schemas/a.schema.json" || found[0].Line != 3 || found[0].Kind != "refines" {
+		t.Fatalf("got %+v", found)
+	}
+	got := messages(Check(base, "b1", found))
+	if len(got) != 1 || got[0] != "schemas/a.schema.json:3 @refines SR_07: not in tools/software-requirements.yaml in the base commit b1" {
+		t.Errorf("got %q", got)
+	}
+}
+
+// @verifies SR_25@2.2.1
+func TestARefinesNotApprovedInTheBaseCommit(t *testing.T) {
+	found := refinesIn(t, map[string]string{"schemas/a.schema.json": "{\"$comment\": \"@refines SR_02@1.1.1\"}\n"})
+	got := messages(Check(base, "b1", found))
+	if len(got) != 1 || got[0] != "schemas/a.schema.json:1 @refines SR_02: draft in the base commit b1, not approved" {
+		t.Errorf("got %q", got)
+	}
+}
+
+// @verifies SR_30@2.2.1
+func TestARefinesWithoutAVersion(t *testing.T) {
+	found := refinesIn(t, map[string]string{"schemas/a.schema.json": "{\"$comment\": \"@refines SR_01\"}\n"})
+	got := messages(Unversioned(found))
+	if len(got) != 1 || got[0] != "schemas/a.schema.json:1 @refines SR_01: names no version, as SR_01@x.y.z" {
+		t.Errorf("got %q", got)
 	}
 }
 

@@ -29,8 +29,8 @@ documents:
   status: approved
   verification_method: [review]
 - name: formats.md
-  object_version: '5.1.1'
-  object_hash: '2eed20d'
+  object_version: '6.1.1'
+  object_hash: 'b77ef67'
   status: approved
   verification_method: [review]
 - name: reviews/README.md

@@ -1,5 +1,5 @@
-// Command annotationcheck checks that every id named in @implements or @verifies is approved in the
-// base commit of the pull request (TOOL_06), and names its version (TOOL_20).
+// Command annotationcheck checks that every id named in @implements, @verifies or @refines is
+// approved in the base commit of the pull request (TOOL_06), and names its version (TOOL_20).
 //
 //	annotationcheck [-root dir] [-base rev]
 //
@@ -19,7 +19,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements SR_24@2.1.1, SR_25@1.1.1, SR_27@1.1.1, SR_30@1.1.1
+// @implements SR_24@2.1.1, SR_25@2.2.1, SR_27@1.1.1, SR_30@2.2.1, SR_35@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
@@ -42,10 +42,16 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	annotations, unknown, err := check.Find(*root, strings.Fields(string(out)), kinds)
+	files := strings.Fields(string(out))
+	annotations, unknown, err := check.Find(*root, files, kinds)
 	if err != nil {
 		fail(err)
 	}
+	refines, err := check.Refines(*root, files)
+	if err != nil {
+		fail(err)
+	}
+	annotations = append(annotations, refines...)
 	findings := append(unknown, check.Unversioned(annotations)...)
 	findings = append(findings, check.Check(review.ExecGit{Root: *root}, *base, annotations)...)
 	for _, f := range findings {

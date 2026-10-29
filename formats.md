@@ -200,7 +200,7 @@ carries no annotation. The requirement it serves names it.
 whose form another owns has none (see Files whose form another owns). Every YAML of our own data names its schema in the field `schema`, from the root of the repo, as a review result names its criteria:
 `schema: schemas/tool-requirements.schema.json`. The schema holds that path as a fixed value, so a
 file that names another schema fails. Every schema names the requirement it refines in its
-`$comment`: `@refines ARC_22`. The schema of a kind with versions names the attributes for x in
+`$comment`: `@refines ARC_22@2.1.1`. The schema of a kind with versions names the attributes for x in
 the list `attributes_for_version_x`, always written out (traceability.md). The schemas are the
 contract of ARC_22 and are reviewed with it.
 They are drafts until the gel schema stands; then they become a part of it, and a CI check in
@@ -481,7 +481,7 @@ it('shows the hidden filters', () => { ... })
 - `@verifies` names software requirements of its own repo in a software test, system
   requirements in a system test
 - `@refines` names the requirement a schema gives the form of, in its `$comment`:
-  `"$comment": "@refines ARC_22"`
+  `"$comment": "@refines ARC_22@2.1.1"`
 - a file whose form another owns carries no annotation (see Files whose form another owns)
 
 ### Where an annotation is read
@@ -492,7 +492,8 @@ and a **blacklist** of the kinds that are no code, never read. A file of a kind 
 finding (SR_27) until its kind is set. A YAML that names a schema is our data and is not read,
 though `*.yaml` is on the whitelist. In a file that is read, an annotation stands first in a line of
 comment: after spaces, a comment mark of one to three signs other than a quote, then `@implements`
-or `@verifies`.
+or `@verifies`. `@refines` is read apart from the lists: in the `$comment` of each JSON in
+schemas/, though `*.json` is on the blacklist (SR_35).
 
 **Why**: for a risk, the question is which error goes unseen, and which does more harm.
 annotationcheck is a gate: it is to stop code that names a requirement not approved (PROC_05).

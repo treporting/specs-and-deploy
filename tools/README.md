@@ -215,8 +215,8 @@ The code is the component `ruleset`: the package `ruleset/check` and the command
 
 ## annotationcheck
 
-Checks that every id named in `@implements` or `@verifies` is in the requirements of the base
-commit of the pull request, and approved there (TOOL_06; SR_24 and SR_25 in
+Checks that every id named in `@implements`, `@verifies` or `@refines` is in the requirements of the
+base commit of the pull request, and approved there (TOOL_06; SR_24, SR_25 and SR_35 in
 [software-requirements.yaml](software-requirements.yaml)), and that it names its version, as
 `ID@x.y.z` (TOOL_20, SR_30). The id is read apart from its version and checked as before. A requirement approved in the same pull
 request does not count: it has to be through before the code (PROC_05, PROC_12).
@@ -227,6 +227,7 @@ neither list is a finding (SR_27), until its kind is set; a YAML that names a sc
 is not read. In a file it reads, an annotation stands first in a line of comment: after spaces, a
 comment mark of one to three signs other than a quote, then `@implements` or `@verifies` - in every
 language, with no list of languages. Why both lists: formats.md, "Where an annotation is read".
+`@refines` it reads in the `$comment` of each schema in [schemas/](../schemas/) (SR_35).
 
 **Decision**: a line of comment is told by its start alone, with no knowledge of the strings of a
 language. Its known limit: a line of a string over lines - a raw string of Go, a template of
@@ -288,7 +289,7 @@ another x (traceability.md, section When a link is suspect):
 
 - the links in `source_ids`, the entries of `allocated` and of `controls` in every file of
   requirements (SR_32)
-- the ids of `@implements` and `@verifies`, found as annotationcheck finds them (SR_33)
+- the ids of `@implements`, `@verifies` and `@refines`, found as annotationcheck finds them (SR_33)
 
 It reads the files as they stand. An entry whose object no file holds, or that names no version, is
 not compared: uplinkcheck, schemacheck and annotationcheck report it. It reports and does not
