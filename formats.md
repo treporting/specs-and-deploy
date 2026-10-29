@@ -174,6 +174,7 @@ holds only what the author writes:
 ```yaml
 # requirements/system-requirements.yaml
 schema: schemas/system-requirements.schema.json
+type: requirements
 level: r2
 requirements:
   - object_key: SYS_58
@@ -215,6 +216,47 @@ its own (TOOL_05). A schema gives the form of a requirement and realizes none, s
 - a table of patterns of paths in the tool - a new kind of file that no one enters stays unchecked
 - `@implements` in a schema - a schema realizes no requirement (PROC_05)
 
+### The head of a file
+
+**Decision**: the head of every YAML of our own data has three fields:
+
+- `schema` - its form (see Schemas)
+- `type` - what it holds, as table types sets it
+- `level` - the level it belongs to. A review result names the level of its criteria, a
+  verification the level of its targets.
+
+A Markdown file has no head. Its type and level are those of table types; where it names them is
+open.
+
+**Why**: a tool for requirements management knows what each of its modules holds. Our files take
+its place, so each says what it holds itself. The level of a review result is the level it was
+reviewed against.
+
+**Rejected**:
+
+- telling what a file holds by where it lies, or by the attributes its schema has - the file does
+  not say it, a tool has to infer it
+- `level` alone - the requirements of r2 and their criteria both have `level: r2`
+- `level: review` and `level: verification` - they name the kind of the record, not its level
+
+**Table types** - what a file holds, and its level
+
+| type | Holds | Level | Files |
+|---|---|---|---|
+| requirements | requirements | r1, r2, r5, tool | `requirements/*.yaml`, `tools/software-requirements.yaml` |
+| architecture | the system architecture | r3 | `architecture/system-architecture.yaml` |
+| normative | regulatory requirements | n1 | `regulatory/<module>.yaml` |
+| hazards | hazards and their controls | h1 | `safety/hazards.yaml` |
+| threats | threats and their controls, still to come | h1 | - |
+| rules | the rules of our work | rules | `rules.yaml` |
+| criteria | review criteria | the level they are for, or document | `reviews/criteria-*.yaml` |
+| review | review results | the level of their criteria | `reviews/<time>_<scope>.yaml` |
+| verification | verification results | the level of their targets | `verifications/<time>_<scope>.yaml` |
+| documents | the documents without a YAML of requirements beside them | - | `documents.yaml` |
+| kinds | the kinds of files, for annotationcheck | - | `tools/annotation/kinds.yaml` |
+| explanation | the explanation of a level, in Markdown | its level | see table files of the levels |
+| document | a document without a level, in Markdown | - | such as formats.md |
+
 ### Documents
 
 The YAML of a level names the documents beside it that explain it, each with a version and a status
@@ -226,6 +268,7 @@ for x of a document (traceability.md, section The version of a document):
 
 ```yaml
 schema: schemas/tool-requirements.schema.json
+type: requirements
 level: tool
 documents:
 - name: tool-requirements.md
@@ -303,7 +346,8 @@ A file of results is one review, with one result for everything it reviewed:
 ```yaml
 # reviews/20261026T140000_r1-pm.yaml
 schema: schemas/review-result.schema.json
-level: review
+type: review
+level: r1
 created_by: the reviewer
 created_at: '2026-10-26T14:00:00+01:00'
 criteria: reviews/criteria-r1.yaml
@@ -345,7 +389,8 @@ what happened.
 ```yaml
 # verifications/20261027T100000_sr-20.yaml
 schema: schemas/verification-result.schema.json
-level: verification
+type: verification
+level: r5
 method: demonstration
 target_ids: [SR_20]
 created_by: Claude Opus 5.5
