@@ -176,7 +176,8 @@ go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope h
 go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope sr-11-15 SR_11 SR_12 SR_13
 ```
 
-The skeleton names its schema in the field `schema` (SR_17). It prints the path of the file it
+In its head the skeleton names its schema, the type `review` and the level of its criteria file
+(SR_17). It prints the path of the file it
 wrote. The code is the package `review/skeleton`, in the component `review`.
 
 ## schemacheck

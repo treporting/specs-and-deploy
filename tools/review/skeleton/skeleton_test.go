@@ -141,11 +141,11 @@ func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
 	}
 }
 
-// @verifies SR_17@1.1.1
-func TestTheSkeletonNamesItsSchema(t *testing.T) {
+// @verifies SR_17@2.1.1
+func TestTheSkeletonNamesItsSchemaTypeAndLevel(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
 		t.Fatal(err)
 	}
-	contains(t, content, "schema: schemas/review-result.schema.json\nlevel: review\n")
+	contains(t, content, "schema: schemas/review-result.schema.json\ntype: review\nlevel: tool\n")
 }

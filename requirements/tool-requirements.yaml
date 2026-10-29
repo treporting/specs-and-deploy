@@ -1,6 +1,7 @@
 # Tool requirements. What explains them is in tool-requirements.md.
 # Format: ../formats.md
 schema: schemas/tool-requirements.schema.json
+type: requirements
 level: tool
 documents:
 - name: tool-requirements.md

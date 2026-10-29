@@ -13,10 +13,14 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// resultSchema is the schema of a review result, from the root of the repo.
+// resultSchema is the schema of a review result, from the root of the repo, and resultType its
+// type (formats.md, section The head of a file).
 //
-// @implements SR_17@1.1.1
-const resultSchema = "schemas/review-result.schema.json"
+// @implements SR_17@2.1.1
+const (
+	resultSchema = "schemas/review-result.schema.json"
+	resultType   = "review"
+)
 
 // Git is what the skeleton asks of the history of the repo.
 type Git interface {
@@ -40,7 +44,7 @@ type Request struct {
 // HEAD, and answers its path relative to root. Where a target is not found, or the targets belong
 // to more than one level, it writes nothing.
 //
-// @implements SR_11@1.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@1.1.1
+// @implements SR_11@1.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1
 func Make(root string, req Request, git Git) (string, error) {
 
 	head, err := git.Short("HEAD")
@@ -53,7 +57,7 @@ func Make(root string, req Request, git Git) (string, error) {
 		return "", err
 	}
 
-	criteriaFile, criteriaRevision, keys, err := criteriaOf(git, level)
+	criteriaFile, criteriaRevision, criteriaLevel, keys, err := criteriaOf(git, level)
 	if err != nil {
 		return "", err
 	}
@@ -68,7 +72,8 @@ func Make(root string, req Request, git Git) (string, error) {
 	fmt.Fprintf(&b, "# Skeleton made by reviewskeleton: every todo is for the reviewer to decide.\n")
 	fmt.Fprintf(&b, "# Format: ../formats.md, section Reviews.\n")
 	fmt.Fprintf(&b, "schema: %s\n", resultSchema)
-	fmt.Fprintf(&b, "level: review\n")
+	fmt.Fprintf(&b, "type: %s\n", resultType)
+	fmt.Fprintf(&b, "level: %s\n", criteriaLevel)
 	fmt.Fprintf(&b, "created_by: %s\n", req.Reviewer)
 	fmt.Fprintf(&b, "created_at: '%s'\n", req.Now.Format("2006-01-02T15:04:05-07:00"))
 	fmt.Fprintf(&b, "criteria: %s\n", criteriaFile)
@@ -128,11 +133,11 @@ func levelOf(git Git, targets []string) (string, error) {
 	return level, nil
 }
 
-// criteriaOf answers the criteria file of a level, the last commit that changed it, and the ids of
-// its criteria in that commit.
+// criteriaOf answers the criteria file of a level, the last commit that changed it, and the level
+// and the ids of its criteria in that commit.
 //
-// @implements SR_12@1.1.1
-func criteriaOf(git Git, level string) (file, revision string, keys []string, err error) {
+// @implements SR_12@1.1.1, SR_17@2.1.1
+func criteriaOf(git Git, level string) (file, revision, criteriaLevel string, keys []string, err error) {
 
 	name := "criteria-" + level + ".yaml"
 	if level == "document" {
@@ -142,25 +147,26 @@ func criteriaOf(git Git, level string) (file, revision string, keys []string, er
 
 	commits, err := git.FileCommits("HEAD", file)
 	if err != nil || len(commits) == 0 {
-		return "", "", nil, fmt.Errorf("no commit holds %s", file)
+		return "", "", "", nil, fmt.Errorf("no commit holds %s", file)
 	}
 	if revision, err = git.Short(commits[0]); err != nil {
-		return "", "", nil, err
+		return "", "", "", nil, err
 	}
 	data, err := git.Show(revision, file)
 	if err != nil {
-		return "", "", nil, err
+		return "", "", "", nil, err
 	}
 	var c struct {
+		Level    string `yaml:"level"`
 		Criteria []struct {
 			ObjectKey string `yaml:"object_key"`
 		} `yaml:"criteria"`
 	}
 	if err := yaml.Unmarshal(data, &c); err != nil {
-		return "", "", nil, fmt.Errorf("%s: %w", file, err)
+		return "", "", "", nil, fmt.Errorf("%s: %w", file, err)
 	}
 	for _, k := range c.Criteria {
 		keys = append(keys, k.ObjectKey)
 	}
-	return file, revision, keys, nil
+	return file, revision, c.Level, keys, nil
 }

@@ -7,6 +7,7 @@
   "type": "object",
   "required": [
     "schema",
+    "type",
     "level",
     "hazards"
   ],
@@ -15,6 +16,10 @@
     "schema": {
       "const": "schemas/hazards.schema.json",
       "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "type": {
+      "const": "hazards",
+      "description": "what this file holds (formats.md, section The head of a file)"
     },
     "level": {
       "const": "h1"

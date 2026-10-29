@@ -2,6 +2,7 @@
 # Rules), each with a version and a status of its own.
 # Format: formats.md, section Documents
 schema: schemas/documents.schema.json
+type: documents
 documents:
 - name: README.md
   object_version: '3.1.1'

@@ -2,7 +2,8 @@
 # Made with reviewskeleton; prepared by Claude Code, decided by the reviewer.
 # Format: ../formats.md, section Reviews.
 schema: schemas/review-result.schema.json
-level: review
+type: review
+level: tool
 created_by: Mathias Fischer
 created_at: '2026-10-26T19:31:45+01:00'
 criteria: reviews/criteria-tool.yaml
