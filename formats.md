@@ -157,7 +157,8 @@ holds only what the author writes:
   `demonstration`, `test`; and of our own: `review` - verified by the review against the criteria
   of its level (PROC_13), for instance a document.
 - **platform_launch** of every user need and system requirement: `treporting = 2_selfhosted,
-  1_demo`, or narrower where a requirement holds for one of them only.
+  1_demo`, or narrower where a requirement holds for one of them only. Of every tool requirement: the
+  launch of the tools it is planned for, such as `treporting = 1_tools`.
 - **the links**: an object writes the parents it is derived from, its uplinks, in `source_ids` -
   its sources. `target_ids` is what an object points at: a review result points at what it
   reviewed, a verification at what it verified. As in the gel schema, `source_ids` and

@@ -15,7 +15,7 @@ documents:
   level: rules
   object_version: '5.1.1'
   object_hash: 'a98cf20'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '10.1.1'
   object_hash: 'a45e92e'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
@@ -100,7 +100,7 @@ documents:
   level: tool
   object_version: '6.1.1'
   object_hash: '0bcba81'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: safety/hazard-and-risk-analysis.md
   type: explanation
