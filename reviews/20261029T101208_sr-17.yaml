@@ -14,7 +14,9 @@ results:
   criteria:
     RC-01: passed
     RC-02: passed
-    RC-03: passed
+    RC-03:
+      result: passed
+      note: 'found in this review and resolved in it: the long sentence left each reader to join its parts in another way - one field per line'
     RC-04: passed
     RC-05: passed
     RC-06: passed
