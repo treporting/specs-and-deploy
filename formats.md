@@ -382,13 +382,13 @@ created_at: '2026-10-26T14:00:00+01:00'
 criteria: reviews/criteria-r1.yaml
 criteria_revision: 'd5922d1'
 results:
-- object_key: RR-01
+- object_key: RR_01
   target_ids: [UN_PM_01]
   revision: '7215683'
   criteria:
-    RC-01: passed
-    RC-02: passed
-    RC-03:
+    RC_01: passed
+    RC_02: passed
+    RC_03:
       result: failed
       note: '"how far" can be read as a share or as a level - say which'
   verdict: failed
@@ -494,22 +494,26 @@ annotation names software requirements of its own repo only.
 | `PROC_nn` | rules of our work | rules |
 | `TOOL_nn` | requirements on the tools of our work; tools are code (devops.md) | tool |
 
-**Decision**: a key has the form `xyz_nn` or `xyz_xyz_nn`: its parts are joined by an underscore,
-and the last part is the number. The keys of criteria and review results, `RC-nn` and `RR-nn`, are
-no keys of requirements and keep their form.
+**Decision**: a key is any number of parts joined by underscores, the last part the number:
+`SYS_09`, `UN_PSF_01`, `REG_ISO26262-8_01`, `x_y_z_00`. The keys of criteria and review results take
+this form too: `RC_nn`, `RR_nn`.
 
 **Why**: a part may hold a hyphen itself, as the module of a regulatory requirement does,
 `REG_ISO26262-8_01`. The underscore separates the parts without doubt, and every key has one form.
 
-**Rejected**: the hyphen for every key but those of the regulatory requirements - two forms of keys
-would stand side by side.
+**Rejected**:
+
+- the hyphen for every key but those of the regulatory requirements - two forms of keys would
+  stand side by side
+- `RC-nn` and `RR-nn` kept, as no keys of requirements - two forms of keys would stand side by side
 
 **Decision**: the review results and the verifications name the keys as they are now. A review
-result whose target got a new key names as its revision the commit that changed the key. What a
-record quotes from a log stays as the log printed it.
+result whose target got a new key names as its revision the commit that changed the key; one whose
+criteria got new keys names as its criteria revision the commit that changed them. What a record
+quotes from a log stays as the log printed it.
 
 **Why**: every key in the repo changes, the records too. A tool finds the target of a review result
-in the revision it names; a revision before the change does not hold the new key. A quote of a log
+and its criteria in the revisions it names; a revision before the change does not hold the new key. A quote of a log
 that changed would no longer be what the tool printed.
 
 **Rejected**: the records as they were written, with the old keys - two forms of keys would stand
