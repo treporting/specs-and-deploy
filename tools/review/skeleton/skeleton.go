@@ -22,6 +22,11 @@ const (
 	resultType   = "review"
 )
 
+// results is the directory of the review results, apart from the criteria in reviews/.
+//
+// @implements SR_11@2.1.1
+const results = "reviews/results"
+
 // Git is what the skeleton asks of the history of the repo.
 type Git interface {
 	// Show answers the content of path in the commit rev.
@@ -40,11 +45,11 @@ type Request struct {
 	Now      time.Time
 }
 
-// Make writes the skeleton of a review result for req into reviews/ below root, made on the commit
+// Make writes the skeleton of a review result for req into reviews/results/ below root, made on the commit
 // HEAD, and answers its path relative to root. Where a target is not found, or the targets belong
 // to more than one level, it writes nothing.
 //
-// @implements SR_11@1.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1
+// @implements SR_11@2.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1
 func Make(root string, req Request, git Git) (string, error) {
 
 	head, err := git.Short("HEAD")
@@ -62,7 +67,7 @@ func Make(root string, req Request, git Git) (string, error) {
 		return "", err
 	}
 
-	path := filepath.Join("reviews", req.Now.Format("20060102T150405")+"_"+req.Scope+".yaml")
+	path := filepath.Join(results, req.Now.Format("20060102T150405")+"_"+req.Scope+".yaml")
 	if _, err := os.Stat(filepath.Join(root, path)); err == nil {
 		return "", fmt.Errorf("%s is there already", path)
 	}
@@ -70,7 +75,7 @@ func Make(root string, req Request, git Git) (string, error) {
 	var b strings.Builder
 	fmt.Fprintf(&b, "# Review of %s against the criteria of the level %s.\n", strings.Join(req.Targets, ", "), level)
 	fmt.Fprintf(&b, "# Skeleton made by reviewskeleton: every todo is for the reviewer to decide.\n")
-	fmt.Fprintf(&b, "# Format: ../formats.md, section Reviews.\n")
+	fmt.Fprintf(&b, "# Format: ../../formats.md, section Reviews.\n")
 	fmt.Fprintf(&b, "schema: %s\n", resultSchema)
 	fmt.Fprintf(&b, "type: %s\n", resultType)
 	fmt.Fprintf(&b, "level: %s\n", criteriaLevel)
@@ -90,6 +95,9 @@ func Make(root string, req Request, git Git) (string, error) {
 		fmt.Fprintf(&b, "  verdict: todo\n")
 	}
 
+	if err := os.MkdirAll(filepath.Join(root, results), 0o755); err != nil {
+		return "", err
+	}
 	if err := os.WriteFile(filepath.Join(root, path), []byte(b.String()), 0o644); err != nil {
 		return "", err
 	}

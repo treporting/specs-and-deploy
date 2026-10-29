@@ -17,6 +17,8 @@ auditor who looks for its evidence.
 | [criteria-tool.yaml](criteria-tool.yaml) | the criteria of the tool requirements |
 | [criteria-documents.yaml](criteria-documents.yaml) | the criteria of the documents, after ISO15289 |
 
+The results lie in [results/](results/), one file per review.
+
 The format of a review and its result is in the section Reviews of [formats.md](../formats.md).
 `reviewskeleton` writes the skeleton of a result, and `reviewcheck` checks every result, also in
 the CI on every pull request - see [tools/README.md](../tools/README.md).

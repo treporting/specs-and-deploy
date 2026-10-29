@@ -77,13 +77,13 @@ func contains(t *testing.T, content string, want ...string) {
 	}
 }
 
-// @verifies SR_11@1.1.1
+// @verifies SR_11@2.1.1
 func TestTheNameTheReviewerAndTheTime(t *testing.T) {
 	path, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
 		t.Fatal(err)
 	}
-	if path != filepath.Join("reviews", "20261026T143005_tool-03-04.yaml") {
+	if path != filepath.Join("reviews", "results", "20261026T143005_tool-03-04.yaml") {
 		t.Errorf("path %s", path)
 	}
 	contains(t, content, "created_by: Mathias Fischer\n", "created_at: '2026-10-26T14:30:05+01:00'\n")

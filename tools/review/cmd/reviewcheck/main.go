@@ -2,7 +2,7 @@
 //
 //	reviewcheck [-root dir] [file ...]
 //
-// With no file, it checks every result in reviews/ - every YAML but the criteria. It prints every
+// With no file, it checks every result in reviews/results/. It prints every
 // rule a result breaks and exits with 1 where there is one.
 package main
 
@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/treporting/specs-and-deploy/tools/review"
 	"github.com/treporting/specs-and-deploy/tools/review/check"
@@ -25,15 +24,13 @@ func main() {
 
 	files := flag.Args()
 	if len(files) == 0 {
-		found, err := filepath.Glob(filepath.Join(*root, "reviews", "*.yaml"))
+		found, err := filepath.Glob(filepath.Join(*root, "reviews", "results", "*.yaml"))
 		if err != nil {
 			fail(err)
 		}
 		for _, f := range found {
-			if !strings.HasPrefix(filepath.Base(f), "criteria-") {
-				rel, _ := filepath.Rel(*root, f)
-				files = append(files, rel)
-			}
+			rel, _ := filepath.Rel(*root, f)
+			files = append(files, rel)
 		}
 	}
 
