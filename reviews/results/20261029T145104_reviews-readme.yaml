@@ -1,0 +1,29 @@
+# Review of reviews/README.md against the criteria of the level document.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: document
+created_by: Mathias Fischer
+created_at: '2026-10-29T14:51:04+01:00'
+criteria: reviews/criteria-documents.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [reviews/README.md]
+  revision: '34aa6a2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
