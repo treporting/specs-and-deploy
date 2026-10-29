@@ -13,7 +13,7 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 
 | Level | Data | Explanation | Repo |
 |---|---|---|---|
-| h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC), still to come | `safety/hazard-and-risk-analysis.md` | specs-and-deploy |
+| h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC): see Open | `safety/hazard-and-risk-analysis.md` | specs-and-deploy |
 | n1 | `regulatory/<module>.yaml` (REG), one file per module | `regulatory/regulatory-requirements.md` | specs-and-deploy |
 | r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy |
 | r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy |
@@ -247,7 +247,7 @@ reviewed against.
 | architecture | the system architecture | r3 | `architecture/system-architecture.yaml` |
 | normative | regulatory requirements | n1 | `regulatory/<module>.yaml` |
 | hazards | hazards and their controls | h1 | `safety/hazards.yaml` |
-| threats | threats and their controls, still to come | h1 | - |
+| threats | threats and their controls: see Open | h1 | - |
 | rules | the rules of our work | rules | `rules.yaml` |
 | criteria | review criteria | the level they are for, or document | `reviews/criteria-*.yaml` |
 | review | review results | the level of their criteria | `reviews/<time>_<scope>.yaml` |
@@ -491,7 +491,6 @@ annotation names software requirements of its own repo only.
 | `ARC_nn` | subsystems, interfaces | r3 |
 | `ARCR_nn`, `ARCD_nn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
 | `SR_nn` | software requirements of a subsystem - unique together with their context, the repo of the subsystem (LProject) and the document | r5 |
-| *open* | software architecture (r6) and software design (r7) of a subsystem; their prefixes are still to be set | r6, r7 |
 | `PROC_nn` | rules of our work | rules |
 | `TOOL_nn` | requirements on the tools of our work; tools are code (devops.md) | tool |
 
@@ -644,5 +643,14 @@ In specs-and-deploy as well: the references both ways, and every SYS allocated.
 
 TOOL_12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
 
-*Open*: the tools of TOOL_05 to TOOL_10 are not built yet; each waits for its approved tool
-requirement. The workflow is to be a reusable workflow in `treporting/.github`.
+## Open
+
+- **Threats** (tables files of the levels and types): the threats and their controls (THR, THRC),
+  and their file.
+- **Ids** (table ids): the prefixes of the software architecture (r6) and the software design (r7)
+  of a subsystem.
+- **Schemas**: the gel schema; until it stands, the schemas are drafts.
+- **Annotations**: for counting realizations - the trace in the reporter, and reporter-annotations -
+  whether the whitelist is the safer. That is a question for those tools.
+- **CI check**: the tools of TOOL_05 to TOOL_10 are not built yet; each waits for its approved tool
+  requirement. The workflow is to be a reusable workflow in `treporting/.github`.

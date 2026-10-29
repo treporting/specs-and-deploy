@@ -12,7 +12,7 @@ whoever builds, runs or reviews the tools.
 **Why**: the tools check above all the files of this repo - requirements, reviews, schemas - so what
 is checked and what checks lie together. The repo is meant for more than documents already: the
 containers and the system tests come here as well. The checks of the code repos run as a reusable
-workflow in `treporting/.github`, which takes the tool from here. That workflow is still open.
+workflow in `treporting/.github`, which takes the tool from here (see Open).
 
 **Rejected**:
 
@@ -311,3 +311,7 @@ go run ./link/cmd/linkcheck -root ..
 The code is the component `link`: the package `link/check` and the command `link/cmd/linkcheck`. It
 finds an id in its file through the component `review`, and the annotations through the component
 `annotation`.
+
+## Open
+
+- **Where the tools live**: the reusable workflow in `treporting/.github`.

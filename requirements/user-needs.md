@@ -59,3 +59,8 @@ nothing, but a gap it hides can lead to a wrong release. The hazards they contro
 `safety/hazard-and-risk-analysis.md`; the analysis of the tool's failures in the tool qualification traces to these needs.
 
 `UN_PSF_01` to `UN_PSF_06`: in [user-needs.yaml](user-needs.yaml).
+
+## Open
+
+- **Safety of the product**: the tool qualification, whose analysis of the tool's failures traces
+  to these needs.

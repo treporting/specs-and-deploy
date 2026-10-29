@@ -220,10 +220,6 @@ instead of bringing a second management. A proxy keeps that entirely outside tre
 **Rejected**: a user management of its own in treporting - a second place to lock an account,
 and the duty of keeping passwords.
 
-**Open**, to be settled by the threat analysis: with a proxy, the reporter must be reachable only through it, or the
-handed-on identity can be forged; and how a single user works locally without a proxy and without
-an identity provider (UN_OPS_01), with reports marked as made without login.
-
 ## Allocation
 
 V viewer, R reporter, S storage, C converter-edgedb, EC extractor-content, ES extractor-SYSTEM.
@@ -240,3 +236,8 @@ The allocation of every system requirement to the subsystems is the field `alloc
   of extractor-content and of the extractors per system are not created yet.
 - **Generator**: the data of known content for SYS_27 is made by the generator in storage; the
   faults built into it are still to be listed.
+- **ARCD_05 Identity**, provisional, to be settled by the threat analysis: with a proxy, the reporter
+  must be reachable only through it, or the handed-on identity can be forged; and how a single user
+  works locally without a proxy and without an identity provider (UN_OPS_01), with reports marked as
+  made without login.
+- **Schemas** (ARC_22): the gel schema; until it stands, the schemas are drafts of it.
