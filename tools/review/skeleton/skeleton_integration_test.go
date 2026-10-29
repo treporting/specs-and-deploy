@@ -43,17 +43,21 @@ func TestASkeletonOnAHistoryOfGit(t *testing.T) {
 	write(t, root, "reviews/criteria-tool.yaml", "level: tool\ncriteria:\n- object_key: RC-01\n- object_key: RC-02\n")
 	gitIn(t, root, "add", "-A")
 	gitIn(t, root, "commit", "-q", "-m", "criteria")
-	write(t, root, "requirements/tool-requirements.yaml", "level: tool\nrequirements:\n- object_key: TOOL_03\n  object_text: check\n")
+	write(t, root, "requirements/tool-requirements.yaml", "type: requirements\nlevel: tool\nrequirements:\n- object_key: TOOL_03\n  object_text: check\n")
 	gitIn(t, root, "add", "-A")
 	gitIn(t, root, "commit", "-q", "-m", "requirement")
 
 	git := review.ExecGit{Root: root}
-	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03", Targets: []string{"TOOL_03"}, Now: time.Now()}, git)
+	index, err := review.IndexAt(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03", Targets: []string{"TOOL_03"}, Now: time.Now()}, git, index)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	findings, err := check.Check(root, path, git)
+	findings, err := check.Check(root, path, git, index)
 	if err != nil {
 		t.Fatal(err)
 	}

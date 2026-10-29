@@ -3,10 +3,11 @@ package check
 import (
 	"os"
 	"reflect"
-	"strings"
+	"sort"
 	"testing"
 
 	annotation "github.com/treporting/specs-and-deploy/tools/annotation/check"
+	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
 // files holds the files of requirements in memory.
@@ -21,18 +22,17 @@ func (f files) read(file string) ([]byte, error) {
 
 // links makes the link check on the files.
 func (f files) links() ([]Finding, int, error) {
-	return Links(f.read, f.list)
+	return Links(f.read, f.index())
 }
 
-// list answers the names of the files directly in dir.
-func (f files) list(dir string) ([]string, error) {
+// index makes the index of the files, in the order of their names.
+func (f files) index() *review.Index {
 	var names []string
 	for file := range f {
-		if name, ok := strings.CutPrefix(file, dir+"/"); ok && !strings.Contains(name, "/") {
-			names = append(names, name)
-		}
+		names = append(names, file)
 	}
-	return names, nil
+	sort.Strings(names)
+	return review.NewIndex(f.read, names)
 }
 
 func lines(findings []Finding) []string {
@@ -45,6 +45,7 @@ func lines(findings []Finding) []string {
 
 // TOOL_09 has moved on in x, TOOL_01 in y and z only.
 const tools = `schema: schemas/tool-requirements.schema.json
+type: requirements
 level: tool
 requirements:
 - object_key: TOOL_01
@@ -57,7 +58,8 @@ requirements:
 func TestOnlyAnotherXIsReported(t *testing.T) {
 	got, compared, err := files{
 		"requirements/tool-requirements.yaml": tools,
-		"tools/software-requirements.yaml": `requirements:
+		"tools/software-requirements.yaml": `type: requirements
+requirements:
 - object_key: SR_01
   source_ids: [TOOL_01@1.1.1, TOOL_09@3.1.1]
 `,
@@ -77,19 +79,23 @@ func TestOnlyAnotherXIsReported(t *testing.T) {
 // @verifies SR_32@1.1.1
 func TestTheAllocationAndControlsAreCompared(t *testing.T) {
 	got, compared, err := files{
-		"requirements/system-requirements.yaml": `requirements:
+		"requirements/system-requirements.yaml": `type: requirements
+requirements:
 - object_key: SYS_09
   object_version: '4.1.2'
 `,
-		"requirements/user-needs.yaml": `requirements:
+		"requirements/user-needs.yaml": `type: requirements
+requirements:
 - object_key: UN_PSF_01
   object_version: '2.1.1'
 `,
-		"architecture/system-architecture.yaml": `elements:
+		"architecture/system-architecture.yaml": `type: architecture
+elements:
 - object_key: ARC_01
   allocated: [SYS_09@3.1.2]
 `,
-		"safety/hazards.yaml": `controls:
+		"safety/hazards.yaml": `type: hazards
+controls:
 - object_key: HAZC_01
   controls: [UN_PSF_01@1.1.1]
 `,
@@ -115,7 +121,8 @@ func TestTheAllocationAndControlsAreCompared(t *testing.T) {
 func TestAMissingObjectIsNotCompared(t *testing.T) {
 	got, compared, err := files{
 		"requirements/tool-requirements.yaml": tools,
-		"tools/software-requirements.yaml": `requirements:
+		"tools/software-requirements.yaml": `type: requirements
+requirements:
 - object_key: SR_01
   source_ids: [TOOL_99@1.1.1, TOOL_09]
 `,
@@ -130,7 +137,7 @@ func TestAMissingObjectIsNotCompared(t *testing.T) {
 
 // @verifies SR_33@2.1.1
 func TestAnAnnotationWithAnotherXIsReported(t *testing.T) {
-	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, []annotation.Annotation{
+	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, files{"requirements/tool-requirements.yaml": tools}.index(), []annotation.Annotation{
 		{File: "a.go", Line: 3, Kind: "implements", IDs: []string{"TOOL_01", "TOOL_09"}, Versions: []string{"1.1.1", "3.1.1"}},
 		{File: "a_test.go", Line: 7, Kind: "verifies", IDs: []string{"TOOL_09"}, Versions: []string{"4.1.1"}},
 		{File: "b.go", Line: 1, Kind: "implements", IDs: []string{"TOOL_09"}, Versions: []string{""}},
@@ -146,7 +153,7 @@ func TestAnAnnotationWithAnotherXIsReported(t *testing.T) {
 
 // @verifies SR_33@2.1.1
 func TestARefinesWithAnotherXIsReported(t *testing.T) {
-	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, []annotation.Annotation{
+	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, files{"requirements/tool-requirements.yaml": tools}.index(), []annotation.Annotation{
 		{File: "schemas/a.schema.json", Line: 4, Kind: "refines", IDs: []string{"TOOL_09"}, Versions: []string{"3.1.1"}},
 	})
 	want := []string{"schemas/a.schema.json:4 @refines names TOOL_09@3.1.1: its object has 4.1.1"}
@@ -160,11 +167,13 @@ func TestARefinesWithAnotherXIsReported(t *testing.T) {
 // @verifies SR_32@1.1.1
 func TestALinkToAModuleIsCompared(t *testing.T) {
 	got, compared, err := files{
-		"regulatory/DO178C.yaml": `requirements:
+		"regulatory/DO178C.yaml": `type: normative
+requirements:
 - object_key: REG_DO178C_02
   object_version: '2.1.1'
 `,
-		"requirements/system-requirements.yaml": `requirements:
+		"requirements/system-requirements.yaml": `type: requirements
+requirements:
 - object_key: SYS_09
   source_ids: [REG_DO178C_02@1.1.1]
 `,

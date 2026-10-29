@@ -3,8 +3,11 @@ package check
 import (
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
+
+	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
 // fakeGit is a history of one commit and its parent, kept in memory.
@@ -54,7 +57,8 @@ criteria:
 - object_key: RC-02
 `
 
-const requirements = `level: tool
+const requirements = `type: requirements
+level: tool
 requirements:
 - object_key: TOOL_03
   object_text: check every review result
@@ -71,6 +75,22 @@ func history(author string, coAuthors ...string) fakeGit {
 	}
 }
 
+// indexOf makes the index of the files the history holds in its newest commit.
+func indexOf(git fakeGit) *review.Index {
+	newest := map[string]string{}
+	for _, files := range git.files {
+		for file, content := range files {
+			newest[file] = content
+		}
+	}
+	var names []string
+	for file := range newest {
+		names = append(names, file)
+	}
+	sort.Strings(names)
+	return review.NewIndex(func(file string) ([]byte, error) { return []byte(newest[file]), nil }, names)
+}
+
 // check writes a review result into a temporary root and checks it.
 func check(t *testing.T, result string, git fakeGit) []string {
 	t.Helper()
@@ -84,7 +104,7 @@ criteria_revision: 'c1'
 results:
 ` + result
 	os.WriteFile(filepath.Join(root, "reviews", "r.yaml"), []byte(review), 0o644)
-	findings, err := Check(root, "reviews/r.yaml", git)
+	findings, err := Check(root, "reviews/r.yaml", git, indexOf(git))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -192,7 +212,8 @@ func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 // @verifies SR_05@1.1.1
 func TestASoftwareRequirementOfTheToolsHasAnAuthor(t *testing.T) {
 	git := history("Mathias Fischer")
-	git.files["c1"]["tools/software-requirements.yaml"] = `level: r5
+	git.files["c1"]["tools/software-requirements.yaml"] = `type: requirements
+level: r5
 requirements:
 - object_key: SR_01
   object_text: report a criterion that is missing

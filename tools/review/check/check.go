@@ -75,10 +75,11 @@ type Git interface {
 	Authors(commit string) (author string, coAuthors []string, err error)
 }
 
-// Check reads the review result in path, below root, and answers every rule it breaks.
+// Check reads the review result in path, below root, and answers every rule it breaks. The index
+// tells the file of each target.
 //
 // @implements SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1, SR_06@1.1.1, SR_07@1.1.1, SR_08@1.1.1, SR_16@1.1.1
-func Check(root, path string, git Git) ([]Finding, error) {
+func Check(root, path string, git Git, index *review.Index) ([]Finding, error) {
 
 	data, err := os.ReadFile(filepath.Join(root, path))
 	if err != nil {
@@ -96,7 +97,7 @@ func Check(root, path string, git Git) ([]Finding, error) {
 
 	var findings []Finding
 	for _, result := range r.Results {
-		for _, message := range checkResult(r, result, criteria, git) {
+		for _, message := range checkResult(r, result, criteria, git, index) {
 			findings = append(findings, Finding{path, result.ObjectKey, message})
 		}
 	}
@@ -142,7 +143,7 @@ func criteriaKeys(git Git, revision, file string) ([]string, error) {
 // checkResult answers the rules one result breaks.
 //
 // @implements SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1, SR_06@1.1.1, SR_08@1.1.1, SR_16@1.1.1
-func checkResult(r Review, result Result, criteria []string, git Git) []string {
+func checkResult(r Review, result Result, criteria []string, git Git, index *review.Index) []string {
 
 	var messages []string
 
@@ -198,7 +199,7 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 	}
 
 	for _, target := range result.TargetIDs {
-		authors, err := authorsOf(git, result.Revision, target)
+		authors, err := authorsOf(git, index, result.Revision, target)
 		if err != nil {
 			messages = append(messages, err.Error())
 			continue
@@ -218,9 +219,9 @@ func checkResult(r Review, result Result, criteria []string, git Git) []string {
 // joins what others wrote; the one who merged approves, and is no author.
 //
 // @implements SR_05@1.1.1, SR_08@1.1.1
-func authorsOf(git Git, revision, target string) ([]string, error) {
+func authorsOf(git Git, index *review.Index, revision, target string) ([]string, error) {
 
-	file, key := review.FileOf(target)
+	file, key := index.FileOf(target)
 	if file == "" {
 		return nil, fmt.Errorf("no file holds %s", target)
 	}

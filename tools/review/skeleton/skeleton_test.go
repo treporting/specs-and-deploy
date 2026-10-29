@@ -3,9 +3,12 @@ package skeleton
 import (
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
 // fakeGit is a history of two commits kept in memory: c1 changed the criteria, c2 is HEAD.
@@ -38,7 +41,8 @@ func history() fakeGit {
 	return fakeGit{files: map[string]string{
 		"reviews/criteria-tool.yaml":      "level: tool\ncriteria:\n- object_key: RC-01\n- object_key: RC-02\n",
 		"reviews/criteria-documents.yaml": "level: document\ncriteria:\n- object_key: RC-01\n",
-		"requirements/tool-requirements.yaml": `level: tool
+		"requirements/tool-requirements.yaml": `type: requirements
+level: tool
 requirements:
 - object_key: TOOL_03
   object_text: check every review result
@@ -49,6 +53,16 @@ requirements:
 	}}
 }
 
+// indexOf makes the index of the files of the history.
+func indexOf(git fakeGit) *review.Index {
+	var names []string
+	for file := range git.files {
+		names = append(names, file)
+	}
+	sort.Strings(names)
+	return review.NewIndex(func(file string) ([]byte, error) { return git.Show("HEAD", file) }, names)
+}
+
 var now = time.Date(2026, 10, 26, 14, 30, 5, 0, time.FixedZone("CET", 3600))
 
 // makeSkeleton writes a skeleton into a temporary root and answers its path and content.
@@ -56,7 +70,7 @@ func makeSkeleton(t *testing.T, targets ...string) (string, string, error) {
 	t.Helper()
 	root := t.TempDir()
 	os.MkdirAll(filepath.Join(root, "reviews"), 0o755)
-	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03-04", Targets: targets, Now: now}, history())
+	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03-04", Targets: targets, Now: now}, history(), indexOf(history()))
 	if err != nil {
 		entries, _ := os.ReadDir(filepath.Join(root, "reviews"))
 		if len(entries) != 0 {
@@ -130,7 +144,7 @@ func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
 
 // @verifies SR_15@1.1.1
 func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
-	if _, _, err := makeSkeleton(t, "TOOL_99"); err == nil || !strings.Contains(err.Error(), "TOOL_99 is not in") {
+	if _, _, err := makeSkeleton(t, "TOOL_99"); err == nil || !strings.Contains(err.Error(), "no file holds TOOL_99") {
 		t.Errorf("want TOOL_99 not found, got %v", err)
 	}
 	if _, _, err := makeSkeleton(t, "nothing.md"); err == nil {

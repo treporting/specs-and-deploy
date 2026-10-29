@@ -6,6 +6,8 @@ import (
 	"sort"
 	"strings"
 	"testing"
+
+	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
 // fakeGit holds the files of the base commit in memory.
@@ -19,6 +21,7 @@ func (f fakeGit) Show(rev, path string) ([]byte, error) {
 }
 
 const requirements = `schema: schemas/software-requirements.schema.json
+type: requirements
 level: r5
 requirements:
 - object_key: SR_01
@@ -28,6 +31,9 @@ requirements:
 `
 
 var base = fakeGit{"tools/software-requirements.yaml": requirements}
+
+// index is the index of the files of base, as if the working tree held them.
+var index = review.NewIndex(func(file string) ([]byte, error) { return base.Show("", file) }, []string{"tools/software-requirements.yaml"})
 
 func write(t *testing.T, files map[string]string) string {
 	t.Helper()
@@ -131,15 +137,15 @@ func TestOnlyFirstInALineOfComment(t *testing.T) {
 
 // @verifies SR_24@2.1.1
 func TestAnIdNotInTheBaseCommit(t *testing.T) {
-	got := messages(Check(base, "b1", []Annotation{{"a.go", 3, "implements", []string{"SR_01", "SR_07"}, []string{"1.1.1", "1.1.1"}}}))
-	if len(got) != 1 || got[0] != "a.go:3 @implements SR_07: not in tools/software-requirements.yaml in the base commit b1" {
+	got := messages(Check(base, "b1", index, []Annotation{{"a.go", 3, "implements", []string{"SR_01", "SR_07"}, []string{"1.1.1", "1.1.1"}}}))
+	if len(got) != 1 || got[0] != "a.go:3 @implements SR_07: no file of requirements holds such an id" {
 		t.Errorf("got %q", got)
 	}
 }
 
 // @verifies SR_25@2.2.1
 func TestAnIdNotApprovedInTheBaseCommit(t *testing.T) {
-	got := messages(Check(base, "b1", []Annotation{{"a_test.go", 9, "verifies", []string{"SR_02"}, []string{"1.1.1"}}}))
+	got := messages(Check(base, "b1", index, []Annotation{{"a_test.go", 9, "verifies", []string{"SR_02"}, []string{"1.1.1"}}}))
 	if len(got) != 1 || got[0] != "a_test.go:9 @verifies SR_02: draft in the base commit b1, not approved" {
 		t.Errorf("got %q", got)
 	}
@@ -202,8 +208,8 @@ func TestRefinesIsReadInTheCommentOfASchema(t *testing.T) {
 	if len(found) != 1 || found[0].File != "schemas/a.schema.json" || found[0].Line != 3 || found[0].Kind != "refines" {
 		t.Fatalf("got %+v", found)
 	}
-	got := messages(Check(base, "b1", found))
-	if len(got) != 1 || got[0] != "schemas/a.schema.json:3 @refines SR_07: not in tools/software-requirements.yaml in the base commit b1" {
+	got := messages(Check(base, "b1", index, found))
+	if len(got) != 1 || got[0] != "schemas/a.schema.json:3 @refines SR_07: no file of requirements holds such an id" {
 		t.Errorf("got %q", got)
 	}
 }
@@ -211,7 +217,7 @@ func TestRefinesIsReadInTheCommentOfASchema(t *testing.T) {
 // @verifies SR_25@2.2.1
 func TestARefinesNotApprovedInTheBaseCommit(t *testing.T) {
 	found := refinesIn(t, map[string]string{"schemas/a.schema.json": "{\"$comment\": \"@refines SR_02@1.1.1\"}\n"})
-	got := messages(Check(base, "b1", found))
+	got := messages(Check(base, "b1", index, found))
 	if len(got) != 1 || got[0] != "schemas/a.schema.json:1 @refines SR_02: draft in the base commit b1, not approved" {
 		t.Errorf("got %q", got)
 	}

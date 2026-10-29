@@ -35,9 +35,13 @@ func main() {
 	}
 
 	git := review.ExecGit{Root: *root}
+	index, err := review.IndexAt(*root)
+	if err != nil {
+		fail(err)
+	}
 	broken := 0
 	for _, f := range files {
-		findings, err := check.Check(*root, f, git)
+		findings, err := check.Check(*root, f, git, index)
 		if err != nil {
 			fail(err)
 		}
