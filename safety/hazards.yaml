@@ -73,7 +73,7 @@ controls:
   object_version: '1.1.1'
   object_text: a gap in the trace is marked as gap and never counted as covered
   source_ids: [HAZ_01@1.1.1]
-  controls: [UN_PSF_01@1.1.1]
+  controls: [SYS_02@1.1.1, SYS_48@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -81,7 +81,7 @@ controls:
   object_version: '1.1.1'
   object_text: an unknown value is kept and shown as unknown
   source_ids: [HAZ_02@1.1.1]
-  controls: [UN_PSF_02@1.1.1]
+  controls: [SYS_28@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -89,7 +89,7 @@ controls:
   object_version: '1.1.1'
   object_text: every view says which filters are in effect and what they leave out
   source_ids: [HAZ_03@1.1.1]
-  controls: [UN_PSF_03@1.1.1]
+  controls: [SYS_10@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -97,7 +97,7 @@ controls:
   object_version: '1.1.1'
   object_text: every import is counted on a way of its own, and every error is reported
   source_ids: [HAZ_04@1.1.1]
-  controls: [UN_PSF_04@1.1.1]
+  controls: [SYS_22@1.1.1, SYS_23@1.1.1, SYS_26@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -105,7 +105,7 @@ controls:
   object_version: '1.1.1'
   object_text: every figure is defined by what it counts, and its calculation is tested
   source_ids: [HAZ_05@1.1.1]
-  controls: [UN_PSF_05@1.1.1]
+  controls: [SYS_30@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -113,7 +113,7 @@ controls:
   object_version: '1.1.1'
   object_text: every report records the data, revision and parameters it was made from
   source_ids: [HAZ_06@1.1.1]
-  controls: [UN_PSF_06@1.1.1]
+  controls: [SYS_40@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]
@@ -121,7 +121,7 @@ controls:
   object_version: '1.1.1'
   object_text: a safety class is carried down the trace, and a lower one without decomposition is found
   source_ids: [HAZ_07@1.1.1]
-  controls: [UN_SAF_03@1.1.1]
+  controls: [SYS_11@1.1.1, SYS_70@1.1.1]
   priority: 'medium'
   status: draft
   verification_method: [analysis]

@@ -8,32 +8,41 @@ not show.
 **Figure trees** - how a hazard or a threat reaches the requirements
 
 ```mermaid
-flowchart LR
-  subgraph h[hazards and threats - h1, h2]
+flowchart TB
+  subgraph h[hazards - h1, h2]
     haz[hazard<br>HAZ_nn] --> hazc[control<br>HAZC_nn]
+  end
+  subgraph t[threats - h1, h2]
     thr[threat<br>THR_nn] --> thrc[control<br>THRC_nn]
   end
-  subgraph r[requirements - r1, r2, ...]
+  subgraph r[requirements - r1, r2, r3]
     un[user need<br>UN_..._nn] --> sys[system requirement<br>SYS_nn]
+    sys --> arc[element of the architecture<br>ARC_nn]
   end
-  hazc -- controls --> un
-  thrc -- controls --> un
+  hazc -- controls --> sys
+  thrc -- controls --> sys
 ```
 
-The hazards are on level h1, with the ids `HAZ_nn`; the threats of security share that level
-with the ids `THR_nn`. Each hazard is controlled by a measure on level h2, with the ids
-`HAZC_nn` - the prefix of the hazard and C for control -, and each measure asks for the user needs (r1) that realize it - mostly those of the
-section Safety of the product (PSF) in `requirements/user-needs.md`. The hazards and measures are
-in [hazards.yaml](hazards.yaml), in the format of [formats.md](../formats.md). If treporting gets a
-tool qualification, its analysis of tool errors builds on this file. It is written for whoever
-derives the user needs from the measures, and for an assessor.
+The hazards are on level h1, with the ids `HAZ_nn`. Each hazard is controlled by a control on level
+h2, with the ids `HAZC_nn`. Each control asks for a
+system requirement (r2) that realizes it.
+
+The threats of security share level h1, with the ids `THR_nn`. Each threat is controlled by a
+control on level h2, with the ids `THRC_nn`. Whether treporting gets a threat analysis is not
+decided yet - see Open in [harness.md](../harness.md).
+
+The hazards and their controls are in [hazards.yaml](hazards.yaml), in the format of
+[formats.md](../formats.md). If treporting gets a tool qualification, its analysis of tool errors
+builds on this file. The document is written for whoever derives the system requirements from the
+controls, and for an assessor.
 
 ## Risk
 
-The severity of each hazard is that of the product a user releases on its information, which
-treporting does not know. The risk is therefore kept low by detection rather than rated: every
-hazard is either prevented by its measure, or made visible to the user, and the
-detection itself is validated with faults built into data of known content (SYS_27).
+If treporting is used to decide whether a product can be released, and it shows something wrong, a
+product with a gap may be released. The severity of a hazard is the severity of that product's
+failure. treporting does not know it. So the risk is not rated, but kept low by detection: every
+hazard is either prevented by its control, or shown to the user as the linked system
+requirement defines.
 
 ## Open
 
