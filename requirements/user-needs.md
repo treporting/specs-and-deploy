@@ -1,7 +1,8 @@
 # User needs (r1)
 
-What each role needs from treporting, without naming a solution. The system requirements (r2)
-are derived from these.
+What each role needs from treporting, without naming a solution. The needs are the reason for the
+tool itself. The document is written for everyone, above all for whoever derives the system
+requirements (r2) from them.
 
 The needs themselves - ids `UN_<role>_nn` - are in [user-needs.yaml](user-needs.yaml), in the format
 of [formats.md](../formats.md); each section is a role, the field `function` of a need.
@@ -56,7 +57,8 @@ Whoever sets treporting up for the systems of a customer.
 
 What every role relies on when it decides on what treporting shows. treporting controls
 nothing, but a gap it hides can lead to a wrong release. The hazards they control are in
-`safety/hazard-and-risk-analysis.md`; the analysis of the tool's failures in the tool qualification traces to these needs.
+`safety/hazard-and-risk-analysis.md`. If treporting gets a tool qualification, its analysis of the
+tool's failures traces to these needs.
 
 `UN_PSF_01` to `UN_PSF_06`: in [user-needs.yaml](user-needs.yaml).
 
@@ -66,4 +68,6 @@ nothing, but a gap it hides can lead to a wrong release. The hazards they contro
 
 ## Change history
 
-`<empty>`
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-30 | - | #325 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
