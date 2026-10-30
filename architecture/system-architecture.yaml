@@ -8,7 +8,7 @@ elements:
 - object_key: ARC_01
   object_version: '1.1.1'
   kind: subsystem
-  repo: viewer-edgedb
+  repo: viewer-trace
   object_text: 'single page application: shows what the reporter answers - tables, charts, the trace -
     with filters, and hands tables and charts on'
   allocated: [SYS_01@1.1.1, SYS_02@1.1.1, SYS_03@1.1.1, SYS_04@1.1.1, SYS_05@1.1.1, SYS_06@1.1.1,
@@ -26,7 +26,7 @@ elements:
 - object_key: ARC_02
   object_version: '1.1.1'
   kind: subsystem
-  repo: reporter-edgedb
+  repo: reporter-trace
   object_text: 'REST API: answers trace, states, maturity and compliance from one data set; takes the
     identity from the proxy or the identity provider and checks the role; records every report'
   allocated: [SYS_01@1.1.1, SYS_02@1.1.1, SYS_03@1.1.1, SYS_04@1.1.1, SYS_05@1.1.1, SYS_06@1.1.1,
@@ -47,7 +47,7 @@ elements:
 - object_key: ARC_03
   object_version: '1.1.1'
   kind: subsystem
-  repo: storage-edgedb
+  repo: storages
   object_text: 'the model, the data sets and the `Source` interface over them - a database branch, generated
     data or a data file; the generator of data of known content; the import, the same for every system:
     counts what was stored, fingerprints it, derives the mapped (`M`) values - by the configuration of
@@ -67,7 +67,7 @@ elements:
 - object_key: ARC_04
   object_version: '1.1.1'
   kind: subsystem
-  repo: converter-edgedb
+  repo: converter-trace
   object_text: maps the customized attributes of an attribute-based system to the model, by a configuration
     file of the customer; one general mechanism for all of them
   allocated: [SYS_02@1.1.1, SYS_07@1.1.1, SYS_08@1.1.1, SYS_12@1.1.1, SYS_15@1.1.1, SYS_17@1.1.1,
@@ -114,7 +114,7 @@ elements:
   kind: interface
   object_text: REST API
   between: viewer → reporter
-  contract: swagger of reporter-edgedb
+  contract: swagger of the reporter
   priority: 'medium'
   safety: ''
   status: draft
@@ -124,7 +124,7 @@ elements:
   kind: interface
   object_text: '`Source`'
   between: reporter → storage
-  contract: Go interface in storage-edgedb
+  contract: Go interface of the storage
   priority: 'medium'
   safety: ''
   status: draft
@@ -133,8 +133,8 @@ elements:
   object_version: '1.1.1'
   kind: interface
   object_text: import
-  between: converter-edgedb, extractor-content → storage
-  contract: Go interface in storage-edgedb
+  between: converter, extractor-content → storage
+  contract: Go interface of the storage
   priority: 'medium'
   safety: ''
   status: draft
@@ -184,7 +184,7 @@ elements:
   kind: interface
   object_text: audit trail
   between: reporter → storage
-  contract: Go interface in storage-edgedb
+  contract: Go interface of the storage
   priority: 'medium'
   safety: ''
   status: draft
@@ -193,7 +193,7 @@ elements:
   object_version: '1.1.1'
   kind: interface
   object_text: items
-  between: extractor-SYSTEM → converter-edgedb
+  between: extractor-SYSTEM → converter
   contract: an item with its attributes as the system holds them, and its identity in the system
   priority: 'medium'
   safety: ''
@@ -203,7 +203,7 @@ elements:
   object_version: '1.1.1'
   kind: interface
   object_text: configuration
-  between: customer → converter-edgedb, storage
+  between: customer → converter, storage
   contract: the mapping of attributes and of values, one file per system of a customer
   priority: 'medium'
   safety: ''

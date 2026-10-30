@@ -121,7 +121,7 @@ a format taken over from the prototype has the prototype as its reason, and no a
 own: the prototype was examined, and where it could be better, the deviation stands there.
 
 The fields of the YAML carry the names of the properties of the gel schema of the model
-in storage-edgedb, so that our own data needs no configuration to be read. The YAML
+in the storage, so that our own data needs no configuration to be read. The YAML
 holds only what the author writes:
 
 **Table kinds of field** - what the author writes, and what comes from elsewhere
@@ -206,7 +206,7 @@ file that names another schema fails. Every schema names the requirement it refi
 the list `attributes_for_version_x`, always written out (traceability.md). The schemas are the
 contract of ARC_22 and are reviewed with it.
 They are drafts until the gel schema stands; then they become a part of it, and a CI check in
-storage-edgedb compares both.
+the storage compares both.
 
 **Why**: which schema belongs to a file stands where the file is read, and a tool needs no list of
 its own (TOOL_05). A schema gives the form of a requirement and realizes none, so it refines it.
@@ -495,7 +495,7 @@ repeated. A link to a pull request answers only the first.
 | Level | treporting | Example | Set by |
 |---|---|---|---|
 | system | treporting | - | r2 |
-| subsystem | a repo, ARC_01 to ARC_06; or the tools in specs-and-deploy, which are not part of the product | reporter-edgedb, tools | r3 |
+| subsystem | a repo, ARC_01 to ARC_06; or the tools in specs-and-deploy, which are not part of the product | reporter-trace, tools | r3 |
 | component | a group of packages with one responsibility | `trace`, `maturity` | the field `component` of an SR |
 | module | a Go package or JS module | `trace/gaps` | the code |
 | unit | a source file | `trace/gaps/mark.go` | the annotation, never by hand |
@@ -698,3 +698,4 @@ TOOL_12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
 | 13.1.1 | 2026-10-30 | Requirements: YAML for the data, Markdown for the explanations; The head of a file; Open points; Ids; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-10-30 | Open points; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-10-30 | Requirements: YAML for the data, Markdown for the explanations | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 16.1.1 | 2026-10-30 | Fields are the properties of the gel schema; Schemas; Breakdown | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

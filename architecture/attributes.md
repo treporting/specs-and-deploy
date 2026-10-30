@@ -107,7 +107,7 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | | |
 |---|---|
 | Meaning | `object_id` is the number of an object within its module - a document, kept as folder and name; it is unique only within that module. `module_prefix` is an abbreviation that makes the module unique within its RProject or LProject |
-| Example | the LProjects converter-edgedb, reporter-edgedb and viewer-edgedb each hold a document *SoftwareRequirements* with the prefix `SR`; its requirements are numbered within it. A link to one of them is written with the prefix: `target_ids = SR_12` |
+| Example | the LProjects converter-trace, reporter-trace and viewer-trace each hold a document *SoftwareRequirements* with the prefix `SR`; its requirements are numbered within it. A link to one of them is written with the prefix: `target_ids = SR_12` |
 | Comes from | context (the module), the author (the number) |
 | Prototype | same |
 
@@ -440,3 +440,4 @@ the generator is taken over.
 |---|---|---|---|---|
 | 1.1.1 | 2026-10-30 | - | #328 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
 | 2.1.1 | 2026-10-30 | Hazard | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-30 | Requirement | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
