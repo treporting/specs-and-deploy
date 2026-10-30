@@ -239,7 +239,8 @@ merge (TOOL_12, see devops.md).
 
 ## Open
 
-- **Process**: ISO15026 is proposed for the case why the tool can be relied on, in the tool
-  qualification.
-- **Platform and launches**: whether the reading of the table launches holds, and its values - or
-  whether the columns stay empty until the tags exist.
+- `treporting = 1_demo` - **Threats**: not decided whether treporting gets a threat analysis.
+- `treporting = 3_tools` - **Process**: not decided whether treporting gets a tool qualification
+  (ISO15026).
+- `treporting = 1_tools` - **Platform and launches**: not decided whether the reading of table
+  launches holds, and with which values - or whether its columns stay empty until the tags exist.

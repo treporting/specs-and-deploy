@@ -202,7 +202,7 @@ configuration stays with the customer; the mechanism stays public and is tested 
 **Rejected**: a converter in code per system - the proprietary formats would be in code, and the
 same mechanics would be written once per system.
 
-### ARCD_05 Identity (SYS_39) - provisional, until the threat analysis confirms or changes it
+### ARCD_05 Identity (SYS_39)
 
 **Decision**: treporting keeps no users and no passwords of its own. It takes the identity from
 what the organization already has: preferably from a proxy in front of it that authenticates the
@@ -228,16 +228,9 @@ The allocation of every system requirement to the subsystems is the field `alloc
 
 ## Open
 
-- **Licensed features** (SYS_58, SYS_59), priority later - none exists yet: they would be in the
-  product and checked per route - role, rights, licence -, under the Elastic License 2.0 in a
-  directory of their own per repo. Where their source lives and how the licence of an installation is proved is
-  to be decided.
-- **Repos**: reporter-annotations becomes the package annotations of extractor-content; the repos
-  of extractor-content and of the extractors per system are not created yet.
-- **Generator**: the data of known content for SYS_27 is made by the generator in storage; the
-  faults built into it are still to be listed.
-- **ARCD_05 Identity**, provisional, to be settled by the threat analysis: with a proxy, the reporter
-  must be reachable only through it, or the handed-on identity can be forged; and how a single user
-  works locally without a proxy and without an identity provider (UN_OPS_01), with reports marked as
-  made without login.
-- **Schemas** (ARC_22): the gel schema; until it stands, the schemas are drafts of it.
+- `treporting = 4_selfhosted` - **Licensed features**: not decided where their source lives and how
+  the licence of an installation is proved. None exists yet. They would be in the product, checked
+  per route - role, rights, licence -, under the Elastic License 2.0, in a directory of their own
+  per repo.
+- `treporting = 1_demo` - **Repos**: the repos of extractor-content and of the extractors per system
+  are not created yet. reporter-annotations becomes the package annotations of extractor-content.

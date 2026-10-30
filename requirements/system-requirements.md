@@ -164,5 +164,7 @@ against criteria; the verification method says how its realization is shown to m
 
 ## Open
 
-- **Figures**: the measured and the target figures in the tables of [Performance](#performance).
-- **Licensed features** (SYS_58, SYS_59): none exists yet; everything is under Apache-2.0.
+- `treporting = 2_selfhosted` - **Figures**: the measured and the target figures in the tables of
+  [Performance](#performance) are not known yet.
+- `treporting = 4_selfhosted` - **Licensed features**: not known which there will be. None
+  exists yet; everything is under Apache-2.0.

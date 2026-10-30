@@ -429,12 +429,5 @@ the generator is taken over.
 
 ## Open
 
-- **the record of an import** (SYS_41): no type for it yet
-- **the record of a report** (SYS_43), with its identity and the fingerprint of its data: no type
-  for it yet
-- **the evaluation of a finding** (SYS_72): no attribute yet; the configuration names it
-- **platform_launch**: the value `all`, resolved into the platforms by the converter, by the
-  configuration of the customer
-- **the other types** of the model, beside those above
-- **the generator**: the points of the section Deviations of the generator, when it is taken over
-- **issue_ids** for treporting itself: whether it holds the link to the tickets
+- `treporting = 1_demo` - **The value `all` of platform_launch**: not set yet. The converter
+  would resolve it into the platforms, by the configuration of the customer.

@@ -314,4 +314,5 @@ finds an id in its file through the component `review`, and the annotations thro
 
 ## Open
 
-- **Where the tools live**: the reusable workflow in `treporting/.github`.
+- `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to run as a
+  reusable workflow in `treporting/.github`, which takes the tools from specs-and-deploy.
