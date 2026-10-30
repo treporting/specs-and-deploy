@@ -38,8 +38,9 @@ realizes them; an id is unique together with that repo and its document (formats
 ## How the ids hang together
 
 ```
-HAZ, THR (h1)  →  HAZC, THRC (h2)  →  UN (r1) ──┐
-                                      REG (n1) ─┴─→  SYS (r2)  →  ARC (r3)  →  SR (r5)  →  code, tests
+                                       UN (r1) ──┐
+                                      REG (n1) ──┼─→  SYS (r2)  →  ARC (r3)  →  SR (r5)  →  code, tests
+HAZ, THR (h1)  →  HAZC, THRC (h2) ───────────────┘
 
 THRC of a threat to our work  →  PROC, a rule of the harness
 ```
@@ -73,3 +74,4 @@ and a branch of its own, and reaches `main` only through a pull request - see th
 | 5.1.1 | 2026-10-29 | How the ids hang together; Licence; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 6.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 7.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-10-30 | How the ids hang together | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

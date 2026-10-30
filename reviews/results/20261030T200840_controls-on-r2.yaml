@@ -1,0 +1,119 @@
+# Review of README.md, harness.md, formats.md, traceability.md, architecture/attributes.md, requirements/user-needs.md against the criteria of the level document.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: document
+created_by: Mathias Fischer
+created_at: '2026-10-30T20:08:40+01:00'
+criteria: reviews/criteria-documents.yaml
+criteria_revision: '865b621'
+results:
+- object_key: RR_01
+  target_ids: [README.md]
+  revision: 'f7fd6b0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [harness.md]
+  revision: 'f7fd6b0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [formats.md]
+  revision: 'f7fd6b0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [traceability.md]
+  revision: 'f7fd6b0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
+- object_key: RR_05
+  target_ids: [architecture/attributes.md]
+  revision: 'f7fd6b0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
+- object_key: RR_06
+  target_ids: [requirements/user-needs.md]
+  revision: 'f7fd6b0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed

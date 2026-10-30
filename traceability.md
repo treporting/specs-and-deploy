@@ -246,7 +246,7 @@ both its ends. It is checked against the version of its parent in that baseline,
 | SYS_09 → UN_PM_01 | release | release | the release |
 | `@implements SR_01` in the code | library | library | the library: its code is not checked against its own SRs |
 | SR_01 → SYS_09 | library | release | not the library; the release that delivers the library and holds SYS_09 in its new version |
-| HAZC_07 `controls` UN_SAF_03 | release | release | the release |
+| HAZC_07 `controls` SYS_11 | release | release | the release |
 
 **Table maintenance** - a fix for an older release, while `main` has moved on
 
@@ -489,40 +489,40 @@ the data.
 
 ## Links between trees
 
-A control of a hazard (h2) names the user needs that realize it, in `controls`. That link does not
-run within the tree of the requirements: it joins two trees, the one of safety (hazard → control)
-and the one of the requirements (user need → system requirement → …). The user needs stay the top
-of their tree, with no uplink (attributes.md: `controls` from a measure to the requirements it asks
-for).
+A control of a hazard (h2) names the system requirements that realize it, in `controls`. That link
+does not run within the tree of the requirements: it joins two trees, the one of safety (hazard →
+control) and the one of the requirements (user need → system requirement → …). The system
+requirements keep their uplinks within their own tree (attributes.md: `controls` from a measure to
+the requirements it asks for).
 
-**Decision**: `controls` is a down-link, from the control to its user needs, and names their
-versions: `controls: [UN_PSF_01@1.1.1]`. It is suspect where x of a user need changed: the control
-then checks whether it is still realized. A change of x of the control does not make its user
-needs suspect; its review covers its list `controls`.
+**Decision**: `controls` is a down-link, from the control to its system requirements, and names
+their versions: `controls: [SYS_02@1.1.1]`. It is suspect where x of a system requirement changed:
+the control then checks whether it is still realized. A change of x of the control does not make its
+system requirements suspect; its review covers its list `controls`.
 
 **Why**:
 
-- the user needs stay the top of their tree; a link from each of them to a control would make
-  them children of the tree of safety
+- the system requirements keep their uplinks within their own tree; a link from each of them to
+  a control would make them children of the tree of safety as well
 - the control answers for being realized, so a change of its user needs is what it has to see
 - the reason against down-links within a tree - a new child would change the parent - no longer
-  holds: a new user need changes y of the control only, and no one sees y
+  holds: a new system requirement changes y of the control only, and no one sees y
 
-**Rejected**: `controlledBy` on every user need, an uplink to the control.
+**Rejected**: `controlledBy` on every system requirement, an uplink to the control.
 
-**Decision**: PROC_13 asks approved uplinks only. A control may be approved while a user need it
-names in `controls` is not. Whether a control is realized is checked on its own.
+**Decision**: PROC_13 asks approved uplinks only. A control may be approved while a system requirement
+it names in `controls` is not. Whether a control is realized is checked on its own.
 
 **Why**: the approval of a control is about what it asks for. That it is realized is another
 question, and it has to be answered on its own.
 
-**Rejected**: approved user needs at the approval of a control, as for uplinks.
+**Rejected**: approved system requirements at the approval of a control, as for uplinks.
 
 **Decision**: PROC_12 follows the links, not a list of levels: an object is merged before another
 names it.
 
-**Why**: a down-link runs the other way. The user needs are merged before a control names them in
-`controls`, though the control stands above them. A list of levels would have to say so for every
+**Why**: a down-link runs the other way. The system requirements are merged before a control names
+them in `controls`, though the control stands above them. A list of levels would have to say so for every
 link between trees.
 
 **Rejected**: a list of levels with the hazards added. It would hold for uplinks only.
@@ -572,3 +572,4 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 6.1.1 | 2026-10-29 | The version of a document | #303 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 7.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 9.1.1 | 2026-10-30 | Where a suspect link blocks; Links between trees | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
