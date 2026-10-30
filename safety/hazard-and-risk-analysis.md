@@ -8,24 +8,16 @@ not show.
 The hazards are on level h1, with the ids `HAZ_nn`; the threats of security share that level
 with the ids `THR_nn`. Each hazard is controlled by a measure on level h2, with the ids
 `HAZC_nn` - the prefix of the hazard and C for control -, and each measure asks for the user needs (r1) that realize it - mostly those of the
-section Safety of the product (PSF) in `requirements/user-needs.md`. The tool
-qualification package builds its analysis of tool errors on this file.
-
-## Hazards
-
-`HAZ_01` to `HAZ_07`: in [hazards.yaml](hazards.yaml).
-
-## Measures
-
-`HAZC_01` to `HAZC_07`: in [hazards.yaml](hazards.yaml).
-
-The detection itself is validated with faults built into data of known content (SYS_27).
+section Safety of the product (PSF) in `requirements/user-needs.md`. The hazards and measures are
+in [hazards.yaml](hazards.yaml), in the format of [formats.md](../formats.md). If treporting gets a
+tool qualification, its analysis of tool errors builds on this file. It is written for whoever
+derives the user needs from the measures, and for an assessor.
 
 ## Risk
 
 The severity of each hazard is that of the product a user releases on its information, which
 treporting does not know. The risk is therefore kept low by detection rather than rated: every
-hazard is either prevented by the requirements above, or made visible to the user, and the
+hazard is either prevented by its measure, or made visible to the user, and the
 detection itself is validated with faults built into data of known content (SYS_27).
 
 ## Open
@@ -35,4 +27,6 @@ detection itself is validated with faults built into data of known content (SYS_
 
 ## Change history
 
-`<empty>`
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-30 | - | #329 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
