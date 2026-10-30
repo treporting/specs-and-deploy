@@ -9,12 +9,17 @@ auditor who looks for its evidence.
 
 | File | What |
 |---|---|
+| not set yet | the criteria of the hazards and threats (h1) |
+| not set yet | the criteria of the controls (h2) |
 | [criteria-n1.yaml](criteria-n1.yaml) | the criteria of the regulatory requirements (n1): how a duty was written down, not the duty |
 | [criteria-r1.yaml](criteria-r1.yaml) | the criteria of the user needs (r1) |
 | [criteria-r2.yaml](criteria-r2.yaml) | the criteria of the system requirements (r2) |
 | [criteria-r3.yaml](criteria-r3.yaml) | the criteria of the elements of the architecture (r3) |
 | [criteria-r5.yaml](criteria-r5.yaml) | the criteria of the software requirements (r5), of the subsystems and of the tools |
+| not set yet | the criteria of the software architecture of a subsystem (r6) |
+| not set yet | the criteria of the software design of a subsystem (r7) |
 | [criteria-tool.yaml](criteria-tool.yaml) | the criteria of the tool requirements |
+| not set yet | the criteria of the rules of our work (rules) |
 | [criteria-documents.yaml](criteria-documents.yaml) | the criteria of the documents, after ISO15289 |
 
 The results lie in [results/](results/), one file per review.
@@ -38,4 +43,4 @@ feasible. They judge the duty, and a finding on it would change nothing we keep.
 
 ## Open
 
-- the criteria of the other levels.
+- `treporting = 1_tools` - **Criteria**: not set yet.

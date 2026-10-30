@@ -65,5 +65,5 @@ more information on them, the decision states what it found (PROC_18).
 
 ## Open
 
-- **Products on the market**: whether and from when the Cyber Resilience Act applies to treporting,
-  to be confirmed by legal advice.
+- `treporting = 2_selfhosted` - **Products on the market**: not known whether, and from when, the
+  Cyber Resilience Act applies to treporting. Legal advice is to confirm it.

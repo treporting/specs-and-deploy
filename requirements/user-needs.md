@@ -62,5 +62,4 @@ nothing, but a gap it hides can lead to a wrong release. The hazards they contro
 
 ## Open
 
-- **Safety of the product**: the tool qualification, whose analysis of the tool's failures traces
-  to these needs.
+`<empty>`

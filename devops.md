@@ -161,14 +161,7 @@ recorded with the pull request, by a computer (REG_CFR21-11_01).
 Each required check is shown to block the merge by a demonstration, recorded in `verifications/`
 as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
 
-## Build and deployment
-
-See Open.
-
 ## Open
 
-- **Environments** (GitHub Actions): the other checks of formats.md, SBOM and licences.
-- **Documents to PDF**: the settings of the export - header, footer, margins - and revision and
-  status in header and footer. Each waits for its approved tool requirement.
-- **Build and deployment**: the containers in `deploy/`, built from the parts the subsystems
-  deliver; the demo.
+- `treporting = 1_tools` - **SBOM and licences**: not decided whether the CI makes an SBOM and
+  checks the licences.

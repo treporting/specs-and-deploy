@@ -252,5 +252,5 @@ decisions:
   object_version: '2.1.1'
   object_text: Configuration instead of code for the customer (SYS_22)
 - object_key: ARCD_05
-  object_version: '2.1.1'
-  object_text: Identity (SYS_39) - provisional, until the threat analysis confirms or changes it
+  object_version: '3.1.1'
+  object_text: Identity (SYS_39)

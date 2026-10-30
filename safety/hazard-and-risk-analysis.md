@@ -30,5 +30,5 @@ detection itself is validated with faults built into data of known content (SYS_
 
 ## Open
 
-- the threats of security (`THR_nn`) and their controls are not written down yet.
-- the tool qualification package, which builds its analysis of tool errors on this file.
+- `treporting = 3_tools` - **Tool qualification**: the tool qualification package is not made yet.
+  Its analysis of tool errors builds on this file and shows whether this analysis is complete.

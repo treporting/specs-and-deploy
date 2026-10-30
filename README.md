@@ -60,4 +60,4 @@ and a branch of its own, and reaches `main` only through a pull request - see th
 
 ## Open
 
-- the threats (`THR_nn`) and their controls (`THRC_nn`) are not written down yet.
+`<empty>`

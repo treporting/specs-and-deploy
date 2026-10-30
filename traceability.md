@@ -553,9 +553,9 @@ read them as any other requirement, with the same check of version and links.
 **Rejected**: a column for the version in the table of harness.md. A tool would have to read a
 Markdown table, and the rules would be kept apart from every other requirement.
 
-## Open questions
+## Open
 
-1. **Maintenance:** a fix for an older release needs the state of specs-and-deploy of that release,
-   from its tag, not `main`. How such a state is made and kept is not set yet.
-2. **The realization of a control:** how it is checked that a control is realized by its user
-   needs, and when.
+1. `treporting = 2_tools` - **Maintenance**: not set how the state of specs-and-deploy of an older
+   release is made and kept. A fix for an older release needs it, from its tag, not `main`.
+2. `treporting = 2_tools` - **The realization of a control**: no tool requirement checks
+   yet that the user needs a control names are realized.
