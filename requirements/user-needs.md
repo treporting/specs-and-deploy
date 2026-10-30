@@ -6,54 +6,27 @@ requirements (r2) from them. The roles are those treporting assumes in an organi
 it - not the roles of our own work, which harness.md sets in its section Roles.
 
 The needs themselves - ids `UN_<role>_nn` - are in [user-needs.yaml](user-needs.yaml), in the format
-of [formats.md](../formats.md); each section is a role, the field `function` of a need.
+of [formats.md](../formats.md); the field `function` of a need is the short form of its role.
 
-## Project Manager - PM
+## Roles
 
-Plans and steers the development of a product - its scope, schedule and resources.
+**Table roles** - the roles treporting assumes in an organization, and the short form each is
+known by in the field `function`
 
-## Release Manager - RM
-
-Decides whether a release is ready to be delivered, and answers for that decision.
-
-## Configuration Manager - CM
-
-Identifies the configuration of a product, controls the changes to it and records its baselines.
-
-## Quality Assurance - QA
-
-Checks, independently of the project, whether its processes and work products follow what was
-agreed.
-
-## Safety - SAF
-
-Plans and coordinates the safety activities of a project, and answers for its hazards being
-controlled.
-
-## Assessor - ASR
-
-Judges independently, from outside the project, whether it meets the standards chosen - an
-assessor or an auditor.
-
-## Developer - DEV
-
-Turns requirements into design and code.
-
-## Tester - TST
-
-Specifies and runs the tests, and records their results.
-
-## Operator - OPS
-
-Installs, runs and maintains treporting in an organization, and keeps its data.
-
-## Configurator - CFG
-
-Whoever sets treporting up for the systems of a customer.
-
-## All roles - ALL
-
-What every role above needs.
+| Role | Short form | Description |
+|---|---|---|
+| Project Manager | PM | Plans and steers the development of a product - its scope, schedule and resources. |
+| Release Manager | RM | Decides whether a release is ready to be delivered, and answers for that decision. |
+| Configuration Manager | CM | Identifies the configuration of a product, controls the changes to it and records its baselines. |
+| Quality Assurance | QA | Checks, independently of the project, whether its processes and work products follow what was agreed. |
+| Safety | SAF | Plans and coordinates the safety activities of a project, and answers for its hazards being controlled. |
+| Assessor | ASR | Judges independently, from outside the project, whether it meets the standards chosen - an assessor or an auditor. |
+| Developer | DEV | Turns requirements into design and code. |
+| Tester | TST | Specifies and runs the tests, and records their results. |
+| Operator | OPS | Installs, runs and maintains treporting in an organization, and keeps its data. |
+| Configurator | CFG | Sets treporting up for the systems of a customer. |
+| All roles | ALL | What every role above needs. |
+| Safety of the product | PSF | What every role relies on when it decides on what treporting shows - see the section below. |
 
 ## Safety of the product - PSF
 
