@@ -3,34 +3,7 @@
 The subsystems of treporting, their interfaces, and which subsystems realize each system
 requirement (r2).
 
-There are two kinds of system:
-
-- **file-based** systems - SHAREPOINT, SVN, GIT, JFROG - only manage files: the content lies in
-  the folders and files themselves. extractor-content reads it, with a package for each kind of
-  content and no plug-in mechanism.
-- **attribute-based** systems - DOORS, JIRA, a DMS, CODEBEAMER - hold items whose attributes are
-  customized by each customer. converter-edgedb maps those attributes to the model, by a
-  configuration file of the customer.
-
-Every system has an extractor of its own that lists and fetches what it holds. Converter,
-storage and reporter speak one language, the information model (ARC_21), whose contract is
-[attributes.md](attributes.md). Our own data in YAML has the schemas of ARC_22 as its contract, in
-[schemas/](../schemas/); each schema names it as `@refines ARC_22`, and is a draft of the gel schema. Both ways end in
-the import of the storage, which works the same for every system. Each subsystem is a repo of
-its own. r4 is the allocation in this file: the system requirements allocated to a subsystem are
-its requirements, derived directly from r2, with no ids of their own.
-
-The terms - system, item, content, work product, release, library, baseline - are those of
-[definitions.md](../definitions.md). The levels follow ISO/IEC/IEEE 12207 as set out in the section
-Process of [harness.md](../harness.md); this file is r3, the architecture definition of
-ISO/IEC/IEEE 12207, 6.4.4.
-
-The ids are `ARC_nn` for the subsystems and interfaces, `ARCR_nn` for the rationale and
-`ARCD_nn` for the decisions; a requirement that a decision made possible names it as its
-uplink. The elements, the allocation and the ids of rationale and decisions are in
-[system-architecture.yaml](system-architecture.yaml), in the format of [formats.md](../formats.md).
-
-## Overview
+**Figure overview** - the subsystems of treporting and their interfaces
 
 ```mermaid
 flowchart LR
@@ -64,13 +37,44 @@ flowchart LR
   rep -- ARC_18 --> stor
 ```
 
-## Subsystems
+**Table subsystems** - the short form of each subsystem
 
-`ARC_01` to `ARC_06`: in [system-architecture.yaml](system-architecture.yaml).
+| Short form | Subsystem | Id |
+|---|---|---|
+| V | viewer-edgedb | ARC_01 |
+| R | reporter-edgedb | ARC_02 |
+| S | storage-edgedb | ARC_03 |
+| C | converter-edgedb | ARC_04 |
+| EC | extractor-content | ARC_05 |
+| ES | extractor-SYSTEM | ARC_06 |
 
-## Interfaces
+There are two kinds of system:
 
-`ARC_11` to `ARC_20`: in [system-architecture.yaml](system-architecture.yaml).
+- **file-based** systems - SHAREPOINT, SVN, GIT, JFROG - only manage files: the content lies in
+  the folders and files themselves. extractor-content reads it, with a package for each kind of
+  content and no plug-in mechanism.
+- **attribute-based** systems - DOORS, JIRA, a DMS, CODEBEAMER - hold items whose attributes are
+  customized by each customer. converter-edgedb maps those attributes to the model, by a
+  configuration file of the customer.
+
+Every system has an extractor of its own that lists and fetches what it holds. Converter,
+storage and reporter speak one language, the information model (ARC_21), whose contract is
+[attributes.md](attributes.md). Our own data in YAML has the schemas of ARC_22 as its contract, in
+[schemas/](../schemas/); each schema names it as `@refines ARC_22`, and is a draft of the gel schema. Both ways end in
+the import of the storage, which works the same for every system. Each subsystem is a repo of
+its own. r4 is the allocation in this file: the system requirements allocated to a subsystem are
+its requirements, derived directly from r2, with no ids of their own. The document is written
+for whoever derives the software requirements of a subsystem (r5) from it.
+
+The terms - system, item, content, work product, release, library, baseline - are those of
+[definitions.md](../definitions.md). The levels follow ISO/IEC/IEEE 12207 as set out in the section
+Process of [harness.md](../harness.md); this file is r3, the architecture definition of
+ISO/IEC/IEEE 12207, 6.4.4.
+
+The ids are `ARC_nn` for the subsystems and interfaces, `ARCR_nn` for the rationale and
+`ARCD_nn` for the decisions; a requirement that a decision made possible names it as its
+uplink. The elements, the allocation and the ids of rationale and decisions are in
+[system-architecture.yaml](system-architecture.yaml), in the format of [formats.md](../formats.md).
 
 ## Rationale
 
@@ -222,8 +226,6 @@ and the duty of keeping passwords.
 
 ## Allocation
 
-V viewer, R reporter, S storage, C converter-edgedb, EC extractor-content, ES extractor-SYSTEM.
-
 The allocation of every system requirement to the subsystems is the field `allocated` of each subsystem in [system-architecture.yaml](system-architecture.yaml).
 
 ## Open
@@ -237,4 +239,6 @@ The allocation of every system requirement to the subsystems is the field `alloc
 
 ## Change history
 
-`<empty>`
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-30 | - | #327 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
