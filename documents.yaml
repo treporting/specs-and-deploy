@@ -8,7 +8,7 @@ documents:
   type: document
   object_version: '8.1.1'
   object_hash: '881fbe0'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: harness.md
   type: explanation
@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '16.1.1'
   object_hash: 'e3fae9f'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document

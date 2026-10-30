@@ -654,27 +654,6 @@ The containers are built in `deploy/` of this repo from the parts the subsystems
 reporter and the viewer in one image. A test result is linked to its test case by package and
 function name, from the JSON output of `go test` and of vitest.
 
-## CI check
-
-On every pull request of a code repo, each check a tool with a requirement of its own
-(`requirements/tool-requirements.yaml`):
-
-**Table CI checks** - each check, and the tool requirement it realizes
-
-| Check | Tool requirement |
-|---|---|
-| every YAML file matches its schema | TOOL_05 |
-| every id in `@implements` and `@verifies` exists, and is approved, in the YAML of the **base commit** of the pull request - a requirement added in the same pull request does not count (PROC_05); a SYS named by a system test exists in specs-and-deploy on `main` | TOOL_06 |
-| the annotations counted a second way, apart from the parser - `git grep -c` | TOOL_07 |
-| the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to this subsystem in the architecture (r4) | TOOL_08 |
-| an approved requirement names approved uplinks only | TOOL_09 |
-| every test file belongs to exactly one test level | TOOL_10 |
-| every review result keeps the rules of the section Reviews, and the tests of the tools pass | TOOL_12 |
-
-In specs-and-deploy as well: the references both ways, and every SYS allocated.
-
-TOOL_12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
-
 ## Open
 
 `<empty>`
@@ -699,3 +678,4 @@ TOOL_12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
 | 14.1.1 | 2026-10-30 | Open points; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-10-30 | Requirements: YAML for the data, Markdown for the explanations | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-10-30 | Fields are the properties of the gel schema; Schemas; Breakdown | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 17.1.1 | 2026-10-30 | CI check | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
