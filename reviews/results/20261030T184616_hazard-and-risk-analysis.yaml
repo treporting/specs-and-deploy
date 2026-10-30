@@ -11,7 +11,7 @@ criteria_revision: '865b621'
 results:
 - object_key: RR_01
   target_ids: [safety/hazard-and-risk-analysis.md]
-  revision: 'ded0785'
+  revision: 'cc30aa0'
   criteria:
     RC_01: passed
     RC_02: passed
