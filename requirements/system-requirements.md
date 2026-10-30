@@ -5,37 +5,42 @@ names as uplinks the user needs (r1), the regulatory requirements and the decisi
 architecture (`ARCD_nn`) it comes from. Where none stands above it - a requirement derived from the
 view of the system - it gives its rationale instead (ISO/IEC/IEEE 29148, 5.2.8). Every need and
 every regulatory requirement that treporting realizes has at least one requirement. How the
-system does it is left to the architecture (r3).
+system does it is left to the architecture (r3). The document is written for whoever derives the
+architecture (r3) and the tests from the requirements.
 
 The requirements themselves - ids `SYS_nn` - are in [system-requirements.yaml](system-requirements.yaml),
 in the format of [formats.md](../formats.md); this file holds what explains them.
 
-Each section is a feature, named by a short keyword - the field `feature` of a requirement. A
+Each feature is named by a short keyword - the field `feature` of a requirement. A
 requirement carries the functions of the needs it comes from - the roles of `user-needs.md`.
 
-## Trace
+## Features
 
-`SYS_01` to `SYS_08`: in [system-requirements.yaml](system-requirements.yaml).
+**Table features** - each feature, and when a requirement belongs to it
 
-## Filter
-
-`SYS_09` to `SYS_11`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Hazards
-
-`SYS_12`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Standards
-
-`SYS_13` to `SYS_14`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Baselines
-
-`SYS_15` to `SYS_17`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Provenance
-
-`SYS_18` to `SYS_22`: in [system-requirements.yaml](system-requirements.yaml).
+| Feature | A requirement belongs here when it is about |
+|---|---|
+| Trace | the links between the levels, their gaps and states per release |
+| Filter | narrowing a view, and carrying what it narrows by down the trace |
+| Hazards | the trace of a hazard over its measures to test results |
+| Standards | the clauses of a standard, or the vocabulary of a process reference model |
+| Baselines | baselines, releases and libraries, and what changed between them |
+| Provenance | which data set, revision and build an answer comes from; keeping data sets apart |
+| Integrity | whether an import read everything, and read it right - see the section below |
+| Errors | an unknown value, a refused request or a figure, so that it is not misread |
+| Export | taking tables, charts and records out |
+| Usability | finding one's way, and seeing that data is still loading |
+| Operation | installing, updating and running it |
+| Audit | who did what and when: access, records and how long they are kept |
+| Maturity | how maturity is computed - see the section below |
+| Performance | size, time, memory and the number of users - see the section below |
+| Constraints | a duty set from outside, not asked for by a role |
+| Licensing | licensed features - see the section below |
+| Configuration | mapping the data of a customer by configuration |
+| Delivery | what comes with a release: SBOM, secure default, security fixes |
+| Derived values | values derived from those read |
+| Plausibility | rules of plausibility and their findings |
+| Verification | the verification method, status and reviews of a requirement - see the section below |
 
 ## Integrity
 
@@ -58,28 +63,6 @@ is counted after the import, not by the converter. Four levels together give the
 
 Equal counts do not prove the content right - that is level B. That the checks find anything at all
 is shown by level C only.
-
-`SYS_23` to `SYS_27`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Errors
-
-`SYS_28` to `SYS_30`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Export
-
-`SYS_31` to `SYS_32`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Usability
-
-`SYS_33` to `SYS_34`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Operation
-
-`SYS_35` to `SYS_38`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Audit
-
-`SYS_39` to `SYS_44`: in [system-requirements.yaml](system-requirements.yaml).
 
 ## Maturity
 
@@ -108,8 +91,6 @@ so that 100 % can always be reached.
 | 13 | test case, test result of the system qualification test | SYS.5 | RG-SYS-TC, RG-SYS-TR |
 | 14 | test case, test result of the validation | VAL.1 | RG-SYS-TC, RG-SYS-TR |
 
-`SYS_45` to `SYS_50`: in [system-requirements.yaml](system-requirements.yaml).
-
 ## Performance
 
 The non-functional requirements. Their figures are measured first on the prototype with generated
@@ -124,39 +105,13 @@ The sizes of a data set:
 | medium | open | open | open | open |
 | large | open | open | open | open |
 
-`SYS_51` to `SYS_56`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Constraints
-
-`SYS_57`: in [system-requirements.yaml](system-requirements.yaml).
-
 ## Licensing
 
 Priority **later**: treporting has no licensed feature yet - everything is under Apache-2.0.
 These requirements keep the way open for features developed for customers. A feature
 meant to be licensed must not be published under Apache-2.0 before, or it stays free for good.
 
-`SYS_58` to `SYS_59`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Configuration
-
-`SYS_60` to `SYS_62`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Delivery
-
-`SYS_63` to `SYS_67`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Derived values
-
-`SYS_68` to `SYS_69`: in [system-requirements.yaml](system-requirements.yaml).
-
-## Plausibility
-
-`SYS_70` to `SYS_72`: in [system-requirements.yaml](system-requirements.yaml).
-
 ## Verification
-
-`SYS_73` to `SYS_76`: in [system-requirements.yaml](system-requirements.yaml).
 
 Every requirement has a status - `draft`, `review`, `approved`, `obsolete` - and a verification
 method after ISO/IEC/IEEE 29148. The review of a requirement checks the requirement itself
@@ -171,4 +126,6 @@ against criteria; the verification method says how its realization is shown to m
 
 ## Change history
 
-`<empty>`
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-30 | - | #326 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
