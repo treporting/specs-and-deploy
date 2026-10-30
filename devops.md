@@ -158,8 +158,27 @@ recorded with the pull request, by a computer (REG_CFR21-11_01).
 - `linkcheck` as a required check - it never fails, so it would block no merge; it would only make
   each merge wait until it has run
 
-Each required check is shown to block the merge by a demonstration, recorded in `verifications/`
-as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
+Each required check without a test is verified by a demonstration, recorded in `verifications/` as
+formats.md, section Verifications, sets.
+
+## CI checks
+
+The checks of a pull request, each with a tool requirement of its own. Which of them the CI runs
+today is set in the section Continuous integration.
+
+**Table CI checks** - each check, and the tool requirement it realizes
+
+| Check | Tool requirement |
+|---|---|
+| every YAML file matches its schema | TOOL_05 |
+| every id in `@implements`, `@verifies` and `@refines` exists, and is approved, in the base commit of the pull request - a requirement added in the same pull request does not count (PROC_05) | TOOL_06 |
+| the annotations counted a second way, apart from the parser | TOOL_07 |
+| the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to the subsystem of the SR (r4) | TOOL_08 |
+| an approved requirement names approved uplinks only | TOOL_09 |
+| every test file belongs to exactly one test level | TOOL_10 |
+| every review result keeps the rules of the section Reviews of formats.md, and the tests of the tools pass | TOOL_12 |
+| the ruleset of `main` on GitHub has the rules of `.github/rulesets/main.json` | TOOL_13 |
+| every `@implements`, `@verifies` and `@refines` names the version of its id, `ID@x.y.z` | TOOL_20 |
 
 ## Open
 
@@ -178,3 +197,4 @@ as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
 | 6.1.1 | 2026-10-29 | Environments; Documents to PDF; Build and deployment; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 7.1.1 | 2026-10-30 | Continuous integration; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 9.1.1 | 2026-10-30 | Continuous integration; CI checks | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

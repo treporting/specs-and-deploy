@@ -102,6 +102,7 @@ etc.) names the launches it is planned for in `platform_launch`.
 | treporting | 2_selfhosted | | |
 | treporting | 2_tools | | |
 | treporting | 3_tools | | |
+| treporting | 4_selfhosted | | |
 
 The values in the table are an example only, made up to show the form (see Open).
 
@@ -207,7 +208,8 @@ is reviewed by them.
     save a change of what is approved: where its review failed, the change is rejected. It is taken
     back on the branch, and only the review result and the tickets reach `main`. The approved
     version stands (traceability.md).
-11. A pull request takes the branch to `main` (PROC_03). The CI checks it (PROC_04).
+11. A pull request takes the branch to `main` (PROC_03). The CI checks it, with the jobs of devops.md
+    (PROC_04).
 12. The Product Owner merges. The merge is the approval.
 13. The branch is deleted automatically. Its commits stay in `main`.
 
@@ -218,24 +220,21 @@ For code, step 3 means:
 - update documentation
 - the quick gate passes before a commit
 
-The CI runs `reviewcheck` on every pull request; a review result that breaks a rule blocks the
-merge (TOOL_12, see devops.md).
-
 ## Loop for every release or library
 
 1. compile
 2. run linter
 3. run unit-testing in local
-4. run the tests of the levels SwVal, SysIT, SysQT and Val (see table test levels)
+4. run full set of tests
 5. report on
    - test coverage
    - structural debt
-6. create the SBOM and check the licences of the components (PROC_08)
-7. provide feedback
+6. create the SBOM (PROC_08)
+7. check the licences of the components (PROC_08)
 8. create a signed tag as approval (PROC_06)
-9. write the data of the release or library into a separate edgedb, kept as reference
-   data - the real data of treporting itself, used instead of synthetic data to show that
-   it works in practice (PROC_07)
+
+*Note*: write the data of the release or library into a separate edgedb, kept as reference data
+as soon as possible (PROC_07)
 
 ## Open
 
@@ -260,3 +259,4 @@ merge (TOOL_12, see devops.md).
 | 9.1.1 | 2026-10-30 | Rules; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-30 | Process | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-10-30 | Platform and launches | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-10-30 | Platform and launches; Loop for every change; Loop for every release or library | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
