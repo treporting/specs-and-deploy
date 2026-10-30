@@ -5,7 +5,8 @@ names as uplinks the user needs (r1), the regulatory requirements and the decisi
 architecture (`ARCD_nn`) it comes from. Where none stands above it - a requirement derived from the
 view of the system - it gives its rationale instead (ISO/IEC/IEEE 29148, 5.2.8). Every need and
 every regulatory requirement that treporting realizes has at least one requirement. How the
-system does it is left to the architecture (r3).
+system does it is left to the architecture (r3). The document is written for whoever derives the
+architecture (r3) and the tests from the requirements.
 
 The requirements themselves - ids `SYS_nn` - are in [system-requirements.yaml](system-requirements.yaml),
 in the format of [formats.md](../formats.md); this file holds what explains them.
