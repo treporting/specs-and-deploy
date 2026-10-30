@@ -11,7 +11,7 @@ criteria_revision: '865b621'
 results:
 - object_key: RR_01
   target_ids: [requirements/user-needs.md]
-  revision: 'bc72526'
+  revision: 'f06f01d'
   criteria:
     RC_01: passed
     RC_02: passed
@@ -31,5 +31,7 @@ results:
       note: 'found in this review and resolved in it: the same sentence stated as given what is open; it is now a condition'
     RC_11: passed
     RC_12: passed
-    RC_13: passed
+    RC_13:
+      result: passed
+      note: 'found in this review and resolved in it: the document did not say whose roles it names; it now says they are those treporting assumes in an organization that may use it, not the roles of our own work in harness.md; and it described no role - table roles now describes each role, instead of a section with the range of its ids'
   verdict: passed
