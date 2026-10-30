@@ -86,9 +86,9 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC_11
-  object_version: '1.1.1'
-  object_text: 'A document names no ticket; what is open, it states as open. The ticket names the
-    document, not the other way round.'
+  object_version: '2.1.1'
+  object_text: 'A document names no ticket, except in its change history; what is open, it states
+    as open. The ticket names the document, not the other way round.'
   priority: 'medium'
   safety: ''
   status: approved

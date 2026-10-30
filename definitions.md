@@ -321,3 +321,15 @@ For each part, the assessment goes on to what most tools leave out:
 
 - the implementation: which code is touched, found by `@implements`
 - the tests: which tests are touched, found by `@verifies`, and which records in `verifications/`
+
+## Open
+
+`<empty>`
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | Traceability; Link check and impact assessment | #274 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-30 | Open; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

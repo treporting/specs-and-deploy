@@ -316,3 +316,21 @@ finds an id in its file through the component `review`, and the annotations thro
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to run as a
   reusable workflow in `treporting/.github`, which takes the tools from specs-and-deploy.
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | annotationcheck | #279 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-28 | uplinkcheck; linkcheck | #280 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-28 | The component review | #290 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-28 | Who changed a requirement | #40 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-28 | The chain of a tool; Who changed a requirement; Who the author of a requirement or a document is; reviewcheck; reviewskeleton; schemacheck; rulesetcheck; annotationcheck; uplinkcheck; linkcheck | #291 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-10-29 | annotationcheck; linkcheck | #283 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-10-29 | reviewskeleton | #304 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 9.1.1 | 2026-10-29 | reviewcheck; reviewskeleton | #307 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-10-29 | The component review | #303 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 11.1.1 | 2026-10-29 | Where the tools live; linkcheck; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 13.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

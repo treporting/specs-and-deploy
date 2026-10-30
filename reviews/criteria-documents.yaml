@@ -47,8 +47,9 @@ criteria:
   question: Is it written in English only?
 - object_key: RC_10
   source: treporting - PROC_11
-  object_text: free of tickets - it names no ticket; what is open, it states as open
-  question: Does it name no ticket, and state as open what is open?
+  object_text: free of tickets - it names no ticket, except in its change history; what is open, it
+    states as open
+  question: Does it name no ticket, except in its change history, and state as open what is open?
 - object_key: RC_11
   source: treporting - PROC_18
   object_text: decided - every decision in it gives its reason and the alternatives rejected

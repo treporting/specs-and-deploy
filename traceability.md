@@ -559,3 +559,16 @@ Markdown table, and the rules would be kept apart from every other requirement.
    release is made and kept. A fix for an older release needs it, from its tag, not `main`.
 2. `treporting = 2_tools` - **The realization of a control**: no tool requirement checks
    yet that the user needs a control names are realized.
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | Traceability; The version of a document | #272 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-28 | The options; The parts of the version; The right side of the V | #274 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-28 | The options; The parts of the version; The right side of the V; Open questions | #255 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-28 | Traceability; The problem: the cascade of PROC_13; The options; The version a link names; The parts of the version; Where a suspect link blocks; When a link is suspect; The right side of the V; The version in the schema; The version of a document; The allocation; Links between trees; Links to rules | #291 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-29 | The version of a document | #303 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

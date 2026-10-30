@@ -314,10 +314,10 @@ document explains.
 
 ### Open points
 
-A document lists what is open (PROC_11) in one section `## Open`, its last. An open point can also
-come from a review. Each point is rated by the launches that need its answer, in the form of
-`platform_launch`. Where a point names objects, these are the launches of those objects. A document
-with no open point has the section all the same, with `<empty>`.
+A document lists what is open (PROC_11) in one section `## Open`, right before `## Change history`.
+An open point can also come from a review. Each point is rated by the launches that need its answer,
+in the form of `platform_launch`. Where a point names objects, these are the launches of those
+objects. A document with no open point has the section all the same, with `<empty>`.
 
 ```markdown
 ## Open
@@ -325,6 +325,21 @@ with no open point has the section all the same, with `<empty>`.
 - `treporting = 2_tools` - **Maintenance**: not set how the state of specs-and-deploy of an older
   release is made and kept. A fix for an older release needs it, from its tag, not `main`.
 ```
+
+### Change history
+
+A document has a section `## Change history`, its last, after `## Open`. It logs every approved version
+since its inception (REG_ISO29119-3_01), one row each:
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+
+- Change: the sections or table revised
+- Reason: the ticket
+- By: the author and the reviewer, with their roles
+
+The row is written with the change itself, so that its review covers it (reviews/README.md, section
+The change history of a document).
 
 ### Standards, clauses and tables in a document
 
@@ -663,3 +678,22 @@ TOOL_12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
 ## Open
 
 `<empty>`
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | Fields are the properties of the gel schema; Documents | #272 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-28 | Annotations | #279 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-28 | Requirements: YAML for the data, Markdown for the explanations; Regulatory requirements; Ids | #40 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-28 | Regulatory requirements; Fields are the properties of the gel schema; Example; Schemas; Documents; Reviews; Verifications; Breakdown; Ids; Software requirements; Annotations; Where an annotation is read; CI check | #291 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-29 | Schemas; Annotations; Where an annotation is read | #283 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-10-29 | Example; The head of a file; Documents; Reviews; Verifications | #304 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-10-29 | Reviews | #307 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 9.1.1 | 2026-10-29 | Regulatory requirements; The head of a file; Documents | #303 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-10-29 | Reviews; Ids | #302 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 11.1.1 | 2026-10-29 | Fields are the properties of the gel schema | #277 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-10-29 | Requirements: YAML for the data, Markdown for the explanations; The head of a file; Ids; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 13.1.1 | 2026-10-30 | Requirements: YAML for the data, Markdown for the explanations; The head of a file; Open points; Ids; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 14.1.1 | 2026-10-30 | Open points; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

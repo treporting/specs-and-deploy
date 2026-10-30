@@ -431,3 +431,7 @@ the generator is taken over.
 
 - `treporting = 1_demo` - **The value `all` of platform_launch**: not set yet. The converter
   would resolve it into the platforms, by the configuration of the customer.
+
+## Change history
+
+`<empty>`

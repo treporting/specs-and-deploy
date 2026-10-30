@@ -32,3 +32,7 @@ detection itself is validated with faults built into data of known content (SYS_
 
 - `treporting = 3_tools` - **Tool qualification**: the tool qualification package is not made yet.
   Its analysis of tool errors builds on this file and shows whether this analysis is complete.
+
+## Change history
+
+`<empty>`
