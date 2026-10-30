@@ -1,0 +1,39 @@
+# Review of safety/hazard-and-risk-analysis.md against the criteria of the level document.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: document
+created_by: Mathias Fischer
+created_at: '2026-10-30T18:46:16+01:00'
+criteria: reviews/criteria-documents.yaml
+criteria_revision: '865b621'
+results:
+- object_key: RR_01
+  target_ids: [safety/hazard-and-risk-analysis.md]
+  revision: 'ccf5c29'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05:
+      result: passed
+      note: 'found in this review and resolved in it: the document did not name its audience; it now says it is written for whoever derives the system requirements from the controls, and for an assessor'
+    RC_06:
+      result: passed
+      note: 'found in this review and resolved in it: the section Risk named the requirements above, where only the ranges of ids stood; it now names the control of each hazard and the linked system requirement'
+    RC_07: passed
+    RC_08:
+      result: passed
+      note: 'found in this review and resolved in it: the intro took a tool qualification package as given, which harness.md states as not decided; it is now a condition. That a control points to the system requirements (r2) is said here, in hazards.yaml and in its schema; the other documents that still say r1 follow in #338'
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12:
+      result: passed
+      note: 'found in this review and resolved in it: the sentences of the intro and of Risk were long; they are now short, with hazards and threats each in a paragraph of their own'
+    RC_13:
+      result: passed
+      note: 'found in this review and resolved in it: the sections Hazards and Measures held only ranges of ids, and the sentence under Measures repeated the end of Risk; they are gone, and the intro names hazards.yaml'
+  verdict: passed
