@@ -102,6 +102,7 @@ etc.) names the launches it is planned for in `platform_launch`.
 | treporting | 2_selfhosted | | |
 | treporting | 2_tools | | |
 | treporting | 3_tools | | |
+| treporting | 4_selfhosted | | |
 
 The values in the table are an example only, made up to show the form (see Open).
 
@@ -207,7 +208,8 @@ is reviewed by them.
     save a change of what is approved: where its review failed, the change is rejected. It is taken
     back on the branch, and only the review result and the tickets reach `main`. The approved
     version stands (traceability.md).
-11. A pull request takes the branch to `main` (PROC_03). The CI checks it (PROC_04).
+11. A pull request takes the branch to `main` (PROC_03). The CI checks it, with the jobs of devops.md
+    (PROC_04).
 12. The Product Owner merges. The merge is the approval.
 13. The branch is deleted automatically. Its commits stay in `main`.
 
@@ -217,9 +219,6 @@ For code, step 3 means:
 - it compiles, the linter passes, the unit tests pass
 - update documentation
 - the quick gate passes before a commit
-
-The CI runs `reviewcheck` on every pull request; a review result that breaks a rule blocks the
-merge (TOOL_12, see devops.md).
 
 ## Loop for every release or library
 
@@ -260,3 +259,4 @@ merge (TOOL_12, see devops.md).
 | 9.1.1 | 2026-10-30 | Rules; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-30 | Process | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-10-30 | Platform and launches | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-10-30 | Platform and launches; Loop for every change | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
