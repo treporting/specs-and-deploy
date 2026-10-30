@@ -86,7 +86,7 @@ documents:
   level: r3
   object_version: '3.1.1'
   object_hash: '0e7986e'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: tools/README.md
   type: explanation

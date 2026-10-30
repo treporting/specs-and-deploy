@@ -89,7 +89,6 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | Variants | `mplatform_launch` - mapped, or where the original is empty the union of the `mplatform_launch` of the parents |
 | Carried down | yes. A requirement with several parents carries the **union** of their platforms and launches - it holds wherever any of them holds (unlike the safety class, where the highest is carried) |
 | Used by | SYS_09 filter over the whole trace; SYS_11 carrying down. The selection of a release offers the launches that release has |
-| Version | a new version of an object where its launches change, not with every release |
 | Prototype | same - the prototype writes the value taken from the parents into `mplatform_launch` |
 
 ### status
@@ -441,3 +440,4 @@ the generator is taken over.
 | 1.1.1 | 2026-10-30 | - | #328 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
 | 2.1.1 | 2026-10-30 | Hazard | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 3.1.1 | 2026-10-30 | Requirement | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-30 | Requirement | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
