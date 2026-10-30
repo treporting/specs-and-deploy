@@ -225,16 +225,16 @@ For code, step 3 means:
 1. compile
 2. run linter
 3. run unit-testing in local
-4. run the tests of the levels SwVal, SysIT, SysQT and Val (see table test levels)
+4. run full set of tests
 5. report on
    - test coverage
    - structural debt
-6. create the SBOM and check the licences of the components (PROC_08)
-7. provide feedback
+6. create the SBOM (PROC_08)
+7. check the licences of the components (PROC_08)
 8. create a signed tag as approval (PROC_06)
-9. write the data of the release or library into a separate edgedb, kept as reference
-   data - the real data of treporting itself, used instead of synthetic data to show that
-   it works in practice (PROC_07)
+
+*Note*: write the data of the release or library into a separate edgedb, kept as reference data
+as soon as possible (PROC_07)
 
 ## Open
 
@@ -259,4 +259,4 @@ For code, step 3 means:
 | 9.1.1 | 2026-10-30 | Rules; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-30 | Process | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-10-30 | Platform and launches | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
-| 12.1.1 | 2026-10-30 | Platform and launches; Loop for every change | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-10-30 | Platform and launches; Loop for every change; Loop for every release or library | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
