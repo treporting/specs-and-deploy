@@ -15,5 +15,5 @@ requirements:
   not_realized: kept by our work, not by the product - in the documents of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
