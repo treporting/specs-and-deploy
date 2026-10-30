@@ -10,49 +10,50 @@ of [formats.md](../formats.md); each section is a role, the field `function` of 
 
 ## Project Manager - PM
 
-`UN_PM_01` to `UN_PM_03`: in [user-needs.yaml](user-needs.yaml).
+Plans and steers the development of a product - its scope, schedule and resources.
 
 ## Release Manager - RM
 
-`UN_RM_01` to `UN_RM_05`: in [user-needs.yaml](user-needs.yaml).
+Decides whether a release is ready to be delivered, and answers for that decision.
 
 ## Configuration Manager - CM
 
-`UN_CM_01` to `UN_CM_04`: in [user-needs.yaml](user-needs.yaml).
+Identifies the configuration of a product, controls the changes to it and records its baselines.
 
 ## Quality Assurance - QA
 
-`UN_QA_01` to `UN_QA_06`: in [user-needs.yaml](user-needs.yaml).
+Checks, independently of the project, whether its processes and work products follow what was
+agreed.
 
 ## Safety - SAF
 
-`UN_SAF_01` to `UN_SAF_03`: in [user-needs.yaml](user-needs.yaml).
+Plans and coordinates the safety activities of a project, and answers for its hazards being
+controlled.
 
 ## Assessor - ASR
 
-`UN_ASR_01` to `UN_ASR_07`: in [user-needs.yaml](user-needs.yaml).
+Judges independently, from outside the project, whether it meets the standards chosen - an
+assessor or an auditor.
 
 ## Developer - DEV
 
-`UN_DEV_01`: in [user-needs.yaml](user-needs.yaml).
+Turns requirements into design and code.
 
 ## Tester - TST
 
-`UN_TST_01` to `UN_TST_02`: in [user-needs.yaml](user-needs.yaml).
+Specifies and runs the tests, and records their results.
 
 ## Operator - OPS
 
-`UN_OPS_01` to `UN_OPS_13`: in [user-needs.yaml](user-needs.yaml).
+Installs, runs and maintains treporting in an organization, and keeps its data.
 
 ## Configurator - CFG
 
 Whoever sets treporting up for the systems of a customer.
 
-`UN_CFG_01` to `UN_CFG_03`: in [user-needs.yaml](user-needs.yaml).
-
 ## All roles - ALL
 
-`UN_ALL_01` to `UN_ALL_04`: in [user-needs.yaml](user-needs.yaml).
+What every role above needs.
 
 ## Safety of the product - PSF
 
@@ -60,8 +61,6 @@ What every role relies on when it decides on what treporting shows. treporting c
 nothing, but a gap it hides can lead to a wrong release. The hazards they control are in
 `safety/hazard-and-risk-analysis.md`. If treporting gets a tool qualification, its analysis of the
 tool's failures traces to these needs.
-
-`UN_PSF_01` to `UN_PSF_06`: in [user-needs.yaml](user-needs.yaml).
 
 ## Open
 
