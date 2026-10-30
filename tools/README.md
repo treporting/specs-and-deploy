@@ -104,8 +104,8 @@ resolved by hand in a merge is a change no author is found for.
 - rebase merges, so that `main` has no merge commits - git would no longer record who merged, the
   evidence of the approval
 
-Every review result made before this decision reviewed commits with the Product Owner as author. It
-breaks the check, so its requirements are reviewed again and the old result is removed.
+*Note*: Every review result made before this decision reviewed commits with the Product Owner as
+author.
 
 ## The component review
 
@@ -334,3 +334,4 @@ finds an id in its file through the component `review`, and the annotations thro
 | 11.1.1 | 2026-10-29 | Where the tools live; linkcheck; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 14.1.1 | 2026-10-30 | Who the author of a requirement or a document is | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
