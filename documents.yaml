@@ -78,8 +78,8 @@ documents:
   type: explanation
   level: r3
   object_version: '1.1.1'
-  object_hash: ''
-  status: draft
+  object_hash: '0a74e57'
+  status: approved
   verification_method: [review]
 - name: architecture/attributes.md
   type: explanation
