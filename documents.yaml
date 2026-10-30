@@ -85,8 +85,8 @@ documents:
   type: explanation
   level: r3
   object_version: '1.1.1'
-  object_hash: ''
-  status: review
+  object_hash: 'aeea0b0'
+  status: approved
   verification_method: [review]
 - name: tools/README.md
   type: explanation
