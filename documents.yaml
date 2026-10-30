@@ -71,8 +71,8 @@ documents:
   type: explanation
   level: r2
   object_version: '1.1.1'
-  object_hash: ''
-  status: review
+  object_hash: '5ecd082'
+  status: approved
   verification_method: [review]
 - name: architecture/system-architecture.md
   type: explanation
