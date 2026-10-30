@@ -98,7 +98,7 @@ etc.) names the launches it is planned for in `platform_launch`.
 | Platform | Launch | Release | Library |
 |---|---|---|---|
 | treporting | 1_tools | specs-and-deploy 1.0.0 | – |
-| treporting | 1_demo | specs-and-deploy 2.0.0 | reporter-edgedb 1.0.0<br>viewer-edgedb 1.0.0<br>… |
+| treporting | 1_demo | specs-and-deploy 2.0.0 | reporter-trace 1.0.0<br>viewer-trace 1.0.0<br>… |
 | treporting | 2_selfhosted | | |
 | treporting | 2_tools | | |
 | treporting | 3_tools | | |
@@ -259,3 +259,4 @@ merge (TOOL_12, see devops.md).
 | 8.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Rules; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-30 | Process | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 11.1.1 | 2026-10-30 | Platform and launches | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

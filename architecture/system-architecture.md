@@ -16,10 +16,10 @@ flowchart LR
   subgraph treporting
     exsys[extractor-SYSTEM<br>one per system]
     excon[extractor-content<br>a package per kind of content]
-    conv[converter-edgedb]
-    stor[storage-edgedb<br>import]
-    rep[reporter-edgedb]
-    view[viewer-edgedb]
+    conv[converter-trace]
+    stor[storages<br>import]
+    rep[reporter-trace]
+    view[viewer-trace]
   end
 
   files -- ARC_14 --> exsys
@@ -41,10 +41,10 @@ flowchart LR
 
 | Short form | Subsystem | Id |
 |---|---|---|
-| V | viewer-edgedb | ARC_01 |
-| R | reporter-edgedb | ARC_02 |
-| S | storage-edgedb | ARC_03 |
-| C | converter-edgedb | ARC_04 |
+| V | viewer-trace | ARC_01 |
+| R | reporter-trace | ARC_02 |
+| S | storages | ARC_03 |
+| C | converter-trace | ARC_04 |
 | EC | extractor-content | ARC_05 |
 | ES | extractor-SYSTEM | ARC_06 |
 
@@ -54,7 +54,7 @@ There are two kinds of system:
   the folders and files themselves. extractor-content reads it, with a package for each kind of
   content and no plug-in mechanism.
 - **attribute-based** systems - DOORS, JIRA, a DMS, CODEBEAMER - hold items whose attributes are
-  customized by each customer. converter-edgedb maps those attributes to the model, by a
+  customized by each customer. The converter maps those attributes to the model, by a
   configuration file of the customer.
 
 Every system has an extractor of its own that lists and fetches what it holds. Converter,
@@ -131,7 +131,7 @@ an assessor asks for it, rather than run on every import.
 
 **Decision**: the import of the storage brings the four counts together - the count of the
 source from the extractor of the system, read and refused from extractor-content or
-converter-edgedb, stored from the storage itself -, so it sets the state
+the converter, stored from the storage itself -, so it sets the state
 of the data set - complete, incomplete, or unverified when the source has no count of its own - and
 keeps the import record. The storage keeps the record with the data set,
 the reporter hands the state on with every answer, the viewer shows it on every view.
@@ -141,7 +141,7 @@ the reporter hands the state on with every answer, the viewer shows it on every 
 ```
 import 2026-10-23T14:02:11Z  by m.fischer
   source        codebeamer, tracker 4711, revision 3812
-  converter     converter-edgedb v1.4.0, configuration acme-codebeamer v7
+  converter     converter-trace v1.4.0, configuration acme-codebeamer v7
   data set      release-2.1
   counted       requirement: source 1200, read 1000, refused 0, stored 1000
                 link parentOf: source 3400, read 2890, refused 0, stored 2890
@@ -192,7 +192,7 @@ with `MSafety = 'ASIL D'` in its analysis (SYS_70); the import reads the data as
 
 **Decision**: what differs from customer to customer - the customized attributes of an
 attribute-based system and the values to be mapped - is a configuration file, read by one
-general mechanism: converter-edgedb for the attributes, the import of the storage for the
+general mechanism: the converter for the attributes, the import of the storage for the
 values. Only what a configuration cannot say goes into code of its own, in a private repo per
 system and customer, such as converter-doors-acme.
 
@@ -242,3 +242,4 @@ The allocation of every system requirement to the subsystems is the field `alloc
 | Version | Date | Change | Reason | By |
 |---|---|---|---|---|
 | 1.1.1 | 2026-10-30 | - | #327 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-30 | System architecture; Decisions | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
