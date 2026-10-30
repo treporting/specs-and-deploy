@@ -13,6 +13,21 @@ in [hazards.yaml](hazards.yaml), in the format of [formats.md](../formats.md). I
 tool qualification, its analysis of tool errors builds on this file. It is written for whoever
 derives the user needs from the measures, and for an assessor.
 
+**Figure trees** - how a hazard or a threat reaches the requirements
+
+```mermaid
+flowchart LR
+  subgraph h[hazards and threats - h1, h2]
+    haz[hazard<br>HAZ_nn] --> hazc[control<br>HAZC_nn]
+    thr[threat<br>THR_nn] --> thrc[control<br>THRC_nn]
+  end
+  subgraph r[requirements - r1, r2, ...]
+    un[user need<br>UN_..._nn] --> sys[system requirement<br>SYS_nn]
+  end
+  hazc -- controls --> un
+  thrc -- controls --> un
+```
+
 ## Risk
 
 The severity of each hazard is that of the product a user releases on its information, which
