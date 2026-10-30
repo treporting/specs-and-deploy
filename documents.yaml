@@ -13,9 +13,9 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '10.1.1'
-  object_hash: '301b100'
-  status: review
+  object_version: '11.1.1'
+  object_hash: '83cf58f'
+  status: approved
   verification_method: [review]
 - name: devops.md
   type: document
@@ -37,9 +37,9 @@ documents:
   verification_method: [review]
 - name: formats.md
   type: document
-  object_version: '15.1.1'
-  object_hash: 'c870873'
-  status: review
+  object_version: '16.1.1'
+  object_hash: 'e3fae9f'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   type: document
@@ -77,16 +77,16 @@ documents:
 - name: architecture/system-architecture.md
   type: explanation
   level: r3
-  object_version: '1.1.1'
-  object_hash: '0a74e57'
-  status: review
+  object_version: '2.1.1'
+  object_hash: 'f0989d8'
+  status: approved
   verification_method: [review]
 - name: architecture/attributes.md
   type: explanation
   level: r3
-  object_version: '2.1.1'
-  object_hash: '0c9ee87'
-  status: review
+  object_version: '3.1.1'
+  object_hash: '0e7986e'
+  status: approved
   verification_method: [review]
 - name: tools/README.md
   type: explanation
