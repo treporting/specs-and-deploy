@@ -2,7 +2,8 @@
 
 What each role needs from treporting, without naming a solution. The needs are the reason for the
 tool itself. The document is written for everyone, above all for whoever derives the system
-requirements (r2) from them.
+requirements (r2) from them. The roles are those treporting assumes in an organization that may use
+it - not the roles of our own work, which harness.md sets in its section Roles.
 
 The needs themselves - ids `UN_<role>_nn` - are in [user-needs.yaml](user-needs.yaml), in the format
 of [formats.md](../formats.md); each section is a role, the field `function` of a need.
