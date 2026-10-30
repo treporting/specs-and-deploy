@@ -33,7 +33,7 @@ treporting is a pure software project and is developed following the process of 
 | Level | Here | Reference |
 |---|---|---|
 | h1 | hazards (HAZ) and threats (THR), told apart by their prefix - a trace starts here or at r1 | the method of IEC61508-1, clause 7.4; IEC62443-3-2 |
-| h2 | the measure that controls a hazard (HAZC) or a threat (THRC), and asks for r1 | - |
+| h2 | the measure that controls a hazard (HAZC) or a threat (THRC), and asks for r2 | - |
 | n1 | the clauses of the standards and laws to be met: regulatory requirements (REG) | ISO12207, clause 6.4.2 - stakeholder needs and requirements definition |
 | r1 | user needs (UN) | ISO12207, clause 6.4.2 - stakeholder needs and requirements definition |
 | r2 | system requirements (SYS) | ISO12207, clause 6.4.3 - system requirements definition |
@@ -258,3 +258,4 @@ merge (TOOL_12, see devops.md).
 | 7.1.1 | 2026-10-29 | Platform and launches; Loop for every release or library; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Rules; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-10-30 | Process | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

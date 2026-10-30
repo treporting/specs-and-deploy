@@ -322,7 +322,7 @@ apart by their level. A threat and its control follow the same shape.
 
 | | |
 |---|---|
-| Meaning | `parentOf` from a hazard to its measures; `controls` from a measure to the requirements (r1) it asks for |
+| Meaning | `parentOf` from a hazard to its measures; `controls` from a measure to the system requirements (r2) it asks for |
 | Prototype | same |
 
 ## Normative
@@ -439,3 +439,4 @@ the generator is taken over.
 | Version | Date | Change | Reason | By |
 |---|---|---|---|---|
 | 1.1.1 | 2026-10-30 | - | #328 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-30 | Hazard | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

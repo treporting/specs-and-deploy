@@ -166,8 +166,8 @@ holds only what the author writes:
   them, a derived value: the sources of an object are its parents. Every uplink names the version
   of its parent, `UN_OPS_10@1.1.1` (PROC_20); so does an entry of `allocated`. Rejected: the
   uplink in `target_ids`, as it stood before - read so, parent and child turn round.
-- **controls** of a control of a hazard: the user needs that realize it, with their versions,
-  `controls: [UN_PSF_01@1.1.1]` - a down-link between two trees (traceability.md, section Links
+- **controls** of a control of a hazard: the system requirements that realize it, with their
+  versions, `controls: [SYS_02@1.1.1]` - a down-link between two trees (traceability.md, section Links
   between trees).
 
 ### Example
@@ -697,3 +697,4 @@ TOOL_12 runs in `.github/workflows/tools.yml` of specs-and-deploy.
 | 12.1.1 | 2026-10-29 | Requirements: YAML for the data, Markdown for the explanations; The head of a file; Ids; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-10-30 | Requirements: YAML for the data, Markdown for the explanations; The head of a file; Open points; Ids; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-10-30 | Open points; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 15.1.1 | 2026-10-30 | Requirements: YAML for the data, Markdown for the explanations | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

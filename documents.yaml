@@ -8,14 +8,14 @@ documents:
   type: document
   object_version: '7.1.1'
   object_hash: '6de0a09'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: harness.md
   type: explanation
   level: rules
   object_version: '9.1.1'
   object_hash: '994f985'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '14.1.1'
   object_hash: 'e210c82'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
@@ -51,7 +51,7 @@ documents:
   type: document
   object_version: '8.1.1'
   object_hash: 'a5d69b3'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   type: explanation
@@ -65,7 +65,7 @@ documents:
   level: r1
   object_version: '1.1.1'
   object_hash: '4448999'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: requirements/system-requirements.md
   type: explanation
@@ -86,7 +86,7 @@ documents:
   level: r3
   object_version: '1.1.1'
   object_hash: 'aeea0b0'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: tools/README.md
   type: explanation

@@ -31,7 +31,7 @@ known by in the field `function`
 ## Safety of the product - PSF
 
 What every role relies on when it decides on what treporting shows. treporting controls
-nothing, but a gap it hides can lead to a wrong release. The hazards they control are in
+nothing, but a gap it hides can lead to a wrong release. The hazards behind them are in
 `safety/hazard-and-risk-analysis.md`. If treporting gets a tool qualification, its analysis of the
 tool's failures traces to these needs.
 
@@ -44,3 +44,4 @@ tool's failures traces to these needs.
 | Version | Date | Change | Reason | By |
 |---|---|---|---|---|
 | 1.1.1 | 2026-10-30 | - | #325 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-30 | Safety of the product - PSF | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
