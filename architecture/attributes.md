@@ -8,6 +8,8 @@ intermediate (`I`) or a mapped (`M`) value, how it is carried down the trace, an
 requirements use it. The names are those of the gel schema of the model and of the YAML
 ([formats.md](../formats.md)). The terms are those of
 [definitions.md](../definitions.md).
+It is written for whoever builds the converter, the storage or the reporter, and for whoever maps
+the data of a customer to the model.
 
 The prototype is the reference: what is not changed on purpose is taken over as it is. Every
 entry says how it stands to the prototype - `same`, `renamed`, `changed` or `new` - and why where
@@ -434,4 +436,6 @@ the generator is taken over.
 
 ## Change history
 
-`<empty>`
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-30 | - | #328 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
