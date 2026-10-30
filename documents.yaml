@@ -6,16 +6,16 @@ type: documents
 documents:
 - name: README.md
   type: document
-  object_version: '7.1.1'
-  object_hash: '6de0a09'
-  status: review
+  object_version: '8.1.1'
+  object_hash: '881fbe0'
+  status: approved
   verification_method: [review]
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '9.1.1'
-  object_hash: '994f985'
-  status: review
+  object_version: '10.1.1'
+  object_hash: '301b100'
+  status: approved
   verification_method: [review]
 - name: devops.md
   type: document
@@ -37,9 +37,9 @@ documents:
   verification_method: [review]
 - name: formats.md
   type: document
-  object_version: '14.1.1'
-  object_hash: 'e210c82'
-  status: review
+  object_version: '15.1.1'
+  object_hash: 'c870873'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   type: document
@@ -49,9 +49,9 @@ documents:
   verification_method: [review]
 - name: traceability.md
   type: document
-  object_version: '8.1.1'
-  object_hash: 'a5d69b3'
-  status: review
+  object_version: '9.1.1'
+  object_hash: '651d4b1'
+  status: approved
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   type: explanation
@@ -63,9 +63,9 @@ documents:
 - name: requirements/user-needs.md
   type: explanation
   level: r1
-  object_version: '1.1.1'
-  object_hash: '4448999'
-  status: review
+  object_version: '2.1.1'
+  object_hash: '0ad3397'
+  status: approved
   verification_method: [review]
 - name: requirements/system-requirements.md
   type: explanation
@@ -84,9 +84,9 @@ documents:
 - name: architecture/attributes.md
   type: explanation
   level: r3
-  object_version: '1.1.1'
-  object_hash: 'aeea0b0'
-  status: review
+  object_version: '2.1.1'
+  object_hash: '0c9ee87'
+  status: approved
   verification_method: [review]
 - name: tools/README.md
   type: explanation
