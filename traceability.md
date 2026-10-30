@@ -1,10 +1,9 @@
 # Traceability
 
-How a link between two levels stays valid when the parent changes, and the version that every
-object approved carries. This document records the
+This document describes how a link between two levels stays valid when the parent changes, and
+which version every approved object carries. It records the
 problem, the options weighed, and the decisions taken. The questions still open are marked as such.
-The rules that follow from it stand in harness.md: PROC_13, PROC_14 and PROC_20. The changes to
-the schemas and the tools follow in changes of their own. It is written
+The rules that follow from it stand in harness.md. It is written
 for whoever changes a requirement or checks its trace, and for the auditor who looks for the
 reasons.
 
@@ -558,7 +557,7 @@ Markdown table, and the rules would be kept apart from every other requirement.
 1. `treporting = 2_tools` - **Maintenance**: not set how the state of specs-and-deploy of an older
    release is made and kept. A fix for an older release needs it, from its tag, not `main`.
 2. `treporting = 2_tools` - **The realization of a control**: no tool requirement checks
-   yet that the user needs a control names are realized.
+   yet that the system requirements a control names are realized.
 
 ## Change history
 
@@ -573,3 +572,4 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 7.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Where a suspect link blocks; Links between trees | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-10-30 | Traceability; Open | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
