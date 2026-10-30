@@ -5,14 +5,6 @@ tool that people rely on when they decide on a release. Its hazards are therefor
 information that leads to a wrong decision - a product released with a gap that treporting did
 not show.
 
-The hazards are on level h1, with the ids `HAZ_nn`; the threats of security share that level
-with the ids `THR_nn`. Each hazard is controlled by a measure on level h2, with the ids
-`HAZC_nn` - the prefix of the hazard and C for control -, and each measure asks for the user needs (r1) that realize it - mostly those of the
-section Safety of the product (PSF) in `requirements/user-needs.md`. The hazards and measures are
-in [hazards.yaml](hazards.yaml), in the format of [formats.md](../formats.md). If treporting gets a
-tool qualification, its analysis of tool errors builds on this file. It is written for whoever
-derives the user needs from the measures, and for an assessor.
-
 **Figure trees** - how a hazard or a threat reaches the requirements
 
 ```mermaid
@@ -27,6 +19,14 @@ flowchart LR
   hazc -- controls --> un
   thrc -- controls --> un
 ```
+
+The hazards are on level h1, with the ids `HAZ_nn`; the threats of security share that level
+with the ids `THR_nn`. Each hazard is controlled by a measure on level h2, with the ids
+`HAZC_nn` - the prefix of the hazard and C for control -, and each measure asks for the user needs (r1) that realize it - mostly those of the
+section Safety of the product (PSF) in `requirements/user-needs.md`. The hazards and measures are
+in [hazards.yaml](hazards.yaml), in the format of [formats.md](../formats.md). If treporting gets a
+tool qualification, its analysis of tool errors builds on this file. It is written for whoever
+derives the user needs from the measures, and for an assessor.
 
 ## Risk
 
