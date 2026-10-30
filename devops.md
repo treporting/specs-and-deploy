@@ -158,8 +158,8 @@ recorded with the pull request, by a computer (REG_CFR21-11_01).
 - `linkcheck` as a required check - it never fails, so it would block no merge; it would only make
   each merge wait until it has run
 
-Each required check is shown to block the merge by a demonstration, recorded in `verifications/`
-as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
+Each required check without a test is verified by a demonstration, recorded in `verifications/` as
+formats.md, section Verifications, sets.
 
 ## Open
 
@@ -178,3 +178,4 @@ as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
 | 6.1.1 | 2026-10-29 | Environments; Documents to PDF; Build and deployment; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 7.1.1 | 2026-10-30 | Continuous integration; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 9.1.1 | 2026-10-30 | Continuous integration | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
