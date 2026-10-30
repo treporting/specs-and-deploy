@@ -143,8 +143,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@fe0ed68 - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@fe0ed68
+<!-- generated from rules.yaml@9c6bb8f - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@9c6bb8f
 
 | Id | Version | Rule |
 |---|---|---|
@@ -158,7 +158,7 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC_08 | 2.2.1 | Every release has an SBOM, and the licences of its components are checked against Apache-2.0 (REG_EU2024-2847_02, REG_Licences_01). |
 | PROC_09 | 2.2.1 | A reported vulnerability is assessed and fixed without delay; one that is actively exploited is notified within 24 hours (REG_EU2024-2847_02, REG_EU2024-2847_03). |
 | PROC_10 | 2.2.1 | Every release gets security fixes over the support period it states (REG_EU2024-2847_04). |
-| PROC_11 | 1.1.1 | A document names no ticket; what is open, it states as open. The ticket names the document, not the other way round. |
+| PROC_11 | 2.1.1 | A document names no ticket, except in its change history; what is open, it states as open. The ticket names the document, not the other way round. |
 | PROC_12 | 2.1.1 | An object is merged before another names it. |
 | PROC_13 | 1.1.1 | Whatever has review criteria of its kind in `reviews/` - today requirements and documents - is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. See traceability.md. |
 | PROC_14 | 1.1.1 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
@@ -244,3 +244,17 @@ merge (TOOL_12, see devops.md).
   (ISO15026).
 - `treporting = 1_tools` - **Platform and launches**: not decided whether the reading of table
   launches holds, and with which values - or whether its columns stay empty until the tags exist.
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | Process; Rules | #40 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-28 | Roles; Rules; Loop for every change; Loop for every release or library | #291 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-29 | Loop for every change | #307 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-29 | Rules | #309 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-29 | Platform and launches | #277 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-10-29 | Platform and launches; Loop for every release or library; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 9.1.1 | 2026-10-30 | Rules; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

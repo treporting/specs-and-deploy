@@ -63,3 +63,7 @@ nothing, but a gap it hides can lead to a wrong release. The hazards they contro
 ## Open
 
 `<empty>`
+
+## Change history
+
+`<empty>`

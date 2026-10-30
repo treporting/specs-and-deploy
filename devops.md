@@ -165,3 +165,16 @@ as formats.md, section Verifications, sets: SR_09, SR_10, SR_20 and SR_23.
 
 - `treporting = 1_tools` - **SBOM and licences**: not decided whether the CI makes an SBOM and
   checks the licences.
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | Continuous integration | #279 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-28 | Continuous integration | #280 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-28 | Continuous integration | #40 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-28 | Tools are code; Dependencies of the tools; Continuous integration | #291 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-29 | Environments; Documents to PDF; Build and deployment; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-10-30 | Continuous integration; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

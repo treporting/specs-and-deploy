@@ -168,3 +168,7 @@ against criteria; the verification method says how its realization is shown to m
   [Performance](#performance) are not known yet.
 - `treporting = 4_selfhosted` - **Licensed features**: not known which there will be. None
   exists yet; everything is under Apache-2.0.
+
+## Change history
+
+`<empty>`

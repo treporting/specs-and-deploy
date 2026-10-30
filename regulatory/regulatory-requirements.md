@@ -40,6 +40,7 @@ apply to a project is decided by the organization that uses treporting, by its d
 | [Licences.yaml](Licences.yaml) | Products on the market |
 | [ISO29148.yaml](ISO29148.yaml) | Requirements engineering |
 | [ISO25010.yaml](ISO25010.yaml) | Product quality |
+| [ISO29119-3.yaml](ISO29119-3.yaml) | Documentation |
 
 ## Tool qualification
 
@@ -63,7 +64,23 @@ The characteristics of the product quality model of ISO25010. treporting does no
 requirements of its own; our work keeps them in its decisions. Where a means was applied to gain
 more information on them, the decision states what it found (PROC_18).
 
+## Documentation
+
+What a document of treporting holds. treporting does not realize it; our work keeps it in its
+documents.
+
 ## Open
 
 - `treporting = 2_selfhosted` - **Products on the market**: not known whether, and from when, the
   Cyber Resilience Act applies to treporting. Legal advice is to confirm it.
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #40 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | Products on the market; Requirements engineering | #68 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-29 | Regulatory requirements; Modules; Tool qualification; Products on the market; Product quality | #309 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-29 | Product quality; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-30 | Modules; Documentation; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

@@ -41,6 +41,32 @@ when it is written down - RC_01 for the source, RC_02 for the text.
 **Rejected**: the criteria of r1 taken over - unambiguous, singular, complete, consistent, necessary,
 feasible. They judge the duty, and a finding on it would change nothing we keep.
 
+## The change history of a document
+
+**Decision**: the change history of a document (formats.md, section Change history) names no review
+result. Its row is written with the change itself, before the review, so that the review covers it.
+
+**Why**: a row added after the review would change the document after it was reviewed - the content
+approved would not be the content reviewed, and its hash would not match. The review result names
+the document and the revision it reviewed: the link runs from the review to the document.
+
+**Rejected**:
+
+- a column Review with the file of the review result - the review result names the document
+  already
+- the row written by the commit of the decision - it changes the document after its review
+
 ## Open
 
 - `treporting = 1_tools` - **Criteria**: not set yet.
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-29 | Reviews | #307 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-29 | The criteria of n1 | #302 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-29 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-30 | Reviews; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-30 | The change history of a document; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

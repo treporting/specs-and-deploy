@@ -8,57 +8,57 @@ documents:
   type: document
   object_version: '6.1.1'
   object_hash: '9be6fab'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: harness.md
   type: explanation
   level: rules
   object_version: '8.1.1'
   object_hash: '6984310'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
   object_version: '7.1.1'
   object_hash: '01b3d64'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: definitions.md
   type: document
   object_version: '2.1.1'
   object_hash: 'd1fbd20'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: standards.md
   type: document
   object_version: '4.1.1'
   object_hash: '7d3a7c8'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: formats.md
   type: document
   object_version: '13.1.1'
   object_hash: 'e0f574c'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
   object_version: '5.1.1'
   object_hash: 'c28b931'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: traceability.md
   type: document
   object_version: '7.1.1'
   object_hash: '34607f1'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   type: explanation
   level: n1
   object_version: '5.1.1'
   object_hash: 'f052ff2'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: requirements/user-needs.md
   type: explanation
@@ -93,14 +93,14 @@ documents:
   level: r5
   object_version: '12.1.1'
   object_hash: '8ff7e76'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
   level: tool
   object_version: '7.1.1'
   object_hash: 'd26cc6d'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: safety/hazard-and-risk-analysis.md
   type: explanation

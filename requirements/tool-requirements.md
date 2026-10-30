@@ -86,3 +86,20 @@ PROC_20). TOOL_14 checks that an approval sets the right version, against the ba
 pull request; TOOL_19 checks that an approved document is the file approved. TOOL_16 makes the link
 check (definitions.md): it reports, and does not fail, as a suspect link blocks the baseline, not
 the pull request. TOOL_17 is that block. TOOL_18 updates a link.
+
+## Open
+
+`<empty>`
+
+## Change history
+
+| Version | Date | Change | Reason | By |
+|---|---|---|---|---|
+| 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-10-28 | Documents to PDF | #272 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-10-28 | Reviews; CI check; Versions | #255 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-10-28 | Documents to PDF | #40 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-10-28 | Tool requirements; Documents to PDF; Reviews; CI check; Versions | #291 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-10-29 | Documents to PDF | #303 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-10-29 | Tool requirements; Launches; Versions | #277 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-10-30 | Open; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
