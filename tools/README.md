@@ -431,10 +431,55 @@ the PURL because a licence can change from one version to the next.
 - the name `licences_whitelist.yaml` - the file allows no licence; it names the licence of a
   package
 
+## build steps
+
+The build steps of every repo (TOOL_23 to TOOL_26; SR_51 to SR_58 in
+[software-requirements.yaml](software-requirements.yaml)): build, linters and tests fail; the
+report on test coverage and structural debt blocks nothing.
+
+**Decision**: the build steps are one reusable workflow, `.github/workflows/build.yml` of
+specs-and-deploy, which every repo calls:
+
+```yaml
+jobs:
+  build:
+    uses: treporting/specs-and-deploy/.github/workflows/build.yml@main
+```
+
+**Why**: a reusable workflow may lie in any public repo. Here the requirement, the code and its
+`@implements` stay in one place, beside the tools it uses.
+
+**Rejected**: a repo `treporting/.github` - one more repo with a baseline of its own, its SRs apart
+from its code.
+
+**Decision**: the linters are configured once, by `.golangci.yml` and `eslint.config.js` of
+specs-and-deploy, for every repo.
+
+**Why**: every repo is held to the same rules, and a change of them is a change of an SR with its
+review.
+
+**Rejected**: a configuration in each repo - it can drift from repo to repo unnoticed. The cost of
+the decision: an exception for one file of one repo is made here too.
+
+**Decision**: the structural debt is what nothing uses - unused and unparam with `--tests=false`,
+and deadcode - and every function of a cyclomatic complexity of 15 and more (gocyclo). The test
+coverage of Go is measured with `-coverpkg=./...`.
+
+**Why**: code nothing uses, and a function too complex to test, are what grows unseen. With
+`--tests=false` a function only the tests still call is named. With `-coverpkg` a test counts for
+the package it reaches, not only for its own. 15 is the example gocyclo gives; a report blocks
+nothing, so the stricter bound costs nothing.
+
+**Rejected**:
+
+- unused and unparam in the linters of the gate - they report on the line of a declaration, which
+  does not change when its last caller goes
+- the bound 30 of golangci-lint - it names hardly any function
+
 ## Open
 
-- `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to run as a
-  reusable workflow in `treporting/.github`, which takes the tools from specs-and-deploy.
+- `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to call
+  `build.yml` of specs-and-deploy.
 
 ## Change history
 
@@ -457,3 +502,4 @@ the PURL because a licence can change from one version to the next.
 | 15.1.1 | 2026-10-31 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 18.1.1 | 2026-10-31 | build steps; Open | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
