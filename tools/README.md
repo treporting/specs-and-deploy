@@ -380,7 +380,27 @@ records none and shows `(devel)`, so a release builds the tool first.
 
 ## licence check
 
-Checks the licences of `sbom.md` against Apache-2.0 (TOOL_22).
+Checks the licences of `sbom.md` against Apache-2.0 (TOOL_22; SR_47 to SR_50 in
+[software-requirements.yaml](software-requirements.yaml)). It reads `sbom.md` in the root of the
+repo of a subsystem, and `licences_assessed.yaml` where the root holds one. It prints every package
+that fails with its PURL and its licence, and exits with 1 where one fails.
+
+```bash
+cd tools
+go build -o licencecheck ./licence/cmd/licencecheck
+./licencecheck -root ../../storages
+```
+
+An entry of `licences_assessed.yaml`:
+
+```yaml
+- purl: pkg:apk/alpine/nginx@1.30.5-r1
+  licence: BSD-2-Clause
+  reason: the text of nginx is the BSD-2-Clause
+```
+
+The code is the component `licence`: the package `licence/check` and the command
+`licence/cmd/licencecheck`.
 
 **Decision**: the check tells two kinds of package apart. A package linked into the code of the
 subsystem - a Go module, an npm package - needs a licence that fits Apache-2.0. A package that lies
@@ -436,3 +456,4 @@ the PURL because a licence can change from one version to the next.
 | 14.1.1 | 2026-10-30 | Who the author of a requirement or a document is | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-10-31 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 17.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
