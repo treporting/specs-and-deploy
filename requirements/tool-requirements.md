@@ -87,11 +87,15 @@ pull request; TOOL_19 checks that an approved document is the file approved. TOO
 check (definitions.md): it reports, and does not fail, as a suspect link blocks the baseline, not
 the pull request. TOOL_17 is that block. TOOL_18 updates a link.
 
-## Release
+## sbom
 
-`TOOL_21` to `TOOL_22`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL_21`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3@v3.0.1`.
+
+## licence check
+
+`TOOL_22`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 ## Open
 
@@ -111,3 +115,4 @@ A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3
 | 8.1.1 | 2026-10-30 | Open; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-31 | Release | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-31 | Release | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 11.1.1 | 2026-10-31 | sbom; licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
