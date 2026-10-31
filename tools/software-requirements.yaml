@@ -365,7 +365,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_36
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: sbom
   object_text: list in sbom.md every Go module that `go list -deps` names for the commands of the
     subsystem at its baseline, except the package of the subsystem, with its version, the licence of
@@ -373,10 +373,10 @@ requirements:
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_37
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: sbom
   object_text: list in sbom.md every package of `package-lock.json` of the subsystem at its baseline
     that is not marked `dev`, except the package of the subsystem, with its version, its licence, and
@@ -384,7 +384,7 @@ requirements:
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_38
   object_version: '1.2.1'
@@ -443,7 +443,7 @@ requirements:
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_44
   object_version: '1.1.1'
@@ -453,7 +453,7 @@ requirements:
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_45
   object_version: '1.1.1'
@@ -463,7 +463,7 @@ requirements:
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_46
   object_version: '1.1.1'
@@ -474,5 +474,5 @@ requirements:
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
