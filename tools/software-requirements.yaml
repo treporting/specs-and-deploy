@@ -365,71 +365,113 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_36
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: sbom
   object_text: list in sbom.md every Go module that `go list -deps` names for the commands of the
-    subsystem at its baseline, with its version, the licence of its LICENSE file in the module cache,
-    and its PURL `pkg:golang/<path>@<version>`
-  source_ids: [TOOL_21@1.1.1]
+    subsystem at its baseline, except the package of the subsystem, with its version, the licence of
+    its LICENSE file in the module cache, and its PURL `pkg:golang/<path>@<version>`
+  source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_37
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: sbom
   object_text: list in sbom.md every package of `package-lock.json` of the subsystem at its baseline
-    that is not marked `dev`, with its version, its licence, and its PURL `pkg:npm/<name>@<version>`
-  source_ids: [TOOL_21@1.1.1]
+    that is not marked `dev`, except the package of the subsystem, with its version, its licence, and
+    its PURL `pkg:npm/<name>@<version>`
+  source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_38
-  object_version: '1.1.1'
+  object_version: '1.2.1'
   component: sbom
   object_text: list in sbom.md every package of `/lib/apk/db/installed` in the last stage of each image
     of the subsystem at its baseline, with its version, its licence, and its PURL
     `pkg:apk/alpine/<name>@<version>`
-  source_ids: [TOOL_21@1.1.1]
+  source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_39
-  object_version: '1.1.1'
+  object_version: '1.2.1'
   component: sbom
   object_text: write sbom.md in the root of the repo of the subsystem
-  source_ids: [TOOL_21@1.1.1]
+  source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_40
-  object_version: '2.1.1'
+  object_version: '2.2.1'
   component: sbom
   object_text: 'add to the Change history of sbom.md a row with: - Version: -, - Date: the day it runs,
     - Change: the label of its baseline, - Reason: -, - By: the tool with its version'
-  source_ids: [TOOL_21@1.1.1]
+  source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_41
-  object_version: '1.1.1'
+  object_version: '1.2.1'
   component: sbom
   object_text: list the packages in sbom.md in one table with the columns PURL, name, version and licence,
     sorted by PURL
-  source_ids: [TOOL_21@1.1.1]
+  source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_42
-  object_version: '1.1.1'
+  object_version: '1.2.1'
   component: sbom
   object_text: end sbom.md with the sections Open and Change history
-  source_ids: [TOOL_21@1.1.1]
+  source_ids: [TOOL_21@2.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_43
+  object_version: '1.1.1'
+  component: sbom
+  object_text: name the licence of a package by its SPDX identifier, several joined by AND, and one not
+    recognized as unknown
+  source_ids: [TOOL_21@2.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_44
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list in sbom.md the standard library of the Go the commands of the subsystem are built
+    with, with its version, its licence, and its PURL `pkg:golang/stdlib@<version>`
+  source_ids: [TOOL_21@2.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_45
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list in the section Open of sbom.md every package whose licence is unknown, and `<empty>`
+    where there is none
+  source_ids: [TOOL_21@2.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_46
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list in sbom.md the package of the subsystem itself, with the label of its baseline as
+    its version, the licence of the LICENSE file in the root of its repo, and its PURL
+    `pkg:github/treporting/<repo>@<label>`
+  source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
