@@ -364,3 +364,35 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR_36
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list in sbom.md every Go module that `go list -deps` names for the commands of the
+    subsystem at its baseline, with its version, the licence of its LICENSE file in the module cache,
+    and its PURL `pkg:golang/<path>@<version>`
+  source_ids: [TOOL_21@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_37
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list in sbom.md every package of `package-lock.json` of the subsystem at its baseline
+    that is not marked `dev`, with its version, its licence, and its PURL `pkg:npm/<name>@<version>`
+  source_ids: [TOOL_21@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_38
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list in sbom.md every package of `/lib/apk/db/installed` in the last stage of each image
+    of the subsystem at its baseline, with its version, its licence, and its PURL
+    `pkg:apk/alpine/<name>@<version>`
+  source_ids: [TOOL_21@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
