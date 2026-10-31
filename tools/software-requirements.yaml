@@ -396,3 +396,40 @@ requirements:
   safety: ''
   status: draft
   verification_method: [test]
+- object_key: SR_39
+  object_version: '1.1.1'
+  component: sbom
+  object_text: write sbom.md in the root of the repo of the subsystem
+  source_ids: [TOOL_21@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_40
+  object_version: '1.1.1'
+  component: sbom
+  object_text: name its version as a document, the subsystem, its baseline and the time it was created
+  source_ids: [TOOL_21@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_41
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list the packages in sbom.md in one table with the columns PURL, name, version and licence,
+    sorted by PURL
+  source_ids: [TOOL_21@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_42
+  object_version: '1.1.1'
+  component: sbom
+  object_text: end sbom.md with the sections Open and Change history
+  source_ids: [TOOL_21@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
