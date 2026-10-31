@@ -519,12 +519,12 @@ requirements:
 - object_key: SR_51
   object_version: '1.1.1'
   component: ci
-  object_text: 'in build.yml, callable by every repo, build every Go module of the repo - every directory
-    with a go.mod - and fail where one does not build'
+  object_text: 'in build.yml, build every Go module of the repo - every directory with a go.mod - and
+    fail where one does not build'
   source_ids: [TOOL_23@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: draft
   verification_method: [test]
 - object_key: SR_52
   object_version: '1.1.1'
