@@ -517,7 +517,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_51
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, build every Go module of the repo - every directory with a go.mod - and
     fail where one does not build'
@@ -525,9 +525,9 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
 - object_key: SR_52
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, install with `npm ci` and build with `npm run build` every JavaScript package
     of the repo - every directory with a package-lock.json - and fail where one does not build'
@@ -535,9 +535,9 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
 - object_key: SR_53
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, run golangci-lint v2 with errcheck, govet, staticcheck, gosec and
     ineffassign, configured by .golangci.yml of specs-and-deploy, on every Go module of the repo, and
@@ -546,9 +546,9 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
 - object_key: SR_54
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, run eslint, configured by eslint.config.js of specs-and-deploy, on every
     JavaScript package of the repo, and fail on any finding'
@@ -556,9 +556,9 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
 - object_key: SR_55
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, run `go test -race` on every Go module, once without and once with the build
     tag integration, and fail where a test fails'
@@ -566,18 +566,18 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
 - object_key: SR_56
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, run `npm test` on every JavaScript package, and fail where a test fails'
   source_ids: [TOOL_25@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
 - object_key: SR_57
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, report the test coverage of every Go module, measured with `-coverpkg=./...`
     over all its tests, and of every JavaScript package, without failing'
@@ -585,9 +585,9 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
 - object_key: SR_58
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: 'in build.yml, report as structural debt of every Go module what nothing uses - unused and
     unparam with `--tests=false`, and deadcode - and every function of a cyclomatic complexity of 15
@@ -596,4 +596,4 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
-  verification_method: [test]
+  verification_method: [demonstration]
