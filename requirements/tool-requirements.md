@@ -91,8 +91,7 @@ the pull request. TOOL_17 is that block. TOOL_18 updates a link.
 
 `TOOL_21`: in [tool-requirements.yaml](tool-requirements.yaml).
 
-The tools of the release loop of harness.md. TOOL_21 creates the SBOM of a release (PROC_08). A
-component is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3@v3.0.1`.
+A component of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3@v3.0.1`.
 
 ## Open
 
