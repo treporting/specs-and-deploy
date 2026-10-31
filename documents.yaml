@@ -98,8 +98,8 @@ documents:
 - name: requirements/tool-requirements.md
   type: explanation
   level: tool
-  object_version: '11.1.1'
-  object_hash: '21cf825'
+  object_version: '12.1.1'
+  object_hash: 'cce1b00'
   status: approved
   verification_method: [review]
 - name: safety/hazard-and-risk-analysis.md
