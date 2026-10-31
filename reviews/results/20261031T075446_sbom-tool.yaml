@@ -15,13 +15,19 @@ results:
   criteria:
     RC_01: passed
     RC_02: passed
-    RC_03: passed
+    RC_03:
+      result: failed
+      note: 'component not defined'
     RC_04: passed
-    RC_05: passed
+    RC_05:
+      result: failed
+      note: 'the content of sbom is for every repo = subsystem seperate'
     RC_06: passed
     RC_07: passed
     RC_08: passed
-    RC_09: passed
+    RC_09:
+      result: failed
+      note: 'the baseline for release and library needs to be present'
     RC_10: passed
     RC_11: passed
-  verdict: passed
+  verdict: failed

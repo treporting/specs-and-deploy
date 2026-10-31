@@ -238,5 +238,5 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
-  status: review
+  status: draft
   verification_method: [test]
