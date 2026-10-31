@@ -19,9 +19,9 @@ documents:
   verification_method: [review]
 - name: devops.md
   type: document
-  object_version: '9.1.1'
-  object_hash: '5f41405'
-  status: review
+  object_version: '10.1.1'
+  object_hash: '5f549c7'
+  status: approved
   verification_method: [review]
 - name: definitions.md
   type: document
@@ -91,9 +91,9 @@ documents:
 - name: tools/README.md
   type: explanation
   level: r5
-  object_version: '18.1.1'
-  object_hash: '73f473b'
-  status: review
+  object_version: '19.1.1'
+  object_hash: 'a92212f'
+  status: approved
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
