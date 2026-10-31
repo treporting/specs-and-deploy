@@ -91,7 +91,7 @@ the pull request. TOOL_17 is that block. TOOL_18 updates a link.
 
 `TOOL_21`: in [tool-requirements.yaml](tool-requirements.yaml).
 
-A component of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3@v3.0.1`.
+A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3@v3.0.1`.
 
 ## Open
 
