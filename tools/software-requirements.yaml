@@ -408,7 +408,8 @@ requirements:
 - object_key: SR_40
   object_version: '1.1.1'
   component: sbom
-  object_text: name its version as a document, the subsystem, its baseline and the time it was created
+  object_text: sbom.md names its version as a document, the subsystem, its baseline and the time it
+    was created
   source_ids: [TOOL_21@1.1.1]
   priority: 'medium'
   safety: ''
