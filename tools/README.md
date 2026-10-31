@@ -378,6 +378,23 @@ records none and shows `(devel)`, so a release builds the tool first.
 
 **Rejected**: a version in the code - it would have to be raised by hand and can drift.
 
+## licence check
+
+Checks the licences of `sbom.md` against Apache-2.0 (TOOL_22).
+
+**Decision**: the check tells two kinds of package apart. A package linked into the code of the
+subsystem - a Go module, an npm package - needs a licence that fits Apache-2.0. A package that lies
+beside it in an image - an Alpine package - may have any licence that is known. An unknown licence
+fails both.
+
+**Why**: a licence such as the GPL binds the code it is linked with, not a program that only lies
+beside it. The image delivers such programs: busybox, the shell of Alpine, is GPL-2.0-only.
+
+**Rejected**:
+
+- one list for every package - every image on Alpine would fail
+- any known licence for every package - a Go module under the GPL would pass
+
 ## Open
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to run as a
@@ -402,3 +419,4 @@ records none and shows `(devel)`, so a release builds the tool first.
 | 13.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-10-30 | Who the author of a requirement or a document is | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-10-31 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 16.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
