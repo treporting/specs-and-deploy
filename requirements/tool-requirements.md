@@ -89,7 +89,7 @@ the pull request. TOOL_17 is that block. TOOL_18 updates a link.
 
 ## Release
 
-`TOOL_21`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL_21` to `TOOL_22`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3@v3.0.1`.
 
@@ -110,3 +110,4 @@ A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3
 | 7.1.1 | 2026-10-29 | Tool requirements; Launches; Versions | #277 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | Open; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-31 | Release | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-10-31 | Release | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
