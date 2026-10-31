@@ -68,7 +68,8 @@ func spdxForm(expression string) bool {
 
 func identifier(token string) bool {
 	for _, r := range token {
-		if !(r >= 'A' && r <= 'Z' || r >= 'a' && r <= 'z' || r >= '0' && r <= '9' || r == '.' || r == '-' || r == '+' || r == ':') {
+		allowed := r >= 'A' && r <= 'Z' || r >= 'a' && r <= 'z' || r >= '0' && r <= '9' || strings.ContainsRune(".-+:", r)
+		if !allowed {
 			return false
 		}
 	}

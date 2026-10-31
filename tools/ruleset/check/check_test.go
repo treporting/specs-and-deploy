@@ -29,9 +29,9 @@ func github(t *testing.T, status int, list, ruleset string) Client {
 		w.WriteHeader(status)
 		switch r.URL.Path {
 		case "/repos/o/r/rulesets":
-			w.Write([]byte(list))
+			_, _ = w.Write([]byte(list))
 		case "/repos/o/r/rulesets/7":
-			w.Write([]byte(ruleset))
+			_, _ = w.Write([]byte(ruleset))
 		default:
 			http.NotFound(w, r)
 		}

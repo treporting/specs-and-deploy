@@ -1,0 +1,131 @@
+# The build steps of every repo (TOOL_23 to TOOL_26), as one reusable workflow. A repo calls it:
+#
+#	jobs:
+#	  build:
+#	    uses: treporting/specs-and-deploy/.github/workflows/build.yml@main
+#
+# build, lint and test fail where a step fails; report reports test coverage and structural debt
+# and fails on nothing. Each job runs .github/build/steps.sh of specs-and-deploy in the root of the
+# repo; specs-and-deploy itself runs its own, the others that of main. See tools/README.md, section
+# build steps.
+#
+# @implements SR_51@1.1.1, SR_52@1.1.1, SR_53@1.1.1, SR_54@1.1.1, SR_55@1.1.1, SR_56@1.1.1, SR_57@1.1.1, SR_58@1.1.1
+name: build
+
+on:
+  workflow_call:
+    inputs:
+      go-version-file:
+        description: the go.mod whose version of Go the steps use
+        type: string
+        default: go.mod
+
+permissions:
+  contents: read
+
+env:
+  #	the root of specs-and-deploy, with the script and the configurations of the linters
+  STEPS: ${{ github.repository == 'treporting/specs-and-deploy' && github.workspace || format('{0}/.build-steps', github.workspace) }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        if: github.repository != 'treporting/specs-and-deploy'
+        with:
+          repository: treporting/specs-and-deploy
+          ref: main
+          path: .build-steps
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: ${{ inputs.go-version-file }}
+          cache-dependency-path: '**/go.sum'
+      - uses: actions/setup-node@v4
+        if: hashFiles('**/package-lock.json') != ''
+        with:
+          node-version: '24.x'
+      - name: build
+        run: '"$STEPS/.github/build/steps.sh" build'
+
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        if: github.repository != 'treporting/specs-and-deploy'
+        with:
+          repository: treporting/specs-and-deploy
+          ref: main
+          path: .build-steps
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: ${{ inputs.go-version-file }}
+          cache-dependency-path: '**/go.sum'
+      - uses: actions/setup-node@v4
+        if: hashFiles('**/package-lock.json') != ''
+        with:
+          node-version: '24.x'
+      #	the linter may bring a newer Go of its own; the build keeps the version of the go.mod
+      - name: install golangci-lint
+        env:
+          GOTOOLCHAIN: auto
+        run: go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.1
+      - name: lint
+        run: '"$STEPS/.github/build/steps.sh" lint'
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        if: github.repository != 'treporting/specs-and-deploy'
+        with:
+          repository: treporting/specs-and-deploy
+          ref: main
+          path: .build-steps
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: ${{ inputs.go-version-file }}
+          cache-dependency-path: '**/go.sum'
+      - uses: actions/setup-node@v4
+        if: hashFiles('**/package-lock.json') != ''
+        with:
+          node-version: '24.x'
+      - name: test
+        run: '"$STEPS/.github/build/steps.sh" test'
+
+  #	reports and fails on nothing; a step fails only where the measuring itself did not happen
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        if: github.repository != 'treporting/specs-and-deploy'
+        with:
+          repository: treporting/specs-and-deploy
+          ref: main
+          path: .build-steps
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: ${{ inputs.go-version-file }}
+          cache-dependency-path: '**/go.sum'
+      - uses: actions/setup-node@v4
+        if: hashFiles('**/package-lock.json') != ''
+        with:
+          node-version: '24.x'
+      - name: install golangci-lint and deadcode
+        env:
+          GOTOOLCHAIN: auto
+        run: |
+          go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.1
+          go install golang.org/x/tools/cmd/deadcode@v0.38.0
+      - name: test coverage
+        run: '"$STEPS/.github/build/steps.sh" cover'
+      - name: structural debt
+        run: '"$STEPS/.github/build/steps.sh" debt'

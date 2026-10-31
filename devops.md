@@ -125,7 +125,9 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 (SR_29). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
 job failed cannot be merged, by anyone. The job `linkcheck` (SR_34) runs beside them. It is no
 required check. It reports a suspect link and does not fail: a suspect link blocks the baseline, not
-the pull request (PROC_20). The ruleset also allows the merge commit only, as the settings of the repo do.
+the pull request (PROC_20). The job `build` calls `.github/workflows/build.yml`, the build steps of
+every repo (SR_51 to SR_58), on the tools: its jobs `build / build`, `build / lint` and
+`build / test` are required checks; `build / report` reports and is not. The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
 is GitHub's - and the job `rulesetcheck` checks
@@ -198,3 +200,4 @@ today is set in the section Continuous integration.
 | 7.1.1 | 2026-10-30 | Continuous integration; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Continuous integration; CI checks | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-10-31 | Continuous integration | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

@@ -106,3 +106,8 @@ jobs:
       - name: linkcheck
         working-directory: tools
         run: go run ./link/cmd/linkcheck -root ..
+  #	the build steps of every repo (SR_51 to SR_58), on the tools
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      go-version-file: tools/go.mod

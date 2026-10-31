@@ -65,6 +65,18 @@
           {
             "context": "uplinkcheck",
             "integration_id": 15368
+          },
+          {
+            "context": "build / build",
+            "integration_id": 15368
+          },
+          {
+            "context": "build / lint",
+            "integration_id": 15368
+          },
+          {
+            "context": "build / test",
+            "integration_id": 15368
           }
         ]
       }

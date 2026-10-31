@@ -437,6 +437,22 @@ The build steps of every repo (TOOL_23 to TOOL_26; SR_51 to SR_58 in
 [software-requirements.yaml](software-requirements.yaml)): build, linters and tests fail; the
 report on test coverage and structural debt blocks nothing.
 
+The workflow `.github/workflows/build.yml` has a job for each: `build`, `lint`, `test` and
+`report`. Each runs `.github/build/steps.sh` in the root of the repo. A Go module is every directory
+with a `go.mod`, a JavaScript package every directory with a `package-lock.json`. A package names
+`build` and `test` in the scripts of its `package.json`, and `coverage` where it reports its test
+coverage. The script runs by hand too, with go, golangci-lint v2, deadcode and node on the `PATH`:
+
+```bash
+../specs-and-deploy/.github/build/steps.sh lint
+```
+
+`.github/build` holds the configurations: `.golangci.yml` for the gate, `debt.golangci.yml` for the
+structural debt, and `eslint.config.js`. They lie there, not in the root, because a YAML file outside
+`.github` is our data and names a schema.
+
+The code is the component `ci`: the workflow and the files of `.github/build`.
+
 **Decision**: the build steps are one reusable workflow, `.github/workflows/build.yml` of
 specs-and-deploy, which every repo calls:
 
@@ -503,3 +519,4 @@ nothing, so the stricter bound costs nothing.
 | 16.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-10-31 | build steps; Open | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 19.1.1 | 2026-10-31 | build steps | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

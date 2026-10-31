@@ -93,7 +93,7 @@ func main() {
 	old, _ := os.ReadFile(path) // an sbom.md that is not there has no rows to keep
 	history := append(create.History(old), create.Row(time.Now().Format("2006-01-02"), *label, "sbom "+version()))
 
-	if err := os.WriteFile(path, []byte(create.Markdown(create.SBOM{Repo: *repo, Packages: packages, History: history})), 0o644); err != nil {
+	if err := os.WriteFile(path, []byte(create.Markdown(create.SBOM{Repo: *repo, Packages: packages, History: history})), 0o600); err != nil {
 		fail(err)
 	}
 	fmt.Printf("%s written: %d packages\n", path, len(packages))

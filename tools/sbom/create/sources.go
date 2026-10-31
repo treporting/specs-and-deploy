@@ -115,7 +115,7 @@ func NpmPackages(lock []byte) ([]Package, error) {
 			name = key[strings.LastIndex(key, "node_modules/")+len("node_modules/"):]
 		}
 		var licence string
-		json.Unmarshal(p.License, &licence) // a licence that is no string stays unknown
+		_ = json.Unmarshal(p.License, &licence) // a licence that is no string stays unknown
 		packages = append(packages, Package{
 			PURL:    "pkg:npm/" + strings.Replace(name, "@", "%40", 1) + "@" + p.Version,
 			Name:    name,

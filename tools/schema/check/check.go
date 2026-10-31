@@ -128,7 +128,7 @@ func compile(root, name string) (*jsonschema.Schema, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 	doc, err := jsonschema.UnmarshalJSON(f)
 	if err != nil {
 		return nil, err
