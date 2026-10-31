@@ -1,2 +1,2 @@
-export const two = () => 2;
-export const unused = 0;
+// two answers 3: the test of it fails.
+export const two = () => 3;
