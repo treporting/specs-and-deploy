@@ -1,0 +1,126 @@
+# Review of SR_36, SR_37, SR_38, SR_39, SR_40, SR_41, SR_42 against the criteria of the level r5.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r5
+created_by: Mathias Fischer
+created_at: '2026-10-31T08:39:01+01:00'
+criteria: reviews/criteria-r5.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [SR_36]
+  revision: '9de4a73'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [SR_37]
+  revision: '9de4a73'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [SR_38]
+  revision: '9de4a73'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [SR_39]
+  revision: '9de4a73'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_05
+  target_ids: [SR_40]
+  revision: '9de4a73'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05:
+      result: failed
+      note: '"its" does not say that the version, the subsystem and the baseline are those of
+        sbom.md'
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: failed
+- object_key: RR_06
+  target_ids: [SR_41]
+  revision: '9de4a73'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_07
+  target_ids: [SR_42]
+  revision: '9de4a73'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
