@@ -485,7 +485,7 @@ requirements:
   source_ids: [TOOL_22@1.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_48
   object_version: '1.1.1'
@@ -494,7 +494,7 @@ requirements:
   source_ids: [TOOL_22@1.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_49
   object_version: '1.1.1'
@@ -505,7 +505,7 @@ requirements:
   source_ids: [TOOL_22@1.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_50
   object_version: '1.1.1'
@@ -514,5 +514,5 @@ requirements:
   source_ids: [TOOL_22@1.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
