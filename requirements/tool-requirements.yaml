@@ -251,3 +251,47 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: TOOL_23
+  object_version: '1.1.1'
+  feature: build steps
+  object_text: build every Go module and every JavaScript package of a repo, and fail where one does not
+    build
+  source_ids: [PROC_04@1.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL_24
+  object_version: '1.1.1'
+  feature: build steps
+  object_text: run the linters on all code of a repo - golangci-lint for Go, eslint for JavaScript - and
+    fail on any finding
+  source_ids: [PROC_04@1.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL_25
+  object_version: '1.1.1'
+  feature: build steps
+  object_text: run the tests of every test level of a repo, and fail where one fails
+  source_ids: [PROC_04@1.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL_26
+  object_version: '1.1.1'
+  feature: build steps
+  object_text: report the test coverage and the structural debt of a repo, without failing
+  rationale: step 5 of the loop for every release or library in harness.md - the report shows what is
+    not tested and what is not used, so that it can shrink; it blocks nothing, so it is not part of the
+    gate of PROC_04
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: draft
+  verification_method: [test]

@@ -97,6 +97,10 @@ A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3
 
 `TOOL_22`: in [tool-requirements.yaml](tool-requirements.yaml).
 
+## build steps
+
+`TOOL_23` to `TOOL_26`: in [tool-requirements.yaml](tool-requirements.yaml).
+
 ## Open
 
 `<empty>`
@@ -116,3 +120,4 @@ A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3
 | 9.1.1 | 2026-10-31 | Release | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-31 | Release | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-10-31 | sbom; licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-10-31 | build steps | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
