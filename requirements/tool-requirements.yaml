@@ -232,8 +232,8 @@ requirements:
 - object_key: TOOL_21
   object_version: '1.1.1'
   feature: Release
-  object_text: create the SBOM of a release as `sbom.md` - every component the release delivers, with
-    its name, its version, its licence and its PURL
+  object_text: 'create the SBOM per subsystem as sbom.md from its baseline containing every third-party
+    package it delivers with its: - name, - version, - licence and - PURL'
   source_ids: [PROC_08@2.2.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
