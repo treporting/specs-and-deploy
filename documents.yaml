@@ -98,9 +98,9 @@ documents:
 - name: requirements/tool-requirements.md
   type: explanation
   level: tool
-  object_version: '10.1.1'
-  object_hash: '82e2623'
-  status: review
+  object_version: '11.1.1'
+  object_hash: '21cf825'
+  status: approved
   verification_method: [review]
 - name: safety/hazard-and-risk-analysis.md
   type: explanation
