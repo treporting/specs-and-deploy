@@ -1,4 +1,4 @@
-# The demonstration of SR_51 and SR_52, in the test pull request #357, closed unmerged.
+# The demonstration of SR_51 and SR_52, in the test pull request #359, closed unmerged.
 schema: schemas/verification-result.schema.json
 type: verification
 level: r5
@@ -6,10 +6,10 @@ method: demonstration
 target_ids: [SR_51, SR_52]
 created_by: Claude Opus 5.5
 confirmed_by: Mathias Fischer
-created_at: '2026-10-31T20:33:48+01:00'
-revision: 'c844d0e'
+created_at: '2026-10-31T21:45:21+01:00'
+revision: '52104c4'
 setting: '0f283dd'
-description: verifications/20261031T203348_build.md
+description: verifications/20261031T214521_build.md
 expected: the job build / build fails where a Go module or a JavaScript package does not build, and the merge of the pull request is blocked
 observed: |
   demo/demo.go:5:25: cannot use "2" (untyped string constant) as int value in return statement
@@ -17,9 +17,11 @@ observed: |
   Error: the build fails on purpose
   FAIL ./demo-js: npm run build
   build / build: fail (required)
+  build / lint, build / test, build / report, tools / tests: fail - nothing else runs where nothing builds
   the pull request: mergeStateStatus BLOCKED
 evidence:
-- https://github.com/treporting/specs-and-deploy/pull/357
-- https://github.com/treporting/specs-and-deploy/commit/c844d0e
-- https://github.com/treporting/specs-and-deploy/actions/runs/41234592365
+- https://github.com/treporting/specs-and-deploy/pull/359
+- https://github.com/treporting/specs-and-deploy/commit/52104c4
+- https://github.com/treporting/specs-and-deploy/actions/runs/41239823803
+- verifications/20261031T214521_build.jpg
 verdict: passed
