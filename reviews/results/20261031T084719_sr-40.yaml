@@ -23,5 +23,7 @@ results:
     RC_08: passed
     RC_09: passed
     RC_10: passed
-    RC_11: passed
-  verdict: passed
+    RC_11:
+      result: failed
+      note: 'no other document names its version - the version is in documents.yaml'
+  verdict: failed
