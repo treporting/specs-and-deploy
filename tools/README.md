@@ -312,6 +312,72 @@ The code is the component `link`: the package `link/check` and the command `link
 finds an id in its file through the component `review`, and the annotations through the component
 `annotation`.
 
+## sbom
+
+Creates the SBOM of a subsystem as `sbom.md` in the root of its repo (TOOL_21; SR_36 to SR_46 in
+[software-requirements.yaml](software-requirements.yaml)). It runs in the repo checked out at the
+baseline and lists every package the subsystem delivers, sorted by PURL:
+
+- the package of the subsystem itself, with the label of the baseline as its version (SR_46)
+- where the root holds a `go.mod`: the Go modules of its commands (SR_36) and the standard library
+  of Go (SR_44)
+- where the root holds a `package-lock.json`: its packages that are not marked `dev` (SR_37)
+- for each image named: the Alpine packages of `/lib/apk/db/installed` (SR_38)
+
+A run keeps the rows of the Change history of an `sbom.md` that is there and adds one (SR_40). A
+package whose licence is unknown is listed in Open (SR_45).
+
+```bash
+cd tools
+go build -o sbom ./sbom/cmd/sbom
+./sbom -root ../../storages -label 1.2.0 -image storages:1.2.0
+```
+
+The code is the component `sbom`: the package `sbom/create` and the command `sbom/cmd/sbom`.
+
+**Decision**: the licence of a Go module is recognized by sentences that only its licence text
+holds, such as "Permission is hereby granted, free of charge" for MIT, in the licence file of its
+directory in the module cache. A text that holds those of several licences names them all, joined
+by AND; a text that holds none is unknown.
+
+**Why**: Go keeps the licence file beside the code, but names no licence. The sentences need no
+tool from outside and no list to keep up to date.
+
+**Rejected**:
+
+- the whole text compared with the texts of SPDX - the copyright lines and the spacing differ from
+  module to module, and the texts would have to be kept here
+- a licence scanner from outside - a new tool in the chain, which the threat of an outdated
+  toolchain asks to keep small
+
+**Decision**: a licence that a package names itself - the field `license` of `package-lock.json`,
+the field `L` of an Alpine package - is taken as it is where it has the form of an SPDX expression:
+identifiers joined by AND, OR or WITH. A licence named in words, such as "2-clause BSD-like
+license", is unknown; Open shows the words.
+
+**Why**: npm and Alpine name the licence in SPDX already. Words are no identifier: the check of the
+licences (PROC_08) cannot compare them, so a human has to look.
+
+**Rejected**: the identifiers checked against the list of SPDX - the list would have to be kept
+here. The known limit: an identifier of the right form that SPDX does not list, such as
+`Public-Domain`, passes.
+
+**Decision**: the packages of an image are read by `docker run --rm --entrypoint cat <image>
+/lib/apk/db/installed`, on the image built at the baseline.
+
+**Why**: the image is what is delivered; its database of packages names what it holds, the
+Dockerfile only what it asks for.
+
+**Rejected**: unpacking the layers of `docker save` - the same content, with much more code.
+
+**Decision**: the tool is the version of the commit of specs-and-deploy it was built from, as Go
+records it in the build, with `-dirty` where the working tree had changes. A run with `go run`
+records none and shows `(devel)`, so a release builds the tool first.
+
+**Why**: the version needs no care by hand, and it names the code that wrote the SBOM.
+
+**Rejected**: a version in the code - it would have to be raised by hand and can drift.
+
 ## Open
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to run as a
@@ -335,3 +401,4 @@ finds an id in its file through the component `review`, and the annotations thro
 | 12.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-10-30 | Who the author of a requirement or a document is | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 15.1.1 | 2026-10-31 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
