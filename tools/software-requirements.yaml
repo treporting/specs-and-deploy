@@ -408,11 +408,12 @@ requirements:
 - object_key: SR_40
   object_version: '1.1.1'
   component: sbom
-  object_text: add to the Change history of sbom.md a row naming the label of its baseline
+  object_text: 'add to the Change history of sbom.md a row with: - Version: -, - Date: the day it runs,
+    - Change: the label of its baseline, - Reason: -, - By: the tool with its version'
   source_ids: [TOOL_21@1.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
 - object_key: SR_41
   object_version: '1.1.1'
