@@ -13,7 +13,7 @@
 # JavaScript package.
 set -uo pipefail
 
-#	the root of specs-and-deploy, which holds the configurations of the linters
+#	the root of specs-and-deploy; .github/build holds the configurations of the linters
 steps="$(cd "$(dirname "$0")/../.." && pwd)"
 
 #	@implements SR_51@1.1.1
@@ -60,14 +60,14 @@ eslint_install() {
 #	@implements SR_53@1.1.1, SR_54@1.1.1
 lint() {
 	for m in $(modules); do
-		run "$m" golangci-lint run -c "$steps/.golangci.yml" ./...
-		run "$m" golangci-lint run -c "$steps/.golangci.yml" --build-tags integration ./...
+		run "$m" golangci-lint run -c "$steps/.github/build/.golangci.yml" ./...
+		run "$m" golangci-lint run -c "$steps/.github/build/.golangci.yml" --build-tags integration ./...
 	done
 	if [ -n "$(packages)" ]; then
 		eslint_install
 	fi
 	for p in $(packages); do
-		run "$p" "$steps/node_modules/.bin/eslint" -c "$steps/eslint.config.js" .
+		run "$p" "$steps/node_modules/.bin/eslint" -c "$steps/.github/build/eslint.config.js" .
 	done
 }
 
