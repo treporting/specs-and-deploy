@@ -476,3 +476,43 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR_47
+  object_version: '1.1.1'
+  component: licence
+  object_text: 'fail on every package in sbom.md with a PURL of the type golang, npm or github whose
+    licence is not one of: Apache-2.0, MIT, BSD-2-Clause, BSD-3-Clause, ISC, Zlib, 0BSD, MPL-2.0; of
+    licences joined by AND each must be one of them, of licences joined by OR one'
+  source_ids: [TOOL_22@1.1.2]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_48
+  object_version: '1.1.1'
+  component: licence
+  object_text: fail on every package in sbom.md with a PURL of the type apk whose licence is unknown
+  source_ids: [TOOL_22@1.1.2]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_49
+  object_version: '1.1.1'
+  component: licence
+  object_text: take for a package whose PURL is in licences_assessed.yaml in the root of the repo of
+    the subsystem the licence named there in place of the one in sbom.md; each entry names a PURL, a
+    licence and a reason
+  source_ids: [TOOL_22@1.1.2]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_50
+  object_version: '1.1.1'
+  component: licence
+  object_text: name every package that fails with its PURL and its licence
+  source_ids: [TOOL_22@1.1.2]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]

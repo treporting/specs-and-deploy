@@ -395,6 +395,22 @@ beside it. The image delivers such programs: busybox, the shell of Alpine, is GP
 - one list for every package - every image on Alpine would fail
 - any known licence for every package - a Go module under the GPL would pass
 
+**Decision**: a licence that a human has assessed for one package is kept in
+`licences_assessed.yaml` in the root of the repo of the subsystem: the PURL with its version, the
+licence, and the reason. The check takes that licence in place of the one in `sbom.md`.
+
+**Why**: some packages name their licence in words, such as nginx with "2-clause BSD-like
+license". A human can read the text and name the licence; the check cannot. The version is part of
+the PURL because a licence can change from one version to the next.
+
+**Rejected**:
+
+- the PURL without its version - an update would keep an assessment made for another text
+- a list in specs-and-deploy for every subsystem - the packages differ per subsystem, and so does
+  its baseline
+- the name `licences_whitelist.yaml` - the file allows no licence; it names the licence of a
+  package
+
 ## Open
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to run as a
