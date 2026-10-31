@@ -238,7 +238,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: TOOL_22
   object_version: '1.1.1'
@@ -249,5 +249,5 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
