@@ -53,9 +53,15 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 		t.Fatalf("go build: %v\n%s", err, out)
 	}
 	repo := filepath.Join(t.TempDir(), "viewer-trace")
-	os.MkdirAll(repo, 0o755)
-	os.WriteFile(filepath.Join(repo, "LICENSE"), []byte(apacheText), 0o644)
-	os.WriteFile(filepath.Join(repo, "package-lock.json"), []byte(lock), 0o644)
+	if err := os.MkdirAll(repo, 0o750); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(repo, "LICENSE"), []byte(apacheText), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(repo, "package-lock.json"), []byte(lock), 0o600); err != nil {
+		t.Fatal(err)
+	}
 
 	for _, label := range []string{"1.0.0", "1.1.0"} {
 		if out, err := exec.Command(bin, "-root", repo, "-label", label).CombinedOutput(); err != nil {

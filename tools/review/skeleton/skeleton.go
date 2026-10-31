@@ -95,10 +95,10 @@ func Make(root string, req Request, git Git, index *review.Index) (string, error
 		fmt.Fprintf(&b, "  verdict: todo\n")
 	}
 
-	if err := os.MkdirAll(filepath.Join(root, results), 0o755); err != nil {
+	if err := os.MkdirAll(filepath.Join(root, results), 0o750); err != nil {
 		return "", err
 	}
-	if err := os.WriteFile(filepath.Join(root, path), []byte(b.String()), 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(root, path), []byte(b.String()), 0o600); err != nil {
 		return "", err
 	}
 	return path, nil

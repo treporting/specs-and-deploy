@@ -69,7 +69,9 @@ var now = time.Date(2026, 10, 26, 14, 30, 5, 0, time.FixedZone("CET", 3600))
 func makeSkeleton(t *testing.T, targets ...string) (string, string, error) {
 	t.Helper()
 	root := t.TempDir()
-	os.MkdirAll(filepath.Join(root, "reviews"), 0o755)
+	if err := os.MkdirAll(filepath.Join(root, "reviews"), 0o750); err != nil {
+		t.Fatal(err)
+	}
 	path, err := Make(root, Request{Reviewer: "Mathias Fischer", Scope: "tool-03-04", Targets: targets, Now: now}, history(), indexOf(history()))
 	if err != nil {
 		entries, _ := os.ReadDir(filepath.Join(root, "reviews"))

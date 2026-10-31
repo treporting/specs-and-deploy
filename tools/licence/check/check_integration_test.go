@@ -18,9 +18,13 @@ func TestCommandNamesWhatFailsAndExitsWithOne(t *testing.T) {
 		t.Fatalf("go build: %v\n%s", err, out)
 	}
 	repo := t.TempDir()
-	os.WriteFile(filepath.Join(repo, "sbom.md"), []byte(sbomMD), 0o644)
-	os.WriteFile(filepath.Join(repo, "licences_assessed.yaml"), []byte(
-		"- purl: pkg:apk/alpine/nginx@1.30.5-r1\n  licence: BSD-2-Clause\n  reason: the text of nginx is the BSD-2-Clause\n"), 0o644)
+	if err := os.WriteFile(filepath.Join(repo, "sbom.md"), []byte(sbomMD), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(repo, "licences_assessed.yaml"), []byte(
+		"- purl: pkg:apk/alpine/nginx@1.30.5-r1\n  licence: BSD-2-Clause\n  reason: the text of nginx is the BSD-2-Clause\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
 
 	out, err := exec.Command(bin, "-root", repo).CombinedOutput()
 	if exit, ok := err.(*exec.ExitError); !ok || exit.ExitCode() != 1 {

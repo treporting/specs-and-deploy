@@ -95,7 +95,9 @@ func indexOf(git fakeGit) *review.Index {
 func check(t *testing.T, result string, git fakeGit) []string {
 	t.Helper()
 	root := t.TempDir()
-	os.MkdirAll(filepath.Join(root, "reviews"), 0o755)
+	if err := os.MkdirAll(filepath.Join(root, "reviews"), 0o750); err != nil {
+		t.Fatal(err)
+	}
 	review := `level: review
 created_by: Mathias Fischer
 created_at: '2026-10-25T13:30:00+01:00'
@@ -103,7 +105,9 @@ criteria: reviews/criteria-tool.yaml
 criteria_revision: 'c1'
 results:
 ` + result
-	os.WriteFile(filepath.Join(root, "reviews", "r.yaml"), []byte(review), 0o644)
+	if err := os.WriteFile(filepath.Join(root, "reviews", "r.yaml"), []byte(review), 0o600); err != nil {
+		t.Fatal(err)
+	}
 	findings, err := Check(root, "reviews/r.yaml", git, indexOf(git))
 	if err != nil {
 		t.Fatal(err)

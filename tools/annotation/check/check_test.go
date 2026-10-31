@@ -39,8 +39,10 @@ func write(t *testing.T, files map[string]string) string {
 	t.Helper()
 	dir := t.TempDir()
 	for path, content := range files {
-		os.MkdirAll(filepath.Join(dir, filepath.Dir(path)), 0o755)
-		if err := os.WriteFile(filepath.Join(dir, path), []byte(content), 0o644); err != nil {
+		if err := os.MkdirAll(filepath.Join(dir, filepath.Dir(path)), 0o750); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(dir, path), []byte(content), 0o600); err != nil {
 			t.Fatal(err)
 		}
 	}
@@ -233,6 +235,8 @@ func TestARefinesWithoutAVersion(t *testing.T) {
 }
 
 func writeFile(dir, path, content string) error {
-	os.MkdirAll(filepath.Join(dir, filepath.Dir(path)), 0o755)
-	return os.WriteFile(filepath.Join(dir, path), []byte(content), 0o644)
+	if err := os.MkdirAll(filepath.Join(dir, filepath.Dir(path)), 0o750); err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(dir, path), []byte(content), 0o600)
 }

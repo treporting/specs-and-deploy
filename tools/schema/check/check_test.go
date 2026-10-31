@@ -25,8 +25,10 @@ func root(t *testing.T, files map[string]string) string {
 	dir := t.TempDir()
 	files["schemas/t.schema.json"] = schema
 	for path, content := range files {
-		os.MkdirAll(filepath.Join(dir, filepath.Dir(path)), 0o755)
-		if err := os.WriteFile(filepath.Join(dir, path), []byte(content), 0o644); err != nil {
+		if err := os.MkdirAll(filepath.Join(dir, filepath.Dir(path)), 0o750); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(dir, path), []byte(content), 0o600); err != nil {
 			t.Fatal(err)
 		}
 	}
