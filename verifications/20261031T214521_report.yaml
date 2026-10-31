@@ -1,0 +1,33 @@
+# The demonstration of SR_57 and SR_58, in the test pull request #360, closed unmerged.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_57, SR_58]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-10-31T21:45:21+01:00'
+revision: '8a906f8'
+setting: '0f283dd'
+description: verifications/20261031T214521_report.md
+expected: the job build / report reports the test coverage and the structural debt, and passes although it names debt; it is no required check
+observed: |
+  == ./tools: test coverage of MT and SwIT, with -coverpkg=./...
+  total:	(statements)	68.8%
+  == ./demo-js: test coverage
+  no script coverage in package.json
+  == ./tools: what nothing uses, and a cyclomatic complexity of 15 and more
+  ../../tools/review/check/check.go:146:1: cyclomatic complexity 21 of func `checkResult` is high (> 14) (gocyclo)
+  ../../tools/sbom/cmd/sbom/main.go:31:1: cyclomatic complexity 15 of func `main` is high (> 14) (gocyclo)
+  == ./tools: what no program reaches (deadcode)
+  demo/demo.go:7:6: unreachable func: Remove
+  demo/demo.go:10:6: unreachable func: Two
+  build / report: pass
+  at 1eb8e34, with a failing test: "a test failed; the coverage is of the tests that ran", total 68.9%, build / report: pass
+  at 52104c4, in #359, where nothing builds: nothing could be measured, build / report: fail - it is no required check and blocks nothing
+evidence:
+- https://github.com/treporting/specs-and-deploy/pull/360
+- https://github.com/treporting/specs-and-deploy/commit/8a906f8
+- https://github.com/treporting/specs-and-deploy/actions/runs/41241372174
+- https://github.com/treporting/specs-and-deploy/actions/runs/41239823803
+verdict: passed

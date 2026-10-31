@@ -1,0 +1,33 @@
+# The demonstration of SR_55 and SR_56, in the test pull request #360, closed unmerged.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_55, SR_56]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-10-31T21:45:21+01:00'
+revision: '1eb8e34'
+setting: '0f283dd'
+description: verifications/20261031T214521_test.md
+expected: the job build / test fails on a failing test in Go, without and with the build tag integration, and in JavaScript, the other build steps pass, and the merge of the pull request is blocked
+observed: |
+  --- FAIL: TestTwo (0.00s)
+      demo_test.go:7: 3
+  FAIL ./tools: go test -race -timeout 30m ./...
+  --- FAIL: TestTwo (0.00s)
+      demo_test.go:7: 3
+  FAIL ./tools: go test -race -timeout 30m -tags integration ./...
+    AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  FAIL ./demo-js: npm test
+  build / test: fail (required)
+  tools / tests: fail (required) - the job of SR_10 runs the same test of Go
+  build / build: pass
+  build / lint: pass
+  the pull request: mergeStateStatus BLOCKED
+evidence:
+- https://github.com/treporting/specs-and-deploy/pull/360
+- https://github.com/treporting/specs-and-deploy/commit/1eb8e34
+- https://github.com/treporting/specs-and-deploy/actions/runs/41241948013
+- verifications/20261031T214521_test.jpg
+verdict: passed
