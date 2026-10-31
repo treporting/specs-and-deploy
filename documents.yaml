@@ -21,7 +21,7 @@ documents:
   type: document
   object_version: '9.1.1'
   object_hash: '5f41405'
-  status: draft
+  status: review
   verification_method: [review]
 - name: definitions.md
   type: document
@@ -93,7 +93,7 @@ documents:
   level: r5
   object_version: '18.1.1'
   object_hash: '73f473b'
-  status: draft
+  status: review
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
