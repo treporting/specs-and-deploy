@@ -1,0 +1,24 @@
+# The demonstration of SR_62 and SR_65 with the branch of the baseline T044 that exists: ticket #377.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_62, SR_65]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-11-01T17:14:09+01:00'
+revision: '8788514'
+setting: '4d2c738'
+description: verifications/20261101T171409_baseline-exists.md
+expected: the label baseline set again on #377, whose branch 377-baseline-T044 exists, fails the run at the step start, builds nothing, and the ticket gets a comment naming the step start
+observed: |
+  #377: mfischer-treporting added baseline and removed baseline
+  ticket-baseline: Issue #377 labeled, run 41325268453 at 8788514
+  the branch 377-baseline-T044 exists
+  baseline / start: failure; build, sbom: skipped; result: success
+  treporting-baseline: The baseline failed at the step start (the label, or a branch, tag or run that exists). See https://github.com/treporting/specs-and-deploy/actions/runs/41325268453
+evidence:
+- https://github.com/treporting/specs-and-deploy/issues/377
+- https://github.com/treporting/specs-and-deploy/actions/runs/41325268453
+- verifications/20261101T171409_baseline-exists_comment.jpg
+verdict: passed
