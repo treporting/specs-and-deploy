@@ -270,10 +270,10 @@ Verifications). Each entry names:
 A YAML of a level names the Markdown files that explain it in its field `documents`, by their path,
 without a version.
 
-A document is reviewed like a requirement (`review` as its verification method), and an exported
-document shows its version, its revision and its status (TOOL_02). Its `object_hash` is the content
-approved: `git hash-object` of its file, 7 characters, set at the approval with the version, `''`
-before the first. It is the one attribute for x of a document (traceability.md, section The version
+A document is reviewed like a requirement (`review` as its verification method), except a document
+a tool writes (see below). An exported document shows its version, its revision and its status
+(TOOL_02). Its `object_hash` is the content approved: `git hash-object` of its file, 7 characters,
+set at the approval with the version, `''` before the first. It is the one attribute for x of a document (traceability.md, section The version
 of a document):
 
 ```yaml
@@ -677,7 +677,8 @@ function name, from the JSON output of `go test` and of vitest.
 
 ## Open
 
-`<empty>`
+- `treporting = 2_tools` - **sbom.md**: the tool sbom does not yet write its entry in
+  `documents.yaml`, and SR_40 still names `-` as its version in the change history.
 
 ## Change history
 
