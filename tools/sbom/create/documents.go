@@ -47,7 +47,7 @@ func Next(version string) (string, error) {
 // @implements SR_59@1.1.1
 func Hash(content []byte) string {
 	h := sha1.New() // #nosec G401 -- see the import
-	fmt.Fprintf(h, "blob %d\x00", len(content))
+	h.Write([]byte("blob " + strconv.Itoa(len(content)) + "\x00"))
 	h.Write(content)
 	return hex.EncodeToString(h.Sum(nil))[:7]
 }

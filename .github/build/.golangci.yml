@@ -23,7 +23,7 @@ linters:
       #	user names; no input reaches them from outside
       - path: ^tools/
         linters: [gosec]
-        text: "G304|G204"
+        text: "G304|G204|G703"
 
 issues:
   #	0 is no limit: a report cut at 50 per linter looks like a short list
