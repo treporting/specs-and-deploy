@@ -30,6 +30,10 @@ jobs:
         with:
           go-version-file: tools/go.mod
           cache-dependency-path: tools/go.sum
+      #	Ubuntu 24 forbids unprivileged user namespaces, so Chrome finds no sandbox; allow them, and Chrome
+      #	runs in its sandbox
+      - name: user namespaces for the sandbox of Chrome
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       - name: pdf
         id: pdf
         working-directory: tools

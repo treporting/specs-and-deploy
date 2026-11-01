@@ -118,6 +118,10 @@ jobs:
         if: hashFiles('**/package-lock.json') != ''
         with:
           node-version: '24.x'
+      #	Ubuntu 24 forbids unprivileged user namespaces, so Chrome finds no sandbox; allow them, and Chrome
+      #	runs in its sandbox (pdf, SR_68)
+      - name: user namespaces for the sandbox of Chrome
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       - name: test
         run: '"$STEPS/.github/build/steps.sh" test'
 
@@ -147,6 +151,10 @@ jobs:
         run: |
           go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.1
           go install golang.org/x/tools/cmd/deadcode@v0.52.0
+      #	Ubuntu 24 forbids unprivileged user namespaces, so Chrome finds no sandbox; allow them, and Chrome
+      #	runs in its sandbox (pdf, SR_68)
+      - name: user namespaces for the sandbox of Chrome
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       - name: test coverage
         run: '"$STEPS/.github/build/steps.sh" cover'
       - name: structural debt

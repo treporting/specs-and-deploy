@@ -84,7 +84,7 @@ func TestGitFailsWhereThereIsNoSuchRef(t *testing.T) {
 func TestPrinterWritesAPDF(t *testing.T) {
 	p, err := NewPrinter()
 	if err != nil {
-		t.Skip("no Chrome:", err)
+		t.Fatal(err)
 	}
 	defer p.Close()
 	page, err := Page("T", []byte("# T\n\n| a | b |\n|---|---|\n| 1 | 2 |\n"))
