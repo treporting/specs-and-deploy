@@ -31,12 +31,13 @@ func LicenceIn(dir string) string {
 // one - as path, version and directory, and nothing for the module of the subsystem.
 const moduleFormat = `{{with .Module}}{{if not .Main}}{{with .Replace}}{{.Path}}	{{.Version}}	{{.Dir}}{{else}}{{.Path}}	{{.Version}}	{{.Dir}}{{end}}{{end}}{{end}}`
 
-// ModuleDirs answers every directory of root with a go.mod, root included, in lexical order - neither
-// below node_modules nor below a directory whose name starts with a dot, as the build steps find
-// them.
+// DirsWith answers every directory of root that holds a file of that name, root included, in lexical
+// order - neither below node_modules nor below a directory whose name starts with a dot, as the build
+// steps find a go.mod or a package-lock.json.
 //
 // @implements SR_36@2.1.1
-func ModuleDirs(root string) ([]string, error) {
+// @implements SR_37@2.1.1
+func DirsWith(root, name string) ([]string, error) {
 	var dirs []string
 	err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
@@ -45,7 +46,7 @@ func ModuleDirs(root string) ([]string, error) {
 		if d.IsDir() && path != root && (d.Name() == "node_modules" || strings.HasPrefix(d.Name(), ".")) {
 			return filepath.SkipDir
 		}
-		if !d.IsDir() && d.Name() == "go.mod" {
+		if !d.IsDir() && d.Name() == name {
 			dirs = append(dirs, filepath.Dir(path))
 		}
 		return nil

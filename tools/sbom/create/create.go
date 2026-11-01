@@ -40,6 +40,20 @@ func Own(repo, label, licenceText string) Package {
 	}
 }
 
+// Once answers the packages with each PURL once, in the order they come first; two Go modules or
+// two package-lock.json of a repo may name the same package.
+func Once(packages []Package) []Package {
+	seen := map[string]bool{}
+	var once []Package
+	for _, p := range packages {
+		if !seen[p.PURL] {
+			seen[p.PURL] = true
+			once = append(once, p)
+		}
+	}
+	return once
+}
+
 // Row answers the row of the Change history that a run adds: the version of sbom.md after the run;
 // the day it runs; the label of the baseline; the ticket, as #<number>; the tool with its version.
 //

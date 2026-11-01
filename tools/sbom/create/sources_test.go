@@ -118,7 +118,8 @@ func TestApkPackages(t *testing.T) {
 }
 
 // @verifies SR_36@2.1.1
-func TestModuleDirsAsTheBuildStepsFindThem(t *testing.T) {
+// @verifies SR_37@2.1.1
+func TestDirsWithAsTheBuildStepsFindThem(t *testing.T) {
 	root := t.TempDir()
 	for _, dir := range []string{".", "tools", "web/app", "web/node_modules/m", ".github/x", "docs"} {
 		if err := os.MkdirAll(filepath.Join(root, dir), 0o750); err != nil {
@@ -131,7 +132,7 @@ func TestModuleDirsAsTheBuildStepsFindThem(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
-	got, err := ModuleDirs(root)
+	got, err := DirsWith(root, "go.mod")
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -5,8 +5,8 @@
 //
 // It runs in the repo checked out at the baseline the label names. It lists the package of the
 // subsystem itself; the Go modules of its commands and the standard library of Go, where a directory
-// of the repo holds a go.mod; the packages of package-lock.json, where the root holds one; and the Alpine
-// packages of each image named. It keeps the rows of the Change history of an sbom.md that is there,
+// of the repo holds a go.mod; the packages of each package-lock.json of the repo; and the Alpine
+// packages of each image named. It lists each package once. It keeps the rows of the Change history of an sbom.md that is there,
 // and adds one. It sets the entry of sbom.md in documents.yaml of the repo: the version of the new
 // row, the hash of the file written, approved and generated (PROC_13).
 //
@@ -115,13 +115,14 @@ func checkSbom(path, root, repo string, named []string) {
 	fmt.Printf("%s lists the packages delivered\n", path)
 }
 
-// delivered answers every package the subsystem delivers: its own, with the label as its version;
-// the Go modules of its commands and the standard library of Go, where a directory of the repo holds
-// a go.mod, each module once; the packages of package-lock.json, where the root holds one; and the Alpine packages of each image.
+// delivered answers every package the subsystem delivers, each once: its own, with the label as its
+// version; the Go modules of its commands and the standard library of Go, where a directory of the
+// repo holds a go.mod; the packages of each package-lock.json of the repo; and the Alpine packages of
+// each image.
 func delivered(root, repo, label string, named []string) []create.Package {
 	packages := []create.Package{create.Own(repo, label, create.LicenceIn(root))}
 
-	dirs, err := create.ModuleDirs(root)
+	dirs, err := create.DirsWith(root, "go.mod")
 	if err != nil {
 		fail(err)
 	}
@@ -153,7 +154,15 @@ func delivered(root, repo, label string, named []string) []create.Package {
 		packages = append(packages, create.Stdlib(version, licence))
 	}
 
-	if lock, err := os.ReadFile(filepath.Join(root, "package-lock.json")); err == nil {
+	locks, err := create.DirsWith(root, "package-lock.json")
+	if err != nil {
+		fail(err)
+	}
+	for _, dir := range locks {
+		lock, err := os.ReadFile(filepath.Join(dir, "package-lock.json"))
+		if err != nil {
+			fail(err)
+		}
 		npm, err := create.NpmPackages(lock)
 		if err != nil {
 			fail(err)
@@ -168,7 +177,7 @@ func delivered(root, repo, label string, named []string) []create.Package {
 		}
 		packages = append(packages, create.ApkPackages(installed)...)
 	}
-	return packages
+	return create.Once(packages)
 }
 
 // version answers the version of this tool: the commit of specs-and-deploy it was built from, as Go
