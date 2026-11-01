@@ -146,7 +146,7 @@ jobs:
           GOTOOLCHAIN: auto
         run: |
           go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.1
-          go install golang.org/x/tools/cmd/deadcode@v0.38.0
+          go install golang.org/x/tools/cmd/deadcode@v0.52.0
       - name: test coverage
         run: '"$STEPS/.github/build/steps.sh" cover'
       - name: structural debt
