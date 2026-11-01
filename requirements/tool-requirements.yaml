@@ -164,14 +164,13 @@ requirements:
 - object_key: TOOL_15
   object_version: '1.2.2'
   feature: Reviews
-  object_text: report a requirement or a document that is approved in a pull request, where it was not
-    approved in the base commit or its x rose, and that no passed review result of the pull request
-    names
+  object_text: report a requirement that is approved in a pull request, where it was not approved in
+    the base commit or its x rose, and that no passed review result of the pull request names
   source_ids: [PROC_13@2.1.1, PROC_14@1.1.1]
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
 - object_key: TOOL_16
   object_version: '1.1.2'
@@ -320,3 +319,15 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: TOOL_29
+  object_version: '1.1.1'
+  feature: Reviews
+  object_text: report a document with the verification method `review` that is approved in a pull
+    request, where it was not approved in the base commit or its x rose, and that no passed review
+    result of the pull request names
+  source_ids: [PROC_13@2.1.1, PROC_14@1.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 3_tools
+  safety: ''
+  status: draft
+  verification_method: [test]
