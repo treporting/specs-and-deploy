@@ -407,7 +407,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_40
-  object_version: '2.2.1'
+  object_version: '3.3.1'
   component: sbom
   object_text: 'add to the Change history of sbom.md a row with: - Version: the version of sbom.md in
     `documents.yaml` with x raised by one, `1.1.1` where it has none, - Date: the day it runs, -
@@ -416,7 +416,7 @@ requirements:
   source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_41
   object_version: '1.2.1'
@@ -609,5 +609,5 @@ requirements:
   source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
