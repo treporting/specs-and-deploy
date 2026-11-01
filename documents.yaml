@@ -109,3 +109,9 @@ documents:
   object_hash: '7812027'
   status: approved
   verification_method: [review]
+- name: sbom.md
+  type: document
+  object_version: '1.1.1'
+  object_hash: 'f9a873c'
+  status: approved
+  verification_method: [generated]
