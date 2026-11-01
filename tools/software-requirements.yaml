@@ -694,3 +694,75 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: SR_68
+  object_version: '1.1.1'
+  component: pdf
+  object_text: 'write one PDF for every document that documents.yaml of the commit or tag names,
+    from its Markdown at that commit or tag, named after its path with `.pdf`'
+  source_ids: [TOOL_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_69
+  object_version: '1.1.1'
+  component: pdf
+  object_text: 'render headings, lists, tables, code, links and Mermaid diagrams of a document as
+    GitHub shows them'
+  source_ids: [TOOL_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: SR_70
+  object_version: '1.1.1'
+  component: pdf
+  object_text: 'set on every page the title of the document and the name of the repo in the header,
+    the date of the commit or tag and "page x of y" in the footer, and margins of 2 cm at top and
+    bottom'
+  source_ids: [TOOL_31@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: SR_71
+  object_version: '1.1.1'
+  component: pdf
+  object_text: 'show in the footer the path, the version, the revision and the status of the
+    document, such as "devops.md · 2.1.1 · a1b2c3d · approved": version and status from
+    documents.yaml of the commit or tag, the revision the last commit up to it that changed the
+    file'
+  source_ids: [TOOL_02@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_72
+  object_version: '1.1.1'
+  component: pdf
+  object_text: 'write index.pdf that lists every document with its version, its revision and its
+    status'
+  source_ids: [TOOL_30@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_73
+  object_version: '1.1.1'
+  component: pdf
+  object_text: 'pack the PDFs and index.pdf in one ZIP named `<repo>-<commit or tag>-documents.zip`'
+  source_ids: [TOOL_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_74
+  object_version: '1.1.1'
+  component: ci
+  object_text: 'in pdf.yml, started by hand with a commit or tag: check it out, run pdf, and keep
+    the ZIP as artifact of the run; fail where the commit or tag does not exist'
+  source_ids: [TOOL_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [demonstration]
