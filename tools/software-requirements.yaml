@@ -611,3 +611,86 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR_60
+  object_version: '1.1.1'
+  component: baseline
+  object_text: 'provide the ticket template Baseline with the field Label; it sets no label on the
+    ticket'
+  source_ids: [TOOL_27@2.2.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
+- object_key: SR_61
+  object_version: '1.1.1'
+  component: baseline
+  object_text: 'start baseline.yml when the label `baseline` is set on a ticket of the repo, with
+    the label of the baseline from the field Label; fail where it is empty'
+  source_ids: [TOOL_27@2.2.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
+- object_key: SR_62
+  object_version: '1.1.1'
+  component: baseline
+  object_text: 'fail where the branch `<ticket number>-baseline-<label>` or the tag `<label>`
+    exists, or another run of baseline.yml of the repo is in progress'
+  source_ids: [TOOL_27@2.2.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
+- object_key: SR_63
+  object_version: '1.1.1'
+  component: baseline
+  object_text: 'run on the head of main the jobs build, lint, test and report of build.yml, then
+    sbom with the label, the ticket and the images the caller names, built at that head, then
+    licencecheck'
+  source_ids: [TOOL_27@2.2.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
+- object_key: SR_64
+  object_version: '1.1.1'
+  component: baseline
+  object_text: 'where every step passes, push the branch `<ticket number>-baseline-<label>` with
+    sbom.md and documents.yaml in one commit, and open a pull request with a token of the GitHub
+    App, naming the ticket, the label, the commit of main it ran on, and the command for the signed
+    tag'
+  source_ids: [TOOL_27@2.2.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
+- object_key: SR_65
+  object_version: '1.1.1'
+  component: baseline
+  object_text: 'name the result in the ticket, as a comment: the pull request, or the step that
+    failed'
+  source_ids: [TOOL_27@2.2.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
+- object_key: SR_66
+  object_version: '1.1.1'
+  component: sbom
+  object_text: 'with `-check`, compare the packages it would list with the table of sbom.md, write
+    nothing, and fail naming each package that differs'
+  source_ids: [TOOL_28@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_67
+  object_version: '1.1.1'
+  component: ci
+  object_text: 'in build.yml, run sbom with `-check` where the pull request changes sbom.md, with
+    the images the caller names'
+  source_ids: [TOOL_28@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [demonstration]
