@@ -546,6 +546,33 @@ moment, sbom.md could describe another commit than the one built and tested.
 **Rejected**: the head of `main` in each job - shorter, and wrong as soon as a pull request is merged
 during the run.
 
+## pdf
+
+Makes the documents of a commit or tag into one ZIP of PDFs (TOOL_01, TOOL_02, TOOL_30, TOOL_31;
+SR_68 to SR_74 in [software-requirements.yaml](software-requirements.yaml)). It reads the repo at the
+ref without checking it out: `documents.yaml`, and the Markdown of every document it names. The ZIP
+`<repo>-<ref>-documents.zip` holds one PDF per document, named after its path, and `index.pdf`,
+which lists every document with its title, version, revision and status.
+
+- the header of a page: the title of the document, the name of the repo
+- the footer: the date of the commit of the ref, page x of y, and the path, version, revision and
+  status of the document, such as `devops.md · 2.1.1 · a1b2c3d · approved` - the version and status
+  from `documents.yaml` at the ref, the revision the last commit up to the ref that changed the file
+- A4, margins of 2 cm at top and bottom, 1.5 cm at the sides
+
+Markdown is rendered as GitHub renders it (goldmark with its extension GFM), and printed by headless
+Chrome (chromedp). A document with a Mermaid diagram loads Mermaid 11.4.1 from jsDelivr, with the
+hash of the script: Chrome refuses a script that differs, and the run fails.
+
+The workflow `.github/workflows/pdf.yml` runs it, started by hand: Actions, pdf, Run workflow, with
+the commit or tag. The ZIP is an artifact of the run, to download from there; GitHub keeps it 90
+days, and the ZIP of a tag can be made again. By hand, from `tools/`, with Google Chrome or Chromium
+installed:
+
+```bash
+go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
+```
+
 ## Open
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to call
@@ -578,3 +605,4 @@ during the run.
 | 21.1.1 | 2026-11-01 | sbom; build steps | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 22.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 23.1.1 | 2026-11-01 | sbom; Open | #370 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 24.1.1 | 2026-11-01 | pdf | #392 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
