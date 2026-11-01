@@ -11,7 +11,7 @@ criteria_revision: '865b621'
 results:
 - object_key: RR_01
   target_ids: [harness.md]
-  revision: 'faec703'
+  revision: '07af4bd'
   criteria:
     RC_01: passed
     RC_02: passed
