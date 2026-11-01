@@ -495,6 +495,9 @@ verdict: passed
   deleted after 90 days
 - the Markdown has the headings Requirement, Configuration, Steps, Expected, Observed and Verdict -
   the questions an auditor asks of a verification
+- a screenshot is committed with its longer side at most 1792 pixels, half of a Retina screen: it
+  stays readable, and a commit is kept for good. On a Mac, before the commit:
+  `sips -Z 1792 verifications/<name>.jpg`
 
 A review and a test leave records of their own: a review in `reviews/`, a test in the output of its
 run.
@@ -702,3 +705,4 @@ function name, from the JSON output of `go test` and of vitest.
 | 17.1.1 | 2026-10-30 | CI check | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-11-01 | Documents; Change history | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-11-01 | Open | #373 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 20.1.1 | 2026-11-01 | Verifications | #382 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
