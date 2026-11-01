@@ -4,8 +4,8 @@
 //	sbom -check [-root dir] [-repo name] [-image name]...
 //
 // It runs in the repo checked out at the baseline the label names. It lists the package of the
-// subsystem itself; the Go modules of its commands and the standard library of Go, where the root
-// holds a go.mod; the packages of package-lock.json, where the root holds one; and the Alpine
+// subsystem itself; the Go modules of its commands and the standard library of Go, where a directory
+// of the repo holds a go.mod; the packages of package-lock.json, where the root holds one; and the Alpine
 // packages of each image named. It keeps the rows of the Change history of an sbom.md that is there,
 // and adds one. It sets the entry of sbom.md in documents.yaml of the repo: the version of the new
 // row, the hash of the file written, approved and generated (PROC_13).
@@ -116,32 +116,41 @@ func checkSbom(path, root, repo string, named []string) {
 }
 
 // delivered answers every package the subsystem delivers: its own, with the label as its version;
-// the Go modules of its commands and the standard library of Go, where the root holds a go.mod; the
-// packages of package-lock.json, where the root holds one; and the Alpine packages of each image.
+// the Go modules of its commands and the standard library of Go, where a directory of the repo holds
+// a go.mod, each module once; the packages of package-lock.json, where the root holds one; and the Alpine packages of each image.
 func delivered(root, repo, label string, named []string) []create.Package {
 	packages := []create.Package{create.Own(repo, label, create.LicenceIn(root))}
 
-	if exists(filepath.Join(root, "go.mod")) {
-		list, err := create.GoList(root)
+	dirs, err := create.ModuleDirs(root)
+	if err != nil {
+		fail(err)
+	}
+	var lists, withCommands []string
+	for _, dir := range dirs {
+		list, err := create.GoList(dir)
 		if err != nil {
 			fail(err)
 		}
 		if list != "" {
-			packages = append(packages, create.GoModules(list, create.LicenceIn)...)
-			version, err := create.GoEnv(root, "GOVERSION")
-			if err != nil {
-				fail(err)
-			}
-			goroot, err := create.GoEnv(root, "GOROOT")
-			if err != nil {
-				fail(err)
-			}
-			licence := create.LicenceIn(goroot)
-			if licence == "" {
-				licence = create.LicenceIn(filepath.Dir(goroot)) // Homebrew keeps it beside GOROOT
-			}
-			packages = append(packages, create.Stdlib(version, licence))
+			lists = append(lists, list)
+			withCommands = append(withCommands, dir)
 		}
+	}
+	if len(lists) > 0 {
+		packages = append(packages, create.GoModules(strings.Join(lists, "\n"), create.LicenceIn)...)
+		version, err := create.GoEnv(withCommands[0], "GOVERSION")
+		if err != nil {
+			fail(err)
+		}
+		goroot, err := create.GoEnv(withCommands[0], "GOROOT")
+		if err != nil {
+			fail(err)
+		}
+		licence := create.LicenceIn(goroot)
+		if licence == "" {
+			licence = create.LicenceIn(filepath.Dir(goroot)) // Homebrew keeps it beside GOROOT
+		}
+		packages = append(packages, create.Stdlib(version, licence))
 	}
 
 	if lock, err := os.ReadFile(filepath.Join(root, "package-lock.json")); err == nil {
@@ -189,11 +198,6 @@ func version() string {
 		revision += "-dirty"
 	}
 	return revision
-}
-
-func exists(path string) bool {
-	_, err := os.Stat(path)
-	return err == nil
 }
 
 func fail(err error) {
