@@ -1,0 +1,199 @@
+# The baseline of a repo (TOOL_27), as one reusable workflow. A repo calls it when the label
+# baseline is set on one of its tickets:
+#
+#	on:
+#	  issues:
+#	    types: [labeled]
+#	jobs:
+#	  baseline:
+#	    if: github.event.label.name == 'baseline'
+#	    uses: treporting/specs-and-deploy/.github/workflows/baseline.yml@main
+#	    with:
+#	      images: |
+#	        storages=Dockerfile
+#	    secrets: inherit
+#
+# It runs on the head of main as the ticket event names it, github.sha, so every job sees the same
+# commit. It writes with a token of the GitHub App treporting-baseline, so the pull request it opens
+# runs the checks of the repo. See tools/README.md, section baseline, and devops.md, section
+# Baseline.
+#
+# @implements SR_61@1.1.1, SR_62@1.1.1, SR_63@1.1.1, SR_64@1.1.1, SR_65@1.1.1
+name: baseline
+
+on:
+  workflow_call:
+    inputs:
+      go-version-file:
+        description: the go.mod whose version of Go the steps use
+        type: string
+        default: go.mod
+      images:
+        description: the images of the subsystem, one name=Dockerfile per line, from the root of the repo
+        type: string
+        default: ''
+    secrets:
+      BASELINE_APP_PRIVATE_KEY:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  #	SR_61, SR_62: the label from the ticket; no branch, no tag and no other run of it yet
+  start:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      label: ${{ steps.label.outputs.label }}
+      branch: ${{ steps.label.outputs.branch }}
+    steps:
+      - name: the label of the baseline, from the field Label of the ticket
+        id: label
+        env:
+          BODY: ${{ github.event.issue.body }}
+          TICKET: ${{ github.event.issue.number }}
+        run: |
+          label="$(printf '%s\n' "$BODY" | awk '/^### Label/ {found=1; next} found && /^### / {exit} found && NF {print; exit}' | tr -d '\r' | xargs)"
+          if [ -z "$label" ] || [ "$label" = "_No response_" ]; then
+            echo "the field Label of the ticket is empty"
+            exit 1
+          fi
+          if ! printf '%s' "$label" | grep -Eq '^[0-9A-Za-z][0-9A-Za-z._-]*$'; then
+            echo "the label \"$label\" is no name of a tag: letters, digits, '.', '_' and '-' only"
+            exit 1
+          fi
+          echo "label=$label" >> "$GITHUB_OUTPUT"
+          echo "branch=$TICKET-baseline-$label" >> "$GITHUB_OUTPUT"
+      - name: no branch, no tag, no other run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LABEL: ${{ steps.label.outputs.label }}
+          BRANCH: ${{ steps.label.outputs.branch }}
+          WORKFLOW: ${{ github.workflow_ref }}
+        run: |
+          remote="https://github.com/$GITHUB_REPOSITORY.git"
+          if git ls-remote --exit-code --heads "$remote" "refs/heads/$BRANCH" >/dev/null; then
+            echo "the branch $BRANCH exists"
+            exit 1
+          fi
+          if git ls-remote --exit-code --tags "$remote" "refs/tags/$LABEL" >/dev/null; then
+            echo "the tag $LABEL exists"
+            exit 1
+          fi
+          path="${WORKFLOW#*/*/}"
+          path="${path%@*}"
+          others="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?status=in_progress&event=issues" \
+            --jq "[.workflow_runs[] | select(.path == \"$path\" and .id != $GITHUB_RUN_ID)] | length")"
+          if [ "$others" != 0 ]; then
+            echo "another run of $path is in progress"
+            exit 1
+          fi
+
+  #	SR_63: the loop for every release or library, up to the report
+  build:
+    needs: start
+    uses: treporting/specs-and-deploy/.github/workflows/build.yml@main
+    with:
+      go-version-file: ${{ inputs.go-version-file }}
+
+  #	SR_63, SR_64: sbom and the check of the licences; the pull request where every step passed
+  sbom:
+    needs: [start, build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      pull-request: ${{ steps.pr.outputs.url }}
+    env:
+      STEPS: ${{ github.repository == 'treporting/specs-and-deploy' && github.workspace || format('{0}/.build-steps', github.workspace) }}
+    steps:
+      - uses: actions/create-github-app-token@v2
+        id: app
+        with:
+          app-id: ${{ vars.BASELINE_APP_ID }}
+          private-key: ${{ secrets.BASELINE_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app.outputs.token }}
+      - uses: actions/checkout@v4
+        if: github.repository != 'treporting/specs-and-deploy'
+        with:
+          repository: treporting/specs-and-deploy
+          ref: main
+          path: .build-steps
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: ${{ inputs.go-version-file }}
+          cache-dependency-path: '**/go.sum'
+      - name: sbom and the check of the licences
+        env:
+          LABEL: ${{ needs.start.outputs.label }}
+          TICKET: ${{ github.event.issue.number }}
+          IMAGES: ${{ inputs.images }}
+        run: |
+          # shellcheck disable=SC2086 # one image per word
+          "$STEPS/.github/build/steps.sh" baseline "$LABEL" "$TICKET" $IMAGES
+      - name: the pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          LABEL: ${{ needs.start.outputs.label }}
+          BRANCH: ${{ needs.start.outputs.branch }}
+          TICKET: ${{ github.event.issue.number }}
+          APP: ${{ steps.app.outputs.app-slug }}
+        run: |
+          git config user.name "$APP[bot]"
+          git config user.email "$APP[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add sbom.md documents.yaml
+          git commit -m "Baseline $LABEL: sbom.md" -m "Part of #$TICKET"
+          git push origin "$BRANCH"
+          body="$(cat <<BODY
+          Part of #$TICKET
+
+          The baseline $LABEL of $GITHUB_REPOSITORY, run on main at $GITHUB_SHA: build, lint, test, report, sbom and the check of the licences passed. sbom.md and its entry in documents.yaml are written by the tool sbom, approved without a review (PROC_13).
+
+          After the merge, set the signed tag on the merge commit:
+
+          \`\`\`bash
+          git fetch origin
+          git tag -s $LABEL "\$(gh pr view $BRANCH --json mergeCommit --jq .mergeCommit.oid)" -m "Baseline $LABEL"
+          git push origin $LABEL
+          \`\`\`
+          BODY
+          )"
+          url="$(gh pr create --base main --head "$BRANCH" --title "Baseline $LABEL" --body "$body")"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+  #	SR_65: the result in the ticket
+  result:
+    needs: [start, build, sbom]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/create-github-app-token@v2
+        id: app
+        with:
+          app-id: ${{ vars.BASELINE_APP_ID }}
+          private-key: ${{ secrets.BASELINE_APP_PRIVATE_KEY }}
+      - name: comment on the ticket
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          TICKET: ${{ github.event.issue.number }}
+          PR: ${{ needs.sbom.outputs.pull-request }}
+          START: ${{ needs.start.result }}
+          BUILD: ${{ needs.build.result }}
+          SBOM: ${{ needs.sbom.result }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -n "$PR" ]; then
+            text="The baseline is ready for review: $PR"
+          else
+            failed=""
+            [ "$START" = success ] || failed="start (the label, or a branch, tag or run that exists)"
+            [ -n "$failed" ] || [ "$BUILD" = success ] || failed="build (build, lint, test or report)"
+            [ -n "$failed" ] || failed="sbom (sbom, the check of the licences, or the pull request)"
+            text="The baseline failed at the step $failed. See $RUN"
+          fi
+          gh issue comment "$TICKET" --repo "$GITHUB_REPOSITORY" --body "$text"
