@@ -96,3 +96,12 @@ func TestAValueDoesNotBreakTheTable(t *testing.T) {
 		t.Errorf("got\n%s", md)
 	}
 }
+
+func TestOnceKeepsTheFirstOfEachPURL(t *testing.T) {
+	a := Package{PURL: "pkg:npm/a@1.0.0", Name: "a", Version: "1.0.0", Licence: "MIT"}
+	b := Package{PURL: "pkg:npm/b@2.0.0", Name: "b", Version: "2.0.0", Licence: "ISC"}
+	got := Once([]Package{a, b, a})
+	if len(got) != 2 || got[0] != a || got[1] != b {
+		t.Errorf("got %+v", got)
+	}
+}

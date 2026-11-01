@@ -1,6 +1,8 @@
 package create
 
 import (
+	"os"
+	"path/filepath"
 	"reflect"
 	"sort"
 	"testing"
@@ -112,5 +114,30 @@ func TestApkPackages(t *testing.T) {
 	}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got  %+v\nwant %+v", got, want)
+	}
+}
+
+// @verifies SR_36@2.1.1
+// @verifies SR_37@2.1.1
+func TestDirsWithAsTheBuildStepsFindThem(t *testing.T) {
+	root := t.TempDir()
+	for _, dir := range []string{".", "tools", "web/app", "web/node_modules/m", ".github/x", "docs"} {
+		if err := os.MkdirAll(filepath.Join(root, dir), 0o750); err != nil {
+			t.Fatal(err)
+		}
+		if dir == "docs" {
+			continue
+		}
+		if err := os.WriteFile(filepath.Join(root, dir, "go.mod"), []byte("module m\n"), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	got, err := DirsWith(root, "go.mod")
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := []string{root, filepath.Join(root, "tools"), filepath.Join(root, "web/app")}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v\nwant %v", got, want)
 	}
 }

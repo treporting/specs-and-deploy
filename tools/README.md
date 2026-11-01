@@ -316,12 +316,12 @@ finds an id in its file through the component `review`, and the annotations thro
 
 Creates the SBOM of a subsystem as `sbom.md` in the root of its repo (TOOL_21; SR_36 to SR_46, SR_59 and SR_66 in
 [software-requirements.yaml](software-requirements.yaml)). It runs in the repo checked out at the
-baseline and lists every package the subsystem delivers, sorted by PURL:
+baseline and lists every package the subsystem delivers, each once, sorted by PURL:
 
 - the package of the subsystem itself, with the label of the baseline as its version (SR_46)
-- where the root holds a `go.mod`: the Go modules of its commands (SR_36) and the standard library
-  of Go (SR_44)
-- where the root holds a `package-lock.json`: its packages that are not marked `dev` (SR_37)
+- where a directory of the repo holds a `go.mod`: the Go modules of its commands (SR_36) and the
+  standard library of Go (SR_44)
+- for each `package-lock.json` of the repo: its packages that are not marked `dev` (SR_37)
 - for each image named: the Alpine packages of `/lib/apk/db/installed` (SR_38)
 
 A run keeps the rows of the Change history of an `sbom.md` that is there and adds one, with the
@@ -550,9 +550,6 @@ during the run.
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to call
   `build.yml` of specs-and-deploy.
-- `treporting = 1_tools` - **sbom of specs-and-deploy**: sbom reads the `go.mod` in the root of
-  a repo only. In specs-and-deploy the module of the tools lies in `tools/`, so its sbom.md would
-  list specs-and-deploy alone.
 
 ## Change history
 
@@ -580,3 +577,4 @@ during the run.
 | 20.1.1 | 2026-11-01 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 21.1.1 | 2026-11-01 | sbom; build steps | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 22.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 23.1.1 | 2026-11-01 | sbom; Open | #370 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

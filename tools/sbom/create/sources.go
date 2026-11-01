@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -29,6 +30,29 @@ func LicenceIn(dir string) string {
 // moduleFormat makes go list print each module a package belongs to - its replacement where it has
 // one - as path, version and directory, and nothing for the module of the subsystem.
 const moduleFormat = `{{with .Module}}{{if not .Main}}{{with .Replace}}{{.Path}}	{{.Version}}	{{.Dir}}{{else}}{{.Path}}	{{.Version}}	{{.Dir}}{{end}}{{end}}{{end}}`
+
+// DirsWith answers every directory of root that holds a file of that name, root included, in lexical
+// order - neither below node_modules nor below a directory whose name starts with a dot, as the build
+// steps find a go.mod or a package-lock.json.
+//
+// @implements SR_36@2.1.1
+// @implements SR_37@2.1.1
+func DirsWith(root, name string) ([]string, error) {
+	var dirs []string
+	err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() && path != root && (d.Name() == "node_modules" || strings.HasPrefix(d.Name(), ".")) {
+			return filepath.SkipDir
+		}
+		if !d.IsDir() && d.Name() == name {
+			dirs = append(dirs, filepath.Dir(path))
+		}
+		return nil
+	})
+	return dirs, err
+}
 
 // GoList runs go list in root, the root of the module of the subsystem, and answers a line per
 // package of its commands: the module it belongs to, as moduleFormat prints it. It answers nothing
