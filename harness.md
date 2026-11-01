@@ -238,7 +238,9 @@ as soon as possible (PROC_07)
 
 ## Open
 
-- `treporting = 1_demo` - **Threats**: not decided whether treporting gets a threat analysis.
+- `treporting = 1_demo` - **Threats**: not decided whether treporting gets a threat analysis. One
+  threat is known: a package delivered but missing from sbom.md hides its known vulnerabilities
+  (REG_EU2024-2847_02); TOOL_28 controls it.
 - `treporting = 3_tools` - **Process**: not decided whether treporting gets a tool qualification
   (ISO15026).
 - `treporting = 1_tools` - **Platform and launches**: not decided whether the reading of table
@@ -261,3 +263,4 @@ as soon as possible (PROC_07)
 | 11.1.1 | 2026-10-30 | Platform and launches | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-10-30 | Platform and launches; Loop for every change; Loop for every release or library | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-11-01 | Rules | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 14.1.1 | 2026-11-01 | Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

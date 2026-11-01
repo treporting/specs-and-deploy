@@ -298,12 +298,25 @@ requirements:
 - object_key: TOOL_27
   object_version: '1.1.1'
   feature: baseline
-  object_text: prepare on request the baseline of a repo with a given label - run the loop for every
-    release or library on the head of main up to the check of the licences, and open a pull request
-    with its sbom.md only where every step passes
-  source_ids: [PROC_06@1.1.1, PROC_08@2.2.1]
+  object_text: 'prepare the baseline of a repo when the label `baseline` is set on a ticket of that
+    repo, with the label of the baseline the ticket names - run the loop for every release or library
+    on the head of main up to the check of the licences, open a pull request with its sbom.md on a
+    branch of the ticket only where every step passes, and name the result in the ticket; fail where
+    the branch or the tag of the label exists'
+  source_ids: [PROC_02@1.1.1, PROC_06@1.1.1, PROC_08@2.2.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
-  status: approved
+  status: draft
+  verification_method: [demonstration]
+- object_key: TOOL_28
+  object_version: '1.1.1'
+  feature: baseline
+  object_text: fail a pull request that changes sbom.md where the packages it lists are not those of
+    the head of the pull request
+  source_ids: [PROC_08@2.2.1]
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: draft
   verification_method: [demonstration]
