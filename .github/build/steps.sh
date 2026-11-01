@@ -3,11 +3,13 @@
 # of the repo; the same script runs by hand.
 #
 #	steps.sh build|lint|test|cover|debt
+#	steps.sh sbom [name=Dockerfile]...
 #
 # A Go module is every directory with a go.mod, a JavaScript package every directory with a
 # package-lock.json - neither below node_modules nor below a directory whose name starts with a dot.
 # build, lint and test exit with 1 where a step fails. cover and debt report and exit with 0; they
-# exit otherwise only where the measuring itself did not happen.
+# exit otherwise only where the measuring itself did not happen. sbom builds each image named from
+# its Dockerfile, and exits with 1 where sbom.md does not list the packages delivered.
 #
 # It needs go, golangci-lint v2 and deadcode on the PATH, and node with npm where there is a
 # JavaScript package.
@@ -116,16 +118,34 @@ debt() {
 	done
 }
 
+#	@implements SR_67@1.1.1
+sbom() {
+	local bin names=()
+	bin="$(mktemp -d)/sbom"
+	(cd "$steps/tools" && GOTOOLCHAIN=auto go build -o "$bin" ./sbom/cmd/sbom) || exit 2
+	for image in "$@"; do
+		run . docker build -t "${image%%=*}" -f "${image#*=}" .
+		names+=(-image "${image%%=*}")
+	done
+	[ "$failed" = 0 ] || exit 2
+	run . "$bin" -check ${names[@]+"${names[@]}"}
+}
+
 case "${1:-}" in
 build | lint | test)
 	"$1"
+	exit "$failed"
+	;;
+sbom)
+	shift
+	sbom "$@"
 	exit "$failed"
 	;;
 cover | debt)
 	"$1"
 	;;
 *)
-	echo "usage: steps.sh build|lint|test|cover|debt" >&2
+	echo "usage: steps.sh build|lint|test|cover|debt|sbom" >&2
 	exit 2
 	;;
 esac

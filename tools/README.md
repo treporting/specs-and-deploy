@@ -314,7 +314,7 @@ finds an id in its file through the component `review`, and the annotations thro
 
 ## sbom
 
-Creates the SBOM of a subsystem as `sbom.md` in the root of its repo (TOOL_21; SR_36 to SR_46 and SR_59 in
+Creates the SBOM of a subsystem as `sbom.md` in the root of its repo (TOOL_21; SR_36 to SR_46, SR_59 and SR_66 in
 [software-requirements.yaml](software-requirements.yaml)). It runs in the repo checked out at the
 baseline and lists every package the subsystem delivers, sorted by PURL:
 
@@ -335,6 +335,11 @@ cd tools
 go build -o sbom ./sbom/cmd/sbom
 ./sbom -root ../../storages -label 1.2.0 -ticket 343 -image storages:1.2.0
 ```
+
+With `-check` it writes nothing (TOOL_28, SR_66). It compares the packages delivered with the table
+of `sbom.md`, with the label of the last row of its Change history as the version of the package of
+the subsystem. It exits with 1 and names each package that differs: delivered and not listed,
+listed and not delivered, or listed with another name, version or licence.
 
 The code is the component `sbom`: the package `sbom/create` and the command `sbom/cmd/sbom`.
 
@@ -440,6 +445,11 @@ The build steps of every repo (TOOL_23 to TOOL_26; SR_51 to SR_58 in
 [software-requirements.yaml](software-requirements.yaml)): build, linters and tests fail; the
 report on test coverage and structural debt blocks nothing.
 
+Where a pull request changes `sbom.md`, the job `build` also runs `steps.sh sbom` (TOOL_28, SR_67):
+it builds each image the repo names in the input `images`, one `name=Dockerfile` per line, and runs
+`sbom -check` with them. So a pull request with an `sbom.md` that no longer fits its head cannot be
+merged.
+
 The workflow `.github/workflows/build.yml` has a job for each: `build`, `lint`, `test` and
 `report`. Each runs `.github/build/steps.sh` in the root of the repo. A Go module is every directory
 with a `go.mod`, a JavaScript package every directory with a `package-lock.json`. A package names
@@ -448,6 +458,7 @@ coverage. The script runs by hand too, with go, golangci-lint v2, deadcode and n
 
 ```bash
 ../specs-and-deploy/.github/build/steps.sh lint
+../specs-and-deploy/.github/build/steps.sh sbom storages=Dockerfile
 ```
 
 `.github/build` holds the configurations: `.golangci.yml` for the gate, `debt.golangci.yml` for the
@@ -463,6 +474,9 @@ specs-and-deploy, which every repo calls:
 jobs:
   build:
     uses: treporting/specs-and-deploy/.github/workflows/build.yml@main
+    with:
+      images: |
+        storages=Dockerfile
 ```
 
 **Why**: a reusable workflow may lie in any public repo. Here the requirement, the code and its
@@ -524,3 +538,4 @@ nothing, so the stricter bound costs nothing.
 | 18.1.1 | 2026-10-31 | build steps; Open | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-10-31 | build steps | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 20.1.1 | 2026-11-01 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 21.1.1 | 2026-11-01 | sbom; build steps | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

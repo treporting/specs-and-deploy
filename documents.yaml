@@ -93,7 +93,7 @@ documents:
   level: r5
   object_version: '20.1.1'
   object_hash: '07d29f8'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation

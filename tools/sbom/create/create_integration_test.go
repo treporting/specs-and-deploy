@@ -92,3 +92,44 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 		t.Errorf("own package missing:\n%s", md)
 	}
 }
+
+// @verifies SR_66@1.1.1
+func TestCheckFailsWhereSbomMDDoesNotListWhatIsDelivered(t *testing.T) {
+	bin := filepath.Join(t.TempDir(), "sbom")
+	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/sbom").CombinedOutput(); err != nil {
+		t.Fatalf("go build: %v\n%s", err, out)
+	}
+	repo := filepath.Join(t.TempDir(), "viewer-trace")
+	if err := os.MkdirAll(repo, 0o750); err != nil {
+		t.Fatal(err)
+	}
+	for name, content := range map[string]string{"LICENSE": apacheText, "package-lock.json": lock, "documents.yaml": documentsYAML} {
+		if err := os.WriteFile(filepath.Join(repo, name), []byte(content), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if out, err := exec.Command(bin, "-root", repo, "-label", "1.0.0", "-ticket", "343").CombinedOutput(); err != nil {
+		t.Fatalf("sbom: %v\n%s", err, out)
+	}
+	written, err := os.ReadFile(filepath.Join(repo, "sbom.md"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if out, err := exec.Command(bin, "-root", repo, "-check").CombinedOutput(); err != nil {
+		t.Errorf("check of the sbom.md just written: %v\n%s", err, out)
+	}
+	after, err := os.ReadFile(filepath.Join(repo, "sbom.md"))
+	if err != nil || string(after) != string(written) {
+		t.Errorf("check wrote sbom.md: %v", err)
+	}
+
+	changed := strings.Replace(lock, `"license": "MIT"`, `"license": "ISC"`, 1)
+	if err := os.WriteFile(filepath.Join(repo, "package-lock.json"), []byte(changed), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	out, err := exec.Command(bin, "-root", repo, "-check").CombinedOutput()
+	if exit, ok := err.(*exec.ExitError); !ok || exit.ExitCode() != 1 || !strings.Contains(string(out), "delivered is") {
+		t.Errorf("check of a changed lock: %v\n%s", err, out)
+	}
+}
