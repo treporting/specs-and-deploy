@@ -64,12 +64,13 @@ Documents).
 
 ## Reviews
 
-`TOOL_03` to `TOOL_04`, `TOOL_11` and `TOOL_15`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL_03` to `TOOL_04`, `TOOL_11`, `TOOL_15` and `TOOL_29`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The tools that create and check a review. `reviewcheck` checks every review result (TOOL_03,
 TOOL_11) and runs on every pull request (TOOL_12). `reviewskeleton` writes the skeleton of a review
-result (TOOL_04). Whatever is approved in a pull request, for the first time or with a new x, needs
-a passed review result in that pull request (TOOL_15, PROC_13).
+result (TOOL_04). A requirement approved in a pull request, for the first time or with a new x,
+needs a passed review result in that pull request (TOOL_15, PROC_13). So does a document with the
+verification method `review` (TOOL_29); a document a tool writes, with `generated`, needs none.
 
 ## CI check
 
@@ -168,3 +169,4 @@ vulnerabilities (REG_EU2024-2847_02).
 | 12.1.1 | 2026-10-31 | build steps | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-10-31 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 15.1.1 | 2026-11-01 | Reviews | #369 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
