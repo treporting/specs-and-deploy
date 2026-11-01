@@ -24,10 +24,32 @@ launch and stream). It stays right when a release is made.
 
 ## Documents to PDF
 
-`TOOL_01` to `TOOL_02`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL_01` to `TOOL_02`, `TOOL_30` to `TOOL_31`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 A document handed to an auditor shows what it is, which version, which revision, and its status
 (REG_FDADI_01).
+
+**How the documents are exported**:
+
+**Decision**: every document of a commit or tag in one run - a workflow started by hand with that
+commit or tag. Its result is a ZIP, an artifact of the run to download from there: one PDF per
+document, and an index that lists every document with its version, its revision and its status.
+The run writes nothing to the repo.
+
+**Why**: an auditor is handed the documents of one state, such as a baseline. One run from the
+commit or tag makes all of them from that state, each the same on any machine. One file per document
+keeps each with its own version and status, as documents.yaml has them; the index gives the state at
+a glance. GitHub keeps an artifact for 90 days at most; the package of a tag can be made again at
+any time.
+
+**Rejected**:
+
+- the VS Code extension Markdown PDF, one document at a time - it exports what is open in the
+  editor, not a commit or tag; it cannot set the revision and the status without a script before
+  each export, and its result hangs on the machine
+- one PDF with every document - the version and the status of each would be lost among the others
+- the ZIP on a GitHub release of each tag - a package of any commit needs a run by hand anyway, and
+  we have no decision on releases on GitHub
 
 **Which version and revision** an exported document shows:
 
@@ -170,3 +192,4 @@ vulnerabilities (REG_EU2024-2847_02).
 | 13.1.1 | 2026-10-31 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-11-01 | Reviews | #369 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 16.1.1 | 2026-11-01 | Documents to PDF | #390 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

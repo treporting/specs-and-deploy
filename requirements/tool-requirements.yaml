@@ -8,15 +8,14 @@ requirements:
 - object_key: TOOL_01
   object_version: '1.1.1'
   feature: Documents to PDF
-  object_text: export every document to PDF with the settings kept in the repo - the title of the document
-    and the name of the repo in the header, the date and the page of the pages in the footer, margins
-    of 2 cm at top and bottom
+  object_text: export every document of a commit or tag to PDF, one file each, in a workflow started
+    by hand with that commit or tag, as one ZIP to download from the run
   source_ids: [REG_FDADI_01@1.1.1]
   priority: 'medium'
   platform_launch: treporting = 2_tools
   safety: ''
   status: draft
-  verification_method: [inspection]
+  verification_method: [demonstration]
 - object_key: TOOL_02
   object_version: '1.1.1'
   feature: Documents to PDF
@@ -331,3 +330,25 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: TOOL_30
+  object_version: '1.1.1'
+  feature: Documents to PDF
+  object_text: add to the ZIP an index that lists every document with its version, its revision and
+    its own status
+  source_ids: [REG_FDADI_01@1.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 2_tools
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: TOOL_31
+  object_version: '1.1.1'
+  feature: Documents to PDF
+  object_text: set the title of the document and the name of the repo in the header, the date and the
+    page of the pages in the footer, and margins of 2 cm at top and bottom
+  source_ids: [REG_FDADI_01@1.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 2_tools
+  safety: ''
+  status: draft
+  verification_method: [inspection]
