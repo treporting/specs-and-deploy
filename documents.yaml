@@ -15,7 +15,7 @@ documents:
   level: rules
   object_version: '12.1.1'
   object_hash: 'b66dde8'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '17.1.1'
   object_hash: '3176e7b'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
