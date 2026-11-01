@@ -121,7 +121,15 @@ func checkSbom(path, root, repo string, named []string) {
 // each image.
 func delivered(root, repo, label string, named []string) []create.Package {
 	packages := []create.Package{create.Own(repo, label, create.LicenceIn(root))}
+	packages = append(packages, goPackages(root)...)
+	packages = append(packages, npmPackages(root)...)
+	packages = append(packages, apkPackages(named)...)
+	return create.Once(packages)
+}
 
+// goPackages answers the Go modules of the commands of every go.mod of the repo, and the standard
+// library of Go where there is a command; nothing where there is none.
+func goPackages(root string) []create.Package {
 	dirs, err := create.DirsWith(root, "go.mod")
 	if err != nil {
 		fail(err)
@@ -137,28 +145,37 @@ func delivered(root, repo, label string, named []string) []create.Package {
 			withCommands = append(withCommands, dir)
 		}
 	}
-	if len(lists) > 0 {
-		packages = append(packages, create.GoModules(strings.Join(lists, "\n"), create.LicenceIn)...)
-		version, err := create.GoEnv(withCommands[0], "GOVERSION")
-		if err != nil {
-			fail(err)
-		}
-		goroot, err := create.GoEnv(withCommands[0], "GOROOT")
-		if err != nil {
-			fail(err)
-		}
-		licence := create.LicenceIn(goroot)
-		if licence == "" {
-			licence = create.LicenceIn(filepath.Dir(goroot)) // Homebrew keeps it beside GOROOT
-		}
-		packages = append(packages, create.Stdlib(version, licence))
+	if len(lists) == 0 {
+		return nil
 	}
+	return append(create.GoModules(strings.Join(lists, "\n"), create.LicenceIn), stdlib(withCommands[0]))
+}
 
-	locks, err := create.DirsWith(root, "package-lock.json")
+// stdlib answers the standard library of the Go that builds the module in dir.
+func stdlib(dir string) create.Package {
+	version, err := create.GoEnv(dir, "GOVERSION")
 	if err != nil {
 		fail(err)
 	}
-	for _, dir := range locks {
+	goroot, err := create.GoEnv(dir, "GOROOT")
+	if err != nil {
+		fail(err)
+	}
+	licence := create.LicenceIn(goroot)
+	if licence == "" {
+		licence = create.LicenceIn(filepath.Dir(goroot)) // Homebrew keeps it beside GOROOT
+	}
+	return create.Stdlib(version, licence)
+}
+
+// npmPackages answers the packages of every package-lock.json of the repo.
+func npmPackages(root string) []create.Package {
+	dirs, err := create.DirsWith(root, "package-lock.json")
+	if err != nil {
+		fail(err)
+	}
+	var packages []create.Package
+	for _, dir := range dirs {
 		lock, err := os.ReadFile(filepath.Join(dir, "package-lock.json"))
 		if err != nil {
 			fail(err)
@@ -169,7 +186,12 @@ func delivered(root, repo, label string, named []string) []create.Package {
 		}
 		packages = append(packages, npm...)
 	}
+	return packages
+}
 
+// apkPackages answers the Alpine packages of each image named.
+func apkPackages(named []string) []create.Package {
+	var packages []create.Package
 	for _, image := range named {
 		installed, err := create.ApkInstalled(image)
 		if err != nil {
@@ -177,7 +199,7 @@ func delivered(root, repo, label string, named []string) []create.Package {
 		}
 		packages = append(packages, create.ApkPackages(installed)...)
 	}
-	return create.Once(packages)
+	return packages
 }
 
 // version answers the version of this tool: the commit of specs-and-deploy it was built from, as Go
