@@ -46,7 +46,8 @@ func TestGoEnvNamesTheVersionOfGo(t *testing.T) {
 }
 
 // @verifies SR_39@1.2.1
-// @verifies SR_40@2.2.1
+// @verifies SR_40@3.3.1
+// @verifies SR_59@1.1.1
 func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	bin := filepath.Join(t.TempDir(), "sbom")
 	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/sbom").CombinedOutput(); err != nil {
@@ -62,9 +63,12 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(repo, "package-lock.json"), []byte(lock), 0o600); err != nil {
 		t.Fatal(err)
 	}
+	if err := os.WriteFile(filepath.Join(repo, "documents.yaml"), []byte(documentsYAML), 0o600); err != nil {
+		t.Fatal(err)
+	}
 
 	for _, label := range []string{"1.0.0", "1.1.0"} {
-		if out, err := exec.Command(bin, "-root", repo, "-label", label).CombinedOutput(); err != nil {
+		if out, err := exec.Command(bin, "-root", repo, "-label", label, "-ticket", "343").CombinedOutput(); err != nil {
 			t.Fatalf("sbom: %v\n%s", err, out)
 		}
 	}
@@ -73,8 +77,16 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 		t.Fatal(err)
 	}
 	rows := History(md)
-	if len(rows) != 2 || !strings.Contains(rows[0], " | 1.0.0 | - | sbom ") || !strings.Contains(rows[1], " | 1.1.0 | - | sbom ") {
+	if len(rows) != 2 || !strings.HasPrefix(rows[0], "| 1.1.1 | ") || !strings.Contains(rows[0], " | 1.0.0 | #343 | sbom ") ||
+		!strings.HasPrefix(rows[1], "| 2.1.1 | ") || !strings.Contains(rows[1], " | 1.1.0 | #343 | sbom ") {
 		t.Errorf("rows %q", rows)
+	}
+	documents, err := os.ReadFile(filepath.Join(repo, "documents.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(documents), "- name: sbom.md\n  type: document\n  object_version: '2.1.1'\n  object_hash: '"+Hash(md)+"'\n  status: approved\n  verification_method: [generated]\n") {
+		t.Errorf("documents.yaml:\n%s", documents)
 	}
 	if !strings.Contains(string(md), "| pkg:github/treporting/viewer-trace@1.1.0 | viewer-trace | 1.1.0 | Apache-2.0 |") {
 		t.Errorf("own package missing:\n%s", md)
