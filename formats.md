@@ -270,10 +270,10 @@ Verifications). Each entry names:
 A YAML of a level names the Markdown files that explain it in its field `documents`, by their path,
 without a version.
 
-A document is reviewed like a requirement (`review` as its verification method), and an exported
-document shows its version, its revision and its status (TOOL_02). Its `object_hash` is the content
-approved: `git hash-object` of its file, 7 characters, set at the approval with the version, `''`
-before the first. It is the one attribute for x of a document (traceability.md, section The version
+A document is reviewed like a requirement (`review` as its verification method), except a document
+a tool writes (see below). An exported document shows its version, its revision and its status
+(TOOL_02). Its `object_hash` is the content approved: `git hash-object` of its file, 7 characters,
+set at the approval with the version, `''` before the first. It is the one attribute for x of a document (traceability.md, section The version
 of a document):
 
 ```yaml
@@ -304,6 +304,26 @@ requirements:
 
 **Why**: one place holds the version of every document. A tool finds it there, whatever the
 document explains.
+
+**Decision**: a document a tool writes is approved as the tool writes it, without a review
+(PROC_13). Its verification method is `generated`. The tool sets its entry in `documents.yaml` on
+every change of its content: x of its version raised by one - `1.1.1` the first time -, its
+`object_hash`, and `approved`. Today this is `sbom.md` of a subsystem (SR_40).
+
+**Why**:
+
+- it is a report of what a tool found, not text a person wrote. The tests of the tool and the
+  checks that read it - such as the check of the licences (TOOL_22) - check what it holds; a
+  review could only compare it with the same output once more
+- everyone can make it alone, without a reviewer
+- it keeps the one form of a document: a version, a hash, a status and a change history
+
+**Rejected**:
+
+- a review of every generated document - it adds nothing to what the tool and its checks show,
+  and it needs a second person for every baseline
+- no entry in `documents.yaml`, with the commit as its version - a second form of a version, beside
+  the `x.y.z` of every other document (traceability.md, section The version of a document)
 
 **Rejected**:
 
@@ -340,6 +360,7 @@ since its inception (REG_ISO29119-3_01), one row each:
 
 The row is written with the change itself, so that its review covers it (reviews/README.md, section
 The change history of a document).
+A document a tool writes names the tool with its version in By, and no reviewer.
 
 ### Standards, clauses and tables in a document
 
@@ -656,7 +677,8 @@ function name, from the JSON output of `go test` and of vitest.
 
 ## Open
 
-`<empty>`
+- `treporting = 2_tools` - **sbom.md**: the tool sbom does not yet write its entry in
+  `documents.yaml`, and SR_40 still names `-` as its version in the change history.
 
 ## Change history
 
@@ -679,3 +701,4 @@ function name, from the JSON output of `go test` and of vitest.
 | 15.1.1 | 2026-10-30 | Requirements: YAML for the data, Markdown for the explanations | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-10-30 | Fields are the properties of the gel schema; Schemas; Breakdown | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-10-30 | CI check | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 18.1.1 | 2026-11-01 | Documents; Change history | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

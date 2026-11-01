@@ -13,8 +13,8 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '12.1.1'
-  object_hash: 'b66dde8'
+  object_version: '13.1.1'
+  object_hash: '7288808'
   status: approved
   verification_method: [review]
 - name: devops.md
@@ -37,8 +37,8 @@ documents:
   verification_method: [review]
 - name: formats.md
   type: document
-  object_version: '17.1.1'
-  object_hash: '3176e7b'
+  object_version: '18.1.1'
+  object_hash: '6dc238d'
   status: approved
   verification_method: [review]
 - name: reviews/README.md

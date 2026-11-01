@@ -101,11 +101,12 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC_13
-  object_version: '1.1.1'
-  object_text: 'Whatever has review criteria of its kind in `reviews/` - today requirements and
-    documents - is approved only when it passed its review against those criteria, and whatever it
-    names as uplink is approved at that moment. A later change of an uplink does not take the approval
-    back. See traceability.md.'
+  object_version: '2.1.1'
+  object_text: 'Whatever has review criteria of its kind in `reviews/` is approved only when it passed
+    its review against those criteria, and whatever it names as uplink is approved at that moment. A
+    later change of an uplink does not take the approval back. A document a tool writes, with the
+    verification method `generated`, is approved as the tool writes it, without a review. See
+    traceability.md.'
   priority: 'medium'
   safety: ''
   status: approved

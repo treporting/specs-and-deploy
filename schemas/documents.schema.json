@@ -101,7 +101,8 @@
                 "analysis",
                 "demonstration",
                 "test",
-                "review"
+                "review",
+                "generated"
               ]
             }
           }
