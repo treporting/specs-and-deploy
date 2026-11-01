@@ -1,0 +1,24 @@
+# The demonstration of SR_62 and SR_65 with the tag T044 that exists: ticket #381.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_62, SR_65]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-11-01T17:37:42+01:00'
+revision: 'acd5bf1'
+setting: '4d2c738'
+description: verifications/20261101T173742_baseline-tag.md
+expected: the label baseline on a new ticket with the field Label T044, whose signed tag exists and whose branch 381-baseline-T044 does not, fails the run at the step start, builds nothing, and the ticket gets a comment naming the step start
+observed: |
+  ticket-baseline #4: Baseline T044 again, Issue #381 labeled, run 41327302607 at acd5bf1
+  the tag T044 exists
+  Error: Process completed with exit code 1.
+  baseline / start: failure; build, sbom: skipped; result: success
+  treporting-baseline: The baseline failed at the step start (the label, or a branch, tag or run that exists). See https://github.com/treporting/specs-and-deploy/actions/runs/41327302607
+evidence:
+- https://github.com/treporting/specs-and-deploy/issues/381
+- https://github.com/treporting/specs-and-deploy/actions/runs/41327302607
+- verifications/20261101T173742_baseline-tag_log.jpg
+verdict: passed

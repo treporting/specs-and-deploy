@@ -37,5 +37,5 @@ The ticket, with the label set again and the comment:
 ## Verdict
 
 Passed: with the branch of the ticket and the label there, the run failed at start, built nothing,
-and named the step start in the ticket. The tag that exists and the other run in progress take the
-same step; they were not shown here.
+and named the step start in the ticket. The tag that exists is shown in
+20261101T173742_baseline-tag.md; the other run in progress takes the same step and is not shown.
