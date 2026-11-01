@@ -19,8 +19,8 @@ documents:
   verification_method: [review]
 - name: devops.md
   type: document
-  object_version: '11.1.1'
-  object_hash: 'aee8de8'
+  object_version: '12.1.1'
+  object_hash: '5a12a0b'
   status: approved
   verification_method: [review]
 - name: definitions.md

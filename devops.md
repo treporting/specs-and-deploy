@@ -205,6 +205,17 @@ gh label create baseline --repo treporting/<repo> --color 0E8A16 \
 
 3. Add the repo to the installation of the App (step 3 above).
 
+**Set up the key that signs a tag, once per person** - git signs with an SSH key:
+
+```bash
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/<key>.pub
+```
+
+Add the same public key on GitHub a second time, as signing key: Settings, SSH and GPG keys, New SSH
+key, Key type Signing Key. GitHub then shows the tag verified. To check a tag: `git cat-file -p
+<label>` ends with `-----END SSH SIGNATURE-----`; on GitHub, Code, Tags, the tag shows Verified.
+
 ## CI checks
 
 The checks of a pull request, each with a tool requirement of its own. Which of them the CI runs
@@ -243,3 +254,4 @@ today is set in the section Continuous integration.
 | 9.1.1 | 2026-10-30 | Continuous integration; CI checks | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-31 | Continuous integration | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-11-01 | Baseline; Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-11-01 | Baseline | #386 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
