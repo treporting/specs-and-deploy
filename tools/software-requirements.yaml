@@ -407,11 +407,13 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_40
-  object_version: '2.2.1'
+  object_version: '3.3.1'
   component: sbom
-  object_text: 'add to the Change history of sbom.md a row with: - Version: -, - Date: the day it runs,
-    - Change: the label of its baseline, - Reason: -, - By: the tool with its version'
-  source_ids: [TOOL_21@2.1.1]
+  object_text: 'add to the Change history of sbom.md a row with: - Version: the version of sbom.md in
+    `documents.yaml` with x raised by one, `1.1.1` where it has none, - Date: the day it runs, -
+    Change: the label of its baseline, - Reason: the ticket given, as `#<number>`, - By: the tool with
+    its version'
+  source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
   safety: ''
   status: approved
@@ -597,3 +599,15 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: SR_59
+  object_version: '1.1.1'
+  component: sbom
+  object_text: set the entry of sbom.md in `documents.yaml` of the repo to the version of its new row in
+    the Change history, its `object_hash` to `git hash-object` of the sbom.md written, its status to
+    `approved` and its verification method to `[generated]`; add the entry, of type `document`, where
+    there is none
+  source_ids: [TOOL_21@2.1.2]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
