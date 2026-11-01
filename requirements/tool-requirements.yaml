@@ -162,7 +162,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_15
-  object_version: '1.2.2'
+  object_version: '2.2.2'
   feature: Reviews
   object_text: report a requirement that is approved in a pull request, where it was not approved in
     the base commit or its x rose, and that no passed review result of the pull request names
@@ -170,7 +170,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL_16
   object_version: '1.1.2'
@@ -329,5 +329,5 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
