@@ -416,7 +416,7 @@ requirements:
   source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_41
   object_version: '1.2.1'
@@ -609,5 +609,5 @@ requirements:
   source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
