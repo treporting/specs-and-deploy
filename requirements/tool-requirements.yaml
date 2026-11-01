@@ -14,7 +14,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 2_tools
   safety: ''
-  status: review
+  status: approved
   verification_method: [demonstration]
 - object_key: TOOL_02
   object_version: '1.1.1'
@@ -25,7 +25,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 2_tools
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL_03
   object_version: '1.2.2'
@@ -339,7 +339,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 2_tools
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: TOOL_31
   object_version: '1.1.1'
@@ -350,5 +350,5 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 2_tools
   safety: ''
-  status: review
+  status: approved
   verification_method: [inspection]
