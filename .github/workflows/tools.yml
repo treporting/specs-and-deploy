@@ -38,6 +38,10 @@ jobs:
       - name: MT
         working-directory: tools
         run: go test ./...
+      #	Ubuntu 24 forbids unprivileged user namespaces, so Chrome finds no sandbox; allow them, and Chrome
+      #	runs in its sandbox (pdf, SR_68)
+      - name: user namespaces for the sandbox of Chrome
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       - name: SwIT
         working-directory: tools
         run: go test -tags integration ./...
