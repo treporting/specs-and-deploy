@@ -677,8 +677,7 @@ function name, from the JSON output of `go test` and of vitest.
 
 ## Open
 
-- `treporting = 2_tools` - **sbom.md**: the tool sbom does not yet write its entry in
-  `documents.yaml`, and SR_40 still names `-` as its version in the change history.
+`<empty>`
 
 ## Change history
 
@@ -702,3 +701,4 @@ function name, from the JSON output of `go test` and of vitest.
 | 16.1.1 | 2026-10-30 | Fields are the properties of the gel schema; Schemas; Breakdown | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-10-30 | CI check | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-11-01 | Documents; Change history | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 19.1.1 | 2026-11-01 | Open | #373 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
