@@ -40,18 +40,18 @@ func Own(repo, label, licenceText string) Package {
 	}
 }
 
-// Row answers the row of the Change history that a run adds: no version, as the approval sets it in
-// documents.yaml; the day it runs; the label of the baseline; no reason; the tool with its version.
+// Row answers the row of the Change history that a run adds: the version of sbom.md after the run;
+// the day it runs; the label of the baseline; the ticket, as #<number>; the tool with its version.
 //
-// @implements SR_40@2.2.1
-func Row(date, label, by string) string {
-	return "| - | " + date + " | " + cell(label) + " | - | " + cell(by) + " |"
+// @implements SR_40@3.3.1
+func Row(version, date, label, ticket, by string) string {
+	return "| " + cell(version) + " | " + date + " | " + cell(label) + " | #" + cell(ticket) + " | " + cell(by) + " |"
 }
 
 // History answers the rows of the Change history of an sbom.md as it stands, without its head, so
 // that a run keeps them. A file that is not there has none.
 //
-// @implements SR_40@2.2.1
+// @implements SR_40@3.3.1
 func History(sbomMD []byte) []string {
 	var rows []string
 	in := false

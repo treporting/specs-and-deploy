@@ -314,7 +314,7 @@ finds an id in its file through the component `review`, and the annotations thro
 
 ## sbom
 
-Creates the SBOM of a subsystem as `sbom.md` in the root of its repo (TOOL_21; SR_36 to SR_46 in
+Creates the SBOM of a subsystem as `sbom.md` in the root of its repo (TOOL_21; SR_36 to SR_46 and SR_59 in
 [software-requirements.yaml](software-requirements.yaml)). It runs in the repo checked out at the
 baseline and lists every package the subsystem delivers, sorted by PURL:
 
@@ -324,13 +324,16 @@ baseline and lists every package the subsystem delivers, sorted by PURL:
 - where the root holds a `package-lock.json`: its packages that are not marked `dev` (SR_37)
 - for each image named: the Alpine packages of `/lib/apk/db/installed` (SR_38)
 
-A run keeps the rows of the Change history of an `sbom.md` that is there and adds one (SR_40). A
-package whose licence is unknown is listed in Open (SR_45).
+A run keeps the rows of the Change history of an `sbom.md` that is there and adds one, with the
+version of `sbom.md` and the ticket given (SR_40). It sets the entry of `sbom.md` in `documents.yaml`
+of the repo: x of its version raised by one, the hash of the file written, `approved` and
+`[generated]` - a generated document passes no review (PROC_13, SR_59). The repo needs a
+`documents.yaml`. A package whose licence is unknown is listed in Open (SR_45).
 
 ```bash
 cd tools
 go build -o sbom ./sbom/cmd/sbom
-./sbom -root ../../storages -label 1.2.0 -image storages:1.2.0
+./sbom -root ../../storages -label 1.2.0 -ticket 343 -image storages:1.2.0
 ```
 
 The code is the component `sbom`: the package `sbom/create` and the command `sbom/cmd/sbom`.
@@ -520,3 +523,4 @@ nothing, so the stricter bound costs nothing.
 | 17.1.1 | 2026-10-31 | licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-10-31 | build steps; Open | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-10-31 | build steps | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 20.1.1 | 2026-11-01 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

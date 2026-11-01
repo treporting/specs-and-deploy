@@ -14,14 +14,14 @@ func TestOwnPackage(t *testing.T) {
 	}
 }
 
-// @verifies SR_40@2.2.1
+// @verifies SR_40@3.3.1
 func TestRowOfTheChangeHistory(t *testing.T) {
-	if got := Row("2026-10-31", "1.2.0", "sbom a1b2c3d"); got != "| - | 2026-10-31 | 1.2.0 | - | sbom a1b2c3d |" {
+	if got := Row("2.1.1", "2026-10-31", "1.2.0", "343", "sbom a1b2c3d"); got != "| 2.1.1 | 2026-10-31 | 1.2.0 | #343 | sbom a1b2c3d |" {
 		t.Errorf("got %q", got)
 	}
 }
 
-// @verifies SR_40@2.2.1
+// @verifies SR_40@3.3.1
 func TestHistoryKeepsTheRowsOfTheChangeHistoryOnly(t *testing.T) {
 	old := Markdown(SBOM{Repo: "storages",
 		Packages: []Package{{PURL: "pkg:x", Licence: "MIT"}},

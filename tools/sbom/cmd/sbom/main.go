@@ -1,12 +1,13 @@
 // Command sbom creates the SBOM of a subsystem as sbom.md in the root of its repo (TOOL_21).
 //
-//	sbom -label x.y.z [-root dir] [-repo name] [-image name]...
+//	sbom -label x.y.z -ticket number [-root dir] [-repo name] [-image name]...
 //
 // It runs in the repo checked out at the baseline the label names. It lists the package of the
 // subsystem itself; the Go modules of its commands and the standard library of Go, where the root
 // holds a go.mod; the packages of package-lock.json, where the root holds one; and the Alpine
 // packages of each image named. It keeps the rows of the Change history of an sbom.md that is there,
-// and adds one.
+// and adds one. It sets the entry of sbom.md in documents.yaml of the repo: the version of the new
+// row, the hash of the file written, approved and generated (PROC_13).
 package main
 
 import (
@@ -28,10 +29,12 @@ func (i *images) String() string     { return strings.Join(*i, ",") }
 func (i *images) Set(v string) error { *i = append(*i, v); return nil }
 
 // @implements SR_39@1.2.1
+// @implements SR_59@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo of the subsystem")
 	label := flag.String("label", "", "the label of the baseline, such as 1.2.0")
+	ticket := flag.String("ticket", "", "the number of the ticket of the baseline, such as 343")
 	repo := flag.String("repo", "", "the name of the repo; the name of the directory of root where empty")
 	var named images
 	flag.Var(&named, "image", "an image of the subsystem, built at the baseline; may be given more than once")
@@ -39,6 +42,18 @@ func main() {
 
 	if *label == "" {
 		fail(fmt.Errorf("-label is missing"))
+	}
+	if *ticket == "" {
+		fail(fmt.Errorf("-ticket is missing"))
+	}
+	documentsPath := filepath.Join(*root, "documents.yaml")
+	documents, err := os.ReadFile(documentsPath)
+	if err != nil {
+		fail(err)
+	}
+	next, err := create.Next(create.Version(documents))
+	if err != nil {
+		fail(err)
 	}
 	if *repo == "" {
 		abs, err := filepath.Abs(*root)
@@ -89,14 +104,18 @@ func main() {
 		packages = append(packages, create.ApkPackages(installed)...)
 	}
 
-	path := filepath.Join(*root, "sbom.md")
+	path := filepath.Join(*root, create.Name)
 	old, _ := os.ReadFile(path) // an sbom.md that is not there has no rows to keep
-	history := append(create.History(old), create.Row(time.Now().Format("2006-01-02"), *label, "sbom "+version()))
+	history := append(create.History(old), create.Row(next, time.Now().Format("2006-01-02"), *label, *ticket, "sbom "+version()))
 
-	if err := os.WriteFile(path, []byte(create.Markdown(create.SBOM{Repo: *repo, Packages: packages, History: history})), 0o600); err != nil {
+	md := []byte(create.Markdown(create.SBOM{Repo: *repo, Packages: packages, History: history}))
+	if err := os.WriteFile(path, md, 0o600); err != nil {
 		fail(err)
 	}
-	fmt.Printf("%s written: %d packages\n", path, len(packages))
+	if err := os.WriteFile(documentsPath, create.Entry(documents, next, create.Hash(md)), 0o600); err != nil {
+		fail(err)
+	}
+	fmt.Printf("%s written: %d packages, version %s\n", path, len(packages), next)
 }
 
 // version answers the version of this tool: the commit of specs-and-deploy it was built from, as Go
