@@ -509,10 +509,50 @@ nothing, so the stricter bound costs nothing.
   does not change when its last caller goes
 - the bound 30 of golangci-lint - it names hardly any function
 
+## baseline
+
+Prepares the baseline of a repo (TOOL_27; SR_60 to SR_65 in
+[software-requirements.yaml](software-requirements.yaml)). Whoever wants one opens a ticket with the
+template Baseline and names the label in it. Whoever may label tickets of the repo sets the label
+`baseline` on it. The caller of the repo, `.github/workflows/ticket-baseline.yml`, then runs
+`.github/workflows/baseline.yml` of specs-and-deploy:
+
+1. `start`: reads the label from the field Label of the ticket - letters, digits, `.`, `_` and `-`
+   only, as it becomes a tag. It fails where the field is empty, or where the branch
+   `<ticket number>-baseline-<label>`, the tag `<label>` or another run of the caller exists.
+2. `build`: the jobs of `build.yml` on the head of `main` as the ticket event names it.
+3. `sbom`: `steps.sh baseline <label> <ticket number> [name=Dockerfile]...` builds the images,
+   writes `sbom.md` and its entry in `documents.yaml`, and checks the licences. Where it passes, it
+   pushes the branch with one commit and opens the pull request, with a token of the GitHub App
+   `treporting-baseline` (devops.md, section Baseline).
+4. `result`: a comment on the ticket - the pull request, or the step that failed, with the link to
+   the run.
+
+To start it again, take the label `baseline` off the ticket and set it again. The step runs by hand
+too, in the root of the repo; it writes `sbom.md` and `documents.yaml` and opens nothing:
+
+```bash
+../specs-and-deploy/.github/build/steps.sh baseline 1.2.0 343 storages=Dockerfile
+```
+
+The code is the component `baseline`: the two workflows, the template, and the step `baseline` of
+`steps.sh`.
+
+**Decision**: every job of a run checks out `github.sha`, the head of `main` when the label was set.
+
+**Why**: `main` may move while the run lasts. Each job checks out on its own; with the head of each
+moment, sbom.md could describe another commit than the one built and tested.
+
+**Rejected**: the head of `main` in each job - shorter, and wrong as soon as a pull request is merged
+during the run.
+
 ## Open
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to call
   `build.yml` of specs-and-deploy.
+- `treporting = 1_tools` - **sbom of specs-and-deploy**: sbom reads the `go.mod` in the root of
+  a repo only. In specs-and-deploy the module of the tools lies in `tools/`, so its sbom.md would
+  list specs-and-deploy alone.
 
 ## Change history
 
@@ -539,3 +579,4 @@ nothing, so the stricter bound costs nothing.
 | 19.1.1 | 2026-10-31 | build steps | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 20.1.1 | 2026-11-01 | sbom | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 21.1.1 | 2026-11-01 | sbom; build steps | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 22.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
