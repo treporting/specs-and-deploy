@@ -3,13 +3,17 @@
 #	jobs:
 #	  build:
 #	    uses: treporting/specs-and-deploy/.github/workflows/build.yml@main
+#	    with:
+#	      images: |
+#	        storages=Dockerfile
 #
 # build, lint and test fail where a step fails; report reports test coverage and structural debt
-# and fails on nothing. Each job runs .github/build/steps.sh of specs-and-deploy in the root of the
+# and fails on nothing. Where a pull request changes sbom.md, build also checks that it lists the
+# packages delivered, with the images named built at its head (TOOL_28). Each job runs .github/build/steps.sh of specs-and-deploy in the root of the
 # repo; specs-and-deploy itself runs its own, the others that of main. See tools/README.md, section
 # build steps.
 #
-# @implements SR_51@1.1.1, SR_52@1.1.1, SR_53@1.1.1, SR_54@1.1.1, SR_55@1.1.1, SR_56@1.1.1, SR_57@1.1.1, SR_58@1.1.1
+# @implements SR_51@1.1.1, SR_52@1.1.1, SR_53@1.1.1, SR_54@1.1.1, SR_55@1.1.1, SR_56@1.1.1, SR_57@1.1.1, SR_58@1.1.1, SR_67@1.1.1
 name: build
 
 on:
@@ -19,6 +23,10 @@ on:
         description: the go.mod whose version of Go the steps use
         type: string
         default: go.mod
+      images:
+        description: the images of the subsystem, one name=Dockerfile per line, from the root of the repo
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -32,7 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      #	two commits: the merge of a pull request and its base, to see whether it changes sbom.md
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/checkout@v4
         if: github.repository != 'treporting/specs-and-deploy'
         with:
@@ -49,6 +60,17 @@ jobs:
           node-version: '24.x'
       - name: build
         run: '"$STEPS/.github/build/steps.sh" build'
+      - name: sbom.md lists the packages delivered
+        if: github.event_name == 'pull_request'
+        env:
+          IMAGES: ${{ inputs.images }}
+        run: |
+          if git diff --quiet HEAD^1 HEAD -- sbom.md; then
+            echo "sbom.md not changed"
+            exit 0
+          fi
+          # shellcheck disable=SC2086 # one image per word
+          "$STEPS/.github/build/steps.sh" sbom $IMAGES
 
   lint:
     runs-on: ubuntu-latest

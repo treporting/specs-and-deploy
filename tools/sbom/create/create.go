@@ -114,3 +114,85 @@ func Markdown(s SBOM) string {
 func cell(value string) string {
 	return strings.ReplaceAll(value, "|", `\|`)
 }
+
+// Table answers the packages of the table of an sbom.md, as it lists them.
+//
+// @implements SR_66@1.1.1
+func Table(sbomMD []byte) []Package {
+	var packages []Package
+	in := false
+	scanner := bufio.NewScanner(strings.NewReader(string(sbomMD)))
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		switch {
+		case strings.HasPrefix(line, "| PURL |"):
+			in = true
+		case in && strings.HasPrefix(line, "|---"):
+		case in && strings.HasPrefix(line, "| "):
+			fields := cells(line)
+			if len(fields) == 4 {
+				packages = append(packages, Package{PURL: fields[0], Name: fields[1], Version: fields[2], Licence: fields[3]})
+			}
+		default:
+			in = false
+		}
+	}
+	return packages
+}
+
+// Label answers the label of the baseline of an sbom.md: the column Change of the last row of its
+// Change history; nothing where it has no row.
+//
+// @implements SR_66@1.1.1
+func Label(sbomMD []byte) string {
+	rows := History(sbomMD)
+	if len(rows) == 0 {
+		return ""
+	}
+	if fields := cells(rows[len(rows)-1]); len(fields) == 5 {
+		return fields[2]
+	}
+	return ""
+}
+
+// Differ answers a line for each package that is in one list and not in the other, or in both with
+// another name, version or licence; nothing where both list the same.
+//
+// @implements SR_66@1.1.1
+func Differ(delivered, listed []Package) []string {
+	byPURL := func(packages []Package) map[string]Package {
+		m := map[string]Package{}
+		for _, p := range packages {
+			m[p.PURL] = Package{PURL: p.PURL, Name: p.Name, Version: p.Version, Licence: p.Licence}
+		}
+		return m
+	}
+	want, have := byPURL(delivered), byPURL(listed)
+	var lines []string
+	for purl, p := range want {
+		q, ok := have[purl]
+		switch {
+		case !ok:
+			lines = append(lines, purl+": delivered, not in sbom.md")
+		case p != q:
+			lines = append(lines, purl+": sbom.md lists "+q.Name+", "+q.Version+", "+q.Licence+"; delivered is "+p.Name+", "+p.Version+", "+p.Licence)
+		}
+	}
+	for purl := range have {
+		if _, ok := want[purl]; !ok {
+			lines = append(lines, purl+": in sbom.md, not delivered")
+		}
+	}
+	sort.Strings(lines)
+	return lines
+}
+
+// cells answers the values of a row of a table, as cell wrote them.
+func cells(row string) []string {
+	row = strings.TrimSuffix(strings.TrimPrefix(row, "| "), " |")
+	parts := strings.Split(strings.ReplaceAll(row, `\|`, "\x00"), " | ")
+	for i := range parts {
+		parts[i] = strings.ReplaceAll(parts[i], "\x00", "|")
+	}
+	return parts
+}
