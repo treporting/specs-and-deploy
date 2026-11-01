@@ -93,18 +93,22 @@ The platform is treporting, this organization on GitHub. The launches are the de
 tools our work needs, of the demo environment, and of a selfhosted environment. An object (requirement
 etc.) names the launches it is planned for in `platform_launch`.
 
+A release is a baseline of specs-and-deploy, its label in a form the project chooses, such as
+`T044`. A library is a baseline of a code repo, its label a semantic version, such as `1.2.0`
+(PROC_06).
+
 **Table launches** - the launches of each platform, and the release and the library of each
 
 | Platform | Launch | Release | Library |
 |---|---|---|---|
-| treporting | 1_tools | specs-and-deploy 1.0.0 | – |
-| treporting | 1_demo | specs-and-deploy 2.0.0 | reporter-trace 1.0.0<br>viewer-trace 1.0.0<br>… |
+| treporting | 1_tools | specs-and-deploy T044 | |
+| treporting | 1_demo | | |
 | treporting | 2_selfhosted | | |
 | treporting | 2_tools | | |
 | treporting | 3_tools | | |
 | treporting | 4_selfhosted | | |
 
-The values in the table are an example only, made up to show the form (see Open).
+The table names the tags that exist; a cell stays empty until its tag is set.
 
 ## Roles
 
@@ -243,8 +247,6 @@ as soon as possible (PROC_07)
   (REG_EU2024-2847_02); TOOL_28 controls it.
 - `treporting = 3_tools` - **Process**: not decided whether treporting gets a tool qualification
   (ISO15026).
-- `treporting = 1_tools` - **Platform and launches**: not decided whether the reading of table
-  launches holds, and with which values - or whether its columns stay empty until the tags exist.
 
 ## Change history
 
@@ -264,3 +266,4 @@ as soon as possible (PROC_07)
 | 12.1.1 | 2026-10-30 | Platform and launches; Loop for every change; Loop for every release or library | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-11-01 | Rules | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-01 | Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 15.1.1 | 2026-11-01 | Platform and launches; Open | #375 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
