@@ -13,9 +13,9 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '13.1.1'
-  object_hash: '7288808'
-  status: review
+  object_version: '14.1.1'
+  object_hash: '19020f3'
+  status: approved
   verification_method: [review]
 - name: devops.md
   type: document
@@ -98,9 +98,9 @@ documents:
 - name: requirements/tool-requirements.md
   type: explanation
   level: tool
-  object_version: '13.1.1'
-  object_hash: '011e5c8'
-  status: review
+  object_version: '14.1.1'
+  object_hash: '499ad5a'
+  status: approved
   verification_method: [review]
 - name: safety/hazard-and-risk-analysis.md
   type: explanation
