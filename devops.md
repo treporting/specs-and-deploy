@@ -163,6 +163,48 @@ recorded with the pull request, by a computer (REG_CFR21-11_01).
 Each required check without a test is verified by a demonstration, recorded in `verifications/` as
 formats.md, section Verifications, sets.
 
+## Baseline
+
+The baseline of a repo is prepared by `.github/workflows/baseline.yml` of specs-and-deploy
+(TOOL_27, SR_61 to SR_65), started by the label `baseline` on a ticket of the repo. The run itself is
+in tools/README.md, section baseline. Where the run passes, it opens a pull request with sbom.md. A
+person merges it and sets the signed tag with the command in its description (PROC_06). Where a pull
+request changes sbom.md, the job `build / build` checks that it lists the packages of its head
+(TOOL_28).
+
+It writes with a token of the GitHub App `treporting-baseline`, not with `GITHUB_TOKEN`: a pull
+request opened with `GITHUB_TOKEN` starts no workflow, so its required checks would never run.
+
+**Set up the App, once for the org** - by an owner of the org:
+
+1. Org settings, Developer settings, GitHub Apps, New GitHub App:
+   - name `treporting-baseline`; homepage `https://github.com/treporting/specs-and-deploy`
+   - Webhook: not active
+   - Repository permissions: Contents, Issues and Pull requests read and write; Metadata read
+   - Where can this GitHub App be installed: only on this account
+2. In the App: note its App ID; Generate a private key - a `.pem` file is downloaded.
+3. Install App, on the org, for the repos that make a baseline.
+4. Hand the ID and the key to the workflows, and delete the file:
+
+```bash
+gh variable set BASELINE_APP_ID --org treporting --visibility all --body <App ID>
+gh secret set BASELINE_APP_PRIVATE_KEY --org treporting --visibility all < <file>.pem
+rm <file>.pem
+```
+
+**Set up a repo for its baseline**:
+
+1. Copy `.github/workflows/ticket-baseline.yml` and `.github/ISSUE_TEMPLATE/baseline.yml` of
+   specs-and-deploy; in the caller, set `go-version-file` and name the images in `images`.
+2. Create the label:
+
+```bash
+gh label create baseline --repo treporting/<repo> --color 0E8A16 \
+  --description "starts the baseline of this repo"
+```
+
+3. Add the repo to the installation of the App (step 3 above).
+
 ## CI checks
 
 The checks of a pull request, each with a tool requirement of its own. Which of them the CI runs
@@ -184,8 +226,7 @@ today is set in the section Continuous integration.
 
 ## Open
 
-- `treporting = 1_tools` - **SBOM and licences**: not decided whether the CI makes an SBOM and
-  checks the licences.
+`<empty>`
 
 ## Change history
 
@@ -201,3 +242,4 @@ today is set in the section Continuous integration.
 | 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Continuous integration; CI checks | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-31 | Continuous integration | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 11.1.1 | 2026-11-01 | Baseline; Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
