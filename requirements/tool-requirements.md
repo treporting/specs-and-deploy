@@ -103,7 +103,48 @@ A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3
 
 ## baseline
 
-`TOOL_27`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL_27` to `TOOL_28`: in [tool-requirements.yaml](tool-requirements.yaml).
+
+The baseline of a repo is a change of its own: it adds sbom.md to `main`. So it needs a ticket and
+a branch of that ticket (PROC_02).
+
+**How a baseline is started**:
+
+**Decision**: a ticket starts it. Whoever wants a baseline opens a ticket in the repo, with the
+template Baseline, and names the label of the baseline in it. Whoever may label tickets of the repo
+then sets the label `baseline` on it. The workflow runs:
+
+1. It reads the label of the baseline from the ticket.
+2. It creates the branch `<ticket number>-baseline-<label>`.
+3. It runs the loop for every release or library on the head of `main`, up to the check of the
+   licences (harness.md).
+4. Where every step passes, it opens a pull request with sbom.md. The pull request names the ticket
+   and the label it ran with.
+5. It names the result in the ticket: the pull request, or the step that failed.
+
+To start it again, the label `baseline` is taken off the ticket and set again.
+
+**Why**: the ticket exists before the run, so there is nothing to check. The ticket is the request
+itself, as step 1 of the loop for every change asks (harness.md).
+
+**Rejected**:
+
+- the number of the ticket as input of a workflow started by hand - the workflow has to check that
+  the ticket exists, and a wrong number can still name another open ticket
+- a ticket opened by the workflow - it would follow the request instead of starting it
+
+**Table baseline faults** - what can make the data of a baseline inconsistent, and what prevents it
+
+| Fault | Prevented by |
+|---|---|
+| a stranger opens a ticket in a public repo and starts a run | the template does not set the label `baseline`; only whoever may label tickets of the repo sets it (TOOL_27) |
+| the label in the ticket changes after the run | the pull request names the label it ran with; the pull request counts, not the ticket (TOOL_27) |
+| two runs at once, or the branch or the tag of the label exists already | the run fails (TOOL_27) |
+| the ticket is in another repo than the baseline | the workflow makes the baseline of the repo of the ticket only (TOOL_27) |
+| `main` changes between the run and the merge, so sbom.md does not describe what is tagged | the pull request fails where its packages are not those of its head (TOOL_28) |
+
+The last fault is a threat as well: a package delivered but missing from sbom.md hides its known
+vulnerabilities (REG_EU2024-2847_02).
 
 ## Open
 
@@ -126,3 +167,4 @@ A package of the SBOM is named by its PURL, such as `pkg:golang/gopkg.in/yaml.v3
 | 11.1.1 | 2026-10-31 | sbom; licence check | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-10-31 | build steps | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-10-31 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 14.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
