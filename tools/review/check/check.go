@@ -145,6 +145,19 @@ func criteriaKeys(git Git, revision, file string) ([]string, error) {
 // @implements SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1, SR_06@1.1.1, SR_08@1.1.1, SR_16@1.1.1
 func checkResult(r Review, result Result, criteria []string, git Git, index *review.Index) []string {
 
+	messages, allPassed := checkCriteria(r, result, criteria)
+	messages = append(messages, checkVerdict(result.Verdict, allPassed)...)
+
+	if !git.CommitExists(result.Revision) {
+		return append(messages, "the revision "+result.Revision+" is no commit")
+	}
+	return append(messages, checkAuthors(r, result, git, index)...)
+}
+
+// checkCriteria answers the rules the criteria of one result break, and whether every criterion
+// passed.
+func checkCriteria(r Review, result Result, criteria []string) ([]string, bool) {
+
 	var messages []string
 
 	//	every criterion once - a map has every key once, so what is left to
@@ -172,32 +185,46 @@ func checkResult(r Review, result Result, criteria []string, git Git, index *rev
 		if !known[key] {
 			messages = append(messages, "criterion "+key+" is not in "+r.Criteria)
 		}
-		switch j.Result {
-		case "passed":
-		case "failed":
-			allPassed = false
-			if strings.TrimSpace(j.Note) == "" {
-				messages = append(messages, "criterion "+key+" failed with no note")
-			}
-		default:
-			allPassed = false
-			messages = append(messages, "criterion "+key+" is neither passed nor failed")
+		message, passed := checkJudgement(key, j)
+		if message != "" {
+			messages = append(messages, message)
 		}
+		allPassed = allPassed && passed
 	}
+	return messages, allPassed
+}
 
+// checkJudgement answers the rule one judgement breaks, or "", and whether it passed.
+func checkJudgement(key string, j Judgement) (string, bool) {
+	switch j.Result {
+	case "passed":
+		return "", true
+	case "failed":
+		if strings.TrimSpace(j.Note) == "" {
+			return "criterion " + key + " failed with no note", false
+		}
+		return "", false
+	default:
+		return "criterion " + key + " is neither passed nor failed", false
+	}
+}
+
+// checkVerdict answers the rule the verdict breaks, where it does not follow from the criteria.
+func checkVerdict(verdict string, allPassed bool) []string {
 	switch {
-	case result.Verdict == "passed" && !allPassed:
-		messages = append(messages, "the verdict is passed, but not every criterion passed")
-	case result.Verdict == "failed" && allPassed:
-		messages = append(messages, "the verdict is failed, but every criterion passed")
-	case result.Verdict != "passed" && result.Verdict != "failed":
-		messages = append(messages, "the verdict is neither passed nor failed")
+	case verdict == "passed" && !allPassed:
+		return []string{"the verdict is passed, but not every criterion passed"}
+	case verdict == "failed" && allPassed:
+		return []string{"the verdict is failed, but every criterion passed"}
+	case verdict != "passed" && verdict != "failed":
+		return []string{"the verdict is neither passed nor failed"}
 	}
+	return nil
+}
 
-	if !git.CommitExists(result.Revision) {
-		return append(messages, "the revision "+result.Revision+" is no commit")
-	}
-
+// checkAuthors answers a rule for each target the reviewer is an author of.
+func checkAuthors(r Review, result Result, git Git, index *review.Index) []string {
+	var messages []string
 	for _, target := range result.TargetIDs {
 		authors, err := authorsOf(git, index, result.Revision, target)
 		if err != nil {
