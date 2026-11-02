@@ -165,3 +165,12 @@ func TestTheSkeletonNamesItsSchemaTypeAndLevel(t *testing.T) {
 	}
 	contains(t, content, "schema: schemas/review-result.schema.json\ntype: review\nlevel: tool\n")
 }
+
+// @verifies SR_83@1.1.1
+func TestTheSkeletonIsAnOpenRecord(t *testing.T) {
+	_, content, err := makeSkeleton(t, "TOOL_03")
+	if err != nil {
+		t.Fatal(err)
+	}
+	contains(t, content, "level: tool\nobject_version: '1.1.1'\nstatus: open\n")
+}

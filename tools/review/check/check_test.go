@@ -94,6 +94,12 @@ func indexOf(git fakeGit) *review.Index {
 // check writes a review result into a temporary root and checks it.
 func check(t *testing.T, result string, git fakeGit) []string {
 	t.Helper()
+	return checkRecord(t, "status: open\n", result, git)
+}
+
+// checkRecord checks a review result with the fields of its record given.
+func checkRecord(t *testing.T, record, result string, git fakeGit) []string {
+	t.Helper()
 	root := t.TempDir()
 	if err := os.MkdirAll(filepath.Join(root, "reviews"), 0o750); err != nil {
 		t.Fatal(err)
@@ -101,7 +107,7 @@ func check(t *testing.T, result string, git fakeGit) []string {
 	review := `level: review
 created_by: Mathias Fischer
 created_at: '2026-10-25T13:30:00+01:00'
-criteria: reviews/criteria-tool.yaml
+` + record + `criteria: reviews/criteria-tool.yaml
 criteria_revision: 'c1'
 results:
 ` + result
@@ -351,5 +357,23 @@ criteria:
 		if strings.Join(got, "\n") != strings.Join(want, "\n") {
 			t.Fatalf("run %d:\n got %q\nwant %q", run, got, want)
 		}
+	}
+}
+
+// @verifies SR_84@1.1.1
+func TestACompletedReviewHasItsCompletedAt(t *testing.T) {
+	result := `- object_key: RR_01
+  target_ids: [TOOL_03]
+  revision: 'c1'
+  criteria: {RC_01: passed, RC_02: passed}
+  verdict: passed
+`
+	git := history("Claude Opus 5.5", "Claude Opus 5.5")
+
+	expect(t, checkRecord(t, "status: completed\n", result, git), "completed, and no completed_at")
+	expect(t, checkRecord(t, "status: completed\ncompleted_at: '2026-10-25T13:00:00+01:00'\n", result, git),
+		"the completed_at 2026-10-25T13:00:00+01:00 is before the created_at 2026-10-25T13:30:00+01:00")
+	if got := checkRecord(t, "status: completed\ncompleted_at: '2026-10-25T14:00:00+01:00'\n", result, git); len(got) != 0 {
+		t.Errorf("want no finding, got %q", got)
 	}
 }

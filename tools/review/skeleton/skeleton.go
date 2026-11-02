@@ -22,6 +22,15 @@ const (
 	resultType   = "review"
 )
 
+// recordVersion and recordOpen make the skeleton a record that is still being made (formats.md,
+// section Reviews).
+//
+// @implements SR_83@1.1.1
+const (
+	recordVersion = "1.1.1"
+	recordOpen    = "open"
+)
+
 // results is the directory of the review results, apart from the criteria in reviews/.
 //
 // @implements SR_11@2.1.1
@@ -49,7 +58,7 @@ type Request struct {
 // HEAD, and answers its path relative to root. Where a target is not found, or the targets belong
 // to more than one level, it writes nothing.
 //
-// @implements SR_11@2.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1
+// @implements SR_11@2.1.1, SR_12@1.1.1, SR_13@1.1.1, SR_14@1.1.1, SR_15@1.1.1, SR_17@2.1.1, SR_83@1.1.1
 func Make(root string, req Request, git Git, index *review.Index) (string, error) {
 
 	head, err := git.Short("HEAD")
@@ -79,6 +88,8 @@ func Make(root string, req Request, git Git, index *review.Index) (string, error
 	fmt.Fprintf(&b, "schema: %s\n", resultSchema)
 	fmt.Fprintf(&b, "type: %s\n", resultType)
 	fmt.Fprintf(&b, "level: %s\n", criteriaLevel)
+	fmt.Fprintf(&b, "object_version: '%s'\n", recordVersion)
+	fmt.Fprintf(&b, "status: %s\n", recordOpen)
 	fmt.Fprintf(&b, "created_by: %s\n", req.Reviewer)
 	fmt.Fprintf(&b, "created_at: '%s'\n", req.Now.Format("2006-01-02T15:04:05-07:00"))
 	fmt.Fprintf(&b, "criteria: %s\n", criteriaFile)
