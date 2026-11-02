@@ -355,18 +355,18 @@ requirements:
   status: approved
   verification_method: [inspection]
 - object_key: TOOL_32
-  object_version: '1.1.2'
+  object_version: '2.1.2'
   feature: Reviews
   object_text: check that every approved object whose kind has review criteria in `reviews/`, except a
-    document with the verification method `generated`, is named by a passed review result as the last
-    that names it, and that the revision of that result holds the content x counts of the object as
+    document with the verification method `generated`, is named by a passed and completed review result as
+    the last that names it, and that the revision of that result holds the content x counts of the object as
     it is now - on every pull request for the objects in the files it changes, before the tag of a
     release for all
   source_ids: [PROC_13@3.1.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
 - object_key: TOOL_33
   object_version: '1.1.1'
