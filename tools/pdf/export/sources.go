@@ -68,7 +68,10 @@ func NewPrinter() (*Printer, error) {
 	if err != nil {
 		return nil, err
 	}
-	alloc, cancelAlloc := chromedp.NewExecAllocator(context.Background(), chromedp.DefaultExecAllocatorOptions[:]...)
+	//	60 seconds for Chrome to start, not the 20 of chromedp - a busy
+	//	runner can take longer
+	options := append(chromedp.DefaultExecAllocatorOptions[:], chromedp.WSURLReadTimeout(60*time.Second))
+	alloc, cancelAlloc := chromedp.NewExecAllocator(context.Background(), options...)
 	ctx, cancelCtx := chromedp.NewContext(alloc)
 	if err := chromedp.Run(ctx); err != nil {
 		cancelCtx()
