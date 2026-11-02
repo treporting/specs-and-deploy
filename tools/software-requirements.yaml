@@ -767,32 +767,32 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: SR_75
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report an approved object that needs a review - its kind has a criteria file in
     `reviews/`, a document has the verification method `review` - and that no review result names
-  source_ids: [TOOL_32@1.1.1]
+  source_ids: [TOOL_32@2.1.2]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_76
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report an approved object that needs a review, where the last review result that names
     it, by its `created_at`, has the verdict failed
-  source_ids: [TOOL_32@1.1.1]
+  source_ids: [TOOL_32@2.1.2]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_77
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report an approved object that needs a review, where its content x counts in the
     revision of the last review result that names it is not its content x counts now - for a
     requirement the attributes its schema names for x, for a document the hash of its file
-  source_ids: [TOOL_32@1.1.1]
+  source_ids: [TOOL_32@2.1.2]
   priority: 'medium'
   safety: ''
   status: approved
@@ -817,33 +817,33 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_80
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: where a base commit is given, check only the objects in the files changed against it -
     a requirement in its file, a document in its file or its entry in `documents.yaml`; where none is
     given, check every approved object
-  source_ids: [TOOL_32@1.1.1, TOOL_33@1.1.1]
+  source_ids: [TOOL_32@2.1.2, TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_81
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: ci
   object_text: on every pull request, in .github/workflows/tools.yml, check the approvals of the objects
     in the files it changes against its base commit, and fail where one is reported; a pull request
     whose check failed cannot be merged
-  source_ids: [TOOL_32@1.1.1, TOOL_33@1.1.1]
+  source_ids: [TOOL_32@2.1.2, TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [demonstration]
 - object_key: SR_82
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: baseline
   object_text: in baseline.yml, after licencecheck, check the approvals of every approved object of
     the head of main, and fail where one is reported
-  source_ids: [TOOL_32@1.1.1, TOOL_33@1.1.1]
+  source_ids: [TOOL_32@2.1.2, TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
@@ -867,4 +867,14 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
+  verification_method: [test]
+- object_key: SR_85
+  object_version: '1.1.1'
+  component: review
+  object_text: report an approved object that needs a review, where the last review result that names
+    it has the status open
+  source_ids: [TOOL_32@2.1.2]
+  priority: 'medium'
+  safety: ''
+  status: draft
   verification_method: [test]
