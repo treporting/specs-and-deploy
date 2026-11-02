@@ -153,10 +153,11 @@ new file or a changed prefix needs no change of code.
 ## reviewcheck
 
 Checks every review result in `reviews/results/` against the rules of formats.md (TOOL_03, TOOL_11; SR_01
-to SR_08 and SR_16 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
+to SR_08, SR_16 and SR_84 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
 criteria file once, the verdict passed only when every criterion passed, a note to every failed
 criterion, no value but passed or failed, the revision reviewed exists, the criteria revision changed
-the criteria file, and the reviewer is none of the authors of the requirement or document. It
+the criteria file, the reviewer is none of the authors of the requirement or document, and a
+completed review has a `completed_at` not before its `created_at`. It
 reports the findings of a result by criterion, in the order of its criteria file, the same in every run.
 
 ```bash
@@ -183,7 +184,8 @@ go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope s
 ```
 
 In its head the skeleton names its schema, the type `review` and the level of its criteria file
-(SR_17). It prints the path of the file it
+(SR_17), and is a record still being made: `object_version` 1.1.1 and `status` open (SR_83). The
+decision of the reviewer sets `completed` and `completed_at`. It prints the path of the file it
 wrote. The code is the package `review/skeleton`, in the component `review`.
 
 ## approvalcheck
@@ -638,3 +640,4 @@ go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 | 23.1.1 | 2026-11-01 | sbom; Open | #370 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 24.1.1 | 2026-11-01 | pdf | #392 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 25.1.1 | 2026-11-02 | The component review; approvalcheck; baseline | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 26.1.1 | 2026-11-02 | reviewcheck; reviewskeleton | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

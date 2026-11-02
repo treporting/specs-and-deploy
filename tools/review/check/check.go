@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/treporting/specs-and-deploy/tools/review"
 	"gopkg.in/yaml.v3"
@@ -17,7 +18,9 @@ import (
 type Review struct {
 	Level            string   `yaml:"level"`
 	CreatedBy        string   `yaml:"created_by"`
+	Status           string   `yaml:"status"`
 	CreatedAt        string   `yaml:"created_at"`
+	CompletedAt      string   `yaml:"completed_at"`
 	Criteria         string   `yaml:"criteria"`
 	CriteriaRevision string   `yaml:"criteria_revision"`
 	Results          []Result `yaml:"results"`
@@ -78,7 +81,7 @@ type Git interface {
 // Check reads the review result in path, below root, and answers every rule it breaks. The index
 // tells the file of each target.
 //
-// @implements SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1, SR_06@1.1.1, SR_07@1.1.1, SR_08@1.1.1, SR_16@1.1.1
+// @implements SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1, SR_06@1.1.1, SR_07@1.1.1, SR_08@1.1.1, SR_16@1.1.1, SR_84@1.1.1
 func Check(root, path string, git Git, index *review.Index) ([]Finding, error) {
 
 	data, err := os.ReadFile(filepath.Join(root, path))
@@ -96,12 +99,41 @@ func Check(root, path string, git Git, index *review.Index) ([]Finding, error) {
 	}
 
 	var findings []Finding
+	for _, message := range checkCompleted(r) {
+		findings = append(findings, Finding{path, "", message})
+	}
 	for _, result := range r.Results {
 		for _, message := range checkResult(r, result, criteria, git, index) {
 			findings = append(findings, Finding{path, result.ObjectKey, message})
 		}
 	}
 	return findings, nil
+}
+
+// checkCompleted answers where a completed review has no completed_at, or one before its
+// created_at.
+//
+// @implements SR_84@1.1.1
+func checkCompleted(r Review) []string {
+
+	if r.Status != "completed" {
+		return nil
+	}
+	if r.CompletedAt == "" {
+		return []string{"completed, and no completed_at"}
+	}
+	completed, err := time.Parse(time.RFC3339, r.CompletedAt)
+	if err != nil {
+		return []string{"the completed_at " + r.CompletedAt + " is no time"}
+	}
+	created, err := time.Parse(time.RFC3339, r.CreatedAt)
+	if err != nil {
+		return []string{"the created_at " + r.CreatedAt + " is no time"}
+	}
+	if completed.Before(created) {
+		return []string{"the completed_at " + r.CompletedAt + " is before the created_at " + r.CreatedAt}
+	}
+	return nil
 }
 
 // criteriaKeys answers the ids of the criteria in the criteria file, in the revision the review used.
