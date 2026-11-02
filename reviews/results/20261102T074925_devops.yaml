@@ -25,5 +25,7 @@ results:
     RC_10: passed
     RC_11: passed
     RC_12: passed
-    RC_13: passed
-  verdict: passed
+    RC_13:
+      result: failed
+      note: 'correctness - the whole table Environments is to be checked; Docker has a new version'
+  verdict: failed
