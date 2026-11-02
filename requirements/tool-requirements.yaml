@@ -9,7 +9,7 @@ requirements:
   object_version: '1.1.1'
   feature: Documents to PDF
   object_text: export every document of a commit or tag to PDF, one file each, in a workflow started
-    by hand with that commit or tag, as one ZIP to download from the run
+    by hand with that commit or tag, as one ZIP to download from the run - changed for the demonstration of SR_81
   source_ids: [REG_FDADI_01@1.1.1]
   priority: 'medium'
   platform_launch: treporting = 2_tools
