@@ -28,12 +28,12 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_03
-  object_version: '1.2.2'
+  object_version: '1.3.2'
   feature: Reviews
   object_text: check every review result - every criterion of its criteria file once, the verdict passed
     only when every criterion passed, a note to every failed criterion, the revision reviewed exists,
     and the reviewer is not the author of the requirement
-  source_ids: [PROC_13@2.1.1, PROC_15@1.1.1]
+  source_ids: [PROC_13@3.1.1, PROC_15@1.1.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
@@ -96,10 +96,10 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_09
-  object_version: '3.2.2'
+  object_version: '3.3.2'
   feature: CI check
   object_text: check that an approved requirement names approved requirements only as its uplinks
-  source_ids: [PROC_13@2.1.1]
+  source_ids: [PROC_13@3.1.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
@@ -127,11 +127,11 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_12
-  object_version: '1.2.2'
+  object_version: '1.3.2'
   feature: CI check
   object_text: check every review result and run the tests of the tools on every pull request; a pull
     request where one of them fails cannot be merged
-  source_ids: [PROC_04@1.1.1, PROC_13@2.1.1]
+  source_ids: [PROC_04@1.1.1, PROC_13@3.1.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
@@ -161,11 +161,11 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_15
-  object_version: '2.2.3'
+  object_version: '2.3.3'
   feature: Reviews
   object_text: report a requirement that is approved in a pull request, where it was not approved in
     the base commit or its x rose, and that no passed review result of the pull request names
-  source_ids: [PROC_13@2.1.1, PROC_14@1.1.1]
+  source_ids: [PROC_13@3.1.1, PROC_14@1.1.1]
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
@@ -319,12 +319,12 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: TOOL_29
-  object_version: '1.1.2'
+  object_version: '1.2.2'
   feature: Reviews
   object_text: report a document with the verification method `review` that is approved in a pull
     request, where it was not approved in the base commit or its x rose, and that no passed review
     result of the pull request names
-  source_ids: [PROC_13@2.1.1, PROC_14@1.1.1]
+  source_ids: [PROC_13@3.1.1, PROC_14@1.1.1]
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
@@ -353,14 +353,14 @@ requirements:
   status: approved
   verification_method: [inspection]
 - object_key: TOOL_32
-  object_version: '1.1.1'
+  object_version: '1.2.1'
   feature: Reviews
   object_text: check that every approved object whose kind has review criteria in `reviews/`, except a
     document with the verification method `generated`, is named by a passed review result as the last
     that names it, and that the revision of that result holds the content x counts of the object as
     it is now - on every pull request for the objects in the files it changes, before the tag of a
     release for all
-  source_ids: [PROC_13@2.1.1]
+  source_ids: [PROC_13@3.1.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
