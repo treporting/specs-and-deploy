@@ -13,15 +13,15 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '15.1.1'
-  object_hash: '4a3b183'
-  status: review
+  object_version: '16.1.1'
+  object_hash: '068e063'
+  status: approved
   verification_method: [review]
 - name: devops.md
   type: document
-  object_version: '12.1.1'
-  object_hash: '5a12a0b'
-  status: review
+  object_version: '13.1.1'
+  object_hash: '8549601'
+  status: approved
   verification_method: [review]
 - name: definitions.md
   type: document
