@@ -110,8 +110,8 @@ not. The meaning has to be visible in the data.
 **Decision**: the version is `x.y.z`.
 
 - **x** changes when the text changes, or an attribute the schema of the kind names for x
-- **y** changes when a link changes
-- **z** changes when another attribute changes
+- **y** changes when a link is added or removed
+- **z** changes when another attribute changes, or a link names another version of the same object
 
 Where the schema of a kind names no attribute for x, x covers the text and `safety`.
 
@@ -119,11 +119,15 @@ Where the schema of a kind names no attribute for x, x covers the text and `safe
 not depend on a remark or on the links of its parent. So each part of the version shows in the
 data which kind of change happened.
 
-The parts stand in the order of their weight. A change of a link changes what the object is derived
-from, its place in the trace; a change of another attribute, such as a remark or `priority`, does
-not.
+The parts stand in the order of their weight. A link added or removed changes what the object is
+derived from, its place in the trace; a change of another attribute, such as a remark or `priority`,
+does not. Nor does a link that names a newer version of the same parent: the object stays where it
+was in the trace, and only a value changes.
 
 **Rejected**: y for the other attributes and z for the links. The links would stand below a remark.
+
+**Rejected**: y for every change of a link, also for a newer version named. y would then count what
+z counts: the change of a value.
 
 **Decision**: the version is set once, at the approval - the act that closes the review. Each part
 rises by one where its kind changed since the last approved version; the others stay. While an
@@ -148,7 +152,7 @@ It would also hold where a changed draft reached `main`, but step 10 rules that 
 would have to read the history and every review result.
 
 **Decision**: only a change of x sets an approved object back to `draft`, and needs a review. A
-change of y or z only - a link updated, a remark - leaves it `approved`. Its merge is its approval,
+change of y or z only - a link added or updated, a remark - leaves it `approved`. Its merge is its approval,
 as for a rule, and raises y or z by one. The author checks the child - does it still fit the new
 version of its parent? - the first question of the impact assessment (definitions.md), and the
 Product Owner confirms it by the merge.
@@ -222,11 +226,11 @@ approved uplinks.
 |---|---|---|---|
 | Start | `2.1.1` | `3.2.1`, link `UN_PM_01@2.1.1` | link `SYS_09@3.2.1` |
 | The text of UN_PM_01 changes, approved | `3.1.1` | its link names an older x: **suspect** | clean |
-| SYS_09 still fits; only its link is updated, approved | | `3.3.1`, link `UN_PM_01@3.1.1` | clean, only y of SYS_09 changed |
-| SYS_09 no longer fits; its text changes, approved | | `4.3.1` | its link names an older x: **suspect** |
-| A remark on SYS_09 changes, approved | | `4.3.2` | clean, only z of SYS_09 changed |
+| SYS_09 still fits; only its link is updated, approved | | `3.2.2`, link `UN_PM_01@3.1.1` | clean, only z of SYS_09 changed |
+| SYS_09 no longer fits; its text changes, approved | | `4.2.2` | its link names an older x: **suspect** |
+| A remark on SYS_09 changes, approved | | `4.2.3` | clean, only z of SYS_09 changed |
 
-The cascade reaches only as far as meaning really changes. A child that still fits changes y only,
+The cascade reaches only as far as meaning really changes. A child that still fits changes z only,
 and its own children stay clean.
 
 ## Where a suspect link blocks
@@ -299,16 +303,16 @@ when it is approved with a new x.
 - x is defined to cover everything a child depends on: the text, and the attributes the schema of
   the kind names for x. An attribute that matters to the children belongs in x.
 - within a tree, our files keep uplinks only. A child writes its parent in `source_ids` (formats.md, section
-  Fields are the properties of the gel schema). So the y of a parent counts the changes of its own
-  uplinks, and no child depends on them. Updating a link changes the y of the child only, and so
+  Fields are the properties of the gel schema). So y and z of a parent count the changes of its own
+  uplinks, and no child depends on them. Updating a link changes the z of the child only, and so
   the cascade ends there.
 - so anyone can read from the first number whether a link is suspect
 
 **Rejected**:
 
 - every difference makes a link suspect: z would mean the same as x, and every child would have
-  to follow a change of `priority` of its parent. With y, the grandchildren would have to follow
-  every update of a link of the child, and the cascade would run to the bottom.
+  to follow a change of `priority` of its parent. The grandchildren would have to follow every
+  update of a link of the child, and the cascade would run to the bottom.
 - down-links, a parent that names its children: then a new child would change the parent, and
   every child would see it
 
@@ -370,7 +374,8 @@ default.
 }
 ```
 
-`source_ids` and `allocated` count for y. `status` counts for nothing unless the list names it. Every other field
+An entry added to or removed from `source_ids` or `allocated` counts for y; an entry that names another
+version of the same object counts for z. `status` counts for nothing unless the list names it. Every other field
 counts for z.
 
 **Why**:
@@ -469,7 +474,7 @@ requirements and names its parents. Only its name differs from `source_ids`.
 
 **Decision**: `allocated` names the version of each system requirement, as a link does:
 `allocated: [SYS_01@1.1.1, SYS_02@1.1.1, …]`. The same rules hold: a different x makes an entry
-suspect, and updating it raises y of the element. Both ends lie in the release, so a suspect entry
+suspect, and updating it raises z of the element. Both ends lie in the release, so a suspect entry
 blocks the release.
 
 **Table allocation** - what only the allocation finds
@@ -573,3 +578,4 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 8.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Where a suspect link blocks; Links between trees | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-30 | Traceability; Open | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 11.1.1 | 2026-11-02 | The parts of the version: y counts a link added or removed | #413 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
