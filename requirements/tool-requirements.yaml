@@ -28,22 +28,24 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_03
-  object_version: '1.2.3'
+  object_version: '2.3.3'
   feature: Reviews
   object_text: check every review result - every criterion of its criteria file once, the verdict passed
     only when every criterion passed, a note to every failed criterion, the revision reviewed exists,
-    and the reviewer is not the author of the requirement
-  source_ids: [PROC_13@3.1.1, PROC_15@1.1.1]
+    the reviewer is not the author of the requirement, and a completed result has a completed_at not
+    before its created_at
+  source_ids: [PROC_13@3.1.1, PROC_15@1.1.1, REG_ISO15288_02@1.1.1]
   priority: 'medium'
   platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: TOOL_04
-  object_version: '1.1.2'
+  object_version: '2.2.2'
   feature: Reviews
   object_text: create the skeleton of a review for a set of requirements or documents, with the criteria
-    of their level and the revision of each
+    of their level and the revision of each, as a record with the version 1.1.1 and the status open
+  source_ids: [REG_ISO15288_02@1.1.1]
   rationale: the automatic support of the review - it gathers the criteria of the level and the revision
     of each requirement, so that the reviewer does not copy them by hand and makes no mistake there
   priority: 'medium'

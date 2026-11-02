@@ -411,13 +411,37 @@ judgement, such as `schema`; the commit that adds it says so. A finding resolved
 note of its criterion: "found in this review and resolved in it: ...". The revision is then the
 commit with the fix.
 
+**Decision**: a review result is a record. It carries a version and a status of its own, apart
+from its verdict:
+
+- `object_version`: `1.1.1`. A completed result does not change, so it keeps it.
+- `status`: `open` while the result is made - the skeleton and the proposal; `completed` once the
+  reviewer has decided. A completed result may have the verdict `failed`.
+- `created_at`, the date recorded: when the skeleton was made. `completed_at`, the date of record:
+  when the reviewer decided. It is set with `completed`.
+
+**Why**: ISO15288 asks that each information item is identified - its version - and confirmed
+valid - its status (REG_ISO15288_02). ISO15289 asks a record for the date of record, the date
+recorded and its status. In practice a review is open while it runs, and closed when the reviewer
+has decided; approved and rejected belong to what is reviewed, not to the review.
+
+**Rejected**:
+
+- the statuses of a document, `draft` to `obsolete`: they say whether a specification may be used.
+  A record is not approved by a review of its own; it is completed.
+- `closed` in place of `completed`: it presumes that something was open. A record a tool writes
+  complete, such as sbom.md, never was.
+- one date for both: the decision often comes hours after the proposal.
+- the date of the decision from git only: the commit of the decision is not in the record.
+
 On the branch, the commits of a review result are its course: the proposal, the decision, a finding
 resolved. What reaches `main` by the merge is the decision.
 
-- the commit of a proposal says so - "Proposed review result of …" - and leaves the status at
-  `review`; its header names it a proposal of its author
+- the commit of a proposal says so - "Proposed review result of …" - leaves the result `open`, and
+  sets the status of what is reviewed to `review`; its header names it a proposal of its author
 - once the reviewer has decided, a commit of its own - "Review result of … decided: passed" or
-  "… decided: failed" - sets the status and names the decision in the header
+  "… decided: failed" - sets the result `completed` with `completed_at`, sets the status of what is
+  reviewed, and names the decision in the header
 - where the reviewer merges without a word, the merge is the decision; the status is then set
   before the merge
 
@@ -428,8 +452,11 @@ A file of results is one review, with one result for everything it reviewed:
 schema: schemas/review-result.schema.json
 type: review
 level: r1
+object_version: '1.1.1'
+status: completed
 created_by: the reviewer
 created_at: '2026-10-26T14:00:00+01:00'
+completed_at: '2026-10-26T15:30:00+01:00'
 criteria: reviews/criteria-r1.yaml
 criteria_revision: 'd5922d1'
 results:
@@ -706,3 +733,4 @@ function name, from the JSON output of `go test` and of vitest.
 | 18.1.1 | 2026-11-01 | Documents; Change history | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-11-01 | Open | #373 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 20.1.1 | 2026-11-01 | Verifications | #382 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 21.1.1 | 2026-11-02 | Reviews: version, status and date of record of a review result | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
