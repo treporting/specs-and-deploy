@@ -148,16 +148,19 @@ sbom() {
 	run . "$bin" -check ${image_flags[@]+"${image_flags[@]}"}
 }
 
-#	@implements SR_63@1.1.1
+#	@implements SR_63@1.1.1, SR_82@1.1.1
 baseline() {
-	local label="$1" ticket="$2" bin_sbom bin_licence
+	local label="$1" ticket="$2" bin_sbom bin_licence bin_approval
 	shift 2
 	bin_sbom="$(tool sbom/cmd/sbom)"
 	bin_licence="$(tool licence/cmd/licencecheck)"
+	bin_approval="$(tool review/cmd/approvalcheck)"
 	build_images "$@"
 	run . "$bin_sbom" -label "$label" -ticket "$ticket" ${image_flags[@]+"${image_flags[@]}"}
 	[ "$failed" = 0 ] || return
 	run . "$bin_licence" -root .
+	#	every approved object of the head, after the licences
+	run . "$bin_approval" -root .
 }
 
 case "${1:-}" in

@@ -76,3 +76,12 @@ func (g ExecGit) Authors(commit string) (string, []string, error) {
 	}
 	return author, coAuthors, nil
 }
+
+// Changed answers the files changed between base and HEAD.
+func (g ExecGit) Changed(base string) ([]string, error) {
+	out, err := g.run("diff", "--name-only", base, "HEAD")
+	if err != nil {
+		return nil, err
+	}
+	return strings.Fields(out), nil
+}

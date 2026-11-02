@@ -112,9 +112,11 @@ jobs:
         with:
           app-id: ${{ vars.BASELINE_APP_ID }}
           private-key: ${{ secrets.BASELINE_APP_PRIVATE_KEY }}
+      #	the whole history: approvalcheck reads the revisions of the reviews and of each approval
       - uses: actions/checkout@v7
         with:
           token: ${{ steps.app.outputs.token }}
+          fetch-depth: 0
       - uses: actions/checkout@v7
         if: github.repository != 'treporting/specs-and-deploy'
         with:
@@ -125,7 +127,7 @@ jobs:
         with:
           go-version-file: ${{ inputs.go-version-file }}
           cache-dependency-path: '**/go.sum'
-      - name: sbom and the check of the licences
+      - name: sbom, the check of the licences and of the approvals
         env:
           LABEL: ${{ needs.start.outputs.label }}
           TICKET: ${{ github.event.issue.number }}
