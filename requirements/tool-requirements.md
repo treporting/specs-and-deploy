@@ -86,13 +86,37 @@ Documents).
 
 ## Reviews
 
-`TOOL_03` to `TOOL_04`, `TOOL_11`, `TOOL_15` and `TOOL_29`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL_03` to `TOOL_04`, `TOOL_11` and `TOOL_32`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The tools that create and check a review. `reviewcheck` checks every review result (TOOL_03,
 TOOL_11) and runs on every pull request (TOOL_12). `reviewskeleton` writes the skeleton of a review
-result (TOOL_04). A requirement approved in a pull request, for the first time or with a new x,
-needs a passed review result in that pull request (TOOL_15, PROC_13). So does a document with the
-verification method `review` (TOOL_29); a document a tool writes, with `generated`, needs none.
+result (TOOL_04). An approved object has a passed review of the content it has now (TOOL_32,
+PROC_13); a document a tool writes, with `generated`, needs none.
+
+### How an approval is checked
+
+TOOL_32 and TOOL_33 (section Versions) are made by one check. It starts from the approved objects,
+not from the review results: it finds an object approved with no review, with a failed review, or
+with a review of another content.
+
+**Decision**: one check, on every pull request for the objects in the files it changes, and before
+the tag of a release for all approved objects.
+
+**Why**:
+
+- the pull request stays fast, however many objects there are
+- the run before the tag finds what passed every pull request: two pull requests, each passed,
+  that together change an approved object without its review
+- one logic for both runs, so it is written and tested once
+
+**Rejected**:
+
+- a check of the change against the base commit of the pull request only - the former TOOL_15,
+  TOOL_19 and TOOL_29: it does not find what is already wrong on `main`
+- a check of all approved objects on every pull request - its time grows with the number of
+  objects
+- a check of its own for each error - the same objects read in each, and written and tested more
+  than once
 
 ## CI check
 
@@ -102,11 +126,12 @@ The checks run on every pull request - one tool requirement per check.
 
 ## Versions
 
-`TOOL_14`, `TOOL_16` to `TOOL_19`: in [tool-requirements.yaml](tool-requirements.yaml).
+`TOOL_14`, `TOOL_16` to `TOOL_18` and `TOOL_33`: in [tool-requirements.yaml](tool-requirements.yaml).
 
 The tools for the version of an object and the links that name it (traceability.md, PROC_14,
 PROC_20). TOOL_14 checks that an approval sets the right version, against the base commit of the
-pull request; TOOL_19 checks that an approved document is the file approved. TOOL_16 makes the link
+pull request; TOOL_33 checks that an approved object has the content it was approved with, a
+document the file approved (section Reviews, How an approval is checked). TOOL_16 makes the link
 check (definitions.md): it reports, and does not fail, as a suspect link blocks the baseline, not
 the pull request. TOOL_17 is that block. TOOL_18 updates a link.
 
@@ -193,3 +218,4 @@ vulnerabilities (REG_EU2024-2847_02).
 | 14.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-11-01 | Reviews | #369 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-11-01 | Documents to PDF | #390 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 17.1.1 | 2026-11-02 | Reviews; Versions | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
