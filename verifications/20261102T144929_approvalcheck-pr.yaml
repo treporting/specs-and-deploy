@@ -1,0 +1,25 @@
+# The demonstration of SR_81 with the pull request #416.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_81]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-11-02T14:49:29+01:00'
+revision: '71ceb7d'
+setting: 'f946133'
+description: verifications/20261102T144929_approvalcheck-pr.md
+expected: the job approvalcheck fails and names TOOL_01; it is required, and the pull request cannot be merged; every other check passes
+observed: |
+  requirements/tool-requirements.yaml: TOOL_01: its content for x is not the one reviews/results/20261101T184254_tool-pdf.yaml reviewed at 67fae41
+  requirements/tool-requirements.yaml: TOOL_01: its attributes for x are not those of its approval with x 1
+  approvals checked, 2 findings
+  tools / approvalcheck (pull_request): Required, Failing after 8s
+  1 failing, 11 successful checks
+  Merge pull request: disabled
+evidence:
+- https://github.com/treporting/specs-and-deploy/pull/416
+- https://github.com/treporting/specs-and-deploy/actions/runs/41455380114
+- verifications/20261102T144929_approvalcheck-pr_merge.jpg
+verdict: passed
