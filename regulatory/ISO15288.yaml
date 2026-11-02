@@ -16,22 +16,19 @@ requirements:
     pull requests to a protected main, the baselines and their signed tags
   priority: 'medium'
   safety: ''
-  status: review
+  status: draft
   verification_method: [inspection]
 - object_key: REG_ISO15288_02
   object_version: '1.1.1'
   category: Normative
-  object_text: '6.3.6 - information management process - to generate, obtain, confirm, transform,
-    retain, retrieve, disseminate and dispose of information to designated stakeholders: a)
-    information items are identified; b) information items are generated, obtained, transformed,
-    and retained; c) the validity and integrity of information items are confirmed; d) information
-    items are maintained and transformed according to defined security and privacy rules; e)
-    information items are retrieved and disseminated to designated stakeholders; f) information
-    items are disposed of according to defined retention periods and security and privacy rules'
+  object_text: '6.3.6 - information management process - each information item is identified; it is
+    made, changed and kept; it is confirmed valid and intact; it is kept and changed under the rules
+    of security and privacy; it reaches those who need it; and it is disposed of when its retention
+    period ends'
   applies_to: all
   not_realized: kept by our work, not by the product - the documents and records of treporting, with
     their versions and statuses
   priority: 'medium'
   safety: ''
-  status: review
+  status: draft
   verification_method: [inspection]
