@@ -876,5 +876,5 @@ requirements:
   source_ids: [TOOL_32@2.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
