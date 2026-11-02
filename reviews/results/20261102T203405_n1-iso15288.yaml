@@ -11,12 +11,10 @@ criteria_revision: '2f3a459'
 results:
 - object_key: RR_01
   target_ids: [REG_ISO15288_01]
-  revision: '1c7dbfe'
+  revision: 'c0a43a8'
   criteria:
     RC_01: passed
-    RC_02:
-      result: passed
-      note: 'the text renders the summary of 6.3.5 the Product Owner gave; the clause itself was not at hand to the author'
+    RC_02: passed
     RC_03: passed
     RC_04: passed
     RC_05: passed
@@ -24,7 +22,7 @@ results:
   verdict: passed
 - object_key: RR_02
   target_ids: [REG_ISO15288_02]
-  revision: '1c7dbfe'
+  revision: 'c0a43a8'
   criteria:
     RC_01: passed
     RC_02: passed
