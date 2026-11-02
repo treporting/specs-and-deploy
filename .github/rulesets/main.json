@@ -67,6 +67,10 @@
             "integration_id": 15368
           },
           {
+            "context": "approvalcheck",
+            "integration_id": 15368
+          },
+          {
             "context": "build / build",
             "integration_id": 15368
           },

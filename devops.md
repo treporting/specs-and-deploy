@@ -132,8 +132,8 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 
 **Decision**: `.github/workflows/tools.yml` runs on every pull request to `main`: the job
 `reviewcheck` (SR_09), the job `tests` (SR_10), the job `schemacheck` (SR_20), the job
-`rulesetcheck` (SR_23), the job `annotationcheck` (SR_26, SR_31) and the job `uplinkcheck`
-(SR_29). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
+`rulesetcheck` (SR_23), the job `annotationcheck` (SR_26, SR_31), the job `uplinkcheck`
+(SR_29) and the job `approvalcheck` (SR_81). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
 job failed cannot be merged, by anyone. The job `linkcheck` (SR_34) runs beside them. It is no
 required check. It reports a suspect link and does not fail: a suspect link blocks the baseline, not
 the pull request (PROC_20). The job `build` calls `.github/workflows/build.yml`, the build steps of
@@ -245,6 +245,8 @@ today is set in the section Continuous integration.
 | every review result keeps the rules of the section Reviews of formats.md, and the tests of the tools pass | TOOL_12 |
 | the ruleset of `main` on GitHub has the rules of `.github/rulesets/main.json` | TOOL_13 |
 | every `@implements`, `@verifies` and `@refines` names the version of its id, `ID@x.y.z` | TOOL_20 |
+| every approved object in the changed files that needs a review: the last review result that names it passed, and its revision holds the content x counts of the object as it is now | TOOL_32 |
+| every approved object in the changed files: the content x counts is the one it had when it was approved with that x | TOOL_33 |
 
 ## Open
 
@@ -269,3 +271,4 @@ today is set in the section Continuous integration.
 | 13.1.1 | 2026-11-02 | Environments | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-02 | Environments; Dependencies of the tools | #405 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-11-02 | Baseline | #404 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 16.1.1 | 2026-11-02 | Continuous integration: approvalcheck | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
