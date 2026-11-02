@@ -16,7 +16,7 @@ requirements:
     pull requests to a protected main, the baselines and their signed tags
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15288_02
   object_version: '1.1.1'
@@ -33,5 +33,5 @@ requirements:
     their versions and statuses
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
