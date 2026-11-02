@@ -161,7 +161,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_15
-  object_version: '2.2.2'
+  object_version: '2.2.3'
   feature: Reviews
   object_text: report a requirement that is approved in a pull request, where it was not approved in
     the base commit or its x rose, and that no passed review result of the pull request names
@@ -169,7 +169,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
 - object_key: TOOL_16
   object_version: '1.1.2'
@@ -206,7 +206,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_19
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   feature: Versions
   object_text: check on every pull request that the object_hash of every approved document is the hash
     of its file
@@ -214,7 +214,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
 - object_key: TOOL_20
   object_version: '2.1.2'
@@ -319,7 +319,7 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: TOOL_29
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   feature: Reviews
   object_text: report a document with the verification method `review` that is approved in a pull
     request, where it was not approved in the base commit or its x rose, and that no passed review
@@ -328,7 +328,7 @@ requirements:
   priority: 'medium'
   platform_launch: treporting = 3_tools
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
 - object_key: TOOL_30
   object_version: '1.1.1'
@@ -352,3 +352,30 @@ requirements:
   safety: ''
   status: approved
   verification_method: [inspection]
+- object_key: TOOL_32
+  object_version: '1.1.1'
+  feature: Reviews
+  object_text: check that every approved object whose kind has review criteria in `reviews/`, except a
+    document with the verification method `generated`, is named by a passed review result as the last
+    that names it, and that the revision of that result holds the content x counts of the object as
+    it is now - on every pull request for the objects in the files it changes, before the tag of a
+    release for all
+  source_ids: [PROC_13@2.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: TOOL_33
+  object_version: '1.1.1'
+  feature: Versions
+  object_text: check that the content x counts of every approved object - the attributes its schema
+    names for x, of a document the hash of its file - is the one it had when it was approved with that
+    x - on every pull request for the objects in the files it changes, before the tag of a release
+    for all
+  source_ids: [PROC_14@1.1.1]
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: approved
+  verification_method: [test]
