@@ -55,6 +55,7 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 | Markdown PDF (yzane) | 2.2.0 | the export of the documents to PDF |
 | Go (golang) | 0.58.0 | Go: language server, tests, debugging |
 | Container Tools (Microsoft) | 2.5.3 | containers and compose files |
+| Docker (Microsoft) | 2.0.0 | Dockerfiles; it brings Container Tools |
 | Dev Containers (Microsoft) | 0.469.0 | development inside a container |
 | GitHub Actions (GitHub) | 0.32.3 | the workflows of the CI |
 
