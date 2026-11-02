@@ -1,0 +1,27 @@
+# The demonstration of SR_82 with the baseline T0441: ticket #418, pull request #419.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_82]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-11-02T15:06:50+01:00'
+revision: 'eef8e1e'
+setting: 'eef8e1e'
+description: verifications/20261102T150650_baseline-t0441.md
+expected: the job sbom runs approvalcheck after licencecheck on every approved object of the head of main; it reports no finding, and the run opens the pull request
+observed: |
+  ticket-baseline: Issue #418 labeled, at eef8e1e: success
+  baseline / start, build / build, lint, report, test, sbom, result: success
+  == .: licencecheck -root .
+  13 packages checked, 0 fail
+  == .: approvalcheck -root .
+  approvals checked, 0 findings
+  treporting-baseline: The baseline is ready for review: https://github.com/treporting/specs-and-deploy/pull/419
+  #419 merged as 3f7761b; signed tag T0441
+evidence:
+- https://github.com/treporting/specs-and-deploy/issues/418
+- https://github.com/treporting/specs-and-deploy/actions/runs/41457268797
+- https://github.com/treporting/specs-and-deploy/pull/419
+verdict: passed
