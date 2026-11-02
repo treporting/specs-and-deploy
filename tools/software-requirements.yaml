@@ -774,7 +774,7 @@ requirements:
   source_ids: [TOOL_32@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_76
   object_version: '1.1.1'
@@ -784,7 +784,7 @@ requirements:
   source_ids: [TOOL_32@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_77
   object_version: '1.1.1'
@@ -795,7 +795,7 @@ requirements:
   source_ids: [TOOL_32@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_78
   object_version: '1.1.1'
@@ -805,7 +805,7 @@ requirements:
   source_ids: [TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_79
   object_version: '1.1.1'
@@ -814,7 +814,7 @@ requirements:
   source_ids: [TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_80
   object_version: '1.1.1'
@@ -825,7 +825,7 @@ requirements:
   source_ids: [TOOL_32@1.1.1, TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_81
   object_version: '1.1.1'
@@ -836,7 +836,7 @@ requirements:
   source_ids: [TOOL_32@1.1.1, TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [demonstration]
 - object_key: SR_82
   object_version: '1.1.1'
@@ -846,5 +846,5 @@ requirements:
   source_ids: [TOOL_32@1.1.1, TOOL_33@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [demonstration]
