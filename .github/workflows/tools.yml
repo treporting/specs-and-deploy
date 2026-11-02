@@ -1,4 +1,4 @@
-# The gate of the tools on every pull request (TOOL_12, TOOL_05, TOOL_13, TOOL_06, TOOL_20, TOOL_09). Each job is a required check of the ruleset
+# The gate of the tools on every pull request (TOOL_12, TOOL_05, TOOL_13, TOOL_06, TOOL_20, TOOL_09, TOOL_32, TOOL_33). Each job is a required check of the ruleset
 # of main, so a pull request whose job failed cannot be merged - but linkcheck (TOOL_16), which reports and does not fail. See devops.md.
 name: tools
 
@@ -87,6 +87,23 @@ jobs:
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
         run: go run ./annotation/cmd/annotationcheck -root .. -base "$BASE"
+  #	the objects in the files the pull request changes; the whole history, as the check reads
+  #	the revisions of the reviews and of each approval
+  approvalcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: tools/go.mod
+          cache-dependency-path: tools/go.sum
+      - name: approvalcheck
+        working-directory: tools
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: go run ./review/cmd/approvalcheck -root .. -base "$BASE"
   uplinkcheck:
     runs-on: ubuntu-latest
     steps:

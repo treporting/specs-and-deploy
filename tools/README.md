@@ -115,13 +115,15 @@ author.
 tools/review/                the component: what its tools share - git, and finding an id in its file
   check/                     the module review/check: reviewcheck
   skeleton/                  the module review/skeleton: reviewskeleton
+  approval/                  the module review/approval: approvalcheck
   cmd/reviewcheck/           the command
   cmd/reviewskeleton/        the command
+  cmd/approvalcheck/         the command
 ```
 
-**Why**: the hierarchy of the component can be read from the folders. `check` and `skeleton`
-depend on `review`, not on each other. A command keeps the name of its tool: Go names a program by
-the last part of its path. An SR names the component, `review`; the module is set by the code.
+**Why**: the hierarchy of the component can be read from the folders. `check`, `skeleton` and
+`approval` depend on `review`, not on each other. A command keeps the name of its tool: Go names a
+program by the last part of its path. An SR names the component, `review`; the module is set by the code.
 
 **Rejected**:
 
@@ -183,6 +185,34 @@ go run ./review/cmd/reviewskeleton -root .. -reviewer "Mathias Fischer" -scope s
 In its head the skeleton names its schema, the type `review` and the level of its criteria file
 (SR_17). It prints the path of the file it
 wrote. The code is the package `review/skeleton`, in the component `review`.
+
+## approvalcheck
+
+Checks every approval from the approved objects (TOOL_32, TOOL_33; SR_75 to SR_80 in
+[software-requirements.yaml](software-requirements.yaml)). It reports:
+
+- an approved object that needs a review, and that no review result names
+- one whose last review result, by its `created_at`, has the verdict failed
+- one whose content x counts in the revision of that result is not its content now
+- an approved requirement whose attributes for x are not those of the first commit in which it was
+  approved with its x
+- an approved document whose `object_hash` is not the hash of its file
+
+An object needs a review where its kind has a criteria file in `reviews/`, as reviewskeleton finds
+it; a document where it has the verification method `review` as well. What x counts is read from
+the schema of its file, `attributes_for_version_x`; of a document it is the hash of its file.
+
+```bash
+cd tools
+go run ./review/cmd/approvalcheck -root ..              # every approved object
+go run ./review/cmd/approvalcheck -root .. -base main   # the objects in the files changed against main
+```
+
+With `-base`, it checks the objects in the files changed against that commit - a requirement in its
+file, a document in its file or its entry in `documents.yaml`. It runs so on every pull request
+(SR_81), and without `-base` in the baseline (SR_82). It reads the history of git, so a checkout
+needs all of it. It exits with 1 where an approval does not hold. The code is the package
+`review/approval`, in the component `review`.
 
 ## schemacheck
 
@@ -522,7 +552,8 @@ template Baseline and names the label in it. Whoever may label tickets of the re
    `<ticket number>-baseline-<label>`, the tag `<label>` or another run of the caller exists.
 2. `build`: the jobs of `build.yml` on the head of `main` as the ticket event names it.
 3. `sbom`: `steps.sh baseline <label> <ticket number> [name=Dockerfile]...` builds the images,
-   writes `sbom.md` and its entry in `documents.yaml`, and checks the licences. Where it passes, it
+   writes `sbom.md` and its entry in `documents.yaml`, checks the licences, and checks the
+   approvals of every approved object (approvalcheck, SR_82). Where it passes, it
    pushes the branch with one commit and opens the pull request, with a token of the GitHub App
    `treporting-baseline` (devops.md, section Baseline).
 4. `result`: a comment on the ticket - the pull request, or the step that failed, with the link to
@@ -606,3 +637,4 @@ go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 | 22.1.1 | 2026-11-01 | baseline | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 23.1.1 | 2026-11-01 | sbom; Open | #370 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 24.1.1 | 2026-11-01 | pdf | #392 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 25.1.1 | 2026-11-02 | The component review; approvalcheck; baseline | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
