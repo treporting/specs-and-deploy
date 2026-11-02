@@ -67,9 +67,18 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 | `gopkg.in/yaml.v3` | 3.0.1 | MIT, Apache-2.0 | reading YAML |
 | `github.com/santhosh-tekuri/jsonschema/v6` | 6.0.3 | Apache-2.0 | checking a YAML against its JSON Schema (TOOL_05) |
 | `golang.org/x/text` | 0.14.0 | BSD-3-Clause | the messages of jsonschema; of the Go team |
+| `github.com/yuin/goldmark` | 1.7.8 | MIT | turning a document into HTML, as GitHub does (pdf) |
+| `github.com/chromedp/chromedp` | 0.14.2 | MIT | driving headless Chrome, which prints the HTML to PDF (pdf) |
+| `github.com/chromedp/cdproto` | 0.0.0-20250724212937-08a3db8b4327 | MIT | the protocol of Chrome; of chromedp |
+| `github.com/chromedp/sysutil` | 1.1.0 | MIT | the system of the machine; of chromedp |
+| `github.com/go-json-experiment/json` | 0.0.0-20260213210345-44df1a37e875 | BSD-3-Clause | JSON of the protocol of Chrome; of chromedp |
+| `github.com/gobwas/ws` | 1.4.0 | MIT | the websocket to Chrome; of chromedp |
+| `github.com/gobwas/httphead` | 0.1.0 | MIT | the headers of HTTP; of ws |
+| `github.com/gobwas/pool` | 0.2.1 | MIT | the buffers of ws |
 
-`github.com/dlclark/regexp2` stands in `go.sum` as part of the module graph of jsonschema; it is not
-built into the tools (`go list -deps`).
+`github.com/dlclark/regexp2` stands in `go.sum` as part of the module graph of jsonschema, and
+`golang.org/x/sys` stands in `go.mod` as part of the module graph of chromedp; neither is built into
+the tools (`go list -deps`).
 
 ## Documents to PDF
 
@@ -257,3 +266,4 @@ today is set in the section Continuous integration.
 | 11.1.1 | 2026-11-01 | Baseline; Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-11-01 | Baseline | #386 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-11-02 | Environments | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 14.1.1 | 2026-11-02 | Dependencies of the tools | #405 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
