@@ -41,6 +41,7 @@ apply to a project is decided by the organization that uses treporting, by its d
 | [ISO29148.yaml](ISO29148.yaml) | Requirements engineering |
 | [ISO25010.yaml](ISO25010.yaml) | Product quality |
 | [ISO29119-3.yaml](ISO29119-3.yaml) | Documentation |
+| [ISO15288.yaml](ISO15288.yaml) | Configuration and information |
 
 ## Tool qualification
 
@@ -69,6 +70,12 @@ more information on them, the decision states what it found (PROC_18).
 What a document of treporting holds. treporting does not realize it; our work keeps it in its
 documents.
 
+## Configuration and information
+
+How the configuration of treporting and its information items are managed: identified, with a
+version and a status, controlled in their changes, and kept. treporting does not realize it; our
+work keeps it, in its objects, documents and records and in the protected `main`.
+
 ## Open
 
 - `treporting = 2_selfhosted` - **Products on the market**: not known whether, and from when, the
@@ -84,3 +91,4 @@ documents.
 | 4.1.1 | 2026-10-29 | Product quality; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 5.1.1 | 2026-10-30 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 6.1.1 | 2026-10-30 | Modules; Documentation; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-11-02 | Modules; Configuration and information | #422 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

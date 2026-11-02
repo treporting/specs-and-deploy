@@ -1,0 +1,34 @@
+# Regulatory requirements of ISO15288 (n1). What explains them is in regulatory-requirements.md.
+# Format: ../formats.md
+schema: schemas/regulatory-requirements.schema.json
+type: normative
+level: n1
+requirements:
+- object_key: REG_ISO15288_01
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.3.5 - configuration management process - to manage system and system element
+    configurations throughout their life cycle, with consistency, integrity, traceability and
+    control: configuration items are identified, baselines and changes are controlled, status
+    information is maintained, audits are performed, and releases are managed'
+  applies_to: all
+  not_realized: kept by our work, not by the product - the versions and statuses of the objects, the
+    pull requests to a protected main, the baselines and their signed tags
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
+- object_key: REG_ISO15288_02
+  object_version: '1.1.1'
+  category: Normative
+  object_text: '6.3.6 - information management process - each information item is identified; it is
+    made, changed and kept; it is confirmed valid and intact; it is kept and changed under the rules
+    of security and privacy; it reaches those who need it; and it is disposed of when its retention
+    period ends'
+  applies_to: all
+  not_realized: kept by our work, not by the product - the documents and records of treporting, with
+    their versions and statuses
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [inspection]
