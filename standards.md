@@ -26,6 +26,7 @@ short form is the same in every document, and the table says what stands behind 
 |---|---|---|
 | ISO12207 | ISO/IEC/IEEE 12207 Systems and software engineering - Software life cycle processes | |
 | ISO15026 | ISO/IEC/IEEE 15026 Systems and software engineering - Systems and software assurance | |
+| ISO15288 | ISO/IEC/IEEE 15288:2023 Systems and software engineering - System life cycle processes | |
 | ISO15289 | ISO/IEC/IEEE 15289:2019 Systems and software engineering - Content of life-cycle information items (documentation) | |
 | ISO29119 | ISO/IEC/IEEE 29119 Software and systems engineering - Software testing | |
 | ISO29119-3 | ISO/IEC/IEEE 29119-3:2021 Software and systems engineering - Software testing - Part 3: Test documentation | |
@@ -147,3 +148,4 @@ stands in an id, where a slash would separate directories.
 | 3.1.1 | 2026-10-29 | Short forms; Laws, guidance and licences | #309 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 4.1.1 | 2026-10-29 | Short forms; Editions | #318 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 5.1.1 | 2026-10-30 | Short forms; Open; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-11-02 | Short forms: ISO15288 | #422 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
