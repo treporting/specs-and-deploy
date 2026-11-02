@@ -110,7 +110,7 @@ jobs:
       - uses: actions/create-github-app-token@v3
         id: app
         with:
-          app-id: ${{ vars.BASELINE_APP_ID }}
+          client-id: ${{ vars.BASELINE_APP_CLIENT_ID }}
           private-key: ${{ secrets.BASELINE_APP_PRIVATE_KEY }}
       #	the whole history: approvalcheck reads the revisions of the reviews and of each approval
       - uses: actions/checkout@v7
@@ -177,7 +177,7 @@ jobs:
       - uses: actions/create-github-app-token@v3
         id: app
         with:
-          app-id: ${{ vars.BASELINE_APP_ID }}
+          client-id: ${{ vars.BASELINE_APP_CLIENT_ID }}
           private-key: ${{ secrets.BASELINE_APP_PRIVATE_KEY }}
       - name: comment on the ticket
         env:
