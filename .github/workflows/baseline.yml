@@ -107,21 +107,21 @@ jobs:
     env:
       STEPS: ${{ github.repository == 'treporting/specs-and-deploy' && github.workspace || format('{0}/.build-steps', github.workspace) }}
     steps:
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         id: app
         with:
           app-id: ${{ vars.BASELINE_APP_ID }}
           private-key: ${{ secrets.BASELINE_APP_PRIVATE_KEY }}
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.app.outputs.token }}
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: github.repository != 'treporting/specs-and-deploy'
         with:
           repository: treporting/specs-and-deploy
           ref: main
           path: .build-steps
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         with:
           go-version-file: ${{ inputs.go-version-file }}
           cache-dependency-path: '**/go.sum'
@@ -172,7 +172,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         id: app
         with:
           app-id: ${{ vars.BASELINE_APP_ID }}
