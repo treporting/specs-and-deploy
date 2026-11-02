@@ -6,69 +6,69 @@ level: r5
 documents: [tools/README.md]
 requirements:
 - object_key: SR_01
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report a criterion of the criteria file that a result of a review leaves out, and a
     criterion the result names that the file does not hold
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_02
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report a verdict passed where a criterion failed, and a verdict failed where every
     criterion passed
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_03
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report a failed criterion that carries no note
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_04
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report a revision reviewed that names no commit
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_05
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report a result whose reviewer is the author or a co-author of the last commit, not a
     merge, that changed the requirement reviewed
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_06
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: where a criterion or the verdict of a result holds a value other than passed or failed,
     report it; count such a criterion as not passed
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_07
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: where the criteria revision of a review names no commit that changed its criteria file,
     report it once for the review, as the criteria the review followed cannot be traced
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
@@ -104,77 +104,77 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: SR_11
-  object_version: '2.1.1'
+  object_version: '2.1.2'
   component: review
   object_text: |-
     create the skeleton of a review result for the ids or documents given, where:
     - the file lies in reviews/results/ and is named <yyyymmddThhmmss>_<scope>.yaml
     - the field created_by is the reviewer given
     - the field created_at is the time it is made, the same as in its name
-  source_ids: [TOOL_04@1.1.1]
+  source_ids: [TOOL_04@2.2.2]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_12
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: take the criteria file of the level of what is to be reviewed, and as criteria revision
     the last commit that changed that file
-  source_ids: [TOOL_04@1.1.1]
+  source_ids: [TOOL_04@2.2.2]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_13
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: name as revision of each the commit the skeleton is made on
-  source_ids: [TOOL_04@1.1.1]
+  source_ids: [TOOL_04@2.2.2]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_14
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: write one result per id or document, with every criterion of the criteria file, and set
     each criterion and the verdict to todo
-  source_ids: [TOOL_04@1.1.1]
+  source_ids: [TOOL_04@2.2.2]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_15
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: write nothing, and report it, where an id or document is not found, or where they belong
     to more than one level
-  source_ids: [TOOL_04@1.1.1]
+  source_ids: [TOOL_04@2.2.2]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_16
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report the findings of a result in the same order in every run - by criterion in the
     order of the criteria file, criteria not in it by their id, then the verdict, the revision and
     the reviewer
-  source_ids: [TOOL_03@1.1.1]
+  source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_17
-  object_version: '2.1.1'
+  object_version: '2.1.2'
   component: review
   object_text: |-
     create the skeleton of a review result where:
     - the field schema names the used schema from the root of the repo.
     - the field type is review and
     - the field level is the level of its criteria file
-  source_ids: [TOOL_04@1.1.1]
+  source_ids: [TOOL_04@2.2.2]
   priority: 'medium'
   safety: ''
   status: approved
@@ -848,3 +848,23 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: SR_83
+  object_version: '1.1.1'
+  component: review
+  object_text: create the skeleton of a review result with the field object_version 1.1.1 and the field
+    status open
+  source_ids: [TOOL_04@2.2.2]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_84
+  object_version: '1.1.1'
+  component: review
+  object_text: report a result whose status is completed and that has no completed_at, or a completed_at
+    before its created_at
+  source_ids: [TOOL_03@2.3.3]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
