@@ -153,7 +153,7 @@ jobs:
           body="$(cat <<BODY
           Part of #$TICKET
 
-          The baseline $LABEL of $GITHUB_REPOSITORY, run on main at $GITHUB_SHA: build, lint, test, report, sbom and the check of the licences passed. sbom.md and its entry in documents.yaml are written by the tool sbom, approved without a review (PROC_13).
+          The baseline $LABEL of $GITHUB_REPOSITORY, run on main at $GITHUB_SHA: build, lint, test, report, sbom, the check of the licences and the check of the approvals passed. sbom.md and its entry in documents.yaml are written by the tool sbom, approved without a review (PROC_13).
 
           After the merge, set the signed tag on the merge commit:
 
