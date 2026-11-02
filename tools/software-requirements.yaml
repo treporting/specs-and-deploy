@@ -856,7 +856,7 @@ requirements:
   source_ids: [TOOL_04@2.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_84
   object_version: '1.1.1'
@@ -866,5 +866,5 @@ requirements:
   source_ids: [TOOL_03@2.3.3]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
