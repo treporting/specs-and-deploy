@@ -41,20 +41,20 @@ jobs:
     timeout-minutes: 30
     steps:
       #	two commits: the merge of a pull request and its base, to see whether it changes sbom.md
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 2
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: github.repository != 'treporting/specs-and-deploy'
         with:
           repository: treporting/specs-and-deploy
           ref: main
           path: .build-steps
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         with:
           go-version-file: ${{ inputs.go-version-file }}
           cache-dependency-path: '**/go.sum'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: hashFiles('**/package-lock.json') != ''
         with:
           node-version: '24.x'
@@ -76,18 +76,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         if: github.repository != 'treporting/specs-and-deploy'
         with:
           repository: treporting/specs-and-deploy
           ref: main
           path: .build-steps
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         with:
           go-version-file: ${{ inputs.go-version-file }}
           cache-dependency-path: '**/go.sum'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: hashFiles('**/package-lock.json') != ''
         with:
           node-version: '24.x'
@@ -103,18 +103,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         if: github.repository != 'treporting/specs-and-deploy'
         with:
           repository: treporting/specs-and-deploy
           ref: main
           path: .build-steps
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         with:
           go-version-file: ${{ inputs.go-version-file }}
           cache-dependency-path: '**/go.sum'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: hashFiles('**/package-lock.json') != ''
         with:
           node-version: '24.x'
@@ -130,18 +130,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         if: github.repository != 'treporting/specs-and-deploy'
         with:
           repository: treporting/specs-and-deploy
           ref: main
           path: .build-steps
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         with:
           go-version-file: ${{ inputs.go-version-file }}
           cache-dependency-path: '**/go.sum'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: hashFiles('**/package-lock.json') != ''
         with:
           node-version: '24.x'
