@@ -22,7 +22,7 @@ in which language, and their chain from requirement to code: [tools/README.md](t
 
 ## Environments
 
-The versions as installed on 2026-10-25; they are brought up to date in the loop for every release or
+The versions as installed on 2026-11-02; they are brought up to date in the loop for every release or
 library (harness.md). A tool is listed when the work on treporting needs it.
 
 **Table environments** - the tools of our work, and their versions
@@ -31,13 +31,13 @@ library (harness.md). A tool is listed when the work on treporting needs it.
 |---|---|---|
 | macOS | 26.4.1 | the development machine |
 | VS Code | 1.142.0 | the editor, with extensions - see below |
-| Claude Code | 2.1.310 | the AI assistant, as an extension of VS Code; its settings are kept one level above the repos (see harness.md) |
+| Claude Code | 2.1.314 | the AI assistant, as an extension of VS Code; its settings are kept one level above the repos (see harness.md) |
 | git | 2.50.1 | version control |
 | GitHub CLI (`gh`) | 2.101.0 | tickets, pull requests, the project |
 | Go | 1.25.14 | the subsystems in Go; the CI builds with 1.25 as well |
 | Node.js, npm | 24.21.0, 11.19.0 | the viewer and its tests |
-| Docker Desktop | 4.17.0 - engine 20.10.23, Compose 2.15.1 | the containers, gel |
-| Google Chrome | 155.0.8059.86 | renders the export of the documents to PDF |
+| Docker Desktop | 4.97.0 - engine 29.9.2, Compose 5.6.1 | the containers, gel |
+| Google Chrome | 156.0.8078.76 | renders the export of the documents to PDF |
 | GitHub | - | the repos of the organization treporting, its project, protected `main`, pull requests |
 | GitHub Actions | - | the CI: the gate of the tools, see Continuous integration |
 
@@ -51,10 +51,11 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 
 | Extension | Version | What for |
 |---|---|---|
-| Claude Code (Anthropic) | 2.1.310 | the AI assistant |
+| Claude Code (Anthropic) | 2.1.314 | the AI assistant |
 | Markdown PDF (yzane) | 2.2.0 | the export of the documents to PDF |
 | Go (golang) | 0.58.0 | Go: language server, tests, debugging |
 | Container Tools (Microsoft) | 2.5.3 | containers and compose files |
+| Docker (Microsoft) | 2.0.0 | Dockerfiles; it brings Container Tools |
 | Dev Containers (Microsoft) | 0.469.0 | development inside a container |
 | GitHub Actions (GitHub) | 0.32.3 | the workflows of the CI |
 
@@ -67,9 +68,18 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 | `gopkg.in/yaml.v3` | 3.0.1 | MIT, Apache-2.0 | reading YAML |
 | `github.com/santhosh-tekuri/jsonschema/v6` | 6.0.3 | Apache-2.0 | checking a YAML against its JSON Schema (TOOL_05) |
 | `golang.org/x/text` | 0.14.0 | BSD-3-Clause | the messages of jsonschema; of the Go team |
+| `github.com/yuin/goldmark` | 1.7.8 | MIT | turning a document into HTML, as GitHub does (pdf) |
+| `github.com/chromedp/chromedp` | 0.14.2 | MIT | driving headless Chrome, which prints the HTML to PDF (pdf) |
+| `github.com/chromedp/cdproto` | 0.0.0-20250724212937-08a3db8b4327 | MIT | the protocol of Chrome; of chromedp |
+| `github.com/chromedp/sysutil` | 1.1.0 | MIT | the system of the machine; of cdproto |
+| `github.com/go-json-experiment/json` | 0.0.0-20260213210345-44df1a37e875 | BSD-3-Clause | JSON of the protocol of Chrome; of chromedp |
+| `github.com/gobwas/ws` | 1.4.0 | MIT | the websocket to Chrome; of chromedp |
+| `github.com/gobwas/httphead` | 0.1.0 | MIT | the headers of HTTP; of ws |
+| `github.com/gobwas/pool` | 0.2.1 | MIT | the buffers of ws |
 
-`github.com/dlclark/regexp2` stands in `go.sum` as part of the module graph of jsonschema; it is not
-built into the tools (`go list -deps`).
+`github.com/dlclark/regexp2` stands in `go.sum` as part of the module graph of jsonschema, and
+`golang.org/x/sys` stands in `go.mod` as part of the module graph of chromedp; neither is built into
+the tools (`go list -deps`).
 
 ## Documents to PDF
 
@@ -257,3 +267,4 @@ today is set in the section Continuous integration.
 | 11.1.1 | 2026-11-01 | Baseline; Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-11-01 | Baseline | #386 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-11-02 | Environments | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 14.1.1 | 2026-11-02 | Environments; Dependencies of the tools | #405 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
