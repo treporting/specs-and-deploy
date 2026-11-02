@@ -226,16 +226,17 @@ For code, step 3 means:
 
 ## Loop for every release or library
 
-1. compile
-2. run linter
-3. run unit-testing in local
-4. run full set of tests
-5. report on
+1. bring the versions in the section Environments of devops.md up to date
+2. compile
+3. run linter
+4. run unit-testing in local
+5. run full set of tests
+6. report on
    - test coverage
    - structural debt
-6. create the SBOM (PROC_08)
-7. check the licences of the components (PROC_08)
-8. create a signed tag as approval (PROC_06)
+7. create the SBOM (PROC_08)
+8. check the licences of the components (PROC_08)
+9. create a signed tag as approval (PROC_06)
 
 *Note*: write the data of the release or library into a separate edgedb, kept as reference data
 as soon as possible (PROC_07)
@@ -267,3 +268,4 @@ as soon as possible (PROC_07)
 | 13.1.1 | 2026-11-01 | Rules | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-01 | Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-11-01 | Platform and launches; Open | #375 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 16.1.1 | 2026-11-02 | Loop for every release or library | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

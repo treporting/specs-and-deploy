@@ -22,7 +22,8 @@ in which language, and their chain from requirement to code: [tools/README.md](t
 
 ## Environments
 
-The versions as installed on 2026-10-25. A tool is listed when the work on treporting needs it.
+The versions as installed on 2026-10-25; they are brought up to date in the loop for every release or
+library (harness.md). A tool is listed when the work on treporting needs it.
 
 **Table environments** - the tools of our work, and their versions
 
@@ -255,3 +256,4 @@ today is set in the section Continuous integration.
 | 10.1.1 | 2026-10-31 | Continuous integration | #342 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-11-01 | Baseline; Open | #343 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-11-01 | Baseline | #386 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 13.1.1 | 2026-11-02 | Environments | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
