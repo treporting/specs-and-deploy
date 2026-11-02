@@ -193,12 +193,12 @@ request opened with `GITHUB_TOKEN` starts no workflow, so its required checks wo
    - Webhook: not active
    - Repository permissions: Contents, Issues and Pull requests read and write; Metadata read
    - Where can this GitHub App be installed: only on this account
-2. In the App: note its App ID; Generate a private key - a `.pem` file is downloaded.
+2. In the App: note its Client ID; Generate a private key - a `.pem` file is downloaded.
 3. Install App, on the org, for the repos that make a baseline.
 4. Hand the ID and the key to the workflows, and delete the file:
 
 ```bash
-gh variable set BASELINE_APP_ID --org treporting --visibility all --body <App ID>
+gh variable set BASELINE_APP_CLIENT_ID --org treporting --visibility all --body <Client ID>
 gh secret set BASELINE_APP_PRIVATE_KEY --org treporting --visibility all < <file>.pem
 rm <file>.pem
 ```
@@ -268,3 +268,4 @@ today is set in the section Continuous integration.
 | 12.1.1 | 2026-11-01 | Baseline | #386 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-11-02 | Environments | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-02 | Environments; Dependencies of the tools | #405 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 15.1.1 | 2026-11-02 | Baseline | #404 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
