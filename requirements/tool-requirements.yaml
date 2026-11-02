@@ -28,7 +28,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_03
-  object_version: '1.3.2'
+  object_version: '1.2.3'
   feature: Reviews
   object_text: check every review result - every criterion of its criteria file once, the verdict passed
     only when every criterion passed, a note to every failed criterion, the revision reviewed exists,
@@ -96,7 +96,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_09
-  object_version: '3.3.2'
+  object_version: '3.2.3'
   feature: CI check
   object_text: check that an approved requirement names approved requirements only as its uplinks
   source_ids: [PROC_13@3.1.1]
@@ -127,7 +127,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_12
-  object_version: '1.3.2'
+  object_version: '1.2.3'
   feature: CI check
   object_text: check every review result and run the tests of the tools on every pull request; a pull
     request where one of them fails cannot be merged
@@ -161,7 +161,7 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_15
-  object_version: '2.3.3'
+  object_version: '2.2.4'
   feature: Reviews
   object_text: report a requirement that is approved in a pull request, where it was not approved in
     the base commit or its x rose, and that no passed review result of the pull request names
@@ -319,7 +319,7 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: TOOL_29
-  object_version: '1.2.2'
+  object_version: '1.1.3'
   feature: Reviews
   object_text: report a document with the verification method `review` that is approved in a pull
     request, where it was not approved in the base commit or its x rose, and that no passed review
@@ -353,7 +353,7 @@ requirements:
   status: approved
   verification_method: [inspection]
 - object_key: TOOL_32
-  object_version: '1.2.1'
+  object_version: '1.1.2'
   feature: Reviews
   object_text: check that every approved object whose kind has review criteria in `reviews/`, except a
     document with the verification method `generated`, is named by a passed review result as the last
