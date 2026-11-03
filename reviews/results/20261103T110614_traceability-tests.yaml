@@ -5,9 +5,10 @@ schema: schemas/review-result.schema.json
 type: review
 level: document
 object_version: '1.1.1'
-status: open
+status: completed
 created_by: Mathias Fischer
 created_at: '2026-11-03T11:06:14+01:00'
+completed_at: '2026-11-03T11:25:52+01:00'
 criteria: reviews/criteria-documents.yaml
 criteria_revision: '865b621'
 results:
@@ -27,5 +28,7 @@ results:
     RC_10: passed
     RC_11: passed
     RC_12: passed
-    RC_13: passed
-  verdict: passed
+    RC_13:
+      result: failed
+      note: 'complete - the decision on the test execution lacks that every test result of every run has a verdict, and that the test report of a baseline has a status of its own'
+  verdict: failed
