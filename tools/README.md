@@ -199,7 +199,7 @@ Checks every approval from the approved objects (TOOL_32, TOOL_33; SR_75 to SR_8
 - one whose content x counts in the revision of that result is not its content now
 - an approved requirement whose attributes for x are not those of the first commit in which it was
   approved with its x
-- an approved document whose `object_hash` is not the hash of its file
+- an approved or completed document whose `object_hash` is not the hash of its file
 
 An object needs a review where its kind has a criteria file in `reviews/`, as reviewskeleton finds
 it; a document where it has the verification method `review` as well. What x counts is read from
@@ -359,9 +359,9 @@ baseline and lists every package the subsystem delivers, each once, sorted by PU
 
 A run keeps the rows of the Change history of an `sbom.md` that is there and adds one, with the
 version of `sbom.md` and the ticket given (SR_40). It sets the entry of `sbom.md` in `documents.yaml`
-of the repo: x of its version raised by one, the hash of the file written, `approved` and
-`[generated]` - a generated document passes no review (PROC_13, SR_59). The repo needs a
-`documents.yaml`. A package whose licence is unknown is listed in Open (SR_45).
+of the repo: x of its version raised by one, the hash of the file written, `completed` and
+`[generated]` - a generated document is a record and passes no review (PROC_13, SR_59). The repo
+needs a `documents.yaml`. A package whose licence is unknown is listed in Open (SR_45).
 
 ```bash
 cd tools
@@ -643,3 +643,4 @@ go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 | 25.1.1 | 2026-11-02 | The component review; approvalcheck; baseline | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 26.1.1 | 2026-11-02 | reviewcheck; reviewskeleton | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 27.1.1 | 2026-11-03 | approvalcheck: an open review result | #429 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 28.1.1 | 2026-11-03 | sbom; approvalcheck: a generated document is a completed record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
