@@ -44,8 +44,8 @@ documents:
 - name: reviews/README.md
   type: document
   object_version: '7.1.1'
-  object_hash: 'ec51edb'
-  status: review
+  object_hash: 'b5c8a48'
+  status: approved
   verification_method: [review]
 - name: traceability.md
   type: document
