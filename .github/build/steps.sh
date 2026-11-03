@@ -148,7 +148,7 @@ sbom() {
 	run . "$bin" -check ${image_flags[@]+"${image_flags[@]}"}
 }
 
-#	@implements SR_63@1.1.1, SR_82@1.1.1
+#	@implements SR_63@1.1.1, SR_82@2.1.3
 baseline() {
 	local label="$1" ticket="$2" bin_sbom bin_licence bin_approval
 	shift 2

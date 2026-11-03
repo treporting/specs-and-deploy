@@ -44,7 +44,7 @@ func Next(version string) (string, error) {
 
 // Hash answers what git hash-object answers for a file of this content, 7 characters.
 //
-// @implements SR_59@1.1.1
+// @implements SR_59@2.1.1
 func Hash(content []byte) string {
 	h := sha1.New() // #nosec G401 -- see the import
 	h.Write([]byte("blob " + strconv.Itoa(len(content)) + "\x00"))
@@ -52,18 +52,18 @@ func Hash(content []byte) string {
 	return hex.EncodeToString(h.Sum(nil))[:7]
 }
 
-// Entry answers the documents.yaml with the entry of sbom.md set to version and hash, approved and
+// Entry answers the documents.yaml with the entry of sbom.md set to version and hash, completed and
 // generated (PROC_13), and the entry added at its end where there is none. The other lines stay as
 // they are.
 //
-// @implements SR_59@1.1.1
+// @implements SR_59@2.1.1
 func Entry(documentsYAML []byte, version, hash string) []byte {
 	block := []string{
 		"- name: " + Name,
 		"  type: document",
 		"  object_version: '" + version + "'",
 		"  object_hash: '" + hash + "'",
-		"  status: approved",
+		"  status: completed",
 		"  verification_method: [generated]",
 	}
 	text := strings.TrimRight(string(documentsYAML), "\n")

@@ -24,7 +24,7 @@ const withSbom = documentsYAML + `- name: sbom.md
   type: document
   object_version: '2.1.1'
   object_hash: 'aaaaaaa'
-  status: approved
+  status: completed
   verification_method: [generated]
 - name: devops.md
   type: document
@@ -58,7 +58,7 @@ func TestNextRaisesX(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@1.1.1
+// @verifies SR_59@2.1.1
 func TestHashIsThatOfGitHashObject(t *testing.T) {
 	content := []byte("# SBOM\n")
 	file := filepath.Join(t.TempDir(), "sbom.md")
@@ -74,14 +74,14 @@ func TestHashIsThatOfGitHashObject(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@1.1.1
+// @verifies SR_59@2.1.1
 func TestEntryAddedWhereThereIsNone(t *testing.T) {
 	got := string(Entry([]byte(documentsYAML), "1.1.1", "1234567"))
 	want := documentsYAML + `- name: sbom.md
   type: document
   object_version: '1.1.1'
   object_hash: '1234567'
-  status: approved
+  status: completed
   verification_method: [generated]
 `
 	if got != want {
@@ -89,7 +89,7 @@ func TestEntryAddedWhereThereIsNone(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@1.1.1
+// @verifies SR_59@2.1.1
 func TestEntrySetInPlace(t *testing.T) {
 	got := string(Entry([]byte(withSbom), "3.1.1", "1234567"))
 	want := strings.Replace(strings.Replace(withSbom, "'2.1.1'", "'3.1.1'", 1), "'aaaaaaa'", "'1234567'", 1)
@@ -98,11 +98,11 @@ func TestEntrySetInPlace(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@1.1.1
-func TestEntryApprovedAndGenerated(t *testing.T) {
-	changed := strings.Replace(withSbom, "status: approved\n  verification_method: [generated]", "status: draft\n  verification_method: [review]", 1)
+// @verifies SR_59@2.1.1
+func TestEntryCompletedAndGenerated(t *testing.T) {
+	changed := strings.Replace(withSbom, "status: completed\n  verification_method: [generated]", "status: draft\n  verification_method: [review]", 1)
 	got := string(Entry([]byte(changed), "3.1.1", "1234567"))
-	if !strings.Contains(got, "- name: sbom.md\n  type: document\n  object_version: '3.1.1'\n  object_hash: '1234567'\n  status: approved\n  verification_method: [generated]\n- name: devops.md") {
+	if !strings.Contains(got, "- name: sbom.md\n  type: document\n  object_version: '3.1.1'\n  object_hash: '1234567'\n  status: completed\n  verification_method: [generated]\n- name: devops.md") {
 		t.Errorf("got\n%s", got)
 	}
 }

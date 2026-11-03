@@ -88,6 +88,7 @@
               "draft",
               "review",
               "approved",
+              "completed",
               "obsolete"
             ]
           },

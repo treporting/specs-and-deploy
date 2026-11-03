@@ -15,7 +15,7 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review/approval"
 )
 
-// @implements SR_80@1.1.1
+// @implements SR_80@2.1.3
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")

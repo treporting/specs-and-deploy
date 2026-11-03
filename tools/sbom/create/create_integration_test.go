@@ -47,7 +47,7 @@ func TestGoEnvNamesTheVersionOfGo(t *testing.T) {
 
 // @verifies SR_39@1.2.1
 // @verifies SR_40@3.3.1
-// @verifies SR_59@1.1.1
+// @verifies SR_59@2.1.1
 func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	bin := filepath.Join(t.TempDir(), "sbom")
 	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/sbom").CombinedOutput(); err != nil {
@@ -85,7 +85,7 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(string(documents), "- name: sbom.md\n  type: document\n  object_version: '2.1.1'\n  object_hash: '"+Hash(md)+"'\n  status: approved\n  verification_method: [generated]\n") {
+	if !strings.Contains(string(documents), "- name: sbom.md\n  type: document\n  object_version: '2.1.1'\n  object_hash: '"+Hash(md)+"'\n  status: completed\n  verification_method: [generated]\n") {
 		t.Errorf("documents.yaml:\n%s", documents)
 	}
 	if !strings.Contains(string(md), "| pkg:github/treporting/viewer-trace@1.1.0 | viewer-trace | 1.1.0 | Apache-2.0 |") {
