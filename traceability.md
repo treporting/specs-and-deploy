@@ -337,29 +337,31 @@ the code was checked against - the same reason the git revision on a link was re
 
 ## Tests
 
-A test has three parts. The test specification says how a requirement is verified. The test
-implementation is the test code. The test execution gives the result. Each part can have a status
-of its own, or none. The tables name the options and what each loses.
+A test has three parts, named as ISO/IEC/IEEE 29119 and ISTQB name them. The test case says what
+is verified, and how: its inputs and the result it expects. The test procedure carries test cases
+out; our test code is an automated test procedure. The test result is what a run gives. A test
+specification is the document that holds test cases. Each part can have a status of its own, or
+none. The tables name the options and what each loses.
 
-**Table test specification** - how a requirement is verified
+**Table test case** - how a requirement is verified
 
 | | Option | What is lost |
 |---|---|---|
 | S0 | none; the knowledge is in the code only | how to verify stands nowhere; the code is checked against nothing; the reviewer guesses the intent from the code |
 | S1 | a field in the requirement, such as "positive: …, negative: …" | little; but a change of the test changes x of the requirement and sets it back to `draft` |
-| S2 | objects of their own in YAML, with an uplink to the requirement and a status of their own | nothing; the same form as a requirement; the cost is a new level, one or two objects per requirement |
-| S3 | a comment above the test function | specification and implementation come from the same author at the same moment; only the review of the code checks them |
+| S2 | objects of their own in YAML, with a link to the requirement and a status of their own | nothing; the same form as a requirement; the cost is a new level, one or two objects per requirement |
+| S3 | a comment above the test function | test case and test procedure come from the same author at the same moment; only the review of the code checks them |
 
-**Table test implementation** - the test code
+**Table test procedure** - the test code
 
 | | Option | What is lost |
 |---|---|---|
-| I0 | no status; the merge approves it | no record per test that it does what its specification says; the review of the pull request checks it |
+| I0 | no status; the merge approves it | no record per test that it does what its test case says; the review of the pull request checks it |
 | I1 | a status per test function in the code | nothing; but every test needs a review, and every change a new one |
 | I2 | a status per component, in a list | nothing; but every change needs a review of the whole component; in practice it is waved through |
-| I3 | derived: approved where it verifies an approved specification and passes | no one checks that the code does what the specification says; mutation testing can replace part of it |
+| I3 | derived: approved where it carries out an approved test case and passes | no one checks that the code does what the test case says; mutation testing can replace part of it |
 
-**Table test execution** - the result
+**Table test result** - what a run gives
 
 | | Option | What is lost |
 |---|---|---|
@@ -369,17 +371,17 @@ of its own, or none. The tables name the options and what each loses.
 
 **Decision**:
 
-- the test specification is objects of their own, with an uplink to their requirement and a status
-  of their own (S2)
+- the test cases are objects of their own, with a link to their requirement and a status of their
+  own (S2)
 - the test code has no status of its own; its merge approves it, as for all code (I0)
-- every run of the tests gives each test a result with a verdict, passed or failed. For every
+- every run of the tests gives each test case a result with a verdict, passed or failed. For every
   baseline a test report is made from them; the report is a record with a status of its own (E1)
 
 **Why**:
 
 - a test that passes may still test the wrong thing. Whether it tests the right thing is the hard
-  question; the review of the specification answers it. The review of the code then asks only
-  whether it does what the specification says; that is no more work than the review of a pull
+  question; the review of the test case answers it. The review of the code then asks only
+  whether it does what the test case says; that is no more work than the review of a pull
   request
 - code is no information item of ISO/IEC/IEEE 15289. What counts for code is its identification
   and its baseline (ISO/IEC/IEEE 15288, 6.3.5)
@@ -394,10 +396,10 @@ every line it runs.
 | Check | Checks | Misses |
 |---|---|---|
 | Coverage | whether the code ran | whether an expectation checks its result |
-| Mutation testing | whether a test fails when the code changes | whether that expectation is the one the specification asks for |
-| Review against the specification | whether the test does what the specification says | - |
+| Mutation testing | whether a test fails when the code changes | whether that expectation is the one the test case asks for |
+| Review against the test case | whether the test does what the test case says | - |
 
-Coverage and mutation testing compare the test with the code, never with the specification.
+Coverage and mutation testing compare the test with the code, never with the test case.
 
 **Rejected**: the options of the tables not decided, for what each loses. A status per test also
 needs a place; which place fits depends on whether a single test or a component carries it:
@@ -411,6 +413,23 @@ needs a place; which place fits depends on whether a single test or a component 
 | A check that list and code match | needed | none |
 | Fits | a component; the code has no place for its status | a single test |
 | Back to `draft` on a change (PROC_14) | by comparing the content reviewed with the content now | the same |
+
+**Decision**: the parts of a test carry the names of ISO/IEC/IEEE 29119 and ISTQB: test case, test
+procedure, test result. A test specification is a document, not a kind of object.
+
+**Why**:
+
+- ISO/IEC/IEEE 29119 and ISTQB name the artifacts test case and test procedure; DO-178C asks for
+  verification cases and procedures, ECSS for test cases and test procedures. ASPICE and
+  ISO 26262 ask for a specification and results alone
+- a verdict belongs to a test case, wherever it is written: in a test specification, or as a
+  function in a script. So the results hang on the test cases
+- the split of case and procedure is the practice when testing is let as a work package: the
+  customer writes the test cases and gets their results, the contractor delivers the procedures
+
+**Rejected**: test specification and test implementation as the names of two kinds of object. No
+standard asks for both under those names; in ISO/IEC/IEEE 29119 the test implementation is an
+activity, and the test specification the document that holds the test cases.
 
 ## The version in the schema
 
@@ -657,3 +676,4 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 10.1.1 | 2026-10-30 | Traceability; Open | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-11-02 | The parts of the version: y counts a link added or removed | #413 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-11-03 | Tests | #155 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 13.1.1 | 2026-11-03 | Tests: test case, test procedure and test result, after ISO/IEC/IEEE 29119 | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
