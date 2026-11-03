@@ -58,7 +58,7 @@ documents:
   level: n1
   object_version: '8.1.1'
   object_hash: 'c4bbaf2'
-  status: draft
+  status: review
   verification_method: [review]
 - name: requirements/user-needs.md
   type: explanation

@@ -15,7 +15,7 @@ requirements:
   not_realized: kept by our work, not by the product - the documents and records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_02
   object_version: '1.1.1'
@@ -27,7 +27,7 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_03
   object_version: '1.1.1'
@@ -39,7 +39,7 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_04
   object_version: '1.1.1'
@@ -50,7 +50,7 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_05
   object_version: '1.1.1'
@@ -61,7 +61,7 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_06
   object_version: '1.1.1'
@@ -72,7 +72,7 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_07
   object_version: '1.1.1'
@@ -84,7 +84,7 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_08
   object_version: '1.1.1'
@@ -96,7 +96,7 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
 - object_key: REG_ISO15289_09
   object_version: '1.1.1'
@@ -108,5 +108,5 @@ requirements:
   not_realized: kept by our work, not by the product - the records of treporting
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [inspection]
