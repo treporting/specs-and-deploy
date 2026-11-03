@@ -82,7 +82,7 @@
         "properties": {
           "object_key": {
             "type": "string",
-            "pattern": "^RR_[0-9]{2}$"
+            "pattern": "^RR_[0-9]{2,}$"
           },
           "target_ids": {
             "type": "array",
@@ -101,7 +101,7 @@
             "type": "object",
             "minProperties": 1,
             "propertyNames": {
-              "pattern": "^RC_[0-9]{2}$"
+              "pattern": "^RC_[0-9]{2,}$"
             },
             "additionalProperties": {
               "oneOf": [

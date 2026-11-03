@@ -47,7 +47,7 @@
         "properties": {
           "object_key": {
             "type": "string",
-            "pattern": "^REG_[A-Za-z0-9-]+_[0-9]{2}$",
+            "pattern": "^REG_[A-Za-z0-9-]+_[0-9]{2,}$",
             "description": "REG_<module>_nn - the module is the short form of standards.md and the name of the file, nn counts from 01 in it (formats.md, section Regulatory requirements)"
           },
           "object_version": {

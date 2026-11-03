@@ -595,6 +595,16 @@ this form too: `RC_nn`, `RR_nn`.
   stand side by side
 - `RC-nn` and `RR-nn` kept, as no keys of requirements - two forms of keys would stand side by side
 
+**Decision**: the number `nn` of a key has two or more digits, from 01 on: `SR_09`, `SR_99`,
+`SR_100`. Every schema takes this form.
+
+**Why**: a level can hold more than 99 objects, as the test cases of the tools do. Two digits at
+least keep every key of today.
+
+**Rejected**:
+
+- three digits for every key, such as `SR_001` - every key of today would change
+
 **Decision**: the review results and the verifications name the keys as they are now. A review
 result whose target got a new key names as its revision the commit that changed the key; one whose
 criteria got new keys names as its criteria revision the commit that changed them. What a record
@@ -814,3 +824,4 @@ the verification method.
 | 22.1.1 | 2026-11-03 | Documents: a generated document is a record with the status completed | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 23.1.1 | 2026-11-03 | Test cases: their levels, files and fields; Ids: TC_nn | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 24.1.1 | 2026-11-03 | Table types: the type testcases; Open | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 25.1.1 | 2026-11-03 | Ids: the number of a key has two or more digits | #455 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
