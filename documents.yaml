@@ -56,9 +56,9 @@ documents:
 - name: regulatory/regulatory-requirements.md
   type: explanation
   level: n1
-  object_version: '7.1.1'
+  object_version: '8.1.1'
   object_hash: 'c4bbaf2'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: requirements/user-needs.md
   type: explanation
