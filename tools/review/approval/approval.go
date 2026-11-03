@@ -57,7 +57,7 @@ type object struct {
 // Check checks the approved objects of the repo at root. Where base is given, it checks only the
 // objects in the files changed against it; else every approved object.
 //
-// @implements SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_78@1.1.1, SR_79@1.1.1, SR_80@1.1.1, SR_85@1.1.1
+// @implements SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_78@1.1.1, SR_79@2.1.2, SR_80@2.1.3, SR_85@1.1.1
 func Check(root, base string, git Git, index *review.Index) ([]Finding, error) {
 
 	read := func(file string) ([]byte, error) { return os.ReadFile(filepath.Join(root, file)) }
@@ -94,7 +94,7 @@ func Check(root, base string, git Git, index *review.Index) ([]Finding, error) {
 
 // scoped keeps the requirements and documents in the files changed against base.
 //
-// @implements SR_80@1.1.1
+// @implements SR_80@2.1.3
 func scoped(requirements, docs []object, base string, git Git) ([]object, []object, error) {
 	changed, err := git.Changed(base)
 	if err != nil {
@@ -107,7 +107,7 @@ func scoped(requirements, docs []object, base string, git Git) ([]object, []obje
 // checkVersions answers every approved object whose content for x is not the one it was approved
 // with: a requirement against its first approval with its x, a document against its object_hash.
 //
-// @implements SR_78@1.1.1, SR_79@1.1.1
+// @implements SR_78@1.1.1, SR_79@2.1.2
 func checkVersions(requirements, docs []object, git Git) ([]Finding, error) {
 
 	firsts, err := firstApprovals(requirements, git)
@@ -261,8 +261,8 @@ func approvedRequirements(read review.Read, files []string) ([]object, error) {
 	return objects, nil
 }
 
-// approvedDocuments answers the approved documents of documents.yaml, in its order, with the blob
-// hash of their file; none where the repo has no documents.yaml.
+// approvedDocuments answers the approved and completed documents of documents.yaml, in its order,
+// with the blob hash of their file; none where the repo has no documents.yaml.
 func approvedDocuments(read review.Read) ([]object, error) {
 
 	data, err := read(documents)
@@ -279,7 +279,7 @@ func approvedDocuments(read review.Read) ([]object, error) {
 	_, noCriteria := read(criteriaFile("document"))
 	var objects []object
 	for _, e := range entries {
-		if e.Status != "approved" {
+		if !checked(e.Status) {
 			continue
 		}
 		content, err := read(e.Name)
@@ -307,6 +307,14 @@ type entry struct {
 	VerificationMethod []string `yaml:"verification_method"`
 }
 
+// checked answers whether a document of this status is checked: an approved one, and a completed
+// one, a record a tool wrote (PROC_13).
+//
+// @implements SR_79@2.1.2
+func checked(status string) bool {
+	return status == "approved" || status == "completed"
+}
+
 func documentEntries(data []byte) ([]entry, error) {
 	var d struct {
 		Documents []entry `yaml:"documents"`
@@ -327,7 +335,7 @@ func criteriaFile(level string) string {
 
 // inFiles keeps the objects held by one of the files.
 //
-// @implements SR_80@1.1.1
+// @implements SR_80@2.1.3
 func inFiles(objects []object, files []string) []object {
 	var kept []object
 	for _, o := range objects {
@@ -341,7 +349,7 @@ func inFiles(objects []object, files []string) []object {
 // changedDocuments keeps the documents whose file changed against base, or whose entry in
 // documents.yaml did.
 //
-// @implements SR_80@1.1.1
+// @implements SR_80@2.1.3
 func changedDocuments(docs []object, changed []string, base string, git Git) ([]object, error) {
 
 	before := map[string]entry{}
@@ -361,7 +369,7 @@ func changedDocuments(docs []object, changed []string, base string, git Git) ([]
 	for _, o := range docs {
 		b, ok := before[o.key]
 		entryChanged := slices.Contains(changed, documents) &&
-			(!ok || b.Status != "approved" || b.ObjectHash != o.hash || strings.SplitN(b.ObjectVersion, ".", 2)[0] != o.x)
+			(!ok || !checked(b.Status) || b.ObjectHash != o.hash || strings.SplitN(b.ObjectVersion, ".", 2)[0] != o.x)
 		if slices.Contains(changed, o.file) || entryChanged {
 			kept = append(kept, o)
 		}

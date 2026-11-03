@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// @verifies SR_79@1.1.1
+// @verifies SR_79@2.1.2
 func TestBlobHashIsTheHashOfGit(t *testing.T) {
 	//	git hash-object of a file holding "hello\n"
 	if got := blobHash([]byte("hello\n")); got != "ce013625030ba8dba906f756967f9e9ca394464a" {
@@ -34,7 +34,7 @@ func TestXOfKeepsOnlyTheAttributesForX(t *testing.T) {
 	}
 }
 
-// @verifies SR_80@1.1.1
+// @verifies SR_80@2.1.3
 func TestInFilesKeepsTheObjectsOfTheChangedFiles(t *testing.T) {
 	objects := []object{{key: "TOOL_01", file: "a.yaml"}, {key: "SR_01", file: "b.yaml"}}
 	got := inFiles(objects, []string{"b.yaml"})

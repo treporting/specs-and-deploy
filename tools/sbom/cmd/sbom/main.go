@@ -8,7 +8,7 @@
 // of the repo holds a go.mod; the packages of each package-lock.json of the repo; and the Alpine
 // packages of each image named. It lists each package once. It keeps the rows of the Change history of an sbom.md that is there,
 // and adds one. It sets the entry of sbom.md in documents.yaml of the repo: the version of the new
-// row, the hash of the file written, approved and generated (PROC_13).
+// row, the hash of the file written, completed and generated (PROC_13).
 //
 // With -check it writes nothing: it compares the packages with the table of sbom.md, and exits with
 // 1 where they differ (TOOL_28).
@@ -33,7 +33,7 @@ func (i *images) String() string     { return strings.Join(*i, ",") }
 func (i *images) Set(v string) error { *i = append(*i, v); return nil }
 
 // @implements SR_39@1.2.1
-// @implements SR_59@1.1.1
+// @implements SR_59@2.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo of the subsystem")

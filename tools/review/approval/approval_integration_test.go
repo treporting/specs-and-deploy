@@ -113,7 +113,7 @@ func messages(t *testing.T, root, base string) string {
 
 // Every approved object, and the findings each error gives.
 //
-// @verifies SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_78@1.1.1, SR_79@1.1.1, SR_80@1.1.1
+// @verifies SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_78@1.1.1, SR_79@2.1.2, SR_80@2.1.3
 func TestEveryApprovedObject(t *testing.T) {
 
 	root, _ := history(t)
@@ -142,7 +142,7 @@ func TestEveryApprovedObject(t *testing.T) {
 
 // With a base commit, only the objects in the files changed against it.
 //
-// @verifies SR_80@1.1.1
+// @verifies SR_80@2.1.3
 func TestTheFilesChangedAgainstTheBase(t *testing.T) {
 
 	root, approved := history(t)
@@ -172,5 +172,31 @@ func TestAnOpenResultIsNoApproval(t *testing.T) {
 	want := "requirements/tool.yaml: TOOL_01: the last review result that names it, reviews/results/6.yaml, is open"
 	if !strings.Contains(got, want) {
 		t.Errorf("missing %q in\n%s", want, got)
+	}
+}
+
+// A completed document, a record a tool wrote, has its hash checked, and needs no review.
+//
+// @verifies SR_79@2.1.2
+func TestACompletedDocumentHasItsHash(t *testing.T) {
+
+	root, _ := history(t)
+	write(t, root, "sbom.md", "# SBOM\n")
+	data, err := os.ReadFile(filepath.Join(root, "documents.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	write(t, root, "documents.yaml", string(data)+"- name: sbom.md\n  object_version: '1.1.1'\n  object_hash: 'ccccccc'\n"+
+		"  status: completed\n  verification_method: [generated]\n")
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "-m", "sbom.md written")
+	got := messages(t, root, "")
+
+	want := "documents.yaml: sbom.md: its object_hash ccccccc is not the hash of its file"
+	if !strings.Contains(got, want) {
+		t.Errorf("missing %q in\n%s", want, got)
+	}
+	if strings.Count(got, ": sbom.md: ") != 1 {
+		t.Errorf("sbom.md is reported for more than its hash:\n%s", got)
 	}
 }
