@@ -5,22 +5,21 @@ type: criteria
 level: document
 criteria:
 - object_key: RC_01
-  source: ISO/IEC/IEEE 15289, 6.2 - date of issue and status; that git gives the date and a documents
-    section the status is the reading of treporting
+  source: REG_ISO15288_02 - identified; that git gives the date and a documents section the status is
+    the reading of treporting
   object_text: identified - its date of issue is the date of the commit of its revision, and its status
     stands in a documents section
   question: Does a documents section hold its status, and does git give the date of its revision?
 - object_key: RC_02
-  source: ISO/IEC/IEEE 15289, 6.2 - scope
+  source: treporting
   object_text: scoped - it states at its beginning what it covers and what it is for
   question: Does it state at its beginning what it covers and what it is for?
 - object_key: RC_03
-  source: ISO/IEC/IEEE 15289, 6.2 - issuing organization; that the org of the repo names it is the
-    reading of treporting
+  source: treporting
   object_text: issued - its issuing organization is the org treporting, which holds its repo
   question: Is it in a repo of the org treporting?
 - object_key: RC_04
-  source: ISO/IEC/IEEE 15289, 9.1 a) - date of record, date recorded, and status
+  source: REG_ISO15289_03 - the generic content of a record
   object_text: recorded - where it is a record, it carries the date of record, the date recorded and
     its status
   question: Where it is a record, does it carry the date of record, the date recorded and its status?
