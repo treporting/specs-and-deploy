@@ -18,6 +18,12 @@ auditor who looks for its evidence.
 | [criteria-r5.yaml](criteria-r5.yaml) | the criteria of the software requirements (r5), of the subsystems and of the tools |
 | not set yet | the criteria of the software architecture of a subsystem (r6) |
 | not set yet | the criteria of the software design of a subsystem (r7) |
+| [criteria-r1tc.yaml](criteria-r1tc.yaml) | the criteria of the test cases of the user needs (r1tc) |
+| [criteria-r2tc.yaml](criteria-r2tc.yaml) | the criteria of the test cases of the system requirements (r2tc) |
+| [criteria-r3tc.yaml](criteria-r3tc.yaml) | the criteria of the test cases of the architecture (r3tc) |
+| [criteria-r5tc.yaml](criteria-r5tc.yaml) | the criteria of the test cases of the software requirements (r5tc) |
+| [criteria-r6tc.yaml](criteria-r6tc.yaml) | the criteria of the test cases of the software architecture (r6tc) |
+| [criteria-r7tc.yaml](criteria-r7tc.yaml) | the criteria of the test cases of the software design (r7tc) |
 | [criteria-tool.yaml](criteria-tool.yaml) | the criteria of the tool requirements |
 | not set yet | the criteria of the rules of our work (rules) |
 | [criteria-documents.yaml](criteria-documents.yaml) | the criteria of the documents, after ISO15289 |
@@ -70,3 +76,4 @@ the document and the revision it reviewed: the link runs from the review to the 
 | 4.1.1 | 2026-10-29 | Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 5.1.1 | 2026-10-30 | Reviews; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 6.1.1 | 2026-10-30 | The change history of a document; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 7.1.1 | 2026-11-03 | The criteria of the test cases | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
