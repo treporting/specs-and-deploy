@@ -305,10 +305,11 @@ requirements:
 **Why**: one place holds the version of every document. A tool finds it there, whatever the
 document explains.
 
-**Decision**: a document a tool writes is approved as the tool writes it, without a review
+**Decision**: a document a tool writes is a record: the tool writes it complete, without a review
 (PROC_13). Its verification method is `generated`. The tool sets its entry in `documents.yaml` on
 every change of its content: x of its version raised by one - `1.1.1` the first time -, its
-`object_hash`, and `approved`. Today this is `sbom.md` of a subsystem (SR_40).
+`object_hash`, and the status `completed`, as a decided review result has (section Reviews). Today
+this is `sbom.md` of a subsystem (SR_40).
 
 **Why**:
 
@@ -734,3 +735,4 @@ function name, from the JSON output of `go test` and of vitest.
 | 19.1.1 | 2026-11-01 | Open | #373 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 20.1.1 | 2026-11-01 | Verifications | #382 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 21.1.1 | 2026-11-02 | Reviews: version, status and date of record of a review result | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 22.1.1 | 2026-11-03 | Documents: a generated document is a record with the status completed | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
