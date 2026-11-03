@@ -157,3 +157,20 @@ func TestTheFilesChangedAgainstTheBase(t *testing.T) {
 		}
 	}
 }
+
+// A passed result that is still open is a proposal, not an approval.
+//
+// @verifies SR_85@1.1.1
+func TestAnOpenResultIsNoApproval(t *testing.T) {
+
+	root, approved := history(t)
+	write(t, root, "reviews/results/6.yaml", "status: open\n"+reviewResult("2026-11-02T12:00:00+01:00", "TOOL_01", approved, "passed"))
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "-m", "an open review of TOOL_01")
+	got := messages(t, root, "")
+
+	want := "requirements/tool.yaml: TOOL_01: the last review result that names it, reviews/results/6.yaml, is open"
+	if !strings.Contains(got, want) {
+		t.Errorf("missing %q in\n%s", want, got)
+	}
+}

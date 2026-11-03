@@ -57,7 +57,7 @@ type object struct {
 // Check checks the approved objects of the repo at root. Where base is given, it checks only the
 // objects in the files changed against it; else every approved object.
 //
-// @implements SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_78@1.1.1, SR_79@1.1.1, SR_80@1.1.1
+// @implements SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_78@1.1.1, SR_79@1.1.1, SR_80@1.1.1, SR_85@1.1.1
 func Check(root, base string, git Git, index *review.Index) ([]Finding, error) {
 
 	read := func(file string) ([]byte, error) { return os.ReadFile(filepath.Join(root, file)) }
@@ -130,7 +130,7 @@ func checkVersions(requirements, docs []object, git Git) ([]Finding, error) {
 
 // checkReview answers what is wrong with the last review of an object that needs one.
 //
-// @implements SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1
+// @implements SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_85@1.1.1
 func checkReview(o object, r *result, git Git) []Finding {
 
 	if r == nil {
@@ -138,6 +138,9 @@ func checkReview(o object, r *result, git Git) []Finding {
 	}
 	if r.verdict != "passed" {
 		return []Finding{{o.file, o.key, "the last review result that names it, " + r.path + ", has the verdict " + r.verdict}}
+	}
+	if r.status == "open" {
+		return []Finding{{o.file, o.key, "the last review result that names it, " + r.path + ", is open"}}
 	}
 	data, err := git.Show(r.revision, o.file)
 	if err != nil {
@@ -172,6 +175,7 @@ type result struct {
 	at       time.Time
 	revision string
 	verdict  string
+	status   string
 }
 
 // lastReviews answers, for every target, the review result that names it with the latest
@@ -191,6 +195,7 @@ func lastReviews(root string) (map[string]*result, error) {
 			return nil, err
 		}
 		var r struct {
+			Status    string `yaml:"status"`
 			CreatedAt string `yaml:"created_at"`
 			Results   []struct {
 				TargetIDs []string `yaml:"target_ids"`
@@ -211,7 +216,7 @@ func lastReviews(root string) (map[string]*result, error) {
 				if old, ok := last[target]; ok && !at.After(old.at) {
 					continue
 				}
-				last[target] = &result{path: rel, at: at, revision: res.Revision, verdict: res.Verdict}
+				last[target] = &result{path: rel, at: at, revision: res.Revision, verdict: res.Verdict, status: r.Status}
 			}
 		}
 	}
