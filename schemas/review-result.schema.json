@@ -29,7 +29,7 @@
     },
     "level": {
       "type": "string",
-      "pattern": "^(r[1-7]|n1|h[12]|tool|document)$",
+      "pattern": "^(r[1-7](tc)?|n1|h[12]|tool|document)$",
       "description": "the level of its criteria (formats.md, section The head of a file)"
     },
     "object_version": {
