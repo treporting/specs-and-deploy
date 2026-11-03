@@ -148,8 +148,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@5eedb7b - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@5eedb7b
+<!-- generated from rules.yaml@16e3838 - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@16e3838
 
 | Id | Version | Rule |
 |---|---|---|
@@ -165,7 +165,7 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC_10 | 2.2.1 | Every release gets security fixes over the support period it states (REG_EU2024-2847_04). |
 | PROC_11 | 2.1.1 | A document names no ticket, except in its change history; what is open, it states as open. The ticket names the document, not the other way round. |
 | PROC_12 | 2.1.1 | An object is merged before another names it. |
-| PROC_13 | 3.1.1 | Whatever has review criteria of its kind in `reviews/` is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. A document a tool writes, with the verification method `generated`, is approved as the tool writes it, without a review. See traceability.md. |
+| PROC_13 | 4.1.1 | Whatever has review criteria of its kind in `reviews/` is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. A document a tool writes, with the verification method `generated`, is a record: the tool writes it complete, with the status `completed`, without a review. See traceability.md. |
 | PROC_14 | 1.1.1 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
 | PROC_15 | 1.1.1 | The reviewer of whatever is reviewed is not its author. |
 | PROC_16 | 1.1.1 | A pull request closes one ticket and changes one concern. Group things which belong together so they do not contradict. |
@@ -270,3 +270,4 @@ as soon as possible (PROC_07)
 | 15.1.1 | 2026-11-01 | Platform and launches; Open | #375 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-11-02 | Loop for every release or library | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-11-02 | PROC_13 at 3.1.1 in table rules | #411 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 18.1.1 | 2026-11-03 | PROC_13 at 4.1.1 in table rules: a generated document is a record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
