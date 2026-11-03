@@ -49,8 +49,8 @@ documents:
   verification_method: [review]
 - name: traceability.md
   type: document
-  object_version: '12.1.1'
-  object_hash: 'cf9ebf5'
+  object_version: '13.1.1'
+  object_hash: '0590b88'
   status: approved
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
