@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '24.1.1'
   object_hash: 'fa9136d'
-  status: draft
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   type: document
