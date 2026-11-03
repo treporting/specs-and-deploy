@@ -39,7 +39,7 @@ func write(t *testing.T, root, path, content string) {
 // requirement of the same file is changed by the reviewer alone - which must not make the reviewer
 // an author of the first.
 //
-// @verifies SR_05@1.1.1
+// @verifies SR_05@2.1.1
 func TestTheCheckOnAHistoryOfGit(t *testing.T) {
 
 	root := t.TempDir()

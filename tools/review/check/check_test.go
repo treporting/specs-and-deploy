@@ -135,7 +135,7 @@ func expect(t *testing.T, messages []string, want string) {
 	t.Errorf("no finding %q in %q", want, messages)
 }
 
-// @verifies SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@1.1.1
+// @verifies SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@2.1.1
 func TestAGoodResultHasNoFinding(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -199,7 +199,7 @@ func TestTheRevisionExists(t *testing.T) {
 	expect(t, got, "the revision nope is no commit")
 }
 
-// @verifies SR_05@1.1.1
+// @verifies SR_05@2.1.1
 func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 	result := `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -219,7 +219,7 @@ func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 	}
 }
 
-// @verifies SR_05@1.1.1
+// @verifies SR_05@2.1.1
 func TestASoftwareRequirementOfTheToolsHasAnAuthor(t *testing.T) {
 	git := history("Mathias Fischer")
 	git.files["c1"]["tools/software-requirements.yaml"] = `type: requirements
@@ -288,7 +288,7 @@ func TestTheReviewerIsNotTheAuthorOfADocument(t *testing.T) {
 	}
 }
 
-// @verifies SR_05@1.1.1, SR_08@1.1.1
+// @verifies SR_05@2.1.1, SR_08@1.1.1
 func TestAMergeIsNoAuthorship(t *testing.T) {
 	//	c1 on a branch, written by Claude Code; m1 merges it into a main that changed the file
 	//	as well, so m1 equals neither parent - merged by the reviewer

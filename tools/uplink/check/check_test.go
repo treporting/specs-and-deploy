@@ -119,10 +119,11 @@ requirements:
 	}
 }
 
-// A file whose head names no type that holds requirements holds none, wherever it lies.
+// A file holds objects by its sections, wherever it lies and whatever its head names; criteria are
+// not among them.
 //
 // @verifies SR_28@1.1.1
-func TestAFileIsReadByItsType(t *testing.T) {
+func TestAFileIsReadByItsSections(t *testing.T) {
 	got, approved := messages(t, files{
 		"requirements/tool-requirements.yaml": `requirements:
 - object_key: TOOL_01
@@ -145,14 +146,13 @@ requirements:
 `,
 	})
 	want := []string{
-		"SR_01 names TOOL_01@1.1.1: no file of requirements holds such an id",
 		"SR_01 names RC_01@1.1.1: no file of requirements holds such an id",
 	}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("findings %q, want %q", got, want)
 	}
-	if approved != 2 {
-		t.Errorf("approved %d, want 2: TOOL_09, SR_01", approved)
+	if approved != 3 {
+		t.Errorf("approved %d, want 3: TOOL_01, TOOL_09, SR_01", approved)
 	}
 }
 
