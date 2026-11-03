@@ -43,6 +43,7 @@ apply to a project is decided by the organization that uses treporting, by its d
 | [ISO29119-3.yaml](ISO29119-3.yaml) | Documentation |
 | [ISO15288.yaml](ISO15288.yaml) | Configuration and information |
 | [ISO15289.yaml](ISO15289.yaml) | Documentation |
+| [ISO29119-4.yaml](ISO29119-4.yaml) | Test design |
 
 ## Tool qualification
 
@@ -71,6 +72,12 @@ more information on them, the decision states what it found (PROC_18).
 What a document or a record of treporting holds, and how a record differs from a document.
 treporting does not realize it; our work keeps it in its documents and records.
 
+## Test design
+
+How the test cases of treporting are derived from what is to be verified: by the specification, the
+structure of the code, or experience. treporting does not realize it; our work keeps it in its test
+cases.
+
 ## Configuration and information
 
 How the configuration of treporting and its information items are managed: identified, with a
@@ -94,3 +101,4 @@ work keeps it, in its objects, documents and records and in the protected `main`
 | 6.1.1 | 2026-10-30 | Modules; Documentation; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 7.1.1 | 2026-11-02 | Modules; Configuration and information | #422 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-11-03 | Modules; Documentation: records | #97 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 9.1.1 | 2026-11-03 | Modules; Test design | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
