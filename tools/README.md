@@ -320,13 +320,14 @@ The code is the component `uplink`: the package `uplink/check` and the command
 
 ## linkcheck
 
-Makes the link check (TOOL_16; SR_32 to SR_34 in [software-requirements.yaml](software-requirements.yaml)),
+Makes the link check (TOOL_16; SR_32 to SR_34 and SR_87 in [software-requirements.yaml](software-requirements.yaml)),
 as definitions.md sets it out in the section Link check and impact assessment. It compares the
 version each entry names with the version its object has, and reports each whose object has
 another x (traceability.md, section When a link is suspect):
 
 - the links in `source_ids`, the entries of `allocated` and of `controls` in every file of
-  requirements (SR_32)
+  objects (SR_32)
+- the targets in `target_ids` of every test case (SR_87)
 - the ids of `@implements`, `@verifies` and `@refines`, found as annotationcheck finds them (SR_33)
 
 It reads the files as they stand. An entry whose object no file holds, or that names no version, is
@@ -644,3 +645,4 @@ go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 | 26.1.1 | 2026-11-02 | reviewcheck; reviewskeleton | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 27.1.1 | 2026-11-03 | approvalcheck: an open review result | #429 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 28.1.1 | 2026-11-03 | sbom; approvalcheck: a generated document is a completed record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 29.1.1 | 2026-11-03 | linkcheck: the targets of a test case | #449 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

@@ -115,6 +115,32 @@ controls:
 	}
 }
 
+// @verifies SR_87@1.1.1
+func TestATargetOfATestCaseIsCompared(t *testing.T) {
+	got, compared, err := files{
+		"tools/software-requirements.yaml": `type: requirements
+requirements:
+- object_key: SR_01
+  object_version: '2.1.1'
+`,
+		"tools/testcases/software.yaml": `type: testcases
+testcases:
+- object_key: TC_01
+  target_ids: [SR_01@1.1.1]
+`,
+	}.links()
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := []string{"TC_01 target_ids names SR_01@1.1.1: its object has 2.1.1"}
+	if !reflect.DeepEqual(lines(got), want) {
+		t.Errorf("findings %q, want %q", lines(got), want)
+	}
+	if compared != 1 {
+		t.Errorf("compared %d, want 1", compared)
+	}
+}
+
 // A link to an object no file holds is not compared; uplinkcheck reports it.
 //
 // @verifies SR_32@1.1.1

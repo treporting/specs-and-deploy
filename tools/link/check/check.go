@@ -1,5 +1,5 @@
-// Package check makes the link check (TOOL_16): it compares the version a link, an entry of the
-// allocation or of controls, or an annotation names with the version its object has, and reports
+// Package check makes the link check (TOOL_16): it compares the version a link, a target, an entry
+// of the allocation or of controls, or an annotation names with the version its object has, and reports
 // each whose object has another x. It reports and does not decide (definitions.md, section Link
 // check and impact assessment).
 package check
@@ -29,15 +29,16 @@ func (f Finding) String() string {
 }
 
 // fields are the fields of an object that name other objects with their version: the uplinks,
-// the allocation (r4) and the down-link of a control to its user needs.
-var fields = []string{"source_ids", "allocated", "controls"}
+// the targets of a test case, the allocation (r4) and the down-link of a control to its user needs.
+var fields = []string{"source_ids", "target_ids", "allocated", "controls"}
 
-// Links reads every file of requirements and answers each entry of source_ids, allocated and
-// controls whose object has another x than the version it names. It answers too how many entries
+// Links reads every file of objects and answers each entry of source_ids, target_ids, allocated
+// and controls whose object has another x than the version it names. It answers too how many entries
 // it compared. An entry whose object no file holds, or that names no version, is not compared:
 // uplinkcheck and schemacheck report it.
 //
 // @implements SR_32@1.1.1
+// @implements SR_87@1.1.1
 func Links(read Read, index *review.Index) ([]Finding, int, error) {
 
 	versions := newVersions(read, index)

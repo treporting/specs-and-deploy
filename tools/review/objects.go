@@ -14,18 +14,17 @@ import (
 // Read answers the content of a file of the repo, by its path from the root.
 type Read func(file string) ([]byte, error)
 
-// holding are the types of the files that hold requirements (formats.md, table types).
-var holding = map[string]bool{"requirements": true, "normative": true, "architecture": true, "hazards": true, "rules": true}
-
-// Index tells the file that holds an id: the YAML files whose type holds requirements, each with
-// the ids in it (tools/README.md, section The component review).
+// Index tells the file that holds an id: the YAML files that hold objects, each with the ids in
+// it (tools/README.md, section The component review).
 type Index struct {
 	files []string
 	of    map[string]string
 }
 
-// NewIndex reads the files and keeps, in their order, each whose head names a type that holds
-// requirements. A file it cannot read or parse holds none.
+// NewIndex reads the files and keeps, in their order, each that holds an object in one of the
+// Lists. A file it cannot read or parse holds none.
+//
+// @implements SR_86@2.1.1
 func NewIndex(read Read, files []string) *Index {
 
 	ix := &Index{of: map[string]string{}}
@@ -41,18 +40,19 @@ func NewIndex(read Read, files []string) *Index {
 		if yaml.Unmarshal(data, &doc) != nil {
 			continue
 		}
-		if t, _ := doc["type"].(string); !holding[t] {
-			continue
-		}
-		ix.files = append(ix.files, file)
-		for _, list := range lists {
+		holds := false
+		for _, list := range Lists {
 			items, _ := doc[list].([]any)
 			for _, item := range items {
 				object, _ := item.(map[string]any)
 				if key, ok := object["object_key"].(string); ok {
 					ix.of[key] = file
+					holds = true
 				}
 			}
+		}
+		if holds {
+			ix.files = append(ix.files, file)
 		}
 	}
 	return ix
@@ -70,13 +70,13 @@ func IndexAt(root string) (*Index, error) {
 	}, strings.Fields(out)), nil
 }
 
-// Files answers every file that holds requirements, each once, in the order git lists them.
+// Files answers every file that holds objects, each once, in the order git lists them.
 func (ix *Index) Files() []string {
 	return ix.files
 }
 
-// lists are the sections of a YAML that hold objects with an object_key.
-var lists = []string{"requirements", "elements", "decisions", "hazards", "controls", "rules"}
+// Lists are the sections of a YAML that hold objects with an object_key.
+var Lists = []string{"requirements", "elements", "decisions", "hazards", "controls", "rules", "testcases"}
 
 // FileOf answers the file that holds a target, and the key to find it there; a document is its
 // own file and has no key. An id no file holds answers none.
@@ -102,7 +102,7 @@ func ObjectIn(data []byte, key string) []byte {
 	if yaml.Unmarshal(data, &doc) != nil {
 		return nil
 	}
-	for _, list := range lists {
+	for _, list := range Lists {
 		items, _ := doc[list].([]any)
 		for _, item := range items {
 			object, _ := item.(map[string]any)

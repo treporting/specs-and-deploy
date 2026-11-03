@@ -418,7 +418,7 @@ func firstApprovals(objects []object, git Git) (map[string]any, error) {
 	return firsts, nil
 }
 
-// item is an object of a YAML file that holds requirements.
+// item is an object of a YAML file that holds objects.
 type item struct {
 	list   string
 	key    string
@@ -426,9 +426,6 @@ type item struct {
 	status string
 	yaml   map[string]any
 }
-
-// lists are the sections of a YAML that hold objects with an object_key.
-var lists = []string{"requirements", "elements", "decisions", "hazards", "controls", "rules"}
 
 // itemsOf answers the objects of a YAML file, in the order of its sections and of the objects in
 // them; a file it cannot parse holds none.
@@ -438,7 +435,7 @@ func itemsOf(data []byte) []item {
 		return nil
 	}
 	var items []item
-	for _, list := range lists {
+	for _, list := range review.Lists {
 		entries, _ := doc[list].([]any)
 		for _, e := range entries {
 			m, _ := e.(map[string]any)
