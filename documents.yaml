@@ -92,8 +92,8 @@ documents:
   type: explanation
   level: r5
   object_version: '27.1.1'
-  object_hash: 'a80771e'
-  status: review
+  object_hash: '77f97ce'
+  status: approved
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
