@@ -13,7 +13,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_02
   object_version: '1.1.3'
@@ -23,7 +23,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_03
   object_version: '1.1.3'
@@ -32,7 +32,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_04
   object_version: '1.1.3'
@@ -41,7 +41,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_05
   object_version: '2.1.1'
@@ -51,7 +51,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_06
   object_version: '1.1.3'
@@ -61,7 +61,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_07
   object_version: '1.1.3'
@@ -71,7 +71,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_08
   object_version: '1.1.1'
@@ -114,7 +114,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_12
   object_version: '1.1.3'
@@ -124,7 +124,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_13
   object_version: '1.1.3'
@@ -133,7 +133,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_14
   object_version: '1.1.3'
@@ -143,7 +143,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_15
   object_version: '1.1.3'
@@ -153,7 +153,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_16
   object_version: '1.1.3'
@@ -164,7 +164,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_17
   object_version: '2.1.3'
@@ -177,7 +177,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_18
   object_version: '1.1.1'
@@ -857,7 +857,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_84
   object_version: '1.1.2'
@@ -867,7 +867,7 @@ requirements:
   source_ids: [TOOL_03@3.3.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_85
   object_version: '1.1.1'
@@ -887,7 +887,7 @@ requirements:
   source_ids: [TOOL_04@3.2.2, TOOL_32@2.1.3, TOOL_33@2.2.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: draft
   verification_method: [test]
 - object_key: SR_87
   object_version: '1.1.1'
@@ -896,5 +896,5 @@ requirements:
   source_ids: [TOOL_16@1.1.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
