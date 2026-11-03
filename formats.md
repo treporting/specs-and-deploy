@@ -246,7 +246,7 @@ reviewed against.
 | type | Holds | Level | Files |
 |---|---|---|---|
 | requirements | requirements | r1, r2, r5, tool | `requirements/*.yaml`, `tools/software-requirements.yaml` |
-| test cases | test cases | r1tc to r7tc | `testcases/*.yaml`, `tools/testcases/*.yaml` |
+| testcases | test cases | r1tc to r7tc | `testcases/*.yaml`, `tools/testcases/*.yaml` |
 | architecture | the system architecture | r3 | `architecture/system-architecture.yaml` |
 | normative | regulatory requirements | n1 | `regulatory/<module>.yaml` |
 | hazards | hazards and their controls | h1 | `safety/hazards.yaml` |
@@ -782,7 +782,9 @@ the verification method.
 
 ## Open
 
-`<empty>`
+- `treporting = 1_tools` - **The test level of the tools**: the tests of the tools lie as
+  `*_test.go` in their packages, the places of MT and SwIT, but they verify software requirements,
+  which SwVal verifies. Not set where they belong.
 
 ## Change history
 
@@ -811,3 +813,4 @@ the verification method.
 | 21.1.1 | 2026-11-02 | Reviews: version, status and date of record of a review result | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 22.1.1 | 2026-11-03 | Documents: a generated document is a record with the status completed | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 23.1.1 | 2026-11-03 | Test cases: their levels, files and fields; Ids: TC_nn | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 24.1.1 | 2026-11-03 | Table types: the type testcases; Open | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

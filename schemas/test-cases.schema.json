@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/treporting/treporting/schemas/test-cases.schema.json",
+  "$comment": "@refines ARC_22@2.1.1",
+  "title": "Test cases of a test level (r1tc to r7tc)",
+  "description": "The test cases of one test level, its test specification (formats.md, section Test cases).",
+  "type": "object",
+  "required": [
+    "schema",
+    "type",
+    "level",
+    "testcases"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "schemas/test-cases.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "type": {
+      "const": "testcases",
+      "description": "what this file holds (formats.md, section The head of a file)"
+    },
+    "level": {
+      "enum": [
+        "r1tc",
+        "r2tc",
+        "r3tc",
+        "r5tc",
+        "r6tc",
+        "r7tc"
+      ]
+    },
+    "testcases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "object_key",
+          "object_version",
+          "object_text",
+          "design_technique",
+          "target_ids",
+          "status",
+          "verification_method"
+        ],
+        "additionalProperties": false,
+        "attributes_for_version_x": [
+          "object_text",
+          "design_technique"
+        ],
+        "properties": {
+          "object_key": {
+            "type": "string",
+            "pattern": "^TC_[0-9]{2}$"
+          },
+          "object_version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "description": "x.y.z - x the text and the attributes for x, y the links, z every other attribute; set at the approval (traceability.md)"
+          },
+          "object_text": {
+            "type": "string",
+            "minLength": 1,
+            "description": "one case: what is given and what is expected"
+          },
+          "design_technique": {
+            "enum": [
+              "equivalence partitioning",
+              "boundary value analysis",
+              "classification tree method",
+              "decision table testing",
+              "state transition testing",
+              "scenario testing",
+              "syntax testing",
+              "combinatorial testing",
+              "cause-effect graphing",
+              "random testing",
+              "metamorphic testing",
+              "requirements-based testing",
+              "statement testing",
+              "branch testing",
+              "decision testing",
+              "branch condition testing",
+              "branch condition combination testing",
+              "modified condition/decision coverage",
+              "data flow testing",
+              "error guessing"
+            ],
+            "description": "how the case was derived, after ISO/IEC/IEEE 29119-4, clause 5 (REG_ISO29119-4_01 to _03)"
+          },
+          "target_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]+(_[A-Za-z0-9-]+)*_[0-9]{2}@[0-9]+\\.[0-9]+\\.[0-9]+$"
+            },
+            "description": "the requirements it verifies, with their version"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "approved",
+              "obsolete"
+            ]
+          },
+          "verification_method": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "review"
+              ]
+            },
+            "description": "a test case is verified by its review against the criteria of its level (PROC_13)"
+          }
+        }
+      }
+    }
+  }
+}
