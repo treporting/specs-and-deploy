@@ -600,11 +600,11 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: SR_59
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: sbom
   object_text: set the entry of sbom.md in `documents.yaml` of the repo to the version of its new row in
     the Change history, its `object_hash` to `git hash-object` of the sbom.md written, its status to
-    `approved` and its verification method to `[generated]`; add the entry, of type `document`, where
+    `completed` and its verification method to `[generated]`; add the entry, of type `document`, where
     there is none
   source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
@@ -798,52 +798,53 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_78
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: review
   object_text: report an approved requirement whose attributes its schema names for x are not those
     of the first commit in which it was approved with its x
-  source_ids: [TOOL_33@1.1.1]
+  source_ids: [TOOL_33@2.2.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_79
-  object_version: '1.1.1'
+  object_version: '2.1.2'
   component: review
-  object_text: report an approved document whose `object_hash` is not the hash of its file
-  source_ids: [TOOL_33@1.1.1]
+  object_text: report an approved or completed document whose `object_hash` is not the hash of its
+    file
+  source_ids: [TOOL_33@2.2.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_80
-  object_version: '1.1.2'
+  object_version: '2.1.3'
   component: review
   object_text: where a base commit is given, check only the objects in the files changed against it -
     a requirement in its file, a document in its file or its entry in `documents.yaml`; where none is
-    given, check every approved object
-  source_ids: [TOOL_32@2.1.2, TOOL_33@1.1.1]
+    given, check every approved object and completed document
+  source_ids: [TOOL_32@2.1.2, TOOL_33@2.2.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
 - object_key: SR_81
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   component: ci
   object_text: on every pull request, in .github/workflows/tools.yml, check the approvals of the objects
     in the files it changes against its base commit, and fail where one is reported; a pull request
     whose check failed cannot be merged
-  source_ids: [TOOL_32@2.1.2, TOOL_33@1.1.1]
+  source_ids: [TOOL_32@2.1.2, TOOL_33@2.2.1]
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [demonstration]
 - object_key: SR_82
-  object_version: '1.1.2'
+  object_version: '2.1.3'
   component: baseline
-  object_text: in baseline.yml, after licencecheck, check the approvals of every approved object of
-    the head of main, and fail where one is reported
-  source_ids: [TOOL_32@2.1.2, TOOL_33@1.1.1]
+  object_text: in baseline.yml, after licencecheck, check the approvals of every approved object and
+    completed document of the head of main, and fail where one is reported
+  source_ids: [TOOL_32@2.1.2, TOOL_33@2.2.1]
   priority: 'medium'
   safety: ''
   status: approved
