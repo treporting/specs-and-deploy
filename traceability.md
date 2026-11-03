@@ -335,6 +335,83 @@ Code and tests name their requirement in an annotation, not in `source_ids`.
 last changed. No one would have to update anything, but no one would see in the file which version
 the code was checked against - the same reason the git revision on a link was rejected.
 
+## Tests
+
+A test has three parts. The test specification says how a requirement is verified. The test
+implementation is the test code. The test execution gives the result. Each part can have a status
+of its own, or none. The tables name the options and what each loses.
+
+**Table test specification** - how a requirement is verified
+
+| | Option | What is lost |
+|---|---|---|
+| S0 | none; the knowledge is in the code only | how to verify stands nowhere; the code is checked against nothing; the reviewer guesses the intent from the code |
+| S1 | a field in the requirement, such as "positive: …, negative: …" | little; but a change of the test changes x of the requirement and sets it back to `draft` |
+| S2 | objects of their own in YAML, with an uplink to the requirement and a status of their own | nothing; the same form as a requirement; the cost is a new level, one or two objects per requirement |
+| S3 | a comment above the test function | specification and implementation come from the same author at the same moment; only the review of the code checks them |
+
+**Table test implementation** - the test code
+
+| | Option | What is lost |
+|---|---|---|
+| I0 | no status; the merge approves it | no record per test that it does what its specification says; the review of the pull request checks it |
+| I1 | a status per test function in the code | nothing; but every test needs a review, and every change a new one |
+| I2 | a status per component, in a list | nothing; but every change needs a review of the whole component; in practice it is waved through |
+| I3 | derived: approved where it verifies an approved specification and passes | no one checks that the code does what the specification says; mutation testing can replace part of it |
+
+**Table test execution** - the result
+
+| | Option | What is lost |
+|---|---|---|
+| E0 | the log of the CI only | GitHub deletes the log after 90 days; no record is left for an audit |
+| E1 | a test report per baseline, a record with the status `completed`, like `sbom.md` | the runs between two baselines are not kept |
+| E2 | a report per run, kept in the repo | nothing; but much noise |
+
+**Decision**:
+
+- the test specification is objects of their own, with an uplink to their requirement and a status
+  of their own (S2)
+- the test code has no status of its own; its merge approves it, as for all code (I0)
+- every run of the tests gives each test a result with a verdict, passed or failed. For every
+  baseline a test report is made from them; the report is a record with a status of its own (E1)
+
+**Why**:
+
+- a test that passes may still test the wrong thing. Whether it tests the right thing is the hard
+  question; the review of the specification answers it. The review of the code then asks only
+  whether it does what the specification says; that is no more work than the review of a pull
+  request
+- code is no information item of ISO/IEC/IEEE 15289. What counts for code is its identification
+  and its baseline (ISO/IEC/IEEE 15288, 6.3.5)
+- the report keeps the result as long as the baseline; the log of the CI does not
+
+Coverage is a cheap lower bound: code no test runs is surely not tested. Even 100% coverage can
+mean that the code does something else than its requirement; a test without an expectation covers
+every line it runs.
+
+**Table coverage** - what each check compares
+
+| Check | Checks | Misses |
+|---|---|---|
+| Coverage | whether the code ran | whether an expectation checks its result |
+| Mutation testing | whether a test fails when the code changes | whether that expectation is the one the specification asks for |
+| Review against the specification | whether the test does what the specification says | - |
+
+Coverage and mutation testing compare the test with the code, never with the specification.
+
+**Rejected**: the options of the tables not decided, for what each loses. A status per test also
+needs a place; which place fits depends on whether a single test or a component carries it:
+
+**Table where the status is kept** - a separate list or the test code
+
+| | A separate list | The test code |
+|---|---|---|
+| Where the status stands | in a file of its own, like `documents.yaml` | as a comment beside `@verifies` |
+| A test added, renamed or removed | its entry follows by hand | it follows by itself |
+| A check that list and code match | needed | none |
+| Fits | a component; the code has no place for its status | a single test |
+| Back to `draft` on a change (PROC_14) | by comparing the content reviewed with the content now | the same |
+
 ## The version in the schema
 
 **Decision**: every object carries its version in a field `object_version`, `x.y.z`. The schema of
@@ -579,3 +656,4 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 9.1.1 | 2026-10-30 | Where a suspect link blocks; Links between trees | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-10-30 | Traceability; Open | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-11-02 | The parts of the version: y counts a link added or removed | #413 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-11-03 | Tests | #155 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
