@@ -33,7 +33,7 @@ documents:
   type: document
   object_version: '7.1.1'
   object_hash: '6b7f0a6'
-  status: draft
+  status: review
   verification_method: [review]
 - name: formats.md
   type: document
@@ -58,7 +58,7 @@ documents:
   level: n1
   object_version: '9.1.1'
   object_hash: '1acc7b0'
-  status: draft
+  status: review
   verification_method: [review]
 - name: requirements/user-needs.md
   type: explanation
