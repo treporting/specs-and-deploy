@@ -38,8 +38,8 @@ documents:
 - name: formats.md
   type: document
   object_version: '23.1.1'
-  object_hash: 'b0a9a2b'
-  status: review
+  object_hash: 'fa9136d'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   type: document
