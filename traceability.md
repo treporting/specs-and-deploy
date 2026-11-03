@@ -372,7 +372,8 @@ of its own, or none. The tables name the options and what each loses.
 - the test specification is objects of their own, with an uplink to their requirement and a status
   of their own (S2)
 - the test code has no status of its own; its merge approves it, as for all code (I0)
-- the result is a test report per baseline (E1)
+- every run of the tests gives each test a result with a verdict, passed or failed. For every
+  baseline a test report is made from them; the report is a record with a status of its own (E1)
 
 **Why**:
 
