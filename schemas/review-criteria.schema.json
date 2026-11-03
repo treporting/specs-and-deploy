@@ -22,7 +22,7 @@
     },
     "level": {
       "type": "string",
-      "pattern": "^(r[1-7]|n1|h[12]|tool|document)$"
+      "pattern": "^(r[1-7](tc)?|n1|h[12]|tool|document)$"
     },
     "criteria": {
       "type": "array",
