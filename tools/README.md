@@ -190,11 +190,12 @@ wrote. The code is the package `review/skeleton`, in the component `review`.
 
 ## approvalcheck
 
-Checks every approval from the approved objects (TOOL_32, TOOL_33; SR_75 to SR_80 in
+Checks every approval from the approved objects (TOOL_32, TOOL_33; SR_75 to SR_80 and SR_85 in
 [software-requirements.yaml](software-requirements.yaml)). It reports:
 
 - an approved object that needs a review, and that no review result names
 - one whose last review result, by its `created_at`, has the verdict failed
+- one whose last review result is still open: a proposal, not a decision
 - one whose content x counts in the revision of that result is not its content now
 - an approved requirement whose attributes for x are not those of the first commit in which it was
   approved with its x
@@ -641,3 +642,4 @@ go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 | 24.1.1 | 2026-11-01 | pdf | #392 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 25.1.1 | 2026-11-02 | The component review; approvalcheck; baseline | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 26.1.1 | 2026-11-02 | reviewcheck; reviewskeleton | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 27.1.1 | 2026-11-03 | approvalcheck: an open review result | #429 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
