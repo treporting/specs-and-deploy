@@ -20,6 +20,8 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 | r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy |
 | tool | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy |
 | r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem |
+| r1tc, r2tc, r3tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | specs-and-deploy |
+| r5tc, r6tc, r7tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | the repo of the subsystem |
 | rules | `rules.yaml` (PROC) | `harness.md` | specs-and-deploy |
 
 A readable Markdown view of the YAML is generated on request only - save the table of the rules
@@ -244,6 +246,7 @@ reviewed against.
 | type | Holds | Level | Files |
 |---|---|---|---|
 | requirements | requirements | r1, r2, r5, tool | `requirements/*.yaml`, `tools/software-requirements.yaml` |
+| test cases | test cases | r1tc to r7tc | `testcases/*.yaml`, `tools/testcases/*.yaml` |
 | architecture | the system architecture | r3 | `architecture/system-architecture.yaml` |
 | normative | regulatory requirements | n1 | `regulatory/<module>.yaml` |
 | hazards | hazards and their controls | h1 | `safety/hazards.yaml` |
@@ -572,6 +575,7 @@ annotation names software requirements of its own repo only.
 | `ARC_nn` | subsystems, interfaces | r3 |
 | `ARCR_nn`, `ARCD_nn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
 | `SR_nn` | software requirements of a subsystem - unique together with their context, the repo of the subsystem (LProject) and the document | r5 |
+| `TC_nn` | test cases of a test level - unique together with their context, the repo and the file | r1tc to r7tc |
 | `SA_nn` | software architecture of a subsystem | r6 |
 | `SAR_nn`, `SAD_nn` | rationale and decisions of the software architecture of a subsystem | r6 |
 | `SD_nn` | software design of a subsystem | r7 |
@@ -703,8 +707,78 @@ The level of a test follows from where its file lies (see table test levels in
 | Val | `systemtest/acceptance/` | specs-and-deploy |
 
 The containers are built in `deploy/` of this repo from the parts the subsystems deliver - the
-reporter and the viewer in one image. A test result is linked to its test case by package and
+reporter and the viewer in one image. A test result is linked to its test function by package and
 function name, from the JSON output of `go test` and of vitest.
+
+### Test cases
+
+A test case says what is verified and how (traceability.md, section Tests). Every level of
+requirements has a test level that verifies it (harness.md, table maturity), and beside it three
+levels of its own: the test cases `r<n>tc`, the test procedures `r<n>tp` and the test results
+`r<n>tr`. The test cases of a test level lie in one file, its test specification, in the directory
+`testcases/` of the repo that holds the requirements:
+
+**Table test cases** - where the test cases of each level lie
+
+| Requirements | Test level | Test cases | File | Repo |
+|---|---|---|---|---|
+| r1 | Val | r1tc | `testcases/acceptance.yaml` | specs-and-deploy |
+| r2 | SysQT | r2tc | `testcases/system.yaml` | specs-and-deploy |
+| r3 | SysIT | r3tc | `testcases/system-integration.yaml` | specs-and-deploy |
+| r5 | SwVal | r5tc | `testcases/software.yaml` | the subsystem |
+| r6 | SwIT | r6tc | `testcases/software-integration.yaml` | the subsystem |
+| r7 | MT | r7tc | `testcases/unit.yaml` | the subsystem |
+
+The tools of this repo keep theirs in `tools/testcases/`, beside `tools/software-requirements.yaml`.
+Today only the tools have test cases, at r5tc.
+
+```yaml
+- object_key: TC_01
+  object_version: '1.1.1'
+  object_text: 'a completed document whose object_hash is not the hash of its file is reported'
+  design_technique: equivalence partitioning
+  target_ids: [SR_79@2.1.2]
+  status: draft
+  verification_method: [review]
+```
+
+- **object_text** states one case: what is given and what is expected. A positive and a negative
+  case are two test cases.
+- **design_technique** names how the case was derived, one of the techniques of
+  REG_ISO29119-4_01 to _03, such as `equivalence partitioning` or `boundary value analysis`.
+- **target_ids** names the requirements it verifies, with their version. A test case points to
+  its requirement; the requirement does not name its test cases. Only a requirement whose
+  verification method holds `test` has test cases.
+- **status** and **verification_method** as of a requirement: a test case is approved after its
+  review against the criteria of its level, such as `reviews/criteria-r5tc.yaml`.
+
+**Decision**: the test cases lie in `testcases/`, one file per test level, apart from the
+requirements and from the test procedures.
+
+**Why**: the right side of the V has a place of its own, as `requirements/` is the place of the
+left. One file per test level is the test specification of that level in the sense of
+ISO/IEC/IEEE 29119. Where testing is let as a work package, the customer writes the test cases and
+the contractor the procedures; apart, each can be delivered alone.
+
+**Rejected**:
+
+- beside the requirements of their level, such as `requirements/system-test-cases.yaml` - the left
+  and the right side of the V would mix, and the architecture and the design would hold test
+  cases too
+- beside the test procedures, such as `subsystemtest/test-cases.yaml` - the unit and the
+  integration tests have no one place, their procedures lie in the packages; and case and
+  procedure could not be delivered apart
+
+**Decision**: `design_technique`, and not `technique` or `method`.
+
+**Why**: it is the term of ISO/IEC/IEEE 29119-4, clause 5, without the word test, which the test
+case says itself. It keeps apart how a test case was derived from how a requirement is verified,
+the verification method.
+
+**Rejected**:
+
+- `method` - it would be read as the verification method
+- `technique`, `test_technique` - they do not say that it is about the design of the case
 
 ## Open
 
@@ -736,3 +810,4 @@ function name, from the JSON output of `go test` and of vitest.
 | 20.1.1 | 2026-11-01 | Verifications | #382 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 21.1.1 | 2026-11-02 | Reviews: version, status and date of record of a review result | #153 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 22.1.1 | 2026-11-03 | Documents: a generated document is a record with the status completed | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 23.1.1 | 2026-11-03 | Test cases: their levels, files and fields; Ids: TC_nn | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
