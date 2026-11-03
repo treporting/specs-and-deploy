@@ -93,7 +93,7 @@ documents:
   level: r5
   object_version: '27.1.1'
   object_hash: 'a80771e'
-  status: draft
+  status: review
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
