@@ -52,7 +52,7 @@
         "properties": {
           "object_key": {
             "type": "string",
-            "pattern": "^TC_[0-9]{2}$"
+            "pattern": "^TC_[0-9]{2,}$"
           },
           "object_version": {
             "type": "string",
@@ -95,7 +95,7 @@
             "uniqueItems": true,
             "items": {
               "type": "string",
-              "pattern": "^[A-Z]+(_[A-Za-z0-9-]+)*_[0-9]{2}@[0-9]+\\.[0-9]+\\.[0-9]+$"
+              "pattern": "^[A-Z]+(_[A-Za-z0-9-]+)*_[0-9]{2,}@[0-9]+\\.[0-9]+\\.[0-9]+$"
             },
             "description": "the requirements it verifies, with their version"
           },
