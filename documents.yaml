@@ -51,7 +51,7 @@ documents:
   type: document
   object_version: '12.1.1'
   object_hash: '7eabd9c'
-  status: draft
+  status: review
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   type: explanation
