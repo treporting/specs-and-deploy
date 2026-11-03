@@ -45,7 +45,7 @@ documents:
   type: document
   object_version: '7.1.1'
   object_hash: 'ec51edb'
-  status: draft
+  status: review
   verification_method: [review]
 - name: traceability.md
   type: document
