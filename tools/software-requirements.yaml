@@ -906,7 +906,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_89
   object_version: '1.1.1'
@@ -917,7 +917,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_90
   object_version: '1.1.1'
@@ -927,7 +927,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_91
   object_version: '1.1.1'
@@ -938,7 +938,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_92
   object_version: '1.1.1'
@@ -948,7 +948,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_93
   object_version: '1.1.1'
@@ -959,7 +959,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_94
   object_version: '1.1.1'
@@ -969,7 +969,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_95
   object_version: '1.1.1'
@@ -979,7 +979,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_96
   object_version: '1.1.1'
@@ -992,7 +992,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_97
   object_version: '1.1.1'
@@ -1001,7 +1001,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_98
   object_version: '1.1.1'
@@ -1013,7 +1013,7 @@ requirements:
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_99
   object_version: '1.1.1'
@@ -1023,5 +1023,5 @@ requirements:
   source_ids: [TOOL_27@2.2.1, TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [demonstration]
