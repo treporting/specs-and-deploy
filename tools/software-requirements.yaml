@@ -897,3 +897,131 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR_88
+  object_version: '1.1.1'
+  component: testreport
+  object_text: read the result of each test procedure from the junit.xml given, one or more, the
+    test cases from `testcases/`, and the test procedures with their `@implements` and
+    `@verifies` from the annotations
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_89
+  object_version: '1.1.1'
+  component: testreport
+  object_text: write testreport.md with the head of a document and the sections Test environment,
+    Original data, Test specification, Test implementation, Test execution, Deviations,
+    Open and Change history, in this order
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_90
+  object_version: '1.1.1'
+  component: testreport
+  object_text: list in Test environment the label of the baseline, the commit, the date, the operating
+    system, the runner, and each runtime and test runner the tests ran with, with its version
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_91
+  object_version: '1.1.1'
+  component: testreport
+  object_text: list in Original data every junit.xml given, in a table with the columns File, Made
+    by and Stored At - the command that made it, and where it is stored, as
+    `./<folder>/<file>`, or `-`, as given with it
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_92
+  object_version: '1.1.1'
+  component: testreport
+  object_text: list in Test specification every test case, in a table with the columns Requirement,
+    Test case, Text and Status, the requirement from its `target_ids`
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_93
+  object_version: '1.1.1'
+  component: testreport
+  object_text: list in Test implementation every test procedure, in a table with the columns
+    Requirement, Test case, Test procedure and File - the requirement of its test case, or
+    of its `@verifies` where it implements none, and the column Test case empty then
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_94
+  object_version: '1.1.1'
+  component: testreport
+  object_text: list in Test execution every test procedure that ran, in a table with the columns
+    Requirement, Test case, Test procedure and Verdict
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_95
+  object_version: '1.1.1'
+  component: testreport
+  object_text: list in Deviations every test result whose verdict is not passed, and in Open every
+    test case and test procedure without a test result; `<empty>` where there is none
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_96
+  object_version: '1.1.1'
+  component: testreport
+  object_text: 'add to the Change history of testreport.md a row with: - Version: the version of
+    testreport.md in `documents.yaml` with x raised by one, `1.1.1` where it has none, -
+    Date: the day it runs, - Change: the label given, - Reason: the ticket given, as
+    `#<number>`, - By: the tool with its version; Change and Reason empty where no label
+    is given'
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_97
+  object_version: '1.1.1'
+  component: testreport
+  object_text: fail where a label is given without a ticket
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_98
+  object_version: '1.1.1'
+  component: testreport
+  object_text: set the entry of testreport.md in `documents.yaml` of the repo to the version of its
+    new row in the Change history, its `object_hash` to `git hash-object` of the
+    testreport.md written, its status to `completed` and its verification method to
+    `[generated]`; add the entry, of type `document`, where there is none
+  source_ids: [TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_99
+  object_version: '1.1.1'
+  component: baseline
+  object_text: in baseline.yml, after the job test, write testreport.md from the junit.xml of that
+    job with the label and the ticket, and push it in the commit of sbom.md
+  source_ids: [TOOL_27@2.2.1, TOOL_34@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [demonstration]
