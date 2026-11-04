@@ -241,9 +241,9 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_31
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   object_text: 'a result with findings on two criteria in the order of the criteria file, one
-    criterion not in it, the verdict, the revision and the reviewer, checked twice: reviewcheck
+    criterion not in it, the verdict and a revision that is no commit, checked twice: reviewcheck
     reports them in that order in both runs'
   design_technique: requirements-based testing
   target_ids: [SR_16@1.1.3]
@@ -727,9 +727,9 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_92
-  object_version: '1.1.1'
-  object_text: 'a YAML file of our data with two fields of a wrong type: schemacheck reports each
-    place, with the file and the path within it'
+  object_version: '2.1.1'
+  object_text: 'a YAML file of our data with two fields whose values its schema does not allow:
+    schemacheck reports each place, with the file and the path within it'
   design_technique: equivalence partitioning
   target_ids: [SR_18@1.1.1]
   status: approved
@@ -1061,5 +1061,14 @@ testcases:
     annotationcheck reports no id'
   design_technique: equivalence partitioning
   target_ids: [SR_24@3.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_135
+  object_version: '1.1.1'
+  object_text: 'a result with findings on two criteria in the order of the criteria file, one
+    criterion not in it, the verdict and a reviewer who is the author of the object reviewed,
+    checked twice: reviewcheck reports them in that order in both runs'
+  design_technique: requirements-based testing
+  target_ids: [SR_16@1.1.3]
   status: approved
   verification_method: [review]
