@@ -50,8 +50,7 @@ func repo(t *testing.T) (dir, readme, other string) {
 	return dir, readme, other
 }
 
-// @verifies SR_68@1.1.1
-// @verifies SR_71@1.1.1
+// @implements TC_99@1.1.1, TC_133@1.1.1
 func TestGitReadsTheRepoAtTheTag(t *testing.T) {
 	dir, readme, other := repo(t)
 	g := Git{Dir: dir, Ref: "T1"}

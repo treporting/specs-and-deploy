@@ -27,7 +27,7 @@ documents:
   verification_method: [review]
 `
 
-// @verifies SR_68@1.1.1
+// @implements TC_97@2.1.1, TC_98@1.1.1
 func TestDocumentsOfDocumentsYAML(t *testing.T) {
 	got, err := Documents([]byte(documentsYAML))
 	if err != nil {
@@ -42,7 +42,7 @@ func TestDocumentsOfDocumentsYAML(t *testing.T) {
 	}
 }
 
-// @verifies SR_68@1.1.1
+// @implements TC_97@2.1.1
 func TestPDFNameIsThePathWithPDF(t *testing.T) {
 	for path, want := range map[string]string{"README.md": "README.pdf", "requirements/tool-requirements.md": "requirements/tool-requirements.pdf"} {
 		if got := PDFName(path); got != want {
@@ -60,7 +60,7 @@ func TestTitleIsTheFirstHeading(t *testing.T) {
 	}
 }
 
-// @verifies SR_71@1.1.1
+// @implements TC_99@1.1.1
 func TestFooterNamesPathVersionRevisionStatus(t *testing.T) {
 	got := Footer(Document{Path: "devops.md", Version: "2.1.1", Revision: "a1b2c3d", Status: "approved"})
 	if got != "devops.md · 2.1.1 · a1b2c3d · approved" {
@@ -85,7 +85,7 @@ func TestHeaderTemplateEscapes(t *testing.T) {
 	}
 }
 
-// @verifies SR_72@1.1.1
+// @implements TC_100@1.1.1
 func TestIndexListsEveryDocument(t *testing.T) {
 	got := Index([]Document{
 		{Path: "README.md", Title: "specs-and-deploy", Version: "9.1.1", Revision: "ab57a8b", Status: "approved"},
@@ -102,14 +102,14 @@ func TestIndexListsEveryDocument(t *testing.T) {
 	}
 }
 
-// @verifies SR_73@1.1.1
+// @implements TC_101@1.1.1
 func TestZipNameNamesRepoAndRef(t *testing.T) {
 	if got := ZipName("specs-and-deploy", "T044"); got != "specs-and-deploy-T044-documents.zip" {
 		t.Errorf("got %q", got)
 	}
 }
 
-// @verifies SR_73@1.1.1
+// @implements TC_101@1.1.1
 func TestZipHoldsEveryFile(t *testing.T) {
 	var buf bytes.Buffer
 	files := []File{{Name: "README.pdf", Data: []byte("%PDF-1")}, {Name: "requirements/tool-requirements.pdf", Data: []byte("%PDF-2")}, {Name: "index.pdf", Data: []byte("%PDF-3")}}

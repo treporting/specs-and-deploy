@@ -34,7 +34,7 @@ const withSbom = documentsYAML + `- name: sbom.md
   verification_method: [review]
 `
 
-// @verifies SR_40@3.3.1
+// @implements TC_109@1.1.1
 func TestVersionOfSbomMD(t *testing.T) {
 	if got := Version([]byte(withSbom)); got != "2.1.1" {
 		t.Errorf("got %q", got)
@@ -44,7 +44,7 @@ func TestVersionOfSbomMD(t *testing.T) {
 	}
 }
 
-// @verifies SR_40@3.3.1
+// @implements TC_109@1.1.1, TC_110@1.1.1
 func TestNextRaisesX(t *testing.T) {
 	for version, want := range map[string]string{"": "1.1.1", "1.1.1": "2.1.1", "9.2.3": "10.2.3"} {
 		if got, err := Next(version); err != nil || got != want {
@@ -58,7 +58,7 @@ func TestNextRaisesX(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@2.1.1
+// @implements TC_120@1.1.1
 func TestHashIsThatOfGitHashObject(t *testing.T) {
 	content := []byte("# SBOM\n")
 	file := filepath.Join(t.TempDir(), "sbom.md")
@@ -74,7 +74,7 @@ func TestHashIsThatOfGitHashObject(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@2.1.1
+// @implements TC_121@1.1.1
 func TestEntryAddedWhereThereIsNone(t *testing.T) {
 	got := string(Entry([]byte(documentsYAML), "1.1.1", "1234567"))
 	want := documentsYAML + `- name: sbom.md
@@ -89,7 +89,7 @@ func TestEntryAddedWhereThereIsNone(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@2.1.1
+// @implements TC_120@1.1.1
 func TestEntrySetInPlace(t *testing.T) {
 	got := string(Entry([]byte(withSbom), "3.1.1", "1234567"))
 	want := strings.Replace(strings.Replace(withSbom, "'2.1.1'", "'3.1.1'", 1), "'aaaaaaa'", "'1234567'", 1)
@@ -98,7 +98,7 @@ func TestEntrySetInPlace(t *testing.T) {
 	}
 }
 
-// @verifies SR_59@2.1.1
+// @implements TC_120@1.1.1
 func TestEntryCompletedAndGenerated(t *testing.T) {
 	changed := strings.Replace(withSbom, "status: completed\n  verification_method: [generated]", "status: draft\n  verification_method: [review]", 1)
 	got := string(Entry([]byte(changed), "3.1.1", "1234567"))

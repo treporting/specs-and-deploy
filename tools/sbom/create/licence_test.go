@@ -9,7 +9,7 @@ const (
 	bsd2Text   = "Redistribution and use in source and binary forms, with or without modification, are permitted"
 )
 
-// @verifies SR_43@1.1.1
+// @implements TC_113@1.1.1
 func TestLicenceByItsSPDXIdentifier(t *testing.T) {
 	for text, want := range map[string]string{
 		mitText:    "MIT",
@@ -24,7 +24,7 @@ func TestLicenceByItsSPDXIdentifier(t *testing.T) {
 	}
 }
 
-// @verifies SR_43@1.1.1
+// @implements TC_114@1.1.1
 func TestSeveralLicencesJoinedByAnd(t *testing.T) {
 	// as the LICENSE of gopkg.in/yaml.v3 has it
 	got := Licence("This project is covered by two different licenses: MIT and Apache.\n" + mitText + "\n" + apacheText)
@@ -33,7 +33,7 @@ func TestSeveralLicencesJoinedByAnd(t *testing.T) {
 	}
 }
 
-// @verifies SR_43@1.1.1
+// @implements TC_115@1.1.1
 func TestLicenceNotRecognizedIsUnknown(t *testing.T) {
 	for _, text := range []string{"", "All rights reserved.", "Do what you want."} {
 		if got := Licence(text); got != Unknown {

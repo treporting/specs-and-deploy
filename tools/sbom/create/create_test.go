@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// @verifies SR_46@1.1.1
+// @implements TC_119@1.1.1
 func TestOwnPackage(t *testing.T) {
 	got := Own("storages", "1.2.0", apacheText)
 	want := Package{PURL: "pkg:github/treporting/storages@1.2.0", Name: "storages", Version: "1.2.0", Licence: "Apache-2.0"}
@@ -14,7 +14,7 @@ func TestOwnPackage(t *testing.T) {
 	}
 }
 
-// @verifies SR_40@3.3.1
+// @implements TC_109@1.1.1
 func TestRowOfTheChangeHistory(t *testing.T) {
 	if got := Row("2.1.1", "2026-10-31", "1.2.0", "343", "sbom a1b2c3d"); got != "| 2.1.1 | 2026-10-31 | 1.2.0 | #343 | sbom a1b2c3d |" {
 		t.Errorf("got %q", got)
@@ -35,7 +35,7 @@ func TestHistoryKeepsTheRowsOfTheChangeHistoryOnly(t *testing.T) {
 	}
 }
 
-// @verifies SR_41@1.2.1
+// @implements TC_111@1.1.1
 func TestOneTableSortedByPURL(t *testing.T) {
 	md := Markdown(SBOM{Repo: "storages", Packages: []Package{
 		{PURL: "pkg:golang/stdlib@go1.25.14", Name: "stdlib", Version: "go1.25.14", Licence: "BSD-3-Clause"},
@@ -54,7 +54,7 @@ func TestOneTableSortedByPURL(t *testing.T) {
 	}
 }
 
-// @verifies SR_42@1.2.1
+// @implements TC_112@1.1.1
 func TestEndsWithOpenAndChangeHistory(t *testing.T) {
 	md := Markdown(SBOM{Repo: "storages", History: []string{"| - | 2026-10-31 | 1.2.0 | - | sbom a1b2c3d |"}})
 	open, history := strings.Index(md, "\n## Open\n"), strings.Index(md, "\n## Change history\n")
@@ -66,7 +66,7 @@ func TestEndsWithOpenAndChangeHistory(t *testing.T) {
 	}
 }
 
-// @verifies SR_45@1.1.1
+// @implements TC_117@1.1.1
 func TestOpenListsEveryPackageOfUnknownLicence(t *testing.T) {
 	md := Markdown(SBOM{Repo: "viewer-trace", Packages: []Package{
 		{PURL: "pkg:npm/react@18.3.1", Licence: "MIT"},
@@ -81,7 +81,7 @@ func TestOpenListsEveryPackageOfUnknownLicence(t *testing.T) {
 	}
 }
 
-// @verifies SR_45@1.1.1
+// @implements TC_118@1.1.1
 func TestOpenIsEmptyWhereEveryLicenceIsKnown(t *testing.T) {
 	md := Markdown(SBOM{Repo: "storages", Packages: []Package{{PURL: "pkg:npm/react@18.3.1", Licence: "MIT"}}})
 	if !strings.Contains(md, "## Open\n\n`<empty>`\n\n## Change history") {

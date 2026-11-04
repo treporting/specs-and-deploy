@@ -13,7 +13,7 @@ type licences map[string]string
 
 func (l licences) read(dir string) string { return l[dir] }
 
-// @verifies SR_36@2.1.1
+// @implements TC_102@1.1.1, TC_103@1.1.1
 func TestGoModulesWithVersionLicenceAndPURL(t *testing.T) {
 	list := "gopkg.in/yaml.v3\tv3.0.1\t/cache/yaml\n" +
 		"\n" + // a package of the standard library or of the subsystem prints nothing
@@ -38,7 +38,7 @@ func TestGoModuleWithoutLicenceFileIsUnknown(t *testing.T) {
 	}
 }
 
-// @verifies SR_44@1.1.1
+// @implements TC_116@1.1.1
 func TestStdlib(t *testing.T) {
 	got := Stdlib("go1.25.14", bsd3Text)
 	want := Package{PURL: "pkg:golang/stdlib@go1.25.14", Name: "stdlib", Version: "go1.25.14", Licence: "BSD-3-Clause"}
@@ -61,7 +61,7 @@ const lock = `{
   }
 }`
 
-// @verifies SR_37@2.1.1
+// @implements TC_104@1.1.1, TC_105@1.1.1
 func TestNpmPackagesWithoutDevAndWithoutTheSubsystem(t *testing.T) {
 	got, err := NpmPackages([]byte(lock))
 	if err != nil {
@@ -103,8 +103,7 @@ V:20260909-r0
 L:MPL-2.0 AND MIT
 `
 
-// @verifies SR_38@1.2.1
-// @verifies SR_43@1.1.1
+// @implements TC_106@1.1.1
 func TestApkPackages(t *testing.T) {
 	got := ApkPackages([]byte(installed))
 	want := []Package{
