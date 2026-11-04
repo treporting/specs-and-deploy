@@ -1,0 +1,170 @@
+# Review of TC_69, TC_70, TC_71, TC_72, TC_73, TC_74, TC_75, TC_76, TC_77, TC_78, TC_79, TC_80, TC_81 against the criteria of the level r5tc.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r5tc
+object_version: '1.1.1'
+status: completed
+created_by: Mathias Fischer
+created_at: '2026-11-04T08:05:04+01:00'
+completed_at: '2026-11-04T08:37:26+01:00'
+criteria: reviews/criteria-r5tc.yaml
+criteria_revision: 'e161d57'
+results:
+- object_key: RR_01
+  target_ids: [TC_69]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [TC_70]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [TC_71]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [TC_72]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_05
+  target_ids: [TC_73]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_06
+  target_ids: [TC_74]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_07
+  target_ids: [TC_75]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_08
+  target_ids: [TC_76]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_09
+  target_ids: [TC_77]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_10
+  target_ids: [TC_78]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_11
+  target_ids: [TC_79]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_12
+  target_ids: [TC_80]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_13
+  target_ids: [TC_81]
+  revision: 'c4c5a6f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
