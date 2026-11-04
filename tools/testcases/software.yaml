@@ -1079,7 +1079,7 @@ testcases:
     both files and links the test procedure to its test case'
   design_technique: requirements-based testing
   target_ids: [SR_88@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_137
   object_version: '2.1.1'
@@ -1088,7 +1088,7 @@ testcases:
     implementation, Test execution, Deviations, Open and Change history, in this order'
   design_technique: requirements-based testing
   target_ids: [SR_89@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_138
   object_version: '1.2.1'
@@ -1097,7 +1097,7 @@ testcases:
     Node.js and Vitest each with its version'
   design_technique: requirements-based testing
   target_ids: [SR_90@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_139
   object_version: '1.2.1'
@@ -1106,7 +1106,7 @@ testcases:
     `./verifications/junit-go.xml` for the first and `-` for the second'
   design_technique: equivalence partitioning
   target_ids: [SR_91@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_140
   object_version: '1.2.1'
@@ -1114,7 +1114,7 @@ testcases:
     SR_03@1.1.3, its key with its version, its text and its status'
   design_technique: requirements-based testing
   target_ids: [SR_92@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_141
   object_version: '1.2.1'
@@ -1123,7 +1123,7 @@ testcases:
     case, the second with its requirement and the column Test case empty'
   design_technique: equivalence partitioning
   target_ids: [SR_93@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_142
   object_version: '1.2.1'
@@ -1131,7 +1131,7 @@ testcases:
     first, with its verdict'
   design_technique: equivalence partitioning
   target_ids: [SR_94@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_143
   object_version: '1.2.1'
@@ -1139,7 +1139,7 @@ testcases:
     Deviations lists the failed and the skipped one, Open lists the test case'
   design_technique: equivalence partitioning
   target_ids: [SR_95@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_144
   object_version: '1.2.1'
@@ -1147,7 +1147,7 @@ testcases:
     Deviations and Open each hold `<empty>`'
   design_technique: boundary value analysis
   target_ids: [SR_95@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_145
   object_version: '2.1.1'
@@ -1156,7 +1156,7 @@ testcases:
     1.2.0, Reason #438 and By testreport with its version'
   design_technique: equivalence partitioning
   target_ids: [SR_96@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_146
   object_version: '2.1.1'
@@ -1164,14 +1164,14 @@ testcases:
     row has the Version 1.1.1, the day of the run, and Change and Reason empty'
   design_technique: equivalence partitioning
   target_ids: [SR_96@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_147
   object_version: '1.2.1'
   object_text: 'a label without a ticket: testreport fails and writes nothing'
   design_technique: equivalence partitioning
   target_ids: [SR_97@1.2.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_148
   object_version: '2.1.1'
@@ -1180,5 +1180,5 @@ testcases:
     status `completed` and the verification method `[generated]`'
   design_technique: equivalence partitioning
   target_ids: [SR_98@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
