@@ -61,7 +61,7 @@ results:
   verdict: passed
 - object_key: RR_04
   target_ids: [SR_91]
-  revision: 'd31ecd0'
+  revision: '00b8ea4'
   criteria:
     RC_01: passed
     RC_02: passed
