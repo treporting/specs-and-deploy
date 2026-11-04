@@ -545,3 +545,104 @@ testcases:
   target_ids: [SR_87@1.1.1]
   status: approved
   verification_method: [review]
+- object_key: TC_69
+  object_version: '1.1.1'
+  object_text: 'an @implements in a file that is code, whose id is not in the requirements of the
+    base commit: annotationcheck reports the id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_24@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_70
+  object_version: '1.1.1'
+  object_text: 'a @verifies in a file that is code, whose id is in the requirements of the base
+    commit: annotationcheck reports no id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_24@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_71
+  object_version: '1.1.1'
+  object_text: 'an @implements in a file that is no code, whose id is not in the requirements of the
+    base commit: annotationcheck reports no id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_24@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_72
+  object_version: '1.1.1'
+  object_text: 'an @implements whose id has the status draft in the base commit: annotationcheck
+    reports the id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_25@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_73
+  object_version: '1.1.1'
+  object_text: 'an @implements whose id is approved in the pull request and draft in the base
+    commit: annotationcheck reports the id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_25@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_74
+  object_version: '1.1.1'
+  object_text: 'a @refines whose id is approved in the base commit: annotationcheck reports no id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_25@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_75
+  object_version: '1.1.1'
+  object_text: 'a file git knows whose kind is set neither as code nor as no code: annotationcheck
+    reports the file'
+  design_technique: equivalence partitioning
+  target_ids: [SR_27@1.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_76
+  object_version: '1.1.1'
+  object_text: 'a file git knows whose kind is set as code: annotationcheck reports no kind'
+  design_technique: equivalence partitioning
+  target_ids: [SR_27@1.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_77
+  object_version: '1.1.1'
+  object_text: 'an @implements that names SR_01 without a version: annotationcheck reports the
+    annotation'
+  design_technique: syntax testing
+  target_ids: [SR_30@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_78
+  object_version: '1.1.1'
+  object_text: 'a @verifies that names SR_01@1.1, a version without z: annotationcheck reports the
+    annotation'
+  design_technique: syntax testing
+  target_ids: [SR_30@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_79
+  object_version: '1.1.1'
+  object_text: 'a @refines that names ARC_22@2.1.1: annotationcheck reports no missing version'
+  design_technique: syntax testing
+  target_ids: [SR_30@2.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_80
+  object_version: '1.1.1'
+  object_text: 'a schema whose $comment holds a @refines with an id not in the requirements of the
+    base commit: annotationcheck reports the id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_35@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_81
+  object_version: '1.1.1'
+  object_text: 'a schema whose $comment holds a @refines with an id in the requirements of the base
+    commit: annotationcheck reports no id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_35@1.1.1]
+  status: draft
+  verification_method: [review]
