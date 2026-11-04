@@ -92,8 +92,8 @@ documents:
   type: explanation
   level: r5
   object_version: '30.1.1'
-  object_hash: '1a73813'
-  status: review
+  object_hash: 'aba9adc'
+  status: approved
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
