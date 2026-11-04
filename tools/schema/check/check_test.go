@@ -53,7 +53,7 @@ func expect(t *testing.T, got []string, want string) {
 	t.Errorf("no finding %q in %q", want, got)
 }
 
-// @implements TC_91@1.1.1, TC_92@1.1.1
+// @implements TC_91@1.1.1, TC_92@2.1.1
 func TestEachPlaceThatDoesNotMatch(t *testing.T) {
 	dir := root(t, map[string]string{
 		"good.yaml": "schema: schemas/t.schema.json\nlevel: r1\n",

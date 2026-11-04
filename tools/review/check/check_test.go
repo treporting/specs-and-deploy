@@ -344,9 +344,10 @@ func TestAnUnfilledSkeletonIsReported(t *testing.T) {
 	expect(t, got, "the verdict is neither passed nor failed")
 }
 
-// @verifies SR_16@1.1.1
-func TestTheFindingsInTheSameOrderInEveryRun(t *testing.T) {
-	git := history("Claude Opus 5.5", "Claude Opus 5.5")
+// order checks the result in twenty runs against the findings wanted, in their order: a map is
+// walked in another order each time, so twenty runs show the order does not follow it.
+func order(t *testing.T, revision string, git fakeGit, last string) {
+	t.Helper()
 	git.files["c1"]["reviews/criteria-tool.yaml"] = `level: tool
 criteria:
 - object_key: RC_01
@@ -357,7 +358,7 @@ criteria:
 `
 	result := `- object_key: RR_01
   target_ids: [TOOL_03]
-  revision: 'c1'
+  revision: '` + revision + `'
   criteria: {RC_05: todo, RC_04: todo, RC_01: todo, RC_03: failed, RC_09: passed, RC_07: passed}
   verdict: todo
 `
@@ -370,14 +371,24 @@ criteria:
 		"criterion RC_07 is not in reviews/criteria-tool.yaml",
 		"criterion RC_09 is not in reviews/criteria-tool.yaml",
 		"the verdict is neither passed nor failed",
+		last,
 	}
-	//	a map is walked in another order each time; twenty runs show the order does not follow it
 	for run := 0; run < 20; run++ {
 		got := check(t, result, git)
 		if strings.Join(got, "\n") != strings.Join(want, "\n") {
 			t.Fatalf("run %d:\n got %q\nwant %q", run, got, want)
 		}
 	}
+}
+
+// @implements TC_31@2.1.1
+func TestTheFindingsInTheSameOrderInEveryRun(t *testing.T) {
+	order(t, "nope", history("Claude Opus 5.5", "Claude Opus 5.5"), "the revision nope is no commit")
+}
+
+// @implements TC_135@1.1.1
+func TestTheFindingsUpToTheReviewerInTheSameOrder(t *testing.T) {
+	order(t, "c1", history("Mathias Fischer"), "the reviewer Mathias Fischer is an author of TOOL_03")
 }
 
 // @implements TC_34@1.1.1, TC_35@1.1.1, TC_36@1.1.1
