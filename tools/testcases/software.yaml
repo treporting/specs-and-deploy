@@ -771,7 +771,7 @@ testcases:
     writes README.pdf and requirements/tool-requirements.pdf'
   design_technique: requirements-based testing
   target_ids: [SR_68@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_98
   object_version: '1.1.1'
@@ -1053,5 +1053,5 @@ testcases:
     the text of README.md at the tag, not the later one'
   design_technique: equivalence partitioning
   target_ids: [SR_68@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
