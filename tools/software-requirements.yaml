@@ -398,13 +398,13 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_39
-  object_version: '1.2.1'
+  object_version: '2.1.1'
   component: sbom
-  object_text: write sbom.md in the root of the repo of the subsystem
+  object_text: write sbom.md in the folder sbom/ of the repo of the subsystem
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
 - object_key: SR_40
   object_version: '3.3.1'

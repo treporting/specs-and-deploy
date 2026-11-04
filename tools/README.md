@@ -348,7 +348,7 @@ finds an id in its file through the component `review`, and the annotations thro
 
 ## sbom
 
-Creates the SBOM of a subsystem as `sbom.md` in the root of its repo (TOOL_21; SR_36 to SR_46, SR_59 and SR_66 in
+Creates the SBOM of a subsystem as `sbom/sbom.md` of its repo (TOOL_21; SR_36 to SR_46, SR_59 and SR_66 in
 [software-requirements.yaml](software-requirements.yaml)). It runs in the repo checked out at the
 baseline and lists every package the subsystem delivers, each once, sorted by PURL:
 
@@ -423,7 +423,7 @@ records none and shows `(devel)`, so a release builds the tool first.
 ## licence check
 
 Checks the licences of `sbom.md` against Apache-2.0 (TOOL_22; SR_47 to SR_50 in
-[software-requirements.yaml](software-requirements.yaml)). It reads `sbom.md` in the root of the
+[software-requirements.yaml](software-requirements.yaml)). It reads `sbom/sbom.md` of the
 repo of a subsystem, and `licences_assessed.yaml` where the root holds one. It prints every package
 that fails with its PURL and its licence, and exits with 1 where one fails.
 
@@ -564,7 +564,7 @@ template Baseline and names the label in it. Whoever may label tickets of the re
    the run.
 
 To start it again, take the label `baseline` off the ticket and set it again. The step runs by hand
-too, in the root of the repo; it writes `sbom.md` and `documents.yaml` and opens nothing:
+too, in the root of the repo; it writes `sbom/sbom.md` and `documents.yaml` and opens nothing:
 
 ```bash
 ../specs-and-deploy/.github/build/steps.sh baseline 1.2.0 343 storages=Dockerfile
@@ -674,3 +674,4 @@ its own root, and by the names of its describe blocks before its own.
 | 28.1.1 | 2026-11-03 | sbom; approvalcheck: a generated document is a completed record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 29.1.1 | 2026-11-03 | linkcheck: the targets of a test case | #449 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 30.1.1 | 2026-11-04 | testreport | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 31.1.1 | 2026-11-04 | sbom; licence check; baseline: sbom.md in sbom/ | #491 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
