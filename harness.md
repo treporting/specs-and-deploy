@@ -234,9 +234,10 @@ For code, step 3 means:
 6. report on
    - test coverage
    - structural debt
-7. create the SBOM (PROC_08)
-8. check the licences of the components (PROC_08)
-9. create a signed tag as approval (PROC_06)
+7. write the test report
+8. create the SBOM (PROC_08)
+9. check the licences of the components (PROC_08)
+10. create a signed tag as approval (PROC_06)
 
 *Note*: write the data of the release or library into a separate edgedb, kept as reference data
 as soon as possible (PROC_07)
@@ -271,3 +272,4 @@ as soon as possible (PROC_07)
 | 16.1.1 | 2026-11-02 | Loop for every release or library | #398 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-11-02 | PROC_13 at 3.1.1 in table rules | #411 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-11-03 | PROC_13 at 4.1.1 in table rules: a generated document is a record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 19.1.1 | 2026-11-04 | Loop for every release or library: write the test report | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
