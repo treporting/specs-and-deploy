@@ -1,0 +1,23 @@
+# The demonstration of SR_100 with pull request #490 itself: its second push cancels its first run.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_100]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-11-04T22:01:56+01:00'
+revision: '6e7e6b2'
+setting: '6e7e6b2'
+description: verifications/20261104T220156_sr-100.md
+expected: the run of the first push is cancelled when the second push to the branch starts another run; the second run goes on
+observed: |
+  41911691418 6e7e6b2 completed cancelled
+    schemacheck, approvalcheck, reviewcheck, uplinkcheck, tests, linkcheck, annotationcheck,
+    rulesetcheck, build / build, build / lint, build / test, build / report: cancelled
+  41911722696 70c3dad in_progress
+evidence:
+- https://github.com/treporting/specs-and-deploy/pull/490
+- https://github.com/treporting/specs-and-deploy/actions/runs/41911691418
+- https://github.com/treporting/specs-and-deploy/actions/runs/41911722696
+verdict: passed
