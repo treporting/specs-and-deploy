@@ -546,27 +546,27 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_69
-  object_version: '1.1.1'
-  object_text: 'an @implements in a file that is code, whose id is not in the requirements of the
-    base commit: annotationcheck reports the id'
+  object_version: '2.1.1'
+  object_text: 'an @implements in a file that is code, whose id no object of the base commit holds:
+    annotationcheck reports the id'
   design_technique: equivalence partitioning
-  target_ids: [SR_24@2.2.1]
+  target_ids: [SR_24@3.1.1]
   status: approved
   verification_method: [review]
 - object_key: TC_70
-  object_version: '1.1.1'
-  object_text: 'a @verifies in a file that is code, whose id is in the requirements of the base
-    commit: annotationcheck reports no id'
+  object_version: '2.1.1'
+  object_text: 'a @verifies in a file that is code, whose id a requirement of the base commit holds:
+    annotationcheck reports no id'
   design_technique: equivalence partitioning
-  target_ids: [SR_24@2.2.1]
+  target_ids: [SR_24@3.1.1]
   status: approved
   verification_method: [review]
 - object_key: TC_71
-  object_version: '1.1.1'
-  object_text: 'an @implements in a file that is no code, whose id is not in the requirements of the
-    base commit: annotationcheck reports no id'
+  object_version: '2.1.1'
+  object_text: 'an @implements in a file that is no code, whose id no object of the base commit
+    holds: annotationcheck reports no id'
   design_technique: equivalence partitioning
-  target_ids: [SR_24@2.2.1]
+  target_ids: [SR_24@3.1.1]
   status: approved
   verification_method: [review]
 - object_key: TC_72
@@ -1053,5 +1053,13 @@ testcases:
     the text of README.md at the tag, not the later one'
   design_technique: equivalence partitioning
   target_ids: [SR_68@1.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_134
+  object_version: '1.1.1'
+  object_text: 'an @implements in a file that is code, whose id is a test case of the base commit:
+    annotationcheck reports no id'
+  design_technique: equivalence partitioning
+  target_ids: [SR_24@3.1.1]
   status: approved
   verification_method: [review]
