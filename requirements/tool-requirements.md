@@ -194,6 +194,10 @@ itself, as step 1 of the loop for every change asks (harness.md).
 The last fault is a threat as well: a package delivered but missing from sbom.md hides its known
 vulnerabilities (REG_EU2024-2847_02).
 
+## test report
+
+`TOOL_34`: in [tool-requirements.yaml](tool-requirements.yaml).
+
 ## Open
 
 `<empty>`
@@ -219,3 +223,4 @@ vulnerabilities (REG_EU2024-2847_02).
 | 15.1.1 | 2026-11-01 | Reviews | #369 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-11-01 | Documents to PDF | #390 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-11-02 | Reviews; Versions | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 18.1.1 | 2026-11-04 | test report | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
