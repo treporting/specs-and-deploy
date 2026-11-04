@@ -312,7 +312,7 @@ document explains.
 (PROC_13). Its verification method is `generated`. The tool sets its entry in `documents.yaml` on
 every change of its content: x of its version raised by one - `1.1.1` the first time -, its
 `object_hash`, and the status `completed`, as a decided review result has (section Reviews). Today
-these are `sbom.md` of a subsystem (SR_40) and its test report (section Test report).
+these are `sbom.md` of a subsystem (SR_40) and its test reports (section Test report).
 
 **Decision**: a generated document is written from original data. The original data is kept only
 on demand, not with every document.
@@ -802,8 +802,9 @@ the verification method.
 
 ### Test report
 
-**Decision**: the result of a run of the tests is a test report, `testreport.md` in the root of
-the repo. A tool writes it from the `junit.xml` of the run, so it is a record (section Documents).
+**Decision**: the result of a run of the tests of a test level is its test report,
+`testreports/<test level>.md` beside `testcases/`, such as `testreports/software.md` for r5tc. A
+tool writes it from the `junit.xml` of the run, so it is a record (section Documents).
 It is made at every baseline, and may be made at any time between.
 
 **Table sections of a test report** - in their order
@@ -904,3 +905,4 @@ case, and a test case without a result, would have no row.
 | 27.1.1 | 2026-11-04 | Documents: the original data of a generated document; Test report: written from junit.xml | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 28.1.1 | 2026-11-04 | Test report: the section Original data | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 29.1.1 | 2026-11-04 | Test report: the runtimes and test runners in Test environment | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 30.1.1 | 2026-11-04 | Test report: one per test level | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
