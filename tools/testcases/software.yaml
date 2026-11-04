@@ -465,3 +465,83 @@ testcases:
   target_ids: [SR_86@2.1.1]
   status: approved
   verification_method: [review]
+- object_key: TC_59
+  object_version: '1.1.1'
+  object_text: 'a requirement whose source_ids name an object at another x than it has: linkcheck
+    reports the link'
+  design_technique: equivalence partitioning
+  target_ids: [SR_32@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_60
+  object_version: '1.1.1'
+  object_text: 'a requirement whose source_ids name an object at its x, with another y and z:
+    linkcheck reports no link'
+  design_technique: equivalence partitioning
+  target_ids: [SR_32@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_61
+  object_version: '1.1.1'
+  object_text: 'an element whose allocated names a requirement at another x than it has: linkcheck
+    reports the entry'
+  design_technique: equivalence partitioning
+  target_ids: [SR_32@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_62
+  object_version: '1.1.1'
+  object_text: 'a control whose controls names a user need at another x than it has: linkcheck
+    reports the entry'
+  design_technique: equivalence partitioning
+  target_ids: [SR_32@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_63
+  object_version: '1.1.1'
+  object_text: 'a requirement whose source_ids name a regulatory requirement at another x than the
+    file of its module holds: linkcheck reports the link'
+  design_technique: equivalence partitioning
+  target_ids: [SR_32@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_64
+  object_version: '1.1.1'
+  object_text: 'an @implements whose id names a requirement at another x than it has: linkcheck
+    reports the annotation'
+  design_technique: equivalence partitioning
+  target_ids: [SR_33@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_65
+  object_version: '1.1.1'
+  object_text: 'a @verifies whose id names a requirement at its x, with another z: linkcheck reports
+    no annotation'
+  design_technique: equivalence partitioning
+  target_ids: [SR_33@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_66
+  object_version: '1.1.1'
+  object_text: 'a @refines in the $comment of a schema whose id names an element at another x than
+    it has: linkcheck reports the annotation'
+  design_technique: equivalence partitioning
+  target_ids: [SR_33@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_67
+  object_version: '1.1.1'
+  object_text: 'a test case whose target_ids name a requirement at another x than it has: linkcheck
+    reports the target'
+  design_technique: equivalence partitioning
+  target_ids: [SR_87@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_68
+  object_version: '1.1.1'
+  object_text: 'a test case whose target_ids name a requirement at its x, with another y: linkcheck
+    reports no target'
+  design_technique: equivalence partitioning
+  target_ids: [SR_87@1.1.1]
+  status: draft
+  verification_method: [review]
