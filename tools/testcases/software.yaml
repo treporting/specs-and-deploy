@@ -766,9 +766,9 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_97
-  object_version: '1.1.1'
-  object_text: 'a tag whose documents.yaml names two documents: pdf writes two PDFs from their
-    Markdown at that tag, each named after its path with .pdf'
+  object_version: '2.1.1'
+  object_text: 'a tag whose documents.yaml names README.md and requirements/tool-requirements.md: pdf
+    writes README.pdf and requirements/tool-requirements.pdf'
   design_technique: requirements-based testing
   target_ids: [SR_68@1.1.1]
   status: draft
@@ -1046,4 +1046,12 @@ testcases:
   design_technique: requirements-based testing
   target_ids: [SR_50@1.1.1]
   status: approved
+  verification_method: [review]
+- object_key: TC_133
+  object_version: '1.1.1'
+  object_text: 'README.md changed in a commit after the tag: pdf run on the tag writes README.pdf with
+    the text of README.md at the tag, not the later one'
+  design_technique: equivalence partitioning
+  target_ids: [SR_68@1.1.1]
+  status: draft
   verification_method: [review]
