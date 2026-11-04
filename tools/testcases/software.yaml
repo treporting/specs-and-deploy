@@ -551,7 +551,7 @@ testcases:
     base commit: annotationcheck reports the id'
   design_technique: equivalence partitioning
   target_ids: [SR_24@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_70
   object_version: '1.1.1'
@@ -559,7 +559,7 @@ testcases:
     commit: annotationcheck reports no id'
   design_technique: equivalence partitioning
   target_ids: [SR_24@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_71
   object_version: '1.1.1'
@@ -567,7 +567,7 @@ testcases:
     base commit: annotationcheck reports no id'
   design_technique: equivalence partitioning
   target_ids: [SR_24@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_72
   object_version: '1.1.1'
@@ -575,7 +575,7 @@ testcases:
     reports the id'
   design_technique: equivalence partitioning
   target_ids: [SR_25@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_73
   object_version: '1.1.1'
@@ -583,14 +583,14 @@ testcases:
     commit: annotationcheck reports the id'
   design_technique: equivalence partitioning
   target_ids: [SR_25@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_74
   object_version: '1.1.1'
   object_text: 'a @refines whose id is approved in the base commit: annotationcheck reports no id'
   design_technique: equivalence partitioning
   target_ids: [SR_25@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_75
   object_version: '1.1.1'
@@ -598,14 +598,14 @@ testcases:
     reports the file'
   design_technique: equivalence partitioning
   target_ids: [SR_27@1.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_76
   object_version: '1.1.1'
   object_text: 'a file git knows whose kind is set as code: annotationcheck reports no kind'
   design_technique: equivalence partitioning
   target_ids: [SR_27@1.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_77
   object_version: '1.1.1'
@@ -613,7 +613,7 @@ testcases:
     annotation'
   design_technique: syntax testing
   target_ids: [SR_30@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_78
   object_version: '1.1.1'
@@ -621,14 +621,14 @@ testcases:
     annotation'
   design_technique: syntax testing
   target_ids: [SR_30@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_79
   object_version: '1.1.1'
   object_text: 'a @refines that names ARC_22@2.1.1: annotationcheck reports no missing version'
   design_technique: syntax testing
   target_ids: [SR_30@2.2.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_80
   object_version: '1.1.1'
@@ -636,7 +636,7 @@ testcases:
     base commit: annotationcheck reports the id'
   design_technique: equivalence partitioning
   target_ids: [SR_35@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_81
   object_version: '1.1.1'
@@ -644,5 +644,5 @@ testcases:
     commit: annotationcheck reports no id'
   design_technique: equivalence partitioning
   target_ids: [SR_35@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
