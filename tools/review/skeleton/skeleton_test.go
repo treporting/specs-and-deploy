@@ -93,9 +93,9 @@ func contains(t *testing.T, content string, want ...string) {
 	}
 }
 
-// @verifies SR_11@2.1.1
+// @implements TC_23@1.1.1
 func TestTheNameTheReviewerAndTheTime(t *testing.T) {
-	path, content, err := makeSkeleton(t, "TOOL_03")
+	path, content, err := makeSkeleton(t, "TOOL_03", "TOOL_04")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -105,7 +105,7 @@ func TestTheNameTheReviewerAndTheTime(t *testing.T) {
 	contains(t, content, "created_by: Mathias Fischer\n", "created_at: '2026-10-26T14:30:05+01:00'\n")
 }
 
-// @verifies SR_12@1.1.1
+// @implements TC_24@1.1.1, TC_25@1.1.1
 func TestTheCriteriaOfTheLevel(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
@@ -117,10 +117,10 @@ func TestTheCriteriaOfTheLevel(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	contains(t, content, "criteria: reviews/criteria-documents.yaml\n")
+	contains(t, content, "criteria: reviews/criteria-documents.yaml\n", "  target_ids: [harness.md]\n")
 }
 
-// @verifies SR_13@1.1.1
+// @implements TC_26@1.1.1
 func TestTheRevisionIsHead(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
@@ -129,7 +129,7 @@ func TestTheRevisionIsHead(t *testing.T) {
 	contains(t, content, "  revision: 'c2'\n")
 }
 
-// @verifies SR_14@1.1.1
+// @implements TC_27@1.1.1
 func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL_03", "TOOL_04")
 	if err != nil {
@@ -144,7 +144,7 @@ func TestEveryCriterionAndTheVerdictAreTodo(t *testing.T) {
 	}
 }
 
-// @verifies SR_15@1.1.1
+// @implements TC_28@1.1.1, TC_29@1.1.1, TC_30@1.1.1
 func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
 	if _, _, err := makeSkeleton(t, "TOOL_99"); err == nil || !strings.Contains(err.Error(), "no file holds TOOL_99") {
 		t.Errorf("want TOOL_99 not found, got %v", err)
@@ -157,7 +157,7 @@ func TestNothingWhereATargetIsMissingOrTheLevelsDiffer(t *testing.T) {
 	}
 }
 
-// @verifies SR_17@2.1.1
+// @implements TC_32@1.1.1
 func TestTheSkeletonNamesItsSchemaTypeAndLevel(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {
@@ -166,7 +166,7 @@ func TestTheSkeletonNamesItsSchemaTypeAndLevel(t *testing.T) {
 	contains(t, content, "schema: schemas/review-result.schema.json\ntype: review\nlevel: tool\n")
 }
 
-// @verifies SR_83@1.1.1
+// @implements TC_33@1.1.1
 func TestTheSkeletonIsAnOpenRecord(t *testing.T) {
 	_, content, err := makeSkeleton(t, "TOOL_03")
 	if err != nil {

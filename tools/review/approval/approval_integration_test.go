@@ -113,7 +113,7 @@ func messages(t *testing.T, root, base string) string {
 
 // Every approved object, and the findings each error gives.
 //
-// @verifies SR_75@1.1.1, SR_76@1.1.1, SR_77@1.1.1, SR_78@1.1.1, SR_79@2.1.2, SR_80@2.1.3
+// @implements TC_38@1.1.1, TC_40@1.1.1, TC_42@1.1.1, TC_44@1.1.1, TC_46@1.1.1, TC_47@1.1.1, TC_49@1.1.1, TC_54@1.1.1, TC_56@1.1.1
 func TestEveryApprovedObject(t *testing.T) {
 
 	root, _ := history(t)
@@ -142,7 +142,7 @@ func TestEveryApprovedObject(t *testing.T) {
 
 // With a base commit, only the objects in the files changed against it.
 //
-// @verifies SR_80@2.1.3
+// @implements TC_52@1.1.1
 func TestTheFilesChangedAgainstTheBase(t *testing.T) {
 
 	root, approved := history(t)
@@ -160,7 +160,7 @@ func TestTheFilesChangedAgainstTheBase(t *testing.T) {
 
 // A passed result that is still open is a proposal, not an approval.
 //
-// @verifies SR_85@1.1.1
+// @implements TC_55@1.1.1
 func TestAnOpenResultIsNoApproval(t *testing.T) {
 
 	root, approved := history(t)
@@ -177,7 +177,7 @@ func TestAnOpenResultIsNoApproval(t *testing.T) {
 
 // A completed document, a record a tool wrote, has its hash checked, and needs no review.
 //
-// @verifies SR_79@2.1.2
+// @implements TC_50@1.1.1
 func TestACompletedDocumentHasItsHash(t *testing.T) {
 
 	root, _ := history(t)
@@ -198,5 +198,95 @@ func TestACompletedDocumentHasItsHash(t *testing.T) {
 	}
 	if strings.Count(got, ": sbom.md: ") != 1 {
 		t.Errorf("sbom.md is reported for more than its hash:\n%s", got)
+	}
+}
+
+// commit commits every change in root.
+func commit(t *testing.T, root, message string) {
+	t.Helper()
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "-m", message)
+}
+
+// A document with its hash and no review is reported for the review, not for the hash.
+//
+// @implements TC_39@1.1.1, TC_51@1.1.1
+func TestADocumentWithoutAReview(t *testing.T) {
+
+	root, _ := history(t)
+	write(t, root, "b.md", "# B\n")
+	data, err := os.ReadFile(filepath.Join(root, "documents.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	write(t, root, "documents.yaml", string(data)+"- name: b.md\n  object_version: '1.1.1'\n  object_hash: '"+
+		gitIn(t, root, "hash-object", "b.md")[:7]+"'\n  status: approved\n  verification_method: [review]\n")
+	commit(t, root, "b.md approved")
+	got := messages(t, root, "")
+
+	if !strings.Contains(got, "b.md: approved, and no review result names it") {
+		t.Errorf("missing the review of b.md in\n%s", got)
+	}
+	if strings.Count(got, ": b.md: ") != 1 {
+		t.Errorf("b.md is reported for more than its review:\n%s", got)
+	}
+}
+
+// @implements TC_41@1.1.1
+func TestAKindWithoutCriteria(t *testing.T) {
+
+	root, _ := history(t)
+	write(t, root, "requirements/system.yaml", strings.Replace(tool([]string{"SYS_01"}, []string{"one"}, "approved"), "level: tool", "level: r2", 1))
+	commit(t, root, "SYS_01 approved")
+	got := messages(t, root, "")
+
+	if strings.Contains(got, "SYS_01") {
+		t.Errorf("SYS_01 has no criteria file for its level, and is reported:\n%s", got)
+	}
+}
+
+// @implements TC_43@1.1.1
+func TestALaterPassedResult(t *testing.T) {
+
+	root, approved := history(t)
+	write(t, root, "reviews/results/6.yaml", reviewResult("2026-11-02T12:00:00+01:00", "TOOL_02", approved, "passed"))
+	commit(t, root, "TOOL_02 reviewed again")
+	got := messages(t, root, "")
+
+	if strings.Contains(got, "TOOL_02") {
+		t.Errorf("TOOL_02 passed its last review, and is reported:\n%s", got)
+	}
+}
+
+// @implements TC_45@1.1.1, TC_48@1.1.1
+func TestOnlyALinkChanged(t *testing.T) {
+
+	root, _ := history(t)
+	keys := []string{"TOOL_01", "TOOL_02", "TOOL_03", "TOOL_04"}
+	content := tool(keys, []string{"one", "two", "three, changed", "four"}, "approved")
+	write(t, root, "requirements/tool.yaml", strings.Replace(content, "object_text: one\n", "object_text: one\n  source_ids: [PROC_01@1.1.1]\n", 1))
+	commit(t, root, "a link of TOOL_01 added while approved")
+	got := messages(t, root, "")
+
+	if strings.Contains(got, "TOOL_01") {
+		t.Errorf("only a link of TOOL_01 changed, and it is reported:\n%s", got)
+	}
+}
+
+// @implements TC_53@1.1.1
+func TestOnlyTheEntryOfADocumentChanged(t *testing.T) {
+
+	root, _ := history(t)
+	base := gitIn(t, root, "rev-parse", "--short", "HEAD")
+	data, err := os.ReadFile(filepath.Join(root, "documents.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	write(t, root, "documents.yaml", strings.Replace(string(data), "object_version: '1.1.1'", "object_version: '1.1.2'", 1))
+	commit(t, root, "the entry of a.md changed")
+	got := messages(t, root, base)
+
+	if !strings.Contains(got, "a.md") {
+		t.Errorf("the entry of a.md changed against the base, and a.md is not checked:\n%s", got)
 	}
 }

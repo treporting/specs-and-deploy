@@ -9,7 +9,7 @@ import (
 // A file is indexed when it holds an object, whatever its type; a review result and a file without
 // objects are not.
 //
-// @verifies SR_86@2.1.1
+// @implements TC_57@1.1.1, TC_58@1.1.1
 func TestEveryFileThatHoldsObjectsIsIndexed(t *testing.T) {
 	files := map[string]string{
 		"tools/testcases/software.yaml": `type: testcases

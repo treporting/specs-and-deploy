@@ -135,7 +135,7 @@ func expect(t *testing.T, messages []string, want string) {
 	t.Errorf("no finding %q in %q", want, messages)
 }
 
-// @verifies SR_01@1.1.1, SR_02@1.1.1, SR_03@1.1.1, SR_04@1.1.1, SR_05@2.1.1
+// @implements TC_01@1.1.1, TC_06@1.1.1, TC_11@1.1.1, TC_18@1.1.1, TC_20@1.1.1, TC_37@1.1.1
 func TestAGoodResultHasNoFinding(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -148,7 +148,7 @@ func TestAGoodResultHasNoFinding(t *testing.T) {
 	}
 }
 
-// @verifies SR_01@1.1.1
+// @implements TC_02@1.1.1, TC_03@1.1.1
 func TestEveryCriterionOnce(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -160,7 +160,7 @@ func TestEveryCriterionOnce(t *testing.T) {
 	expect(t, got, "criterion RC_09 is not in")
 }
 
-// @verifies SR_02@1.1.1
+// @implements TC_04@1.1.1, TC_05@1.1.1
 func TestTheVerdictFollowsTheCriteria(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -177,7 +177,20 @@ func TestTheVerdictFollowsTheCriteria(t *testing.T) {
 	expect(t, got, "the verdict is failed, but every criterion passed")
 }
 
-// @verifies SR_03@1.1.1
+// @implements TC_07@1.1.1, TC_09@1.1.1
+func TestAFailedVerdictWithANote(t *testing.T) {
+	got := check(t, `- object_key: RR_01
+  target_ids: [TOOL_03]
+  revision: 'c1'
+  criteria: {RC_01: passed, RC_02: {result: failed, note: unclear}}
+  verdict: failed
+`, history("Claude Opus 5.5", "Claude Opus 5.5"))
+	if len(got) != 0 {
+		t.Errorf("want no finding, got %q", got)
+	}
+}
+
+// @implements TC_08@1.1.1
 func TestAFailedCriterionHasANote(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -188,7 +201,7 @@ func TestAFailedCriterionHasANote(t *testing.T) {
 	expect(t, got, "criterion RC_02 failed with no note")
 }
 
-// @verifies SR_04@1.1.1
+// @implements TC_10@1.1.1
 func TestTheRevisionExists(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -199,7 +212,7 @@ func TestTheRevisionExists(t *testing.T) {
 	expect(t, got, "the revision nope is no commit")
 }
 
-// @verifies SR_05@2.1.1
+// @implements TC_12@1.1.1, TC_13@1.1.1
 func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 	result := `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -219,7 +232,7 @@ func TestTheReviewerIsNotTheAuthor(t *testing.T) {
 	}
 }
 
-// @verifies SR_05@2.1.1
+// @implements TC_12@1.1.1
 func TestASoftwareRequirementOfTheToolsHasAnAuthor(t *testing.T) {
 	git := history("Mathias Fischer")
 	git.files["c1"]["tools/software-requirements.yaml"] = `type: requirements
@@ -237,12 +250,12 @@ requirements:
 	expect(t, got, "the reviewer Mathias Fischer is an author of SR_01")
 }
 
-// @verifies SR_06@1.1.1
+// @implements TC_16@1.1.1
 func TestAValueOtherThanPassedOrFailed(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
   revision: 'c1'
-  criteria: {RC_01: passed, RC_02: pased}
+  criteria: {RC_01: passed, RC_02: todo}
   verdict: passed
 - object_key: RR_02
   target_ids: [TOOL_03]
@@ -256,7 +269,7 @@ func TestAValueOtherThanPassedOrFailed(t *testing.T) {
 	expect(t, got, "the verdict is neither passed nor failed")
 }
 
-// @verifies SR_07@1.1.1
+// @implements TC_19@1.1.1
 func TestTheCriteriaRevisionChangedTheCriteria(t *testing.T) {
 	git := history("Claude Opus 5.5", "Claude Opus 5.5")
 	git.changed = map[string][]string{"reviews/criteria-tool.yaml": {"c0"}}
@@ -265,11 +278,18 @@ func TestTheCriteriaRevisionChangedTheCriteria(t *testing.T) {
   revision: 'c1'
   criteria: {RC_01: passed, RC_02: passed}
   verdict: passed
+- object_key: RR_02
+  target_ids: [TOOL_03]
+  revision: 'c1'
+  criteria: {RC_01: passed, RC_02: passed}
+  verdict: passed
 `, git)
-	expect(t, got, "the criteria revision c1 did not change reviews/criteria-tool.yaml")
+	if n := strings.Count(strings.Join(got, "\n"), "the criteria revision c1 did not change reviews/criteria-tool.yaml"); n != 1 {
+		t.Errorf("want the criteria revision reported once, got %d in %q", n, got)
+	}
 }
 
-// @verifies SR_08@1.1.1
+// @implements TC_21@1.1.1
 func TestTheReviewerIsNotTheAuthorOfADocument(t *testing.T) {
 	result := `- object_key: RR_01
   target_ids: [formats.md]
@@ -288,7 +308,7 @@ func TestTheReviewerIsNotTheAuthorOfADocument(t *testing.T) {
 	}
 }
 
-// @verifies SR_05@2.1.1, SR_08@1.1.1
+// @implements TC_14@1.1.1
 func TestAMergeIsNoAuthorship(t *testing.T) {
 	//	c1 on a branch, written by Claude Code; m1 merges it into a main that changed the file
 	//	as well, so m1 equals neither parent - merged by the reviewer
@@ -311,7 +331,7 @@ func TestAMergeIsNoAuthorship(t *testing.T) {
 	}
 }
 
-// @verifies SR_06@1.1.1
+// @implements TC_17@1.1.1
 func TestAnUnfilledSkeletonIsReported(t *testing.T) {
 	got := check(t, `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -360,7 +380,7 @@ criteria:
 	}
 }
 
-// @verifies SR_84@1.1.1
+// @implements TC_34@1.1.1, TC_35@1.1.1, TC_36@1.1.1
 func TestACompletedReviewHasItsCompletedAt(t *testing.T) {
 	result := `- object_key: RR_01
   target_ids: [TOOL_03]
@@ -371,9 +391,11 @@ func TestACompletedReviewHasItsCompletedAt(t *testing.T) {
 	git := history("Claude Opus 5.5", "Claude Opus 5.5")
 
 	expect(t, checkRecord(t, "status: completed\n", result, git), "completed, and no completed_at")
-	expect(t, checkRecord(t, "status: completed\ncompleted_at: '2026-10-25T13:00:00+01:00'\n", result, git),
-		"the completed_at 2026-10-25T13:00:00+01:00 is before the created_at 2026-10-25T13:30:00+01:00")
-	if got := checkRecord(t, "status: completed\ncompleted_at: '2026-10-25T14:00:00+01:00'\n", result, git); len(got) != 0 {
-		t.Errorf("want no finding, got %q", got)
+	expect(t, checkRecord(t, "status: completed\ncompleted_at: '2026-10-25T13:29:59+01:00'\n", result, git),
+		"the completed_at 2026-10-25T13:29:59+01:00 is before the created_at 2026-10-25T13:30:00+01:00")
+	for _, at := range []string{"2026-10-25T13:30:00+01:00", "2026-10-25T14:00:00+01:00"} {
+		if got := checkRecord(t, "status: completed\ncompleted_at: '"+at+"'\n", result, git); len(got) != 0 {
+			t.Errorf("completed_at %s: want no finding, got %q", at, got)
+		}
 	}
 }
