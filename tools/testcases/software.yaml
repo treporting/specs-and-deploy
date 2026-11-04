@@ -765,3 +765,285 @@ testcases:
   target_ids: [SR_19@1.1.1]
   status: approved
   verification_method: [review]
+- object_key: TC_97
+  object_version: '1.1.1'
+  object_text: 'a tag whose documents.yaml names two documents: pdf writes two PDFs from their
+    Markdown at that tag, each named after its path with .pdf'
+  design_technique: requirements-based testing
+  target_ids: [SR_68@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_98
+  object_version: '1.1.1'
+  object_text: 'a Markdown file that documents.yaml of the tag does not name: pdf writes no PDF of
+    it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_68@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_99
+  object_version: '1.1.1'
+  object_text: 'devops.md at 2.1.1, approved in documents.yaml of the tag, and a later commit that
+    changed another file: the footer of its PDF shows the path, 2.1.1, the last commit that changed
+    devops.md, and approved'
+  design_technique: requirements-based testing
+  target_ids: [SR_71@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_100
+  object_version: '1.1.1'
+  object_text: 'a tag whose documents.yaml names two documents: index.pdf lists both, each with its
+    version, its revision and its status'
+  design_technique: requirements-based testing
+  target_ids: [SR_72@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_101
+  object_version: '1.1.1'
+  object_text: 'pdf run on the tag v1.0.0 of the repo specs-and-deploy: it packs the PDFs and
+    index.pdf in specs-and-deploy-v1.0.0-documents.zip'
+  design_technique: requirements-based testing
+  target_ids: [SR_73@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_102
+  object_version: '1.1.1'
+  object_text: 'a Go module that go list -deps names for the commands: sbom lists it with its
+    version, the licence of its LICENSE file in the module cache, and the PURL
+    pkg:golang/<path>@<version>'
+  design_technique: requirements-based testing
+  target_ids: [SR_36@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_103
+  object_version: '1.1.1'
+  object_text: 'the package of the subsystem itself among what go list -deps names: sbom lists it
+    not as a Go module'
+  design_technique: equivalence partitioning
+  target_ids: [SR_36@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_104
+  object_version: '1.1.1'
+  object_text: 'a package of package-lock.json not marked dev: sbom lists it with its version, its
+    licence and the PURL pkg:npm/<name>@<version>'
+  design_technique: equivalence partitioning
+  target_ids: [SR_37@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_105
+  object_version: '1.1.1'
+  object_text: 'a package of package-lock.json marked dev: sbom does not list it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_37@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_106
+  object_version: '1.1.1'
+  object_text: 'a package of /lib/apk/db/installed in the last stage of an image: sbom lists it with
+    its version, its licence and the PURL pkg:apk/alpine/<name>@<version>'
+  design_technique: equivalence partitioning
+  target_ids: [SR_38@1.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_107
+  object_version: '1.1.1'
+  object_text: 'a package installed only in an earlier stage of the build of an image: sbom does not
+    list it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_38@1.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_108
+  object_version: '1.1.1'
+  object_text: 'sbom run in the repo of a subsystem: it writes sbom.md in the root of the repo'
+  design_technique: requirements-based testing
+  target_ids: [SR_39@1.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_109
+  object_version: '1.1.1'
+  object_text: 'sbom.md at 2.1.1 in documents.yaml, the baseline v1.2.0 and the ticket 42: sbom adds
+    a row with 3.1.1, the day it runs, v1.2.0, #42 and the tool with its version'
+  design_technique: equivalence partitioning
+  target_ids: [SR_40@3.3.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_110
+  object_version: '1.1.1'
+  object_text: 'no version of sbom.md in documents.yaml: sbom adds a row with the version 1.1.1'
+  design_technique: equivalence partitioning
+  target_ids: [SR_40@3.3.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_111
+  object_version: '1.1.1'
+  object_text: 'three packages: sbom lists them in one table with the columns PURL, name, version
+    and licence, sorted by PURL'
+  design_technique: requirements-based testing
+  target_ids: [SR_41@1.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_112
+  object_version: '1.1.1'
+  object_text: 'sbom writes sbom.md: it ends with the section Open, then the section Change history'
+  design_technique: requirements-based testing
+  target_ids: [SR_42@1.2.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_113
+  object_version: '1.1.1'
+  object_text: 'a package whose LICENSE file is the MIT licence: sbom names its licence MIT'
+  design_technique: equivalence partitioning
+  target_ids: [SR_43@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_114
+  object_version: '1.1.1'
+  object_text: 'a package with two licences, Apache-2.0 and MIT: sbom names both joined by AND'
+  design_technique: equivalence partitioning
+  target_ids: [SR_43@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_115
+  object_version: '1.1.1'
+  object_text: 'a package whose licence text is not recognized: sbom names its licence unknown'
+  design_technique: equivalence partitioning
+  target_ids: [SR_43@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_116
+  object_version: '1.1.1'
+  object_text: 'commands built with Go 1.23.4: sbom lists the standard library with the version
+    1.23.4, its licence and the PURL pkg:golang/stdlib@1.23.4'
+  design_technique: requirements-based testing
+  target_ids: [SR_44@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_117
+  object_version: '1.1.1'
+  object_text: 'a package whose licence is unknown: sbom lists its PURL in the section Open'
+  design_technique: equivalence partitioning
+  target_ids: [SR_45@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_118
+  object_version: '1.1.1'
+  object_text: 'no package whose licence is unknown: sbom writes <empty> in the section Open'
+  design_technique: equivalence partitioning
+  target_ids: [SR_45@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_119
+  object_version: '1.1.1'
+  object_text: 'the repo specs-and-deploy at the baseline v1.2.0: sbom lists it with the version
+    v1.2.0, the licence of the LICENSE file in its root, and the PURL
+    pkg:github/treporting/specs-and-deploy@v1.2.0'
+  design_technique: requirements-based testing
+  target_ids: [SR_46@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_120
+  object_version: '1.1.1'
+  object_text: 'an entry of sbom.md in documents.yaml: sbom sets its version to that of the new row,
+    its object_hash to git hash-object of sbom.md, its status to completed and its verification
+    method to [generated]'
+  design_technique: equivalence partitioning
+  target_ids: [SR_59@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_121
+  object_version: '1.1.1'
+  object_text: 'no entry of sbom.md in documents.yaml: sbom adds one of type document, with the
+    version, the hash, the status completed and the verification method [generated]'
+  design_technique: equivalence partitioning
+  target_ids: [SR_59@2.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_122
+  object_version: '1.1.1'
+  object_text: 'sbom -check where the packages equal the table of sbom.md: it passes and writes
+    nothing'
+  design_technique: equivalence partitioning
+  target_ids: [SR_66@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_123
+  object_version: '1.1.1'
+  object_text: 'sbom -check where one package has another version than the table of sbom.md: it
+    fails, names that package, and writes nothing'
+  design_technique: equivalence partitioning
+  target_ids: [SR_66@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_124
+  object_version: '1.1.1'
+  object_text: 'a package with a PURL of the type golang and the licence MIT: licencecheck passes
+    it'
+  design_technique: decision table testing
+  target_ids: [SR_47@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_125
+  object_version: '1.1.1'
+  object_text: 'a package with a PURL of the type npm and the licence GPL-3.0: licencecheck fails on
+    it'
+  design_technique: decision table testing
+  target_ids: [SR_47@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_126
+  object_version: '1.1.1'
+  object_text: 'a package with a PURL of the type github and the licence MIT AND GPL-3.0:
+    licencecheck fails on it'
+  design_technique: decision table testing
+  target_ids: [SR_47@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_127
+  object_version: '1.1.1'
+  object_text: 'a package with a PURL of the type golang and the licence MIT OR GPL-3.0:
+    licencecheck passes it'
+  design_technique: decision table testing
+  target_ids: [SR_47@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_128
+  object_version: '1.1.1'
+  object_text: 'a package with a PURL of the type apk and the licence unknown: licencecheck fails on
+    it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_48@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_129
+  object_version: '1.1.1'
+  object_text: 'a package with a PURL of the type apk and the licence GPL-2.0-only: licencecheck
+    passes it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_48@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_130
+  object_version: '1.1.1'
+  object_text: 'a package unknown in sbom.md whose PURL licences_assessed.yaml names with MIT and a
+    reason: licencecheck takes MIT and passes it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_49@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_131
+  object_version: '1.1.1'
+  object_text: 'a package unknown in sbom.md whose PURL licences_assessed.yaml does not name:
+    licencecheck takes unknown'
+  design_technique: equivalence partitioning
+  target_ids: [SR_49@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_132
+  object_version: '1.1.1'
+  object_text: 'a package that fails: licencecheck names it with its PURL and its licence'
+  design_technique: requirements-based testing
+  target_ids: [SR_50@1.1.1]
+  status: draft
+  verification_method: [review]
