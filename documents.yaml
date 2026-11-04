@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '30.1.1'
   object_hash: '9433c42'
-  status: draft
+  status: review
   verification_method: [review]
 - name: reviews/README.md
   type: document
