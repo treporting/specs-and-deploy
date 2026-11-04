@@ -45,7 +45,7 @@ const list = `[{"id": 7, "name": "main is protected"}]`
 // onGitHub is the ruleset as GitHub answers it: the content of the file, with what GitHub sets itself.
 func onGitHub(content string) string {
 	return `{"id": 7, "source": "o/r", "created_at": "2026-10-23T12:42:42Z", "updated_at": "2026-10-26T18:00:00Z",
-	"_links": {"self": {"href": "x"}}, ` + strings.TrimPrefix(strings.TrimSpace(content), "{")
+	"_links": {"self": {"href": "x"}}, "bypass_actors": [{"actor_id": 5, "actor_type": "RepositoryRole"}], ` + strings.TrimPrefix(strings.TrimSpace(content), "{")
 }
 
 func check(t *testing.T, c Client) []string {
@@ -61,14 +61,14 @@ func check(t *testing.T, c Client) []string {
 	return out
 }
 
-// @verifies SR_21@1.1.1
+// @implements TC_82@1.1.1
 func TestTheSameRuleset(t *testing.T) {
 	if got := check(t, github(t, 200, list, onGitHub(file))); len(got) != 0 {
 		t.Errorf("want no finding, got %q", got)
 	}
 }
 
-// @verifies SR_21@1.1.1
+// @implements TC_83@1.1.1
 func TestARequiredCheckMissingOnGitHub(t *testing.T) {
 	changed := strings.Replace(file, `,
       {"context": "schemacheck", "integration_id": 15368}`, "", 1)
@@ -78,7 +78,16 @@ func TestARequiredCheckMissingOnGitHub(t *testing.T) {
 	}
 }
 
-// @verifies SR_21@1.1.1
+// @implements TC_85@1.1.1
+func TestAnotherEnforcementOnGitHub(t *testing.T) {
+	disabled := strings.Replace(file, `"enforcement": "active"`, `"enforcement": "disabled"`, 1)
+	got := check(t, github(t, 200, list, onGitHub(disabled)))
+	if len(got) != 1 || !strings.HasPrefix(got[0], "enforcement") {
+		t.Errorf("want one finding on enforcement, got %q", got)
+	}
+}
+
+// @implements TC_84@1.1.1
 func TestARuleOnlyOnGitHub(t *testing.T) {
 	more := strings.Replace(file, `{"type": "deletion"},`, `{"type": "deletion"}, {"type": "non_fast_forward"},`, 1)
 	got := check(t, github(t, 200, list, onGitHub(more)))
@@ -87,7 +96,7 @@ func TestARuleOnlyOnGitHub(t *testing.T) {
 	}
 }
 
-// @verifies SR_22@1.1.1
+// @implements TC_86@1.1.1
 func TestARulesetThatCannotBeRead(t *testing.T) {
 	got := check(t, github(t, 500, list, onGitHub(file)))
 	if len(got) != 1 || !strings.Contains(got[0], "cannot be read from GitHub: status 500") {
@@ -95,7 +104,7 @@ func TestARulesetThatCannotBeRead(t *testing.T) {
 	}
 }
 
-// @verifies SR_22@1.1.1
+// @implements TC_87@1.1.1
 func TestNoRulesetOfThatName(t *testing.T) {
 	got := check(t, github(t, 200, `[{"id": 7, "name": "main protected"}]`, onGitHub(file)))
 	if len(got) != 1 || got[0] != `no ruleset on GitHub is named "main is protected"` {

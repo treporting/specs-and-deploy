@@ -60,7 +60,7 @@ rules:
   status: approved
 `
 
-// @verifies SR_28@1.1.1
+// @implements TC_88@1.1.1
 func TestApprovedUplinksPass(t *testing.T) {
 	got, approved := messages(t, files{
 		"requirements/tool-requirements.yaml": tools,
@@ -80,7 +80,7 @@ requirements:
 	}
 }
 
-// @verifies SR_28@1.1.1
+// @implements TC_89@1.1.1
 func TestUplinkNotApprovedIsAFinding(t *testing.T) {
 	got, _ := messages(t, files{
 		"requirements/tool-requirements.yaml": tools,
@@ -103,7 +103,7 @@ requirements:
 // A requirement that is not approved may name what it likes: only the state of approved ones is
 // checked.
 //
-// @verifies SR_28@1.1.1
+// @implements TC_90@1.1.1
 func TestDraftIsNotChecked(t *testing.T) {
 	got, approved := messages(t, files{
 		"requirements/tool-requirements.yaml": tools,
@@ -111,7 +111,7 @@ func TestDraftIsNotChecked(t *testing.T) {
 requirements:
 - object_key: SR_01
   source_ids: [TOOL_02@1.1.1]
-  status: review
+  status: draft
 `,
 	})
 	if len(got) != 0 || approved != 1 {
