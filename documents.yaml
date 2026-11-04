@@ -38,8 +38,8 @@ documents:
 - name: formats.md
   type: document
   object_version: '27.1.1'
-  object_hash: 'b042c40'
-  status: review
+  object_hash: 'ed04155'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   type: document
