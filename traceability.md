@@ -423,13 +423,55 @@ procedure, test result. A test specification is a document, not a kind of object
   verification cases and procedures, ECSS for test cases and test procedures. ASPICE and
   ISO 26262 ask for a specification and results alone
 - a verdict belongs to a test case, wherever it is written: in a test specification, or as a
-  function in a script. So the results hang on the test cases
+  function in a script. So a result reaches its test case: directly where a person carries the
+  case out, through its test procedure where it runs automated
 - the split of case and procedure is the practice when testing is let as a work package: the
   customer writes the test cases and gets their results, the contractor delivers the procedures
 
 **Rejected**: test specification and test implementation as the names of two kinds of object. No
 standard asks for both under those names; in ISO/IEC/IEEE 29119 the test implementation is an
 activity, and the test specification the document that holds the test cases.
+
+**Decision**: a test case and a test procedure are both a test. Three kinds of link join the parts:
+
+**Table links of a test** - from the child to its parent
+
+| Link | From | To | Written as | Mapping |
+|---|---|---|---|---|
+| verifies | a test | a requirement | `target_ids` of a test case; `@verifies` of a test procedure | n : m |
+| implements | a test procedure | a test case | `@implements` | n : m |
+| result of | a test result | a test | the run, automated or by hand | n : 1 |
+
+Every link is kept in both directions. So three chains lead from a requirement to a result:
+
+**Table chains** - the parts each way of testing has
+
+| Way | Requirement | Test case | Test procedure | Test result |
+|---|---|---|---|---|
+| automated, with a test case | x | x | x | x |
+| automated, on a level without test cases | x | | x | x |
+| by hand | x | x | | x |
+
+No way is laid down. A requirement whose verification method holds `test` is covered where a test
+verifies it; where none does, a test is missing. A test case is carried out where it has a result
+with a verdict; where it has none, its run is missing.
+
+**Why**:
+
+- a requirement has one or more test cases, a test case none or more test procedures, and one
+  procedure can carry several cases. Only a link from the procedure to its cases keeps which
+  result belongs to which case
+- a level without test cases and a test by hand need no stand-in object: each link says one
+  thing, and the test is the one target of `verifies` and `result of`
+
+**Rejected**:
+
+- one fixed chain, requirement → test case → test procedure → test result, with a stand-in
+  object where a part is missing - every count would have to leave the stand-ins out
+- two branches, requirement → test case and requirement → test procedure → test result - with
+  several cases and several procedures on one requirement, it is lost which procedure carries
+  which case
+- a result only on the test procedure - a test by hand would have no place for its result
 
 ## The version in the schema
 
@@ -677,3 +719,4 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 11.1.1 | 2026-11-02 | The parts of the version: y counts a link added or removed | #413 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 12.1.1 | 2026-11-03 | Tests | #155 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-11-03 | Tests: test case, test procedure and test result, after ISO/IEC/IEEE 29119 | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 14.1.1 | 2026-11-04 | Tests: the links of a test, the ways of testing, when a test is missing | #439 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
