@@ -13,8 +13,14 @@ const Name = "sbom.md"
 
 // Version answers the version of sbom.md in a documents.yaml, and nothing where it has no entry.
 func Version(documentsYAML []byte) string {
+	return VersionOf(documentsYAML, Name)
+}
+
+// VersionOf answers the version of the document name in a documents.yaml, and nothing where it has
+// no entry.
+func VersionOf(documentsYAML []byte, name string) string {
 	lines := strings.Split(string(documentsYAML), "\n")
-	start, end := entry(lines)
+	start, end := entry(lines, name)
 	for _, line := range lines[start:end] {
 		if value, ok := strings.CutPrefix(line, "  object_version: "); ok {
 			return strings.Trim(value, `'"`)
@@ -33,11 +39,11 @@ func Next(version string) (string, error) {
 	}
 	parts := strings.Split(version, ".")
 	if len(parts) != 3 {
-		return "", fmt.Errorf("version %q of %s is not x.y.z", version, Name)
+		return "", fmt.Errorf("version %q is not x.y.z", version)
 	}
 	x, err := strconv.Atoi(parts[0])
 	if err != nil {
-		return "", fmt.Errorf("version %q of %s is not x.y.z", version, Name)
+		return "", fmt.Errorf("version %q is not x.y.z", version)
 	}
 	return strconv.Itoa(x+1) + "." + parts[1] + "." + parts[2], nil
 }
@@ -58,8 +64,16 @@ func Hash(content []byte) string {
 //
 // @implements SR_59@2.1.1
 func Entry(documentsYAML []byte, version, hash string) []byte {
+	return EntryOf(documentsYAML, Name, version, hash)
+}
+
+// EntryOf answers the documents.yaml with the entry of the document name set as Entry sets the one
+// of sbom.md.
+//
+// @implements SR_98@2.1.1
+func EntryOf(documentsYAML []byte, name, version, hash string) []byte {
 	block := []string{
-		"- name: " + Name,
+		"- name: " + name,
 		"  type: document",
 		"  object_version: '" + version + "'",
 		"  object_hash: '" + hash + "'",
@@ -68,7 +82,7 @@ func Entry(documentsYAML []byte, version, hash string) []byte {
 	}
 	text := strings.TrimRight(string(documentsYAML), "\n")
 	lines := strings.Split(text, "\n")
-	start, end := entry(lines)
+	start, end := entry(lines, name)
 	if start == end {
 		return []byte(strings.Join(append(lines, block...), "\n") + "\n")
 	}
@@ -92,11 +106,11 @@ func Entry(documentsYAML []byte, version, hash string) []byte {
 	return []byte(strings.Join(out, "\n") + "\n")
 }
 
-// entry answers the lines of the entry of sbom.md, from its line "- name:" to the line before the
-// next entry; start equals end where there is none.
-func entry(lines []string) (start, end int) {
+// entry answers the lines of the entry of the document name, from its line "- name:" to the line
+// before the next entry; start equals end where there is none.
+func entry(lines []string, name string) (start, end int) {
 	for i, line := range lines {
-		if strings.TrimSpace(line) != "- name: "+Name {
+		if strings.TrimSpace(line) != "- name: "+name {
 			continue
 		}
 		end = i + 1

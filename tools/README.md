@@ -608,6 +608,33 @@ installed:
 go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 ```
 
+## testreport
+
+Writes the test report of a test level as `testreports/<test level>.md` beside `testcases/`
+(TOOL_34; SR_88 to SR_98 in [software-requirements.yaml](software-requirements.yaml)), from the
+junit.xml of a run of the tests. A test that fails does not fail it; the run of the tests does.
+
+```bash
+cd tools
+go install gotest.tools/gotestsum@v1.12.3
+gotestsum --junitfile junit-go.xml -- -tags integration ./...
+go build -o testreport ./testreport/cmd/testreport
+./testreport -root .. -dir tools -level r5tc -junit junit-go.xml \
+  -made-by "gotestsum --junitfile junit-go.xml -- -tags integration ./..." -runtime "Go $(go env GOVERSION)"
+```
+
+The code is the component `testreport`: the package `testreport/write` and the command
+`testreport/cmd/testreport`. It uses the entry in `documents.yaml` of the component `sbom`.
+
+**Decision**: a test procedure is a test function of Go, or an `it` or `test` of Vitest, with an
+`@implements` or an `@verifies` in the comment above it. Its result in the junit.xml is found by its
+package and name for Go, by its file and the end of its name for Vitest.
+
+**Why**: gotestsum names a test by the import path of its package; Vitest by its file, relative to
+its own root, and by the names of its describe blocks before its own.
+
+**Rejected**: `go test -json` as input - Vitest does not write it; JUnit XML is written by both.
+
 ## Open
 
 - `treporting = 1_tools` - **Checks of the code repos**: not set up yet. They are to call
@@ -646,3 +673,4 @@ go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 | 27.1.1 | 2026-11-03 | approvalcheck: an open review result | #429 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 28.1.1 | 2026-11-03 | sbom; approvalcheck: a generated document is a completed record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 29.1.1 | 2026-11-03 | linkcheck: the targets of a test case | #449 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 30.1.1 | 2026-11-04 | testreport | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
