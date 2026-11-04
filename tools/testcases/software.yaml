@@ -694,3 +694,74 @@ testcases:
   target_ids: [SR_22@1.1.1]
   status: draft
   verification_method: [review]
+- object_key: TC_88
+  object_version: '1.1.1'
+  object_text: 'an approved requirement whose source_ids name an uplink that is approved:
+    uplinkcheck reports no uplink'
+  design_technique: decision table testing
+  target_ids: [SR_28@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_89
+  object_version: '1.1.1'
+  object_text: 'an approved requirement whose source_ids name an uplink with the status draft:
+    uplinkcheck reports the uplink'
+  design_technique: decision table testing
+  target_ids: [SR_28@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_90
+  object_version: '1.1.1'
+  object_text: 'a requirement with the status draft whose source_ids name an uplink with the status
+    draft: uplinkcheck reports no uplink'
+  design_technique: decision table testing
+  target_ids: [SR_28@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_91
+  object_version: '1.1.1'
+  object_text: 'a YAML file of our data that matches the schema its field schema names: schemacheck
+    reports no place'
+  design_technique: equivalence partitioning
+  target_ids: [SR_18@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_92
+  object_version: '1.1.1'
+  object_text: 'a YAML file of our data with two fields of a wrong type: schemacheck reports each
+    place, with the file and the path within it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_18@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_93
+  object_version: '1.1.1'
+  object_text: 'a YAML file of our data with a field its schema does not know: schemacheck reports
+    the place'
+  design_technique: equivalence partitioning
+  target_ids: [SR_18@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_94
+  object_version: '1.1.1'
+  object_text: 'a workflow of GitHub in .github/ that names no schema: schemacheck reports nothing
+    of it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_18@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_95
+  object_version: '1.1.1'
+  object_text: 'a YAML file of our data that names no schema: schemacheck reports the file'
+  design_technique: equivalence partitioning
+  target_ids: [SR_19@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_96
+  object_version: '1.1.1'
+  object_text: 'a YAML file of our data whose field schema names a schema that is not there:
+    schemacheck reports the file'
+  design_technique: equivalence partitioning
+  target_ids: [SR_19@1.1.1]
+  status: draft
+  verification_method: [review]
