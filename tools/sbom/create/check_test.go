@@ -40,7 +40,7 @@ func TestLabelOfTheLastRow(t *testing.T) {
 	}
 }
 
-// @verifies SR_66@1.1.1
+// @implements TC_123@1.1.1
 func TestDifferNamesEachPackageThatDiffers(t *testing.T) {
 	if got := Differ(listed, listed); len(got) != 0 {
 		t.Errorf("same lists: %q", got)

@@ -45,9 +45,7 @@ func TestGoEnvNamesTheVersionOfGo(t *testing.T) {
 	}
 }
 
-// @verifies SR_39@1.2.1
-// @verifies SR_40@3.3.1
-// @verifies SR_59@2.1.1
+// @implements TC_108@1.1.1
 func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	bin := filepath.Join(t.TempDir(), "sbom")
 	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/sbom").CombinedOutput(); err != nil {
@@ -93,7 +91,7 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	}
 }
 
-// @verifies SR_66@1.1.1
+// @implements TC_122@1.1.1, TC_123@1.1.1
 func TestCheckFailsWhereSbomMDDoesNotListWhatIsDelivered(t *testing.T) {
 	bin := filepath.Join(t.TempDir(), "sbom")
 	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/sbom").CombinedOutput(); err != nil {

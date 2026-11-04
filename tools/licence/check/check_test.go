@@ -82,7 +82,7 @@ func TestFits(t *testing.T) {
 	}
 }
 
-// @verifies SR_49@1.1.1
+// @implements TC_125@1.1.1, TC_130@1.1.1
 func TestAssessedLicenceTakesThePlaceOfTheOneInSbomMD(t *testing.T) {
 	assessed, err := ReadAssessed([]byte(`
 - purl: pkg:apk/alpine/nginx@1.30.5-r1
@@ -119,9 +119,30 @@ func TestAssessedEntryNeedsPURLLicenceAndReason(t *testing.T) {
 	}
 }
 
-// @verifies SR_50@1.1.1
+// @implements TC_132@1.1.1
 func TestFailureNamesPURLAndLicence(t *testing.T) {
 	if got := (Failure{PURL: "pkg:npm/words@1.0.0", Licence: "unknown"}).String(); got != "pkg:npm/words@1.0.0 unknown" {
 		t.Errorf("got %q", got)
+	}
+}
+
+// @implements TC_124@1.1.1, TC_125@1.1.1, TC_126@1.1.1, TC_127@1.1.1, TC_128@1.1.1, TC_129@1.1.1, TC_131@1.1.1
+func TestEachTypeOfPURLWithItsLicence(t *testing.T) {
+	assessed := map[string]string{"pkg:apk/alpine/other@1.0.0": "MIT"}
+	for _, c := range []struct {
+		purl, licence string
+		fails         bool
+	}{
+		{"pkg:golang/example.org/a@v1.0.0", "MIT", false},
+		{"pkg:npm/b@1.0.0", "GPL-3.0-only", true},
+		{"pkg:github/treporting/c@1.0.0", "MIT AND GPL-3.0-only", true},
+		{"pkg:golang/example.org/d@v1.0.0", "MIT OR GPL-3.0-only", false},
+		{"pkg:apk/alpine/e@1.0.0", "unknown", true},
+		{"pkg:apk/alpine/f@1.0.0", "GPL-2.0-only", false},
+	} {
+		got := Check([]Package{{PURL: c.purl, Licence: c.licence}}, assessed)
+		if fails := len(got) == 1 && got[0] == (Failure{PURL: c.purl, Licence: c.licence}); fails != c.fails || (!c.fails && len(got) != 0) {
+			t.Errorf("%s %s: got %+v, want fails %v", c.purl, c.licence, got, c.fails)
+		}
 	}
 }
