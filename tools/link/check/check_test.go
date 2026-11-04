@@ -54,7 +54,7 @@ requirements:
   object_version: '4.1.1'
 `
 
-// @verifies SR_32@1.1.1
+// @implements TC_59@1.1.1, TC_60@1.1.1
 func TestOnlyAnotherXIsReported(t *testing.T) {
 	got, compared, err := files{
 		"requirements/tool-requirements.yaml": tools,
@@ -76,7 +76,7 @@ requirements:
 	}
 }
 
-// @verifies SR_32@1.1.1
+// @implements TC_61@1.1.1, TC_62@1.1.1
 func TestTheAllocationAndControlsAreCompared(t *testing.T) {
 	got, compared, err := files{
 		"requirements/system-requirements.yaml": `type: requirements
@@ -115,7 +115,7 @@ controls:
 	}
 }
 
-// @verifies SR_87@1.1.1
+// @implements TC_67@1.1.1, TC_68@1.1.1
 func TestATargetOfATestCaseIsCompared(t *testing.T) {
 	got, compared, err := files{
 		"tools/software-requirements.yaml": `type: requirements
@@ -127,6 +127,8 @@ requirements:
 testcases:
 - object_key: TC_01
   target_ids: [SR_01@1.1.1]
+- object_key: TC_02
+  target_ids: [SR_01@2.2.1]
 `,
 	}.links()
 	if err != nil {
@@ -136,8 +138,8 @@ testcases:
 	if !reflect.DeepEqual(lines(got), want) {
 		t.Errorf("findings %q, want %q", lines(got), want)
 	}
-	if compared != 1 {
-		t.Errorf("compared %d, want 1", compared)
+	if compared != 2 {
+		t.Errorf("compared %d, want 2", compared)
 	}
 }
 
@@ -161,11 +163,11 @@ requirements:
 	}
 }
 
-// @verifies SR_33@2.1.1
+// @implements TC_64@1.1.1, TC_65@1.1.1
 func TestAnAnnotationWithAnotherXIsReported(t *testing.T) {
 	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, files{"requirements/tool-requirements.yaml": tools}.index(), []annotation.Annotation{
 		{File: "a.go", Line: 3, Kind: "implements", IDs: []string{"TOOL_01", "TOOL_09"}, Versions: []string{"1.1.1", "3.1.1"}},
-		{File: "a_test.go", Line: 7, Kind: "verifies", IDs: []string{"TOOL_09"}, Versions: []string{"4.1.1"}},
+		{File: "a_test.go", Line: 7, Kind: "verifies", IDs: []string{"TOOL_09"}, Versions: []string{"4.1.3"}},
 		{File: "b.go", Line: 1, Kind: "implements", IDs: []string{"TOOL_09"}, Versions: []string{""}},
 	})
 	want := []string{"a.go:3 @implements names TOOL_09@3.1.1: its object has 4.1.1"}
@@ -177,12 +179,17 @@ func TestAnAnnotationWithAnotherXIsReported(t *testing.T) {
 	}
 }
 
-// @verifies SR_33@2.1.1
+// @implements TC_66@1.1.1
 func TestARefinesWithAnotherXIsReported(t *testing.T) {
-	got, compared := Annotations(files{"requirements/tool-requirements.yaml": tools}.read, files{"requirements/tool-requirements.yaml": tools}.index(), []annotation.Annotation{
-		{File: "schemas/a.schema.json", Line: 4, Kind: "refines", IDs: []string{"TOOL_09"}, Versions: []string{"3.1.1"}},
+	architecture := files{"architecture/system-architecture.yaml": `type: architecture
+elements:
+- object_key: ARC_22
+  object_version: '3.1.1'
+`}
+	got, compared := Annotations(architecture.read, architecture.index(), []annotation.Annotation{
+		{File: "schemas/a.schema.json", Line: 4, Kind: "refines", IDs: []string{"ARC_22"}, Versions: []string{"2.1.1"}},
 	})
-	want := []string{"schemas/a.schema.json:4 @refines names TOOL_09@3.1.1: its object has 4.1.1"}
+	want := []string{"schemas/a.schema.json:4 @refines names ARC_22@2.1.1: its object has 3.1.1"}
 	if !reflect.DeepEqual(lines(got), want) || compared != 1 {
 		t.Errorf("findings %q, compared %d, want %q and 1", lines(got), compared, want)
 	}
@@ -190,7 +197,7 @@ func TestARefinesWithAnotherXIsReported(t *testing.T) {
 
 // A link to a regulatory requirement is compared with the version in the file of its module.
 //
-// @verifies SR_32@1.1.1
+// @implements TC_63@1.1.1
 func TestALinkToAModuleIsCompared(t *testing.T) {
 	got, compared, err := files{
 		"regulatory/DO178C.yaml": `type: normative
