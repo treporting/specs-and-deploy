@@ -52,6 +52,7 @@ type object struct {
 	content any    // what x counts: the attributes for x, or the blob hash of a document
 	review  bool   // whether it needs a review
 	hash    string // object_hash of a document
+	entry   entry  // the entry of a document in documents.yaml
 }
 
 // Check checks the approved objects of the repo at root. Where base is given, it checks only the
@@ -293,6 +294,7 @@ func approvedDocuments(read review.Read) ([]object, error) {
 			content: blobHash(content),
 			review:  noCriteria == nil && slices.Contains(e.VerificationMethod, "review"),
 			hash:    e.ObjectHash,
+			entry:   e,
 		})
 	}
 	return objects, nil
@@ -368,8 +370,7 @@ func changedDocuments(docs []object, changed []string, base string, git Git) ([]
 	var kept []object
 	for _, o := range docs {
 		b, ok := before[o.key]
-		entryChanged := slices.Contains(changed, documents) &&
-			(!ok || !checked(b.Status) || b.ObjectHash != o.hash || strings.SplitN(b.ObjectVersion, ".", 2)[0] != o.x)
+		entryChanged := slices.Contains(changed, documents) && (!ok || !reflect.DeepEqual(b, o.entry))
 		if slices.Contains(changed, o.file) || entryChanged {
 			kept = append(kept, o)
 		}

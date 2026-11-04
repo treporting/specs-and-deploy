@@ -39,7 +39,7 @@ func write(t *testing.T, root, path, content string) {
 // requirement of the same file is changed by the reviewer alone - which must not make the reviewer
 // an author of the first.
 //
-// @verifies SR_05@2.1.1
+// @implements TC_15@1.1.1
 func TestTheCheckOnAHistoryOfGit(t *testing.T) {
 
 	root := t.TempDir()
@@ -133,7 +133,7 @@ results:
 // Two pull requests change one document from the same main; the reviewer merges both, so the second
 // merge equals neither parent. Claude Code wrote every line, and the reviewer is no author.
 //
-// @verifies SR_08@1.1.1
+// @implements TC_22@1.1.1
 func TestTwoMergesOfOneDocument(t *testing.T) {
 
 	root := t.TempDir()
