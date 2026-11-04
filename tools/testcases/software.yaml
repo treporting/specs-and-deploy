@@ -471,7 +471,7 @@ testcases:
     reports the link'
   design_technique: equivalence partitioning
   target_ids: [SR_32@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_60
   object_version: '1.1.1'
@@ -479,7 +479,7 @@ testcases:
     linkcheck reports no link'
   design_technique: equivalence partitioning
   target_ids: [SR_32@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_61
   object_version: '1.1.1'
@@ -487,7 +487,7 @@ testcases:
     reports the entry'
   design_technique: equivalence partitioning
   target_ids: [SR_32@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_62
   object_version: '1.1.1'
@@ -495,7 +495,7 @@ testcases:
     reports the entry'
   design_technique: equivalence partitioning
   target_ids: [SR_32@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_63
   object_version: '1.1.1'
@@ -503,7 +503,7 @@ testcases:
     file of its module holds: linkcheck reports the link'
   design_technique: equivalence partitioning
   target_ids: [SR_32@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_64
   object_version: '1.1.1'
@@ -511,7 +511,7 @@ testcases:
     reports the annotation'
   design_technique: equivalence partitioning
   target_ids: [SR_33@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_65
   object_version: '1.1.1'
@@ -519,7 +519,7 @@ testcases:
     no annotation'
   design_technique: equivalence partitioning
   target_ids: [SR_33@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_66
   object_version: '1.1.1'
@@ -527,7 +527,7 @@ testcases:
     it has: linkcheck reports the annotation'
   design_technique: equivalence partitioning
   target_ids: [SR_33@2.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_67
   object_version: '1.1.1'
@@ -535,7 +535,7 @@ testcases:
     reports the target'
   design_technique: equivalence partitioning
   target_ids: [SR_87@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_68
   object_version: '1.1.1'
@@ -543,5 +543,5 @@ testcases:
     reports no target'
   design_technique: equivalence partitioning
   target_ids: [SR_87@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
