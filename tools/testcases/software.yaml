@@ -852,7 +852,7 @@ testcases:
     list it'
   design_technique: equivalence partitioning
   target_ids: [SR_38@1.2.1]
-  status: approved
+  status: obsolete
   verification_method: [review]
 - object_key: TC_108
   object_version: '1.1.1'
