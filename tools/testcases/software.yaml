@@ -646,3 +646,51 @@ testcases:
   target_ids: [SR_35@1.1.1]
   status: approved
   verification_method: [review]
+- object_key: TC_82
+  object_version: '1.1.1'
+  object_text: 'a ruleset on GitHub that equals .github/rulesets/main.json in target, enforcement,
+    conditions and rules, with its own id, times, links and bypass_actors: rulesetcheck reports no
+    difference'
+  design_technique: equivalence partitioning
+  target_ids: [SR_21@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_83
+  object_version: '1.1.1'
+  object_text: 'a required check in .github/rulesets/main.json that the ruleset on GitHub lacks:
+    rulesetcheck reports the difference in the rules'
+  design_technique: equivalence partitioning
+  target_ids: [SR_21@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_84
+  object_version: '1.1.1'
+  object_text: 'a rule on GitHub that .github/rulesets/main.json does not hold: rulesetcheck reports
+    the difference in the rules'
+  design_technique: equivalence partitioning
+  target_ids: [SR_21@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_85
+  object_version: '1.1.1'
+  object_text: 'a ruleset on GitHub whose enforcement differs from .github/rulesets/main.json:
+    rulesetcheck reports the difference in the enforcement'
+  design_technique: equivalence partitioning
+  target_ids: [SR_21@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_86
+  object_version: '1.1.1'
+  object_text: 'the ruleset cannot be read from GitHub: rulesetcheck reports it as a finding'
+  design_technique: equivalence partitioning
+  target_ids: [SR_22@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_87
+  object_version: '1.1.1'
+  object_text: 'GitHub has no ruleset with the name in .github/rulesets/main.json: rulesetcheck
+    reports it as a finding'
+  design_technique: equivalence partitioning
+  target_ids: [SR_22@1.1.1]
+  status: draft
+  verification_method: [review]
