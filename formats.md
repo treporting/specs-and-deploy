@@ -314,6 +314,16 @@ every change of its content: x of its version raised by one - `1.1.1` the first 
 `object_hash`, and the status `completed`, as a decided review result has (section Reviews). Today
 these are `sbom.md` of a subsystem (SR_40) and its test report (section Test report).
 
+**Decision**: a generated document is written from original data. The original data is kept only
+on demand, not with every document.
+
+**Table original data** - of each generated document
+
+| Document | Original data |
+|---|---|
+| `sbom.md` | the output of `go list` for each go.mod, each `package-lock.json`, and the list of the Alpine packages of each image |
+| test report | the `junit.xml` of each run of the tests, of `go test` and of Vitest |
+
 **Why**:
 
 - it is a report of what a tool found, not text a person wrote. The tests of the tool and the
@@ -793,7 +803,7 @@ the verification method.
 ### Test report
 
 **Decision**: the result of a run of the tests is a test report, `testreport.md` in the root of
-the repo. A tool writes it, so it is a record (section Documents). It is made at every baseline,
+the repo. A tool writes it from the `junit.xml` of the run, so it is a record (section Documents). It is made at every baseline,
 and may be made at any time between.
 
 **Table sections of a test report** - in their order
@@ -840,8 +850,6 @@ report made between two baselines leaves both empty.
 
 **Why**:
 
-- it is the verification record of ISO/IEC/IEEE 15289 (REG_ISO15289_08): the results, the
-  environment, the anomalies and a verdict per result
 - it keeps the result as long as the baseline; the log of the CI does not (traceability.md,
   section Tests, E1)
 - one table per part of a test shows each part, also where another is missing: a test case
@@ -886,3 +894,4 @@ case, and a test case without a result, would have no row.
 | 24.1.1 | 2026-11-03 | Table types: the type testcases; Open | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 25.1.1 | 2026-11-03 | Ids: the number of a key has two or more digits | #455 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 26.1.1 | 2026-11-04 | Test report; Documents: the test report is a record | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 27.1.1 | 2026-11-04 | Documents: the original data of a generated document; Test report: written from junit.xml | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
