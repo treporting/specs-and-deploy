@@ -13,8 +13,8 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '18.1.1'
-  object_hash: '92e03bb'
+  object_version: '19.1.1'
+  object_hash: '6f0596d'
   status: approved
   verification_method: [review]
 - name: devops.md
@@ -98,8 +98,8 @@ documents:
 - name: requirements/tool-requirements.md
   type: explanation
   level: tool
-  object_version: '17.1.1'
-  object_hash: 'c612afe'
+  object_version: '18.1.1'
+  object_hash: 'a48a031'
   status: approved
   verification_method: [review]
 - name: safety/hazard-and-risk-analysis.md

@@ -382,3 +382,15 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: TOOL_34
+  object_version: '1.1.1'
+  feature: test report
+  object_text: write the test report of a repo as testreport.md from the junit.xml of a run of its
+    tests, without failing
+  rationale: step 7 of the loop for every release or library in harness.md - the report shows what was
+    tested and with which verdict; it blocks nothing, the tests of step 5 fail where a test fails
+  priority: 'medium'
+  platform_launch: treporting = 1_tools
+  safety: ''
+  status: approved
+  verification_method: [test]
