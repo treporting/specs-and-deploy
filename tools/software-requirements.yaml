@@ -933,8 +933,8 @@ requirements:
   object_version: '1.1.1'
   component: testreport
   object_text: list in Original data every junit.xml given, in a table with the columns File, Made
-    by and Kept - the command that made it, and whether it is kept and where, as given
-    with it
+    by and Stored At - the command that made it, and where it is stored, as
+    `./<folder>/<file>`, or `-`, as given with it
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''

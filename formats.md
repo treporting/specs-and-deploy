@@ -812,7 +812,7 @@ It is made at every baseline, and may be made at any time between.
 |---|---|
 | (head) | the title and what the document is, as in every document |
 | Test environment | the baseline (its label), the commit, the date, the version of Go, the operating system and the runner |
-| Original data | every file of original data the report is written from: the command that made it, and whether it is kept and where |
+| Original data | every file of original data the report is written from: the command that made it, and where it is stored, as `./<folder>/<file>`, or `-` |
 | Test specification | every test case: its requirement, its key, its text and its status |
 | Test implementation | every test procedure: its requirement, its test case, its name and its file |
 | Test execution | every test procedure that ran: its requirement, its test case, its name and its verdict |
@@ -828,9 +828,9 @@ implements none.
 ```markdown
 ## Original data
 
-| File | Made by | Kept |
+| File | Made by | Stored At |
 |---|---|---|
-| junit-go.xml | `gotestsum --junitfile junit-go.xml -- -tags integration ./...` | no |
+| junit-go.xml | `gotestsum --junitfile junit-go.xml -- -tags integration ./...` | - |
 
 ## Test specification
 
