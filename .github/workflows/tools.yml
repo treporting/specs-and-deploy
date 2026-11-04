@@ -9,6 +9,11 @@ on:
 permissions:
   contents: read
 
+#	a new push to the branch of a pull request cancels the run it replaces
+concurrency:
+  group: tools-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   reviewcheck:
     runs-on: ubuntu-latest

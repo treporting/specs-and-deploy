@@ -1027,3 +1027,13 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: SR_100
+  object_version: '1.1.1'
+  component: ci
+  object_text: in .github/workflows/tools.yml, cancel the run of a pull request where a new push to its
+    branch starts another
+  source_ids: [TOOL_12@1.2.4]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [demonstration]
