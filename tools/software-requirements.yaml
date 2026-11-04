@@ -922,8 +922,8 @@ requirements:
 - object_key: SR_90
   object_version: '1.1.1'
   component: testreport
-  object_text: list in Test environment the label of the baseline, the commit, the date, the version
-    of Go, the operating system and the runner
+  object_text: list in Test environment the label of the baseline, the commit, the date, the operating
+    system, the runner, and each runtime and test runner the tests ran with, with its version
   source_ids: [TOOL_34@1.1.1]
   priority: 'medium'
   safety: ''

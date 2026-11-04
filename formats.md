@@ -811,7 +811,7 @@ It is made at every baseline, and may be made at any time between.
 | Section | What it holds |
 |---|---|
 | (head) | the title and what the document is, as in every document |
-| Test environment | the baseline (its label), the commit, the date, the version of Go, the operating system and the runner |
+| Test environment | the baseline (its label), the commit, the date, the operating system, the runner, and each runtime and test runner the tests ran with, with its version |
 | Original data | every file of original data the report is written from: the command that made it, and where it is stored, as `./<folder>/<file>`, or `-` |
 | Test specification | every test case: its requirement, its key, its text and its status |
 | Test implementation | every test procedure: its requirement, its test case, its name and its file |
@@ -903,3 +903,4 @@ case, and a test case without a result, would have no row.
 | 26.1.1 | 2026-11-04 | Test report; Documents: the test report is a record | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 27.1.1 | 2026-11-04 | Documents: the original data of a generated document; Test report: written from junit.xml | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 28.1.1 | 2026-11-04 | Test report: the section Original data | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 29.1.1 | 2026-11-04 | Test report: the runtimes and test runners in Test environment | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
