@@ -10,7 +10,7 @@ testcases:
     reviewcheck reports no criterion for it'
   design_technique: equivalence partitioning
   target_ids: [SR_01@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_02
   object_version: '1.1.1'
@@ -18,7 +18,7 @@ testcases:
     criterion as left out'
   design_technique: equivalence partitioning
   target_ids: [SR_01@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_03
   object_version: '1.1.1'
@@ -26,7 +26,7 @@ testcases:
     that criterion as not in the file'
   design_technique: equivalence partitioning
   target_ids: [SR_01@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_04
   object_version: '1.1.1'
@@ -34,7 +34,7 @@ testcases:
     verdict'
   design_technique: decision table testing
   target_ids: [SR_02@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_05
   object_version: '1.1.1'
@@ -42,7 +42,7 @@ testcases:
     verdict'
   design_technique: decision table testing
   target_ids: [SR_02@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_06
   object_version: '1.1.1'
@@ -50,7 +50,7 @@ testcases:
     verdict'
   design_technique: decision table testing
   target_ids: [SR_02@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_07
   object_version: '1.1.1'
@@ -58,21 +58,21 @@ testcases:
     verdict'
   design_technique: decision table testing
   target_ids: [SR_02@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_08
   object_version: '1.1.1'
   object_text: 'a failed criterion without a note: reviewcheck reports the criterion'
   design_technique: equivalence partitioning
   target_ids: [SR_03@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_09
   object_version: '1.1.1'
   object_text: 'a failed criterion with a note: reviewcheck reports no missing note'
   design_technique: equivalence partitioning
   target_ids: [SR_03@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_10
   object_version: '1.1.1'
@@ -80,14 +80,14 @@ testcases:
     revision'
   design_technique: equivalence partitioning
   target_ids: [SR_04@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_11
   object_version: '1.1.1'
   object_text: 'a result whose revision names a commit of the repo: reviewcheck reports no revision'
   design_technique: equivalence partitioning
   target_ids: [SR_04@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_12
   object_version: '1.1.1'
@@ -95,7 +95,7 @@ testcases:
     reviewed: reviewcheck reports the result'
   design_technique: equivalence partitioning
   target_ids: [SR_05@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_13
   object_version: '1.1.1'
@@ -103,7 +103,7 @@ testcases:
     merge, that changed the object reviewed: reviewcheck reports the result'
   design_technique: equivalence partitioning
   target_ids: [SR_05@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_14
   object_version: '1.1.1'
@@ -111,7 +111,7 @@ testcases:
     person wrote it: reviewcheck reports no result'
   design_technique: equivalence partitioning
   target_ids: [SR_05@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_15
   object_version: '1.1.1'
@@ -119,7 +119,7 @@ testcases:
     file, not the object reviewed: reviewcheck reports no result'
   design_technique: equivalence partitioning
   target_ids: [SR_05@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_16
   object_version: '1.1.1'
@@ -127,14 +127,14 @@ testcases:
     todo, and the verdict passed, as that criterion did not pass'
   design_technique: equivalence partitioning
   target_ids: [SR_06@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_17
   object_version: '1.1.1'
   object_text: 'a result with the verdict todo: reviewcheck reports the value of the verdict'
   design_technique: equivalence partitioning
   target_ids: [SR_06@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_18
   object_version: '1.1.1'
@@ -142,7 +142,7 @@ testcases:
     no value'
   design_technique: equivalence partitioning
   target_ids: [SR_06@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_19
   object_version: '1.1.1'
@@ -150,7 +150,7 @@ testcases:
     its criteria file: reviewcheck reports the criteria revision once'
   design_technique: equivalence partitioning
   target_ids: [SR_07@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_20
   object_version: '1.1.1'
@@ -158,7 +158,7 @@ testcases:
     reviewcheck reports no criteria revision'
   design_technique: equivalence partitioning
   target_ids: [SR_07@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_21
   object_version: '1.1.1'
@@ -166,7 +166,7 @@ testcases:
     document reviewed: reviewcheck reports the result'
   design_technique: equivalence partitioning
   target_ids: [SR_08@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_22
   object_version: '1.1.1'
@@ -174,7 +174,7 @@ testcases:
     another person wrote every line: reviewcheck reports no result'
   design_technique: equivalence partitioning
   target_ids: [SR_08@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_23
   object_version: '1.1.1'
@@ -183,7 +183,7 @@ testcases:
     the time of its name'
   design_technique: requirements-based testing
   target_ids: [SR_11@2.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_24
   object_version: '1.1.1'
@@ -191,7 +191,7 @@ testcases:
     document'
   design_technique: requirements-based testing
   target_ids: [SR_11@2.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_25
   object_version: '1.1.1'
@@ -200,14 +200,14 @@ testcases:
     changed that file'
   design_technique: requirements-based testing
   target_ids: [SR_12@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_26
   object_version: '1.1.1'
   object_text: 'reviewskeleton on a commit: the revision of each result is that commit'
   design_technique: requirements-based testing
   target_ids: [SR_13@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_27
   object_version: '1.1.1'
@@ -215,14 +215,14 @@ testcases:
     criteria file, and each criterion and the verdict todo'
   design_technique: requirements-based testing
   target_ids: [SR_14@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_28
   object_version: '1.1.1'
   object_text: 'reviewskeleton with an id that no file holds: it writes nothing and reports the id'
   design_technique: equivalence partitioning
   target_ids: [SR_15@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_29
   object_version: '1.1.1'
@@ -230,7 +230,7 @@ testcases:
     document'
   design_technique: equivalence partitioning
   target_ids: [SR_15@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_30
   object_version: '1.1.1'
@@ -238,7 +238,7 @@ testcases:
     levels'
   design_technique: equivalence partitioning
   target_ids: [SR_15@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_31
   object_version: '1.1.1'
@@ -247,7 +247,7 @@ testcases:
     reports them in that order in both runs'
   design_technique: requirements-based testing
   target_ids: [SR_16@1.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_32
   object_version: '1.1.1'
@@ -255,14 +255,14 @@ testcases:
     schemas/review-result.schema.json, type review and level r5'
   design_technique: requirements-based testing
   target_ids: [SR_17@2.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_33
   object_version: '1.1.1'
   object_text: 'reviewskeleton: the skeleton has object_version 1.1.1 and status open'
   design_technique: requirements-based testing
   target_ids: [SR_83@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_34
   object_version: '1.1.1'
@@ -270,7 +270,7 @@ testcases:
     result'
   design_technique: equivalence partitioning
   target_ids: [SR_84@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_35
   object_version: '1.1.1'
@@ -278,7 +278,7 @@ testcases:
     created_at: reviewcheck reports the result'
   design_technique: boundary value analysis
   target_ids: [SR_84@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_36
   object_version: '1.1.1'
@@ -286,7 +286,7 @@ testcases:
     reviewcheck reports no completed_at'
   design_technique: boundary value analysis
   target_ids: [SR_84@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_37
   object_version: '1.1.1'
@@ -294,7 +294,7 @@ testcases:
     completed_at'
   design_technique: equivalence partitioning
   target_ids: [SR_84@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_38
   object_version: '1.1.1'
@@ -302,7 +302,7 @@ testcases:
     it: approvalcheck reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_75@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_39
   object_version: '1.1.1'
@@ -310,7 +310,7 @@ testcases:
     it: approvalcheck reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_75@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_40
   object_version: '1.1.1'
@@ -318,7 +318,7 @@ testcases:
     names: approvalcheck reports no missing review'
   design_technique: equivalence partitioning
   target_ids: [SR_75@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_41
   object_version: '1.1.1'
@@ -326,7 +326,7 @@ testcases:
     approvalcheck reports no missing review'
   design_technique: equivalence partitioning
   target_ids: [SR_75@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_42
   object_version: '1.1.1'
@@ -334,7 +334,7 @@ testcases:
     earlier one passed: approvalcheck reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_76@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_43
   object_version: '1.1.1'
@@ -342,7 +342,7 @@ testcases:
     earlier one failed: approvalcheck reports no failed review'
   design_technique: equivalence partitioning
   target_ids: [SR_76@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_44
   object_version: '1.1.1'
@@ -350,7 +350,7 @@ testcases:
     review result: approvalcheck reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_77@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_45
   object_version: '1.1.1'
@@ -358,7 +358,7 @@ testcases:
     last review result: approvalcheck reports no change of content'
   design_technique: equivalence partitioning
   target_ids: [SR_77@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_46
   object_version: '1.1.1'
@@ -366,7 +366,7 @@ testcases:
     result: approvalcheck reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_77@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_47
   object_version: '1.1.1'
@@ -374,7 +374,7 @@ testcases:
     was approved with its x: approvalcheck reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_78@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_48
   object_version: '1.1.1'
@@ -382,7 +382,7 @@ testcases:
     it was approved with its x: approvalcheck reports no attribute for x'
   design_technique: equivalence partitioning
   target_ids: [SR_78@1.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_49
   object_version: '1.1.1'
@@ -390,7 +390,7 @@ testcases:
     reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_79@2.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_50
   object_version: '1.1.1'
@@ -398,7 +398,7 @@ testcases:
     reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_79@2.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_51
   object_version: '1.1.1'
@@ -406,7 +406,7 @@ testcases:
     reports no hash'
   design_technique: equivalence partitioning
   target_ids: [SR_79@2.1.2]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_52
   object_version: '1.1.1'
@@ -415,7 +415,7 @@ testcases:
     file and reports nothing of the unchanged one'
   design_technique: equivalence partitioning
   target_ids: [SR_80@2.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_53
   object_version: '1.1.1'
@@ -423,7 +423,7 @@ testcases:
     against it: approvalcheck checks that document'
   design_technique: equivalence partitioning
   target_ids: [SR_80@2.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_54
   object_version: '1.1.1'
@@ -431,7 +431,7 @@ testcases:
     document'
   design_technique: equivalence partitioning
   target_ids: [SR_80@2.1.3]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_55
   object_version: '1.1.1'
@@ -439,7 +439,7 @@ testcases:
     approvalcheck reports it'
   design_technique: equivalence partitioning
   target_ids: [SR_85@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_56
   object_version: '1.1.1'
@@ -447,7 +447,7 @@ testcases:
     completed: approvalcheck reports no open review'
   design_technique: equivalence partitioning
   target_ids: [SR_85@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_57
   object_version: '1.1.1'
@@ -455,7 +455,7 @@ testcases:
     that file'
   design_technique: equivalence partitioning
   target_ids: [SR_86@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_58
   object_version: '1.1.1'
@@ -463,5 +463,5 @@ testcases:
     found in no file, and neither file is a file of objects'
   design_technique: equivalence partitioning
   target_ids: [SR_86@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
