@@ -1035,5 +1035,5 @@ requirements:
   source_ids: [TOOL_12@1.2.4]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [demonstration]
