@@ -312,7 +312,7 @@ document explains.
 (PROC_13). Its verification method is `generated`. The tool sets its entry in `documents.yaml` on
 every change of its content: x of its version raised by one - `1.1.1` the first time -, its
 `object_hash`, and the status `completed`, as a decided review result has (section Reviews). Today
-this is `sbom.md` of a subsystem (SR_40).
+these are `sbom.md` of a subsystem (SR_40) and its test report (section Test report).
 
 **Why**:
 
@@ -790,6 +790,66 @@ the verification method.
 - `method` - it would be read as the verification method
 - `technique`, `test_technique` - they do not say that it is about the design of the case
 
+### Test report
+
+**Decision**: the result of a run of the tests is a test report, `testreport.md` in the root of
+the repo. A tool writes it, so it is a record (section Documents). It is made at every baseline,
+and may be made at any time between.
+
+**Table sections of a test report** - in their order
+
+| Section | What it holds |
+|---|---|
+| (head) | the title and what the document is, as in every document |
+| Test environment | the baseline (its label), the commit, the date, the version of Go, the operating system and the runner |
+| Test specification | every test case: its requirement, its key, its text and its status |
+| Test implementation | every test procedure: its requirement, its test case, its name and its file |
+| Test execution | every test procedure that ran: its requirement, its test case, its name and its verdict |
+| Deviations | every test result that has a verdict, and the verdict is not passed |
+| Open | every test case and every test procedure without a test result (section Open points) |
+| Change history | as in every document a tool writes (section Change history) |
+
+The three tables follow the links of a test (traceability.md, section Tests). The requirement is
+the first column, where there is one: of a test case its `target_ids`, of a test procedure without
+a test case its `@verifies`. The column of the test case is empty for a test procedure that
+implements none.
+
+```markdown
+## Test specification
+
+| Requirement | Test case | Text | Status |
+|---|---|---|---|
+| SR_03@1.1.3 | TC_08@1.1.1 | a failed criterion without a note: reviewcheck reports the criterion | approved |
+
+## Test implementation
+
+| Requirement | Test case | Test procedure | File |
+|---|---|---|---|
+| SR_03@1.1.3 | TC_08@1.1.1 | TestAFailedCriterionHasANote | tools/review/check/check_test.go |
+| SR_24@3.1.1 | | TestOnlyFirstInALineOfComment | tools/annotation/check/check_test.go |
+
+## Test execution
+
+| Requirement | Test case | Test procedure | Verdict |
+|---|---|---|---|
+| SR_03@1.1.3 | TC_08@1.1.1 | TestAFailedCriterionHasANote | passed |
+```
+
+A row of the change history names the label of the baseline in Change and its ticket in Reason. A
+report made between two baselines leaves both empty.
+
+**Why**:
+
+- it is the verification record of ISO/IEC/IEEE 15289 (REG_ISO15289_08): the results, the
+  environment, the anomalies and a verdict per result
+- it keeps the result as long as the baseline; the log of the CI does not (traceability.md,
+  section Tests, E1)
+- one table per part of a test shows each part, also where another is missing: a test case
+  without a procedure, a procedure without a test case
+
+**Rejected**: one table of the test cases with their verdicts - a test procedure without a test
+case, and a test case without a result, would have no row.
+
 ## Open
 
 - `treporting = 1_tools` - **The test level of the tools**: the tests of the tools lie as
@@ -825,3 +885,4 @@ the verification method.
 | 23.1.1 | 2026-11-03 | Test cases: their levels, files and fields; Ids: TC_nn | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 24.1.1 | 2026-11-03 | Table types: the type testcases; Open | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 25.1.1 | 2026-11-03 | Ids: the number of a key has two or more digits | #455 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 26.1.1 | 2026-11-04 | Test report; Documents: the test report is a record | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
