@@ -803,8 +803,8 @@ the verification method.
 ### Test report
 
 **Decision**: the result of a run of the tests is a test report, `testreport.md` in the root of
-the repo. A tool writes it from the `junit.xml` of the run, so it is a record (section Documents). It is made at every baseline,
-and may be made at any time between.
+the repo. A tool writes it from the `junit.xml` of the run, so it is a record (section Documents).
+It is made at every baseline, and may be made at any time between.
 
 **Table sections of a test report** - in their order
 
@@ -812,6 +812,7 @@ and may be made at any time between.
 |---|---|
 | (head) | the title and what the document is, as in every document |
 | Test environment | the baseline (its label), the commit, the date, the version of Go, the operating system and the runner |
+| Original data | every file of original data the report is written from: the command that made it, and whether it is kept and where |
 | Test specification | every test case: its requirement, its key, its text and its status |
 | Test implementation | every test procedure: its requirement, its test case, its name and its file |
 | Test execution | every test procedure that ran: its requirement, its test case, its name and its verdict |
@@ -825,6 +826,12 @@ a test case its `@verifies`. The column of the test case is empty for a test pro
 implements none.
 
 ```markdown
+## Original data
+
+| File | Made by | Kept |
+|---|---|---|
+| junit-go.xml | `gotestsum --junitfile junit-go.xml -- -tags integration ./...` | no |
+
 ## Test specification
 
 | Requirement | Test case | Text | Status |
@@ -895,3 +902,4 @@ case, and a test case without a result, would have no row.
 | 25.1.1 | 2026-11-03 | Ids: the number of a key has two or more digits | #455 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 26.1.1 | 2026-11-04 | Test report; Documents: the test report is a record | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 27.1.1 | 2026-11-04 | Documents: the original data of a generated document; Test report: written from junit.xml | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 28.1.1 | 2026-11-04 | Test report: the section Original data | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
