@@ -37,9 +37,9 @@ documents:
   verification_method: [review]
 - name: formats.md
   type: document
-  object_version: '25.1.1'
+  object_version: '26.1.1'
   object_hash: '19949ad'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
