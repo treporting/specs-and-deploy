@@ -147,7 +147,7 @@ jobs:
           git config user.name "$APP[bot]"
           git config user.email "$APP[bot]@users.noreply.github.com"
           git switch -c "$BRANCH"
-          git add sbom.md documents.yaml
+          git add sbom/sbom.md documents.yaml
           git commit -m "Baseline $LABEL: sbom.md" -m "Part of #$TICKET"
           git push origin "$BRANCH"
           body="$(cat <<BODY

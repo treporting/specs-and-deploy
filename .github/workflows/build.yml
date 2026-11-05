@@ -65,7 +65,7 @@ jobs:
         env:
           IMAGES: ${{ inputs.images }}
         run: |
-          if git diff --quiet HEAD^1 HEAD -- sbom.md; then
+          if git diff --quiet HEAD^1 HEAD -- sbom/sbom.md; then
             echo "sbom.md not changed"
             exit 0
           fi

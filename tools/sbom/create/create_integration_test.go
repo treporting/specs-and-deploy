@@ -45,7 +45,7 @@ func TestGoEnvNamesTheVersionOfGo(t *testing.T) {
 	}
 }
 
-// @implements TC_108@1.1.1
+// @implements TC_108@2.1.1
 func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	bin := filepath.Join(t.TempDir(), "sbom")
 	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/sbom").CombinedOutput(); err != nil {
@@ -70,7 +70,7 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 			t.Fatalf("sbom: %v\n%s", err, out)
 		}
 	}
-	md, err := os.ReadFile(filepath.Join(repo, "sbom.md"))
+	md, err := os.ReadFile(filepath.Join(repo, Name))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -83,7 +83,7 @@ func TestCommandWritesSbomMDInTheRootAndKeepsTheHistory(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(string(documents), "- name: sbom.md\n  type: document\n  object_version: '2.1.1'\n  object_hash: '"+Hash(md)+"'\n  status: completed\n  verification_method: [generated]\n") {
+	if !strings.Contains(string(documents), "- name: "+Name+"\n  type: document\n  object_version: '2.1.1'\n  object_hash: '"+Hash(md)+"'\n  status: completed\n  verification_method: [generated]\n") {
 		t.Errorf("documents.yaml:\n%s", documents)
 	}
 	if !strings.Contains(string(md), "| pkg:github/treporting/viewer-trace@1.1.0 | viewer-trace | 1.1.0 | Apache-2.0 |") {
@@ -109,7 +109,7 @@ func TestCheckFailsWhereSbomMDDoesNotListWhatIsDelivered(t *testing.T) {
 	if out, err := exec.Command(bin, "-root", repo, "-label", "1.0.0", "-ticket", "343").CombinedOutput(); err != nil {
 		t.Fatalf("sbom: %v\n%s", err, out)
 	}
-	written, err := os.ReadFile(filepath.Join(repo, "sbom.md"))
+	written, err := os.ReadFile(filepath.Join(repo, Name))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -117,7 +117,7 @@ func TestCheckFailsWhereSbomMDDoesNotListWhatIsDelivered(t *testing.T) {
 	if out, err := exec.Command(bin, "-root", repo, "-check").CombinedOutput(); err != nil {
 		t.Errorf("check of the sbom.md just written: %v\n%s", err, out)
 	}
-	after, err := os.ReadFile(filepath.Join(repo, "sbom.md"))
+	after, err := os.ReadFile(filepath.Join(repo, Name))
 	if err != nil || string(after) != string(written) {
 		t.Errorf("check wrote sbom.md: %v", err)
 	}

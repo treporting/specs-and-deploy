@@ -18,7 +18,10 @@ func TestCommandNamesWhatFailsAndExitsWithOne(t *testing.T) {
 		t.Fatalf("go build: %v\n%s", err, out)
 	}
 	repo := t.TempDir()
-	if err := os.WriteFile(filepath.Join(repo, "sbom.md"), []byte(sbomMD), 0o600); err != nil {
+	if err := os.MkdirAll(filepath.Join(repo, "sbom"), 0o750); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(repo, "sbom", "sbom.md"), []byte(sbomMD), 0o600); err != nil {
 		t.Fatal(err)
 	}
 	if err := os.WriteFile(filepath.Join(repo, "licences_assessed.yaml"), []byte(
