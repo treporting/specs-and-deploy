@@ -67,13 +67,14 @@ levels:
   part: ['process & tools']
   name: tool requirements
   abbreviation: TOOL
-  description: the requirements of the tools of specs-and-deploy, which are not part of the product -
-    for the tools what r2 is for the product
+  stands_for: r2
+  description: the requirements of the tools of specs-and-deploy, which are not part of the product
 - key: rules
   part: ['process & tools']
   name: rules
   abbreviation: PROC
-  description: the rules of our work - for the tools what r1 is for the product
+  stands_for: r1
+  description: the rules of our work
 - key: document
   part: ['process & tools']
   name: documents

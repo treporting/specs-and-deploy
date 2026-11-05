@@ -49,6 +49,11 @@
             },
             "description": "the parts that use the level: the product, our process and tools, or both"
           },
+          "stands_for": {
+            "type": "string",
+            "pattern": "^r[1-7]$",
+            "description": "of a level of our process and tools: the level of the product it stands for, such as r2 for tool"
+          },
           "name": {
             "type": "string",
             "minLength": 1,

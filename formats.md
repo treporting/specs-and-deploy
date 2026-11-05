@@ -31,7 +31,8 @@ A readable Markdown view of the YAML is generated on request only - save the tab
 
 **Decision**: `levels.yaml` at the root of the repo lists every level: its key, the parts that use
 it - the product, our process and tools, or both -, its name, the abbreviation of its name, what
-it holds and the clause it follows; a test level also the data its tests run with. A tool that names a level takes the name from there.
+it holds and the clause it follows; a test level also the data its tests run with; a level of our
+process and tools also the level of the product it stands for, such as r2 for tool. A tool that names a level takes the name from there.
 
 **Why**: the levels were named only in the tables of harness.md, which no tool reads, and each
 schema lists its keys apart, without a name. One file serves every tool, and the tables of

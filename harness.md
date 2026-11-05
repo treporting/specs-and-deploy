@@ -32,8 +32,8 @@ The levels are kept in [levels.yaml](levels.yaml); the tables of the levels of t
 our process and tools are generated from it whenever it changes, and name the hash of its content,
 `git hash-object levels.yaml`.
 
-<!-- generated from levels.yaml@ee810a3 - do not edit -->
-**Table product** - the levels of the product and of its tests, each with its name, its clause or term, and the data a test level runs with, generated from levels.yaml@ee810a3
+<!-- generated from levels.yaml@e8528fd - do not edit -->
+**Table product** - the levels of the product and of its tests, each with its name, its clause or term, and the data a test level runs with, generated from levels.yaml@e8528fd
 
 | Level | Name | Abbreviation | Description | Reference | Data |
 |---|---|---|---|---|---|
@@ -55,16 +55,16 @@ our process and tools are generated from it whenever it changes, and name the ha
 | r1tc | acceptance test | Val | the system against the user needs | ISO29119 | the containers with reference data |
 <!-- end of generated -->
 
-<!-- generated from levels.yaml@ee810a3 - do not edit -->
-**Table process & tools** - the levels of our process and of our tools; the tools use r5 and r5tc as the product does, generated from levels.yaml@ee810a3
+<!-- generated from levels.yaml@e8528fd - do not edit -->
+**Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@e8528fd
 
-| Level | Name | Abbreviation | Description | Reference | Data |
-|---|---|---|---|---|---|
-| r5 | software requirements | SR | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition | - |
-| tool | tool requirements | TOOL | the requirements of the tools of specs-and-deploy, which are not part of the product - for the tools what r2 is for the product | - | - |
-| rules | rules | PROC | the rules of our work - for the tools what r1 is for the product | - | - |
-| document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
-| r5tc | subsystem test | SwVal | a subsystem against its SR, through its API and its model | ISO29119 | from gel |
+| Level | Key | Name | Abbreviation | Description | Reference | Data |
+|---|---|---|---|---|---|---|
+| r1 | rules | rules | PROC | the rules of our work | - | - |
+| r2 | tool | tool requirements | TOOL | the requirements of the tools of specs-and-deploy, which are not part of the product | - | - |
+| r5 | r5 | software requirements | SR | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition | - |
+| r5tc | r5tc | subsystem test | SwVal | a subsystem against its SR, through its API and its model | ISO29119 | from gel |
+| - | document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
 <!-- end of generated -->
 
 In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
