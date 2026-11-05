@@ -13,7 +13,7 @@ import (
 // package-lock.json in the root and the image docker.io/nginx:1.30.
 func originals(root string) []Original {
 	return []Original{
-		GoListOriginal(root, filepath.Join(root, "tools"), "gopkg.in/yaml.v3\tv3.0.1\t/m\n"),
+		GoListOriginal(root, filepath.Join(root, "tools"), "gopkg.in/yaml.v3\tv3.0.1\t/m\n", "/m"),
 		LockOriginal(root, root, []byte(`{"packages": {}}`)),
 		ApkOriginal("docker.io/nginx:1.30", []byte("P:nginx\nV:1.30.5-r1\n")),
 	}
@@ -105,5 +105,22 @@ func TestOriginalYAMLNamesEveryFileStored(t *testing.T) {
 	findings, err := check.Check(root, []string{"sbom/20261105T100000.yaml"})
 	if err != nil || len(findings) > 0 {
 		t.Errorf("%v %v\n%s", err, findings, record)
+	}
+}
+
+// @implements TC_156@1.1.1
+func TestStoredGoListNamesNoLocalPath(t *testing.T) {
+	root := t.TempDir()
+	list := "gopkg.in/yaml.v3\tv3.0.1\t/home/u/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1\n"
+	stored, err := Store(root, Folder, "20261105T100000_", []Original{GoListOriginal(root, filepath.Join(root, "tools"), list, "/home/u/go/pkg/mod")})
+	if err != nil {
+		t.Fatal(err)
+	}
+	data, err := os.ReadFile(filepath.Join(root, "sbom", "20261105T100000_golist-tools.txt"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(data), "\t$GOMODCACHE/gopkg.in/yaml.v3@v3.0.1\n") || strings.Contains(string(data), "/home/u") {
+		t.Errorf("%s holds %q", stored[0].StoredAt, data)
 	}
 }
