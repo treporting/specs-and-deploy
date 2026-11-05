@@ -933,11 +933,11 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_91
-  object_version: '1.2.1'
+  object_version: '2.1.1'
   component: testreport
   object_text: list in Original data every junit.xml given, in a table with the columns File, Made
-    by and Stored At - the command that made it, and where it is stored, as
-    `./<folder>/<file>`, or `-`, as given with it
+    by and Stored At - the command that made it, and where -store stored it, as
+    `./<folder>/<file>` from the root of the repo, or `-`
   source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
@@ -1068,6 +1068,17 @@ requirements:
   object_text: with -base, check only the review results that differ between the base commit and HEAD;
     without it, every one
   source_ids: [TOOL_03@3.3.4]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_104
+  object_version: '1.1.1'
+  component: testreport
+  object_text: with -store, copy each junit.xml given into the folder testreports/ of the test
+    report as `<ts>_<test level>-<file>`, and name them in `testreports/<ts>_<test level>.yaml` -
+    `<ts>` the time of the run as yyyymmddThhmmss, `<file>` the name of the junit.xml
+  source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
   status: approved
