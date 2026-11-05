@@ -38,11 +38,16 @@
             "description": "the key of the level, as the field level of a file names it, such as r5 or r5tc"
           },
           "part": {
-            "enum": [
-              "product",
-              "process & tools"
-            ],
-            "description": "whether the level is one of the product, or one of our process and tools"
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "product",
+                "process & tools"
+              ]
+            },
+            "description": "the parts that use the level: the product, our process and tools, or both"
           },
           "name": {
             "type": "string",

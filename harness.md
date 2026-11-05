@@ -32,8 +32,8 @@ The levels are kept in [levels.yaml](levels.yaml); the tables of the levels of t
 our process and tools are generated from it whenever it changes, and name the hash of its content,
 `git hash-object levels.yaml`.
 
-<!-- generated from levels.yaml@0806cf8 - do not edit -->
-**Table product** - the levels of the product and of its tests, each with its name, its clause or term, and the data a test level runs with, generated from levels.yaml@0806cf8
+<!-- generated from levels.yaml@f58140b - do not edit -->
+**Table product** - the levels of the product and of its tests, each with its name, its clause or term, and the data a test level runs with, generated from levels.yaml@f58140b
 
 | Level | Name | Abbreviation | Description | Reference | Data |
 |---|---|---|---|---|---|
@@ -55,14 +55,16 @@ our process and tools are generated from it whenever it changes, and name the ha
 | r1tc | acceptance test | Val | the system against the user needs | ISO29119 | the containers with reference data |
 <!-- end of generated -->
 
-<!-- generated from levels.yaml@0806cf8 - do not edit -->
-**Table process & tools** - the levels of our process and of our tools, generated from levels.yaml@0806cf8
+<!-- generated from levels.yaml@f58140b - do not edit -->
+**Table process & tools** - the levels of our process and of our tools; the tools use r5 and r5tc as the product does, generated from levels.yaml@f58140b
 
 | Level | Name | Abbreviation | Description | Reference | Data |
 |---|---|---|---|---|---|
+| r5 | software requirements | SR | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition | - |
 | tool | tool requirements | TOOL | the requirements of the tools of specs-and-deploy, which are not part of the product | - | - |
 | rules | rules | PROC | the rules of our work | - | - |
 | document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
+| r5tc | subsystem test | SwVal | a subsystem against its SR, through its API and its model | ISO29119 | from gel |
 <!-- end of generated -->
 
 In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
