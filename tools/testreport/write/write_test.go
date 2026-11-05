@@ -209,7 +209,7 @@ func TestExecutionListsOnlyWhatRan(t *testing.T) {
 	}
 }
 
-// @implements TC_143@1.2.1
+// @implements TC_143@2.1.1
 func TestDeviationsAndOpen(t *testing.T) {
 	md := report(t)
 	deviations, open := section(md, "Deviations"), section(md, "Open")
@@ -221,14 +221,18 @@ func TestDeviationsAndOpen(t *testing.T) {
 	if strings.Contains(deviations, "TestOne") {
 		t.Errorf("a passed test is a deviation:\n%s", deviations)
 	}
-	for _, want := range []string{"TC_04@1.1.1 - no test result", "`TestNotRun` (m/a/a_test.go) - no test result"} {
+	for _, want := range []string{
+		"**Table open** - every test case and test procedure without a test result",
+		"| Requirement | Test case | Test case status | Test procedure | Test procedure status |",
+		"| SR_04@1.1.1 | TC_04@1.1.1 | approved | - | - |",
+	} {
 		if !strings.Contains(open, want) {
 			t.Errorf("Open has no %q:\n%s", want, open)
 		}
 	}
 }
 
-// @implements TC_144@1.2.1
+// @implements TC_144@1.3.1
 func TestDeviationsAndOpenEmpty(t *testing.T) {
 	procedures := []Procedure{{Name: "TestOne", File: "a/a_test.go", Suite: "m/a", Implements: []string{"TC_01@1.1.1"}}}
 	md := Markdown(Report{
@@ -237,6 +241,27 @@ func TestDeviationsAndOpenEmpty(t *testing.T) {
 	})
 	if section(md, "Deviations") != "\n`<empty>`\n" || section(md, "Open") != "\n`<empty>`\n" {
 		t.Errorf("got:\n%s", md)
+	}
+}
+
+// @implements TC_158@1.1.1
+func TestOpenTestProcedureWithoutResult(t *testing.T) {
+	procedures := []Procedure{{Name: "TestOne", File: "a/a_test.go", Suite: "m/a", Implements: []string{"TC_01@1.1.1"}}}
+	open := section(Markdown(Report{Level: "r5tc", Testcases: testcases[:1], Procedures: procedures}), "Open")
+	if !strings.Contains(open, "| SR_01@1.1.1 | TC_01@1.1.1 | approved | TestOne | no test result |") {
+		t.Errorf("got:\n%s", open)
+	}
+	if strings.Contains(open, "| - | - |") {
+		t.Errorf("the test case is listed without its test procedure as well:\n%s", open)
+	}
+}
+
+// @implements TC_159@1.1.1
+func TestOpenObsoleteTestCase(t *testing.T) {
+	obsolete := []Testcase{{Key: "TC_05", Version: "1.1.1", Text: "five", Targets: []string{"SR_05@1.1.1"}, Status: "obsolete"}}
+	open := section(Markdown(Report{Level: "r5tc", Testcases: obsolete}), "Open")
+	if !strings.Contains(open, "| SR_05@1.1.1 | TC_05@1.1.1 | obsolete | - | - |") {
+		t.Errorf("got:\n%s", open)
 	}
 }
 
