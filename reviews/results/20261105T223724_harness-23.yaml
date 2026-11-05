@@ -13,7 +13,7 @@ criteria_revision: 'f2058c1'
 results:
 - object_key: RR_01
   target_ids: [harness.md]
-  revision: '16e9fe2'
+  revision: 'e3f8775'
   criteria:
     RC_01: passed
     RC_02: passed
