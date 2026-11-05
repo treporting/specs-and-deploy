@@ -1082,13 +1082,13 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_137
-  object_version: '2.1.1'
+  object_version: '2.2.1'
   object_text: 'any run of the test level r5tc: `testreports/software.md` has the head of a document
     and the sections Test environment, Original data, Test specification, Test
     implementation, Test execution, Deviations, Open and Change history, in this order'
   design_technique: requirements-based testing
-  target_ids: [SR_89@2.1.1]
-  status: approved
+  target_ids: [SR_89@3.1.1]
+  status: draft
   verification_method: [review]
 - object_key: TC_138
   object_version: '1.2.1'
@@ -1286,4 +1286,29 @@ testcases:
   design_technique: requirements-based testing
   target_ids: [SR_41@2.1.1, SR_101@2.1.1]
   status: approved
+  verification_method: [review]
+- object_key: TC_161
+  object_version: '1.1.1'
+  object_text: 'a run of the test level r5tc, levels.yaml naming r5tc the subsystem test (SwVal):
+    the title of the test report is `Test report for subsystem test (SwVal)`, and its head names
+    neither r5tc nor r5'
+  design_technique: equivalence partitioning
+  target_ids: [SR_89@3.1.1, SR_106@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_162
+  object_version: '1.1.1'
+  object_text: 'a run without -levels, `<root>/levels.yaml` naming r5tc: testreport reads it; the
+    same run with -levels naming another levels.yaml: testreport reads that one'
+  design_technique: equivalence partitioning
+  target_ids: [SR_106@1.1.1]
+  status: draft
+  verification_method: [review]
+- object_key: TC_163
+  object_version: '1.1.1'
+  object_text: 'a run of the test level r5tc, levels.yaml naming no r5tc: testreport exits with an
+    error that names r5tc, and writes no test report'
+  design_technique: equivalence partitioning
+  target_ids: [SR_106@1.1.1]
+  status: draft
   verification_method: [review]
