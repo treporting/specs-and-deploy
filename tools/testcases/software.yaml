@@ -1243,3 +1243,13 @@ testcases:
   target_ids: [SR_104@1.1.1]
   status: approved
   verification_method: [review]
+- object_key: TC_156
+  object_version: '1.1.1'
+  object_text: 'go list answers the module gopkg.in/yaml.v3 v3.0.1 in the directory
+    `/home/u/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1`, the module cache `/home/u/go/pkg/mod`; sbom
+    run with -store: the stored golist file names `$GOMODCACHE/gopkg.in/yaml.v3@v3.0.1`, and
+    holds no `/home/u`'
+  design_technique: equivalence partitioning
+  target_ids: [SR_105@1.1.1]
+  status: approved
+  verification_method: [review]
