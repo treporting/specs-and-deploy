@@ -35,7 +35,7 @@ func TestHistoryKeepsTheRowsOfTheChangeHistoryOnly(t *testing.T) {
 	}
 }
 
-// @implements TC_111@1.1.1
+// @implements TC_111@2.1.1
 func TestOneTableSortedByPURL(t *testing.T) {
 	md := Markdown(SBOM{Repo: "storages", Packages: []Package{
 		{PURL: "pkg:golang/stdlib@go1.25.14", Name: "stdlib", Version: "go1.25.14", Licence: "BSD-3-Clause"},
@@ -46,8 +46,9 @@ func TestOneTableSortedByPURL(t *testing.T) {
 		"| pkg:apk/alpine/musl@1.2.6-r2 | musl | 1.2.6-r2 | MIT |\n" +
 		"| pkg:github/treporting/storages@1.2.0 | storages | 1.2.0 | Apache-2.0 |\n" +
 		"| pkg:golang/stdlib@go1.25.14 | stdlib | go1.25.14 | BSD-3-Clause |\n\n"
-	if !strings.Contains(md, want) {
-		t.Errorf("table not found in\n%s", md)
+	_, packages, _ := strings.Cut(md, "\n## Packages\n")
+	if !strings.Contains(packages, want) {
+		t.Errorf("table not found in the section Packages of\n%s", md)
 	}
 	if strings.Count(md, "| PURL |") != 1 {
 		t.Errorf("not one table:\n%s", md)
@@ -63,6 +64,23 @@ func TestEndsWithOpenAndChangeHistory(t *testing.T) {
 	}
 	if !strings.HasSuffix(md, "| - | 2026-10-31 | 1.2.0 | - | sbom a1b2c3d |\n") || strings.Count(md[open:], "\n## ") != 2 {
 		t.Errorf("does not end with Open and Change history:\n%s", md)
+	}
+}
+
+// @implements TC_160@1.1.1
+func TestSectionsInOrder(t *testing.T) {
+	md := Markdown(SBOM{Repo: "storages", Original: originals("/r")})
+	var sections []string
+	for _, line := range strings.Split(md, "\n") {
+		if heading, ok := strings.CutPrefix(line, "## "); ok {
+			sections = append(sections, heading)
+		}
+	}
+	if strings.Join(sections, ", ") != "Original data, Packages, Open, Change history" {
+		t.Errorf("sections %v:\n%s", sections, md)
+	}
+	if !strings.HasPrefix(md, "# Software Bill of Materials (SBOM)\n") {
+		t.Errorf("title:\n%s", md)
 	}
 }
 

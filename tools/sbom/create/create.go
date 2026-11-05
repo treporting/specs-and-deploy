@@ -83,30 +83,21 @@ func History(sbomMD []byte) []string {
 	return rows
 }
 
-// Markdown answers sbom.md: the table of the packages sorted by PURL, then the sections Original
-// data, Open and Change history.
+// Markdown answers sbom.md: the sections Original data, Packages - the table of the packages sorted
+// by PURL -, Open and Change history.
 //
-// @implements SR_41@1.2.1
+// @implements SR_41@2.1.1
 // @implements SR_42@1.2.1
 // @implements SR_45@1.1.1
-// @implements SR_101@1.1.1
+// @implements SR_101@2.1.1
 func Markdown(s SBOM) string {
 	packages := append([]Package(nil), s.Packages...)
 	sort.Slice(packages, func(i, j int) bool { return packages[i].PURL < packages[j].PURL })
 
 	var b strings.Builder
-	b.WriteString("# SBOM\n\n")
+	b.WriteString("# Software Bill of Materials (SBOM)\n\n")
 	b.WriteString("The packages " + s.Repo + " delivers, its own and third-party, each with its version, its\n")
-	b.WriteString("licence and its PURL. It is written by the tool sbom (TOOL_21) and not edited by hand.\n\n")
-	b.WriteString("**Table packages** - every package " + s.Repo + " delivers\n\n")
-	b.WriteString("| PURL | Name | Version | Licence |\n|---|---|---|---|\n")
-	var unknown []Package
-	for _, p := range packages {
-		b.WriteString("| " + cell(p.PURL) + " | " + cell(p.Name) + " | " + cell(p.Version) + " | " + cell(p.Licence) + " |\n")
-		if p.Licence == Unknown {
-			unknown = append(unknown, p)
-		}
-	}
+	b.WriteString("licence and its PURL. It is written by the tool sbom (TOOL_21) and not edited by hand.\n")
 	b.WriteString("\n## Original data\n\n")
 	if len(s.Original) == 0 {
 		b.WriteString("`<empty>`\n")
@@ -116,6 +107,16 @@ func Markdown(s SBOM) string {
 	}
 	for _, o := range s.Original {
 		b.WriteString("| " + cell(o.File) + " | `" + cell(o.MadeBy) + "` | " + cell(o.StoredAt) + " |\n")
+	}
+	b.WriteString("\n## Packages\n\n")
+	b.WriteString("**Table packages** - every package " + s.Repo + " delivers\n\n")
+	b.WriteString("| PURL | Name | Version | Licence |\n|---|---|---|---|\n")
+	var unknown []Package
+	for _, p := range packages {
+		b.WriteString("| " + cell(p.PURL) + " | " + cell(p.Name) + " | " + cell(p.Version) + " | " + cell(p.Licence) + " |\n")
+		if p.Licence == Unknown {
+			unknown = append(unknown, p)
+		}
 	}
 	b.WriteString("\n## Open\n\n")
 	if len(unknown) == 0 {
