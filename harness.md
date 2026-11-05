@@ -148,8 +148,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@16e3838 - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@16e3838
+<!-- generated from rules.yaml@2086c9e - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@2086c9e
 
 | Id | Version | Rule |
 |---|---|---|
@@ -172,6 +172,7 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC_18 | 2.1.1 | A decision is written down with:<br>- its reason<br>- the alternatives rejected<br>- what a means found, where one was applied to gain more information according to ISO25010:<br>&nbsp;&nbsp;- scenarios of change and growth, after ATAM<br>&nbsp;&nbsp;- one source for each information<br>&nbsp;&nbsp;- a comparison with models<br>&nbsp;&nbsp;- a pre-mortem, after LASR |
 | PROC_19 | 1.1.1 | Every test belongs to exactly one test level, read from the place of its file. |
 | PROC_20 | 2.1.1 | Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect where the linked object has another x than the link names. A suspect link is reported on every pull request. It blocks a baseline that holds both its ends, compared with the versions in that baseline, not on `main`. See traceability.md. |
+| PROC_21 | 1.1.1 | What is made only to be looked at stays on the machine it is made on: it is not pushed, and no ticket or pull request carries it. The repos are public; whatever reaches them is published. |
 <!-- end of generated -->
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
@@ -273,3 +274,4 @@ as soon as possible (PROC_07)
 | 17.1.1 | 2026-11-02 | PROC_13 at 3.1.1 in table rules | #411 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-11-03 | PROC_13 at 4.1.1 in table rules: a generated document is a record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-11-04 | Loop for every release or library: write the test report | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 20.1.1 | 2026-11-05 | Rules: PROC_21 | #515 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

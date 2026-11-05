@@ -168,3 +168,12 @@ rules:
   safety: ''
   status: approved
   verification_method: []
+- object_key: PROC_21
+  object_version: '1.1.1'
+  object_text: 'What is made only to be looked at stays on the machine it is made on: it is not pushed,
+    and no ticket or pull request carries it. The repos are public; whatever reaches them is
+    published.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
