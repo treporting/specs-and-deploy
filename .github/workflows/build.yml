@@ -135,8 +135,20 @@ jobs:
       #	runs in its sandbox (pdf, SR_68)
       - name: user namespaces for the sandbox of Chrome
         run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      #	only in the baseline: the junit.xml of each run, for the test reports (SR_99)
+      - name: install gotestsum
+        if: inputs.report
+        run: go install gotest.tools/gotestsum@v1.12.3
       - name: test
+        env:
+          JUNIT: ${{ inputs.report && format('{0}/junit', runner.temp) || '' }}
         run: '"$STEPS/.github/build/steps.sh" test'
+      - uses: actions/upload-artifact@v7
+        if: inputs.report
+        with:
+          name: junit
+          path: ${{ runner.temp }}/junit/
+          if-no-files-found: ignore
 
   #	reports and fails on nothing; a step fails only where the measuring itself did not happen.
   #	Only in the baseline: the commit loop does not ask for it (TOOL_26)
