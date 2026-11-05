@@ -102,7 +102,7 @@ requirements:
   source_ids: [TOOL_12@1.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [demonstration]
 - object_key: SR_11
   object_version: '2.1.3'
@@ -561,11 +561,11 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: SR_55
-  object_version: '1.1.2'
+  object_version: '1.2.1'
   component: ci
   object_text: 'in build.yml, run `go test -race` on every Go module, once without and once with the build
     tag integration, and fail where a test fails'
-  source_ids: [TOOL_25@1.1.1]
+  source_ids: [TOOL_12@1.2.4, TOOL_25@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
