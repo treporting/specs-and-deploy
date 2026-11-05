@@ -855,10 +855,10 @@ testcases:
   status: obsolete
   verification_method: [review]
 - object_key: TC_108
-  object_version: '1.1.1'
-  object_text: 'sbom run in the repo of a subsystem: it writes sbom.md in the root of the repo'
+  object_version: '2.1.1'
+  object_text: 'sbom run in the repo of a subsystem: it writes sbom.md in the folder sbom/ of the repo'
   design_technique: requirements-based testing
-  target_ids: [SR_39@1.2.1]
+  target_ids: [SR_39@2.1.1]
   status: approved
   verification_method: [review]
 - object_key: TC_109
