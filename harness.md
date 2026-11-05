@@ -28,7 +28,12 @@ treporting is a pure software project and is developed following the process of 
 
 ### Levels
 
-**Table levels** - the levels of the work, and the clause of each
+The levels are kept in [levels.yaml](levels.yaml); the tables of the levels and of the test levels
+are generated from it whenever it changes, and name the hash of its content,
+`git hash-object levels.yaml`.
+
+<!-- generated from levels.yaml@d02278b - do not edit -->
+**Table levels** - the levels of the work, and the clause of each, generated from levels.yaml@d02278b
 
 | Level | Here | Reference |
 |---|---|---|
@@ -42,6 +47,10 @@ treporting is a pure software project and is developed following the process of 
 | r5 | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition |
 | r6 | software architecture of a subsystem: its components | ISO12207, clause 6.4.4 - architecture definition |
 | r7 | software design of a subsystem: its modules and units | ISO12207, clause 6.4.5 - design definition |
+| tool | the requirements of the tools of specs-and-deploy, which are not part of the product | - |
+| rules | the rules of our work | - |
+| document | a document without a level, in Markdown, such as formats.md | - |
+<!-- end of generated -->
 
 In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
 tests SYS, r5 to r7 with the code and the software tests SW. n1 is read by the compliance
@@ -49,7 +58,8 @@ view, not by a trace.
 
 ### Test levels
 
-**Table test levels** - the levels of the tests, and the term of each in ISO29119
+<!-- generated from levels.yaml@d02278b - do not edit -->
+**Table test levels** - the levels of the tests, and the term of each in ISO29119, generated from levels.yaml@d02278b
 
 | Level | Term in ISO29119 | What | Data |
 |---|---|---|---|
@@ -59,6 +69,7 @@ view, not by a trace.
 | SysIT | system integration test | the containers built and working together | - |
 | SysQT | system test | the system against SYS | the containers with demo data |
 | Val | acceptance test | the system against the user needs | the containers with reference data |
+<!-- end of generated -->
 
 A software test names SR in `@verifies`, a system test SYS.
 
@@ -275,3 +286,4 @@ as soon as possible (PROC_07)
 | 18.1.1 | 2026-11-03 | PROC_13 at 4.1.1 in table rules: a generated document is a record | #423 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-11-04 | Loop for every release or library: write the test report | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 20.1.1 | 2026-11-05 | Rules: PROC_21 | #515 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 21.1.1 | 2026-11-05 | Levels, Test levels: the tables generated from levels.yaml | #536 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
