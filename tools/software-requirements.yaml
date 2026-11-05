@@ -404,7 +404,7 @@ requirements:
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
 - object_key: SR_40
   object_version: '3.3.1'

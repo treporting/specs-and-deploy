@@ -859,7 +859,7 @@ testcases:
   object_text: 'sbom run in the repo of a subsystem: it writes sbom.md in the folder sbom/ of the repo'
   design_technique: requirements-based testing
   target_ids: [SR_39@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_109
   object_version: '1.1.1'
