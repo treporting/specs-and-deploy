@@ -88,7 +88,7 @@ test() {
 	done
 }
 
-#	@implements SR_57@1.1.1
+#	@implements SR_57@2.1.2
 cover() {
 	local profile
 	profile="$(mktemp)"
@@ -110,7 +110,7 @@ cover() {
 	rm -f "$profile"
 }
 
-#	@implements SR_58@1.1.1
+#	@implements SR_58@2.1.2
 debt() {
 	for m in $(modules); do
 		echo "== $m: what nothing uses, and a cyclomatic complexity of 15 and more"

@@ -96,6 +96,7 @@ jobs:
     uses: treporting/specs-and-deploy/.github/workflows/build.yml@main
     with:
       go-version-file: ${{ inputs.go-version-file }}
+      report: true
 
   #	SR_63, SR_64: sbom and the check of the licences; the pull request where every step passed
   sbom:
