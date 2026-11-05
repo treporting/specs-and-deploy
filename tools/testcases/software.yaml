@@ -1251,5 +1251,5 @@ testcases:
     holds no `/home/u`'
   design_technique: equivalence partitioning
   target_ids: [SR_105@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
