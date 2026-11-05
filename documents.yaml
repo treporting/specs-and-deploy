@@ -15,7 +15,7 @@ documents:
   level: rules
   object_version: '23.1.1'
   object_hash: 'ecad496'
-  status: review
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
