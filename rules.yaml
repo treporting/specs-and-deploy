@@ -180,8 +180,7 @@ rules:
 - object_key: PROC_22
   object_version: '1.1.1'
   object_text: 'The text of a requirement does not rely on the content of a document, so that a
-    change of a document never calls for a look at a requirement. The name of a document used only as
-    an example, such as in the footer of a PDF, is no reference.'
+    change of a document never calls for a look at a requirement.'
   priority: 'medium'
   safety: ''
   status: approved
