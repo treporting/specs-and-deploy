@@ -55,6 +55,10 @@ our process and tools are generated from it whenever it changes, and name the ha
 | r1tc | acceptance test | Val | the system against the user needs | ISO29119 | the containers with reference data |
 <!-- end of generated -->
 
+In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
+tests SYS, r5 to r7 with the code and the software tests SW. n1 is read by the compliance
+view, not by a trace.
+
 <!-- generated from levels.yaml@e8528fd - do not edit -->
 **Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@e8528fd
 
@@ -66,10 +70,6 @@ our process and tools are generated from it whenever it changes, and name the ha
 | r5tc | r5tc | subsystem test | SwVal | a subsystem against its SR, through its API and its model | ISO29119 | from gel |
 | - | document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
 <!-- end of generated -->
-
-In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
-tests SYS, r5 to r7 with the code and the software tests SW. n1 is read by the compliance
-view, not by a trace.
 
 A software test names SR in `@verifies`, a system test SYS.
 
