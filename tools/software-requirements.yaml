@@ -1083,3 +1083,13 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR_105
+  object_version: '1.1.1'
+  component: sbom
+  object_text: with -store, write the output of go list with the module cache of Go, as `go env
+    GOMODCACHE` names it, replaced by `$GOMODCACHE`
+  source_ids: [TOOL_21@2.1.2]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
