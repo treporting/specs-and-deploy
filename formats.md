@@ -29,9 +29,9 @@ A readable Markdown view of the YAML is generated on request only - save the tab
 
 ### Levels
 
-**Decision**: `levels.yaml` at the root of the repo lists every level: its key, its name, the
-abbreviation of its name, what it holds and the clause it follows; a test level also the data its
-tests run with. A tool that names a level takes the name from there.
+**Decision**: `levels.yaml` at the root of the repo lists every level: its key, the part it belongs
+to - the product, or our process and tools -, its name, the abbreviation of its name, what it holds
+and the clause it follows; a test level also the data its tests run with. A tool that names a level takes the name from there.
 
 **Why**: the levels were named only in the tables of harness.md, which no tool reads, and each
 schema lists its keys apart, without a name. One file serves every tool, and the tables of
@@ -728,7 +728,7 @@ safer. That is a question for those tools, not for annotationcheck.
 
 ## Test levels
 
-The level of a test follows from where its file lies (see table levels in
+The level of a test follows from where its file lies (see table product in
 [harness.md](harness.md)):
 
 **Table places of the tests** - where the file of a test lies on each level
@@ -924,3 +924,4 @@ case, and a test case without a result, would have no row.
 | 30.1.1 | 2026-11-04 | Test report: one per test level | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 31.1.1 | 2026-11-05 | Levels: levels.yaml; Table types: the type levels | #535 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 32.1.1 | 2026-11-05 | Test levels: the table levels of harness.md | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 33.1.1 | 2026-11-05 | Levels: the part of a level; Test levels: the table product of harness.md | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

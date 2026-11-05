@@ -13,9 +13,9 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '23.1.1'
+  object_version: '24.1.1'
   object_hash: '71d3b0e'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
@@ -37,9 +37,9 @@ documents:
   verification_method: [review]
 - name: formats.md
   type: document
-  object_version: '32.1.1'
+  object_version: '33.1.1'
   object_hash: 'ab79a0f'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document

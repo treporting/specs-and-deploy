@@ -28,11 +28,12 @@ treporting is a pure software project and is developed following the process of 
 
 ### Levels
 
-The levels are kept in [levels.yaml](levels.yaml); the table of the levels is generated from it
-whenever it changes, and names the hash of its content, `git hash-object levels.yaml`.
+The levels are kept in [levels.yaml](levels.yaml); the tables of the levels of the product and of
+our process and tools are generated from it whenever it changes, and name the hash of its content,
+`git hash-object levels.yaml`.
 
-<!-- generated from levels.yaml@d02278b - do not edit -->
-**Table levels** - the levels of the work and of its tests, each with its name, its clause or term, and the data a test level runs with, generated from levels.yaml@d02278b
+<!-- generated from levels.yaml@0806cf8 - do not edit -->
+**Table product** - the levels of the product and of its tests, each with its name, its clause or term, and the data a test level runs with, generated from levels.yaml@0806cf8
 
 | Level | Name | Abbreviation | Description | Reference | Data |
 |---|---|---|---|---|---|
@@ -46,15 +47,22 @@ whenever it changes, and names the hash of its content, `git hash-object levels.
 | r5 | software requirements | SR | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition | - |
 | r6 | software architecture | SA | software architecture of a subsystem: its components | ISO12207, clause 6.4.4 - architecture definition | - |
 | r7 | software design | SD | software design of a subsystem: its modules and units | ISO12207, clause 6.4.5 - design definition | - |
-| tool | tool requirements | TOOL | the requirements of the tools of specs-and-deploy, which are not part of the product | - | - |
-| rules | rules | PROC | the rules of our work | - | - |
-| document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
 | r7tc | unit test | MT | a function or a package | ISO29119 | made in the test |
 | r6tc | integration test | SwIT | a subsystem, through its API and its model | ISO29119 | synthetic, in memory |
 | r5tc | subsystem test | SwVal | a subsystem against its SR, through its API and its model | ISO29119 | from gel |
 | r3tc | system integration test | SysIT | the containers built and working together | ISO29119 | - |
 | r2tc | system test | SysQT | the system against SYS | ISO29119 | the containers with demo data |
 | r1tc | acceptance test | Val | the system against the user needs | ISO29119 | the containers with reference data |
+<!-- end of generated -->
+
+<!-- generated from levels.yaml@0806cf8 - do not edit -->
+**Table process & tools** - the levels of our process and of our tools, generated from levels.yaml@0806cf8
+
+| Level | Name | Abbreviation | Description | Reference | Data |
+|---|---|---|---|---|---|
+| tool | tool requirements | TOOL | the requirements of the tools of specs-and-deploy, which are not part of the product | - | - |
+| rules | rules | PROC | the rules of our work | - | - |
+| document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
 <!-- end of generated -->
 
 In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
@@ -280,3 +288,4 @@ as soon as possible (PROC_07)
 | 21.1.1 | 2026-11-05 | Levels, Test levels: the tables generated from levels.yaml | #536 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 22.1.1 | 2026-11-05 | Levels: one table of every level, the test levels too | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 23.1.1 | 2026-11-05 | Rules: PROC_22 | #547 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 24.1.1 | 2026-11-05 | Levels: a table of the product, a table of process & tools | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

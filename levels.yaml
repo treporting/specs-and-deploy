@@ -4,96 +4,115 @@ schema: schemas/levels.schema.json
 type: levels
 levels:
 - key: h1
+  part: product
   name: hazards and threats
   abbreviation: HAZ, THR
   description: hazards (HAZ) and threats (THR), told apart by their prefix - a trace starts here or
     at r1
   reference: the method of IEC61508-1, clause 7.4; IEC62443-3-2
 - key: h2
+  part: product
   name: controls of hazards and threats
   abbreviation: HAZC, THRC
   description: the measure that controls a hazard (HAZC) or a threat (THRC), and asks for r2
 - key: n1
+  part: product
   name: regulatory requirements
   abbreviation: REG
   description: 'the clauses of the standards and laws to be met: regulatory requirements (REG)'
   reference: ISO12207, clause 6.4.2 - stakeholder needs and requirements definition
 - key: r1
+  part: product
   name: user needs
   abbreviation: UN
   description: user needs (UN)
   reference: ISO12207, clause 6.4.2 - stakeholder needs and requirements definition
 - key: r2
+  part: product
   name: system requirements
   abbreviation: SYS
   description: system requirements (SYS)
   reference: ISO12207, clause 6.4.3 - system requirements definition
 - key: r3
+  part: product
   name: system architecture
   abbreviation: ARC
   description: system architecture (ARC)
   reference: ISO12207, clause 6.4.4 - architecture definition
 - key: r4
+  part: product
   name: allocated system requirements
   description: the system requirements allocated to the subsystems - derived directly from r2 by
     the allocation in the system architecture, with no ids of their own
   reference: ISO12207, clause 6.4.4 - architecture definition
 - key: r5
+  part: product
   name: software requirements
   abbreviation: SR
   description: software requirements (SR) per subsystem
   reference: ISO12207, clause 6.4.3 - software requirements definition
 - key: r6
+  part: product
   name: software architecture
   abbreviation: SA
   description: 'software architecture of a subsystem: its components'
   reference: ISO12207, clause 6.4.4 - architecture definition
 - key: r7
+  part: product
   name: software design
   abbreviation: SD
   description: 'software design of a subsystem: its modules and units'
   reference: ISO12207, clause 6.4.5 - design definition
 - key: tool
+  part: 'process & tools'
   name: tool requirements
   abbreviation: TOOL
   description: the requirements of the tools of specs-and-deploy, which are not part of the product
 - key: rules
+  part: 'process & tools'
   name: rules
   abbreviation: PROC
   description: the rules of our work
 - key: document
+  part: 'process & tools'
   name: documents
   description: a document without a level, in Markdown, such as formats.md
 - key: r7tc
+  part: product
   name: unit test
   abbreviation: MT
   description: a function or a package
   reference: ISO29119
   data: made in the test
 - key: r6tc
+  part: product
   name: integration test
   abbreviation: SwIT
   description: a subsystem, through its API and its model
   reference: ISO29119
   data: synthetic, in memory
 - key: r5tc
+  part: product
   name: subsystem test
   abbreviation: SwVal
   description: a subsystem against its SR, through its API and its model
   reference: ISO29119
   data: from gel
 - key: r3tc
+  part: product
   name: system integration test
   abbreviation: SysIT
   description: the containers built and working together
   reference: ISO29119
 - key: r2tc
+  part: product
   name: system test
   abbreviation: SysQT
   description: the system against SYS
   reference: ISO29119
   data: the containers with demo data
 - key: r1tc
+  part: product
   name: acceptance test
   abbreviation: Val
   description: the system against the user needs
