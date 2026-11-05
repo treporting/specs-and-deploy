@@ -6,8 +6,12 @@ import (
 	"strings"
 
 	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/parser"
 	gmhtml "github.com/yuin/goldmark/renderer/html"
+	"github.com/yuin/goldmark/text"
+	"github.com/yuin/goldmark/util"
 )
 
 // mermaid is the script of Mermaid, at a fixed version, loaded where a document holds a diagram; the
@@ -47,11 +51,42 @@ pre code { background: none; padding: 0; }
 </style>`
 
 // markdown renders Markdown as GitHub does: its tables, strikethrough, task lists and links.
-var markdown = goldmark.New(goldmark.WithExtensions(extension.GFM), goldmark.WithRendererOptions(gmhtml.WithUnsafe()))
+var markdown = goldmark.New(goldmark.WithExtensions(extension.GFM), goldmark.WithRendererOptions(gmhtml.WithUnsafe()),
+	goldmark.WithParserOptions(parser.WithASTTransformers(util.Prioritized(addresses{}, 0))))
+
+// addresses keeps as text an e-mail address whose last character is no letter, such as SR_01@1.1.3,
+// as GitHub does; goldmark links it to mailto:.
+type addresses struct{}
+
+// Transform replaces each such link with its text.
+//
+// @implements SR_69@1.1.2
+func (addresses) Transform(doc *ast.Document, reader text.Reader, _ parser.Context) {
+	source := reader.Source()
+	var links []*ast.AutoLink
+	_ = ast.Walk(doc, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
+		if l, ok := n.(*ast.AutoLink); ok && entering && l.AutoLinkType == ast.AutoLinkEmail && !letter(l.Label(source)) {
+			links = append(links, l)
+		}
+		return ast.WalkContinue, nil
+	})
+	for _, l := range links {
+		l.Parent().ReplaceChild(l.Parent(), l, ast.NewString(l.Label(source)))
+	}
+}
+
+// letter tells whether the last character of label is a letter.
+func letter(label []byte) bool {
+	if len(label) == 0 {
+		return false
+	}
+	c := label[len(label)-1]
+	return 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z'
+}
 
 // Page answers the HTML page of a document: its Markdown rendered, and its Mermaid diagrams drawn.
 //
-// @implements SR_69@1.1.1
+// @implements SR_69@1.1.2
 func Page(title string, source []byte) (string, error) {
 	var body bytes.Buffer
 	if err := markdown.Convert(source, &body); err != nil {
