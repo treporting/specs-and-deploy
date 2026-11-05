@@ -179,9 +179,7 @@ rules:
   verification_method: []
 - object_key: PROC_22
   object_version: '1.1.1'
-  object_text: 'A requirement refers to no document in any of its fields. A file it makes, such as
-    `sbom.md`, is no reference. A document changes in versions of its own and is traced by no link,
-    so a requirement that names it depends on what no check follows.'
+  object_text: 'The text of a requirement refers to no document.'
   priority: 'medium'
   safety: ''
   status: approved
