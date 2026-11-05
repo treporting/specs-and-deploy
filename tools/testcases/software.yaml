@@ -1133,19 +1133,20 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_143
-  object_version: '1.2.1'
-  object_text: 'results passed, failed and skipped, and a test case without a test result:
-    Deviations lists the failed and the skipped one, Open lists the test case'
+  object_version: '2.1.1'
+  object_text: 'results passed, failed and skipped, and an approved test case without a test
+    procedure: Deviations lists the failed and the skipped one; Open holds the row of the test
+    case, with its requirement and the status approved, and `-` as test procedure and as its status'
   design_technique: equivalence partitioning
-  target_ids: [SR_95@1.2.1]
+  target_ids: [SR_95@2.1.1]
   status: approved
   verification_method: [review]
 - object_key: TC_144
-  object_version: '1.2.1'
+  object_version: '1.3.1'
   object_text: 'every result passed, and every test case and test procedure with a result:
     Deviations and Open each hold `<empty>`'
   design_technique: boundary value analysis
-  target_ids: [SR_95@1.2.1]
+  target_ids: [SR_95@2.1.1]
   status: approved
   verification_method: [review]
 - object_key: TC_145
@@ -1259,5 +1260,22 @@ testcases:
     page as GitHub shows it: `a@1.com` is a link to mailto:, `SR_01@1.1.3` is text and no link'
   design_technique: equivalence partitioning
   target_ids: [SR_69@1.1.2]
+  status: approved
+  verification_method: [review]
+- object_key: TC_158
+  object_version: '1.1.1'
+  object_text: 'a test procedure without a test result that implements an approved test case: Open
+    holds the row of the test case, with its requirement and the status approved, and the test
+    procedure with the status `no test result`'
+  design_technique: equivalence partitioning
+  target_ids: [SR_95@2.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_159
+  object_version: '1.1.1'
+  object_text: 'an obsolete test case without a test procedure: Open holds its row, with the status
+    obsolete'
+  design_technique: equivalence partitioning
+  target_ids: [SR_95@2.1.1]
   status: approved
   verification_method: [review]
