@@ -131,3 +131,81 @@ func TestCheckFailsWhereSbomMDDoesNotListWhatIsDelivered(t *testing.T) {
 		t.Errorf("check of a changed lock: %v\n%s", err, out)
 	}
 }
+
+// sbomIn builds sbom and runs it with args in a repo of git with a package-lock.json in its root,
+// and answers the names in its folder sbom/.
+func sbomIn(t *testing.T, args ...string) (string, []string) {
+	t.Helper()
+	bin := filepath.Join(t.TempDir(), "sbom")
+	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/sbom").CombinedOutput(); err != nil {
+		t.Fatalf("go build: %v\n%s", err, out)
+	}
+	repo := filepath.Join(t.TempDir(), "viewer-trace")
+	if err := os.MkdirAll(repo, 0o750); err != nil {
+		t.Fatal(err)
+	}
+	for name, content := range map[string]string{"LICENSE": apacheText, "package-lock.json": lock, "documents.yaml": documentsYAML} {
+		if err := os.WriteFile(filepath.Join(repo, name), []byte(content), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	for _, git := range [][]string{{"init", "-q"}, {"add", "."}, {"-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "-m", "a"}} {
+		if out, err := exec.Command("git", append([]string{"-C", repo}, git...)...).CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v\n%s", git, err, out)
+		}
+	}
+	if out, err := exec.Command(bin, append([]string{"-root", repo, "-label", "1.0.0", "-ticket", "343"}, args...)...).CombinedOutput(); err != nil {
+		t.Fatalf("sbom: %v\n%s", err, out)
+	}
+	entries, err := os.ReadDir(filepath.Join(repo, Folder))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var names []string
+	for _, e := range entries {
+		names = append(names, e.Name())
+	}
+	return repo, names
+}
+
+// @implements TC_149@1.1.1
+func TestCommandWithoutStoreWritesOnlySbomMD(t *testing.T) {
+	repo, names := sbomIn(t)
+	if len(names) != 1 || names[0] != "sbom.md" {
+		t.Errorf("sbom/ holds %v", names)
+	}
+	md, err := os.ReadFile(filepath.Join(repo, Name))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(md), "| root-package-lock.json | `npm install` | - |") {
+		t.Errorf("Original data:\n%s", md)
+	}
+}
+
+// @implements TC_150@1.1.1, TC_151@1.1.1
+func TestCommandWithStoreWritesTheOriginalsAndTheirRecord(t *testing.T) {
+	repo, names := sbomIn(t, "-store")
+	if len(names) != 3 {
+		t.Fatalf("sbom/ holds %v", names)
+	}
+	record, lockName := names[0], names[1] // <ts>.yaml sorts before <ts>_root-package-lock.json
+	ts, ok := strings.CutSuffix(lockName, "_root-package-lock.json")
+	if !ok || len(ts) != len("20261105T100000") || record != ts+".yaml" || names[2] != "sbom.md" {
+		t.Fatalf("sbom/ holds %v", names)
+	}
+	md, err := os.ReadFile(filepath.Join(repo, Name))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(md), "| root-package-lock.json | `npm install` | ./sbom/"+lockName+" |") {
+		t.Errorf("Original data:\n%s", md)
+	}
+	data, err := os.ReadFile(filepath.Join(repo, Folder, record))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(data), "- file: "+lockName+"\n    made_by: npm install\n") || !strings.Contains(string(data), "document: sbom/sbom.md\n") {
+		t.Errorf("%s:\n%s", record, data)
+	}
+}

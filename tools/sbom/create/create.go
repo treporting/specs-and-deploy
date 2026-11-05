@@ -22,9 +22,10 @@ type Package struct {
 
 // SBOM is what sbom.md is written from.
 type SBOM struct {
-	Repo     string    // the repo of the subsystem, such as storages
-	Packages []Package // every package it delivers, its own among them
-	History  []string  // the rows of the Change history, the new one last
+	Repo     string     // the repo of the subsystem, such as storages
+	Packages []Package  // every package it delivers, its own among them
+	Original []Original // every file of original data it is written from
+	History  []string   // the rows of the Change history, the new one last
 }
 
 // Own answers the package of the subsystem itself: the label of its baseline as its version, the
@@ -82,12 +83,13 @@ func History(sbomMD []byte) []string {
 	return rows
 }
 
-// Markdown answers sbom.md: the table of the packages sorted by PURL, then the sections Open and
-// Change history.
+// Markdown answers sbom.md: the table of the packages sorted by PURL, then the sections Original
+// data, Open and Change history.
 //
 // @implements SR_41@1.2.1
 // @implements SR_42@1.2.1
 // @implements SR_45@1.1.1
+// @implements SR_101@1.1.1
 func Markdown(s SBOM) string {
 	packages := append([]Package(nil), s.Packages...)
 	sort.Slice(packages, func(i, j int) bool { return packages[i].PURL < packages[j].PURL })
@@ -104,6 +106,16 @@ func Markdown(s SBOM) string {
 		if p.Licence == Unknown {
 			unknown = append(unknown, p)
 		}
+	}
+	b.WriteString("\n## Original data\n\n")
+	if len(s.Original) == 0 {
+		b.WriteString("`<empty>`\n")
+	} else {
+		b.WriteString("**Table original data** - every file sbom.md is written from\n\n")
+		b.WriteString("| File | Made by | Stored At |\n|---|---|---|\n")
+	}
+	for _, o := range s.Original {
+		b.WriteString("| " + cell(o.File) + " | `" + cell(o.MadeBy) + "` | " + cell(o.StoredAt) + " |\n")
 	}
 	b.WriteString("\n## Open\n\n")
 	if len(unknown) == 0 {

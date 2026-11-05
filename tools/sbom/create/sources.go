@@ -29,7 +29,13 @@ func LicenceIn(dir string) string {
 
 // moduleFormat makes go list print each module a package belongs to - its replacement where it has
 // one - as path, version and directory, and nothing for the module of the subsystem.
-const moduleFormat = `{{with .Module}}{{if not .Main}}{{with .Replace}}{{.Path}}	{{.Version}}	{{.Dir}}{{else}}{{.Path}}	{{.Version}}	{{.Dir}}{{end}}{{end}}{{end}}`
+const moduleFormat = `{{with .Module}}{{if not .Main}}{{with .Replace}}{{.Path}}{{"\t"}}{{.Version}}{{"\t"}}{{.Dir}}{{else}}{{.Path}}{{"\t"}}{{.Version}}{{"\t"}}{{.Dir}}{{end}}{{end}}{{end}}`
+
+// commandsFormat makes go list print the import path of each command, and nothing for the others.
+const commandsFormat = `{{if eq .Name "main"}}{{.ImportPath}}{{end}}`
+
+// commandsCommand is the go list that names the commands, as a shell runs it.
+const commandsCommand = "go list -f '" + commandsFormat + "' ./..."
 
 // DirsWith answers every directory of root that holds a file of that name, root included, in lexical
 // order - neither below node_modules nor below a directory whose name starts with a dot, as the build
@@ -60,7 +66,7 @@ func DirsWith(root, name string) ([]string, error) {
 //
 // @implements SR_36@2.1.1
 func GoList(root string) (string, error) {
-	commands, err := run(root, "go", "list", "-f", `{{if eq .Name "main"}}{{.ImportPath}}{{end}}`, "./...")
+	commands, err := run(root, "go", "list", "-f", commandsFormat, "./...")
 	if err != nil {
 		return "", err
 	}

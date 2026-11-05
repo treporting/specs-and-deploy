@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/treporting/specs-and-deploy/schemas/original-data.schema.json",
+  "$comment": "@refines ARC_22@2.1.1",
+  "title": "The original data a generated document is written from, as stored",
+  "type": "object",
+  "required": [
+    "schema",
+    "type",
+    "document",
+    "label",
+    "commit",
+    "created_at",
+    "files"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "schemas/original-data.schema.json",
+      "description": "the schema of this file, from the root of the repo (formats.md, section Schemas)"
+    },
+    "type": {
+      "const": "original-data",
+      "description": "what this file holds (formats.md, section The head of a file)"
+    },
+    "document": {
+      "type": "string",
+      "minLength": 1,
+      "description": "the generated document, from the root of the repo, such as sbom/sbom.md"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "the label of the baseline the document was written for"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$",
+      "description": "the commit the original data was made on"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2,}-[0-9]{2,}T[0-9]{2,}:[0-9]{2,}:[0-9]{2,}[+-][0-9]{2,}:[0-9]{2,}$"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "file",
+          "made_by"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1,
+            "description": "the file stored, beside this file"
+          },
+          "made_by": {
+            "type": "string",
+            "minLength": 1,
+            "description": "the command that made it"
+          }
+        }
+      }
+    }
+  }
+}

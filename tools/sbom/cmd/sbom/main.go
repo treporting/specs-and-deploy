@@ -1,6 +1,6 @@
 // Command sbom creates the SBOM of a subsystem as sbom.md in the folder sbom/ of its repo (TOOL_21).
 //
-//	sbom -label x.y.z -ticket number [-root dir] [-repo name] [-image name]...
+//	sbom -label x.y.z -ticket number [-store] [-root dir] [-repo name] [-image name]...
 //	sbom -check [-root dir] [-repo name] [-image name]...
 //
 // It runs in the repo checked out at the baseline the label names. It lists the package of the
@@ -8,7 +8,10 @@
 // of the repo holds a go.mod; the packages of each package-lock.json of the repo; and the Alpine
 // packages of each image named. It lists each package once. It keeps the rows of the Change history of an sbom.md that is there,
 // and adds one. It sets the entry of sbom.md in documents.yaml of the repo: the version of the new
-// row, the hash of the file written, completed and generated (PROC_13).
+// row, the hash of the file written, completed and generated (PROC_13). It lists in sbom.md each
+// file of original data it read: the output of go list, each package-lock.json, the Alpine packages
+// of each image. With -store it writes them into sbom/ as <ts>_<file>, and names them in
+// sbom/<ts>.yaml.
 //
 // With -check it writes nothing: it compares the packages with the table of sbom.md, and exits with
 // 1 where they differ (TOOL_28).
@@ -18,6 +21,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime/debug"
 	"strings"
@@ -34,6 +38,7 @@ func (i *images) Set(v string) error { *i = append(*i, v); return nil }
 
 // @implements SR_39@2.1.1
 // @implements SR_59@2.1.1
+// @implements SR_101@1.1.1, SR_102@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo of the subsystem")
@@ -41,6 +46,7 @@ func main() {
 	ticket := flag.String("ticket", "", "the number of the ticket of the baseline, such as 343")
 	repo := flag.String("repo", "", "the name of the repo; the name of the directory of root where empty")
 	check := flag.Bool("check", false, "compare the packages with the table of sbom.md, and write nothing")
+	store := flag.Bool("store", false, "store the original data in sbom/, named in sbom/<ts>.yaml")
 	var named images
 	flag.Var(&named, "image", "an image of the subsystem, built at the baseline; may be given more than once")
 	flag.Parse()
@@ -75,15 +81,19 @@ func main() {
 		fail(err)
 	}
 
-	packages := delivered(*root, *repo, *label, named)
+	packages, originals := delivered(*root, *repo, *label, named)
 
+	now := time.Now()
 	old, _ := os.ReadFile(path) // an sbom.md that is not there has no rows to keep
-	history := append(create.History(old), create.Row(next, time.Now().Format("2006-01-02"), *label, *ticket, "sbom "+version()))
+	history := append(create.History(old), create.Row(next, now.Format("2006-01-02"), *label, *ticket, "sbom "+version()))
 
-	md := []byte(create.Markdown(create.SBOM{Repo: *repo, Packages: packages, History: history}))
 	if err := os.MkdirAll(filepath.Dir(path), 0o750); err != nil {
 		fail(err)
 	}
+	if *store && len(originals) > 0 {
+		originals = storeOriginals(*root, *label, now, originals)
+	}
+	md := []byte(create.Markdown(create.SBOM{Repo: *repo, Packages: packages, Original: originals, History: history}))
 	if err := os.WriteFile(path, md, 0o600); err != nil {
 		fail(err)
 	}
@@ -107,7 +117,8 @@ func checkSbom(path, root, repo string, named []string) {
 	if label == "" {
 		fail(fmt.Errorf("%s: no row in its Change history, so no label", path))
 	}
-	differ := create.Differ(delivered(root, repo, label, named), create.Table(md))
+	packages, _ := delivered(root, repo, label, named)
+	differ := create.Differ(packages, create.Table(md))
 	for _, line := range differ {
 		fmt.Println(line)
 	}
@@ -121,23 +132,54 @@ func checkSbom(path, root, repo string, named []string) {
 // delivered answers every package the subsystem delivers, each once: its own, with the label as its
 // version; the Go modules of its commands and the standard library of Go, where a directory of the
 // repo holds a go.mod; the packages of each package-lock.json of the repo; and the Alpine packages of
-// each image.
-func delivered(root, repo, label string, named []string) []create.Package {
+// each image. It answers as well each file of original data it read.
+func delivered(root, repo, label string, named []string) ([]create.Package, []create.Original) {
 	packages := []create.Package{create.Own(repo, label, create.LicenceIn(root))}
-	packages = append(packages, goPackages(root)...)
-	packages = append(packages, npmPackages(root)...)
-	packages = append(packages, apkPackages(named)...)
-	return create.Once(packages)
+	var originals []create.Original
+	for _, source := range []func(string, []string) ([]create.Package, []create.Original){goPackages, npmPackages, apkPackages} {
+		p, o := source(root, named)
+		packages = append(packages, p...)
+		originals = append(originals, o...)
+	}
+	return create.Once(packages), originals
+}
+
+// storeOriginals writes the originals into sbom/ and names them in sbom/<ts>.yaml, ts the time of
+// the run, and answers them with where each is stored.
+func storeOriginals(root, label string, now time.Time, originals []create.Original) []create.Original {
+	ts := now.Format("20060102T150405")
+	stored, err := create.Store(root, ts, originals)
+	if err != nil {
+		fail(err)
+	}
+	record, err := create.OriginalYAML(label, commit(root), now.Format("2006-01-02T15:04:05-07:00"), stored)
+	if err != nil {
+		fail(err)
+	}
+	if err := os.WriteFile(filepath.Join(root, create.Folder, ts+".yaml"), record, 0o600); err != nil {
+		fail(err)
+	}
+	return stored
+}
+
+// commit answers the commit of the head of the repo in root.
+func commit(root string) string {
+	out, err := exec.Command("git", "-C", root, "rev-parse", "--short=7", "HEAD").Output() // #nosec G204 -- root is the caller's own flag
+	if err != nil {
+		fail(fmt.Errorf("git rev-parse: %w", err))
+	}
+	return strings.TrimSpace(string(out))
 }
 
 // goPackages answers the Go modules of the commands of every go.mod of the repo, and the standard
 // library of Go where there is a command; nothing where there is none.
-func goPackages(root string) []create.Package {
+func goPackages(root string, _ []string) ([]create.Package, []create.Original) {
 	dirs, err := create.DirsWith(root, "go.mod")
 	if err != nil {
 		fail(err)
 	}
 	var lists, withCommands []string
+	var originals []create.Original
 	for _, dir := range dirs {
 		list, err := create.GoList(dir)
 		if err != nil {
@@ -146,12 +188,13 @@ func goPackages(root string) []create.Package {
 		if list != "" {
 			lists = append(lists, list)
 			withCommands = append(withCommands, dir)
+			originals = append(originals, create.GoListOriginal(root, dir, list))
 		}
 	}
 	if len(lists) == 0 {
-		return nil
+		return nil, nil
 	}
-	return append(create.GoModules(strings.Join(lists, "\n"), create.LicenceIn), stdlib(withCommands[0]))
+	return append(create.GoModules(strings.Join(lists, "\n"), create.LicenceIn), stdlib(withCommands[0])), originals
 }
 
 // stdlib answers the standard library of the Go that builds the module in dir.
@@ -172,12 +215,13 @@ func stdlib(dir string) create.Package {
 }
 
 // npmPackages answers the packages of every package-lock.json of the repo.
-func npmPackages(root string) []create.Package {
+func npmPackages(root string, _ []string) ([]create.Package, []create.Original) {
 	dirs, err := create.DirsWith(root, "package-lock.json")
 	if err != nil {
 		fail(err)
 	}
 	var packages []create.Package
+	var originals []create.Original
 	for _, dir := range dirs {
 		lock, err := os.ReadFile(filepath.Join(dir, "package-lock.json"))
 		if err != nil {
@@ -188,21 +232,24 @@ func npmPackages(root string) []create.Package {
 			fail(err)
 		}
 		packages = append(packages, npm...)
+		originals = append(originals, create.LockOriginal(root, dir, lock))
 	}
-	return packages
+	return packages, originals
 }
 
 // apkPackages answers the Alpine packages of each image named.
-func apkPackages(named []string) []create.Package {
+func apkPackages(_ string, named []string) ([]create.Package, []create.Original) {
 	var packages []create.Package
+	var originals []create.Original
 	for _, image := range named {
 		installed, err := create.ApkInstalled(image)
 		if err != nil {
 			fail(err)
 		}
 		packages = append(packages, create.ApkPackages(installed)...)
+		originals = append(originals, create.ApkOriginal(image, installed))
 	}
-	return packages
+	return packages, originals
 }
 
 // version answers the version of this tool: the commit of specs-and-deploy it was built from, as Go

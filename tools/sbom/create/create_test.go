@@ -61,7 +61,7 @@ func TestEndsWithOpenAndChangeHistory(t *testing.T) {
 	if open < 0 || history < open || strings.Index(md, "| PURL |") > open {
 		t.Fatalf("sections out of order:\n%s", md)
 	}
-	if !strings.HasSuffix(md, "| - | 2026-10-31 | 1.2.0 | - | sbom a1b2c3d |\n") || strings.Count(md, "\n## ") != 2 {
+	if !strings.HasSuffix(md, "| - | 2026-10-31 | 1.2.0 | - | sbom a1b2c3d |\n") || strings.Count(md[open:], "\n## ") != 2 {
 		t.Errorf("does not end with Open and Change history:\n%s", md)
 	}
 }

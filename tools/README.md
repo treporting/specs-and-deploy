@@ -348,7 +348,7 @@ finds an id in its file through the component `review`, and the annotations thro
 
 ## sbom
 
-Creates the SBOM of a subsystem as `sbom/sbom.md` of its repo (TOOL_21; SR_36 to SR_46, SR_59 and SR_66 in
+Creates the SBOM of a subsystem as `sbom/sbom.md` of its repo (TOOL_21; SR_36 to SR_46, SR_59, SR_66, SR_101 and SR_102 in
 [software-requirements.yaml](software-requirements.yaml)). It runs in the repo checked out at the
 baseline and lists every package the subsystem delivers, each once, sorted by PURL:
 
@@ -363,6 +363,9 @@ version of `sbom.md` and the ticket given (SR_40). It sets the entry of `sbom.md
 of the repo: x of its version raised by one, the hash of the file written, `completed` and
 `[generated]` - a generated document is a record and passes no review (PROC_13, SR_59). The repo
 needs a `documents.yaml`. A package whose licence is unknown is listed in Open (SR_45).
+
+Original data names the files `sbom.md` is written from (SR_101). With `-store` they are kept in
+`sbom/`, beside `sbom.md`, and named in `sbom/<ts>.yaml` (SR_102).
 
 ```bash
 cd tools
@@ -675,3 +678,4 @@ its own root, and by the names of its describe blocks before its own.
 | 29.1.1 | 2026-11-03 | linkcheck: the targets of a test case | #449 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 30.1.1 | 2026-11-04 | testreport | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 31.1.1 | 2026-11-04 | sbom; licence check; baseline: sbom.md in sbom/ | #491 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 32.1.1 | 2026-11-05 | sbom: Original data and -store | #480 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
