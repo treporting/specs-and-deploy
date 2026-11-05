@@ -17,6 +17,7 @@ type Original struct {
 // Report is what a test report is written from.
 type Report struct {
 	Level      string     // the test level, such as r5tc
+	Name       string     // the name of the test level with its abbreviation, such as subsystem test (SwVal)
 	Label      string     // the label of the baseline; empty between baselines
 	Commit     string     // the commit the tests ran on
 	Date       string     // the day of the run
@@ -42,12 +43,12 @@ type row struct {
 // Original data, Test specification, Test implementation, Test execution, Deviations, Open and
 // Change history.
 //
-// @implements SR_89@2.1.1
+// @implements SR_89@3.1.1
 func Markdown(r Report) string {
 	var b strings.Builder
-	b.WriteString("# Test report " + r.Level + "\n\n")
-	b.WriteString("What the tests of the test level " + r.Level + " specify, implement and show in a run. It\n")
-	b.WriteString("is written by the tool testreport (TOOL_34) and not edited by hand.\n\n")
+	b.WriteString("# Test report for " + r.Name + "\n\n")
+	b.WriteString("What the tests of the " + r.Name + " specify, implement and show in a run. It is\n")
+	b.WriteString("written by the tool testreport (TOOL_34) and not edited by hand.\n\n")
 	environment(&b, r)
 	originals(&b, r.Originals)
 	specification(&b, r.Testcases)

@@ -26,6 +26,32 @@ var Files = map[string]string{
 	"r7tc": "unit",
 }
 
+// ReadLevel answers the name of the test level key as levels.yaml names it, with its abbreviation,
+// such as subsystem test (SwVal); an error where levels.yaml names no such test level.
+//
+// @implements SR_106@1.1.1
+func ReadLevel(levelsYAML []byte, key string) (string, error) {
+	var file struct {
+		Levels []struct {
+			Key          string `yaml:"key"`
+			Name         string `yaml:"name"`
+			Abbreviation string `yaml:"abbreviation"`
+		} `yaml:"levels"`
+	}
+	if err := yaml.Unmarshal(levelsYAML, &file); err != nil {
+		return "", err
+	}
+	for _, l := range file.Levels {
+		if l.Key == key {
+			if l.Abbreviation == "" {
+				return l.Name, nil
+			}
+			return l.Name + " (" + l.Abbreviation + ")", nil
+		}
+	}
+	return "", fmt.Errorf("levels.yaml names no test level %s", key)
+}
+
 // Testcase is one test case of a test level.
 type Testcase struct {
 	Key     string   `yaml:"object_key"`

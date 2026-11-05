@@ -2,10 +2,11 @@
 // testcases/ (TOOL_34).
 //
 //	testreport -level r5tc -junit file -made-by command ... [-runtime "name version"]...
-//	           [-store] [-label x.y.z -ticket number] [-root dir] [-dir dir]
+//	           [-store] [-label x.y.z -ticket number] [-root dir] [-dir dir] [-levels file]
 //
 // It reads the result of each test from each junit.xml given, the test cases of the level from
-// testcases/, and the test procedures from the annotations of the files of tests under -dir. Each
+// testcases/, the name of the level from levels.yaml - at -levels, or in the root of the repo - and
+// the test procedures from the annotations of the files of tests under -dir. Each
 // -junit takes the -made-by given in the same place among them. With -store it copies each junit.xml
 // into testreports/ as <ts>_<test level>-<file>, and names them in testreports/<ts>_<test level>.yaml.
 // It keeps the rows of the Change history of a test report that is there, and adds
@@ -35,7 +36,7 @@ type list []string
 func (l *list) String() string     { return strings.Join(*l, ",") }
 func (l *list) Set(v string) error { *l = append(*l, v); return nil }
 
-// @implements SR_88@2.1.1, SR_89@2.1.1, SR_96@2.1.1, SR_98@2.1.1, SR_91@2.1.1, SR_104@1.1.1
+// @implements SR_88@2.1.1, SR_89@3.1.1, SR_106@1.1.1, SR_96@2.1.1, SR_98@2.1.1, SR_91@2.1.1, SR_104@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
@@ -43,6 +44,7 @@ func main() {
 	level := flag.String("level", "", "the test level, such as r5tc")
 	label := flag.String("label", "", "the label of the baseline, such as 1.2.0")
 	ticket := flag.String("ticket", "", "the number of the ticket of the baseline, such as 438")
+	levels := flag.String("levels", "", "levels.yaml, which names each test level; levels.yaml in root where empty")
 	store := flag.Bool("store", false, "copy each junit.xml into testreports/, named in testreports/<ts>_<test level>.yaml")
 	var junits, madeBy, runtimes list
 	flag.Var(&junits, "junit", "a junit.xml of a run of the tests; may be given more than once")
@@ -56,6 +58,17 @@ func main() {
 	file, ok := write.Files[*level]
 	if !ok {
 		fail(fmt.Errorf("-level %q is no test level", *level))
+	}
+	if *levels == "" {
+		*levels = filepath.Join(*root, "levels.yaml")
+	}
+	levelsYAML, err := os.ReadFile(*levels)
+	if err != nil {
+		fail(err)
+	}
+	levelName, err := write.ReadLevel(levelsYAML, *level)
+	if err != nil {
+		fail(fmt.Errorf("%s: %w", *levels, err))
 	}
 	if len(junits) == 0 || len(madeBy) != len(junits) {
 		fail(fmt.Errorf("give each -junit with its -made-by"))
@@ -114,6 +127,7 @@ func main() {
 
 	md := []byte(write.Markdown(write.Report{
 		Level:      *level,
+		Name:       levelName,
 		Label:      *label,
 		Commit:     head,
 		Date:       date,
