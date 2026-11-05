@@ -56,7 +56,7 @@ func Markdown(r Report) string {
 	verdicts := verdicts(r.Procedures, r.Results)
 	execution(&b, rows, verdicts)
 	deviations(&b, r.Procedures, verdicts)
-	open(&b, r.Testcases, r.Procedures, verdicts)
+	open(&b, r.Testcases, rows, verdicts)
 	b.WriteString("\n## Change history\n\n")
 	b.WriteString("| Version | Date | Change | Reason | By |\n|---|---|---|---|---|\n")
 	for _, h := range r.History {
@@ -179,7 +179,7 @@ func execution(b *strings.Builder, rows []row, verdicts map[int]string) {
 	}
 }
 
-// @implements SR_95@1.2.1
+// @implements SR_95@2.1.1
 func deviations(b *strings.Builder, procedures []Procedure, verdicts map[int]string) {
 	b.WriteString("\n## Deviations\n\n")
 	n := 0
@@ -194,34 +194,47 @@ func deviations(b *strings.Builder, procedures []Procedure, verdicts map[int]str
 	}
 }
 
-// @implements SR_95@1.2.1
-func open(b *strings.Builder, testcases []Testcase, procedures []Procedure, verdicts map[int]string) {
+// open lists in a table every test case and test procedure without a test result: a test case no
+// test procedure implements, with - as test procedure; a test procedure that did not run, in each
+// of its rows of Test implementation.
+//
+// @implements SR_95@2.1.1
+func open(b *strings.Builder, testcases []Testcase, rows []row, verdicts map[int]string) {
 	b.WriteString("\n## Open\n\n")
-	ran := map[string]bool{}
-	for i, p := range procedures {
-		if _, ok := verdicts[i]; ok {
-			for _, tc := range p.Implements {
-				key, _, _ := strings.Cut(tc, "@")
-				ran[key] = true
-			}
-		}
-	}
-	n := 0
+	status := map[string]string{}
 	for _, t := range testcases {
-		if !ran[t.Key] {
-			b.WriteString("- " + t.Key + "@" + t.Version + " - no test result\n")
-			n++
+		status[t.Key] = t.Status
+	}
+	implemented := map[string]bool{}
+	for _, r := range rows {
+		implemented[testcaseKey(r)] = true
+	}
+	var lines []string
+	for _, t := range testcases {
+		if !implemented[t.Key] {
+			lines = append(lines, "| "+cell(strings.Join(t.Targets, ", "))+" | "+t.Key+"@"+t.Version+" | "+t.Status+" | - | - |\n")
 		}
 	}
-	for i, p := range procedures {
-		if _, ok := verdicts[i]; !ok {
-			fmt.Fprintf(b, "- `%s` (%s) - no test result\n", p.Name, p.File)
-			n++
+	for _, r := range rows {
+		if _, ok := verdicts[r.index]; !ok {
+			lines = append(lines, "| "+cell(r.requirement)+" | "+r.testcase+" | "+status[testcaseKey(r)]+" | "+cell(r.procedure.Name)+" | no test result |\n")
 		}
 	}
-	if n == 0 {
+	if len(lines) == 0 {
 		b.WriteString("`<empty>`\n")
+		return
 	}
+	b.WriteString("**Table open** - every test case and test procedure without a test result\n\n")
+	b.WriteString("| Requirement | Test case | Test case status | Test procedure | Test procedure status |\n|---|---|---|---|---|\n")
+	for _, l := range lines {
+		b.WriteString(l)
+	}
+}
+
+// testcaseKey answers the key of the test case of a row, without its version.
+func testcaseKey(r row) string {
+	key, _, _ := strings.Cut(r.testcase, "@")
+	return key
 }
 
 // Row answers the row of the Change history that a run adds: the version of the test report after
