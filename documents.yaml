@@ -14,8 +14,8 @@ documents:
   type: explanation
   level: rules
   object_version: '22.1.1'
-  object_hash: 'baba529'
-  status: review
+  object_hash: 'ecad496'
+  status: approved
   verification_method: [review]
 - name: devops.md
   type: document
@@ -38,8 +38,8 @@ documents:
 - name: formats.md
   type: document
   object_version: '32.1.1'
-  object_hash: '2be3502'
-  status: review
+  object_hash: 'ab79a0f'
+  status: approved
   verification_method: [review]
 - name: reviews/README.md
   type: document
