@@ -1098,3 +1098,14 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR_106
+  object_version: '1.1.1'
+  component: testreport
+  object_text: read the name and the abbreviation of the test level from levels.yaml, at the path
+    -levels gives, or `<root>/levels.yaml` where none is given; exit with an error where it names
+    no such test level
+  source_ids: [TOOL_34@2.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
