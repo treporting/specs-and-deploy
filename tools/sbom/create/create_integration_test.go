@@ -168,7 +168,7 @@ func sbomIn(t *testing.T, args ...string) (string, []string) {
 	return repo, names
 }
 
-// @implements TC_149@1.1.1
+// @implements TC_149@1.2.1
 func TestCommandWithoutStoreWritesOnlySbomMD(t *testing.T) {
 	repo, names := sbomIn(t)
 	if len(names) != 1 || names[0] != "sbom.md" {
@@ -183,7 +183,7 @@ func TestCommandWithoutStoreWritesOnlySbomMD(t *testing.T) {
 	}
 }
 
-// @implements TC_150@1.1.1, TC_151@1.1.1
+// @implements TC_150@1.2.1, TC_151@1.1.1
 func TestCommandWithStoreWritesTheOriginalsAndTheirRecord(t *testing.T) {
 	repo, names := sbomIn(t, "-store")
 	if len(names) != 3 {

@@ -27,7 +27,7 @@ func originalData(originals []Original) string {
 	return text
 }
 
-// @implements TC_149@1.1.1
+// @implements TC_149@1.2.1
 func TestOriginalDataWithoutStore(t *testing.T) {
 	data := originalData(originals("/r"))
 	for _, want := range []string{
@@ -45,14 +45,14 @@ func TestOriginalDataWithoutStore(t *testing.T) {
 	}
 }
 
-// @implements TC_149@1.1.1
+// @implements TC_149@1.2.1
 func TestOriginalDataEmpty(t *testing.T) {
 	if data := originalData(nil); data != "\n`<empty>`\n" {
 		t.Errorf("got %q", data)
 	}
 }
 
-// @implements TC_150@1.1.1
+// @implements TC_150@1.2.1
 func TestStoreWritesEachFileIntoSbom(t *testing.T) {
 	root := t.TempDir()
 	stored, err := Store(root, Folder, "20261105T100000_", originals(root))
