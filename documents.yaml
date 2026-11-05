@@ -21,7 +21,7 @@ documents:
   type: document
   object_version: '17.1.1'
   object_hash: '05cbbf6'
-  status: draft
+  status: review
   verification_method: [review]
 - name: definitions.md
   type: document

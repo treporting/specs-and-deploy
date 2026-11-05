@@ -588,7 +588,7 @@ requirements:
   source_ids: [TOOL_26@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [demonstration]
 - object_key: SR_58
   object_version: '2.1.2'
@@ -599,7 +599,7 @@ requirements:
   source_ids: [TOOL_26@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [demonstration]
 - object_key: SR_59
   object_version: '2.1.1'
