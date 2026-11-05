@@ -43,7 +43,7 @@ type row struct {
 // Original data, Test specification, Test implementation, Test execution, Deviations, Open and
 // Change history.
 //
-// @implements SR_89@3.1.1
+// @implements SR_89@4.1.1
 func Markdown(r Report) string {
 	var b strings.Builder
 	b.WriteString("# Test report for " + r.Name + "\n\n")
