@@ -71,8 +71,6 @@ view, not by a trace.
 | - | document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
 <!-- end of generated -->
 
-A software test names SR in `@verifies`, a system test SYS.
-
 ### Maturity of our own data
 
 The data of treporting itself (the reference edgedb) is measured by this chain:
