@@ -82,7 +82,7 @@ func environment(b *strings.Builder, r Report) {
 	}
 }
 
-// @implements SR_91@1.2.1
+// @implements SR_91@2.1.1
 func originals(b *strings.Builder, originals []Original) {
 	b.WriteString("\n## Original data\n\n")
 	b.WriteString("| File | Made by | Stored At |\n|---|---|---|\n")

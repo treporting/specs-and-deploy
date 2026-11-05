@@ -148,11 +148,11 @@ func delivered(root, repo, label string, named []string) ([]create.Package, []cr
 // the run, and answers them with where each is stored.
 func storeOriginals(root, label string, now time.Time, originals []create.Original) []create.Original {
 	ts := now.Format("20060102T150405")
-	stored, err := create.Store(root, ts, originals)
+	stored, err := create.Store(root, create.Folder, ts+"_", originals)
 	if err != nil {
 		fail(err)
 	}
-	record, err := create.OriginalYAML(label, commit(root), now.Format("2006-01-02T15:04:05-07:00"), stored)
+	record, err := create.OriginalYAML(create.Name, label, commit(root), now.Format("2006-01-02T15:04:05-07:00"), stored)
 	if err != nil {
 		fail(err)
 	}

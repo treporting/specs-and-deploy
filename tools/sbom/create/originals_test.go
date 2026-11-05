@@ -55,7 +55,7 @@ func TestOriginalDataEmpty(t *testing.T) {
 // @implements TC_150@1.1.1
 func TestStoreWritesEachFileIntoSbom(t *testing.T) {
 	root := t.TempDir()
-	stored, err := Store(root, "20261105T100000", originals(root))
+	stored, err := Store(root, Folder, "20261105T100000_", originals(root))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -73,11 +73,11 @@ func TestStoreWritesEachFileIntoSbom(t *testing.T) {
 // @implements TC_151@1.1.1
 func TestOriginalYAMLNamesEveryFileStored(t *testing.T) {
 	root := t.TempDir()
-	stored, err := Store(root, "20261105T100000", originals(root))
+	stored, err := Store(root, Folder, "20261105T100000_", originals(root))
 	if err != nil {
 		t.Fatal(err)
 	}
-	record, err := OriginalYAML("1.2.0", "a1b2c3d", "2026-11-05T10:00:00+01:00", stored)
+	record, err := OriginalYAML(Name, "1.2.0", "a1b2c3d", "2026-11-05T10:00:00+01:00", stored)
 	if err != nil {
 		t.Fatal(err)
 	}

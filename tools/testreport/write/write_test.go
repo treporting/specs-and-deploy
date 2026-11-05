@@ -101,7 +101,7 @@ func report(t *testing.T) string {
 	return Markdown(Report{
 		Level: "r5tc", Label: "1.2.0", Commit: "a1b2c3d", Date: "2026-11-04", System: "linux/amd64", Runner: "GitHub Actions 2",
 		Runtimes:  []string{"Go go1.25.3", "Node.js v22.11.0", "Vitest 5.0.3"},
-		Originals: []Original{{File: "junit-go.xml", MadeBy: "gotestsum --junitfile junit-go.xml -- ./...", StoredAt: "./verifications/junit-go.xml"}, {File: "junit-vitest.xml", MadeBy: "vitest run --reporter=junit", StoredAt: "-"}},
+		Originals: []Original{{File: "junit-go.xml", MadeBy: "gotestsum --junitfile junit-go.xml -- ./...", StoredAt: "-"}, {File: "junit-vitest.xml", MadeBy: "vitest run --reporter=junit", StoredAt: "-"}},
 		Testcases: testcases, Procedures: repo(t), Results: results(t),
 		History: []string{Row("1.1.1", "2026-11-04", "1.2.0", "438", "testreport a1b2c3d")},
 	})
@@ -160,12 +160,12 @@ func TestEnvironmentNamesEachRuntimeWithItsVersion(t *testing.T) {
 	}
 }
 
-// @implements TC_139@1.2.1
-func TestOriginalDataNamesWhereItIsStored(t *testing.T) {
+// @implements TC_139@2.2.1
+func TestOriginalDataWithoutStore(t *testing.T) {
 	data := section(report(t), "Original data")
 	for _, want := range []string{
 		"| File | Made by | Stored At |",
-		"| junit-go.xml | `gotestsum --junitfile junit-go.xml -- ./...` | ./verifications/junit-go.xml |",
+		"| junit-go.xml | `gotestsum --junitfile junit-go.xml -- ./...` | - |",
 		"| junit-vitest.xml | `vitest run --reporter=junit` | - |",
 	} {
 		if !strings.Contains(data, want) {

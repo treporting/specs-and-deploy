@@ -1,13 +1,14 @@
 // Command testreport writes the test report of a test level as testreports/<test level>.md beside
 // testcases/ (TOOL_34).
 //
-//	testreport -level r5tc -junit file -made-by command [-stored-at path] ... [-runtime "name version"]...
-//	           [-label x.y.z -ticket number] [-root dir] [-dir dir]
+//	testreport -level r5tc -junit file -made-by command ... [-runtime "name version"]...
+//	           [-store] [-label x.y.z -ticket number] [-root dir] [-dir dir]
 //
 // It reads the result of each test from each junit.xml given, the test cases of the level from
 // testcases/, and the test procedures from the annotations of the files of tests under -dir. Each
-// -junit takes the -made-by and -stored-at given in the same place among them; -stored-at is - where
-// it is not given. It keeps the rows of the Change history of a test report that is there, and adds
+// -junit takes the -made-by given in the same place among them. With -store it copies each junit.xml
+// into testreports/ as <ts>_<test level>-<file>, and names them in testreports/<ts>_<test level>.yaml.
+// It keeps the rows of the Change history of a test report that is there, and adds
 // one. It sets the entry of the test report in documents.yaml of the repo: the version of the new
 // row, the hash of the file written, completed and generated (PROC_13). A test that fails does not
 // fail it.
@@ -34,7 +35,7 @@ type list []string
 func (l *list) String() string     { return strings.Join(*l, ",") }
 func (l *list) Set(v string) error { *l = append(*l, v); return nil }
 
-// @implements SR_88@2.1.1, SR_89@2.1.1, SR_96@2.1.1, SR_98@2.1.1
+// @implements SR_88@2.1.1, SR_89@2.1.1, SR_96@2.1.1, SR_98@2.1.1, SR_91@2.1.1, SR_104@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
@@ -42,10 +43,10 @@ func main() {
 	level := flag.String("level", "", "the test level, such as r5tc")
 	label := flag.String("label", "", "the label of the baseline, such as 1.2.0")
 	ticket := flag.String("ticket", "", "the number of the ticket of the baseline, such as 438")
-	var junits, madeBy, storedAt, runtimes list
+	store := flag.Bool("store", false, "copy each junit.xml into testreports/, named in testreports/<ts>_<test level>.yaml")
+	var junits, madeBy, runtimes list
 	flag.Var(&junits, "junit", "a junit.xml of a run of the tests; may be given more than once")
 	flag.Var(&madeBy, "made-by", "the command that made the junit.xml given in the same place")
-	flag.Var(&storedAt, "stored-at", "where the junit.xml given in the same place is stored, as ./<folder>/<file>")
 	flag.Var(&runtimes, "runtime", "a runtime or test runner the tests ran with, with its version, such as \"Go go1.25.3\"")
 	flag.Parse()
 
@@ -56,8 +57,8 @@ func main() {
 	if !ok {
 		fail(fmt.Errorf("-level %q is no test level", *level))
 	}
-	if len(junits) == 0 || len(madeBy) != len(junits) || len(storedAt) > len(junits) {
-		fail(fmt.Errorf("give each -junit with its -made-by, and -stored-at for no more of them"))
+	if len(junits) == 0 || len(madeBy) != len(junits) {
+		fail(fmt.Errorf("give each -junit with its -made-by"))
 	}
 
 	testcases, err := os.ReadFile(filepath.Join(*root, *dir, "testcases", file+".yaml"))
@@ -70,7 +71,7 @@ func main() {
 	}
 
 	var results []write.Result
-	var originals []write.Original
+	var originals []create.Original
 	for i, j := range junits {
 		data, err := os.ReadFile(j)
 		if err != nil {
@@ -81,11 +82,7 @@ func main() {
 			fail(fmt.Errorf("%s: %w", j, err))
 		}
 		results = append(results, r...)
-		o := write.Original{File: filepath.Base(j), MadeBy: madeBy[i], StoredAt: "-"}
-		if i < len(storedAt) {
-			o.StoredAt = storedAt[i]
-		}
-		originals = append(originals, o)
+		originals = append(originals, create.Original{File: filepath.Base(j), MadeBy: madeBy[i], StoredAt: "-", Data: data})
 	}
 
 	files := gitFiles(*root, *dir)
@@ -106,19 +103,24 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	date := time.Now().Format("2006-01-02")
+	now := time.Now()
+	date := now.Format("2006-01-02")
+	head := commit(*root)
+	if *store {
+		originals = storeJUnits(*root, filepath.Dir(name), name, *level, *label, head, now, originals)
+	}
 	old, _ := os.ReadFile(path) // a test report that is not there has no rows to keep
 	history := append(write.History(old), write.Row(next, date, *label, *ticket, "testreport "+version()))
 
 	md := []byte(write.Markdown(write.Report{
 		Level:      *level,
 		Label:      *label,
-		Commit:     commit(*root),
+		Commit:     head,
 		Date:       date,
 		System:     runtime.GOOS + "/" + runtime.GOARCH,
 		Runner:     runner(),
 		Runtimes:   runtimes,
-		Originals:  originals,
+		Originals:  reported(originals),
 		Testcases:  cases,
 		Procedures: procedures,
 		Results:    results,
@@ -134,6 +136,33 @@ func main() {
 		fail(err)
 	}
 	fmt.Printf("%s written: %d test cases, %d test procedures, %d results, version %s\n", path, len(cases), len(procedures), len(results), next)
+}
+
+// storeJUnits copies each junit.xml into folder as <ts>_<test level>-<file> and names them in
+// <ts>_<test level>.yaml there, ts the time of the run, and answers them with where each is stored.
+func storeJUnits(root, folder, document, level, label, head string, now time.Time, originals []create.Original) []create.Original {
+	ts := now.Format("20060102T150405")
+	stored, err := create.Store(root, folder, ts+"_"+level+"-", originals)
+	if err != nil {
+		fail(err)
+	}
+	record, err := create.OriginalYAML(document, label, head, now.Format("2006-01-02T15:04:05-07:00"), stored)
+	if err != nil {
+		fail(err)
+	}
+	if err := os.WriteFile(filepath.Join(root, folder, ts+"_"+level+".yaml"), record, 0o600); err != nil {
+		fail(err)
+	}
+	return stored
+}
+
+// reported answers the originals as the test report lists them.
+func reported(originals []create.Original) []write.Original {
+	var rows []write.Original
+	for _, o := range originals {
+		rows = append(rows, write.Original{File: o.File, MadeBy: o.MadeBy, StoredAt: o.StoredAt})
+	}
+	return rows
 }
 
 // gitFiles answers the files git knows under dir, relative to root.
