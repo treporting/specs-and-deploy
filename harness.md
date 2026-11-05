@@ -149,8 +149,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@2086c9e - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@2086c9e
+<!-- generated from rules.yaml@159d48d - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@159d48d
 
 | Id | Version | Rule |
 |---|---|---|
@@ -166,14 +166,15 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC_10 | 2.2.1 | Every release gets security fixes over the support period it states (REG_EU2024-2847_04). |
 | PROC_11 | 2.1.1 | A document names no ticket, except in its change history; what is open, it states as open. The ticket names the document, not the other way round. |
 | PROC_12 | 2.1.1 | An object is merged before another names it. |
-| PROC_13 | 4.1.1 | Whatever has review criteria of its kind in `reviews/` is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. A document a tool writes, with the verification method `generated`, is a record: the tool writes it complete, with the status `completed`, without a review. See traceability.md. |
-| PROC_14 | 1.1.1 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. See traceability.md. |
+| PROC_13 | 5.1.1 | Whatever has review criteria of its kind in `reviews/` is approved only when it passed its review against those criteria, and whatever it names as uplink is approved at that moment. A later change of an uplink does not take the approval back. A document a tool writes, with the verification method `generated`, is a record: the tool writes it complete, with the status `completed`, without a review. |
+| PROC_14 | 2.1.1 | A change of the content of whatever is approved that changes x of its version - the text of a requirement or an attribute its kind names for x, a document as a whole - sets it back to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge approves it. |
 | PROC_15 | 1.1.1 | The reviewer of whatever is reviewed is not its author. |
 | PROC_16 | 1.1.1 | A pull request closes one ticket and changes one concern. Group things which belong together so they do not contradict. |
 | PROC_18 | 2.1.1 | A decision is written down with:<br>- its reason<br>- the alternatives rejected<br>- what a means found, where one was applied to gain more information according to ISO25010:<br>&nbsp;&nbsp;- scenarios of change and growth, after ATAM<br>&nbsp;&nbsp;- one source for each information<br>&nbsp;&nbsp;- a comparison with models<br>&nbsp;&nbsp;- a pre-mortem, after LASR |
 | PROC_19 | 1.1.1 | Every test belongs to exactly one test level, read from the place of its file. |
-| PROC_20 | 2.1.1 | Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect where the linked object has another x than the link names. A suspect link is reported on every pull request. It blocks a baseline that holds both its ends, compared with the versions in that baseline, not on `main`. See traceability.md. |
+| PROC_20 | 3.1.1 | Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect where the linked object has another x than the link names. A suspect link is reported on every pull request. It blocks a baseline that holds both its ends, compared with the versions in that baseline, not on `main`. |
 | PROC_21 | 1.1.1 | What is made only to be looked at stays on the machine it is made on: it is not pushed, and no ticket or pull request carries it. The repos are public; whatever reaches them is published. |
+| PROC_22 | 1.1.1 | An object that is no document - a requirement, a test case, a rule, a hazard, a control - refers to no document in any of its fields; it refers to objects only. A file it makes, such as `sbom.md`, is no reference. A document changes in versions of its own and is traced by no link, so an object that names it depends on what no check follows. |
 <!-- end of generated -->
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
@@ -278,3 +279,4 @@ as soon as possible (PROC_07)
 | 20.1.1 | 2026-11-05 | Rules: PROC_21 | #515 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 21.1.1 | 2026-11-05 | Levels, Test levels: the tables generated from levels.yaml | #536 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 22.1.1 | 2026-11-05 | Levels: one table of every level, the test levels too | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 23.1.1 | 2026-11-05 | Rules: PROC_22; PROC_13, PROC_14 and PROC_20 without a reference to traceability.md | #547 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

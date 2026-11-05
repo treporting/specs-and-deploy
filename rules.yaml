@@ -101,22 +101,22 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC_13
-  object_version: '4.1.1'
+  object_version: '5.1.1'
   object_text: 'Whatever has review criteria of its kind in `reviews/` is approved only when it passed
     its review against those criteria, and whatever it names as uplink is approved at that moment. A
     later change of an uplink does not take the approval back. A document a tool writes, with the
     verification method `generated`, is a record: the tool writes it complete, with the status
-    `completed`, without a review. See traceability.md.'
+    `completed`, without a review.'
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_14
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   object_text: 'A change of the content of whatever is approved that changes x of its version - the
     text of a requirement or an attribute its kind names for x, a document as a whole - sets it back
     to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge
-    approves it. See traceability.md.'
+    approves it.'
   priority: 'medium'
   safety: ''
   status: approved
@@ -159,11 +159,11 @@ rules:
   status: approved
   verification_method: []
 - object_key: PROC_20
-  object_version: '2.1.1'
+  object_version: '3.1.1'
   object_text: 'Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect
     where the linked object has another x than the link names. A suspect link is reported on every
     pull request. It blocks a baseline that holds both its ends, compared with the versions in that
-    baseline, not on `main`. See traceability.md.'
+    baseline, not on `main`.'
   priority: 'medium'
   safety: ''
   status: approved
@@ -173,6 +173,16 @@ rules:
   object_text: 'What is made only to be looked at stays on the machine it is made on: it is not pushed,
     and no ticket or pull request carries it. The repos are public; whatever reaches them is
     published.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
+- object_key: PROC_22
+  object_version: '1.1.1'
+  object_text: 'An object that is no document - a requirement, a test case, a rule, a hazard, a
+    control - refers to no document in any of its fields; it refers to objects only. A file it makes,
+    such as `sbom.md`, is no reference. A document changes in versions of its own and is traced by no
+    link, so an object that names it depends on what no check follows.'
   priority: 'medium'
   safety: ''
   status: approved
