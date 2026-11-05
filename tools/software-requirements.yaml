@@ -1091,5 +1091,5 @@ requirements:
   source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
   safety: ''
-  status: review
+  status: approved
   verification_method: [test]
