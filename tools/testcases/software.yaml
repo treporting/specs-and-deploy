@@ -1253,3 +1253,11 @@ testcases:
   target_ids: [SR_105@1.1.1]
   status: approved
   verification_method: [review]
+- object_key: TC_157
+  object_version: '1.1.1'
+  object_text: 'a document naming `SR_01@1.1.3` in a table and `a@1.com` in its text, made into a
+    page as GitHub shows it: `a@1.com` is a link to mailto:, `SR_01@1.1.3` is text and no link'
+  design_technique: equivalence partitioning
+  target_ids: [SR_69@1.1.2]
+  status: draft
+  verification_method: [review]
