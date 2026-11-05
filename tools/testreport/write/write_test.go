@@ -134,7 +134,7 @@ func TestReadsBothJUnitAndLinksTheProcedureToItsTestCase(t *testing.T) {
 	}
 }
 
-// @implements TC_137@2.2.1
+// @implements TC_137@2.3.1
 func TestSectionsInTheirOrder(t *testing.T) {
 	md := report(t)
 	if !strings.HasPrefix(md, "# Test report for subsystem test (SwVal)\n") {

@@ -85,7 +85,7 @@ func head(t *testing.T, repo string) string {
 	return text
 }
 
-// @implements TC_161@1.1.1
+// @implements TC_161@1.2.1
 func TestTitleNamesTheTestLevel(t *testing.T) {
 	repo, _ := testreportIn(t)
 	h := head(t, repo)
