@@ -138,7 +138,8 @@ job failed cannot be merged, by anyone. The job `linkcheck` (SR_34) runs beside 
 required check. It reports a suspect link and does not fail: a suspect link blocks the baseline, not
 the pull request (PROC_20). The job `build` calls `.github/workflows/build.yml`, the build steps of
 every repo (SR_51 to SR_58), on the tools: its jobs `build / build`, `build / lint` and
-`build / test` are required checks; `build / report` reports and is not. The ruleset also allows the merge commit only, as the settings of the repo do.
+`build / test` are required checks. `build / report` runs only in the baseline, not on a pull
+request (SR_57, SR_58): it fails on nothing, and the commit loop does not ask for it (TOOL_26). The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
 is GitHub's - and the job `rulesetcheck` checks
@@ -272,3 +273,4 @@ today is set in the section Continuous integration.
 | 14.1.1 | 2026-11-02 | Environments; Dependencies of the tools | #405 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-11-02 | Baseline | #404 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-11-02 | Continuous integration: approvalcheck | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 17.1.1 | 2026-11-05 | Continuous integration: build / report only in the baseline | #504 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
