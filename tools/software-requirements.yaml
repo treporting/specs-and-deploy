@@ -941,7 +941,7 @@ requirements:
   source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
 - object_key: SR_92
   object_version: '1.2.1'
@@ -1081,5 +1081,5 @@ requirements:
   source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
