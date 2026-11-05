@@ -84,14 +84,15 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_09
-  object_version: '1.1.1'
+  object_version: '2.2.1'
   component: ci
-  object_text: on every pull request, in .github/workflows/tools.yml, check every review result, and
-    fail where a result breaks a rule; a pull request whose check failed cannot be merged
-  source_ids: [TOOL_12@1.1.1]
+  object_text: on every pull request, in .github/workflows/tools.yml, check every review result the pull
+    request adds or changes against its base commit, and fail where a result breaks a rule; a pull
+    request whose check failed cannot be merged
+  source_ids: [TOOL_12@1.2.4]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: draft
   verification_method: [demonstration]
 - object_key: SR_10
   object_version: '1.1.1'
@@ -1059,4 +1060,14 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
+  verification_method: [test]
+- object_key: SR_103
+  object_version: '1.1.1'
+  component: review
+  object_text: with -base, check only the review results that differ between the base commit and HEAD;
+    without it, every one
+  source_ids: [TOOL_03@3.3.4]
+  priority: 'medium'
+  safety: ''
+  status: draft
   verification_method: [test]
