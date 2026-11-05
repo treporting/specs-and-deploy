@@ -111,7 +111,13 @@ documents:
   verification_method: [review]
 - name: sbom/sbom.md
   type: document
-  object_version: '2.1.1'
-  object_hash: 'a9a98d6'
+  object_version: '3.1.1'
+  object_hash: '2b392c6'
+  status: completed
+  verification_method: [generated]
+- name: tools/testreports/software.md
+  type: document
+  object_version: '1.1.1'
+  object_hash: '9b3d591'
   status: completed
   verification_method: [generated]
