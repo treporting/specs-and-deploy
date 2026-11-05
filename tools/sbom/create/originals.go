@@ -21,10 +21,15 @@ type Original struct {
 // Folder is the folder of sbom.md and of the original data stored with it, from the root of the repo.
 const Folder = "sbom"
 
-// GoListOriginal answers the output of GoList in dir, a directory of the repo in root.
+// GoListOriginal answers the output of GoList in dir, a directory of the repo in root, with the
+// module cache of Go, as go env GOMODCACHE names it, replaced by $GOMODCACHE: a stored file names
+// no directory of the machine it ran on.
 //
-// @implements SR_101@1.1.1, SR_102@1.1.1
-func GoListOriginal(root, dir, list string) Original {
+// @implements SR_101@1.1.1, SR_102@1.1.1, SR_105@1.1.1
+func GoListOriginal(root, dir, list, modcache string) Original {
+	if modcache != "" {
+		list = strings.ReplaceAll(list, modcache, "$GOMODCACHE")
+	}
 	return Original{
 		File:     "golist-" + slug(root, dir) + ".txt",
 		MadeBy:   in(root, dir) + "go list -deps -f '" + moduleFormat + "' $(" + commandsCommand + ")",

@@ -11,7 +11,7 @@
 // row, the hash of the file written, completed and generated (PROC_13). It lists in sbom.md each
 // file of original data it read: the output of go list, each package-lock.json, the Alpine packages
 // of each image. With -store it writes them into sbom/ as <ts>_<file>, and names them in
-// sbom/<ts>.yaml.
+// sbom/<ts>.yaml; the output of go list with its module cache as $GOMODCACHE.
 //
 // With -check it writes nothing: it compares the packages with the table of sbom.md, and exits with
 // 1 where they differ (TOOL_28).
@@ -38,7 +38,7 @@ func (i *images) Set(v string) error { *i = append(*i, v); return nil }
 
 // @implements SR_39@2.1.1
 // @implements SR_59@2.1.1
-// @implements SR_101@1.1.1, SR_102@1.1.1
+// @implements SR_101@1.1.1, SR_102@1.1.1, SR_105@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo of the subsystem")
@@ -188,7 +188,11 @@ func goPackages(root string, _ []string) ([]create.Package, []create.Original) {
 		if list != "" {
 			lists = append(lists, list)
 			withCommands = append(withCommands, dir)
-			originals = append(originals, create.GoListOriginal(root, dir, list))
+			modcache, err := create.GoEnv(dir, "GOMODCACHE")
+			if err != nil {
+				fail(err)
+			}
+			originals = append(originals, create.GoListOriginal(root, dir, list, modcache))
 		}
 	}
 	if len(lists) == 0 {
