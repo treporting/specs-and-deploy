@@ -975,10 +975,13 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_95
-  object_version: '1.2.1'
+  object_version: '2.1.1'
   component: testreport
-  object_text: list in Deviations every test result whose verdict is not passed, and in Open every
-    test case and test procedure without a test result; `<empty>` where there is none
+  object_text: list in Deviations every test result whose verdict is not passed; list in Open every
+    test case and test procedure without a test result, in a table with the columns Requirement,
+    Test case, Test case status, Test procedure and Test procedure status - the status of a test
+    procedure `no test result`, and `-` for a test case without a test procedure; `<empty>` where
+    there is none
   source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
