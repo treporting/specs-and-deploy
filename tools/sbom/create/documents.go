@@ -9,7 +9,7 @@ import (
 )
 
 // Name is the name of sbom.md in documents.yaml: its path from the root of the repo.
-const Name = "sbom.md"
+const Name = "sbom/sbom.md"
 
 // Version answers the version of sbom.md in a documents.yaml, and nothing where it has no entry.
 func Version(documentsYAML []byte) string {

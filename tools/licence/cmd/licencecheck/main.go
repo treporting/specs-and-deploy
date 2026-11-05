@@ -2,7 +2,7 @@
 //
 //	licencecheck [-root dir]
 //
-// It reads sbom.md in the root of the repo of a subsystem, and licences_assessed.yaml where the root
+// It reads sbom.md in the folder sbom/ of the repo of a subsystem, and licences_assessed.yaml where the root
 // holds one. It prints every package that fails with its PURL and its licence, and exits with 1
 // where there is one.
 package main
@@ -24,7 +24,7 @@ func main() {
 	root := flag.String("root", ".", "the root of the repo of the subsystem")
 	flag.Parse()
 
-	sbomMD, err := os.ReadFile(filepath.Join(*root, "sbom.md"))
+	sbomMD, err := os.ReadFile(filepath.Join(*root, "sbom", "sbom.md"))
 	if err != nil {
 		fail(err)
 	}

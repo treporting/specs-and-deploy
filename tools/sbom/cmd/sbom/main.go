@@ -1,4 +1,4 @@
-// Command sbom creates the SBOM of a subsystem as sbom.md in the root of its repo (TOOL_21).
+// Command sbom creates the SBOM of a subsystem as sbom.md in the folder sbom/ of its repo (TOOL_21).
 //
 //	sbom -label x.y.z -ticket number [-root dir] [-repo name] [-image name]...
 //	sbom -check [-root dir] [-repo name] [-image name]...
@@ -32,7 +32,7 @@ type images []string
 func (i *images) String() string     { return strings.Join(*i, ",") }
 func (i *images) Set(v string) error { *i = append(*i, v); return nil }
 
-// @implements SR_39@1.2.1
+// @implements SR_39@2.1.1
 // @implements SR_59@2.1.1
 func main() {
 
@@ -81,6 +81,9 @@ func main() {
 	history := append(create.History(old), create.Row(next, time.Now().Format("2006-01-02"), *label, *ticket, "sbom "+version()))
 
 	md := []byte(create.Markdown(create.SBOM{Repo: *repo, Packages: packages, History: history}))
+	if err := os.MkdirAll(filepath.Dir(path), 0o750); err != nil {
+		fail(err)
+	}
 	if err := os.WriteFile(path, md, 0o600); err != nil {
 		fail(err)
 	}

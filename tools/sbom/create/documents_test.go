@@ -20,7 +20,7 @@ documents:
   verification_method: [review]
 `
 
-const withSbom = documentsYAML + `- name: sbom.md
+const withSbom = documentsYAML + `- name: sbom/sbom.md
   type: document
   object_version: '2.1.1'
   object_hash: 'aaaaaaa'
@@ -77,7 +77,7 @@ func TestHashIsThatOfGitHashObject(t *testing.T) {
 // @implements TC_121@1.1.1
 func TestEntryAddedWhereThereIsNone(t *testing.T) {
 	got := string(Entry([]byte(documentsYAML), "1.1.1", "1234567"))
-	want := documentsYAML + `- name: sbom.md
+	want := documentsYAML + `- name: sbom/sbom.md
   type: document
   object_version: '1.1.1'
   object_hash: '1234567'
@@ -102,7 +102,7 @@ func TestEntrySetInPlace(t *testing.T) {
 func TestEntryCompletedAndGenerated(t *testing.T) {
 	changed := strings.Replace(withSbom, "status: completed\n  verification_method: [generated]", "status: draft\n  verification_method: [review]", 1)
 	got := string(Entry([]byte(changed), "3.1.1", "1234567"))
-	if !strings.Contains(got, "- name: sbom.md\n  type: document\n  object_version: '3.1.1'\n  object_hash: '1234567'\n  status: completed\n  verification_method: [generated]\n- name: devops.md") {
+	if !strings.Contains(got, "- name: sbom/sbom.md\n  type: document\n  object_version: '3.1.1'\n  object_hash: '1234567'\n  status: completed\n  verification_method: [generated]\n- name: devops.md") {
 		t.Errorf("got\n%s", got)
 	}
 }
