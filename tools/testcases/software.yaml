@@ -877,12 +877,12 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_111
-  object_version: '1.1.1'
-  object_text: 'three packages: sbom lists them in one table with the columns PURL, name, version
-    and licence, sorted by PURL'
+  object_version: '2.1.1'
+  object_text: 'three packages: sbom lists them in the section Packages, in one table with the
+    columns PURL, name, version and licence, sorted by PURL'
   design_technique: requirements-based testing
-  target_ids: [SR_41@1.2.1]
-  status: approved
+  target_ids: [SR_41@2.1.1]
+  status: draft
   verification_method: [review]
 - object_key: TC_112
   object_version: '1.1.1'
@@ -1183,23 +1183,23 @@ testcases:
   status: approved
   verification_method: [review]
 - object_key: TC_149
-  object_version: '1.1.1'
+  object_version: '1.2.1'
   object_text: 'a go.mod in tools/, a package-lock.json in the root and the image docker.io/nginx:1.30,
     sbom run without -store: Original data lists three files, each with the command that made it
     and Stored At `-`; sbom writes nothing into sbom/ but sbom.md'
   design_technique: equivalence partitioning
-  target_ids: [SR_101@1.1.1, SR_102@1.1.1]
-  status: approved
+  target_ids: [SR_101@2.1.1, SR_102@1.1.1]
+  status: draft
   verification_method: [review]
 - object_key: TC_150
-  object_version: '1.1.1'
+  object_version: '1.2.1'
   object_text: 'the same repo, sbom run with -store at 2026-11-05 10:00:00: it writes into sbom/
     `20261105T100000_golist-tools.txt`, `20261105T100000_root-package-lock.json` and
     `20261105T100000_apk-docker.io-nginx-1.30.txt`, and Original data names each with Stored At
     `./sbom/<file>`'
   design_technique: equivalence partitioning
-  target_ids: [SR_101@1.1.1, SR_102@1.1.1]
-  status: approved
+  target_ids: [SR_101@2.1.1, SR_102@1.1.1]
+  status: draft
   verification_method: [review]
 - object_key: TC_151
   object_version: '1.1.1'
@@ -1278,4 +1278,12 @@ testcases:
   design_technique: equivalence partitioning
   target_ids: [SR_95@2.1.1]
   status: approved
+  verification_method: [review]
+- object_key: TC_160
+  object_version: '1.1.1'
+  object_text: 'sbom run: the sections of sbom.md are Original data, Packages, Open and Change
+    history, in this order'
+  design_technique: requirements-based testing
+  target_ids: [SR_41@2.1.1, SR_101@2.1.1]
+  status: draft
   verification_method: [review]
