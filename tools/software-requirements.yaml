@@ -707,15 +707,15 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_69
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   component: pdf
   object_text: 'render headings, lists, tables, code, links and Mermaid diagrams of a document as
     GitHub shows them'
   source_ids: [TOOL_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
-  verification_method: [inspection]
+  status: draft
+  verification_method: [inspection, test]
 - object_key: SR_70
   object_version: '1.1.1'
   component: pdf
