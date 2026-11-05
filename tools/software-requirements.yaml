@@ -916,13 +916,13 @@ requirements:
   object_text: write the test report of the test level given as `testreports/<test level>.md` with
     the head of a document and the sections Test environment, Original data, Test
     specification, Test implementation, Test execution, Deviations, Open and Change
-    history, in this order; with the title `Test report for <name> (<abbreviation>)` of the test
-    level, as the table test levels of harness.md names it, such as `Test report for subsystem test
-    (SwVal)` for r5tc
+    history, in this order; the title `Test report for <name> (<abbreviation>)` and the text of the
+    head name the test level as the table test levels of harness.md does, not by its key, such as
+    `Test report for subsystem test (SwVal)` for r5tc
   source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
-  status: review
+  status: draft
   verification_method: [test]
 - object_key: SR_90
   object_version: '1.2.1'
