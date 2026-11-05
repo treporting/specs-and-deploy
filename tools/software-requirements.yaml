@@ -420,10 +420,10 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_41
-  object_version: '1.2.1'
+  object_version: '2.1.1'
   component: sbom
-  object_text: list the packages in sbom.md in one table with the columns PURL, name, version and licence,
-    sorted by PURL
+  object_text: list the packages in sbom.md in a section Packages, in one table with the columns PURL,
+    name, version and licence, sorted by PURL
   source_ids: [TOOL_21@2.1.1]
   priority: 'medium'
   safety: ''
@@ -1043,11 +1043,11 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: SR_101
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   component: sbom
-  object_text: list in sbom.md, in a section Original data, every file of original data it is written
-    from, in a table with the columns File, Made by and Stored At - the command that made it, and
-    where it is stored, as `./sbom/<file>`, or `-`
+  object_text: list in sbom.md, in a section Original data before the section Packages, every file of
+    original data it is written from, in a table with the columns File, Made by and Stored At - the
+    command that made it, and where it is stored, as `./sbom/<file>`, or `-`
   source_ids: [TOOL_21@2.1.2]
   priority: 'medium'
   safety: ''
