@@ -8,7 +8,6 @@
     "schema",
     "type",
     "document",
-    "label",
     "commit",
     "created_at",
     "files"
@@ -31,7 +30,7 @@
     "label": {
       "type": "string",
       "minLength": 1,
-      "description": "the label of the baseline the document was written for"
+      "description": "the label of the baseline the document was written for, where it was written for one"
     },
     "commit": {
       "type": "string",

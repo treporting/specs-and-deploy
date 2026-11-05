@@ -617,8 +617,10 @@ go run ./pdf/cmd/pdf -root .. -ref T044 -out ..
 ## testreport
 
 Writes the test report of a test level as `testreports/<test level>.md` beside `testcases/`
-(TOOL_34; SR_88 to SR_98 in [software-requirements.yaml](software-requirements.yaml)), from the
-junit.xml of a run of the tests. A test that fails does not fail it; the run of the tests does.
+(TOOL_34; SR_88 to SR_98 and SR_104 in [software-requirements.yaml](software-requirements.yaml)),
+from the junit.xml of a run of the tests. A test that fails does not fail it; the run of the tests
+does. With `-store` it copies each junit.xml into `testreports/` beside the test report, named in
+`testreports/<ts>_<test level>.yaml`, as sbom does with its original data.
 
 ```bash
 cd tools
@@ -683,3 +685,4 @@ its own root, and by the names of its describe blocks before its own.
 | 31.1.1 | 2026-11-04 | sbom; licence check; baseline: sbom.md in sbom/ | #491 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 32.1.1 | 2026-11-05 | sbom: Original data and -store | #480 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 33.1.1 | 2026-11-05 | reviewcheck: -base | #497 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 34.1.1 | 2026-11-05 | testreport: -store | #492 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

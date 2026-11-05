@@ -3,6 +3,7 @@ package create
 import (
 	"bytes"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 
@@ -56,30 +57,32 @@ func ApkOriginal(image string, installed []byte) Original {
 	}
 }
 
-// Store writes each original into the folder sbom/ of the repo in root as <ts>_<file>, and answers
-// them with where each is stored.
+// Store writes each original into folder, from the root of the repo in root, as prefix and its file,
+// and answers them with where each is stored: sbom/<ts>_<file> for sbom, <ts>_<test level>-<file> in
+// testreports/ for testreport.
 //
-// @implements SR_102@1.1.1
-func Store(root, ts string, originals []Original) ([]Original, error) {
-	if err := os.MkdirAll(filepath.Join(root, Folder), 0o750); err != nil {
+// @implements SR_102@1.1.1, SR_104@1.1.1
+func Store(root, folder, prefix string, originals []Original) ([]Original, error) {
+	if err := os.MkdirAll(filepath.Join(root, folder), 0o750); err != nil {
 		return nil, err
 	}
 	stored := make([]Original, 0, len(originals))
 	for _, o := range originals {
-		name := ts + "_" + o.File
-		if err := os.WriteFile(filepath.Join(root, Folder, name), o.Data, 0o600); err != nil {
+		name := prefix + o.File
+		if err := os.WriteFile(filepath.Join(root, folder, name), o.Data, 0o600); err != nil {
 			return nil, err
 		}
-		o.StoredAt = "./" + Folder + "/" + name
+		o.StoredAt = "./" + filepath.ToSlash(filepath.Join(folder, name))
 		stored = append(stored, o)
 	}
 	return stored, nil
 }
 
-// OriginalYAML answers sbom/<ts>.yaml: every original stored, with the command that made it.
+// OriginalYAML answers the record of the originals stored for document: each file, beside the
+// record, with the command that made it; the label where one is given.
 //
-// @implements SR_102@1.1.1
-func OriginalYAML(label, commit, createdAt string, originals []Original) ([]byte, error) {
+// @implements SR_102@1.1.1, SR_104@1.1.1
+func OriginalYAML(document, label, commit, createdAt string, originals []Original) ([]byte, error) {
 	type file struct {
 		File   string `yaml:"file"`
 		MadeBy string `yaml:"made_by"`
@@ -88,16 +91,16 @@ func OriginalYAML(label, commit, createdAt string, originals []Original) ([]byte
 		Schema    string `yaml:"schema"`
 		Type      string `yaml:"type"`
 		Document  string `yaml:"document"`
-		Label     string `yaml:"label"`
+		Label     string `yaml:"label,omitempty"`
 		Commit    string `yaml:"commit"`
 		CreatedAt string `yaml:"created_at"`
 		Files     []file `yaml:"files"`
-	}{"schemas/original-data.schema.json", "original-data", Name, label, commit, createdAt, nil}
+	}{"schemas/original-data.schema.json", "original-data", document, label, commit, createdAt, nil}
 	for _, o := range originals {
-		record.Files = append(record.Files, file{File: strings.TrimPrefix(o.StoredAt, "./"+Folder+"/"), MadeBy: o.MadeBy})
+		record.Files = append(record.Files, file{File: path.Base(o.StoredAt), MadeBy: o.MadeBy})
 	}
 	var b bytes.Buffer
-	b.WriteString("# The original data " + Name + " is written from (formats.md, section Documents).\n")
+	b.WriteString("# The original data " + document + " is written from (formats.md, section Documents).\n")
 	enc := yaml.NewEncoder(&b)
 	enc.SetIndent(2)
 	if err := enc.Encode(record); err != nil {
