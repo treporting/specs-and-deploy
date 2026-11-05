@@ -153,7 +153,7 @@ new file or a changed prefix needs no change of code.
 ## reviewcheck
 
 Checks every review result in `reviews/results/` against the rules of formats.md (TOOL_03, TOOL_11; SR_01
-to SR_08, SR_16 and SR_84 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
+to SR_08, SR_16, SR_84 and SR_103 in [software-requirements.yaml](software-requirements.yaml)): every criterion of its
 criteria file once, the verdict passed only when every criterion passed, a note to every failed
 criterion, no value but passed or failed, the revision reviewed exists, the criteria revision changed
 the criteria file, the reviewer is none of the authors of the requirement or document, and a
@@ -163,11 +163,14 @@ reports the findings of a result by criterion, in the order of its criteria file
 ```bash
 cd tools
 go run ./review/cmd/reviewcheck -root ..        # every result in reviews/results/
+go run ./review/cmd/reviewcheck -root .. -base origin/main   # those changed against main
 go test ./...                            # MT
 go test -tags integration ./...          # SwIT, on a history of git made in the test
 ```
 
-It exits with 1 where a result breaks a rule. It depends on `gopkg.in/yaml.v3` (MIT and Apache-2.0).
+With `-base`, as the CI runs it, it checks only the results a pull request adds or changes: a result
+names fixed commits, so its check does not change once it passed. It exits with 1 where a result
+breaks a rule. It depends on `gopkg.in/yaml.v3` (MIT and Apache-2.0).
 
 ## reviewskeleton
 
@@ -679,3 +682,4 @@ its own root, and by the names of its describe blocks before its own.
 | 30.1.1 | 2026-11-04 | testreport | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 31.1.1 | 2026-11-04 | sbom; licence check; baseline: sbom.md in sbom/ | #491 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 32.1.1 | 2026-11-05 | sbom: Original data and -store | #480 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 33.1.1 | 2026-11-05 | reviewcheck: -base | #497 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

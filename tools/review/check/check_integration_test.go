@@ -187,3 +187,87 @@ func checkAt(t *testing.T, root string) ([]Finding, error) {
 	}
 	return Check(root, "reviews/r.yaml", review.ExecGit{Root: root}, index)
 }
+
+// resultsRepo answers a repo of git with two review results: one committed at the base, which leaves
+// a failed criterion without a note, and one added after it, which breaks no rule; and the base.
+func resultsRepo(t *testing.T) (string, string) {
+	t.Helper()
+	root := t.TempDir()
+	gitIn(t, root, "init", "-q")
+	write(t, root, "reviews/criteria-tool.yaml", criteria)
+	write(t, root, "requirements/tool-requirements.yaml", requirements)
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "--author=Claude Opus 5.5 <noreply@anthropic.com>", "-m", "requirements")
+	first := gitIn(t, root, "rev-parse", "--short", "HEAD")
+	result := func(criterion, verdict string) string {
+		return `level: review
+created_by: Mathias Fischer
+created_at: '2026-10-25T13:30:00+01:00'
+criteria: reviews/criteria-tool.yaml
+criteria_revision: '` + first + `'
+results:
+- object_key: RR_01
+  target_ids: [TOOL_03]
+  revision: '` + first + `'
+  criteria: {RC_01: passed, RC_02: ` + criterion + `}
+  verdict: ` + verdict + `
+`
+	}
+	write(t, root, "reviews/results/1_old.yaml", result("failed", "failed"))
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "-m", "the old result")
+	base := gitIn(t, root, "rev-parse", "HEAD")
+	write(t, root, "reviews/results/2_new.yaml", result("passed", "passed"))
+	gitIn(t, root, "add", "-A")
+	gitIn(t, root, "commit", "-q", "-m", "the new result")
+	return root, base
+}
+
+// checkAll checks each of the files, and answers what it found.
+func checkAll(t *testing.T, root string, files []string) []Finding {
+	t.Helper()
+	index, err := review.IndexAt(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var all []Finding
+	for _, f := range files {
+		findings, err := Check(root, f, review.ExecGit{Root: root}, index)
+		if err != nil {
+			t.Fatal(err)
+		}
+		all = append(all, findings...)
+	}
+	return all
+}
+
+// @implements TC_152@1.1.1
+func TestWithBaseOnlyTheResultsAdded(t *testing.T) {
+	root, base := resultsRepo(t)
+	files, err := Results(root, base, review.ExecGit{Root: root}.Changed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(files) != 1 || files[0] != "reviews/results/2_new.yaml" {
+		t.Fatalf("checked %v", files)
+	}
+	if findings := checkAll(t, root, files); len(findings) != 0 {
+		t.Errorf("findings %v", findings)
+	}
+}
+
+// @implements TC_153@1.1.1
+func TestWithoutBaseEveryResult(t *testing.T) {
+	root, _ := resultsRepo(t)
+	files, err := Results(root, "", review.ExecGit{Root: root}.Changed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(files) != 2 {
+		t.Fatalf("checked %v", files)
+	}
+	findings := checkAll(t, root, files)
+	if len(findings) != 1 || findings[0].File != "reviews/results/1_old.yaml" || !strings.Contains(findings[0].Message, "note") {
+		t.Errorf("findings %v", findings)
+	}
+}
