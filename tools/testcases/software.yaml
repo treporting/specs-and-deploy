@@ -1139,7 +1139,7 @@ testcases:
     case, with its requirement and the status approved, and `-` as test procedure and as its status'
   design_technique: equivalence partitioning
   target_ids: [SR_95@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_144
   object_version: '1.3.1'
@@ -1147,7 +1147,7 @@ testcases:
     Deviations and Open each hold `<empty>`'
   design_technique: boundary value analysis
   target_ids: [SR_95@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_145
   object_version: '2.1.1'
@@ -1269,7 +1269,7 @@ testcases:
     procedure with the status `no test result`'
   design_technique: equivalence partitioning
   target_ids: [SR_95@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_159
   object_version: '1.1.1'
@@ -1277,5 +1277,5 @@ testcases:
     obsolete'
   design_technique: equivalence partitioning
   target_ids: [SR_95@2.1.1]
-  status: review
+  status: approved
   verification_method: [review]
