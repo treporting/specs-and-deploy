@@ -177,3 +177,11 @@ rules:
   safety: ''
   status: approved
   verification_method: []
+- object_key: PROC_22
+  object_version: '2.1.1'
+  object_text: 'The text of a requirement does not rely on the content of a document, so that a
+    change of a document never calls for a look at a requirement.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: []
