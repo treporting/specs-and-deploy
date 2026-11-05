@@ -8,12 +8,12 @@
 #	        storages=Dockerfile
 #
 # build, lint and test fail where a step fails; report reports test coverage and structural debt
-# and fails on nothing. Where a pull request changes sbom.md, build also checks that it lists the
+# and fails on nothing, and runs only where the input report is true, as baseline.yml sets it. Where a pull request changes sbom.md, build also checks that it lists the
 # packages delivered, with the images named built at its head (TOOL_28). Each job runs .github/build/steps.sh of specs-and-deploy in the root of the
 # repo; specs-and-deploy itself runs its own, the others that of main. See tools/README.md, section
 # build steps.
 #
-# @implements SR_51@1.1.1, SR_52@1.1.1, SR_53@1.1.1, SR_54@1.1.1, SR_55@1.1.1, SR_56@1.1.1, SR_57@1.1.1, SR_58@1.1.1, SR_67@1.1.1
+# @implements SR_51@1.1.1, SR_52@1.1.1, SR_53@1.1.1, SR_54@1.1.1, SR_55@1.1.1, SR_56@1.1.1, SR_57@2.1.2, SR_58@2.1.2, SR_67@1.1.1
 name: build
 
 on:
@@ -27,6 +27,10 @@ on:
         description: the images of the subsystem, one name=Dockerfile per line, from the root of the repo
         type: string
         default: ''
+      report:
+        description: run the job report; baseline.yml sets it, a pull request does not
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -125,8 +129,10 @@ jobs:
       - name: test
         run: '"$STEPS/.github/build/steps.sh" test'
 
-  #	reports and fails on nothing; a step fails only where the measuring itself did not happen
+  #	reports and fails on nothing; a step fails only where the measuring itself did not happen.
+  #	Only in the baseline: the commit loop does not ask for it (TOOL_26)
   report:
+    if: inputs.report
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:

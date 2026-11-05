@@ -1,6 +1,6 @@
 # The structural debt of a Go module (SR_58): what nothing uses, and every function of a cyclomatic
 # complexity of 15 and more. build.yml reports it, with --tests=false, and fails on nothing.
-# @implements SR_58@1.1.1
+# @implements SR_58@2.1.2
 version: "2"
 
 run:
