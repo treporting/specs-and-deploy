@@ -1105,7 +1105,7 @@ testcases:
     the command that made them and Stored At `-`; testreport copies neither'
   design_technique: equivalence partitioning
   target_ids: [SR_91@2.1.1, SR_104@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_140
   object_version: '1.2.1'
@@ -1233,7 +1233,7 @@ testcases:
     data names each with Stored At `./tools/testreports/<file>`'
   design_technique: equivalence partitioning
   target_ids: [SR_91@2.1.1, SR_104@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
 - object_key: TC_155
   object_version: '1.1.1'
@@ -1241,5 +1241,5 @@ testcases:
     files copied, each with the command that made it'
   design_technique: equivalence partitioning
   target_ids: [SR_104@1.1.1]
-  status: draft
+  status: review
   verification_method: [review]
