@@ -12,10 +12,11 @@
 # exit otherwise only where the measuring itself did not happen. sbom builds each image named from
 # its Dockerfile, and exits with 1 where sbom.md does not list the packages delivered. baseline
 # builds the images, writes sbom.md with the label and the ticket, and checks its licences; it exits
-# with 1 where the licences do not fit.
+# with 1 where the licences do not fit. Where JUNIT names a directory, test writes the junit.xml of
+# each run there, and baseline writes the test report of each test level from them.
 #
-# It needs go, golangci-lint v2 and deadcode on the PATH, and node with npm where there is a
-# JavaScript package.
+# It needs go, golangci-lint v2 and deadcode on the PATH, gotestsum where JUNIT is set, and node with
+# npm where there is a JavaScript package.
 set -uo pipefail
 
 #	the root of specs-and-deploy; .github/build holds the configurations of the linters
@@ -76,11 +77,34 @@ lint() {
 	done
 }
 
+#	junit <module> <kind> <flags of go test>...: run the tests of a module with gotestsum, which writes
+#	their junit.xml into $JUNIT as <module>-<kind>.xml, and the command that made it beside it, as
+#	<module>-<kind>.cmd (SR_99)
+junit() {
+	local m="$1" kind="$2" name cd=""
+	shift 2
+	name="$(echo "${m#./}" | tr '/' '-')"
+	if [ "$m" = . ]; then
+		name=root
+	else
+		cd="cd ${m#./} && "
+	fi
+	name="$name-$kind.xml"
+	mkdir -p "$JUNIT"
+	echo "${cd}gotestsum --junitfile $name -- $*" >"$JUNIT/${name%.xml}.cmd"
+	run "$m" gotestsum --junitfile "$JUNIT/$name" -- "$@"
+}
+
 #	@implements SR_55@1.1.1, SR_56@1.1.1
 test() {
 	for m in $(modules); do
-		run "$m" go test -race -timeout 30m ./...
-		run "$m" go test -race -timeout 30m -tags integration ./...
+		if [ -n "${JUNIT:-}" ]; then
+			junit "$m" unit -race -timeout 30m ./...
+			junit "$m" integration -race -timeout 30m -tags integration ./...
+		else
+			run "$m" go test -race -timeout 30m ./...
+			run "$m" go test -race -timeout 30m -tags integration ./...
+		fi
 	done
 	for p in $(packages); do
 		run "$p" npm ci --no-audit --no-fund
@@ -161,6 +185,32 @@ baseline() {
 	run . "$bin_licence" -root .
 	#	every approved object of the head, after the licences
 	run . "$bin_approval" -root .
+	[ "$failed" = 0 ] || return
+	if [ -n "${JUNIT:-}" ]; then
+		testreports "$label" "$ticket"
+	fi
+}
+
+#	testreports <label> <ticket>: write the test report of each test level that has a file of test
+#	cases - testcases/<file>.yaml with its level in its head - from every junit.xml in $JUNIT
+#
+#	@implements SR_99@2.1.1
+testreports() {
+	local label="$1" ticket="$2" bin file dir level xml
+	local flags=()
+	bin="$(tool testreport/cmd/testreport)"
+	for xml in "$JUNIT"/*.xml; do
+		[ -e "$xml" ] || continue
+		flags+=(-junit "$xml" -made-by "$(cat "${xml%.xml}.cmd")")
+	done
+	[ ${#flags[@]} -gt 0 ] || return
+	flags+=(-runtime "Go $(go env GOVERSION)")
+	for file in $(find . -path '*/testcases/*.yaml' -not -path '*/node_modules/*' -not -path '*/.*/*' | sort); do
+		dir="$(dirname "$(dirname "$file")")"
+		level="$(awk '/^level:/ {print $2; exit}' "$file")"
+		run . "$bin" -root . -dir "${dir#./}" -level "$level" -label "$label" -ticket "$ticket" \
+			-levels "$steps/levels.yaml" "${flags[@]}"
+	done
 }
 
 case "${1:-}" in

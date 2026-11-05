@@ -18,7 +18,7 @@
 # runs the checks of the repo. See tools/README.md, section baseline, and devops.md, section
 # Baseline.
 #
-# @implements SR_61@1.1.1, SR_62@1.1.1, SR_63@1.1.1, SR_64@1.1.1, SR_65@1.1.1
+# @implements SR_61@1.1.1, SR_62@1.1.1, SR_63@1.1.1, SR_64@1.1.1, SR_65@1.1.1, SR_99@2.1.1
 name: baseline
 
 on:
@@ -128,8 +128,15 @@ jobs:
         with:
           go-version-file: ${{ inputs.go-version-file }}
           cache-dependency-path: '**/go.sum'
-      - name: sbom, the check of the licences and of the approvals
+      #	the junit.xml of the job test, for the test reports (SR_99)
+      - uses: actions/download-artifact@v8
+        with:
+          name: junit
+          path: ${{ runner.temp }}/junit/
+        continue-on-error: true
+      - name: sbom, the check of the licences and of the approvals, the test reports
         env:
+          JUNIT: ${{ runner.temp }}/junit
           LABEL: ${{ needs.start.outputs.label }}
           TICKET: ${{ github.event.issue.number }}
           IMAGES: ${{ inputs.images }}
@@ -149,12 +156,13 @@ jobs:
           git config user.email "$APP[bot]@users.noreply.github.com"
           git switch -c "$BRANCH"
           git add sbom/sbom.md documents.yaml
-          git commit -m "Baseline $LABEL: sbom.md" -m "Part of #$TICKET"
+          find . -path '*/testreports/*.md' -not -path './.build-steps/*' -exec git add {} +
+          git commit -m "Baseline $LABEL: sbom.md, test reports" -m "Part of #$TICKET"
           git push origin "$BRANCH"
           body="$(cat <<BODY
           Part of #$TICKET
 
-          The baseline $LABEL of $GITHUB_REPOSITORY, run on main at $GITHUB_SHA: build, lint, test, report, sbom, the check of the licences and the check of the approvals passed. sbom.md and its entry in documents.yaml are written by the tool sbom, completed without a review (PROC_13).
+          The baseline $LABEL of $GITHUB_REPOSITORY, run on main at $GITHUB_SHA: build, lint, test, report, sbom, the check of the licences and the check of the approvals passed. sbom.md, the test reports and their entries in documents.yaml are written by the tools sbom and testreport, completed without a review (PROC_13).
 
           After the merge, set the signed tag on the merge commit:
 
