@@ -27,6 +27,21 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 A readable Markdown view of the YAML is generated on request only - save the table of the rules
 (see Rules).
 
+### Levels
+
+**Decision**: `levels.yaml` at the root of the repo lists every level: its key, its name, the
+abbreviation of its name, what it holds and the clause it follows; a test level also the data its
+tests run with. A tool that names a level takes the name from there.
+
+**Why**: the levels were named only in the tables of harness.md, which no tool reads, and each
+schema lists its keys apart, without a name. One file serves every tool, and the tables of
+harness.md can be built from it.
+
+**Rejected**:
+
+- a fixed mapping in the code of a tool - a new or renamed level needs a change of code
+- the names in each schema, as the title of its keys - each schema knows only its own levels
+
 ### Rules
 
 The rules of our work are requirements under another name (traceability.md). They are kept as
@@ -257,6 +272,7 @@ reviewed against.
 | verification | verification results | the level of their targets | `verifications/<time>_<scope>.yaml` |
 | documents | every Markdown file, with its type, level and version | - | `documents.yaml` |
 | kinds | the kinds of files, for annotationcheck | - | `tools/annotation/kinds.yaml` |
+| levels | the levels of the work, each with its name | - | `levels.yaml` |
 | explanation | the explanation of a level, in Markdown | its level | see table files of the levels |
 | document | a document without a level, in Markdown | - | such as formats.md |
 
@@ -906,3 +922,4 @@ case, and a test case without a result, would have no row.
 | 28.1.1 | 2026-11-04 | Test report: the section Original data | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 29.1.1 | 2026-11-04 | Test report: the runtimes and test runners in Test environment | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 30.1.1 | 2026-11-04 | Test report: one per test level | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 31.1.1 | 2026-11-05 | Levels: levels.yaml; Table types: the type levels | #535 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
