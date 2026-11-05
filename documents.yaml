@@ -91,8 +91,8 @@ documents:
 - name: tools/README.md
   type: explanation
   level: r5
-  object_version: '32.1.1'
-  object_hash: '169ef6c'
+  object_version: '33.1.1'
+  object_hash: '31720fe'
   status: approved
   verification_method: [review]
 - name: requirements/tool-requirements.md

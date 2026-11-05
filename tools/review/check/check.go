@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"path"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -322,4 +323,40 @@ func objectAt(git Git, commit, file, key string) []byte {
 		return nil
 	}
 	return review.ObjectIn(data, key)
+}
+
+// Results answers the review results to check, below root: with a base commit, those in
+// reviews/results/ that differ between it and HEAD and are still there; without one, every one.
+//
+// @implements SR_103@1.1.1
+func Results(root, base string, changed func(base string) ([]string, error)) ([]string, error) {
+	if base == "" {
+		found, err := filepath.Glob(filepath.Join(root, "reviews", "results", "*.yaml"))
+		if err != nil {
+			return nil, err
+		}
+		files := make([]string, 0, len(found))
+		for _, f := range found {
+			rel, err := filepath.Rel(root, f)
+			if err != nil {
+				return nil, err
+			}
+			files = append(files, filepath.ToSlash(rel))
+		}
+		return files, nil
+	}
+	paths, err := changed(base)
+	if err != nil {
+		return nil, err
+	}
+	var files []string
+	for _, p := range paths {
+		if ok, _ := path.Match("reviews/results/*.yaml", p); !ok {
+			continue
+		}
+		if _, err := os.Stat(filepath.Join(root, p)); err == nil {
+			files = append(files, p)
+		}
+	}
+	return files, nil
 }
