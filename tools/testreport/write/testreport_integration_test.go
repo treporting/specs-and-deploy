@@ -10,10 +10,13 @@ import (
 	"testing"
 )
 
-// testreportIn builds testreport and runs it with args, for the test level r5tc of -dir tools, in a
-// repo of git, with junit-go.xml and junit-vitest.xml given from outside the repo; and answers the
-// repo and the names in tools/testreports/.
-func testreportIn(t *testing.T, args ...string) (string, []string) {
+// levelsYAML names r5tc as levels.yaml does.
+const levelsYAML = "levels:\n- key: r5tc\n  name: subsystem test\n  abbreviation: SwVal\n"
+
+// testreportRun builds testreport and runs it with args, for the test level r5tc of -dir tools, in a
+// repo of git with levels.yaml as given, with junit-go.xml and junit-vitest.xml given from outside the
+// repo; and answers the repo, its output and its error.
+func testreportRun(t *testing.T, levels string, args ...string) (string, []byte, error) {
 	t.Helper()
 	bin := filepath.Join(t.TempDir(), "testreport")
 	if out, err := exec.Command("go", "build", "-o", bin, "../cmd/testreport").CombinedOutput(); err != nil {
@@ -22,6 +25,7 @@ func testreportIn(t *testing.T, args ...string) (string, []string) {
 	repo := t.TempDir()
 	for name, content := range map[string]string{
 		"documents.yaml":                "documents:\n",
+		"levels.yaml":                   levels,
 		"tools/testcases/software.yaml": "testcases:\n",
 	} {
 		if err := os.MkdirAll(filepath.Join(repo, filepath.Dir(name)), 0o750); err != nil {
@@ -47,7 +51,16 @@ func testreportIn(t *testing.T, args ...string) (string, []string) {
 	all := append([]string{"-root", repo, "-dir", "tools", "-level", "r5tc",
 		"-junit", goXML, "-made-by", "gotestsum --junitfile junit-go.xml -- ./...",
 		"-junit", vitestXML, "-made-by", "vitest run --reporter=junit"}, args...)
-	if out, err := exec.Command(bin, all...).CombinedOutput(); err != nil {
+	out, err := exec.Command(bin, all...).CombinedOutput()
+	return repo, out, err
+}
+
+// testreportIn runs testreport as testreportRun does, with levelsYAML, and answers the repo and the
+// names in tools/testreports/.
+func testreportIn(t *testing.T, args ...string) (string, []string) {
+	t.Helper()
+	repo, out, err := testreportRun(t, levelsYAML, args...)
+	if err != nil {
 		t.Fatalf("testreport: %v\n%s", err, out)
 	}
 	entries, err := os.ReadDir(filepath.Join(repo, "tools", "testreports"))
@@ -59,6 +72,56 @@ func testreportIn(t *testing.T, args ...string) (string, []string) {
 		names = append(names, e.Name())
 	}
 	return repo, names
+}
+
+// head answers the test report of the repo up to its first section.
+func head(t *testing.T, repo string) string {
+	t.Helper()
+	md, err := os.ReadFile(filepath.Join(repo, "tools", "testreports", "software.md"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	text, _, _ := strings.Cut(string(md), "\n## ")
+	return text
+}
+
+// @implements TC_161@1.1.1
+func TestTitleNamesTheTestLevel(t *testing.T) {
+	repo, _ := testreportIn(t)
+	h := head(t, repo)
+	if !strings.HasPrefix(h, "# Test report for subsystem test (SwVal)\n") {
+		t.Errorf("title:\n%s", h)
+	}
+	if strings.Contains(h, "r5") {
+		t.Errorf("the head names r5:\n%s", h)
+	}
+}
+
+// @implements TC_162@1.1.1
+func TestLevelsFromTheRootOrFromLevels(t *testing.T) {
+	repo, _ := testreportIn(t)
+	if !strings.Contains(head(t, repo), "subsystem test (SwVal)") {
+		t.Errorf("not read from <root>/levels.yaml:\n%s", head(t, repo))
+	}
+	other := filepath.Join(t.TempDir(), "levels.yaml")
+	if err := os.WriteFile(other, []byte("levels:\n- key: r5tc\n  name: other test\n  abbreviation: OT\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	repo, _ = testreportIn(t, "-levels", other)
+	if !strings.HasPrefix(head(t, repo), "# Test report for other test (OT)\n") {
+		t.Errorf("not read from -levels:\n%s", head(t, repo))
+	}
+}
+
+// @implements TC_163@1.1.1
+func TestLevelNotNamedFails(t *testing.T) {
+	repo, out, err := testreportRun(t, "levels:\n- key: r6tc\n  name: integration test\n  abbreviation: SwIT\n")
+	if err == nil || !strings.Contains(string(out), "r5tc") {
+		t.Errorf("no error naming r5tc: %v\n%s", err, out)
+	}
+	if _, err := os.Stat(filepath.Join(repo, "tools", "testreports", "software.md")); !os.IsNotExist(err) {
+		t.Errorf("a test report is written: %v", err)
+	}
 }
 
 // @implements TC_139@2.2.1

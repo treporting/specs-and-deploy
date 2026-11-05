@@ -99,7 +99,7 @@ func results(t *testing.T) []Result {
 func report(t *testing.T) string {
 	t.Helper()
 	return Markdown(Report{
-		Level: "r5tc", Label: "1.2.0", Commit: "a1b2c3d", Date: "2026-11-04", System: "linux/amd64", Runner: "GitHub Actions 2",
+		Level: "r5tc", Name: "subsystem test (SwVal)", Label: "1.2.0", Commit: "a1b2c3d", Date: "2026-11-04", System: "linux/amd64", Runner: "GitHub Actions 2",
 		Runtimes:  []string{"Go go1.25.3", "Node.js v22.11.0", "Vitest 5.0.3"},
 		Originals: []Original{{File: "junit-go.xml", MadeBy: "gotestsum --junitfile junit-go.xml -- ./...", StoredAt: "-"}, {File: "junit-vitest.xml", MadeBy: "vitest run --reporter=junit", StoredAt: "-"}},
 		Testcases: testcases, Procedures: repo(t), Results: results(t),
@@ -134,10 +134,10 @@ func TestReadsBothJUnitAndLinksTheProcedureToItsTestCase(t *testing.T) {
 	}
 }
 
-// @implements TC_137@2.1.1
+// @implements TC_137@2.2.1
 func TestSectionsInTheirOrder(t *testing.T) {
 	md := report(t)
-	if !strings.HasPrefix(md, "# Test report r5tc\n") {
+	if !strings.HasPrefix(md, "# Test report for subsystem test (SwVal)\n") {
 		t.Errorf("no head:\n%s", md)
 	}
 	last := -1
