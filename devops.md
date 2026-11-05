@@ -131,14 +131,14 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 ## Continuous integration
 
 **Decision**: `.github/workflows/tools.yml` runs on every pull request to `main`: the job
-`reviewcheck` (SR_09), the job `tests` (SR_10), the job `schemacheck` (SR_20), the job
+`reviewcheck` (SR_09), the job `schemacheck` (SR_20), the job
 `rulesetcheck` (SR_23), the job `annotationcheck` (SR_26, SR_31), the job `uplinkcheck`
 (SR_29) and the job `approvalcheck` (SR_81). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
 job failed cannot be merged, by anyone. The job `linkcheck` (SR_34) runs beside them. It is no
 required check. It reports a suspect link and does not fail: a suspect link blocks the baseline, not
 the pull request (PROC_20). The job `build` calls `.github/workflows/build.yml`, the build steps of
 every repo (SR_51 to SR_58), on the tools: its jobs `build / build`, `build / lint` and
-`build / test` are required checks. `build / report` runs only in the baseline, not on a pull
+`build / test` are required checks; `build / test` runs the tests of the tools (SR_55). `build / report` runs only in the baseline, not on a pull
 request (SR_57, SR_58): it fails on nothing, and the commit loop does not ask for it (TOOL_26). The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
@@ -274,3 +274,4 @@ today is set in the section Continuous integration.
 | 15.1.1 | 2026-11-02 | Baseline | #404 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 16.1.1 | 2026-11-02 | Continuous integration: approvalcheck | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-11-05 | Continuous integration: build / report only in the baseline | #504 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 18.1.1 | 2026-11-05 | Continuous integration: the tests of the tools in build / test | #552 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
