@@ -728,7 +728,7 @@ safer. That is a question for those tools, not for annotationcheck.
 
 ## Test levels
 
-The level of a test follows from where its file lies (see table test levels in
+The level of a test follows from where its file lies (see table levels in
 [harness.md](harness.md)):
 
 **Table places of the tests** - where the file of a test lies on each level
@@ -923,3 +923,4 @@ case, and a test case without a result, would have no row.
 | 29.1.1 | 2026-11-04 | Test report: the runtimes and test runners in Test environment | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 30.1.1 | 2026-11-04 | Test report: one per test level | #438 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 31.1.1 | 2026-11-05 | Levels: levels.yaml; Table types: the type levels | #535 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 32.1.1 | 2026-11-05 | Test levels: the table levels of harness.md | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
