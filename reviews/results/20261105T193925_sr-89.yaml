@@ -13,7 +13,7 @@ criteria_revision: '2f3a459'
 results:
 - object_key: RR_01
   target_ids: [SR_89]
-  revision: 'd1ee948'
+  revision: '2cc1e67'
   criteria:
     RC_01: passed
     RC_02: passed
