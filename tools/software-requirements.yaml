@@ -1107,5 +1107,5 @@ requirements:
   source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: review
   verification_method: [test]
