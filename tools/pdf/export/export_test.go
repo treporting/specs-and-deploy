@@ -151,3 +151,17 @@ func TestPageLoadsMermaidOnlyWhereThereIsADiagram(t *testing.T) {
 		t.Errorf("page with a diagram:\n%s", diagram)
 	}
 }
+
+// @implements TC_157@1.1.1
+func TestAddressLinkedAsGitHubDoes(t *testing.T) {
+	page, err := Page("t", []byte("| Requirement |\n|---|\n| SR_01@1.1.3 |\n\nWrite to a@1.com.\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(page, `<a href="mailto:a@1.com">a@1.com</a>`) {
+		t.Errorf("a@1.com is no link to mailto:\n%s", page)
+	}
+	if !strings.Contains(page, "<td>SR_01@1.1.3</td>") {
+		t.Errorf("SR_01@1.1.3 is not text alone\n%s", page)
+	}
+}
