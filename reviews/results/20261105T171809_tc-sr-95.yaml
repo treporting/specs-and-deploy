@@ -1,0 +1,61 @@
+# Review of TC_143, TC_144, TC_158, TC_159 against the criteria of the level r5tc.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r5tc
+object_version: '1.1.1'
+status: open
+created_by: Mathias Fischer
+created_at: '2026-11-05T17:18:09+01:00'
+criteria: reviews/criteria-r5tc.yaml
+criteria_revision: 'e161d57'
+results:
+- object_key: RR_01
+  target_ids: [TC_143]
+  revision: '842bd32'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [TC_144]
+  revision: '842bd32'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [TC_158]
+  revision: '842bd32'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [TC_159]
+  revision: '842bd32'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+  verdict: passed
