@@ -26,6 +26,7 @@
         "type": "object",
         "required": [
           "key",
+          "part",
           "name",
           "description"
         ],
@@ -35,6 +36,23 @@
             "type": "string",
             "pattern": "^(h[12]|n1|r[1-7]|r[1-7]tc|tool|rules|document)$",
             "description": "the key of the level, as the field level of a file names it, such as r5 or r5tc"
+          },
+          "part": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "product",
+                "process & tools"
+              ]
+            },
+            "description": "the parts that use the level: the product, our process and tools, or both"
+          },
+          "stands_for": {
+            "type": "string",
+            "pattern": "^r[1-7]$",
+            "description": "of a level of our process and tools: the level of the product it stands for, such as r2 for tool"
           },
           "name": {
             "type": "string",
