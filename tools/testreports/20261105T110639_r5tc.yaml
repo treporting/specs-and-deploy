@@ -1,0 +1,9 @@
+# The original data tools/testreports/software.md is written from (formats.md, section Documents).
+schema: schemas/original-data.schema.json
+type: original-data
+document: tools/testreports/software.md
+commit: 8fa9aca
+created_at: "2026-11-05T11:06:39+01:00"
+files:
+  - file: 20261105T110639_r5tc-junit-go.xml
+    made_by: gotestsum --junitfile junit-go.xml -- -tags integration ./...

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="156" failures="0" errors="0" time="11.930417">
+	<testsuite tests="16" failures="0" time="1.406000" name="github.com/treporting/specs-and-deploy/tools/annotation/check" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestApprovedInTheSamePullRequestDoesNotCount" time="0.300000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestOnlyCodeIsRead" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestAKindOnNeitherList" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestOnlyFirstInALineOfComment" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestAnIdNotInTheBaseCommit" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestAnIdNotApprovedInTheBaseCommit" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestSeveralIdsInOneAnnotation" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestTheVersionIsReadApartFromTheId" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestAnIdWithoutAVersion" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestAVerifiesOfARequirementIsNotReported" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestAnImplementsOfATestCaseIsNotReported" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestAVersionWithoutZ" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestRefinesIsReadInTheCommentOfASchema" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestARefinesNotApprovedInTheBaseCommit" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestARefinesWithoutAVersion" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/annotation/check" name="TestARefinesWithAVersion" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/annotation/cmd/annotationcheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="8" failures="0" time="5.006000" name="github.com/treporting/specs-and-deploy/tools/licence/check" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestCommandNamesWhatFailsAndExitsWithOne" time="4.400000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestPackagesOfTheTable" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestCheckByTheKindOfPackage" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestFits" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestAssessedLicenceTakesThePlaceOfTheOneInSbomMD" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestAssessedEntryNeedsPURLLicenceAndReason" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestFailureNamesPURLAndLicence" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/licence/check" name="TestEachTypeOfPURLWithItsLicence" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/licence/cmd/licencecheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="7" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/link/check" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/link/check" name="TestOnlyAnotherXIsReported" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/link/check" name="TestTheAllocationAndControlsAreCompared" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/link/check" name="TestATargetOfATestCaseIsCompared" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/link/check" name="TestAMissingObjectIsNotCompared" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/link/check" name="TestAnAnnotationWithAnotherXIsReported" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/link/check" name="TestARefinesWithAnotherXIsReported" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/link/check" name="TestALinkToAModuleIsCompared" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/link/cmd/linkcheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/pdf/cmd/pdf" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="13" failures="0" time="5.854000" name="github.com/treporting/specs-and-deploy/tools/pdf/export" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestGitReadsTheRepoAtTheTag" time="0.470000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestGitFailsWhereThereIsNoSuchRef" time="0.350000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestPrinterWritesAPDF" time="2.380000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestDocumentsOfDocumentsYAML" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestPDFNameIsThePathWithPDF" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestTitleIsTheFirstHeading" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestFooterNamesPathVersionRevisionStatus" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestFooterTemplateHoldsDatePagesAndDocument" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestHeaderTemplateEscapes" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestIndexListsEveryDocument" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestZipNameNamesRepoAndRef" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestZipHoldsEveryFile" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/pdf/export" name="TestPageLoadsMermaidOnlyWhereThereIsADiagram" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="1" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/review" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review" name="TestEveryFileThatHoldsObjectsIsIndexed" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="13" failures="0" time="11.527000" name="github.com/treporting/specs-and-deploy/tools/review/approval" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestEveryApprovedObject" time="0.770000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestTheFilesChangedAgainstTheBase" time="1.060000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestAnOpenResultIsNoApproval" time="0.890000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestACompletedDocumentHasItsHash" time="0.780000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestADocumentWithoutAReview" time="0.770000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestAKindWithoutCriteria" time="0.820000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestALaterPassedResult" time="0.840000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestOnlyALinkChanged" time="0.810000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestOnlyTheEntryOfADocumentChanged" time="0.600000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestBlobHashIsTheHashOfGit" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestFindXReadsTheAttributesForXAlsoInsideOneOf" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestXOfKeepsOnlyTheAttributesForX" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/approval" name="TestInFilesKeepsTheObjectsOfTheChangedFiles" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="21" failures="0" time="5.644000" name="github.com/treporting/specs-and-deploy/tools/review/check" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheCheckOnAHistoryOfGit" time="0.810000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheCriteriaRevisionOnAHistoryOfGit" time="0.740000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTwoMergesOfOneDocument" time="0.860000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestWithBaseOnlyTheResultsAdded" time="0.670000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestWithoutBaseEveryResult" time="1.170000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestAGoodResultHasNoFinding" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestEveryCriterionOnce" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheVerdictFollowsTheCriteria" time="0.020000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestAFailedVerdictWithANote" time="0.060000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestAFailedCriterionHasANote" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheRevisionExists" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheReviewerIsNotTheAuthor" time="0.010000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestASoftwareRequirementOfTheToolsHasAnAuthor" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestAValueOtherThanPassedOrFailed" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheCriteriaRevisionChangedTheCriteria" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheReviewerIsNotTheAuthorOfADocument" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestAMergeIsNoAuthorship" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestAnUnfilledSkeletonIsReported" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheFindingsInTheSameOrderInEveryRun" time="0.030000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestTheFindingsUpToTheReviewerInTheSameOrder" time="0.030000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/check" name="TestACompletedReviewHasItsCompletedAt" time="0.010000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/review/cmd/approvalcheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/review/cmd/reviewcheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/review/cmd/reviewskeleton" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="8" failures="0" time="2.261000" name="github.com/treporting/specs-and-deploy/tools/review/skeleton" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestASkeletonOnAHistoryOfGit" time="0.650000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestTheNameTheReviewerAndTheTime" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestTheCriteriaOfTheLevel" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestTheRevisionIsHead" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestEveryCriterionAndTheVerdictAreTodo" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestNothingWhereATargetIsMissingOrTheLevelsDiffer" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestTheSkeletonNamesItsSchemaTypeAndLevel" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/review/skeleton" name="TestTheSkeletonIsAnOpenRecord" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="6" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/ruleset/check" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/ruleset/check" name="TestTheSameRuleset" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/ruleset/check" name="TestARequiredCheckMissingOnGitHub" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/ruleset/check" name="TestAnotherEnforcementOnGitHub" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/ruleset/check" name="TestARuleOnlyOnGitHub" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/ruleset/check" name="TestARulesetThatCannotBeRead" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/ruleset/check" name="TestNoRulesetOfThatName" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/ruleset/cmd/rulesetcheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/sbom/cmd/sbom" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="39" failures="0" time="8.254000" name="github.com/treporting/specs-and-deploy/tools/sbom/create" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestTableAsSbomMDListsIt" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestLabelOfTheLastRow" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestDifferNamesEachPackageThatDiffers" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestGoListOfTheTools" time="0.320000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestGoEnvNamesTheVersionOfGo" time="0.010000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestCommandWritesSbomMDInTheRootAndKeepsTheHistory" time="2.750000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestCheckFailsWhereSbomMDDoesNotListWhatIsDelivered" time="1.170000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestCommandWithoutStoreWritesOnlySbomMD" time="0.960000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestCommandWithStoreWritesTheOriginalsAndTheirRecord" time="0.940000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOwnPackage" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestRowOfTheChangeHistory" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestHistoryKeepsTheRowsOfTheChangeHistoryOnly" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOneTableSortedByPURL" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestEndsWithOpenAndChangeHistory" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOpenListsEveryPackageOfUnknownLicence" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOpenIsEmptyWhereEveryLicenceIsKnown" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestAValueDoesNotBreakTheTable" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOnceKeepsTheFirstOfEachPURL" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestVersionOfSbomMD" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestNextRaisesX" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestHashIsThatOfGitHashObject" time="0.030000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestEntryAddedWhereThereIsNone" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestEntrySetInPlace" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestEntryCompletedAndGenerated" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestLicenceByItsSPDXIdentifier" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestSeveralLicencesJoinedByAnd" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestLicenceNotRecognizedIsUnknown" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestGivenLicenceInTheFormOfSPDX" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOriginalDataWithoutStore" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOriginalDataEmpty" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestStoreWritesEachFileIntoSbom" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestOriginalYAMLNamesEveryFileStored" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestGoModulesWithVersionLicenceAndPURL" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestGoModuleWithoutLicenceFileIsUnknown" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestStdlib" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestNpmPackagesWithoutDevAndWithoutTheSubsystem" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestNpmLockThatIsNoJSONIsAnError" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestApkPackages" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/sbom/create" name="TestDirsWithAsTheBuildStepsFindThem" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="4" failures="0" time="3.247000" name="github.com/treporting/specs-and-deploy/tools/schema/check" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/schema/check" name="TestTheFilesOfAHistoryOfGit" time="0.100000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/schema/check" name="TestEachPlaceThatDoesNotMatch" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/schema/check" name="TestAFieldTheSchemaDoesNotKnow" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/schema/check" name="TestNoSchemaOrASchemaThatIsNotThere" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/schema/cmd/schemacheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/testreport/cmd/testreport" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+	<testsuite tests="15" failures="0" time="6.938000" name="github.com/treporting/specs-and-deploy/tools/testreport/write" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestCommandWithoutStoreCopiesNothing" time="2.240000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestCommandWithStoreCopiesEachJUnit" time="1.090000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestReadsBothJUnitAndLinksTheProcedureToItsTestCase" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestSectionsInTheirOrder" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestEnvironmentNamesEachRuntimeWithItsVersion" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestOriginalDataWithoutStore" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestSpecificationListsTheTestCaseWithItsRequirement" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestImplementationWithAndWithoutATestCase" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestExecutionListsOnlyWhatRan" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestDeviationsAndOpen" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestDeviationsAndOpenEmpty" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestRowWithLabelAndTicket" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestRowWithoutLabel" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestLabelWithoutTicketFails" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/testreport/write" name="TestEntryAddedToDocuments" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="5" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/uplink/check" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/uplink/check" name="TestApprovedUplinksPass" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/uplink/check" name="TestUplinkNotApprovedIsAFinding" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/uplink/check" name="TestDraftIsNotChecked" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/uplink/check" name="TestAFileIsReadByItsSections" time="0.000000"></testcase>
+		<testcase classname="github.com/treporting/specs-and-deploy/tools/uplink/check" name="TestARegulatoryRequirementIsFoundInItsModule" time="0.000000"></testcase>
+	</testsuite>
+	<testsuite tests="0" failures="0" time="0.000000" name="github.com/treporting/specs-and-deploy/tools/uplink/cmd/uplinkcheck" timestamp="2026-11-05T11:06:19+01:00">
+		<properties>
+			<property name="go.version" value="go1.25.14 darwin/amd64"></property>
+		</properties>
+	</testsuite>
+</testsuites>
