@@ -1037,3 +1037,26 @@ requirements:
   safety: ''
   status: approved
   verification_method: [demonstration]
+- object_key: SR_101
+  object_version: '1.1.1'
+  component: sbom
+  object_text: list in sbom.md, in a section Original data, every file of original data it is written
+    from, in a table with the columns File, Made by and Stored At - the command that made it, and
+    where it is stored, as `./sbom/<file>`, or `-`
+  source_ids: [TOOL_21@2.1.2]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+- object_key: SR_102
+  object_version: '1.1.1'
+  component: sbom
+  object_text: with -store, write each file of original data into the folder sbom/ of the repo as
+    `<ts>_golist-<dir>.txt`, `<ts>_<dir>-package-lock.json` and `<ts>_apk-<image>.txt`, and name
+    them in `sbom/<ts>.yaml` - `<ts>` the time of the run as yyyymmddThhmmss, `<dir>` the directory
+    from the root of the repo or `root`, with `/` and `:` as `-`
+  source_ids: [TOOL_21@2.1.2]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
