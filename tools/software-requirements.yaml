@@ -911,16 +911,18 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: SR_89
-  object_version: '2.1.1'
+  object_version: '3.1.1'
   component: testreport
   object_text: write the test report of the test level given as `testreports/<test level>.md` with
     the head of a document and the sections Test environment, Original data, Test
     specification, Test implementation, Test execution, Deviations, Open and Change
-    history, in this order
+    history, in this order; the head names what the test level means, as the table test cases of
+    formats.md does, such as `r5tc: the test cases of the software requirements (r5), test level
+    SwVal`
   source_ids: [TOOL_34@2.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
 - object_key: SR_90
   object_version: '1.2.1'
