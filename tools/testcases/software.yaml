@@ -1189,7 +1189,7 @@ testcases:
     and Stored At `-`; sbom writes nothing into sbom/ but sbom.md'
   design_technique: equivalence partitioning
   target_ids: [SR_101@1.1.1, SR_102@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_150
   object_version: '1.1.1'
@@ -1199,7 +1199,7 @@ testcases:
     `./sbom/<file>`'
   design_technique: equivalence partitioning
   target_ids: [SR_101@1.1.1, SR_102@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
 - object_key: TC_151
   object_version: '1.1.1'
@@ -1207,5 +1207,5 @@ testcases:
     file of original data written, each with the command that made it'
   design_technique: equivalence partitioning
   target_ids: [SR_102@1.1.1]
-  status: review
+  status: approved
   verification_method: [review]
