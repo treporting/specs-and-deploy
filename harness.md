@@ -149,8 +149,8 @@ to the process does not count into the maturity of the product. The rules are ke
 [rules.yaml](rules.yaml); the table below is generated from it whenever it changes, and names the
 hash of its content, `git hash-object rules.yaml`.
 
-<!-- generated from rules.yaml@be0b9e1 - do not edit -->
-**Table rules** - the rules of the work, generated from rules.yaml@be0b9e1
+<!-- generated from rules.yaml@25267ed - do not edit -->
+**Table rules** - the rules of the work, generated from rules.yaml@25267ed
 
 | Id | Version | Rule |
 |---|---|---|
@@ -174,7 +174,7 @@ hash of its content, `git hash-object rules.yaml`.
 | PROC_19 | 1.1.1 | Every test belongs to exactly one test level, read from the place of its file. |
 | PROC_20 | 2.1.1 | Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect where the linked object has another x than the link names. A suspect link is reported on every pull request. It blocks a baseline that holds both its ends, compared with the versions in that baseline, not on `main`. See traceability.md. |
 | PROC_21 | 1.1.1 | What is made only to be looked at stays on the machine it is made on: it is not pushed, and no ticket or pull request carries it. The repos are public; whatever reaches them is published. |
-| PROC_22 | 1.1.1 | The text of a requirement does not rely on the content of a document, so that a change of a document never calls for a look at a requirement. |
+| PROC_22 | 2.1.1 | The text of a requirement does not rely on the content of a document, so that a change of a document never calls for a look at a requirement. |
 <!-- end of generated -->
 
 **Decision**: a rule of the harness is approved when it is merged into `main`. It names no criteria
