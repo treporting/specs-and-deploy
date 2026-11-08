@@ -174,11 +174,14 @@ sbom() {
 
 #	@implements SR_63@1.1.1, SR_82@2.1.3
 baseline() {
-	local label="$1" ticket="$2" bin_sbom bin_licence bin_approval
+	local label="$1" ticket="$2" bin_sbom bin_licence bin_approval bin_testreport
 	shift 2
+	#	every tool before the first of them writes, so that none is built from a changed working
+	#	tree and records its revision with -dirty
 	bin_sbom="$(tool sbom/cmd/sbom)"
 	bin_licence="$(tool licence/cmd/licencecheck)"
 	bin_approval="$(tool review/cmd/approvalcheck)"
+	bin_testreport="$(tool testreport/cmd/testreport)"
 	build_images "$@"
 	run . "$bin_sbom" -label "$label" -ticket "$ticket" ${image_flags[@]+"${image_flags[@]}"}
 	[ "$failed" = 0 ] || return
@@ -187,18 +190,18 @@ baseline() {
 	run . "$bin_approval" -root .
 	[ "$failed" = 0 ] || return
 	if [ -n "${JUNIT:-}" ]; then
-		testreports "$label" "$ticket"
+		testreports "$bin_testreport" "$label" "$ticket"
 	fi
 }
 
-#	testreports <label> <ticket>: write the test report of each test level that has a file of test
-#	cases - testcases/<file>.yaml with its level in its head - from every junit.xml in $JUNIT
+#	testreports <bin> <label> <ticket>: write with the testreport at <bin> the test report of each
+#	test level that has a file of test cases - testcases/<file>.yaml with its level in its head -
+#	from every junit.xml in $JUNIT
 #
 #	@implements SR_99@2.1.1
 testreports() {
-	local label="$1" ticket="$2" bin file dir level xml
+	local bin="$1" label="$2" ticket="$3" file dir level xml
 	local flags=()
-	bin="$(tool testreport/cmd/testreport)"
 	for xml in "$JUNIT"/*.xml; do
 		[ -e "$xml" ] || continue
 		flags+=(-junit "$xml" -made-by "$(cat "${xml%.xml}.cmd")")
