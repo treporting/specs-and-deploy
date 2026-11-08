@@ -1,0 +1,21 @@
+# The demonstration of SR_99 2.1.1 in the baseline T045.
+schema: schemas/verification-result.schema.json
+type: verification
+level: r5
+method: demonstration
+target_ids: [SR_99]
+created_by: Claude Opus 5.5
+confirmed_by: Mathias Fischer
+created_at: '2026-11-05T23:27:32+01:00'
+revision: 'c811e2f'
+description: verifications/20261105T232700_sr-99.md
+expected: the job test keeps the junit.xml of each run of the tests as the artifact junit; the job sbom writes tools/testreports/software.md with the label and the ticket, and pushes it in the commit of sbom.md
+observed: |
+  run 42121101877, artifact junit: tools-unit.xml, tools-unit.cmd, tools-integration.xml, tools-integration.cmd
+  pull request #557, commit 13d4a35 "Baseline T045: sbom.md, test reports":
+    documents.yaml, sbom/sbom.md, tools/testreports/software.md
+  tools/testreports/software.md, Change history: | 1.1.1 | 2026-11-05 | T045 | #556 | testreport c811e2f-dirty |
+evidence:
+- https://github.com/treporting/specs-and-deploy/actions/runs/42121101877
+- https://github.com/treporting/specs-and-deploy/pull/557
+verdict: passed
