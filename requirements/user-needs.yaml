@@ -11,17 +11,17 @@ requirements:
   object_text: Sees how far each feature has got, down all levels, in a release.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_02
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   function: PM
-  object_text: Narrows any view to the functions, features, priorities, platforms and launches of the
-    own scope.
+  object_text: Narrows what it sees to the functions, features, priorities and baselines of its own
+    scope.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_03
@@ -30,7 +30,26 @@ requirements:
   object_text: Sees where the chain from requirement to test result breaks, to plan the work there.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_PM_04
+  object_version: '1.1.1'
+  function: PM
+  object_text: Sees what is still open for a baseline, and how fast it gets done, to judge whether its
+    date holds.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_PM_05
+  object_version: '1.1.1'
+  function: PM
+  object_text: Sees where the open work of a baseline lies, to assign resources where they are needed.
+  priority: 'medium'
+  safety: ''
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_RM_01
