@@ -33,6 +33,25 @@ requirements:
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_PM_04
+  object_version: '1.1.1'
+  function: PM
+  object_text: Sees what is still open for a baseline, and how fast it gets done, to judge whether its
+    date holds.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_PM_05
+  object_version: '1.1.1'
+  function: PM
+  object_text: Sees where the open work of a baseline lies, to assign resources where they are needed.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_RM_01
   object_version: '1.1.1'
   function: RM
