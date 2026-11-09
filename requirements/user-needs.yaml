@@ -171,6 +171,15 @@ requirements:
   status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_QA_07
+  object_version: '1.1.1'
+  function: QA
+  object_text: Sees which documents were reviewed, against which criteria, with which result.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SAF_01
   object_version: '1.1.1'
   function: SAF
@@ -257,6 +266,16 @@ requirements:
   object_version: '1.1.1'
   function: ASR
   object_text: Sees which findings of a release were evaluated, by whom and where.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_ASR_08
+  object_version: '1.1.1'
+  function: ASR
+  object_text: Follows a finding of a review to its end - the change it caused, and the review that
+    found it resolved.
   priority: 'medium'
   safety: ''
   status: draft
