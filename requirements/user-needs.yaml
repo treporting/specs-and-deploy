@@ -257,6 +257,51 @@ requirements:
   status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SCOPE_01
+  object_version: '1.1.1'
+  function: SCOPE
+  object_text: Narrows the data to organization and projects (where).
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SCOPE_02
+  object_version: '1.1.1'
+  function: SCOPE
+  object_text: Narrows the data to baselines for releases and libraries (when).
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SCOPE_03
+  object_version: '1.1.1'
+  function: SCOPE
+  object_text: Narrows the data to functions, features, priorities and safety class (what).
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SCOPE_04
+  object_version: '1.1.1'
+  function: SCOPE
+  object_text: Groups the data by feature.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SCOPE_05
+  object_version: '1.1.1'
+  function: SCOPE
+  object_text: Sees at all times what the data are narrowed to.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
   object_version: '1.1.1'
   function: PM
@@ -273,7 +318,7 @@ requirements:
     scope.
   priority: 'medium'
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_03
@@ -466,7 +511,7 @@ requirements:
   object_text: Narrows to a safety class, the unclassified included.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SAF_03
