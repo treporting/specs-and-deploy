@@ -336,7 +336,7 @@ requirements:
     with which parameters.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SHARE_05
@@ -345,7 +345,7 @@ requirements:
   object_text: Gets complete copies of the records, readable by people and by machines.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SHARE_06
@@ -354,7 +354,7 @@ requirements:
   object_text: Gets the same report from the same data and the same version of treporting.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_EVIDENCE_01
@@ -363,7 +363,7 @@ requirements:
   object_text: Sees which objects a figure counts.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_EVIDENCE_02
@@ -372,7 +372,7 @@ requirements:
   object_text: Sees every import or change of data - who, when, what - and the state before it.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
