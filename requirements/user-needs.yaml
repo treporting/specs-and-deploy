@@ -154,6 +154,54 @@ requirements:
   status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_COMPLIANCE_01
+  object_version: '1.1.1'
+  function: COMPLIANCE
+  object_text: Sees which work products were reviewed (for instance, requirements, documents or
+    code), against which criteria, with which result.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_COMPLIANCE_02
+  object_version: '1.1.1'
+  function: COMPLIANCE
+  object_text: Sees which findings of a baseline were evaluated, by whom and where.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_COMPLIANCE_03
+  object_version: '1.1.1'
+  function: COMPLIANCE
+  object_text: Follows a finding of a review to its end - the change it caused, and the review that
+    found it resolved.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_COMPLIANCE_04
+  object_version: '1.1.1'
+  function: COMPLIANCE
+  object_text: Sees which clauses of the standards in use are met by a requirement, and which are
+    not.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_COMPLIANCE_05
+  object_version: '1.1.1'
+  function: COMPLIANCE
+  object_text: Sees who approved what, and whether a review came first.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
   object_version: '1.1.1'
   function: PM
@@ -336,7 +384,7 @@ requirements:
   object_text: Sees which requirements were reviewed, against which criteria, with which result.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_QA_07
@@ -345,7 +393,7 @@ requirements:
   object_text: Sees which documents were reviewed, against which criteria, with which result.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SAF_01
@@ -436,7 +484,7 @@ requirements:
   object_text: Sees which findings of a release were evaluated, by whom and where.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_ASR_08
@@ -446,7 +494,7 @@ requirements:
     found it resolved.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_DEV_01
