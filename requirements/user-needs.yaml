@@ -12,7 +12,7 @@ requirements:
     baseline.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_02
@@ -22,7 +22,7 @@ requirements:
     passed result.'
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_03
@@ -31,7 +31,7 @@ requirements:
   object_text: Sees where the chain from requirement to test result breaks.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_04
@@ -40,7 +40,7 @@ requirements:
   object_text: Compares how far it has got, and what is open, between two baselines.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_05
@@ -50,7 +50,7 @@ requirements:
     baseline holds).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_06
@@ -60,7 +60,7 @@ requirements:
     they are needed).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_07
@@ -69,7 +69,7 @@ requirements:
   object_text: Sees the state of the requirements and the tests of each level, by their status.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_08
@@ -79,7 +79,7 @@ requirements:
     link that broke.'
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_STATUS_09
@@ -88,7 +88,7 @@ requirements:
   object_text: Sees what follows a changed requirement and was not looked at again.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
