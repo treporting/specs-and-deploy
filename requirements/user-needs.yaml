@@ -5,13 +5,99 @@ type: requirements
 level: r1
 documents: [requirements/user-needs.md]
 requirements:
+- object_key: UN_STATUS_01
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: Sees how far each requirement has got along the chain of the process in use, in a
+    baseline.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_02
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: 'Sees what is still open in a baseline: no lower requirement, no code, no test, no
+    passed result.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_03
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: Sees where the chain from requirement to test result breaks.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_04
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: Compares how far it has got, and what is open, between two baselines.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_05
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: Sees how fast the open work gets done (for instance, to judge whether the date of a
+    baseline holds).
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_06
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: Sees where the open work of a baseline lies (for instance, to assign resources where
+    they are needed).
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_07
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: Sees the state of the requirements and the tests of each level, by their status.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_08
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: 'Sees what got worse since the last baseline: a test that failed after it passed, a
+    link that broke.'
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_STATUS_09
+  object_version: '1.1.1'
+  function: STATUS
+  object_text: Sees what follows a changed requirement and was not looked at again.
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
   object_version: '1.1.1'
   function: PM
   object_text: Sees how far each feature has got, down all levels, in a release.
   priority: 'medium'
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_02
@@ -30,7 +116,7 @@ requirements:
   object_text: Sees where the chain from requirement to test result breaks, to plan the work there.
   priority: 'medium'
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_04
@@ -40,7 +126,7 @@ requirements:
     date holds.
   priority: 'medium'
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_05
@@ -49,7 +135,7 @@ requirements:
   object_text: Sees where the open work of a baseline lies, to assign resources where they are needed.
   priority: 'medium'
   safety: ''
-  status: approved
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_RM_01
@@ -58,7 +144,7 @@ requirements:
   object_text: Sees which of its requirements are not yet backed by passed tests.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_RM_02
@@ -67,7 +153,7 @@ requirements:
   object_text: Sees whether maturity grows from release to release and from library to library.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_RM_03
@@ -150,7 +236,7 @@ requirements:
   object_text: Sees the maturity of each level, comparable over releases.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_QA_03
@@ -160,7 +246,7 @@ requirements:
     to HiL).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_QA_04
@@ -232,7 +318,7 @@ requirements:
   object_text: Sees which clauses of the standards chosen are addressed and verified, per release.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_ASR_02
@@ -251,7 +337,7 @@ requirements:
     62304, IEC 61508, ISO/IEC/IEEE 12207.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_ASR_04
@@ -306,7 +392,7 @@ requirements:
   object_text: Sees which of the requirements assigned to them have no code or no test yet.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_TST_01
