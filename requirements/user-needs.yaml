@@ -435,7 +435,7 @@ requirements:
   object_text: Gives access only to authorised people, each known by an identity of their own.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN_SECURITY_02
@@ -444,7 +444,7 @@ requirements:
   object_text: Sees only the data it is allowed to see (for instance, of its own organization).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN_SECURITY_03
@@ -453,7 +453,7 @@ requirements:
   object_text: Keeps the records and their history for a set period, readable throughout.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN_SECURITY_04
@@ -462,7 +462,7 @@ requirements:
   object_text: Gets the security fixes for the version in use, over a period known in advance.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SECURITY_05
@@ -471,7 +471,7 @@ requirements:
   object_text: Reports a vulnerability, and learns how it is handled.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SECURITY_06
@@ -481,7 +481,7 @@ requirements:
     record.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN_PM_01
