@@ -208,7 +208,7 @@ requirements:
   object_text: Knows which work products, at which revision, belong to which baseline.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CONFIG_02
@@ -217,7 +217,7 @@ requirements:
   object_text: Knows where each work product is kept (for instance, DOORS or git).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CONFIG_03
@@ -226,7 +226,7 @@ requirements:
   object_text: Sees what changed from one baseline to the next.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CONFIG_04
@@ -236,7 +236,7 @@ requirements:
     units).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CONFIG_05
@@ -245,7 +245,7 @@ requirements:
   object_text: Sees the baselines of a project over time.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CONFIG_06
@@ -254,7 +254,7 @@ requirements:
   object_text: Sees the history of a requirement across baselines.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
