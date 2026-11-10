@@ -1,0 +1,150 @@
+# Review of UN_OPERATE_01, UN_OPERATE_02, UN_OPERATE_03, UN_OPERATE_04, UN_OPERATE_05, UN_OPERATE_06, UN_OPERATE_07, UN_OPERATE_08, UN_OPERATE_09 against the criteria of the level r1.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r1
+object_version: '1.1.1'
+status: open
+created_by: Mathias Fischer
+created_at: '2026-11-10T22:58:02+01:00'
+criteria: reviews/criteria-r1.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [UN_OPERATE_01]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [UN_OPERATE_02]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [UN_OPERATE_03]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [UN_OPERATE_04]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_05
+  target_ids: [UN_OPERATE_05]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_06
+  target_ids: [UN_OPERATE_06]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03:
+      result: passed
+      note: 'found in this review and resolved in it: "from what it recorded" used record as UN_SECURITY_03 and UN_SECURITY_06 do, with another meaning; it now names the log of treporting, and #602 settles the term'
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_07
+  target_ids: [UN_OPERATE_07]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_08
+  target_ids: [UN_OPERATE_08]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_09
+  target_ids: [UN_OPERATE_09]
+  revision: 'b39e3c2'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
