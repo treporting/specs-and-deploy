@@ -329,6 +329,52 @@ requirements:
   status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SHARE_04
+  object_version: '1.1.1'
+  function: SHARE
+  object_text: Knows who made a report, when, from which data, with which version of treporting and
+    with which parameters.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SHARE_05
+  object_version: '1.1.1'
+  function: SHARE
+  object_text: Gets complete copies of the records, readable by people and by machines.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SHARE_06
+  object_version: '1.1.1'
+  function: SHARE
+  object_text: Gets the same report from the same data and the same version of treporting.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_EVIDENCE_01
+  object_version: '1.1.1'
+  function: EVIDENCE
+  object_text: Sees which objects a figure counts.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_EVIDENCE_02
+  object_version: '1.1.1'
+  function: EVIDENCE
+  object_text: Sees every import or change of data - who, when, what - and the state before it.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
   object_version: '1.1.1'
   function: PM
@@ -400,7 +446,7 @@ requirements:
   object_text: Knows which build and which data a report was made from.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_RM_04
@@ -565,7 +611,7 @@ requirements:
   object_text: 'Can check the evidence: which revision, which data, how many objects.'
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_ASR_03
@@ -584,7 +630,7 @@ requirements:
   object_text: Sees who produced a report, when, from which data and revision, and with which parameters.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN_ASR_05
@@ -593,7 +639,7 @@ requirements:
   object_text: Sees every import or change of data - who, when, what - and the state before it.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: UN_ASR_06
@@ -602,7 +648,7 @@ requirements:
   object_text: Gets complete copies of the records, readable by people and by machines.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_ASR_07
@@ -885,6 +931,6 @@ requirements:
   object_text: Gets the same report from the same data and revision.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
