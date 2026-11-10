@@ -302,6 +302,33 @@ requirements:
   status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SHARE_01
+  object_version: '1.1.1'
+  function: SHARE
+  object_text: Hands a report on to people who do not use the system.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SHARE_02
+  object_version: '1.1.1'
+  function: SHARE
+  object_text: Shares a view, with the same narrowing, with someone who uses the system.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SHARE_03
+  object_version: '1.1.1'
+  function: SHARE
+  object_text: Takes the data into another tool (for instance, a spreadsheet).
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
   object_version: '1.1.1'
   function: PM
@@ -382,7 +409,7 @@ requirements:
   object_text: Hands a report on to people who do not use the system.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_RM_05
