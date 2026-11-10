@@ -91,6 +91,69 @@ requirements:
   status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_TRACE_01
+  object_version: '1.1.1'
+  function: TRACE
+  object_text: Follows the trace down from the user need, across all levels, to the test result.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_TRACE_02
+  object_version: '1.1.1'
+  function: TRACE
+  object_text: Sees what verifies a requirement (for instance, a test or a review).
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_TRACE_03
+  object_version: '1.1.1'
+  function: TRACE
+  object_text: Knows from which requirements, up to the user need, a test is derived.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_TRACE_04
+  object_version: '1.1.1'
+  function: TRACE
+  object_text: Sees whether a requirement is already verified on another level.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_TRACE_05
+  object_version: '1.1.1'
+  function: TRACE
+  object_text: Shows that every hazard and threat is controlled by a measure, down to a test result.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_TRACE_06
+  object_version: '1.1.1'
+  function: TRACE
+  object_text: Relies on a safety class being carried down the trace without gaps.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_TRACE_07
+  object_version: '1.1.1'
+  function: TRACE
+  object_text: Sees which code implements a requirement.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
   object_version: '1.1.1'
   function: PM
@@ -227,7 +290,7 @@ requirements:
     ways.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_QA_02
@@ -264,7 +327,7 @@ requirements:
   object_text: Sees by what each requirement is verified.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_QA_06
@@ -291,7 +354,7 @@ requirements:
   object_text: Shows that every hazard is controlled by a measure, down to a test result.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SAF_02
@@ -309,7 +372,7 @@ requirements:
   object_text: Relies on a safety class being carried down the trace without gaps.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_ASR_01
@@ -401,7 +464,7 @@ requirements:
   object_text: Knows from which requirements, up to the user need, a test is derived.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_TST_02
@@ -410,7 +473,7 @@ requirements:
   object_text: Sees whether a requirement is already verified on another level.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_OPS_01
