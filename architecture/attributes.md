@@ -35,7 +35,7 @@ The prefixes:
 ## All types
 
 Every type has the four attributes of creation and modification. The objects in a document -
-Requirement, Testcase, Testresult, Hazard, Normative - have `module_prefix` as well.
+Requirement, Testcase, Testprocedure, Testresult, Hazard, Normative - have `module_prefix` as well.
 
 ### module_prefix
 
@@ -59,7 +59,7 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 
 | Type | category |
 |---|---|
-| Requirement, Testcase, Testresult | empty on the object - the document it stands in has the category |
+| Requirement, Testcase, Testprocedure, Testresult | empty on the object - the document it stands in has the category |
 | Artifact - a document | `Requirement`, `Testspecification`, `Testprocedure`, `Testreport` - from the level of its objects |
 | Hazard | `Hazard` |
 | Normative | `Normative` |
@@ -148,11 +148,15 @@ Overview per type, as the prototype sets it; the terms are those of definitions.
 | Note | for treporting itself, `issue_ids` would hold the link to the tickets - where it cannot be derived the other way round |
 | Prototype | same |
 
-## Testcase
+## Test, Testcase, Testprocedure
 
-A test case and a test procedure are objects of the same type, `Testcase`, told apart by their
-level. A test case is the unit a verdict belongs to - the results hang on it; a test procedure is
-how tests are carried out, a script being an automated one.
+A test case and a test procedure are both a test (traceability.md, section Tests): the types
+`Testcase` and `Testprocedure` extend an abstract type `Test`, which holds every attribute and
+link they share. A test case says what is verified, and how; a test procedure carries test cases
+out, our test code being an automated one. A verdict belongs to a test case; it reaches it
+directly where a person carries the case out, through its test procedure where it runs automated.
+
+The attributes below are those of `Test`, unless an entry names one of the two.
 
 ### level
 
@@ -161,15 +165,16 @@ how tests are carried out, a script being an automated one.
 | Meaning | the key of the level, of two parts: the requirement level it verifies and the kind - `tc` a test case, `tp` a test procedure: `r5tc`, `r5tp` |
 | Our test levels | MT `r7tc`, SwIT `r6tc`, SwVal `r5tc` and `r5tp`, SysIT `r3tc`, SysQT `r2tc`, Val `r1tc` |
 | Comes from | context - for a test in code, the place of its file |
+| Note | the kind and the type say the same: `tc` a `Testcase`, `tp` a `Testprocedure` |
 | Prototype | same |
 
 ### object_key
 
 | | |
 |---|---|
-| Meaning | the id of the test case in its source |
-| For a test in code | the package and the name of the test function - a test file is the test procedure, a test function with `@verifies` the test case |
-| Prototype | same |
+| Meaning | the id of the test in its source |
+| For a test in code | a test procedure: the package and the name of the test function |
+| Prototype | changed - in the prototype a test function with `@verifies` is the test case |
 
 ### stream
 
@@ -222,20 +227,32 @@ how tests are carried out, a script being an automated one.
 
 ### Links
 
+Three kinds of link join the parts of a test, each kept in both directions:
+
+| Kind | Link | Back | Between | Mapping | Written as |
+|---|---|---|---|---|---|
+| verifies | `testFor` | `testedBy` | a test and the requirements it verifies | n : m | `target_ids` of a test case; `@verifies` of a test procedure |
+| implements | `implements` | `implementedBy` | a test procedure and the test cases it carries out | n : m | `@implements` |
+| result of | `resultFor` | `resultOf` | a test result and the test it came out of | n : 1 | the run, automated or by hand |
+
+And `assignedTo` from a test to a component.
+
+They join the parts of the three ways of testing - automated with a test case, automated on a level
+without test cases, by hand (traceability.md, table chains). No way needs a stand-in object.
+
 | | |
 |---|---|
-| Meaning | `testedBy` from a requirement to its test cases and test procedures; `testFor` back to the requirement; `resultOf` to the results of a test case; `assignedTo` to a component |
-| Prototype | same - one link `testedBy` for test cases and test procedures; no link of its own, such as `specifiedBy`, and none between a test procedure and its test cases |
+| Prototype | changed - `testedBy`, `testFor`, `resultOf` and `resultFor` join a requirement, a `Testcase` and its results; a test procedure is a `Testcase` too, and nothing joins it to the test cases it carries out |
 
 ## Testresult
 
-A test result is one run of a test case: its verdict, in a stream.
+A test result is one run of a test: its verdict, in a stream.
 
 ### level, stream, category
 
 | | |
 |---|---|
-| Meaning | `level` the key `r<n>tr` - a result of a test case of level r<n>; `stream` the variant the run took place in; `category` empty |
+| Meaning | `level` the key `r<n>tr` - a result of a test of level r<n>; `stream` the variant the run took place in; `category` empty |
 | Prototype | same |
 
 ### status
@@ -251,24 +268,24 @@ A test result is one run of a test case: its verdict, in a stream.
 
 | | |
 |---|---|
-| Meaning | the feature, function, safety class and priority of the test case the result came out of |
-| Comes from | derived - always from the test case; a result has none of its own, so there is no original |
+| Meaning | the feature, function, safety class and priority of the test the result came out of |
+| Comes from | derived - always from the test; a result has none of its own, so there is no original |
 | Prototype | renamed - from `feature`, `function`, `safety`; changed - the prototype also copies the original `priority` of the test case |
 
 ### component
 
 | | |
 |---|---|
-| Meaning | the component of the test case the result came out of, for the tests per component |
-| Comes from | derived, from the test case |
+| Meaning | the component of the test the result came out of, for the tests per component |
+| Comes from | derived, from the test |
 | Prototype | new - a test result has no component in the prototype |
 
 ### Links
 
 | | |
 |---|---|
-| Meaning | `resultFor` to the test case the result came out of |
-| Prototype | same |
+| Meaning | `resultFor` to the test the result came out of - a test procedure where it runs automated, a test case where a person carries it out |
+| Prototype | changed - to a `Testcase` only |
 
 ## Hazard
 
@@ -411,6 +428,10 @@ category, by the configuration, and needs no attribute of its own.
 | `feature`, `function`, `safety` of a test result | renamed to `mfeature`, `mfunction`, `msafety`, with no original | always derived from the test case |
 | `priority` of a test result | changed: no original, `mpriority` only | a run cannot be prioritized of its own |
 | `component` of a test result | new, derived from the test case | the tests per component |
+| `Test`, `Testcase`, `Testprocedure` | changed: an abstract type `Test`, extended by a type each for test case and test procedure; the prototype has one type `Testcase` for both | a test case and a test procedure are both a test, with links of their own (traceability.md, section Tests) |
+| the link `implements`, `implementedBy` | new, from a test procedure to the test cases it carries out | only this link keeps which result belongs to which case |
+| `testFor`, `testedBy`, `resultFor`, `resultOf` | changed: between a requirement, a `Test` and its results; in the prototype a `Testcase` | a test procedure verifies and has results of its own |
+| `object_key` of a test in code | changed: the test function is the test procedure | our test code is an automated test procedure |
 | `safety` of a measure (h2) | changed: `msafety` only, from its hazard | a measure has no class of its own |
 | `feature`, `priority`, `platform_launch` of a hazard or measure | changed: `mfeature`, `mpriority`, `mplatform_launch` only, derived upwards | they answer for what lies below |
 | `status` of a hazard or measure | changed: its own original, `mstatus` mapped from it - not taken from below | a hazard log keeps its own state |
@@ -441,3 +462,4 @@ the generator is taken over.
 | 2.1.1 | 2026-10-30 | Hazard | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 3.1.1 | 2026-10-30 | Requirement | #334 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 4.1.1 | 2026-10-30 | Requirement | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-11-10 | Test, Testcase, Testprocedure, Testresult | #593 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
