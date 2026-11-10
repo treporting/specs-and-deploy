@@ -263,7 +263,7 @@ requirements:
   object_text: Narrows the data to organization and projects (where).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SCOPE_02
@@ -272,7 +272,7 @@ requirements:
   object_text: Narrows the data to baselines for releases and libraries (when).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SCOPE_03
@@ -281,7 +281,7 @@ requirements:
   object_text: Narrows the data to functions, features, priorities and safety class (what).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SCOPE_04
@@ -290,7 +290,7 @@ requirements:
   object_text: Groups the data by feature.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SCOPE_05
@@ -299,7 +299,7 @@ requirements:
   object_text: Sees at all times what the data are narrowed to.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
