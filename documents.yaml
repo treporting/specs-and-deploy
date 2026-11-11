@@ -70,9 +70,9 @@ documents:
 - name: requirements/system-requirements.md
   type: explanation
   level: r2
-  object_version: '1.1.1'
-  object_hash: '5ecd082'
-  status: draft
+  object_version: '2.1.1'
+  object_hash: 'fde8b3d'
+  status: approved
   verification_method: [review]
 - name: architecture/system-architecture.md
   type: explanation
