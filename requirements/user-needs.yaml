@@ -619,7 +619,7 @@ requirements:
   object_text: Understands what to do on a first look, without being told.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_USE_02
@@ -628,7 +628,7 @@ requirements:
   object_text: Reads the same data in the vocabulary of the development process in use.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_USE_03
@@ -637,7 +637,7 @@ requirements:
   object_text: Knows whether the data shown is complete or still loading.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_USE_04
@@ -646,7 +646,7 @@ requirements:
   object_text: Knows which data set a view answers from.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_USE_05
@@ -656,7 +656,7 @@ requirements:
     finds where to look closer.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
