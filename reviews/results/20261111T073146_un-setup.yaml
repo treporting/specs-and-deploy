@@ -1,0 +1,91 @@
+# Review of UN_SETUP_01, UN_SETUP_02, UN_SETUP_03, UN_SETUP_04, UN_SETUP_05 against the criteria of the level r1.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r1
+object_version: '1.1.1'
+status: completed
+created_by: Mathias Fischer
+created_at: '2026-11-11T07:31:46+01:00'
+completed_at: '2026-11-11T07:57:20+01:00'
+criteria: reviews/criteria-r1.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [UN_SETUP_01]
+  revision: 'cb3fb5f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [UN_SETUP_02]
+  revision: 'cb3fb5f'
+  criteria:
+    RC_01: passed
+    RC_02:
+      result: passed
+      note: 'found in this review and resolved in it: "by configuration, and by code of the customer only where a configuration cannot say it" named how the mapping is done; it went'
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [UN_SETUP_03]
+  revision: 'cb3fb5f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [UN_SETUP_04]
+  revision: 'cb3fb5f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
+- object_key: RR_05
+  target_ids: [UN_SETUP_05]
+  revision: 'cb3fb5f'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+  verdict: passed
