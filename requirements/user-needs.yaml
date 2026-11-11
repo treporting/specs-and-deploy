@@ -315,7 +315,7 @@ requirements:
 - object_key: UN_SCOPE_06
   object_version: '1.1.1'
   function: SCOPE
-  object_text: Narrows the data to platforms, launches and streams.
+  object_text: Narrows the data to platforms, launches and streams (which).
   priority: 'medium'
   safety: ''
   status: draft
