@@ -13,7 +13,7 @@ requirements:
   source_ids: [UN_TRACE_01@1.1.1, UN_TRACE_03@1.1.1, UN_STATUS_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_02
@@ -24,7 +24,7 @@ requirements:
   source_ids: [UN_STATUS_03@1.1.1, UN_STATUS_02@1.1.1, UN_SAFETY_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_03
@@ -34,7 +34,7 @@ requirements:
   source_ids: [UN_STATUS_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_04
@@ -44,18 +44,17 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_05
   object_version: '1.1.1'
   feature: Trace
-  object_text: count the states of each level per release and library, so that two releases or two libraries
-    can be compared
+  object_text: count the states of the requirements of each level per release and library
   source_ids: [UN_STATUS_07@1.1.1, UN_STATUS_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_06
@@ -76,17 +75,18 @@ requirements:
   source_ids: [UN_STATUS_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_08
   object_version: '1.1.1'
   feature: Trace
-  object_text: tell test cases, test procedures and test results apart, each with its test level
+  object_text: count the states of the tests of each level - test cases, test procedures and test
+    results apart - per release and library
   source_ids: [UN_STATUS_07@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_09
@@ -146,12 +146,11 @@ requirements:
 - object_key: SYS_14
   object_version: '1.1.1'
   feature: Standards
-  object_text: show one data set in the vocabulary of a chosen process reference model - ASPICE, DO-178C,
-    EN 50716, IEC 62304, IEC 61508, ISO/IEC/IEEE 12207
+  object_text: show one data set in the vocabulary of a chosen process reference model
   source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_15
@@ -482,7 +481,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_46
@@ -493,7 +492,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_47
@@ -519,14 +518,13 @@ requirements:
 - object_key: SYS_49
   object_version: '1.1.1'
   feature: Maturity
-  object_text: take the longest chain from the process reference model in use and the code coverage levels
-    coded for source code and object code - ASPICE with one level each, 20 steps, when none is chosen
-    - and leave out every step whose level holds no object in the release; every report states the chain
-    it used and the steps it left out
-  source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1, UN_SAFETY_05@1.1.1, UN_EVIDENCE_01@1.1.1]
+  object_text: take the longest chain from the process reference model in use, with the code
+    coverage levels coded for source code and object code - ASPICE with one level each, 20 steps,
+    when none is chosen
+  source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_50
@@ -537,7 +535,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1, UN_STATUS_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_51
@@ -829,5 +827,47 @@ requirements:
   priority: 'medium'
   safety: ''
   status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_77
+  object_version: '1.1.1'
+  feature: Trace
+  object_text: count the states of the code - source code and object code apart - per release and
+    library
+  source_ids: [UN_STATUS_07@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_78
+  object_version: '1.1.1'
+  feature: Standards
+  object_text: offer as process reference models ASPICE, DO-178C, EN 50716, IEC 62304, IEC 61508 and
+    ISO/IEC/IEEE 12207
+  source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_79
+  object_version: '1.1.1'
+  feature: Maturity
+  object_text: leave out of the chain every step whose level holds no object in the release
+  source_ids: [UN_STATUS_01@1.1.1, UN_SAFETY_05@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_80
+  object_version: '1.1.1'
+  feature: Maturity
+  object_text: state in every report the chain it used and the steps it left out
+  source_ids: [UN_SAFETY_05@1.1.1, UN_EVIDENCE_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo

@@ -1,0 +1,278 @@
+# Review of SYS_01, SYS_02, SYS_03, SYS_04, SYS_05, SYS_07, SYS_08, SYS_14, SYS_45, SYS_46, SYS_49, SYS_50, SYS_77, SYS_78, SYS_79, SYS_80 against the criteria of the level r2.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r2
+object_version: '1.1.1'
+status: completed
+created_by: Mathias Fischer
+created_at: '2026-11-11T14:47:02+01:00'
+completed_at: '2026-11-11T16:04:42+01:00'
+criteria: reviews/criteria-r2.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [SYS_01]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [SYS_02]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [SYS_03]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [SYS_04]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_05
+  target_ids: [SYS_05]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02:
+      result: passed
+      note: 'found in this review and resolved in it: the text named what the count is for - two baselines compared - which its uplink UN_STATUS_04 says; it now says only what is counted, the states of the requirements of each level'
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_06
+  target_ids: [SYS_07]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_07
+  target_ids: [SYS_08]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01:
+      result: passed
+      note: 'found in this review and resolved in it: telling test cases, test procedures and test results apart was already given by their levels; it now counts the states of the tests, apart by kind, as SYS_05 does for the requirements and SYS_77 for the code'
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_08
+  target_ids: [SYS_14]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04:
+      result: passed
+      note: 'found in this review and resolved in it: the capability and the list of the process reference models were in one; the list went to SYS_78, a setting'
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_09
+  target_ids: [SYS_45]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_10
+  target_ids: [SYS_46]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_11
+  target_ids: [SYS_49]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04:
+      result: passed
+      note: 'found in this review and resolved in it: taking the chain, leaving out the empty steps, and stating both in every report were in one; the second went to SYS_79, the third to SYS_80'
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_12
+  target_ids: [SYS_50]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_13
+  target_ids: [SYS_77]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_14
+  target_ids: [SYS_78]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_15
+  target_ids: [SYS_79]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_16
+  target_ids: [SYS_80]
+  revision: '1bd8aa0'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
