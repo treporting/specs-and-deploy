@@ -566,6 +566,53 @@ requirements:
   status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SETUP_01
+  object_version: '1.1.1'
+  function: SETUP
+  object_text: Brings together what is kept in different places (for instance, DOORS, git, SVN or
+    codebeamer).
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SETUP_02
+  object_version: '1.1.1'
+  function: SETUP
+  object_text: Maps the attributes and values of a customer's system without changing the core.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SETUP_03
+  object_version: '1.1.1'
+  function: SETUP
+  object_text: Checks a configuration against the data of the system before it is used.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SETUP_04
+  object_version: '1.1.1'
+  function: SETUP
+  object_text: Keeps the configurations and catalogues of each customer apart from the others and
+    from the product.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: UN_SETUP_05
+  object_version: '1.1.1'
+  function: SETUP
+  object_text: Sets up the levels and the chain of the process the customer uses.
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
   object_version: '1.1.1'
   function: PM
@@ -903,7 +950,7 @@ requirements:
   object_text: Brings together what is kept in different tools - DOORS, Git, SVN, codebeamer and others.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_OPS_03
@@ -1013,7 +1060,7 @@ requirements:
     the customer only where a configuration cannot say it - without changing the core.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CFG_02
@@ -1022,7 +1069,7 @@ requirements:
   object_text: Checks a configuration against the data of the system before it is used.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CFG_03
@@ -1032,7 +1079,7 @@ requirements:
     the product.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_ALL_01
