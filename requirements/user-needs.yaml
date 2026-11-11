@@ -161,7 +161,7 @@ requirements:
     without gaps.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_COMPLIANCE_01
@@ -318,7 +318,7 @@ requirements:
   object_text: Narrows the data to platforms, launches and streams (which).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SHARE_01
