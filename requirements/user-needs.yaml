@@ -748,7 +748,7 @@ requirements:
   object_text: Approves a release, and may use the reported data as information for it.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: obsolete
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_CM_01
