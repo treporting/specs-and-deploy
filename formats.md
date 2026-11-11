@@ -927,3 +927,4 @@ case, and a test case without a result, would have no row.
 | 31.1.1 | 2026-11-05 | Levels: levels.yaml; Table types: the type levels | #535 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 32.1.1 | 2026-11-05 | Test levels: the table levels of harness.md | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 33.1.1 | 2026-11-05 | Levels: the parts that use a level; Test levels: the table product of harness.md | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 34.1.1 | 2026-11-11 | Table kinds of field: function is the class of a user need; Table ids: UN_<class>_nn | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

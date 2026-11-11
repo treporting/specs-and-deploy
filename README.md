@@ -76,3 +76,4 @@ and a branch of its own, and reaches `main` only through a pull request - see th
 | 7.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | How the ids hang together | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Files | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-11-11 | Files: the user needs by the question they answer | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
