@@ -10,7 +10,7 @@ requirements:
   feature: Trace
   object_text: show the trace from any level chosen - user need, requirement, test or hazard - up and
     down to the test results, per release and library
-  source_ids: [UN_TRACE_01@1.1.1, UN_TRACE_03@1.1.1, UN_STATUS_03@1.1.1]
+  source_ids: [UN_TRACE_01@1.1.1, UN_TRACE_03@1.1.1, UN_TRACE_05@1.1.1, UN_STATUS_03@1.1.1, UN_SCOPE_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
@@ -92,9 +92,13 @@ requirements:
 - object_key: SYS_09
   object_version: '1.1.1'
   feature: Filter
-  object_text: narrow every view by function, feature, priority, safety class, platform, launch and stream,
-    the unclassified included, the same way in table and chart, over the whole trace
-  source_ids: [UN_SCOPE_03@1.1.1]
+  object_text: |-
+    narrow every view by
+    - organization and project
+    - baseline, for releases and libraries
+    - function, feature, priority and safety class
+    and hide no object without saying so
+  source_ids: [UN_SCOPE_01@1.1.1, UN_SCOPE_02@1.1.1, UN_SCOPE_03@1.1.1, UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -113,10 +117,9 @@ requirements:
 - object_key: SYS_11
   object_version: '1.1.1'
   feature: Filter
-  object_text: carry function, feature, priority, safety class, platform and launch down the trace; where
-    a requirement has several parents, it carries the highest safety class among them and the union of
-    their platforms and launches
-  source_ids: [UN_TRACE_06@1.1.1, UN_SCOPE_03@1.1.1]
+  object_text: carry the safety class down the trace; where a requirement has several parents, the
+    highest among them
+  source_ids: [UN_TRACE_06@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -124,9 +127,9 @@ requirements:
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_12
   object_version: '1.1.1'
-  feature: Hazards
-  object_text: trace each hazard over its measures to the requirements and test results, and mark a hazard
-    that has no measure or no passed result
+  feature: Hazards and threats
+  object_text: trace each hazard and threat over its measures to the requirements and test results, and
+    mark one that has no measure or no passed result
   source_ids: [UN_TRACE_05@1.1.1]
   priority: 'medium'
   safety: ''
@@ -758,7 +761,7 @@ requirements:
     class than its parent and no decomposition, an unclassified child under a classified parent, a passed
     test result without a test case, a cycle in the trace, a link into another baseline; the import reads
     the data as it is and is never stopped or changed by such a finding
-  source_ids: [UN_TRACE_05@1.1.1, UN_TRACE_06@1.1.1, UN_SAFETY_01@1.1.1, REG_ISO26262-9_01@1.1.1, REG_ARP4754B_01@1.1.1, REG_DO178C_02@1.1.1, REG_IEC61508-4_01@1.1.1, REG_IEC61508-1_01@1.1.1, REG_IEC61508-2_01@1.1.1, REG_IEC62304_01@1.1.1]
+  source_ids: [UN_SAFETY_01@1.1.1, REG_ISO26262-9_01@1.1.1, REG_ARP4754B_01@1.1.1, REG_DO178C_02@1.1.1, REG_IEC61508-4_01@1.1.1, REG_IEC61508-1_01@1.1.1, REG_IEC61508-2_01@1.1.1, REG_IEC62304_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -768,7 +771,7 @@ requirements:
   object_version: '1.1.1'
   feature: Plausibility
   object_text: show every finding of SYS_70 with its rule and its objects, in a view of its own
-  source_ids: [UN_TRACE_05@1.1.1, UN_SAFETY_03@1.1.1]
+  source_ids: [UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -780,7 +783,7 @@ requirements:
   object_text: recognize a finding as evaluated when its object carries an evaluation in its source -
     an attribute or a link set by the configuration -, and show for every finding whether it is evaluated
     or open, with the evaluation
-  source_ids: [UN_COMPLIANCE_02@1.1.1, UN_TRACE_05@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_COMPLIANCE_02@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -789,8 +792,8 @@ requirements:
 - object_key: SYS_73
   object_version: '1.1.1'
   feature: Verification
-  object_text: show for every requirement its verification method; a requirement verified by inspection
-    or analysis needs no test case - the maturity leaves out its test steps, and the report says so
+  object_text: show for every requirement its verification method; the trace expects no test case for a
+    requirement verified by inspection or analysis
   source_ids: [UN_TRACE_02@1.1.1]
   priority: 'medium'
   safety: ''
@@ -869,5 +872,15 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_81
+  object_version: '1.1.1'
+  feature: Filter
+  object_text: narrow the table and the chart of a view the same way
+  source_ids: [UN_SAFETY_05@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo

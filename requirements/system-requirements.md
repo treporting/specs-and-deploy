@@ -12,7 +12,7 @@ The requirements themselves - ids `SYS_nn` - are in [system-requirements.yaml](s
 in the format of [formats.md](../formats.md); this file holds what explains them.
 
 Each feature is named by a short keyword - the field `feature` of a requirement. A
-requirement carries the functions of the needs it comes from - the roles of `user-needs.md`.
+requirement carries the functions of the needs it comes from - the classes of `user-needs.md`.
 
 ## Features
 
@@ -22,7 +22,7 @@ requirement carries the functions of the needs it comes from - the roles of `use
 |---|---|
 | Trace | the links between the levels, their gaps and states per release |
 | Filter | narrowing a view, and carrying what it narrows by down the trace |
-| Hazards | the trace of a hazard over its measures to test results |
+| Hazards and threats | the trace of a hazard or a threat over its measures to test results |
 | Standards | the clauses of a standard, or the vocabulary of a process reference model |
 | Baselines | baselines, releases and libraries, and what changed between them |
 | Provenance | which data set, revision and build an answer comes from; keeping data sets apart |
@@ -129,3 +129,4 @@ against criteria; the verification method says how its realization is shown to m
 | Version | Date | Change | Reason | By |
 |---|---|---|---|---|
 | 1.1.1 | 2026-10-30 | - | #326 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
+| 2.1.1 | 2026-11-11 | Feature Hazards and threats; classes instead of roles | #613 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
