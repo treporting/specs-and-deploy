@@ -6,9 +6,9 @@ type: documents
 documents:
 - name: README.md
   type: document
-  object_version: '10.1.1'
-  object_hash: '84c1172'
-  status: approved
+  object_version: '9.1.1'
+  object_hash: 'f2685eb'
+  status: draft
   verification_method: [review]
 - name: harness.md
   type: explanation
@@ -37,9 +37,9 @@ documents:
   verification_method: [review]
 - name: formats.md
   type: document
-  object_version: '34.1.1'
-  object_hash: 'ada672c'
-  status: approved
+  object_version: '33.1.1'
+  object_hash: 'fe4d101'
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
@@ -63,9 +63,9 @@ documents:
 - name: requirements/user-needs.md
   type: explanation
   level: r1
-  object_version: '3.1.1'
-  object_hash: '4c643df'
-  status: approved
+  object_version: '2.1.1'
+  object_hash: '0ad3397'
+  status: draft
   verification_method: [review]
 - name: requirements/system-requirements.md
   type: explanation
