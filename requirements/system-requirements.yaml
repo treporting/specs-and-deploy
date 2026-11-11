@@ -10,7 +10,7 @@ requirements:
   feature: Trace
   object_text: show the trace from any level chosen - user need, requirement, test or hazard - up and
     down to the test results, per release and library
-  source_ids: [UN_QA_01@1.1.1, UN_TST_01@1.1.1, UN_PM_03@1.1.1]
+  source_ids: [UN_TRACE_01@1.1.1, UN_TRACE_03@1.1.1, UN_STATUS_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -21,7 +21,7 @@ requirements:
   feature: Trace
   object_text: mark every place in the trace where a link, a test case or a test result is missing, and
     never count such a place as covered
-  source_ids: [UN_PM_03@1.1.1, UN_RM_01@1.1.1, UN_PSF_01@1.1.1]
+  source_ids: [UN_STATUS_03@1.1.1, UN_STATUS_02@1.1.1, UN_SAFETY_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -31,7 +31,7 @@ requirements:
   object_version: '1.1.1'
   feature: Trace
   object_text: show per release the requirements that are not yet verified by a passed test result
-  source_ids: [UN_RM_01@1.1.1]
+  source_ids: [UN_STATUS_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -41,7 +41,7 @@ requirements:
   object_version: '1.1.1'
   feature: Trace
   object_text: show per feature its state on every level below it, per release
-  source_ids: [UN_PM_01@1.1.1]
+  source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -52,7 +52,7 @@ requirements:
   feature: Trace
   object_text: count the states of each level per release and library, so that two releases or two libraries
     can be compared
-  source_ids: [UN_QA_02@1.1.1, UN_RM_02@1.1.1]
+  source_ids: [UN_STATUS_07@1.1.1, UN_STATUS_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -62,7 +62,7 @@ requirements:
   object_version: '1.1.1'
   feature: Trace
   object_text: show for a requirement on which other levels it is verified, and by which tests
-  source_ids: [UN_TST_02@1.1.1]
+  source_ids: [UN_TRACE_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -73,7 +73,7 @@ requirements:
   feature: Trace
   object_text: show per person responsible the requirements assigned to them that have no implementation
     or no test
-  source_ids: [UN_DEV_01@1.1.1]
+  source_ids: [UN_STATUS_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -83,7 +83,7 @@ requirements:
   object_version: '1.1.1'
   feature: Trace
   object_text: tell test cases, test procedures and test results apart, each with its test level
-  source_ids: [UN_QA_03@1.1.1]
+  source_ids: [UN_STATUS_07@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -94,7 +94,7 @@ requirements:
   feature: Filter
   object_text: narrow every view by function, feature, priority, safety class, platform, launch and stream,
     the unclassified included, the same way in table and chart, over the whole trace
-  source_ids: [UN_PM_02@1.1.1, UN_SAF_02@1.1.1]
+  source_ids: [UN_SCOPE_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -104,7 +104,7 @@ requirements:
   object_version: '1.1.1'
   feature: Filter
   object_text: show on every view which filters are in effect and how many objects they leave out
-  source_ids: [UN_PSF_03@1.1.1]
+  source_ids: [UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -116,7 +116,7 @@ requirements:
   object_text: carry function, feature, priority, safety class, platform and launch down the trace; where
     a requirement has several parents, it carries the highest safety class among them and the union of
     their platforms and launches
-  source_ids: [UN_SAF_03@1.1.1, UN_PM_02@1.1.1]
+  source_ids: [UN_TRACE_06@1.1.1, UN_SCOPE_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -127,7 +127,7 @@ requirements:
   feature: Hazards
   object_text: trace each hazard over its measures to the requirements and test results, and mark a hazard
     that has no measure or no passed result
-  source_ids: [UN_SAF_01@1.1.1]
+  source_ids: [UN_TRACE_05@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -137,7 +137,7 @@ requirements:
   object_version: '1.1.1'
   feature: Standards
   object_text: show per clause of a chosen standard whether it is open, addressed or verified, per release
-  source_ids: [UN_ASR_01@1.1.1]
+  source_ids: [UN_COMPLIANCE_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -148,7 +148,7 @@ requirements:
   feature: Standards
   object_text: show one data set in the vocabulary of a chosen process reference model - ASPICE, DO-178C,
     EN 50716, IEC 62304, IEC 61508, ISO/IEC/IEEE 12207
-  source_ids: [UN_QA_04@1.1.1, UN_ASR_03@1.1.1]
+  source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -159,7 +159,7 @@ requirements:
   feature: Baselines
   object_text: list per baseline its documents with their revision, their kind and the tool they are kept
     in
-  source_ids: [UN_CM_01@1.1.1, UN_CM_02@1.1.1]
+  source_ids: [UN_CONFIG_01@1.1.1, UN_CONFIG_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -169,7 +169,7 @@ requirements:
   object_version: '1.1.1'
   feature: Baselines
   object_text: 'show what changed between two baselines: objects and documents added, removed or changed'
-  source_ids: [UN_CM_03@1.1.1]
+  source_ids: [UN_CONFIG_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -179,7 +179,7 @@ requirements:
   object_version: '1.1.1'
   feature: Baselines
   object_text: show releases and libraries over time, and the split of a project into subsystems
-  source_ids: [UN_CM_04@1.1.1, UN_RM_02@1.1.1]
+  source_ids: [UN_CONFIG_04@1.1.1, UN_CONFIG_05@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -190,7 +190,7 @@ requirements:
   feature: Provenance
   object_text: show on every view and in every report which data set, which revision and which build of
     the system it answers from, and how many objects of each kind
-  source_ids: [UN_RM_03@1.1.1, UN_ASR_02@1.1.1, UN_ALL_03@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_SHARE_04@1.1.2, UN_EVIDENCE_01@1.1.1, UN_USE_04@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -200,7 +200,7 @@ requirements:
   object_version: '1.1.1'
   feature: Provenance
   object_text: give the same report for the same data set, revision and parameters
-  source_ids: [UN_PSF_06@1.1.1]
+  source_ids: [UN_SHARE_06@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -211,7 +211,7 @@ requirements:
   feature: Provenance
   object_text: hold several data sets apart - generated data and data read in, each baseline on its own
     - and answer each request from exactly one of them
-  source_ids: [UN_OPS_03@1.1.1]
+  source_ids: [UN_OPERATE_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -221,7 +221,7 @@ requirements:
   object_version: '1.1.1'
   feature: Provenance
   object_text: answer from a data file when no database server can be reached
-  source_ids: [UN_OPS_01@1.1.1]
+  source_ids: [UN_OPERATE_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -232,7 +232,7 @@ requirements:
   feature: Provenance
   object_text: read the data of different tools into one model, and name every object it could not read,
     with the reason
-  source_ids: [UN_OPS_02@1.1.1, UN_PSF_04@1.1.1]
+  source_ids: [UN_SETUP_01@1.1.1, UN_SAFETY_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -244,7 +244,7 @@ requirements:
   object_text: count at every import, per kind of object, per type of link and per state, at four points
     - in the source by a query of its own, read, refused, and stored, counted from the storage afterwards
     - and name every difference
-  source_ids: [UN_PSF_01@1.1.1, UN_PSF_04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
+  source_ids: [UN_SAFETY_01@1.1.1, UN_SAFETY_04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -254,7 +254,7 @@ requirements:
   object_version: '1.1.1'
   feature: Integrity
   object_text: build the same data set from the same source on every import
-  source_ids: [UN_PSF_06@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
+  source_ids: [UN_SHARE_06@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -265,7 +265,7 @@ requirements:
   feature: Integrity
   object_text: compare at every import a fingerprint of the fields that matter of each object in the source
     with the same object as stored, and name every object that differs
-  source_ids: [UN_PSF_01@1.1.1, UN_PSF_02@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
+  source_ids: [UN_SAFETY_01@1.1.1, UN_SAFETY_02@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -277,7 +277,7 @@ requirements:
   object_text: mark every data set as complete, incomplete when its import showed a difference, or unverified
     when its source could not be counted on a way of its own - on every view and in every report that
     answers from it
-  source_ids: [UN_PSF_02@1.1.1, UN_PSF_04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
+  source_ids: [UN_SAFETY_02@1.1.1, UN_SAFETY_04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -298,7 +298,7 @@ requirements:
   object_version: '1.1.1'
   feature: Errors
   object_text: show a value that is unknown as unknown, distinct from zero, empty or passed
-  source_ids: [UN_PSF_02@1.1.1]
+  source_ids: [UN_SAFETY_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -308,7 +308,7 @@ requirements:
   object_version: '1.1.1'
   feature: Errors
   object_text: refuse a request it cannot answer, with the reason, rather than answer it empty
-  source_ids: [UN_PSF_02@1.1.1, UN_PSF_04@1.1.1]
+  source_ids: [UN_SAFETY_02@1.1.1, UN_SAFETY_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -319,7 +319,7 @@ requirements:
   feature: Errors
   object_text: say for every figure what it counts, and count in a chart exactly what the table beside
     it shows
-  source_ids: [UN_PSF_05@1.1.1]
+  source_ids: [UN_SAFETY_05@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -329,7 +329,7 @@ requirements:
   object_version: '1.1.1'
   feature: Export
   object_text: export every table in a machine-readable format and every chart as a picture
-  source_ids: [UN_RM_04@1.1.1, UN_ASR_06@1.1.1]
+  source_ids: [UN_SHARE_01@1.1.1, UN_SHARE_05@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -339,7 +339,7 @@ requirements:
   object_version: '1.1.1'
   feature: Export
   object_text: export complete records with their history, readable by people and by machines
-  source_ids: [UN_ASR_06@1.1.1, REG_CFR21-11_03@1.1.1]
+  source_ids: [UN_SHARE_05@1.1.1, REG_CFR21-11_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -349,7 +349,7 @@ requirements:
   object_version: '1.1.1'
   feature: Usability
   object_text: say on the first screen what it does and where to start, and lead back there from any view
-  source_ids: [UN_ALL_01@1.1.1]
+  source_ids: [UN_USE_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -360,7 +360,7 @@ requirements:
   feature: Usability
   object_text: show while a view is loading, or while the data is not there yet, that it is, and fill
     the view by itself when the data arrives
-  source_ids: [UN_ALL_02@1.1.1]
+  source_ids: [UN_USE_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -370,7 +370,7 @@ requirements:
   object_version: '1.1.1'
   feature: Operation
   object_text: be installed and started from a release by following its operator manual alone
-  source_ids: [UN_OPS_04@1.1.1]
+  source_ids: [UN_OPERATE_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -381,7 +381,7 @@ requirements:
   feature: Operation
   object_text: keep the data unchanged when moved to a new version, and say before the move which data
     the new version cannot read
-  source_ids: [UN_OPS_05@1.1.1]
+  source_ids: [UN_OPERATE_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -391,7 +391,7 @@ requirements:
   object_version: '1.1.1'
   feature: Operation
   object_text: tell the user when it, or a part of it, is not available, and why
-  source_ids: [UN_OPS_06@1.1.1]
+  source_ids: [UN_OPERATE_05@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -401,7 +401,7 @@ requirements:
   object_version: '1.1.1'
   feature: Operation
   object_text: record its errors and warnings with time and cause
-  source_ids: [UN_OPS_07@1.1.1]
+  source_ids: [UN_OPERATE_06@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -411,7 +411,7 @@ requirements:
   object_version: '1.1.1'
   feature: Audit
   object_text: authenticate every user by an identity of their own, and grant access by role
-  source_ids: [UN_OPS_08@1.1.1, REG_CFR21-11_02@1.1.1]
+  source_ids: [UN_SECURITY_01@1.1.1, REG_CFR21-11_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -422,7 +422,7 @@ requirements:
   feature: Audit
   object_text: record for every report who produced it, when, from which data set and revision, and with
     which parameters
-  source_ids: [UN_ASR_04@1.1.1, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_SHARE_04@1.1.2, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -435,7 +435,7 @@ requirements:
     the record of an import holds the source and its revision, the time, who started it, the version of
     the converter, the counts at the four points of SYS_23, the objects refused with their reason, the
     result of the fingerprints of SYS_25 and the state of SYS_26
-  source_ids: [UN_ASR_05@1.1.1, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_EVIDENCE_02@1.1.2, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -445,7 +445,7 @@ requirements:
   object_version: '1.1.1'
   feature: Audit
   object_text: keep the records and their audit trail for a set period, readable throughout
-  source_ids: [UN_OPS_09@1.1.1, REG_CFR21-11_04@1.1.1]
+  source_ids: [UN_SECURITY_03@1.1.1, REG_CFR21-11_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -457,7 +457,7 @@ requirements:
   object_text: give every report an identity of its own and a fingerprint of the data it was made from,
     so that a decision taken elsewhere - such as the approval of a release - can name the report it relied
     on
-  source_ids: [UN_RM_05@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_SHARE_04@1.1.2, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -468,7 +468,7 @@ requirements:
   feature: Audit
   object_text: use the record of what users did only for the purposes set, delete it after the period
     set, and show it only to the roles allowed to see it
-  source_ids: [UN_ALL_04@1.1.1, REG_EU2016-679_01@1.1.1, REG_BetrVG_01@1.1.1]
+  source_ids: [UN_SECURITY_06@1.1.1, REG_EU2016-679_01@1.1.1, REG_BetrVG_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -479,7 +479,7 @@ requirements:
   feature: Maturity
   object_text: give the maturity of a requirement as the share of the steps of the longest chain it has
     reached
-  source_ids: [UN_RM_02@1.1.1, UN_QA_02@1.1.1]
+  source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -490,7 +490,7 @@ requirements:
   feature: Maturity
   object_text: give the maturity of each group - RG-SYS-R, RG-SW-R, RG-SC, RG-OC, RG-SW-TC, RG-SW-TR,
     RG-SYS-TC, RG-SYS-TR - as the share of the steps of that group reached
-  source_ids: [UN_RM_02@1.1.1, UN_QA_02@1.1.1]
+  source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -500,7 +500,7 @@ requirements:
   object_version: '1.1.1'
   feature: Maturity
   object_text: count a test result as reached only when it passed
-  source_ids: [UN_PSF_05@1.1.1]
+  source_ids: [UN_SAFETY_05@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -510,7 +510,7 @@ requirements:
   object_version: '1.1.1'
   feature: Maturity
   object_text: count a step as reached only when every branch below the requirement reaches it
-  source_ids: [UN_PSF_01@1.1.1]
+  source_ids: [UN_SAFETY_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -523,7 +523,7 @@ requirements:
     coded for source code and object code - ASPICE with one level each, 20 steps, when none is chosen
     - and leave out every step whose level holds no object in the release; every report states the chain
     it used and the steps it left out
-  source_ids: [UN_QA_04@1.1.1, UN_ASR_03@1.1.1, UN_PSF_05@1.1.1, UN_ASR_02@1.1.1]
+  source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1, UN_SAFETY_05@1.1.1, UN_EVIDENCE_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -534,7 +534,7 @@ requirements:
   feature: Maturity
   object_text: give the maturity of a level, a feature or a release as the mean of the maturity of its
     requirements
-  source_ids: [UN_RM_02@1.1.1, UN_QA_02@1.1.1]
+  source_ids: [UN_STATUS_01@1.1.1, UN_STATUS_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -546,7 +546,7 @@ requirements:
   object_text: answer from a data set of size large
   measured: open
   target: open
-  source_ids: [UN_OPS_02@1.1.1, UN_OPS_03@1.1.1]
+  source_ids: [UN_SETUP_01@1.1.1, UN_OPERATE_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -558,7 +558,7 @@ requirements:
   object_text: show a view of a data set of size large within the time given
   measured: open
   target: open
-  source_ids: [UN_ALL_02@1.1.1]
+  source_ids: [UN_USE_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -570,7 +570,7 @@ requirements:
   object_text: import a data set of size large, with the checks of Integrity, within the time given
   measured: open
   target: open
-  source_ids: [UN_OPS_02@1.1.1]
+  source_ids: [UN_SETUP_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -582,7 +582,7 @@ requirements:
   object_text: be ready to answer within the time given after it was started
   measured: open
   target: open
-  source_ids: [UN_OPS_04@1.1.1, UN_OPS_06@1.1.1]
+  source_ids: [UN_OPERATE_03@1.1.1, UN_OPERATE_05@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -594,7 +594,7 @@ requirements:
   object_text: run within the memory and the processor time given
   measured: open
   target: open
-  source_ids: [UN_OPS_01@1.1.1, UN_OPS_04@1.1.1]
+  source_ids: [UN_OPERATE_01@1.1.1, UN_OPERATE_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -606,7 +606,7 @@ requirements:
   object_text: serve the number of users given at once, each within the time of SYS_52
   measured: open
   target: open
-  source_ids: [UN_OPS_08@1.1.1]
+  source_ids: [UN_SECURITY_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -627,7 +627,7 @@ requirements:
   feature: Licensing
   object_text: check, on every request to a licensed feature, the role and the rights of the user and
     the licence of the installation, and refuse the request with the reason when one of them is missing
-  source_ids: [UN_OPS_10@1.1.1]
+  source_ids: [UN_OPERATE_07@1.1.1]
   priority: 'later'
   safety: ''
   status: draft
@@ -637,7 +637,7 @@ requirements:
   object_version: '1.1.1'
   feature: Licensing
   object_text: show which features an installation is licensed for
-  source_ids: [UN_OPS_10@1.1.1]
+  source_ids: [UN_OPERATE_07@1.1.1]
   priority: 'later'
   safety: ''
   status: draft
@@ -648,7 +648,7 @@ requirements:
   feature: Configuration
   object_text: take the mapping of attributes and values from a configuration file per system of a customer,
     and take code of the customer, kept outside the core, only where a configuration cannot say it
-  source_ids: [UN_CFG_01@1.1.1]
+  source_ids: [UN_SETUP_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -659,7 +659,7 @@ requirements:
   feature: Configuration
   object_text: check a configuration against the data of its system, and name every attribute and every
     value it does not map
-  source_ids: [UN_CFG_02@1.1.1]
+  source_ids: [UN_SETUP_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -671,7 +671,7 @@ requirements:
   object_text: read the configurations and the catalogues of the customer - such as the mapping of the
     clauses of a standard to work products - from a place the operator sets, outside the installation
     of the product
-  source_ids: [UN_CFG_03@1.1.1]
+  source_ids: [UN_SETUP_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -682,7 +682,7 @@ requirements:
   feature: Delivery
   object_text: come with an SBOM in every release, naming each component, its version and its licence,
     and with the licence texts and notices of the components
-  source_ids: [UN_OPS_12@1.1.1, REG_EU2024-2847_01@1.1.1, REG_EU2024-2847_02@1.1.1, REG_Licences_01@1.1.1]
+  source_ids: [UN_OPERATE_08@1.1.1, REG_EU2024-2847_01@1.1.1, REG_EU2024-2847_02@1.1.1, REG_Licences_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -703,7 +703,7 @@ requirements:
   feature: Delivery
   object_text: be updatable to a release that fixes a vulnerability, without other changes coming with
     it
-  source_ids: [UN_OPS_11@1.1.1, REG_EU2024-2847_01@1.1.1, REG_EU2024-2847_02@1.1.1]
+  source_ids: [UN_SECURITY_04@1.1.1, REG_EU2024-2847_01@1.1.1, REG_EU2024-2847_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -713,7 +713,7 @@ requirements:
   object_version: '1.1.1'
   feature: Delivery
   object_text: state the period over which a release gets security fixes
-  source_ids: [UN_OPS_11@1.1.1, REG_EU2024-2847_04@1.1.1]
+  source_ids: [UN_SECURITY_04@1.1.1, REG_EU2024-2847_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -724,7 +724,7 @@ requirements:
   feature: Delivery
   object_text: name, in every release and on the demo, where a vulnerability is reported and how it is
     handled
-  source_ids: [UN_OPS_13@1.1.1, REG_EU2024-2847_02@1.1.1]
+  source_ids: [UN_SECURITY_05@1.1.1, REG_EU2024-2847_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -736,7 +736,7 @@ requirements:
   object_text: keep every value as read from its source, and keep a value it derives beside it under a
     name of its own - `M` for mapped, also from the parent where the original is empty; `I` for an intermediate
     form of the status -, and say on every view which of the two it shows
-  source_ids: [UN_PSF_05@1.1.1, UN_SAF_03@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_SAFETY_05@1.1.1, UN_TRACE_06@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -760,8 +760,7 @@ requirements:
     class than its parent and no decomposition, an unclassified child under a classified parent, a passed
     test result without a test case, a cycle in the trace, a link into another baseline; the import reads
     the data as it is and is never stopped or changed by such a finding
-  source_ids: [UN_SAF_01@1.1.1, UN_SAF_03@1.1.1, UN_PSF_01@1.1.1, REG_ISO26262-9_01@1.1.1, REG_ARP4754B_01@1.1.1, REG_DO178C_02@1.1.1,
-    REG_IEC61508-4_01@1.1.1, REG_IEC61508-1_01@1.1.1, REG_IEC61508-2_01@1.1.1, REG_IEC62304_01@1.1.1]
+  source_ids: [UN_TRACE_05@1.1.1, UN_TRACE_06@1.1.1, UN_SAFETY_01@1.1.1, REG_ISO26262-9_01@1.1.1, REG_ARP4754B_01@1.1.1, REG_DO178C_02@1.1.1, REG_IEC61508-4_01@1.1.1, REG_IEC61508-1_01@1.1.1, REG_IEC61508-2_01@1.1.1, REG_IEC62304_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -771,7 +770,7 @@ requirements:
   object_version: '1.1.1'
   feature: Plausibility
   object_text: show every finding of SYS_70 with its rule and its objects, in a view of its own
-  source_ids: [UN_SAF_01@1.1.1, UN_PSF_03@1.1.1]
+  source_ids: [UN_TRACE_05@1.1.1, UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -783,7 +782,7 @@ requirements:
   object_text: recognize a finding as evaluated when its object carries an evaluation in its source -
     an attribute or a link set by the configuration -, and show for every finding whether it is evaluated
     or open, with the evaluation
-  source_ids: [UN_ASR_07@1.1.1, UN_SAF_01@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_COMPLIANCE_02@1.1.1, UN_TRACE_05@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -794,7 +793,7 @@ requirements:
   feature: Verification
   object_text: show for every requirement its verification method; a requirement verified by inspection
     or analysis needs no test case - the maturity leaves out its test steps, and the report says so
-  source_ids: [UN_QA_05@1.1.1]
+  source_ids: [UN_TRACE_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -805,7 +804,7 @@ requirements:
   feature: Verification
   object_text: show for every requirement its status and its reviews - the criteria, the result per criterion,
     who reviewed it, when, and the revision reviewed
-  source_ids: [UN_QA_06@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_COMPLIANCE_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -815,7 +814,7 @@ requirements:
   object_version: '1.1.1'
   feature: Verification
   object_text: count a review of a requirement only for the revision it reviewed, never for a newer one
-  source_ids: [UN_QA_06@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_COMPLIANCE_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -826,7 +825,7 @@ requirements:
   feature: Verification
   object_text: count a passed inspection of the realization of a requirement - a review of the code or
     document that realizes it - as its verification, where its verification method is inspection
-  source_ids: [UN_QA_05@1.1.1, UN_QA_06@1.1.1]
+  source_ids: [UN_TRACE_02@1.1.1, UN_COMPLIANCE_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
