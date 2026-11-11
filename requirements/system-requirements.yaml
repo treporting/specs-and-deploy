@@ -97,8 +97,9 @@ requirements:
     - organization and project
     - baseline, for releases and libraries
     - function, feature, priority and safety class
+    - platform, launch and stream
     and hide no object without saying so
-  source_ids: [UN_SCOPE_01@1.1.1, UN_SCOPE_02@1.1.1, UN_SCOPE_03@1.1.1, UN_SAFETY_03@1.1.1]
+  source_ids: [UN_SCOPE_01@1.1.1, UN_SCOPE_02@1.1.1, UN_SCOPE_03@1.1.1, UN_SCOPE_06@1.1.1, UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -117,9 +118,12 @@ requirements:
 - object_key: SYS_11
   object_version: '1.1.1'
   feature: Filter
-  object_text: carry the safety class down the trace; where a requirement has several parents, the
-    highest among them
-  source_ids: [UN_TRACE_06@1.1.1]
+  object_text: |-
+    carry down the trace
+    - the safety class; where a requirement has several parents, the highest among them
+    - function, feature and priority
+    - platform and launch; where a requirement has several parents, the union of theirs
+  source_ids: [UN_TRACE_06@1.1.1, UN_TRACE_08@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
