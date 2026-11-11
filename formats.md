@@ -150,8 +150,9 @@ holds only what the author writes:
 | context | `organization`, `project`, `baseline`, `library`, `system`, `module_id`, `revision` | the extractor: repo, file, commit, tag | no |
 | derived | `istatus`, `mstatus`, `mpriority`, `msafety`, `mplatform_launch`, `mfeature`, `mfunction`, `parentOf`, `assignedTo`, `unit` | the import | never |
 
-- **function** is the role of a user need (PM, RM, ..., PSF); a requirement below takes it from its
-  parent into `mfunction` where its own is empty.
+- **function** is the class of a user need, the question it answers (STATUS, TRACE, ..., USE;
+  user-needs.md); a requirement below takes it from its parent into `mfunction` where its own is
+  empty.
 - **feature** is given on r2; r5 takes it from its parent into `mfeature`.
 - **object_version** of every requirement, element and decision of the architecture, hazard,
   control and document: `x.y.z`, written in quotes - x the text and the attributes its schema
@@ -597,7 +598,7 @@ annotation names software requirements of its own repo only.
 | `HAZ_nn`, `THR_nn` | hazards, threats | h1 |
 | `HAZC_nn`, `THRC_nn` | the controls of a hazard, of a threat | h2 |
 | `REG_<module>_nn` | regulatory requirements; `<module>` is the short form of standards.md | n1 |
-| `UN_<role>_nn` | user needs | r1 |
+| `UN_<class>_nn` | user needs | r1 |
 | `SYS_nn` | system requirements | r2 |
 | `ARC_nn` | subsystems, interfaces | r3 |
 | `ARCR_nn`, `ARCD_nn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
