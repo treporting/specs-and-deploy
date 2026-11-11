@@ -1,0 +1,73 @@
+# Review of requirements/user-needs.md, formats.md, README.md against the criteria of the level document.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: document
+object_version: '1.1.1'
+status: open
+created_by: Mathias Fischer
+created_at: '2026-11-11T10:32:30+01:00'
+criteria: reviews/criteria-documents.yaml
+criteria_revision: 'f2058c1'
+results:
+- object_key: RR_01
+  target_ids: [requirements/user-needs.md]
+  revision: '49b5838'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07:
+      result: passed
+      note: 'found in this review and resolved in it: record in the section Terms read as the record of formats.md, a document a tool writes; it now holds for the user needs only'
+    RC_08:
+      result: passed
+      note: 'found in this review and resolved in it: formats.md and README.md still named the role of a user need and the key UN_<role>_nn; both now name its class, in the same pull request'
+    RC_09: passed
+    RC_10:
+      result: passed
+      note: 'found in this review and resolved in it: the rejected grouping by activity named its ticket; the ticket went'
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [formats.md]
+  revision: '49b5838'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [README.md]
+  revision: '49b5838'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+    RC_12: passed
+    RC_13: passed
+  verdict: passed
