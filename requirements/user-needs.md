@@ -17,8 +17,8 @@ organization that has that role, and is missed by one that splits it or names it
 question a need answers is the same in every organization.
 
 **Rejected**: grouping by role (version 2.1.1 of this document) - one need belonged to several
-roles, and the roles were those of one kind of organization. Grouping by activity (#576) -
-activities differ from organization to organization as well.
+roles, and the roles were those of one kind of organization. Grouping by activity - activities
+differ from organization to organization as well.
 
 Two kinds of class: what treporting answers about the data of a customer, and what treporting
 itself has to be - the qualities of the product, after ISO/IEC 25010.
@@ -56,7 +56,7 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
 
 ## Terms
 
-- **record**: what treporting keeps as evidence - the data read in, their history, and who did
+- **record**: in the user needs, what treporting keeps as evidence - the data read in, their history, and who did
   what and when. A record can name a person; what it keeps of a person is what UN_SECURITY_06
   limits. The log that treporting writes while it runs is not a record (UN_OPERATE_06).
 
