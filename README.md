@@ -24,7 +24,7 @@ The data of every level is in YAML, what explains it in Markdown beside it - see
 | [architecture/attributes.md](architecture/attributes.md) | every attribute of the model: meaning, origin, original, intermediate and mapped values, how it is carried down | - |
 | [formats.md](formats.md) | how requirements, documents, reviews, annotations and tests are written down; the schemas in [schemas/](schemas/) | - |
 | [standards.md](standards.md) | the process, safety and security standards per domain | - |
-| [requirements/user-needs.yaml](requirements/user-needs.yaml), [.md](requirements/user-needs.md) | what each role needs, without a solution (r1) | `UN_<role>_nn` |
+| [requirements/user-needs.yaml](requirements/user-needs.yaml), [.md](requirements/user-needs.md) | what is needed, by the question it answers, without a solution (r1) | `UN_<class>_nn` |
 | [regulatory/](regulatory/), [regulatory-requirements.md](regulatory/regulatory-requirements.md) | what standards and laws ask, one file per module | `REG_<module>_nn` |
 | [requirements/system-requirements.yaml](requirements/system-requirements.yaml), [.md](requirements/system-requirements.md) | what the system has to do, seen as one box (r2); each section is a feature | `SYS_nn` |
 | [requirements/tool-requirements.yaml](requirements/tool-requirements.yaml), [.md](requirements/tool-requirements.md) | what the tools of our work have to do; tools are code | `TOOL_nn` |
@@ -76,3 +76,4 @@ and a branch of its own, and reaches `main` only through a pull request - see th
 | 7.1.1 | 2026-10-30 | Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 8.1.1 | 2026-10-30 | How the ids hang together | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Files | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 10.1.1 | 2026-11-11 | Files: the user needs by the question they answer | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

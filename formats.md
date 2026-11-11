@@ -150,8 +150,9 @@ holds only what the author writes:
 | context | `organization`, `project`, `baseline`, `library`, `system`, `module_id`, `revision` | the extractor: repo, file, commit, tag | no |
 | derived | `istatus`, `mstatus`, `mpriority`, `msafety`, `mplatform_launch`, `mfeature`, `mfunction`, `parentOf`, `assignedTo`, `unit` | the import | never |
 
-- **function** is the role of a user need (PM, RM, ..., PSF); a requirement below takes it from its
-  parent into `mfunction` where its own is empty.
+- **function** is the class of a user need, the question it answers (STATUS, TRACE, ..., USE;
+  user-needs.md); a requirement below takes it from its parent into `mfunction` where its own is
+  empty.
 - **feature** is given on r2; r5 takes it from its parent into `mfeature`.
 - **object_version** of every requirement, element and decision of the architecture, hazard,
   control and document: `x.y.z`, written in quotes - x the text and the attributes its schema
@@ -597,7 +598,7 @@ annotation names software requirements of its own repo only.
 | `HAZ_nn`, `THR_nn` | hazards, threats | h1 |
 | `HAZC_nn`, `THRC_nn` | the controls of a hazard, of a threat | h2 |
 | `REG_<module>_nn` | regulatory requirements; `<module>` is the short form of standards.md | n1 |
-| `UN_<role>_nn` | user needs | r1 |
+| `UN_<class>_nn` | user needs | r1 |
 | `SYS_nn` | system requirements | r2 |
 | `ARC_nn` | subsystems, interfaces | r3 |
 | `ARCR_nn`, `ARCD_nn` | rationale and decisions of the architecture; a requirement a decision made possible names it as uplink | r3 |
@@ -926,3 +927,4 @@ case, and a test case without a result, would have no row.
 | 31.1.1 | 2026-11-05 | Levels: levels.yaml; Table types: the type levels | #535 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 32.1.1 | 2026-11-05 | Test levels: the table levels of harness.md | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 33.1.1 | 2026-11-05 | Levels: the parts that use a level; Test levels: the table product of harness.md | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 34.1.1 | 2026-11-11 | Table kinds of field: function is the class of a user need; Table ids: UN_<class>_nn | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
