@@ -330,7 +330,7 @@ requirements:
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SHARE_04
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   function: SHARE
   object_text: Knows who made a report, when, from which data, with which version of treporting and
     with which parameters.
@@ -338,7 +338,7 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
-  platform_launch: treporting = 2_selfhosted, 1_demo
+  platform_launch: treporting = 3_selfhosted
 - object_key: UN_SHARE_05
   object_version: '1.1.1'
   function: SHARE
@@ -367,14 +367,14 @@ requirements:
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_EVIDENCE_02
-  object_version: '1.1.1'
+  object_version: '1.1.2'
   function: EVIDENCE
   object_text: Sees every import or change of data - who, when, what - and the state before it.
   priority: 'medium'
   safety: ''
   status: approved
   verification_method: [test]
-  platform_launch: treporting = 2_selfhosted, 1_demo
+  platform_launch: treporting = 3_selfhosted
 - object_key: UN_SAFETY_01
   object_version: '1.1.1'
   function: SAFETY
