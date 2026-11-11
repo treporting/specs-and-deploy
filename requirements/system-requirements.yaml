@@ -50,8 +50,7 @@ requirements:
 - object_key: SYS_05
   object_version: '1.1.1'
   feature: Trace
-  object_text: count the states of each level per release and library, so that two releases or two libraries
-    can be compared
+  object_text: count the states of the requirements of each level per release and library
   source_ids: [UN_STATUS_07@1.1.1, UN_STATUS_04@1.1.1]
   priority: 'medium'
   safety: ''
@@ -82,7 +81,8 @@ requirements:
 - object_key: SYS_08
   object_version: '1.1.1'
   feature: Trace
-  object_text: tell test cases, test procedures and test results apart, each with its test level
+  object_text: count the states of the tests of each level - test cases, test procedures and test
+    results apart - per release and library
   source_ids: [UN_STATUS_07@1.1.1]
   priority: 'medium'
   safety: ''
@@ -146,8 +146,7 @@ requirements:
 - object_key: SYS_14
   object_version: '1.1.1'
   feature: Standards
-  object_text: show one data set in the vocabulary of a chosen process reference model - ASPICE, DO-178C,
-    EN 50716, IEC 62304, IEC 61508, ISO/IEC/IEEE 12207
+  object_text: show one data set in the vocabulary of a chosen process reference model
   source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
@@ -826,6 +825,28 @@ requirements:
   object_text: count a passed inspection of the realization of a requirement - a review of the code or
     document that realizes it - as its verification, where its verification method is inspection
   source_ids: [UN_TRACE_02@1.1.1, UN_COMPLIANCE_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_77
+  object_version: '1.1.1'
+  feature: Trace
+  object_text: count the states of the code - source code and object code apart - per release and
+    library
+  source_ids: [UN_STATUS_07@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_78
+  object_version: '1.1.1'
+  feature: Standards
+  object_text: offer as process reference models ASPICE, DO-178C, EN 50716, IEC 62304, IEC 61508 and
+    ISO/IEC/IEEE 12207
+  source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
