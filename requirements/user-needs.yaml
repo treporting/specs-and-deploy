@@ -573,7 +573,7 @@ requirements:
     codebeamer).
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SETUP_02
@@ -582,7 +582,7 @@ requirements:
   object_text: Maps the attributes and values of a customer's system without changing the core.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SETUP_03
@@ -591,7 +591,7 @@ requirements:
   object_text: Checks a configuration against the data of the system before it is used.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SETUP_04
@@ -601,7 +601,7 @@ requirements:
     from the product.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_SETUP_05
@@ -610,7 +610,7 @@ requirements:
   object_text: Sets up the levels and the chain of the process the customer uses.
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: UN_PM_01
