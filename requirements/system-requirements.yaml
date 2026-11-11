@@ -13,7 +13,7 @@ requirements:
   source_ids: [UN_TRACE_01@1.1.1, UN_TRACE_03@1.1.1, UN_STATUS_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_02
@@ -24,7 +24,7 @@ requirements:
   source_ids: [UN_STATUS_03@1.1.1, UN_STATUS_02@1.1.1, UN_SAFETY_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_03
@@ -34,7 +34,7 @@ requirements:
   source_ids: [UN_STATUS_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_04
@@ -44,7 +44,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_05
@@ -54,7 +54,7 @@ requirements:
   source_ids: [UN_STATUS_07@1.1.1, UN_STATUS_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_06
@@ -75,7 +75,7 @@ requirements:
   source_ids: [UN_STATUS_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_08
@@ -86,7 +86,7 @@ requirements:
   source_ids: [UN_STATUS_07@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_09
@@ -150,7 +150,7 @@ requirements:
   source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_15
@@ -481,7 +481,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_46
@@ -492,7 +492,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_47
@@ -524,7 +524,7 @@ requirements:
   source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_50
@@ -535,7 +535,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1, UN_STATUS_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_51
@@ -837,7 +837,7 @@ requirements:
   source_ids: [UN_STATUS_07@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_78
@@ -848,7 +848,7 @@ requirements:
   source_ids: [UN_USE_02@1.1.1, UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_79
@@ -858,7 +858,7 @@ requirements:
   source_ids: [UN_STATUS_01@1.1.1, UN_SAFETY_05@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_80
@@ -868,6 +868,6 @@ requirements:
   source_ids: [UN_SAFETY_05@1.1.1, UN_EVIDENCE_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
