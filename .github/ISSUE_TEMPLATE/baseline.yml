@@ -1,8 +1,6 @@
 # The ticket that asks for the baseline of this repo (TOOL_27). It sets no label: whoever may label
-# tickets of the repo starts the run by setting the label baseline. See tools/README.md, section
+# tickets of the repo starts the run by setting the label baseline. See README.md of tools, section
 # baseline.
-#
-# @implements SR_60@1.1.1
 name: Baseline
 description: Ask for the baseline of this repo - a release or a library - with its label.
 title: Baseline <label>
