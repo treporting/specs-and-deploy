@@ -25,6 +25,7 @@ requirement carries the functions of the needs it comes from - the classes of `u
 | Hazards and threats | the trace of a hazard or a threat over its measures to test results |
 | Standards | the clauses of a standard, or the vocabulary of a process reference model |
 | Baselines | baselines, releases and libraries, and what changed between them |
+| Structure | how a project is split into its parts - subsystems, components and units |
 | Provenance | which data set, revision and build an answer comes from; keeping data sets apart |
 | Integrity | whether an import read everything, and read it right - see the section below |
 | Errors | an unknown value, a refused request or a figure, so that it is not misread |
@@ -40,7 +41,7 @@ requirement carries the functions of the needs it comes from - the classes of `u
 | Delivery | what comes with a release: SBOM, secure default, security fixes |
 | Derived values | values derived from those read |
 | Plausibility | rules of plausibility and their findings |
-| Verification | the verification method, status and reviews of a requirement - see the section below |
+| Verification | the verification - see the section below:<br>- the verification method of a requirement<br>- the status and reviews of a work product<br>- the findings of the customer and their evaluation |
 
 ## Integrity
 
@@ -130,3 +131,4 @@ against criteria; the verification method says how its realization is shown to m
 |---|---|---|---|---|
 | 1.1.1 | 2026-10-30 | - | #326 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
 | 2.1.1 | 2026-11-11 | Feature Hazards and threats; classes instead of roles | #613 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 3.1.1 | 2026-11-12 | Features Structure and Verification | #615 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

@@ -72,7 +72,7 @@ documents:
   level: r2
   object_version: '2.1.1'
   object_hash: 'fde8b3d'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: architecture/system-architecture.md
   type: explanation
