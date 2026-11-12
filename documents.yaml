@@ -8,20 +8,20 @@ documents:
   type: document
   object_version: '10.1.1'
   object_hash: '84c1172'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: harness.md
   type: explanation
   level: rules
   object_version: '24.1.1'
   object_hash: '322d85f'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
   object_version: '18.1.1'
   object_hash: 'c1d6af3'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: definitions.md
   type: document
@@ -39,13 +39,13 @@ documents:
   type: document
   object_version: '34.1.1'
   object_hash: 'ada672c'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
   object_version: '7.1.1'
   object_hash: 'b5c8a48'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: traceability.md
   type: document

@@ -21,7 +21,7 @@
       "description": "what this file holds (formats.md, section The head of a file)"
     },
     "level": {
-      "const": "tool"
+      "const": "r2"
     },
     "requirements": {
       "type": "array",

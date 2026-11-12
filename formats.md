@@ -13,15 +13,15 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 
 | Level | Data | Explanation | Repo |
 |---|---|---|---|
-| h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC): see Open in harness.md | `safety/hazard-and-risk-analysis.md` | specs-and-deploy |
+| h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC): see Open in harness.md | `safety/hazard-and-risk-analysis.md` | specs-and-deploy-product |
 | n1 | `regulatory/<module>.yaml` (REG), one file per module | `regulatory/regulatory-requirements.md` | specs-and-deploy |
-| r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy |
-| r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy |
-| r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy |
-| tool | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy |
-| r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem |
-| r1tc, r2tc, r3tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | specs-and-deploy |
-| r5tc, r6tc, r7tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | the repo of the subsystem |
+| r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy-product |
+| r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy-product |
+| r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy-product |
+| r2 | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy |
+| r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem; in tools `software-requirements.yaml`, explained in its README.md |
+| r1tc, r2tc, r3tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | specs-and-deploy-product |
+| r5tc, r6tc, r7tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | the repo of the subsystem, or tools |
 | rules | `rules.yaml` (PROC) | `harness.md` | specs-and-deploy |
 
 A readable Markdown view of the YAML is generated on request only - save the table of the rules
@@ -32,7 +32,9 @@ A readable Markdown view of the YAML is generated on request only - save the tab
 **Decision**: `levels.yaml` at the root of the repo lists every level: its key, the parts that use
 it - the product, our process and tools, or both -, its name, the abbreviation of its name, what
 it holds and the clause it follows; a test level also the data its tests run with; a level of our
-process and tools also the level of the product it stands for, such as r2 for tool. A tool that names a level takes the name from there.
+process and tools also the level of the product it stands for, such as r1 for rules. Each repo
+specs-and-deploy-* has its own `levels.yaml`; tools and the repos of the subsystems use the one of
+the repo above them (#637). A tool that names a level takes the name from there.
 
 **Why**: the levels were named only in the tables of harness.md, which no tool reads, and each
 schema lists its keys apart, without a name. One file serves every tool, and the tables of
@@ -134,7 +136,7 @@ Documents).
 ### Fields are the properties of the gel schema
 
 The model of the prototype is the reference: what is not changed on purpose is taken over as it
-is; every deviation is recorded in [attributes.md](architecture/attributes.md), with its reason. So
+is; every deviation is recorded in [attributes.md](https://github.com/treporting/specs-and-deploy-product/blob/main/architecture/attributes.md) of the product, with its reason. So
 a format taken over from the prototype has the prototype as its reason, and no alternative of its
 own: the prototype was examined, and where it could be better, the deviation stands there.
 
@@ -262,8 +264,8 @@ reviewed against.
 
 | type | Holds | Level | Files |
 |---|---|---|---|
-| requirements | requirements | r1, r2, r5, tool | `requirements/*.yaml`, `tools/software-requirements.yaml` |
-| testcases | test cases | r1tc to r7tc | `testcases/*.yaml`, `tools/testcases/*.yaml` |
+| requirements | requirements | r1, r2, r5 | `requirements/*.yaml`; in tools `software-requirements.yaml` |
+| testcases | test cases | r1tc to r7tc | `testcases/*.yaml` |
 | architecture | the system architecture | r3 | `architecture/system-architecture.yaml` |
 | normative | regulatory requirements | n1 | `regulatory/<module>.yaml` |
 | hazards | hazards and their controls | h1 | `safety/hazards.yaml` |
@@ -273,7 +275,7 @@ reviewed against.
 | review | review results | the level of their criteria | `reviews/<time>_<scope>.yaml` |
 | verification | verification results | the level of their targets | `verifications/<time>_<scope>.yaml` |
 | documents | every Markdown file, with its type, level and version | - | `documents.yaml` |
-| kinds | the kinds of files, for annotationcheck | - | `tools/annotation/kinds.yaml` |
+| kinds | the kinds of files, for annotationcheck | - | `kinds.yaml`; in tools `annotation/kinds.yaml` |
 | levels | the levels of the work, each with its name | - | `levels.yaml` |
 | explanation | the explanation of a level, in Markdown | its level | see table files of the levels |
 | document | a document without a level, in Markdown | - | such as formats.md |
@@ -304,7 +306,7 @@ type: documents
 documents:
 - name: requirements/tool-requirements.md
   type: explanation
-  level: tool
+  level: r2
   object_version: '2.1.1'
   object_hash: 'a1b2c3d'
   status: approved
@@ -317,7 +319,7 @@ documents:
 # requirements/tool-requirements.yaml
 schema: schemas/tool-requirements.schema.json
 type: requirements
-level: tool
+level: r2
 documents: [requirements/tool-requirements.md]
 requirements:
 - ...
@@ -434,7 +436,7 @@ the old file goes, and the commit message says why. Git keeps it. A review that 
 replaced: it stays, and the next review follows it in a file of its own. So the trail stays: the
 finding, the change it caused, and the review that found it resolved.
 
-A skeleton of a review result is made by `reviewskeleton` (see tools/README.md). It sets each
+A skeleton of a review result is made by `reviewskeleton` (see README.md of tools). It sets each
 criterion and the verdict to `todo`, never to a value that could be right: the reviewer decides each.
 `reviewcheck` reports every `todo`, so an unfilled skeleton cannot be merged.
 
@@ -681,17 +683,18 @@ it('shows the hidden filters', () => { ... })
 - one annotation per line, several ids separated by commas; never over two lines
 - each id names the version of its requirement, as `ID@x.y.z`, as a link does (TOOL_20;
   traceability.md, section The right side of the V)
-- `@implements` names software requirements of its own repo only - in `tools/` as well
+- `@implements` names software requirements of its own repo only - in tools as well
 - `@verifies` names software requirements of its own repo in a software test, system
   requirements in a system test
-- `@refines` names the requirement a schema gives the form of, in its `$comment`:
+- `@refines` names the requirement a schema gives the form of, in its `$comment`, where the
+  requirement lies in the repo of the schema or above it:
   `"$comment": "@refines ARC_22@2.1.1"`
 - a file whose form another owns carries no annotation (see Files whose form another owns)
 
 ### Where an annotation is read
 
 **Decision**: annotationcheck tells by the kind of a file whether to read it, from two lists in
-`tools/annotation/kinds.yaml`: a **whitelist** of the kinds that are code, read for annotations,
+the file of kinds of the repo, which annotationcheck is given with `-kinds`: a **whitelist** of the kinds that are code, read for annotations,
 and a **blacklist** of the kinds that are no code, never read. A file of a kind on neither list is a
 finding (SR_27) until its kind is set. A YAML that names a schema is our data and is not read,
 though `*.yaml` is on the whitelist. In a file that is read, an annotation stands first in a line of
@@ -767,7 +770,7 @@ levels of its own: the test cases `r<n>tc`, the test procedures `r<n>tp` and the
 | r6 | SwIT | r6tc | `testcases/software-integration.yaml` | the subsystem |
 | r7 | MT | r7tc | `testcases/unit.yaml` | the subsystem |
 
-The tools of this repo keep theirs in `tools/testcases/`, beside `tools/software-requirements.yaml`.
+The tools keep theirs in `testcases/` of the repo tools, beside `software-requirements.yaml`.
 Today only the tools have test cases, at r5tc.
 
 ```yaml
@@ -861,8 +864,8 @@ implements none.
 
 | Requirement | Test case | Test procedure | File |
 |---|---|---|---|
-| SR_03@1.1.3 | TC_08@1.1.1 | TestAFailedCriterionHasANote | tools/review/check/check_test.go |
-| SR_24@3.1.1 | | TestOnlyFirstInALineOfComment | tools/annotation/check/check_test.go |
+| SR_03@1.1.3 | TC_08@1.1.1 | TestAFailedCriterionHasANote | review/check/check_test.go |
+| SR_24@3.1.1 | | TestOnlyFirstInALineOfComment | annotation/check/check_test.go |
 
 ## Test execution
 
@@ -928,3 +931,4 @@ case, and a test case without a result, would have no row.
 | 32.1.1 | 2026-11-05 | Test levels: the table levels of harness.md | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 33.1.1 | 2026-11-05 | Levels: the parts that use a level; Test levels: the table product of harness.md | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 34.1.1 | 2026-11-11 | Table kinds of field: function is the class of a user need; Table ids: UN_<class>_nn | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 35.1.1 | 2026-11-12 | Table files of the levels and table types: the three repos; the tool requirements on r2 | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

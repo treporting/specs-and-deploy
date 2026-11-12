@@ -2,7 +2,7 @@
 # A tool requirement is approved only when it passed every criterion (PROC_13). See reviews/README.md.
 schema: schemas/review-criteria.schema.json
 type: criteria
-level: tool
+level: r2
 criteria:
 - object_key: RC_01
   source: REG_ISO29148_01 - necessary
