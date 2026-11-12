@@ -199,17 +199,17 @@ requirements:
   source_ids: [UN_SHARE_04@1.1.2, UN_EVIDENCE_01@1.1.1, UN_USE_04@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_19
   object_version: '1.1.1'
   feature: Provenance
-  object_text: give the same report for the same data set, revision and parameters
+  object_text: give the same report for the same data set, revision and build of the system
   source_ids: [UN_SHARE_06@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_20
@@ -263,7 +263,7 @@ requirements:
   source_ids: [UN_SHARE_06@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_25
@@ -335,10 +335,10 @@ requirements:
   object_version: '1.1.1'
   feature: Export
   object_text: export every table in a machine-readable format and every chart as a picture
-  source_ids: [UN_SHARE_01@1.1.1, UN_SHARE_05@1.1.1]
+  source_ids: [UN_SHARE_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_32
@@ -348,7 +348,7 @@ requirements:
   source_ids: [UN_SHARE_05@1.1.1, REG_CFR21-11_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_33
@@ -431,7 +431,7 @@ requirements:
   source_ids: [UN_SHARE_04@1.1.2, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: SYS_41
@@ -466,7 +466,7 @@ requirements:
   source_ids: [UN_SHARE_04@1.1.2, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: SYS_44
@@ -916,6 +916,27 @@ requirements:
   feature: Maturity
   object_text: show the objects of the view maturity per feature
   source_ids: [UN_SCOPE_04@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_85
+  object_version: '1.1.1'
+  feature: Export
+  object_text: make a report of the views chosen - a document with the tables and charts chosen of them,
+    readable without the system
+  source_ids: [UN_SHARE_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_86
+  object_version: '1.1.1'
+  feature: Usability
+  object_text: give every view a link that opens it for another user with the same narrowing
+  source_ids: [UN_SHARE_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
