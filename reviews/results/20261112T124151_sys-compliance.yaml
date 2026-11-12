@@ -1,0 +1,86 @@
+# Review of SYS_13, SYS_72, SYS_74, SYS_75 against the criteria of the level r2.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r2
+object_version: '1.1.1'
+status: completed
+created_by: Mathias Fischer
+created_at: '2026-11-12T12:41:51+01:00'
+completed_at: '2026-11-12T13:47:51+01:00'
+criteria: reviews/criteria-r2.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [SYS_13]
+  revision: '5c61ce1'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09:
+      result: passed
+      note: 'found in this review and resolved in it: the requirements that meet a clause were missing (UN_COMPLIANCE_04); per release is gone, the release comes from SYS_09'
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [SYS_72]
+  revision: '5c61ce1'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09:
+      result: passed
+      note: 'found in this review and resolved in it: it read a finding as an attribute of the object it is about, not as a finding of its own with its evaluation (UN_COMPLIANCE_02); feature Verification instead of Plausibility'
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [SYS_74]
+  revision: '5c61ce1'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09:
+      result: passed
+      note: 'found in this review and resolved in it: documents and code were missing (UN_COMPLIANCE_01), who approved (UN_COMPLIANCE_05), and the reviews in their order with the change between them (UN_COMPLIANCE_03)'
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [SYS_75]
+  revision: '5c61ce1'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06:
+      result: passed
+      note: 'found in this review and resolved in it: it held for a requirement only, while SYS_74 shows the reviews of every work product'
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
