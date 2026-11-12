@@ -143,7 +143,8 @@ requirements:
 - object_key: SYS_13
   object_version: '1.1.1'
   feature: Standards
-  object_text: show per clause of a chosen standard whether it is open, addressed or verified, per release
+  object_text: show per clause of a chosen standard the requirements that meet it, and whether it is open,
+    addressed or verified
   source_ids: [UN_COMPLIANCE_04@1.1.1]
   priority: 'medium'
   safety: ''
@@ -783,10 +784,9 @@ requirements:
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_72
   object_version: '1.1.1'
-  feature: Plausibility
-  object_text: recognize a finding as evaluated when its object carries an evaluation in its source -
-    an attribute or a link set by the configuration -, and show for every finding whether it is evaluated
-    or open, with the evaluation
+  feature: Verification
+  object_text: show every finding of the customer in a baseline with its evaluation - whether it is
+    evaluated or open, by whom, and where the evaluation is written
   source_ids: [UN_COMPLIANCE_02@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
@@ -807,9 +807,10 @@ requirements:
 - object_key: SYS_74
   object_version: '1.1.1'
   feature: Verification
-  object_text: show for every requirement its status and its reviews - the criteria, the result per criterion,
-    who reviewed it, when, and the revision reviewed
-  source_ids: [UN_COMPLIANCE_01@1.1.1, REG_FDADI_01@1.1.1]
+  object_text: show for every work product its status, who approved it and when, and its reviews in their
+    order - the criteria, the result per criterion, who reviewed it, when, the revision reviewed, and the
+    change since the review before
+  source_ids: [UN_COMPLIANCE_01@1.1.1, UN_COMPLIANCE_03@1.1.1, UN_COMPLIANCE_05@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -818,7 +819,7 @@ requirements:
 - object_key: SYS_75
   object_version: '1.1.1'
   feature: Verification
-  object_text: count a review of a requirement only for the revision it reviewed, never for a newer one
+  object_text: count a review of a work product only for the revision it reviewed, never for a newer one
   source_ids: [UN_COMPLIANCE_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''

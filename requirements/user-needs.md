@@ -59,6 +59,15 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
 - **record**: in the user needs, what treporting keeps as evidence - the data read in, their history, and who did
   what and when. A record can name a person; what it keeps of a person is what UN_SECURITY_06
   limits. The log that treporting writes while it runs is not a record (UN_OPERATE_06).
+- **finding**: something found wrong in a work product, such as a requirement, a test or code. Someone
+  evaluates it: they decide whether it is a defect and what is to be done. The evaluation is written
+  down somewhere. There are three kinds:
+  - **of the customer**: made in the customer's process, by a review, an assessment or a tool such as a
+    static analysis. It is kept in the customer's tools. treporting shows it and its evaluation, but
+    makes and evaluates none (UN_COMPLIANCE_02, UN_COMPLIANCE_03).
+  - **of treporting**: treporting finds it in the data of the customer, for instance a rule of
+    plausibility that does not hold (UN_SAFETY_03).
+  - **of our own process**: a review of treporting finds it. It is not meant in the user needs.
 
 ## Open
 
@@ -71,3 +80,4 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
 | 1.1.1 | 2026-10-30 | - | #325 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
 | 2.1.1 | 2026-10-30 | Safety of the product - PSF | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 3.1.1 | 2026-11-11 | Classes instead of roles; SAFETY and SECURITY instead of PSF; Terms | #590, #602 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-11-12 | Terms: finding | #614 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
