@@ -5,34 +5,22 @@ every review. See the section Reviews of [formats.md](../formats.md) and the loo
 of [harness.md](../harness.md). It is written for whoever makes or checks a review, and for the
 auditor who looks for its evidence.
 
-**Table criteria** - the criteria file of each level
+**Table criteria** - the criteria file of each level of this repo. The product and the tools have
+their own: [specs-and-deploy-product](https://github.com/treporting/specs-and-deploy-product/tree/main/reviews), [tools](https://github.com/treporting/tools/tree/main/reviews).
 
 | File | What |
 |---|---|
-| not set yet | the criteria of the hazards and threats (h1) |
-| not set yet | the criteria of the controls (h2) |
 | [criteria-n1.yaml](criteria-n1.yaml) | the criteria of the regulatory requirements (n1): how a duty was written down, not the duty |
-| [criteria-r1.yaml](criteria-r1.yaml) | the criteria of the user needs (r1) |
-| [criteria-r2.yaml](criteria-r2.yaml) | the criteria of the system requirements (r2) |
-| [criteria-r3.yaml](criteria-r3.yaml) | the criteria of the elements of the architecture (r3) |
-| [criteria-r5.yaml](criteria-r5.yaml) | the criteria of the software requirements (r5), of the subsystems and of the tools |
-| not set yet | the criteria of the software architecture of a subsystem (r6) |
-| not set yet | the criteria of the software design of a subsystem (r7) |
-| [criteria-r1tc.yaml](criteria-r1tc.yaml) | the criteria of the test cases of the user needs (r1tc) |
-| [criteria-r2tc.yaml](criteria-r2tc.yaml) | the criteria of the test cases of the system requirements (r2tc) |
-| [criteria-r3tc.yaml](criteria-r3tc.yaml) | the criteria of the test cases of the architecture (r3tc) |
-| [criteria-r5tc.yaml](criteria-r5tc.yaml) | the criteria of the test cases of the software requirements (r5tc) |
-| [criteria-r6tc.yaml](criteria-r6tc.yaml) | the criteria of the test cases of the software architecture (r6tc) |
-| [criteria-r7tc.yaml](criteria-r7tc.yaml) | the criteria of the test cases of the software design (r7tc) |
-| [criteria-tool.yaml](criteria-tool.yaml) | the criteria of the tool requirements |
+| [criteria-r2.yaml](criteria-r2.yaml) | the criteria of the tool requirements (r2); until 2026-11-12 criteria-tool.yaml |
 | not set yet | the criteria of the rules of our work (rules) |
+| [criteria-r6tc.yaml](criteria-r6tc.yaml), [criteria-r7tc.yaml](criteria-r7tc.yaml) | the criteria of the test cases of the software architecture and design of a subsystem (r6tc, r7tc), until the repos of the subsystems take their own |
 | [criteria-documents.yaml](criteria-documents.yaml) | the criteria of the documents, after ISO15289 |
 
 The results lie in [results/](results/), one file per review.
 
 The format of a review and its result is in the section Reviews of [formats.md](../formats.md).
 `reviewskeleton` writes the skeleton of a result, and `reviewcheck` checks every result, also in
-the CI on every pull request - see [tools/README.md](../tools/README.md).
+the CI on every pull request - see [README.md of tools](https://github.com/treporting/tools/blob/main/README.md).
 
 ## The criteria of n1
 
@@ -77,3 +65,4 @@ the document and the revision it reviewed: the link runs from the review to the 
 | 5.1.1 | 2026-10-30 | Reviews; Open | #322 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 6.1.1 | 2026-10-30 | The change history of a document; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 7.1.1 | 2026-11-03 | The criteria of the test cases | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 8.1.1 | 2026-11-12 | Table criteria: the criteria of this repo; criteria-r2.yaml for the tool requirements | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

@@ -17,23 +17,27 @@ The data of every level is in YAML, what explains it in Markdown beside it - see
 | File | What it holds | Ids |
 |---|---|---|
 | [harness.md](harness.md) | how we work: the process we follow (ISO12207, ISO29119), our levels, the rules of our work, the loops for every change and every release | `PROC_nn` |
-| [tools/](tools/) | the tools of our work, in Go; where, why and how they are built; their software requirements in [software-requirements.yaml](tools/software-requirements.yaml) | `SR_nn` |
 | [documents.yaml](documents.yaml) | the type, level, version and status of every document | - |
 | [devops.md](devops.md) | the environment of our work: the tools, the rule that tools are code, and what the CI checks | - |
 | [definitions.md](definitions.md) | the terms: system, item, content, work product, release, library, baseline, traceability | - |
-| [architecture/attributes.md](architecture/attributes.md) | every attribute of the model: meaning, origin, original, intermediate and mapped values, how it is carried down | - |
 | [formats.md](formats.md) | how requirements, documents, reviews, annotations and tests are written down; the schemas in [schemas/](schemas/) | - |
 | [standards.md](standards.md) | the process, safety and security standards per domain | - |
-| [requirements/user-needs.yaml](requirements/user-needs.yaml), [.md](requirements/user-needs.md) | what is needed, by the question it answers, without a solution (r1) | `UN_<class>_nn` |
 | [regulatory/](regulatory/), [regulatory-requirements.md](regulatory/regulatory-requirements.md) | what standards and laws ask, one file per module | `REG_<module>_nn` |
-| [requirements/system-requirements.yaml](requirements/system-requirements.yaml), [.md](requirements/system-requirements.md) | what the system has to do, seen as one box (r2); each section is a feature | `SYS_nn` |
-| [requirements/tool-requirements.yaml](requirements/tool-requirements.yaml), [.md](requirements/tool-requirements.md) | what the tools of our work have to do; tools are code | `TOOL_nn` |
-| [architecture/system-architecture.yaml](architecture/system-architecture.yaml), [.md](architecture/system-architecture.md) | the subsystems, their interfaces, the rationale and the decisions, and which subsystem realizes which requirement (r3) | `ARC_nn` |
+| [requirements/tool-requirements.yaml](requirements/tool-requirements.yaml), [.md](requirements/tool-requirements.md) | what the tools of our work have to do; tools are code (r2) | `TOOL_nn` |
 | [reviews/](reviews/) | the criteria of the reviews of requirements and documents, and their results | `RC`, `RR` |
-| [safety/hazards.yaml](safety/hazards.yaml), [hazard-and-risk-analysis.md](safety/hazard-and-risk-analysis.md) | the hazards treporting can cause (h1) and the measures that control them (h2) | `HAZ_nn`, `HAZC_nn` |
 
-The software requirements (r5, `SR_nn`) live in the repo of their subsystem, next to the code that
-realizes them; an id is unique together with that repo and its document (formats.md, section Ids).
+Three repos hold the work, since #637:
+
+- this repo, specs-and-deploy: how we work - the rules, the formats and schemas, the terms, the
+  regulatory requirements, and the tool requirements (r2)
+- [tools](https://github.com/treporting/tools), below it: the tools, their software requirements (r5) and tests, their SBOM, and
+  the build steps every repo calls
+- [specs-and-deploy-product](https://github.com/treporting/specs-and-deploy-product), below it: the product - user needs (r1), system requirements
+  (r2), architecture (r3), hazards (h1, h2) - and the repos of its subsystems below that
+
+A repo names uplinks and schemas only in itself or in the repo above it. The software requirements
+(r5, `SR_nn`) live in the repo of their subsystem, next to the code that realizes them; an id is
+unique together with that repo and its document (formats.md, section Ids).
 
 ## How the ids hang together
 
@@ -77,3 +81,4 @@ and a branch of its own, and reaches `main` only through a pull request - see th
 | 8.1.1 | 2026-10-30 | How the ids hang together | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 9.1.1 | 2026-10-30 | Files | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-11-11 | Files: the user needs by the question they answer | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 11.1.1 | 2026-11-12 | Table files: the three repos; the product and the tools left | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

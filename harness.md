@@ -17,7 +17,7 @@ treporting is a pure software project and is developed following the process of 
 - **ISO12207** is the life cycle, **ISO29119** gives the test levels.
 - ISO12207 knows no safety and no security, so companion standards are added:
   - **safety analysis**: the hazard and risk analysis by the method of IEC61508-1, clause 7.4, in
-    [safety/hazard-and-risk-analysis.md](safety/hazard-and-risk-analysis.md) (HAZ);
+    [hazard-and-risk-analysis.md](https://github.com/treporting/specs-and-deploy-product/blob/main/safety/hazard-and-risk-analysis.md) of the product (HAZ);
   - **security**: IEC62443-4-1 for the secure development, IEC62443-3-2 for the analysis of the
     threats (THR);
   - **assurance**: ISO15026 is proposed for the case why the tool can be relied on, in
@@ -28,46 +28,21 @@ treporting is a pure software project and is developed following the process of 
 
 ### Levels
 
-The levels are kept in [levels.yaml](levels.yaml); the tables of the levels of the product and of
-our process and tools are generated from it whenever it changes, and name the hash of its content,
-`git hash-object levels.yaml`.
+The levels of our process and tools are kept in [levels.yaml](levels.yaml); the table below is
+generated from it whenever it changes, and names the hash of its content, `git hash-object
+levels.yaml`. The levels of the product are in
+[levels.yaml of specs-and-deploy-product](https://github.com/treporting/specs-and-deploy-product/blob/main/levels.yaml) (#637).
 
-<!-- generated from levels.yaml@e8528fd - do not edit -->
-**Table product** - the levels of the product and of its tests, each with its name, its clause or term, and the data a test level runs with, generated from levels.yaml@e8528fd
-
-| Level | Name | Abbreviation | Description | Reference | Data |
-|---|---|---|---|---|---|
-| h1 | hazards and threats | HAZ, THR | hazards (HAZ) and threats (THR), told apart by their prefix - a trace starts here or at r1 | the method of IEC61508-1, clause 7.4; IEC62443-3-2 | - |
-| h2 | controls of hazards and threats | HAZC, THRC | the measure that controls a hazard (HAZC) or a threat (THRC), and asks for r2 | - | - |
-| n1 | regulatory requirements | REG | the clauses of the standards and laws to be met: regulatory requirements (REG) | ISO12207, clause 6.4.2 - stakeholder needs and requirements definition | - |
-| r1 | user needs | UN | user needs (UN) | ISO12207, clause 6.4.2 - stakeholder needs and requirements definition | - |
-| r2 | system requirements | SYS | system requirements (SYS) | ISO12207, clause 6.4.3 - system requirements definition | - |
-| r3 | system architecture | ARC | system architecture (ARC) | ISO12207, clause 6.4.4 - architecture definition | - |
-| r4 | allocated system requirements | - | the system requirements allocated to the subsystems - derived directly from r2 by the allocation in the system architecture, with no ids of their own | ISO12207, clause 6.4.4 - architecture definition | - |
-| r5 | software requirements | SR | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition | - |
-| r6 | software architecture | SA | software architecture of a subsystem: its components | ISO12207, clause 6.4.4 - architecture definition | - |
-| r7 | software design | SD | software design of a subsystem: its modules and units | ISO12207, clause 6.4.5 - design definition | - |
-| r7tc | unit test | MT | a function or a package | ISO29119 | made in the test |
-| r6tc | integration test | SwIT | a subsystem, through its API and its model | ISO29119 | synthetic, in memory |
-| r5tc | subsystem test | SwVal | a subsystem against its SR, through its API and its model | ISO29119 | from gel |
-| r3tc | system integration test | SysIT | the containers built and working together | ISO29119 | - |
-| r2tc | system test | SysQT | the system against SYS | ISO29119 | the containers with demo data |
-| r1tc | acceptance test | Val | the system against the user needs | ISO29119 | the containers with reference data |
-<!-- end of generated -->
-
-In the level view of the reporter, RISK+SYS+SW, h1 and h2 are RISK, r1 to r3 with the system
-tests SYS, r5 to r7 with the code and the software tests SW. n1 is read by the compliance
-view, not by a trace.
-
-<!-- generated from levels.yaml@e8528fd - do not edit -->
-**Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@e8528fd
+<!-- generated from levels.yaml@2c401ee - do not edit -->
+**Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@2c401ee
 
 | Level | Key | Name | Abbreviation | Description | Reference | Data |
 |---|---|---|---|---|---|---|
+| n1 | n1 | regulatory requirements | REG | the clauses of the standards and laws to be met: regulatory requirements (REG) | ISO12207, clause 6.4.2 - stakeholder needs and requirements definition | - |
+| r2 | r2 | tool requirements | TOOL | the requirements of the tools of our work, which are not part of the product (TOOL) | - | - |
+| r5 | r5 | software requirements | SR | software requirements (SR) of the tools, in the repo tools | ISO12207, clause 6.4.3 - software requirements definition | - |
+| r5tc | r5tc | subsystem test | SwVal | the tools against their SR | ISO29119 | made in the test |
 | r1 | rules | rules | PROC | the rules of our work | - | - |
-| r2 | tool | tool requirements | TOOL | the requirements of the tools of specs-and-deploy, which are not part of the product | - | - |
-| r5 | r5 | software requirements | SR | software requirements (SR) per subsystem | ISO12207, clause 6.4.3 - software requirements definition | - |
-| r5tc | r5tc | subsystem test | SwVal | a subsystem against its SR, through its API and its model | ISO29119 | from gel |
 | - | document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
 <!-- end of generated -->
 
@@ -289,3 +264,4 @@ as soon as possible (PROC_07)
 | 22.1.1 | 2026-11-05 | Levels: one table of every level, the test levels too | #544 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 23.1.1 | 2026-11-05 | Rules: PROC_22 | #547 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 24.1.1 | 2026-11-05 | Levels: a table of the product, a table of process & tools | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 25.1.1 | 2026-11-12 | Levels: process & tools only; the levels of the product in its repo | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

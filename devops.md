@@ -18,7 +18,7 @@ It is lighter, but it leaves a part without requirements.
 **Consequence**: the requirements on our tools are kept in `requirements/tool-requirements.yaml`,
 with the ids `TOOL_nn`. A tool requirement names as uplink the PROC rule or the regulatory
 requirement it serves. It is reviewed and approved like every other requirement (PROC_13). Where the tools live,
-in which language, and their chain from requirement to code: [tools/README.md](tools/README.md).
+in which language, and their chain from requirement to code: [README.md of tools](https://github.com/treporting/tools/blob/main/README.md).
 
 ## Environments
 
@@ -61,7 +61,7 @@ How to read a version: `sw_vers`, `git --version`, `gh --version`, `go version`,
 
 ### Dependencies of the tools
 
-**Table dependencies** - the modules the tools in `tools/` are built with
+**Table dependencies** - the modules the tools in the repo tools are built with
 
 | Module | Version | Licence | What for |
 |---|---|---|---|
@@ -119,7 +119,7 @@ gh api -X PATCH repos/treporting/<repo> \
 
 **Why**: the commits of the pull request reach `main` as they are, with their author. The authors of
 a requirement or a document are the author and the co-authors of the last commit, not a merge, that
-changed it (tools/README.md), and the revision a review names stays a commit on `main`.
+changed it (README.md of tools), and the revision a review names stays a commit on `main`.
 
 **Rejected**:
 
@@ -136,9 +136,10 @@ changed it (tools/README.md), and the revision a review names stays a commit on 
 (SR_29) and the job `approvalcheck` (SR_81). Each is a required check in the ruleset `main is protected`, which has no bypass - a pull request whose
 job failed cannot be merged, by anyone. The job `linkcheck` (SR_34) runs beside them. It is no
 required check. It reports a suspect link and does not fail: a suspect link blocks the baseline, not
-the pull request (PROC_20). The job `build` calls `.github/workflows/build.yml`, the build steps of
-every repo (SR_51 to SR_58), on the tools: its jobs `build / build`, `build / lint` and
-`build / test` are required checks; `build / test` runs the tests of the tools (SR_55). `build / report` runs only in the baseline, not on a pull
+the pull request (PROC_20). The job `build` calls `.github/workflows/build.yml` of tools, the build steps of
+every repo (SR_51 to SR_58); this repo holds no code, and they find nothing to build: its jobs `build / build`, `build / lint` and
+`build / test` are required checks. The checks themselves run from the repo tools, at the fixed
+revision `TOOLS_REF` of tools.yml, which a pull request raises. `build / report` runs only in the baseline, not on a pull
 request (SR_57, SR_58): it fails on nothing, and the commit loop does not ask for it (TOOL_26). The ruleset also allows the merge commit only, as the settings of the repo do.
 
 The ruleset is kept in the repo, in `.github/rulesets/main.json` - beside the workflows, as its form
@@ -165,7 +166,7 @@ recorded with the pull request, by a computer (REG_CFR21-11_01).
 
 **Rejected**:
 
-- `reviewcheck` only where `reviews/` or `tools/` change - a required check that a filter of paths
+- `reviewcheck` only where `reviews/` changes - a required check that a filter of paths
   skips stays pending and blocks the merge; to save a minute, the workflow would need logic of its
   own
 - a bypass for the admin - a check that someone can step over is a check by hand again
@@ -177,9 +178,9 @@ formats.md, section Verifications, sets.
 
 ## Baseline
 
-The baseline of a repo is prepared by `.github/workflows/baseline.yml` of specs-and-deploy
+The baseline of a repo is prepared by `.github/workflows/baseline.yml` of tools
 (TOOL_27, SR_61 to SR_65), started by the label `baseline` on a ticket of the repo. The run itself is
-in tools/README.md, section baseline. Where the run passes, it opens a pull request with sbom.md. A
+in README.md of tools, section baseline. Where the run passes, it opens a pull request with sbom.md. A
 person merges it and sets the signed tag with the command in its description (PROC_06). Where a pull
 request changes sbom.md, the job `build / build` checks that it lists the packages of its head
 (TOOL_28).
@@ -207,7 +208,8 @@ rm <file>.pem
 **Set up a repo for its baseline**:
 
 1. Copy `.github/workflows/ticket-baseline.yml` and `.github/ISSUE_TEMPLATE/baseline.yml` of
-   specs-and-deploy; in the caller, set `go-version-file` and name the images in `images`.
+   tools; in the caller, set `go-version-file`, name the images in `images`, and the repo above in
+   `above`.
 2. Create the label:
 
 ```bash
@@ -275,3 +277,4 @@ today is set in the section Continuous integration.
 | 16.1.1 | 2026-11-02 | Continuous integration: approvalcheck | #399 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 17.1.1 | 2026-11-05 | Continuous integration: build / report only in the baseline | #504 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-11-05 | Continuous integration: the tests of the tools in build / test | #552 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 19.1.1 | 2026-11-12 | The checks and the build steps from the repo tools | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
