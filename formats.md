@@ -14,15 +14,15 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 | Level | Data | Explanation | Repo |
 |---|---|---|---|
 | h1, h2 | `safety/hazards.yaml` (HAZ, HAZC); threats (THR, THRC): see Open in harness.md | `safety/hazard-and-risk-analysis.md` | specs-and-deploy-product |
-| n1 | `regulatory/<module>.yaml` (REG), one file per module | `regulatory/regulatory-requirements.md` | specs-and-deploy |
+| n1 | `regulatory/<module>.yaml` (REG), one file per module | `regulatory/regulatory-requirements.md` | specs-and-deploy-process |
 | r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy-product |
 | r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy-product |
 | r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy-product |
-| r2 | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy |
+| r2 | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy-process |
 | r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem; in tools `software-requirements.yaml`, explained in its README.md |
 | r1tc, r2tc, r3tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | specs-and-deploy-product |
 | r5tc, r6tc, r7tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | the repo of the subsystem, or tools |
-| rules | `rules.yaml` (PROC) | `harness.md` | specs-and-deploy |
+| rules | `rules.yaml` (PROC) | `harness.md` | specs-and-deploy-process |
 
 A readable Markdown view of the YAML is generated on request only - save the table of the rules
 (see Rules).
@@ -376,7 +376,7 @@ objects. A document with no open point has the section all the same, with `<empt
 ```markdown
 ## Open
 
-- `treporting = 2_tools` - **Maintenance**: not set how the state of specs-and-deploy of an older
+- `treporting = 2_tools` - **Maintenance**: not set how the state of specs-and-deploy-product of an older
   release is made and kept. A fix for an older release needs it, from its tag, not `main`.
 ```
 
@@ -580,7 +580,7 @@ repeated. A link to a pull request answers only the first.
 | Level | treporting | Example | Set by |
 |---|---|---|---|
 | system | treporting | - | r2 |
-| subsystem | a repo, ARC_01 to ARC_06; or the tools in specs-and-deploy, which are not part of the product | reporter-trace, tools | r3 |
+| subsystem | a repo, ARC_01 to ARC_06; or the repo tools, which is not part of the product | reporter-trace, tools | r3 |
 | component | a group of packages with one responsibility | `trace`, `maturity` | the field `component` of an SR |
 | module | a Go package or JS module | `trace/gaps` | the code |
 | unit | a source file | `trace/gaps/mark.go` | the annotation, never by hand |
@@ -743,11 +743,11 @@ The level of a test follows from where its file lies (see table product in
 | MT | `*_test.go` in the package, `*.test.js` | the subsystem |
 | SwIT | `*_test.go` with the build tag `integration`, `*.integration.test.js` | the subsystem |
 | SwVal | `subsystemtest/` | the subsystem |
-| SysIT | `systemtest/integration/` | specs-and-deploy |
-| SysQT | `systemtest/system/` | specs-and-deploy |
-| Val | `systemtest/acceptance/` | specs-and-deploy |
+| SysIT | `systemtest/integration/` | specs-and-deploy-product |
+| SysQT | `systemtest/system/` | specs-and-deploy-product |
+| Val | `systemtest/acceptance/` | specs-and-deploy-product |
 
-The containers are built in `deploy/` of this repo from the parts the subsystems deliver - the
+The containers are built in `deploy/` of specs-and-deploy-product from the parts the subsystems deliver - the
 reporter and the viewer in one image. A test result is linked to its test function by package and
 function name, from the JSON output of `go test` and of vitest.
 
@@ -763,9 +763,9 @@ levels of its own: the test cases `r<n>tc`, the test procedures `r<n>tp` and the
 
 | Requirements | Test level | Test cases | File | Repo |
 |---|---|---|---|---|
-| r1 | Val | r1tc | `testcases/acceptance.yaml` | specs-and-deploy |
-| r2 | SysQT | r2tc | `testcases/system.yaml` | specs-and-deploy |
-| r3 | SysIT | r3tc | `testcases/system-integration.yaml` | specs-and-deploy |
+| r1 | Val | r1tc | `testcases/acceptance.yaml` | specs-and-deploy-product |
+| r2 | SysQT | r2tc | `testcases/system.yaml` | specs-and-deploy-product |
+| r3 | SysIT | r3tc | `testcases/system-integration.yaml` | specs-and-deploy-product |
 | r5 | SwVal | r5tc | `testcases/software.yaml` | the subsystem |
 | r6 | SwIT | r6tc | `testcases/software-integration.yaml` | the subsystem |
 | r7 | MT | r7tc | `testcases/unit.yaml` | the subsystem |
@@ -932,3 +932,4 @@ case, and a test case without a result, would have no row.
 | 33.1.1 | 2026-11-05 | Levels: the parts that use a level; Test levels: the table product of harness.md | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 34.1.1 | 2026-11-11 | Table kinds of field: function is the class of a user need; Table ids: UN_<class>_nn | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 35.1.1 | 2026-11-12 | Table files of the levels and table types: the three repos; the tool requirements on r2 | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 36.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

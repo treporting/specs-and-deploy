@@ -199,7 +199,7 @@ The checks a change of the product has to pass. The quick gate runs before a com
 set of synthetic data; the full gate runs before a merge to main, on the medium set. They differ in
 the size of the data, and so in their time - about 5 and 10 minutes.
 
-A repo with no code of the product, such as the tools in specs-and-deploy, has one gate: the
+A repo with no code of the product, such as tools, has one gate: the
 required checks of its CI.
 
 ## Hazard and measure
@@ -333,3 +333,4 @@ For each part, the assessment goes on to what most tools leave out:
 | 1.1.1 | 2026-10-28 | - | #272 | Claude Opus 5.5 and Mathias Fischer, authors; Mathias Fischer, reviewer |
 | 2.1.1 | 2026-10-28 | Traceability; Link check and impact assessment | #274 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 3.1.1 | 2026-10-30 | Open; Change history | #323 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 4.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
