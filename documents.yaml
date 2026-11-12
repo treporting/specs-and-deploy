@@ -63,8 +63,8 @@ documents:
 - name: requirements/user-needs.md
   type: explanation
   level: r1
-  object_version: '5.1.1'
-  object_hash: 'b93742d'
+  object_version: '6.1.1'
+  object_hash: 'e6516f2'
   status: approved
   verification_method: [review]
 - name: requirements/system-requirements.md
