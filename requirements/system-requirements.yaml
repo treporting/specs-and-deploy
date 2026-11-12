@@ -444,7 +444,7 @@ requirements:
   source_ids: [UN_EVIDENCE_02@1.1.2, REG_CFR21-11_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: SYS_42
@@ -949,6 +949,6 @@ requirements:
   source_ids: [UN_EVIDENCE_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
