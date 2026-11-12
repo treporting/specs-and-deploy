@@ -164,12 +164,12 @@ requirements:
 - object_key: SYS_15
   object_version: '1.1.1'
   feature: Baselines
-  object_text: list per baseline its documents with their revision, their kind and the tool they are kept
-    in
+  object_text: list per baseline its work products with their revision, their kind and the tool they are
+    kept in
   source_ids: [UN_CONFIG_01@1.1.1, UN_CONFIG_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_16
@@ -179,17 +179,17 @@ requirements:
   source_ids: [UN_CONFIG_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_17
   object_version: '1.1.1'
   feature: Baselines
-  object_text: show releases and libraries over time, and the split of a project into subsystems
-  source_ids: [UN_CONFIG_04@1.1.1, UN_CONFIG_05@1.1.1]
+  object_text: show the baselines of a project over time - its releases and libraries
+  source_ids: [UN_CONFIG_05@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_18
@@ -884,6 +884,16 @@ requirements:
   feature: Filter
   object_text: narrow the table and the chart of a view the same way
   source_ids: [UN_SAFETY_05@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_82
+  object_version: '1.1.1'
+  feature: Structure
+  object_text: show how a project is split into its parts - subsystems, components and units
+  source_ids: [UN_CONFIG_04@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
