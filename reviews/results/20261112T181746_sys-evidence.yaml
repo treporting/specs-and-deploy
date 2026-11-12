@@ -1,0 +1,47 @@
+# Review of SYS_41, SYS_87 against the criteria of the level r2.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r2
+object_version: '1.1.1'
+status: open
+created_by: Mathias Fischer
+created_at: '2026-11-12T18:17:46+01:00'
+criteria: reviews/criteria-r2.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [SYS_41]
+  revision: '78226f1'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09:
+      result: passed
+      note: 'found in this review and resolved in it: it recorded every import and change but did not show them, while UN_EVIDENCE_02 asks to see them'
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [SYS_87]
+  revision: '78226f1'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
