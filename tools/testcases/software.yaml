@@ -1312,3 +1312,51 @@ testcases:
   target_ids: [SR_106@1.1.1]
   status: approved
   verification_method: [review]
+- object_key: TC_164
+  object_version: '1.1.1'
+  object_text: 'a file names a schema that only the repo above holds, and does not match it: schemacheck
+    with the repo above reports the place where it does not match'
+  design_technique: equivalence partitioning
+  target_ids: [SR_107@1.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_165
+  object_version: '1.1.1'
+  object_text: 'a file names a schema that only the repo above holds: schemacheck without the repo
+    above reports the schema as not there'
+  design_technique: equivalence partitioning
+  target_ids: [SR_107@1.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_166
+  object_version: '1.1.1'
+  object_text: 'an approved requirement names an uplink approved in the repo above, and one draft
+    there: uplinkcheck with the repo above reports the draft one only'
+  design_technique: equivalence partitioning
+  target_ids: [SR_108@1.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_167
+  object_version: '1.1.1'
+  object_text: 'an approved requirement names an uplink that only the repo above holds: uplinkcheck
+    without the repo above reports that no file holds it'
+  design_technique: equivalence partitioning
+  target_ids: [SR_108@1.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_168
+  object_version: '1.1.1'
+  object_text: 'a link names an object of the repo above with another x than it has: linkcheck with
+    the repo above reports the link; without it, the link is not compared'
+  design_technique: equivalence partitioning
+  target_ids: [SR_109@1.1.1]
+  status: approved
+  verification_method: [review]
+- object_key: TC_169
+  object_version: '1.1.1'
+  object_text: 'an annotation names an object of the repo above with another x than it has: linkcheck
+    with the repo above reports the annotation'
+  design_technique: equivalence partitioning
+  target_ids: [SR_109@1.1.1]
+  status: approved
+  verification_method: [review]
