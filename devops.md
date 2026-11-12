@@ -151,8 +151,8 @@ the file is sent whole; `rulesetcheck` then turns green, and the pull request is
 not merged, the file of `main` is sent back:
 
 ```bash
-gh api repos/treporting/specs-and-deploy/rulesets --jq '.[] | {id, name}'
-gh api -X PUT repos/treporting/specs-and-deploy/rulesets/<id> --input .github/rulesets/main.json
+gh api repos/treporting/<repo>/rulesets --jq '.[] | {id, name}'
+gh api -X PUT repos/treporting/<repo>/rulesets/<id> --input .github/rulesets/main.json
 ```
 
 Until a change is sent or sent back, `rulesetcheck` fails on every pull request - so it is not
@@ -191,7 +191,7 @@ request opened with `GITHUB_TOKEN` starts no workflow, so its required checks wo
 **Set up the App, once for the org** - by an owner of the org:
 
 1. Org settings, Developer settings, GitHub Apps, New GitHub App:
-   - name `treporting-baseline`; homepage `https://github.com/treporting/specs-and-deploy`
+   - name `treporting-baseline`; homepage `https://github.com/treporting/specs-and-deploy-process`
    - Webhook: not active
    - Repository permissions: Contents, Issues and Pull requests read and write; Metadata read
    - Where can this GitHub App be installed: only on this account
@@ -242,7 +242,7 @@ today is set in the section Continuous integration.
 | every YAML file matches its schema | TOOL_05 |
 | every id in `@implements`, `@verifies` and `@refines` exists, and is approved, in the base commit of the pull request - a requirement added in the same pull request does not count (PROC_05) | TOOL_06 |
 | the annotations counted a second way, apart from the parser | TOOL_07 |
-| the uplink of every SR: the SYS it names exists in specs-and-deploy on `main` and is allocated to the subsystem of the SR (r4) | TOOL_08 |
+| the uplink of every SR: the SYS it names exists in specs-and-deploy-product on `main` and is allocated to the subsystem of the SR (r4) | TOOL_08 |
 | an approved requirement names approved uplinks only | TOOL_09 |
 | every test file belongs to exactly one test level | TOOL_10 |
 | every review result keeps the rules of the section Reviews of formats.md, and the tests of the tools pass | TOOL_12 |
@@ -278,3 +278,4 @@ today is set in the section Continuous integration.
 | 17.1.1 | 2026-11-05 | Continuous integration: build / report only in the baseline | #504 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 18.1.1 | 2026-11-05 | Continuous integration: the tests of the tools in build / test | #552 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-11-12 | The checks and the build steps from the repo tools | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 20.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

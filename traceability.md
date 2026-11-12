@@ -253,7 +253,7 @@ both its ends. It is checked against the version of its parent in that baseline,
 
 **Table maintenance** - a fix for an older release, while `main` has moved on
 
-| | specs-and-deploy | reporter |
+| | specs-and-deploy-product | reporter |
 |---|---|---|
 | Release 1 | SYS_09 `3.1.2` | library 1.3, SR_01 → `SYS_09@3.1.2` |
 | afterwards on `main` | SYS_09 `4.1.2`, for release 2 | |
@@ -697,7 +697,7 @@ Markdown table, and the rules would be kept apart from every other requirement.
 
 ## Open
 
-1. `treporting = 2_tools` - **Maintenance**: not set how the state of specs-and-deploy of an older
+1. `treporting = 2_tools` - **Maintenance**: not set how the state of specs-and-deploy-product of an older
    release is made and kept. A fix for an older release needs it, from its tag, not `main`.
 2. `treporting = 2_tools` - **The realization of a control**: no tool requirement checks
    yet that the system requirements a control names are realized.
@@ -720,3 +720,4 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 12.1.1 | 2026-11-03 | Tests | #155 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 13.1.1 | 2026-11-03 | Tests: test case, test procedure and test result, after ISO/IEC/IEEE 29119 | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-04 | Tests: the links of a test, the ways of testing, when a test is missing | #439 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 15.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

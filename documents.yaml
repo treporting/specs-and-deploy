@@ -15,19 +15,19 @@ documents:
   level: rules
   object_version: '25.1.1'
   object_hash: '7f665f8'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
   object_version: '19.1.1'
   object_hash: 'eb0c986'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: definitions.md
   type: document
   object_version: '3.1.1'
   object_hash: '7622cd0'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: standards.md
   type: document
@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '35.1.1'
   object_hash: 'a1cf967'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
@@ -51,7 +51,7 @@ documents:
   type: document
   object_version: '14.1.1'
   object_hash: '0294232'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   type: explanation

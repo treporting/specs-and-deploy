@@ -77,7 +77,7 @@ The platform is treporting, this organization on GitHub. The launches are the de
 tools our work needs, of the demo environment, and of a selfhosted environment. An object (requirement
 etc.) names the launches it is planned for in `platform_launch`.
 
-A release is a baseline of specs-and-deploy, its label in a form the project chooses, such as
+A release is a baseline of specs-and-deploy-product, its label in a form the project chooses, such as
 `T044`. A library is a baseline of a code repo, its label a semantic version, such as `1.2.0`
 (PROC_06).
 
@@ -85,7 +85,7 @@ A release is a baseline of specs-and-deploy, its label in a form the project cho
 
 | Platform | Launch | Release | Library |
 |---|---|---|---|
-| treporting | 1_tools | specs-and-deploy T044 | |
+| treporting | 1_tools | specs-and-deploy-process T044 | |
 | treporting | 1_demo | | |
 | treporting | 2_selfhosted | | |
 | treporting | 2_tools | | |
@@ -265,3 +265,4 @@ as soon as possible (PROC_07)
 | 23.1.1 | 2026-11-05 | Rules: PROC_22 | #547 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 24.1.1 | 2026-11-05 | Levels: a table of the product, a table of process & tools | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 25.1.1 | 2026-11-12 | Levels: process & tools only; the levels of the product in its repo | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 26.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
