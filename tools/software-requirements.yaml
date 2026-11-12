@@ -1109,3 +1109,33 @@ requirements:
   safety: ''
   status: approved
   verification_method: [test]
+- object_key: SR_107
+  object_version: '1.1.1'
+  component: schema
+  object_text: with the repo above given, take a schema that the repo itself does not hold from the
+    repo above; without it, report the schema as missing, as SR_19 does
+  source_ids: [TOOL_05@1.1.2]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_108
+  object_version: '1.1.1'
+  component: uplink
+  object_text: with the repo above given, look up an uplink that the repo itself does not hold in the
+    repo above, and check there that it is approved
+  source_ids: [TOOL_09@3.2.4]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
+- object_key: SR_109
+  object_version: '1.1.1'
+  component: link
+  object_text: with the repo above given, compare a link or an annotation whose object the repo itself
+    does not hold with its object in the repo above
+  source_ids: [TOOL_16@1.1.2]
+  priority: 'medium'
+  safety: ''
+  status: approved
+  verification_method: [test]
