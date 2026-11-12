@@ -6,9 +6,9 @@ type: documents
 documents:
 - name: README.md
   type: document
-  object_version: '11.1.1'
-  object_hash: 'df97ee3'
-  status: draft
+  object_version: '12.1.1'
+  object_hash: '4c05ebf'
+  status: approved
   verification_method: [review]
 - name: harness.md
   type: explanation
