@@ -1,11 +1,15 @@
-# specs-and-deploy
+# specs-and-deploy-process
 
-The specifications of treporting, and its integration, deployment and system tests.
+How treporting is made: the rules of the work, the formats and schemas, the terms, the regulatory
+requirements, and the requirements on the tools of the work.
 
-User needs, requirements, architecture and the way of working of
-[treporting](https://github.com/treporting) - a tool that reports traceability and maturity
-from the systems a project keeps its work in, and only reads them. This page is written for
-whoever comes to the repo first, and points to where each thing stands.
+[treporting](https://github.com/treporting) is a tool that reports traceability and maturity from
+the systems a project keeps its work in, and only reads them. Its specification - user needs,
+system requirements, architecture, hazards - is in
+[specs-and-deploy-product](https://github.com/treporting/specs-and-deploy-product); the tools that
+check both are in [tools](https://github.com/treporting/tools). Until 2026-11-12 all three were
+this one repo, specs-and-deploy (#637). This page is written for whoever comes to the repo first,
+and points to where each thing stands.
 
 ## Files
 
@@ -28,7 +32,7 @@ The data of every level is in YAML, what explains it in Markdown beside it - see
 
 Three repos hold the work, since #637:
 
-- this repo, specs-and-deploy: how we work - the rules, the formats and schemas, the terms, the
+- this repo, specs-and-deploy-process: how we work - the rules, the formats and schemas, the terms, the
   regulatory requirements, and the tool requirements (r2)
 - [tools](https://github.com/treporting/tools), below it: the tools, their software requirements (r5) and tests, their SBOM, and
   the build steps every repo calls
@@ -82,3 +86,4 @@ and a branch of its own, and reaches `main` only through a pull request - see th
 | 9.1.1 | 2026-10-30 | Files | #320 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 10.1.1 | 2026-11-11 | Files: the user needs by the question they answer | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 11.1.1 | 2026-11-12 | Table files: the three repos; the product and the tools left | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 12.1.1 | 2026-11-13 | The repo is specs-and-deploy-process: what it holds, and where the product and the tools are | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
