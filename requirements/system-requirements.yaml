@@ -205,7 +205,7 @@ requirements:
 - object_key: SYS_19
   object_version: '1.1.1'
   feature: Provenance
-  object_text: give the same report for the same data set, revision and parameters
+  object_text: give the same report for the same data set, revision and build of the system
   source_ids: [UN_SHARE_06@1.1.1]
   priority: 'medium'
   safety: ''
@@ -335,7 +335,7 @@ requirements:
   object_version: '1.1.1'
   feature: Export
   object_text: export every table in a machine-readable format and every chart as a picture
-  source_ids: [UN_SHARE_01@1.1.1, UN_SHARE_05@1.1.1]
+  source_ids: [UN_SHARE_03@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -919,5 +919,26 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_85
+  object_version: '1.1.1'
+  feature: Export
+  object_text: make a report of the views chosen - a document with the tables and charts chosen of them,
+    readable without the system
+  source_ids: [UN_SHARE_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_86
+  object_version: '1.1.1'
+  feature: Usability
+  object_text: give every view a link that opens it for another user with the same narrowing
+  source_ids: [UN_SHARE_02@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo

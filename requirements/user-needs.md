@@ -68,6 +68,17 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
   - **of treporting**: treporting finds it in the data of the customer, for instance a rule of
     plausibility that does not hold (UN_SAFETY_03).
   - **of our own process**: a review of treporting finds it. It is not meant in the user needs.
+- **report**: a document made of views of the data, to be read without the system. There are three
+  kinds:
+  - **of treporting**: treporting makes it of the views chosen, from the data of the customer
+    (UN_SHARE_01, UN_SHARE_04, UN_SHARE_06).
+  - **of the customer**: made in the customer's own process or tools. It is not meant in the user
+    needs.
+  - **of our own process**: made by our tools about treporting, such as a test report. It is not
+    meant in the user needs.
+
+  A report is not a record. A report is made from the data at one moment; a record is what
+  treporting keeps as evidence.
 
 ## Open
 
@@ -81,3 +92,4 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
 | 2.1.1 | 2026-10-30 | Safety of the product - PSF | #338 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 3.1.1 | 2026-11-11 | Classes instead of roles; SAFETY and SECURITY instead of PSF; Terms | #590, #602 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 4.1.1 | 2026-11-12 | Terms: finding | #614 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 5.1.1 | 2026-11-12 | Terms: report | #617, #611 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

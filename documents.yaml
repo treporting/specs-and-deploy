@@ -65,7 +65,7 @@ documents:
   level: r1
   object_version: '4.1.1'
   object_hash: '3f25782'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: requirements/system-requirements.md
   type: explanation
