@@ -95,14 +95,13 @@ requirements:
   object_text: |-
     narrow every view by
     - organization and project
-    - baseline, for releases and libraries
-    - function, feature, priority and safety class
+    - baseline, for releases and libraries; a view over time by a span of baselines
     - platform, launch and stream
-    and hide no object without saying so
-  source_ids: [UN_SCOPE_01@1.1.1, UN_SCOPE_02@1.1.1, UN_SCOPE_03@1.1.1, UN_SCOPE_06@1.1.1, UN_SAFETY_03@1.1.1]
+    show at all times what it is narrowed to, and hide no object without saying so
+  source_ids: [UN_SCOPE_01@1.1.1, UN_SCOPE_02@1.1.1, UN_SCOPE_05@1.1.1, UN_SCOPE_06@1.1.1, UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_10
@@ -897,5 +896,28 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_83
+  object_version: '1.1.1'
+  feature: Filter
+  object_text: |-
+    narrow the views requirements, tests and code by
+    - function, feature, priority and safety class
+    and hide no object without saying so
+  source_ids: [UN_SCOPE_03@1.1.1, UN_SAFETY_03@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_84
+  object_version: '1.1.1'
+  feature: Maturity
+  object_text: show the objects of the view maturity per feature
+  source_ids: [UN_SCOPE_04@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
