@@ -232,6 +232,9 @@ cd tools
 go run ./schema/cmd/schemacheck -root ..
 ```
 
+With `-above`, the root of the repo above, a schema this repo does not hold is taken from there
+(SR_107). Without it, such a schema is reported as not there.
+
 A finding reads `requirements/tool-requirements.yaml /requirements/6/status: value must be one of
 'draft', 'review', 'approved', 'obsolete'`. The code is the component `schema`: the package
 `schema/check` and the command `schema/cmd/schemacheck`. Its dependencies are in devops.md.
@@ -318,6 +321,9 @@ cd tools
 go run ./uplink/cmd/uplinkcheck -root ..
 ```
 
+With `-above`, the root of the repo above, an uplink no file of this repo holds is looked up there,
+and checked there to be approved (SR_108).
+
 The code is the component `uplink`: the package `uplink/check` and the command
 `uplink/cmd/uplinkcheck`. It finds an id in its file through the component `review`.
 
@@ -344,6 +350,9 @@ required check: a suspect link blocks the baseline, not the pull request (PROC_2
 cd tools
 go run ./link/cmd/linkcheck -root ..
 ```
+
+With `-above`, the root of the repo above, an entry or an id whose object this repo does not hold
+is compared with its object there (SR_109).
 
 The code is the component `link`: the package `link/check` and the command `link/cmd/linkcheck`. It
 finds an id in its file through the component `review`, and the annotations through the component
@@ -686,3 +695,4 @@ its own root, and by the names of its describe blocks before its own.
 | 32.1.1 | 2026-11-05 | sbom: Original data and -store | #480 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 33.1.1 | 2026-11-05 | reviewcheck: -base | #497 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 34.1.1 | 2026-11-05 | testreport: -store | #492 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 35.1.1 | 2026-11-12 | schemacheck, uplinkcheck, linkcheck: -above | #638 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

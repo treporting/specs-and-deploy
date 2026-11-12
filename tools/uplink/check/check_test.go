@@ -181,3 +181,51 @@ requirements:
 		t.Errorf("approved %d, want 2", approved)
 	}
 }
+
+// above is a repo above that holds the rules.
+func above() *review.Repo {
+	f := files{"rules.yaml": `type: rules
+rules:
+- object_key: PROC_13
+  status: approved
+- object_key: PROC_14
+  status: draft
+`}
+	return &review.Repo{Read: f.read, Index: f.index()}
+}
+
+// a requirement of this repo that names two rules of the repo above
+var namesRulesAbove = files{"requirements/tool-requirements.yaml": `type: requirements
+requirements:
+- object_key: TOOL_01
+  source_ids: [PROC_13@1.1.1, PROC_14@1.1.1]
+  status: approved
+`}
+
+// @implements TC_166@1.1.1
+func TestAnUplinkIsLookedUpInTheRepoAbove(t *testing.T) {
+	findings, _, err := CheckWithAbove(namesRulesAbove.read, namesRulesAbove.index(), above())
+	if err != nil {
+		t.Fatal(err)
+	}
+	var got []string
+	for _, f := range findings {
+		got = append(got, f.String())
+	}
+	want := []string{"TOOL_01 names PROC_14@1.1.1: draft, not approved"}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("findings %q, want %q", got, want)
+	}
+}
+
+// @implements TC_167@1.1.1
+func TestWithoutTheRepoAboveAnUplinkThereIsMissing(t *testing.T) {
+	got, _ := messages(t, namesRulesAbove)
+	want := []string{
+		"TOOL_01 names PROC_13@1.1.1: no file of requirements holds such an id",
+		"TOOL_01 names PROC_14@1.1.1: no file of requirements holds such an id",
+	}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("findings %q, want %q", got, want)
+	}
+}

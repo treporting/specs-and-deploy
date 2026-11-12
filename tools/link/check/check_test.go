@@ -222,3 +222,45 @@ requirements:
 		t.Errorf("compared %d, want 1", compared)
 	}
 }
+
+// repoAbove holds TOOL_09 at 4.1.1, as the repo above.
+func repoAbove() *review.Repo {
+	f := files{"requirements/tool-requirements.yaml": tools}
+	return &review.Repo{Read: f.read, Index: f.index()}
+}
+
+// @implements TC_168@1.1.1
+func TestALinkIntoTheRepoAboveIsCompared(t *testing.T) {
+	own := files{"tools/software-requirements.yaml": `type: requirements
+requirements:
+- object_key: SR_01
+  source_ids: [TOOL_09@3.1.1]
+`}
+	got, compared, err := LinksWithAbove(own.read, own.index(), repoAbove())
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := []string{"SR_01 source_ids names TOOL_09@3.1.1: its object has 4.1.1"}
+	if !reflect.DeepEqual(lines(got), want) || compared != 1 {
+		t.Errorf("findings %q, compared %d, want %q and 1", lines(got), compared, want)
+	}
+	got, compared, err = own.links()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got) != 0 || compared != 0 {
+		t.Errorf("without the repo above: findings %q, compared %d, want none", lines(got), compared)
+	}
+}
+
+// @implements TC_169@1.1.1
+func TestAnAnnotationIntoTheRepoAboveIsCompared(t *testing.T) {
+	own := files{}
+	got, compared := AnnotationsWithAbove(own.read, own.index(), repoAbove(), []annotation.Annotation{
+		{File: "a.go", Line: 3, Kind: "implements", IDs: []string{"TOOL_09"}, Versions: []string{"3.1.1"}},
+	})
+	want := []string{"a.go:3 @implements names TOOL_09@3.1.1: its object has 4.1.1"}
+	if !reflect.DeepEqual(lines(got), want) || compared != 1 {
+		t.Errorf("findings %q, compared %d, want %q and 1", lines(got), compared, want)
+	}
+}
