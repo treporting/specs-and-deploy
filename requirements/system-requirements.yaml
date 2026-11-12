@@ -437,7 +437,7 @@ requirements:
 - object_key: SYS_41
   object_version: '1.1.1'
   feature: Audit
-  object_text: record every import and change of data - who, when, what - and keep the state before it;
+  object_text: record and show every import and change of data - who, when, what - and keep the state before it;
     the record of an import holds the source and its revision, the time, who started it, the version of
     the converter, the counts at the four points of SYS_23, the objects refused with their reason, the
     result of the fingerprints of SYS_25 and the state of SYS_26
@@ -940,5 +940,15 @@ requirements:
   priority: 'medium'
   safety: ''
   status: approved
+  verification_method: [test]
+  platform_launch: treporting = 2_selfhosted, 1_demo
+- object_key: SYS_87
+  object_version: '1.1.1'
+  feature: Errors
+  object_text: give every chart a title that names the objects it counts
+  source_ids: [UN_EVIDENCE_01@1.1.1]
+  priority: 'medium'
+  safety: ''
+  status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
