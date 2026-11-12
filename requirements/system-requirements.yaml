@@ -111,7 +111,7 @@ requirements:
   source_ids: [UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_11
@@ -241,7 +241,7 @@ requirements:
   source_ids: [UN_SETUP_01@1.1.1, UN_SAFETY_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_23
@@ -253,7 +253,7 @@ requirements:
   source_ids: [UN_SAFETY_01@1.1.1, UN_SAFETY_04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_24
@@ -274,7 +274,7 @@ requirements:
   source_ids: [UN_SAFETY_01@1.1.1, UN_SAFETY_02@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_26
@@ -286,7 +286,7 @@ requirements:
   source_ids: [UN_SAFETY_02@1.1.1, UN_SAFETY_04@1.1.1, REG_ISO26262-8_01@1.1.1, REG_IEC61508-3_01@1.1.1, REG_DO178C_01@1.1.1, REG_DO330_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_27
@@ -307,7 +307,7 @@ requirements:
   source_ids: [UN_SAFETY_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_29
@@ -317,7 +317,7 @@ requirements:
   source_ids: [UN_SAFETY_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_30
@@ -327,7 +327,7 @@ requirements:
   source_ids: [UN_SAFETY_05@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_31
@@ -480,14 +480,14 @@ requirements:
   verification_method: [test]
   platform_launch: treporting = 3_selfhosted
 - object_key: SYS_45
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   feature: Maturity
   object_text: give the maturity of a requirement as the share of the steps of the longest chain it has
     reached in a row, from the first step up to the first gap
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_46
@@ -508,7 +508,7 @@ requirements:
   source_ids: [UN_SAFETY_05@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_48
@@ -518,7 +518,7 @@ requirements:
   source_ids: [UN_SAFETY_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_49
@@ -767,7 +767,7 @@ requirements:
   source_ids: [UN_SAFETY_01@1.1.1, REG_ISO26262-9_01@1.1.1, REG_ARP4754B_01@1.1.1, REG_DO178C_02@1.1.1, REG_IEC61508-4_01@1.1.1, REG_IEC61508-1_01@1.1.1, REG_IEC61508-2_01@1.1.1, REG_IEC62304_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_71
@@ -777,7 +777,7 @@ requirements:
   source_ids: [UN_SAFETY_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_72
