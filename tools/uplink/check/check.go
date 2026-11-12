@@ -29,18 +29,19 @@ func (f Finding) String() string {
 //
 // @implements SR_28@1.1.1
 func Check(read Read, index *review.Index) ([]Finding, int, error) {
+	return CheckWithAbove(read, index, nil)
+}
 
-	files := map[string][]byte{}
-	load := func(file string) []byte {
-		if data, ok := files[file]; ok {
-			return data
-		}
-		data, err := read(file)
-		if err != nil {
-			data = nil
-		}
-		files[file] = data
-		return data
+// CheckWithAbove is Check, and looks up an uplink that no file of the repo holds in the repo
+// above, where one is given: after the split a requirement names uplinks in the repo above it.
+//
+// @implements SR_108@1.1.1
+func CheckWithAbove(read Read, index *review.Index, above *review.Repo) ([]Finding, int, error) {
+
+	load := loader(read)
+	var loadAbove func(string) []byte
+	if above != nil {
+		loadAbove = loader(Read(above.Read))
 	}
 
 	var findings []Finding
@@ -52,7 +53,11 @@ func Check(read Read, index *review.Index) ([]Finding, int, error) {
 			}
 			approved++
 			for _, uplink := range object.SourceIDs {
-				if message := status(load, index, uplink); message != "" {
+				message := status(load, index, uplink)
+				if message == missing && above != nil {
+					message = status(loadAbove, above.Index, uplink)
+				}
+				if message != "" {
 					findings = append(findings, Finding{object.Key, uplink, message})
 				}
 			}
@@ -60,6 +65,26 @@ func Check(read Read, index *review.Index) ([]Finding, int, error) {
 	}
 	return findings, approved, nil
 }
+
+// loader reads each file once; a file it cannot read holds nothing.
+func loader(read Read) func(string) []byte {
+
+	files := map[string][]byte{}
+	return func(file string) []byte {
+		if data, ok := files[file]; ok {
+			return data
+		}
+		data, err := read(file)
+		if err != nil {
+			data = nil
+		}
+		files[file] = data
+		return data
+	}
+}
+
+// missing is the message of an uplink that no file holds.
+const missing = "no file of requirements holds such an id"
 
 type object struct {
 	Key       string   `yaml:"object_key"`
@@ -98,7 +123,7 @@ func status(load func(string) []byte, index *review.Index, uplink string) string
 	id, _, _ := strings.Cut(uplink, "@")
 	file, key := index.FileOf(id)
 	if file == "" || key == "" {
-		return "no file of requirements holds such an id"
+		return missing
 	}
 	data := load(file)
 	if data == nil {

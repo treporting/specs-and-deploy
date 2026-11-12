@@ -60,6 +60,14 @@ next:
 //
 // @implements SR_18@1.1.1, SR_19@1.1.1
 func Check(root string, files []string) ([]Finding, error) {
+	return CheckWithAbove(root, "", files)
+}
+
+// CheckWithAbove is Check, and takes a schema that root does not hold from above, the root of
+// the repo above, where it is not empty.
+//
+// @implements SR_107@1.1.1
+func CheckWithAbove(root, above string, files []string) ([]Finding, error) {
 
 	schemas := map[string]*jsonschema.Schema{}
 	var findings []Finding
@@ -84,6 +92,9 @@ func Check(root string, files []string) ([]Finding, error) {
 		schema, ok := schemas[name]
 		if !ok {
 			schema, err = compile(root, name)
+			if errors.Is(err, fs.ErrNotExist) && above != "" {
+				schema, err = compile(above, name)
+			}
 			if errors.Is(err, fs.ErrNotExist) {
 				findings = append(findings, Finding{file, "", "names the schema " + name + ", which is not there"})
 				continue

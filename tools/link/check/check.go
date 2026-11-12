@@ -40,8 +40,16 @@ var fields = []string{"source_ids", "target_ids", "allocated", "controls"}
 // @implements SR_32@1.1.1
 // @implements SR_87@1.1.1
 func Links(read Read, index *review.Index) ([]Finding, int, error) {
+	return LinksWithAbove(read, index, nil)
+}
 
-	versions := newVersions(read, index)
+// LinksWithAbove is Links, and compares an entry whose object no file of the repo holds with its
+// object in the repo above, where one is given.
+//
+// @implements SR_109@1.1.1
+func LinksWithAbove(read Read, index *review.Index, above *review.Repo) ([]Finding, int, error) {
+
+	versions := newVersions(read, index, above)
 	var findings []Finding
 	compared := 0
 	for _, file := range index.Files() {
@@ -69,8 +77,16 @@ func Links(read Read, index *review.Index) ([]Finding, int, error) {
 //
 // @implements SR_33@2.1.1
 func Annotations(read Read, index *review.Index, annotations []annotation.Annotation) ([]Finding, int) {
+	return AnnotationsWithAbove(read, index, nil, annotations)
+}
 
-	versions := newVersions(read, index)
+// AnnotationsWithAbove is Annotations, and compares an id whose object no file of the repo holds
+// with its object in the repo above, where one is given.
+//
+// @implements SR_109@1.1.1
+func AnnotationsWithAbove(read Read, index *review.Index, above *review.Repo, annotations []annotation.Annotation) ([]Finding, int) {
+
+	versions := newVersions(read, index, above)
 	var findings []Finding
 	compared := 0
 	for _, a := range annotations {
@@ -89,15 +105,21 @@ func Annotations(read Read, index *review.Index, annotations []annotation.Annota
 	return findings, compared
 }
 
-// versions finds the version of an object in its file, and reads each file once.
+// versions finds the version of an object in its file, and reads each file once. An object its
+// repo does not hold is looked for in above, where there is one.
 type versions struct {
 	read  Read
 	index *review.Index
 	files map[string][]byte
+	above *versions
 }
 
-func newVersions(read Read, index *review.Index) *versions {
-	return &versions{read, index, map[string][]byte{}}
+func newVersions(read Read, index *review.Index, above *review.Repo) *versions {
+	v := &versions{read, index, map[string][]byte{}, nil}
+	if above != nil {
+		v.above = newVersions(Read(above.Read), above.Index, nil)
+	}
+	return v
 }
 
 func (v *versions) load(file string) []byte {
@@ -122,6 +144,9 @@ func (v *versions) suspect(link string) (string, bool) {
 	}
 	file, key := v.index.FileOf(id)
 	if file == "" || key == "" {
+		if v.above != nil {
+			return v.above.suspect(link)
+		}
 		return "", false
 	}
 	found := review.ObjectIn(v.load(file), key)

@@ -1,8 +1,9 @@
 // Command linkcheck makes the link check (TOOL_16): it compares the version each link, entry of
 // the allocation or of controls, and annotation names with the version its object has.
 //
-//	linkcheck [-root dir]
+//	linkcheck [-root dir] [-above dir]
 //
+// -above is the root of the repo above, where an object that this repo does not hold is looked up.
 // It reads the files as they stand in the working tree. It prints every one whose object has
 // another x than it names, and exits with 0 all the same: it reports, and a suspect link blocks
 // the baseline, not the pull request (PROC_20). It exits with 2 where it cannot read the repo.
@@ -21,11 +22,21 @@ import (
 	"github.com/treporting/specs-and-deploy/tools/review"
 )
 
-// @implements SR_32@1.1.1, SR_33@2.1.1
+// @implements SR_32@1.1.1, SR_33@2.1.1, SR_109@1.1.1
 func main() {
 
 	root := flag.String("root", ".", "the root of the repo")
+	aboveRoot := flag.String("above", "", "the root of the repo above, empty for none")
 	flag.Parse()
+
+	var above *review.Repo
+	if *aboveRoot != "" {
+		repo, err := review.RepoAt(*aboveRoot)
+		if err != nil {
+			fail(err)
+		}
+		above = repo
+	}
 
 	read := func(file string) ([]byte, error) {
 		return os.ReadFile(filepath.Join(*root, file))
@@ -34,7 +45,7 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	links, comparedLinks, err := check.Links(read, index)
+	links, comparedLinks, err := check.LinksWithAbove(read, index, above)
 	if err != nil {
 		fail(err)
 	}
@@ -58,7 +69,7 @@ func main() {
 		fail(err)
 	}
 	annotations = append(annotations, refines...)
-	ids, comparedIDs := check.Annotations(read, index, annotations)
+	ids, comparedIDs := check.AnnotationsWithAbove(read, index, above, annotations)
 
 	for _, f := range append(links, ids...) {
 		fmt.Println(f)

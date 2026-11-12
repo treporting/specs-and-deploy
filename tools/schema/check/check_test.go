@@ -97,3 +97,37 @@ func TestNoSchemaOrASchemaThatIsNotThere(t *testing.T) {
 	expect(t, got, "none.yaml: names no schema")
 	expect(t, got, "missing.yaml: names the schema schemas/gone.schema.json, which is not there")
 }
+
+// a file of this repo that names the schema only the repo above holds, and does not match it
+var namesSchemaAbove = map[string]string{"bad.yaml": "schema: schemas/t.schema.json\nlevel: r9\n"}
+
+// own writes the files into a temporary root that holds no schema.
+func own(t *testing.T, files map[string]string) string {
+	t.Helper()
+	dir := t.TempDir()
+	for path, content := range files {
+		if err := os.WriteFile(filepath.Join(dir, path), []byte(content), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	return dir
+}
+
+// @implements TC_164@1.1.1
+func TestASchemaIsTakenFromTheRepoAbove(t *testing.T) {
+	above := root(t, map[string]string{})
+	findings, err := CheckWithAbove(own(t, namesSchemaAbove), above, []string{"bad.yaml"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	expect(t, messages(findings), "bad.yaml /level")
+}
+
+// @implements TC_165@1.1.1
+func TestWithoutTheRepoAboveItsSchemaIsNotThere(t *testing.T) {
+	findings, err := Check(own(t, namesSchemaAbove), []string{"bad.yaml"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	expect(t, messages(findings), "names the schema schemas/t.schema.json, which is not there")
+}

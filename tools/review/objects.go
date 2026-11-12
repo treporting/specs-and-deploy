@@ -70,6 +70,24 @@ func IndexAt(root string) (*Index, error) {
 	}, strings.Fields(out)), nil
 }
 
+// Repo is a repo as a check reads it: its files, and the index of the ids they hold.
+type Repo struct {
+	Read  Read
+	Index *Index
+}
+
+// RepoAt answers the repo at root, as git knows its files in the working tree.
+func RepoAt(root string) (*Repo, error) {
+
+	index, err := IndexAt(root)
+	if err != nil {
+		return nil, err
+	}
+	return &Repo{func(file string) ([]byte, error) {
+		return os.ReadFile(filepath.Join(root, file))
+	}, index}, nil
+}
+
 // Files answers every file that holds objects, each once, in the order git lists them.
 func (ix *Index) Files() []string {
 	return ix.files
