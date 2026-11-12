@@ -88,13 +88,6 @@ documents:
   object_hash: '2d19106'
   status: approved
   verification_method: [review]
-- name: tools/README.md
-  type: explanation
-  level: r5
-  object_version: '35.1.1'
-  object_hash: '518b625'
-  status: approved
-  verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
   level: tool
@@ -109,15 +102,3 @@ documents:
   object_hash: '7812027'
   status: approved
   verification_method: [review]
-- name: sbom/sbom.md
-  type: document
-  object_version: '3.1.1'
-  object_hash: '2b392c6'
-  status: completed
-  verification_method: [generated]
-- name: tools/testreports/software.md
-  type: document
-  object_version: '1.1.1'
-  object_hash: '9b3d591'
-  status: completed
-  verification_method: [generated]
