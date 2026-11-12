@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/specs-and-deploy/schemas/levels.schema.json",
-  "$comment": "@refines ARC_22@2.1.1",
   "title": "The levels of the work, each with its name",
   "type": "object",
   "required": [
