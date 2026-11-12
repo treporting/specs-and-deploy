@@ -107,7 +107,7 @@ requirements:
 - object_key: SYS_10
   object_version: '1.1.1'
   feature: Filter
-  object_text: show on every view which filters are in effect and how many objects they leave out
+  object_text: show on every view which filters are in effect
   source_ids: [UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
@@ -196,7 +196,7 @@ requirements:
   feature: Provenance
   object_text: show on every view and in every report which data set, which revision and which build of
     the system it answers from, and how many objects of each kind
-  source_ids: [UN_SHARE_04@1.1.2, UN_EVIDENCE_01@1.1.1, UN_USE_04@1.1.1, REG_FDADI_01@1.1.1]
+  source_ids: [UN_SHARE_04@1.1.2, UN_EVIDENCE_01@1.1.1, UN_USE_04@1.1.1, UN_SAFETY_06@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: approved
@@ -314,7 +314,7 @@ requirements:
   object_version: '1.1.1'
   feature: Errors
   object_text: refuse a request it cannot answer, with the reason, rather than answer it empty
-  source_ids: [UN_SAFETY_02@1.1.1, UN_SAFETY_04@1.1.1]
+  source_ids: [UN_SAFETY_02@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft
@@ -323,8 +323,7 @@ requirements:
 - object_key: SYS_30
   object_version: '1.1.1'
   feature: Errors
-  object_text: say for every figure what it counts, and count in a chart exactly what the table beside
-    it shows
+  object_text: count in a chart exactly what the table beside it shows
   source_ids: [UN_SAFETY_05@1.1.1]
   priority: 'medium'
   safety: ''
@@ -484,11 +483,11 @@ requirements:
   object_version: '1.1.1'
   feature: Maturity
   object_text: give the maturity of a requirement as the share of the steps of the longest chain it has
-    reached
+    reached in a row, from the first step up to the first gap
   source_ids: [UN_STATUS_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: approved
+  status: draft
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_46
@@ -775,7 +774,7 @@ requirements:
   object_version: '1.1.1'
   feature: Plausibility
   object_text: show every finding of SYS_70 with its rule and its objects, in a view of its own
-  source_ids: [UN_SAFETY_03@1.1.1]
+  source_ids: [UN_SAFETY_01@1.1.1]
   priority: 'medium'
   safety: ''
   status: draft

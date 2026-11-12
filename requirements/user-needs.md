@@ -66,7 +66,7 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
     static analysis. It is kept in the customer's tools. treporting shows it and its evaluation, but
     makes and evaluates none (UN_COMPLIANCE_02, UN_COMPLIANCE_03).
   - **of treporting**: treporting finds it in the data of the customer, for instance a rule of
-    plausibility that does not hold (UN_SAFETY_03).
+    plausibility that does not hold (UN_SAFETY_01).
   - **of our own process**: a review of treporting finds it. It is not meant in the user needs.
 - **report**: a document made of views of the data, to be read without the system. There are three
   kinds:
@@ -79,6 +79,52 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
 
   A report is not a record. A report is made from the data at one moment; a record is what
   treporting keeps as evidence.
+- **gap**: a place in the trace where something is missing that the trace expects:
+  - a link to the level below
+  - a test, where the requirement is verified by test
+  - a result of a test
+
+  For example, SR_11 is verified by test but has no test case: the trace has a gap at SR_11. The
+  opposite of a gap is covered.
+- **maturity**: how far a requirement has got along the chain of the process in use (UN_STATUS_01).
+  The chain is the row of headers of the trace, such as SYS.2, SWE.1, SWE.3, SWE.4 TC and SWE.4 TR.
+  A requirement reaches a step where it has an object under that header; a test result only where
+  it passed. How the steps are counted is decided below the two tables.
+
+**Table counting** - which steps of a row count
+
+| | Option | SYS.2 | SYS.3 | SWE.1 | SWE.2 | SWE.3 | SC | SWE.4 TC | SWE.4 TR | SWE.5 TC | SWE.5 TR | SWE.6 TC | SWE.6 TR | ... | SYS_06 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A | share: every step reached counts, wherever it stands | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | | | ✔ | | | 9/16 = 56 % |
+| B | up to the first gap: the steps from the left until the first one missing | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | | | ✔ | | | 8/16 = 50 % |
+
+**Table branches** - the maturity of a requirement with several branches below it
+
+| Row | SYS.2 | SWE.1 | SWE.3 | SC | SWE.4 TC | SWE.4 TR | Branch |
+|---|---|---|---|---|---|---|---|
+| SYS_06 / SR_12 | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | 6/6 = 100 % |
+| SYS_06 / SR_13 | ✔ | ✔ | ✔ | ✔ | | | 4/6 = 67 % |
+
+| | Option | SYS_06 | What is lost |
+|---|---|---|---|
+| C1 | the weakest branch: a step counts only where every branch reaches it (SYS_48) | 67 % | nothing is hidden; one late branch holds the requirement back |
+| C2 | the strongest branch | 100 % | the gap at SR_13 is shown as covered (UN_SAFETY_01) |
+| C3 | the average of the branches | 83 % | the gap at SR_13 is hidden in the mean |
+
+**Decision**: B and C1. A step counts only up to the first gap of the row, and only where every
+branch below the requirement reaches it. The rule is fixed; no user can choose another.
+
+**Why**:
+
+- UN_STATUS_01 asks how far a requirement has got along the chain; only what stands without a gap
+  has got that far
+- under A, a passed test result counts where something below it is missing: the figure does not
+  measure what its label says (UN_SAFETY_05)
+- C1 hides no branch; C2 shows a gap as covered (UN_SAFETY_01), C3 hides it in the mean
+- a rule each user could choose would give the same figure a different meaning per project, and
+  figures of two projects or two releases could no longer be compared
+
+**Rejected**: A, C2 and C3, for the reasons above; the rule as a setting of the user.
 
 ## Open
 
@@ -93,3 +139,4 @@ analysis, its threats share level h1 with the hazards (`safety/hazard-and-risk-a
 | 3.1.1 | 2026-11-11 | Classes instead of roles; SAFETY and SECURITY instead of PSF; Terms | #590, #602 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 4.1.1 | 2026-11-12 | Terms: finding | #614 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 5.1.1 | 2026-11-12 | Terms: report | #617, #611 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 6.1.1 | 2026-11-12 | Terms: gap, maturity | #619, #611 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
