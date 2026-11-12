@@ -1117,7 +1117,7 @@ requirements:
   source_ids: [TOOL_05@1.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
 - object_key: SR_108
   object_version: '1.1.1'
@@ -1127,7 +1127,7 @@ requirements:
   source_ids: [TOOL_09@3.2.4]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
 - object_key: SR_109
   object_version: '1.1.1'
@@ -1137,5 +1137,5 @@ requirements:
   source_ids: [TOOL_16@1.1.2]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
