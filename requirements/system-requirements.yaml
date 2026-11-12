@@ -148,7 +148,7 @@ requirements:
   source_ids: [UN_COMPLIANCE_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_14
@@ -790,7 +790,7 @@ requirements:
   source_ids: [UN_COMPLIANCE_02@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_73
@@ -813,7 +813,7 @@ requirements:
   source_ids: [UN_COMPLIANCE_01@1.1.1, UN_COMPLIANCE_03@1.1.1, UN_COMPLIANCE_05@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_75
@@ -823,7 +823,7 @@ requirements:
   source_ids: [UN_COMPLIANCE_01@1.1.1, REG_FDADI_01@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_76
