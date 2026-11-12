@@ -90,7 +90,7 @@ requirements:
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_09
-  object_version: '1.1.1'
+  object_version: '2.1.1'
   feature: Filter
   object_text: |-
     narrow every view by
@@ -101,7 +101,7 @@ requirements:
   source_ids: [UN_SCOPE_01@1.1.1, UN_SCOPE_02@1.1.1, UN_SCOPE_05@1.1.1, UN_SCOPE_06@1.1.1, UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_10
@@ -908,7 +908,7 @@ requirements:
   source_ids: [UN_SCOPE_03@1.1.1, UN_SAFETY_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_84
@@ -918,6 +918,6 @@ requirements:
   source_ids: [UN_SCOPE_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
