@@ -169,7 +169,7 @@ requirements:
   source_ids: [UN_CONFIG_01@1.1.1, UN_CONFIG_02@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_16
@@ -179,7 +179,7 @@ requirements:
   source_ids: [UN_CONFIG_03@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_17
@@ -189,7 +189,7 @@ requirements:
   source_ids: [UN_CONFIG_05@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
 - object_key: SYS_18
@@ -896,6 +896,6 @@ requirements:
   source_ids: [UN_CONFIG_04@1.1.1]
   priority: 'medium'
   safety: ''
-  status: draft
+  status: approved
   verification_method: [test]
   platform_launch: treporting = 2_selfhosted, 1_demo
