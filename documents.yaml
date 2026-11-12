@@ -91,9 +91,9 @@ documents:
 - name: tools/README.md
   type: explanation
   level: r5
-  object_version: '34.1.1'
-  object_hash: '49f7c8a'
-  status: draft
+  object_version: '35.1.1'
+  object_hash: '518b625'
+  status: approved
   verification_method: [review]
 - name: requirements/tool-requirements.md
   type: explanation
