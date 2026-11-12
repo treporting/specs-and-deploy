@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/treporting/treporting/schemas/test-cases.schema.json",
-  "$comment": "@refines ARC_22@2.1.1",
   "title": "Test cases of a test level (r1tc to r7tc)",
   "description": "The test cases of one test level, its test specification (formats.md, section Test cases).",
   "type": "object",
