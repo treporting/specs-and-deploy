@@ -1,0 +1,231 @@
+# Review of SYS_10, SYS_22, SYS_23, SYS_25, SYS_26, SYS_28, SYS_29, SYS_30, SYS_45, SYS_47, SYS_48, SYS_70, SYS_71 against the criteria of the level r2.
+# Made with reviewskeleton; a proposal of Claude Code - the reviewer decides.
+# Format: ../../formats.md, section Reviews.
+schema: schemas/review-result.schema.json
+type: review
+level: r2
+object_version: '1.1.1'
+status: open
+created_by: Mathias Fischer
+created_at: '2026-11-12T19:30:52+01:00'
+criteria: reviews/criteria-r2.yaml
+criteria_revision: '2f3a459'
+results:
+- object_key: RR_01
+  target_ids: [SYS_10]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08:
+      result: passed
+      note: 'found in this review and resolved in it: a count of the objects the filters leave out would need a second query for every view; it shows the filters in effect'
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_02
+  target_ids: [SYS_22]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_03
+  target_ids: [SYS_23]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_04
+  target_ids: [SYS_25]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_05
+  target_ids: [SYS_26]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_06
+  target_ids: [SYS_28]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_07
+  target_ids: [SYS_29]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10:
+      result: passed
+      note: 'found in this review and resolved in it: it named UN_SAFETY_04, the errors of the import; a request is not the import'
+    RC_11: passed
+  verdict: passed
+- object_key: RR_08
+  target_ids: [SYS_30]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06:
+      result: passed
+      note: 'found in this review and resolved in it: what a chart counts is SYS_87, the title of a chart; it keeps the count of the chart against its table'
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_09
+  target_ids: [SYS_45]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06:
+      result: passed
+      note: 'found in this review and resolved in it: the share of every step reached contradicted the decision of user-needs.md, term maturity - up to the first gap of a row'
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_10
+  target_ids: [SYS_47]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_11
+  target_ids: [SYS_48]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_12
+  target_ids: [SYS_70]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10: passed
+    RC_11: passed
+  verdict: passed
+- object_key: RR_13
+  target_ids: [SYS_71]
+  revision: '7253656'
+  criteria:
+    RC_01: passed
+    RC_02: passed
+    RC_03: passed
+    RC_04: passed
+    RC_05: passed
+    RC_06: passed
+    RC_07: passed
+    RC_08: passed
+    RC_09: passed
+    RC_10:
+      result: passed
+      note: 'found in this review and resolved in it: it named UN_SAFETY_03, the filters; its findings serve UN_SAFETY_01, as SYS_70 does'
+    RC_11: passed
+  verdict: passed
