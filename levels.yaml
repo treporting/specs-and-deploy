@@ -28,6 +28,18 @@ levels:
   description: the tools against their SR
   reference: ISO29119
   data: made in the test
+- key: r5tp
+  part: ['process & tools']
+  name: subsystem test procedure
+  abbreviation: SwVal TP
+  description: the tests of the tools in Go that carry out the test cases of r5tc, or verify an SR directly
+  reference: ISO29119
+- key: r5tr
+  part: ['process & tools']
+  name: subsystem test result
+  abbreviation: SwVal TR
+  description: the result of a run of a test procedure of r5tp
+  reference: ISO29119
 - key: rules
   part: ['process & tools']
   name: rules

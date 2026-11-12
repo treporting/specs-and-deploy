@@ -33,8 +33,8 @@ generated from it whenever it changes, and names the hash of its content, `git h
 levels.yaml`. The levels of the product are in
 [levels.yaml of specs-and-deploy-product](https://github.com/treporting/specs-and-deploy-product/blob/main/levels.yaml) (#637).
 
-<!-- generated from levels.yaml@2c401ee - do not edit -->
-**Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@2c401ee
+<!-- generated from levels.yaml@6b734dd - do not edit -->
+**Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@6b734dd
 
 | Level | Key | Name | Abbreviation | Description | Reference | Data |
 |---|---|---|---|---|---|---|
@@ -42,6 +42,8 @@ levels.yaml`. The levels of the product are in
 | r2 | r2 | tool requirements | TOOL | the requirements of the tools of our work, which are not part of the product (TOOL) | - | - |
 | r5 | r5 | software requirements | SR | software requirements (SR) of the tools, in the repo tools | ISO12207, clause 6.4.3 - software requirements definition | - |
 | r5tc | r5tc | subsystem test | SwVal | the tools against their SR | ISO29119 | made in the test |
+| r5tp | r5tp | subsystem test procedure | SwVal TP | the tests of the tools in Go that carry out the test cases of r5tc, or verify an SR directly | ISO29119 | - |
+| r5tr | r5tr | subsystem test result | SwVal TR | the result of a run of a test procedure of r5tp | ISO29119 | - |
 | r1 | rules | rules | PROC | the rules of our work | - | - |
 | - | document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
 <!-- end of generated -->
@@ -266,3 +268,4 @@ as soon as possible (PROC_07)
 | 24.1.1 | 2026-11-05 | Levels: a table of the product, a table of process & tools | #551 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 25.1.1 | 2026-11-12 | Levels: process & tools only; the levels of the product in its repo | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 26.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 27.1.1 | 2026-11-13 | Levels: r5tp and r5tr | #636 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
