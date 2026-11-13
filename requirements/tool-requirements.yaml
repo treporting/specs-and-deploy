@@ -6,8 +6,8 @@ level: r2
 documents: [requirements/tool-requirements.md]
 requirements:
 - object_key: TOOL_01
-  object_version: '1.1.1'
-  feature: Documents to PDF
+  object_version: '1.1.2'
+  feature: documents to pdf
   object_text: export every document of a commit or tag to PDF, one file each, in a workflow started
     by hand with that commit or tag, as one ZIP to download from the run
   source_ids: [REG_FDADI_01@1.1.1]
@@ -17,8 +17,8 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: TOOL_02
-  object_version: '1.1.1'
-  feature: Documents to PDF
+  object_version: '1.1.2'
+  feature: documents to pdf
   object_text: show in the header or footer of an exported document its version, its revision and its
     own status
   source_ids: [REG_FDADI_01@1.1.1]
@@ -28,8 +28,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_03
-  object_version: '3.3.4'
-  feature: Reviews
+  object_version: '3.3.5'
+  feature: reviews
   object_text: check every review result - every criterion of its criteria file once, the verdict passed
     only when every criterion passed, a note to every failed criterion, the revision reviewed exists,
     the reviewer is not the author of the object, and a completed result has a completed_at not
@@ -41,8 +41,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_04
-  object_version: '3.2.2'
-  feature: Reviews
+  object_version: '3.2.3'
+  feature: reviews
   object_text: create the skeleton of a review for a set of objects whose kind has review criteria in
     `reviews/`, with the criteria of their level and the revision of each, as a record with the
     version 1.1.1 and the status open
@@ -55,8 +55,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_05
-  object_version: '1.1.2'
-  feature: CI check
+  object_version: '1.1.3'
+  feature: ci check
   object_text: check on every pull request that every YAML file matches its schema
   source_ids: [PROC_04@1.1.1]
   priority: 'medium'
@@ -65,8 +65,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_06
-  object_version: '2.1.2'
-  feature: CI check
+  object_version: '2.1.3'
+  feature: ci check
   object_text: check on every pull request that every id named in `@implements`, `@verifies` or `@refines`
     exists, and is approved, in the base commit of the pull request
   source_ids: [PROC_05@1.1.1]
@@ -76,8 +76,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_07
-  object_version: '1.1.2'
-  feature: CI check
+  object_version: '1.1.3'
+  feature: ci check
   object_text: count the annotations of a repo a second way, apart from the parser, and fail where the two
     counts differ
   rationale: tool error detection - a count made by the parser shares every error of the parser and
@@ -88,8 +88,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_08
-  object_version: '1.1.2'
-  feature: CI check
+  object_version: '1.1.3'
+  feature: ci check
   object_text: check that the system requirement a software requirement names as uplink exists in
     specs-and-deploy on main, and is allocated to the subsystem of the software requirement
   source_ids: [PROC_12@2.1.1]
@@ -99,8 +99,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_09
-  object_version: '3.2.4'
-  feature: CI check
+  object_version: '3.2.5'
+  feature: ci check
   object_text: check that an approved requirement names approved requirements only as its uplinks
   source_ids: [PROC_13@4.1.1]
   priority: 'medium'
@@ -109,8 +109,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_10
-  object_version: '1.1.2'
-  feature: CI check
+  object_version: '1.1.3'
+  feature: ci check
   object_text: check that every test file belongs to exactly one test level
   source_ids: [PROC_19@1.1.1]
   priority: 'medium'
@@ -119,8 +119,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_11
-  object_version: '1.1.2'
-  feature: Reviews
+  object_version: '1.1.3'
+  feature: reviews
   object_text: check that the reviewer of a document is not its author - the author or a co-author of
     the last commit that changed it
   source_ids: [PROC_15@1.1.1]
@@ -130,8 +130,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_12
-  object_version: '1.2.4'
-  feature: CI check
+  object_version: '1.2.5'
+  feature: ci check
   object_text: check every review result and run the tests of the tools on every pull request; a pull
     request where one of them fails cannot be merged
   source_ids: [PROC_04@1.1.1, PROC_13@4.1.1]
@@ -141,8 +141,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_13
-  object_version: '1.1.2'
-  feature: CI check
+  object_version: '1.1.3'
+  feature: ci check
   object_text: check on every pull request that the ruleset of main on GitHub has the rules of
     .github/rulesets/main.json - all that can be read without the rights of an admin
   source_ids: [PROC_03@1.1.1]
@@ -152,8 +152,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_14
-  object_version: '2.1.2'
-  feature: Versions
+  object_version: '2.1.3'
+  feature: versions
   object_text: check on every pull request that every object with a version changed against the base
     commit carries the right version - each part one higher where its kind changed since the base
     commit and the others the same, the version of a draft unchanged, a new one at 1.1.1
@@ -164,8 +164,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_15
-  object_version: '2.2.5'
-  feature: Reviews
+  object_version: '2.2.6'
+  feature: reviews
   object_text: report a requirement that is approved in a pull request, where it was not approved in
     the base commit or its x rose, and that no passed review result of the pull request names
   source_ids: [PROC_13@4.1.1, PROC_14@1.1.1]
@@ -175,8 +175,8 @@ requirements:
   status: obsolete
   verification_method: [test]
 - object_key: TOOL_16
-  object_version: '1.1.2'
-  feature: Versions
+  object_version: '1.1.3'
+  feature: versions
   object_text: make the link check on every pull request - for every link, entry of the allocation and
     annotation, compare the version it names with the version its object has - and report each whose
     object has another x than it names, without failing
@@ -187,8 +187,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_17
-  object_version: '1.1.2'
-  feature: Versions
+  object_version: '1.1.3'
+  feature: versions
   object_text: refuse to make a baseline that holds both ends of a suspect link, compared with the
     versions in that baseline
   source_ids: [PROC_06@1.1.1, PROC_20@2.1.1]
@@ -198,8 +198,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_18
-  object_version: '1.1.2'
-  feature: Versions
+  object_version: '1.1.3'
+  feature: versions
   object_text: update a link, an entry of the allocation or an annotation, named by the one who calls
     it, to the version its object has now
   source_ids: [PROC_20@2.1.1]
@@ -209,8 +209,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_19
-  object_version: '1.1.3'
-  feature: Versions
+  object_version: '1.1.4'
+  feature: versions
   object_text: check on every pull request that the object_hash of every approved document is the hash
     of its file
   source_ids: [PROC_14@1.1.1]
@@ -220,8 +220,8 @@ requirements:
   status: obsolete
   verification_method: [test]
 - object_key: TOOL_20
-  object_version: '2.1.2'
-  feature: CI check
+  object_version: '2.1.3'
+  feature: ci check
   object_text: check on every pull request that every `@implements`, `@verifies` and `@refines` names the
     version of its id, as `ID@x.y.z`
   source_ids: [PROC_20@2.1.1]
@@ -322,8 +322,8 @@ requirements:
   status: approved
   verification_method: [demonstration]
 - object_key: TOOL_29
-  object_version: '1.1.4'
-  feature: Reviews
+  object_version: '1.1.5'
+  feature: reviews
   object_text: report a document with the verification method `review` that is approved in a pull
     request, where it was not approved in the base commit or its x rose, and that no passed review
     result of the pull request names
@@ -334,8 +334,8 @@ requirements:
   status: obsolete
   verification_method: [test]
 - object_key: TOOL_30
-  object_version: '1.1.1'
-  feature: Documents to PDF
+  object_version: '1.1.2'
+  feature: documents to pdf
   object_text: add to the ZIP an index that lists every document with its version, its revision and
     its own status
   source_ids: [REG_FDADI_01@1.1.1]
@@ -345,8 +345,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_31
-  object_version: '1.1.1'
-  feature: Documents to PDF
+  object_version: '1.1.2'
+  feature: documents to pdf
   object_text: set the title of the document and the name of the repo in the header, the date and the
     page of the pages in the footer, and margins of 2 cm at top and bottom
   source_ids: [REG_FDADI_01@1.1.1]
@@ -356,8 +356,8 @@ requirements:
   status: approved
   verification_method: [inspection]
 - object_key: TOOL_32
-  object_version: '2.1.3'
-  feature: Reviews
+  object_version: '2.1.4'
+  feature: reviews
   object_text: check that every approved object whose kind has review criteria in `reviews/`, except a
     document with the verification method `generated`, is named by a passed and completed review result as
     the last that names it, and that the revision of that result holds the content x counts of the object as
@@ -370,8 +370,8 @@ requirements:
   status: approved
   verification_method: [test]
 - object_key: TOOL_33
-  object_version: '2.2.1'
-  feature: Versions
+  object_version: '2.2.2'
+  feature: versions
   object_text: check that the content x counts of every approved object and of every completed
     document - the attributes its schema names for x, of a document the hash of its file - is the one
     it had when it was approved or completed with that x - on every pull request for the objects in
