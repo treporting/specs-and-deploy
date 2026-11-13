@@ -33,7 +33,7 @@
         "properties": {
           "key": {
             "type": "string",
-            "pattern": "^(h[12]|n1|r[1-7]|r[1-7]t[cpr]|tool|rules|document)$",
+            "pattern": "^(h[12]|n1|r[1-7]|r[1-7]t[cpr]|sc[1-9]|tool|rules|document)$",
             "description": "the key of the level, as the field level of a file names it, such as r5 or r5tc"
           },
           "part": {

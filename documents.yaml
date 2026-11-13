@@ -13,14 +13,14 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '28.1.1'
-  object_hash: '010d34a'
+  object_version: '29.1.1'
+  object_hash: '35b25ca'
   status: approved
   verification_method: [review]
 - name: devops.md
   type: document
-  object_version: '20.1.1'
-  object_hash: 'cd0af00'
+  object_version: '21.1.1'
+  object_hash: '279d54c'
   status: approved
   verification_method: [review]
 - name: definitions.md
@@ -37,8 +37,8 @@ documents:
   verification_method: [review]
 - name: formats.md
   type: document
-  object_version: '37.1.1'
-  object_hash: 'd200caa'
+  object_version: '38.1.1'
+  object_hash: '0290168'
   status: approved
   verification_method: [review]
 - name: reviews/README.md
@@ -49,8 +49,8 @@ documents:
   verification_method: [review]
 - name: traceability.md
   type: document
-  object_version: '15.1.1'
-  object_hash: 'c604810'
+  object_version: '16.1.1'
+  object_hash: 'db93e51'
   status: approved
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md

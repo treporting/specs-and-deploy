@@ -21,6 +21,12 @@ levels:
   abbreviation: SR
   description: software requirements (SR) of the tools, in the repo tools
   reference: ISO12207, clause 6.4.3 - software requirements definition
+- key: sc1
+  part: ['process & tools']
+  name: source code, function coverage
+  abbreviation: SC
+  description: the source code, measured by the share of its functions the tests call
+  reference: ISO29119-4, clause 5.3 - structure-based test design
 - key: r5tc
   part: ['process & tools']
   name: subsystem test
