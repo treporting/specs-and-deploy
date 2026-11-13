@@ -154,8 +154,10 @@ holds only what the author writes:
 
 - **function** is the class of a user need, the question it answers (STATUS, TRACE, ..., USE;
   user-needs.md); a requirement below takes it from its parent into `mfunction` where its own is
-  empty.
-- **feature** is given on r2; r5 takes it from its parent into `mfeature`.
+  empty. A rule has the function `rules`: no user need stands above it.
+- **feature** is given on r2; r5 takes it from its parent into `mfeature`. A rule has as feature
+  the step of the loops of harness.md it holds in: ticket, writing, review, merge, baseline or
+  maintenance.
 - **object_version** of every requirement, element and decision of the architecture, hazard,
   control and document: `x.y.z`, written in quotes - x the text and the attributes its schema
   names in `attributes_for_version_x`, y the links, z every other attribute. It is set at the
@@ -945,3 +947,4 @@ case, and a test case without a result, would have no row.
 | 36.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 37.1.1 | 2026-11-13 | Reviews: every repo its own criteria and results | #629 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 38.1.1 | 2026-11-13 | Table files of the levels: r4 gone | #653 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 39.1.1 | 2026-11-13 | Kinds of field: function and feature of a rule | #657 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

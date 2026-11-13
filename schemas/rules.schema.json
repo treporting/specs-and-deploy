@@ -31,6 +31,8 @@
           "object_key",
           "object_version",
           "object_text",
+          "function",
+          "feature",
           "priority",
           "safety",
           "status",
@@ -54,6 +56,21 @@
           "object_text": {
             "type": "string",
             "minLength": 1
+          },
+          "function": {
+            "const": "rules",
+            "description": "the class of a rule; no user need stands above it"
+          },
+          "feature": {
+            "enum": [
+              "ticket",
+              "writing",
+              "review",
+              "merge",
+              "baseline",
+              "maintenance"
+            ],
+            "description": "the step of the loops of harness.md the rule holds in"
           },
           "source_ids": {
             "type": "array",
