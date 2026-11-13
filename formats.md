@@ -17,7 +17,7 @@ maturity, introductions - stays in Markdown beside it and refers to the YAML.
 | n1 | `regulatory/<module>.yaml` (REG), one file per module | `regulatory/regulatory-requirements.md` | specs-and-deploy-process |
 | r1 | `requirements/user-needs.yaml` (UN) | `requirements/user-needs.md` | specs-and-deploy-product |
 | r2 | `requirements/system-requirements.yaml` (SYS) | `requirements/system-requirements.md` | specs-and-deploy-product |
-| r3, r4 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy-product |
+| r3 | `architecture/system-architecture.yaml` (ARC, with the allocation) | `architecture/system-architecture.md` | specs-and-deploy-product |
 | r2 | `requirements/tool-requirements.yaml` (TOOL) | `requirements/tool-requirements.md` | specs-and-deploy-process |
 | r5 | `requirements/software-requirements.yaml` (SR) | `requirements/software-requirements.md` | the repo of the subsystem; in tools `software-requirements.yaml`, explained in its README.md |
 | r1tc, r2tc, r3tc | `testcases/<test level>.yaml` (TC), one file per test level; see Test cases | the explanation of their requirements | specs-and-deploy-product |
@@ -666,7 +666,7 @@ side by side.
 - it names as a rule **one** system requirement as uplink; several only where the behaviour
   serves each of them
 - every subsystem repo is an element of its own in the architecture, so that the CI can check
-  the allocation (r4): ARC_06 *extractor-SYSTEM* describes the kind; extractor-git, a second
+  the allocation: ARC_06 *extractor-SYSTEM* describes the kind; extractor-git, a second
   reporter or a second viewer each get an element of their own when their repo is made
 
 ## Annotations
@@ -944,3 +944,4 @@ case, and a test case without a result, would have no row.
 | 35.1.1 | 2026-11-12 | Table files of the levels and table types: the three repos; the tool requirements on r2 | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 36.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 37.1.1 | 2026-11-13 | Reviews: every repo its own criteria and results | #629 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 38.1.1 | 2026-11-13 | Table files of the levels: r4 gone | #653 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
