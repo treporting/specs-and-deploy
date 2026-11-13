@@ -15,13 +15,13 @@ documents:
   level: rules
   object_version: '28.1.1'
   object_hash: '010d34a'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
   object_version: '20.1.1'
   object_hash: 'cd0af00'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: definitions.md
   type: document
@@ -39,7 +39,7 @@ documents:
   type: document
   object_version: '37.1.1'
   object_hash: 'd200caa'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: reviews/README.md
   type: document
@@ -51,7 +51,7 @@ documents:
   type: document
   object_version: '15.1.1'
   object_hash: 'c604810'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: regulatory/regulatory-requirements.md
   type: explanation
