@@ -13,8 +13,8 @@ documents:
 - name: harness.md
   type: explanation
   level: rules
-  object_version: '27.1.1'
-  object_hash: 'eba20d2'
+  object_version: '28.1.1'
+  object_hash: '010d34a'
   status: approved
   verification_method: [review]
 - name: devops.md
