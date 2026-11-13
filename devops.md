@@ -242,7 +242,7 @@ today is set in the section Continuous integration.
 | every YAML file matches its schema | TOOL_05 |
 | every id in `@implements`, `@verifies` and `@refines` exists, and is approved, in the base commit of the pull request - a requirement added in the same pull request does not count (PROC_05) | TOOL_06 |
 | the annotations counted a second way, apart from the parser | TOOL_07 |
-| the uplink of every SR: the SYS it names exists in specs-and-deploy-product on `main` and is allocated to the subsystem of the SR | TOOL_08 |
+| the uplink of every SR: the SYS it names exists in specs-and-deploy-product on `main` and is allocated to the subsystem of the SR (r4) | TOOL_08 |
 | an approved requirement names approved uplinks only | TOOL_09 |
 | every test file belongs to exactly one test level | TOOL_10 |
 | every review result keeps the rules of the section Reviews of formats.md, and the tests of the tools pass | TOOL_12 |
@@ -279,4 +279,3 @@ today is set in the section Continuous integration.
 | 18.1.1 | 2026-11-05 | Continuous integration: the tests of the tools in build / test | #552 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 19.1.1 | 2026-11-12 | The checks and the build steps from the repo tools | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 20.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
-| 21.1.1 | 2026-11-13 | The allocation: r4 gone | #653 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

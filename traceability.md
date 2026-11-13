@@ -605,7 +605,7 @@ of today were never approved, so no approved content exists for them.
 
 ## The allocation
 
-The allocation is the field `allocated` of each subsystem in the architecture. The system
+The allocation (r4) is the field `allocated` of each subsystem in the architecture. The system
 requirements allocated to a subsystem are its requirements, derived directly from r2
 (system-architecture.md). So `allocated` is an uplink: the element stands below the system
 requirements and names its parents. Only its name differs from `source_ids`.
@@ -721,4 +721,3 @@ Markdown table, and the rules would be kept apart from every other requirement.
 | 13.1.1 | 2026-11-03 | Tests: test case, test procedure and test result, after ISO/IEC/IEEE 29119 | #437 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 14.1.1 | 2026-11-04 | Tests: the links of a test, the ways of testing, when a test is missing | #439 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 15.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
-| 16.1.1 | 2026-11-13 | The allocation: r4 gone | #653 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
