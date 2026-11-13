@@ -33,8 +33,8 @@ generated from it whenever it changes, and names the hash of its content, `git h
 levels.yaml`. The levels of the product are in
 [levels.yaml of specs-and-deploy-product](https://github.com/treporting/specs-and-deploy-product/blob/main/levels.yaml) (#637).
 
-<!-- generated from levels.yaml@6b734dd - do not edit -->
-**Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@6b734dd
+<!-- generated from levels.yaml@61b63ee - do not edit -->
+**Table process & tools** - the levels of our process and of our tools, each by the level of the product it stands for, generated from levels.yaml@61b63ee
 
 | Level | Key | Name | Abbreviation | Description | Reference | Data |
 |---|---|---|---|---|---|---|
@@ -45,7 +45,7 @@ levels.yaml`. The levels of the product are in
 | r5tp | r5tp | subsystem test procedure | SwVal TP | the tests of the tools in Go that carry out the test cases of r5tc, or verify an SR directly | ISO29119 | - |
 | r5tr | r5tr | subsystem test result | SwVal TR | the result of a run of a test procedure of r5tp | ISO29119 | - |
 | r1 | rules | rules | PROC | the rules of our work | - | - |
-| - | document | documents | - | a document without a level, in Markdown, such as formats.md | - | - |
+| - | document | documents | - | a document that explains no level of requirements or tests, in Markdown, such as formats.md | - | - |
 <!-- end of generated -->
 
 ### Maturity of our own data
@@ -269,3 +269,4 @@ as soon as possible (PROC_07)
 | 25.1.1 | 2026-11-12 | Levels: process & tools only; the levels of the product in its repo | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 26.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 27.1.1 | 2026-11-13 | Levels: r5tp and r5tr | #636 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 28.1.1 | 2026-11-13 | Levels: document explains no level of requirements or tests | #555 | Claude Opus 5.5, author; Mathias Fischer, reviewer |

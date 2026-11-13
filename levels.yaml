@@ -49,4 +49,4 @@ levels:
 - key: document
   part: ['process & tools']
   name: documents
-  description: a document without a level, in Markdown, such as formats.md
+  description: a document that explains no level of requirements or tests, in Markdown, such as formats.md

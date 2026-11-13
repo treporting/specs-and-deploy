@@ -15,7 +15,7 @@ documents:
   level: rules
   object_version: '27.1.1'
   object_hash: 'eba20d2'
-  status: approved
+  status: draft
   verification_method: [review]
 - name: devops.md
   type: document
