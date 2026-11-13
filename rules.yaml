@@ -6,44 +6,48 @@ type: rules
 level: rules
 rules:
 - object_key: PROC_01
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'The language for tickets, code, code comments and documentation is English only.'
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_02
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'Every change has a ticket in the org project treporting and a branch `<ticket
     number>-<slug>`.'
   function: rules
   feature: ticket
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_03
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'A change reaches `main` only through a pull request; `main` is protected.'
   function: rules
   feature: merge
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_04
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'A pull request passes the full gate before it is merged to `main`.'
   function: rules
   feature: merge
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_05
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'Every change of code realizes or verifies an approved requirement and names it in
     `@implements` or `@verifies`. Code is everything that is built or run - also configurations and
     container files. A schema is no code: it is the contract of the requirement it refines, and names
@@ -51,81 +55,89 @@ rules:
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_06
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'A baseline is a signed tag: in this repo (specs-and-deploy) it is a release, in any
     other repo a library.'
   function: rules
   feature: baseline
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_07
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'Every release and every library writes its data into the reference edgedb.'
   function: rules
   feature: baseline
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_08
-  object_version: '2.2.2'
+  object_version: '2.2.3'
   object_text: 'Every release has an SBOM, and the licences of its components are checked against
     Apache-2.0 (REG_EU2024-2847_02, REG_Licences_01).'
   source_ids: [REG_EU2024-2847_02@1.1.1, REG_Licences_01@1.1.1]
   function: rules
   feature: baseline
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_09
-  object_version: '2.2.2'
+  object_version: '2.2.3'
   object_text: 'A reported vulnerability is assessed and fixed without delay; one that is actively
     exploited is notified within 24 hours (REG_EU2024-2847_02, REG_EU2024-2847_03).'
   source_ids: [REG_EU2024-2847_02@1.1.1, REG_EU2024-2847_03@1.1.1]
   function: rules
   feature: maintenance
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_10
-  object_version: '2.2.2'
+  object_version: '2.2.3'
   object_text: 'Every release gets security fixes over the support period it states (REG_EU2024-2847_04).'
   source_ids: [REG_EU2024-2847_04@1.1.1]
   function: rules
   feature: maintenance
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_11
-  object_version: '2.1.2'
+  object_version: '2.1.3'
   object_text: 'A document names no ticket, except in its change history; what is open, it states
     as open. The ticket names the document, not the other way round.'
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_12
-  object_version: '2.1.2'
+  object_version: '2.1.3'
   object_text: 'An object is merged before another names it.'
   function: rules
   feature: merge
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_13
-  object_version: '4.1.2'
+  object_version: '4.1.3'
   object_text: 'Whatever has review criteria of its kind in `reviews/` is approved only when it passed
     its review against those criteria, and whatever it names as uplink is approved at that moment. A
     later change of an uplink does not take the approval back. A document a tool writes, with the
@@ -134,11 +146,12 @@ rules:
   function: rules
   feature: review
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_14
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'A change of the content of whatever is approved that changes x of its version - the
     text of a requirement or an attribute its kind names for x, a document as a whole - sets it back
     to `draft`. A change of y or z only - a link, another attribute - leaves it `approved`; its merge
@@ -146,30 +159,33 @@ rules:
   function: rules
   feature: review
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_15
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'The reviewer of whatever is reviewed is not its author.'
   function: rules
   feature: review
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_16
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'A pull request closes one ticket and changes one concern. Group things which belong
     together so they do not contradict.'
   function: rules
   feature: merge
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_18
-  object_version: '2.1.2'
+  object_version: '2.1.3'
   object_text: |-
     A decision is written down with:
     - its reason
@@ -182,20 +198,22 @@ rules:
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_19
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'Every test belongs to exactly one test level, read from the place of its file.'
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_20
-  object_version: '2.1.2'
+  object_version: '2.1.3'
   object_text: 'Every link names the version of the linked object, as `ID@x.y.z`. A link is suspect
     where the linked object has another x than the link names. A suspect link is reported on every
     pull request. It blocks a baseline that holds both its ends, compared with the versions in that
@@ -203,27 +221,30 @@ rules:
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_21
-  object_version: '1.1.2'
+  object_version: '1.1.3'
   object_text: 'What is made only to be looked at stays on the machine it is made on: it is not pushed,
     and no ticket or pull request carries it. The repos are public; whatever reaches them is
     published.'
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
 - object_key: PROC_22
-  object_version: '2.1.2'
+  object_version: '2.1.3'
   object_text: 'The text of a requirement does not rely on the content of a document, so that a
     change of a document never calls for a look at a requirement.'
   function: rules
   feature: writing
   priority: 'medium'
+  platform_launch: treporting = 1_tools
   safety: ''
   status: approved
   verification_method: []
