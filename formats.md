@@ -427,6 +427,16 @@ reviews/
                                    for each and per criterion passed or failed (RR)
 ```
 
+**Decision**: every repo keeps its own `reviews/`: the criteria of its levels, and the results of the
+reviews of its objects. A repo of a subsystem, an LProject, does so too.
+
+**Why**: a result names the commit it reviewed, and that commit is in the repo of the objects only.
+The criteria of a level may differ from repo to repo: the tool requirements and the system
+requirements are both r2, and are judged by different criteria.
+
+**Rejected**: the criteria in one place, specs-and-deploy-process, for every repo. Two kinds of
+requirement on one level could not have criteria of their own.
+
 A file of results is named `<yyyymmddThhmmss>_<scope>.yaml`: the time of its `created_at`, in the
 basic format of ISO8601, and what it reviewed - such as `20261026T140000_r1-pm.yaml`. Every review
 has a name of its own, and the files sort by time.
@@ -933,3 +943,4 @@ case, and a test case without a result, would have no row.
 | 34.1.1 | 2026-11-11 | Table kinds of field: function is the class of a user need; Table ids: UN_<class>_nn | #590 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 35.1.1 | 2026-11-12 | Table files of the levels and table types: the three repos; the tool requirements on r2 | #641, #628 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
 | 36.1.1 | 2026-11-13 | specs-and-deploy named by the repo it means now | #641 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
+| 37.1.1 | 2026-11-13 | Reviews: every repo its own criteria and results | #629 | Claude Opus 5.5, author; Mathias Fischer, reviewer |
