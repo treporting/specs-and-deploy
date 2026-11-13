@@ -111,7 +111,7 @@
           "rationale": {
             "type": "string",
             "minLength": 1,
-            "description": "why the requirement stands, where it names no uplink (ISO/IEC/IEEE 29148, 5.2.8)"
+            "description": "why the requirement stands; required where it names no uplink (ISO/IEC/IEEE 29148, 5.2.8)"
           }
         },
         "anyOf": [
